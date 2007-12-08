@@ -748,6 +748,7 @@ pref("javascript.options.strict",           false);
 #ifdef DEBUG
 pref("javascript.options.strict.debug",     true);
 #endif
+pref("javascript.options.showInConsole",    true);
 pref("javascript.options.baselinejit.content", true);
 pref("javascript.options.baselinejit.chrome",  true);
 pref("javascript.options.ion.content",      true);
