@@ -1159,6 +1159,7 @@ pref("javascript.options.strict.debug",     false);
 #endif
 pref("javascript.options.baselinejit",      true);
 pref("javascript.options.ion",              true);
+pref("javascript.options.showInConsole",    true);
 pref("javascript.options.asmjs",            true);
 pref("javascript.options.wasm",             false);
 pref("javascript.options.native_regexp",    true);
