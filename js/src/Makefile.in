@@ -18,6 +18,7 @@ TOPLEVEL_BUILD := 1
 
 run_for_side_effects := $(shell echo "MAKE: $(MAKE)")
 STATIC_LIBRARY_NAME = js_static
+SO_VERSION	= $(JS_SO_VERSION)
 LIBS		= $(NSPR_LIBS)
 
 # JavaScript must be built shared, even for static builds, as it is used by
@@ -596,6 +597,9 @@ ifneq (,$(REAL_LIBRARY))
 endif
 ifneq (,$(SHARED_LIBRARY))
 	$(SYSINSTALL) $(SHARED_LIBRARY) $(DESTDIR)$(libdir)
+ifneq (,$(UNVERSIONED_LIBRARY))
+	ln -s $(SHARED_LIBRARY) $(DESTDIR)$(libdir)/$(UNVERSIONED_LIBRARY)
+endif
 endif
 ifneq (,$(IMPORT_LIBRARY))
 	$(SYSINSTALL) $(IMPORT_LIBRARY) $(DESTDIR)$(libdir)
