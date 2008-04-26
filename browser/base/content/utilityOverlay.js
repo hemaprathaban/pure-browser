@@ -366,7 +366,7 @@ function openAboutDialog()
                 "chrome, resizable=no, minimizable=no");
   }
 #else
-  window.openDialog("chrome://browser/content/aboutDialog.xul", "About", "modal,centerscreen,chrome,resizable=no");
+  window.openDialog("chrome://browser/content/aboutDialog.xul", "About", "centerscreen,chrome,resizable=no");
 #endif
 }
 
@@ -384,10 +384,28 @@ function openPreferences(paneID)
       var pane = win.document.getElementById(paneID);
       win.document.documentElement.showPane(pane);
     }
+    return win;
   }
-  else
-    openDialog("chrome://browser/content/preferences/preferences.xul",
-               "Preferences", features, paneID);
+
+  return openDialog("chrome://browser/content/preferences/preferences.xul",
+                    "Preferences", features, paneID);
+}
+
+function openAdvancedPreferences(tabID)
+{
+  var win = openPreferences("paneAdvanced");
+  if (win) {
+    var selectTab = function() {
+      var tabs = win.document.getElementById("advancedPrefs");
+      tabs.selectedTab = win.document.getElementById(tabID);
+    }
+
+    if (win.document.getElementById("advancedPrefs")) {
+      selectTab();
+    } else {
+      win.addEventListener("load", selectTab, false);
+    }
+  }
 }
 
 /**
@@ -636,4 +654,44 @@ function isValidFeed(aData, aPrincipal, aIsFeed)
     aData.type = type;
 
   return aIsFeed;
+}
+
+function getOfflineAppUsage(host)
+{
+  var cacheService = Components.classes["@mozilla.org/network/cache-service;1"].
+                     getService(Components.interfaces.nsICacheService);
+  var cacheSession = cacheService.createSession("HTTP-offline",
+                                                Components.interfaces.nsICache.STORE_OFFLINE,
+                                                true).
+                     QueryInterface(Components.interfaces.nsIOfflineCacheSession);
+  var usage = cacheSession.getDomainUsage(host);
+
+  var storageManager = Components.classes["@mozilla.org/dom/storagemanager;1"].
+                       getService(Components.interfaces.nsIDOMStorageManager);
+  usage += storageManager.getUsage(host);
+
+  return usage;
+}
+
+// aCalledFromModal is optional
+function openHelpLink(aHelpTopic, aCalledFromModal) {
+  var url = Components.classes["@mozilla.org/toolkit/URLFormatterService;1"]
+                      .getService(Components.interfaces.nsIURLFormatter)
+                      .formatURLPref("app.support.baseURL");
+  url += aHelpTopic;
+
+  var where = aCalledFromModal ? "window" : "tab";
+  openUILinkIn(url, where);
+}
+
+function openPrefsHelp() {
+  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+                        .getService(Components.interfaces.nsIPrefBranch2);
+
+  // non-instant apply prefwindows are usually modal, so we can't open in the topmost window, 
+  // since its probably behind the window.
+  var instantApply = prefs.getBoolPref("browser.preferences.instantApply");
+
+  var helpTopic = document.getElementsByTagName("prefwindow")[0].currentPane.helpTopic;
+  openHelpLink(helpTopic, !instantApply);
 }

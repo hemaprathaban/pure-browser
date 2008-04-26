@@ -45,21 +45,22 @@
 #include "jsprvtd.h"
 #include "jspubtd.h"
 #include "jsdhash.h"
+#include "jsbit.h"
 #include "jsutil.h"
 
 JS_BEGIN_EXTERN_C
 
 JS_STATIC_ASSERT(JSTRACE_STRING == 2);
 
-#define JSTRACE_FUNCTION    3
-#define JSTRACE_NAMESPACE   4
-#define JSTRACE_QNAME       5
-#define JSTRACE_XML         6
+#define JSTRACE_SCRIPTED_FUNCTION   3
+#define JSTRACE_NAMESPACE           4
+#define JSTRACE_QNAME               5
+#define JSTRACE_XML                 6
 
 /*
  * One past the maximum trace kind.
  */
-#define JSTRACE_LIMIT       7
+#define JSTRACE_LIMIT               7
 
 /*
  * We use the trace kinds as the types for all GC things except external
@@ -68,7 +69,8 @@ JS_STATIC_ASSERT(JSTRACE_STRING == 2);
 #define GCX_OBJECT              JSTRACE_OBJECT      /* JSObject */
 #define GCX_DOUBLE              JSTRACE_DOUBLE      /* jsdouble */
 #define GCX_STRING              JSTRACE_STRING      /* JSString */
-#define GCX_FUNCTION            JSTRACE_FUNCTION    /* JSFunction */
+#define GCX_FUNCTION            JSTRACE_SCRIPTED_FUNCTION
+                                                    /* JSScriptedFunction */
 #define GCX_NAMESPACE           JSTRACE_NAMESPACE   /* JSXMLNamespace */
 #define GCX_QNAME               JSTRACE_QNAME       /* JSXMLQName */
 #define GCX_XML                 JSTRACE_XML         /* JSXML */
@@ -121,6 +123,26 @@ js_GetGCStringRuntime(JSString *str);
 #else
 #define GC_POKE(cx, oldval) ((cx)->runtime->gcPoke = JSVAL_IS_GCTHING(oldval))
 #endif
+
+/*
+ * Write barrier macro monitoring property update from oldval to newval in
+ * scope->object.
+ *
+ * Since oldval is used only for the branded scope case, and the oldval actual
+ * argument expression is typically not used otherwise by callers, performance
+ * benefits if oldval is *not* evaluated into a callsite temporary variable,
+ * and instead passed to GC_WRITE_BARRIER for conditional evaluation (we rely
+ * on modern compilers to do a good CSE job). Yay, C macros.
+ */
+#define GC_WRITE_BARRIER(cx,scope,oldval,newval)                              \
+    JS_BEGIN_MACRO                                                            \
+        if (SCOPE_IS_BRANDED(scope) &&                                        \
+            (oldval) != (newval) &&                                           \
+            (VALUE_IS_FUNCTION(cx,oldval) || VALUE_IS_FUNCTION(cx,newval))) { \
+            SCOPE_MAKE_UNIQUE_SHAPE(cx, scope);                               \
+        }                                                                     \
+        GC_POKE(cx, oldval);                                                  \
+    JS_END_MACRO
 
 extern JSBool
 js_InitGC(JSRuntime *rt, uint32 maxbytes);
@@ -182,8 +204,19 @@ struct JSGCThing {
 extern void *
 js_NewGCThing(JSContext *cx, uintN flags, size_t nbytes);
 
+/*
+ * Allocate a new double jsval and store the result in *vp. vp must be a root.
+ * The function does not copy the result into any weak root.
+ */
 extern JSBool
-js_LockGCThing(JSContext *cx, void *thing);
+js_NewDoubleInRootedValue(JSContext *cx, jsdouble d, jsval *vp);
+
+/*
+ * Return a pointer to a new GC-allocated and weakly-rooted jsdouble number,
+ * or null when the allocation fails.
+ */
+extern jsdouble *
+js_NewWeaklyRootedDouble(JSContext *cx, jsdouble d);
 
 extern JSBool
 js_LockGCThingRT(JSRuntime *rt, void *thing);
@@ -203,14 +236,15 @@ js_IsAboutToBeFinalized(JSContext *cx, void *thing);
 #if JS_HAS_XML_SUPPORT
 # define JS_IS_VALID_TRACE_KIND(kind) ((uint32)(kind) <= JSTRACE_XML)
 #else
-# define JS_IS_VALID_TRACE_KIND(kind) ((uint32)(kind) <= JSTRACE_FUNCTION)
+# define JS_IS_VALID_TRACE_KIND(kind) ((uint32)(kind) <=                      \
+                                       JSTRACE_SCRIPTED_FUNCTION)
 #endif
 
 /*
- * JS_IS_VALID_TRACE_KIND assumes that JSTRACE_FUNCTION is the last non-xml
- * trace kind when JS_HAS_XML_SUPPORT is false.
+ * JS_IS_VALID_TRACE_KIND assumes that JSTRACE_SCRIPTED_FUNCTION is the last
+ * non-xml trace kind when JS_HAS_XML_SUPPORT is false.
  */
-JS_STATIC_ASSERT(JSTRACE_FUNCTION + 1 == JSTRACE_NAMESPACE);
+JS_STATIC_ASSERT(JSTRACE_SCRIPTED_FUNCTION + 1 == JSTRACE_NAMESPACE);
 
 /*
  * Trace jsval when JSVAL_IS_OBJECT(v) can be an arbitrary GC thing casted as
@@ -283,6 +317,21 @@ struct JSGCArenaList {
     JSGCThing       *freeList;      /* list of free GC things */
 };
 
+typedef union JSGCDoubleCell JSGCDoubleCell;
+
+union JSGCDoubleCell {
+    double          number;
+    JSGCDoubleCell  *link;
+};
+
+JS_STATIC_ASSERT(sizeof(JSGCDoubleCell) == sizeof(double));
+
+typedef struct JSGCDoubleArenaList {
+    JSGCArenaInfo   *first;             /* first allocated GC arena */
+    jsbitmap        *nextDoubleFlags;   /* bitmask with flags to check for free
+                                           things */
+} JSGCDoubleArenaList;
+
 struct JSWeakRoots {
     /* Most recently created things by type, members of the GC's root set. */
     void            *newborn[GCX_NTYPES];
@@ -304,28 +353,22 @@ JS_STATIC_ASSERT(JSVAL_NULL == 0);
 #ifdef JS_GCMETER
 
 typedef struct JSGCArenaStats {
-    uint32  narenas;        /* number of arena in list */
-    uint32  maxarenas;      /* maximun number of allocated arenas */
-    uint32  nthings;        /* number of allocates JSGCThing */
-    uint32  maxthings;      /* maximum number number of allocates JSGCThing */
-    uint32  totalnew;       /* number of succeeded calls to js_NewGCThing */
-    uint32  freelen;        /* freeList lengths */
-    uint32  recycle;        /* number of things recycled through freeList */
+    uint32  alloc;          /* allocation attempts */
+    uint32  localalloc;     /* allocations from local lists */
+    uint32  retry;          /* allocation retries after running the GC */
+    uint32  fail;           /* allocation failures */
+    uint32  nthings;        /* live GC things */
+    uint32  maxthings;      /* maximum of live GC cells */
+    double  totalthings;    /* live GC things the GC scanned so far */
+    uint32  narenas;        /* number of arena in list before the GC */
+    uint32  newarenas;      /* new arenas allocated before the last GC */
+    uint32  livearenas;     /* number of live arenas after the last GC */
+    uint32  maxarenas;      /* maximum of allocated arenas */
     uint32  totalarenas;    /* total number of arenas with live things that
                                GC scanned so far */
-    uint32  totalfreelen;   /* total number of things that GC put to free
-                               list so far */
 } JSGCArenaStats;
 
 typedef struct JSGCStats {
-#ifdef JS_THREADSAFE
-    uint32  localalloc; /* number of succeeded allocations from local lists */
-#endif
-    uint32  alloc;      /* number of allocation attempts */
-    uint32  retry;      /* allocation attempt retries after running the GC */
-    uint32  retryhalt;  /* allocation retries halted by the operation
-                           callback */
-    uint32  fail;       /* allocation failures */
     uint32  finalfail;  /* finalizer calls allocator failures */
     uint32  lockborn;   /* things born locked */
     uint32  lock;       /* valid lock calls */
@@ -350,7 +393,8 @@ typedef struct JSGCStats {
     uint32  closelater; /* number of close hooks scheduled to run */
     uint32  maxcloselater; /* max number of close hooks scheduled to run */
 
-    JSGCArenaStats  arenas[GC_NUM_FREELISTS];
+    JSGCArenaStats  arenaStats[GC_NUM_FREELISTS];
+    JSGCArenaStats  doubleArenaStats;
 } JSGCStats;
 
 extern JS_FRIEND_API(void)

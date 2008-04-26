@@ -1246,7 +1246,7 @@ nsSocketTransport::RecoverFromError()
         }
     }
 
-#if defined(XP_WIN)
+#if defined(XP_WIN) && !defined(WINCE)
     // If not trying next address, try to make a connection using dialup. 
     // Retry if that connection is made.
     if (!tryAgain) {
@@ -1332,8 +1332,6 @@ nsSocketTransport::OnSocketConnected()
     mPollTimeout = mTimeouts[TIMEOUT_READ_WRITE];
     mState = STATE_TRANSFERRING;
 
-    SendStatus(STATUS_CONNECTED_TO);
-
     // assign mFD (must do this within the transport lock), but take care not
     // to trample over mFDref if mFD is already set.
     {
@@ -1342,6 +1340,8 @@ nsSocketTransport::OnSocketConnected()
         NS_ASSERTION(mFDref == 1, "wrong socket ref count");
         mFDconnected = PR_TRUE;
     }
+
+    SendStatus(STATUS_CONNECTED_TO);
 }
 
 PRFileDesc *
@@ -1582,7 +1582,8 @@ nsSocketTransport::OnSocketDetached(PRFileDesc *fd)
         secCtrl->SetNotificationCallbacks(nsnull);
 
     // finally, release our reference to the socket (must do this within
-    // the transport lock) possibly closing the socket.
+    // the transport lock) possibly closing the socket. Also release our
+    // listeners to break potential refcount cycles.
     {
         nsAutoLock lock(mLock);
         if (mFD) {
@@ -1591,6 +1592,8 @@ nsSocketTransport::OnSocketDetached(PRFileDesc *fd)
             // acquiring a reference to mFD.
             mFDconnected = PR_FALSE;
         }
+        mCallbacks = nsnull;
+        mEventSink = nsnull;
     }
 }
 

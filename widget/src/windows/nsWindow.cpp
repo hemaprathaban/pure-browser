@@ -183,7 +183,6 @@ static const char kMozHeapDumpMessageString[] = "MOZ_HeapDump";
 
 #ifndef ULW_ALPHA
 #define ULW_ALPHA               0x00000002
-
 extern "C"
 WINUSERAPI
 BOOL WINAPI UpdateLayeredWindow(HWND hWnd, HDC hdcDst, POINT *pptDst,
@@ -197,78 +196,6 @@ BOOL WINAPI UpdateLayeredWindow(HWND hWnd, HDC hdcDst, POINT *pptDst,
 
 #ifdef WINCE
 static PRBool gSoftKeyMenuBar = PR_FALSE;
-static PRBool gOverrideHWKeys = PR_TRUE;
-
-typedef BOOL (__stdcall *UnregisterFunc1Proc)( UINT, UINT );
-static UnregisterFunc1Proc gProcUnregisterFunc = NULL;
-static HINSTANCE gCoreDll = NULL;
-
-UINT gHardwareKeys[][2] =
-  {
-    { 0xc1, MOD_WIN },
-    { 0xc2, MOD_WIN },
-    { 0xc3, MOD_WIN },
-    { 0xc4, MOD_WIN },
-    { 0xc5, MOD_WIN },
-    { 0xc6, MOD_WIN },
-
-    { 0x72, 0 },// Answer - 0x72 Modifier - 0  
-    { 0x73, 0 },// Hangup - 0x73 Modifier - 0 
-    { 0x74, 0 },// 
-    { 0x75, 0 },// Volume Up   - 0x75 Modifier - 0
-    { 0x76, 0 },// Volume Down - 0x76 Modifier - 0
-    { 0, 0 },
-  };
-
-static void MapHardwareButtons(HWND window)
-{
-  if (!window)
-    return;
-
-  // handle hardware buttons so that they broadcast into our
-  // application. the following code is based on an article
-  // on the Pocket PC Developer Network:
-  //
-  // http://www.pocketpcdn.com/articles/handle_hardware_keys.html
-  
-  if (gOverrideHWKeys)
-  {
-    if (!gProcUnregisterFunc)
-    {
-      gCoreDll = LoadLibrary(_T("coredll.dll")); // leak
-      
-      if (gCoreDll)
-        gProcUnregisterFunc = (UnregisterFunc1Proc)GetProcAddress( gCoreDll, _T("UnregisterFunc1"));
-    }
-    
-    if (gProcUnregisterFunc)
-    {    
-      for (int i=0; gHardwareKeys[i][0]; i++)
-      {
-        UINT mod = gHardwareKeys[i][1];
-        UINT kc = gHardwareKeys[i][0];
-        
-        gProcUnregisterFunc(mod, kc);
-        RegisterHotKey(window, kc, mod, kc);
-      }
-    }
-  }
-}
-
-static void UnmapHardwareButtons()
-{
-  if (!gProcUnregisterFunc)
-    return;
-
-  for (int i=0; gHardwareKeys[i][0]; i++)
-  {
-    UINT mod = gHardwareKeys[i][1];
-    UINT kc = gHardwareKeys[i][0];
-
-    gProcUnregisterFunc(mod, kc);
-  }
-}
-
 void CreateSoftKeyMenuBar(HWND wnd)
 {
   if (!wnd)
@@ -340,6 +267,7 @@ PRInt32 GetWindowsVersion()
 
   if (!didCheck)
   {
+    didCheck = PR_TRUE;
     OSVERSIONINFOEX osInfo;
     osInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
     // This cast is safe and supposed to be here, don't worry
@@ -779,25 +707,16 @@ nsWindow::nsWindow() : nsBaseWidget()
   mIsTopWidgetWindow = PR_FALSE;
   mLastKeyboardLayout = 0;
 
+#ifndef WINCE
   if (!sInstanceCount && SUCCEEDED(::OleInitialize(NULL))) {
     sIsOleInitialized = TRUE;
   }
   NS_ASSERTION(sIsOleInitialized, "***** OLE is not initialized!\n");
 
   sInstanceCount++;
-
-#ifdef WINCE
-  nsCOMPtr<nsIPrefService> prefs = do_GetService(NS_PREFSERVICE_CONTRACTID);
-  if (prefs) {
-    nsCOMPtr<nsIPrefBranch> prefBranch;
-    prefs->GetBranch(0, getter_AddRefs(prefBranch));
-    if (prefBranch)
-    {
-      prefBranch->GetBoolPref("config.wince.overrideHWKeys", &gOverrideHWKeys);
-    }
-  }
 #endif
-}
+
+    }
 
 
 HKL nsWindow::gKeyboardLayout = 0;
@@ -836,6 +755,7 @@ nsWindow::~nsWindow()
     SetCursor(eCursor_standard);
   }
 
+#ifndef WINCE
   //
   // delete any of the IME structures that we allocated
   //
@@ -858,6 +778,7 @@ nsWindow::~nsWindow()
       sIsOleInitialized = FALSE;
     }
   }
+#endif
 
   NS_IF_RELEASE(mNativeDragTarget);
 
@@ -968,8 +889,6 @@ LPARAM nsWindow::lParamToClient(LPARAM lParam)
 //-------------------------------------------------------------------------
 void nsWindow::InitEvent(nsGUIEvent& event, nsPoint* aPoint)
 {
-  NS_ADDREF(event.widget);
-
   if (nsnull == aPoint) {     // use the point from the event
     // get the message position in client coordinates and in twips
     if (mWnd != NULL) {
@@ -1092,7 +1011,6 @@ PRBool nsWindow::DispatchStandardEvent(PRUint32 aMsg)
   InitEvent(event);
 
   PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
   return result;
 }
 
@@ -1133,7 +1051,6 @@ PRBool nsWindow::DispatchCommandEvent(PRUint32 aEventCommand)
 
   InitEvent(event);
   DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
 
   return PR_TRUE;
 }
@@ -1456,7 +1373,6 @@ nsWindow::StandardWindowCreate(nsIWidget *aParent,
   if (mWindowType == eWindowType_dialog || mWindowType == eWindowType_toplevel )
     CreateSoftKeyMenuBar(mWnd);
   
-  MapHardwareButtons(mWnd);
 #endif
 
   return NS_OK;
@@ -2230,11 +2146,6 @@ NS_METHOD nsWindow::SetFocus(PRBool aRaise)
     if (::IsIconic(toplevelWnd))
       ::ShowWindow(toplevelWnd, SW_RESTORE);
     ::SetFocus(mWnd);
-
-#ifdef WINCE
-    MapHardwareButtons(mWnd);
-#endif
-
   }
   return NS_OK;
 }
@@ -3185,7 +3096,6 @@ PRBool nsWindow::DispatchKeyEvent(PRUint32 aEventType, WORD aCharCode, UINT aVir
   event.nativeMsg = (void *)&pluginEvent;
 
   PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
 
   return result;
 }
@@ -3243,7 +3153,7 @@ BOOL nsWindow::OnKeyDown(UINT aVirtualKeyCode, UINT aScanCode, LPARAM aKeyData)
   // Enter and backspace are always handled here to avoid for example the
   // confusion between ctrl-enter and ctrl-J.
   if (DOMKeyCode == NS_VK_RETURN || DOMKeyCode == NS_VK_BACK ||
-      ((mIsControlDown || mIsAltDown) &&
+      ((mIsControlDown || mIsAltDown) && !gKbdLayout.IsDeadKey() &&
        KeyboardLayout::IsPrintableCharKey(aVirtualKeyCode)))
   {
     // Remove a possible WM_CHAR or WM_SYSCHAR messages from the message queue.
@@ -3541,7 +3451,6 @@ void nsWindow::ConstrainZLevel(HWND *aAfter)
     }
   }
   NS_IF_RELEASE(event.mActualBelow);
-  NS_RELEASE(event.widget);
 }
 
 //-------------------------------------------------------------------------
@@ -4041,13 +3950,11 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
         nsPoint point(0,0);
         InitEvent(event, &point); // this add ref's event.widget
         result = DispatchWindowEvent(&event);
-        NS_RELEASE(event.widget);
       } else if (wNotifyCode == 0) { // Menu selection
         nsMenuEvent event(PR_TRUE, NS_MENU_SELECTED, this);
         event.mCommand = LOWORD(wParam);
         InitEvent(event);
         result = DispatchWindowEvent(&event);
-        NS_RELEASE(event.widget);
       }
     }
     break;
@@ -4439,16 +4346,15 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
 #ifndef WINCE
     case WM_MOUSELEAVE:
     {
-      // We use MINLONG | MINSHORT as the mouse position to make sure
-      // EventStateManager doesn't convert this EXIT message to
-      // a MOVE message (besides, WM_MOUSELEAVE doesn't have the position
-      // in lParam). 
-      // We also need to check mouse button states and put them in for
+      // We need to check mouse button states and put them in for
       // wParam.
       WPARAM mouseState = (GetKeyState(VK_LBUTTON) ? MK_LBUTTON : 0)
         | (GetKeyState(VK_MBUTTON) ? MK_MBUTTON : 0)
         | (GetKeyState(VK_RBUTTON) ? MK_RBUTTON : 0);
-      DispatchMouseEvent(NS_MOUSE_EXIT, mouseState, MINLONG | MINSHORT);
+      // Synthesize an event position because we don't get one from
+      // WM_MOUSELEAVE.
+      LPARAM pos = lParamToClient(::GetMessagePos());
+      DispatchMouseEvent(NS_MOUSE_EXIT, mouseState, pos);
     }
     break;
 #endif
@@ -4594,7 +4500,6 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
           event.acceptActivation = PR_TRUE;
   
           PRBool result = DispatchWindowEvent(&event);
-          NS_RELEASE(event.widget);
 
           if (event.acceptActivation)
             *aRetValue = MA_ACTIVATE;
@@ -4628,6 +4533,13 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
         gJustGotDeactivate = PR_FALSE;
         result = DispatchFocus(NS_ACTIVATE, PR_TRUE);
       }
+
+#ifdef ACCESSIBILITY
+      if (nsWindow::gIsAccessibilityOn) {
+        // Create it for the first time so that it can start firing events
+        nsCOMPtr<nsIAccessible> rootAccessible = GetRootAccessible();
+      }
+#endif
 
 #ifdef WINCE
       // On Windows CE, we have a window that overlaps
@@ -4795,8 +4707,6 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
           result = DispatchFocus(NS_GOTFOCUS, PR_TRUE);
           result = DispatchFocus(NS_ACTIVATE, PR_TRUE);
         }
-
-        NS_RELEASE(event.widget);
       }
     }
     break;
@@ -4917,7 +4827,6 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
         event.mIsFileURL = PR_FALSE;
         event.mURL       = fileStr.get();
         DispatchEvent(&event, status);
-        NS_RELEASE(event.widget);
       }
 #endif // 0
     }
@@ -5147,7 +5056,6 @@ PRBool nsWindow::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, LRESULT 
         if (nsnull != mEventCallback) {
           result = DispatchWindowEvent(&scrollEvent);
         }
-        NS_RELEASE(scrollEvent.widget);
         // Note that we should return zero if we process WM_MOUSEWHEEL.
         // But if we process WM_MOUSEHWHEEL, we should return non-zero.
         if (result)
@@ -5548,9 +5456,7 @@ PRBool nsWindow::OnMove(PRInt32 aX, PRInt32 aY)
   event.refPoint.x = aX;
   event.refPoint.y = aY;
 
-  PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
-  return result;
+  return DispatchWindowEvent(&event);
 }
 
 //-------------------------------------------------------------------------
@@ -5693,8 +5599,6 @@ PRBool nsWindow::OnPaint(HDC aDC)
         thebesContext->Paint();
       }
 #endif
-
-      NS_RELEASE(event.widget);
     }
   }
 
@@ -5747,12 +5651,20 @@ PRBool nsWindow::OnResize(nsRect &aWindowRect)
       event.mWinWidth  = 0;
       event.mWinHeight = 0;
     }
-    PRBool result = DispatchWindowEvent(&event);
-    NS_RELEASE(event.widget);
-    return result;
+    return DispatchWindowEvent(&event);
   }
 
   return PR_FALSE;
+}
+
+static PRBool IsTopLevelMouseExit(HWND aWnd)
+{
+  DWORD pos = ::GetMessagePos();
+  POINT mp;
+  mp.x = GET_X_LPARAM(pos);
+  mp.y = GET_Y_LPARAM(pos);
+  HWND mouseTopLevel = nsWindow::GetTopLevelHWND(::WindowFromPoint(mp));
+  return nsWindow::GetTopLevelHWND(aWnd) != mouseTopLevel;
 }
 
 //-------------------------------------------------------------------------
@@ -5801,10 +5713,7 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, WPARAM wParam,
   if (aEventType == NS_MOUSE_MOVE) 
   {
     if ((gLastMouseMovePoint.x == mpScreen.x) && (gLastMouseMovePoint.y == mpScreen.y))
-    {
-      NS_RELEASE(event.widget);
       return result;
-    }
     gLastMouseMovePoint.x = mpScreen.x;
     gLastMouseMovePoint.y = mpScreen.y;
   }
@@ -5862,6 +5771,9 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, WPARAM wParam,
   }
   else if (aEventType == NS_MOUSE_MOVE && !insideMovementThreshold) {
     gLastClickCount = 0;
+  }
+  else if (aEventType == NS_MOUSE_EXIT) {
+    event.exit = IsTopLevelMouseExit(mWnd) ? nsMouseEvent::eTopLevel : nsMouseEvent::eChild;
   }
   event.clickCount = gLastClickCount;
 
@@ -5971,7 +5883,6 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, WPARAM wParam,
     // Release the widget with NS_IF_RELEASE() just in case
     // the context menu key code in nsEventListenerManager::HandleEvent()
     // released it already.
-    NS_IF_RELEASE(event.widget);
     return result;
   }
 
@@ -6000,8 +5911,6 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, WPARAM wParam,
         break;
     } // switch
   }
-
-  NS_RELEASE(event.widget);
   return result;
 }
 
@@ -6035,8 +5944,6 @@ PRBool nsWindow::DispatchAccessibleEvent(PRUint32 aEventType, nsIAccessible** aA
   // if the event returned an accesssible get it.
   if (event.accessible)
     *aAcc = event.accessible;
-
-  NS_RELEASE(event.widget);
 
   return result;
 }
@@ -6079,11 +5986,7 @@ PRBool nsWindow::DispatchFocus(PRUint32 aEventType, PRBool isMozWindowTakingFocu
 
     event.nativeMsg = (void *)&pluginEvent;
 
-    PRBool result = DispatchWindowEvent(&event);
-
-    NS_RELEASE(event.widget);
-
-    return result;
+    return DispatchWindowEvent(&event);
   }
   return PR_FALSE;
 }
@@ -6275,7 +6178,6 @@ nsWindow::HandleTextEvent(HIMC hIMEContext,PRBool aCheckAttr)
   event.isAlt = mIsAltDown;
 
   DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
 
   if (event.rangeArray)
     delete [] event.rangeArray;
@@ -6403,8 +6305,6 @@ nsWindow::HandleStartComposition(HIMC hIMEContext)
     // the best we can do now is to ignore the invalid result
   }
 
-  NS_RELEASE(event.widget);
-
   if (!sIMECompUnicode)
     sIMECompUnicode = new nsAutoString();
   sIMEIsComposing = PR_TRUE;
@@ -6429,7 +6329,6 @@ nsWindow::HandleEndComposition(void)
 
   InitEvent(event,&point);
   DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
   PR_FREEIF(sIMECompCharPos);
   sIMECompCharPos = nsnull;
   sIMECaretHeight = 0;
@@ -6916,7 +6815,6 @@ PRBool nsWindow::OnIMEReconvert(LPARAM aData, LRESULT *oResult)
     DispatchWindowEvent(&event);
 
     sIMEReconvertUnicode = event.theReply.mReconversionString;
-    NS_RELEASE(event.widget);
 
     // Return need size
 
@@ -6988,7 +6886,6 @@ PRBool nsWindow::OnIMEQueryCharPosition(LPARAM aData, LRESULT *oResult)
       *oResult = FALSE;
       return PR_FALSE;
     }
-    NS_RELEASE(event.widget);
 
     nsRect screenRect;
     ResolveIMECaretPos(nsnull, event.theReply.mCaretRect, screenRect);

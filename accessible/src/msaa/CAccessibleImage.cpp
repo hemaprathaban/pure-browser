@@ -45,6 +45,7 @@
 #include "nsIAccessible.h"
 #include "nsIAccessibleImage.h"
 #include "nsIAccessibleTypes.h"
+#include "nsAccessNodeWrap.h"
 
 #include "nsCOMPtr.h"
 #include "nsString.h"
@@ -74,6 +75,9 @@ CAccessibleImage::QueryInterface(REFIID iid, void** ppv)
 STDMETHODIMP
 CAccessibleImage::get_description(BSTR *aDescription)
 {
+__try {
+  *aDescription = NULL;
+
   nsCOMPtr<nsIAccessible> acc(do_QueryInterface(this));
   if (!acc)
     return E_FAIL;
@@ -83,9 +87,16 @@ CAccessibleImage::get_description(BSTR *aDescription)
   if (NS_FAILED(rv))
     return E_FAIL;
 
-  INT result = ::SysReAllocStringLen(aDescription, description.get(),
-                                     description.Length());
-  return result ? NS_OK : E_OUTOFMEMORY;
+  if (description.IsEmpty())
+    return S_FALSE;
+
+  *aDescription = ::SysAllocStringLen(description.get(), description.Length());
+  if (!*aDescription)
+    return E_OUTOFMEMORY;
+
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+
+  return S_OK;
 }
 
 STDMETHODIMP
@@ -93,6 +104,7 @@ CAccessibleImage::get_imagePosition(enum IA2CoordinateType aCoordType,
                                     long *aX,
                                     long *aY)
 {
+__try {
   *aX = 0;
   *aY = 0;
 
@@ -111,6 +123,7 @@ CAccessibleImage::get_imagePosition(enum IA2CoordinateType aCoordType,
 
   *aX = x;
   *aY = y;
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
   return S_OK;
 }
@@ -118,6 +131,7 @@ CAccessibleImage::get_imagePosition(enum IA2CoordinateType aCoordType,
 STDMETHODIMP
 CAccessibleImage::get_imageSize(long *aHeight, long *aWidth)
 {
+__try {
   *aHeight = 0;
   *aWidth = 0;
 
@@ -132,6 +146,7 @@ CAccessibleImage::get_imageSize(long *aHeight, long *aWidth)
 
   *aHeight = width;
   *aWidth = height;
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
   return S_OK;
 }

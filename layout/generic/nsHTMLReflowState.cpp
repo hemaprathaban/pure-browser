@@ -78,9 +78,7 @@ enum eNormalLineHeightControl {
   eCompensateLeading        // compensate leading if leading provided by font vendor is not enough
 };
 
-#ifdef FONT_LEADING_APIS_V2
 static eNormalLineHeightControl sNormalLineHeightControl = eUninitialized;
-#endif
 
 // Initialize a <b>root</b> reflow state with a rendering context to
 // use for measuring things.
@@ -89,8 +87,8 @@ nsHTMLReflowState::nsHTMLReflowState(nsPresContext*       aPresContext,
                                      nsIRenderingContext* aRenderingContext,
                                      const nsSize&        aAvailableSpace)
   : nsCSSOffsetState(aFrame, aRenderingContext)
-  , mReflowDepth(0)
   , mBlockDelta(0)
+  , mReflowDepth(0)
 {
   NS_PRECONDITION(aPresContext, "no pres context");
   NS_PRECONDITION(aRenderingContext, "no rendering context");
@@ -106,6 +104,7 @@ nsHTMLReflowState::nsHTMLReflowState(nsPresContext*       aPresContext,
   mFlags.mNextInFlowUntouched = PR_FALSE;
   mFlags.mAssumingHScrollbar = mFlags.mAssumingVScrollbar = PR_FALSE;
   mFlags.mHasClearance = PR_FALSE;
+  mFlags.mHeightDependsOnAncestorCell = PR_FALSE;
   mDiscoveredClearance = nsnull;
   mPercentHeightObserver = nsnull;
   mPercentHeightReflowInitiator = nsnull;
@@ -130,9 +129,9 @@ nsHTMLReflowState::nsHTMLReflowState(nsPresContext*           aPresContext,
                                      nscoord                  aContainingBlockHeight,
                                      PRBool                   aInit)
   : nsCSSOffsetState(aFrame, aParentReflowState.rendContext)
+  , mBlockDelta(0)
   , mReflowDepth(aParentReflowState.mReflowDepth + 1)
   , mFlags(aParentReflowState.mFlags)
-  , mBlockDelta(0)
 {
   NS_PRECONDITION(aPresContext, "no pres context");
   NS_PRECONDITION(aFrame, "no frame");
@@ -410,16 +409,20 @@ nsHTMLReflowState::InitResizeFlags(nsPresContext* aPresContext)
     mStylePosition->mOffset.GetTopUnit() == eStyleUnit_Percent ||
     mStylePosition->mOffset.GetBottomUnit() != eStyleUnit_Auto ||
     frame->IsBoxFrame() ||
-    frame->GetIntrinsicSize().height.GetUnit() == eStyleUnit_Percent;
+    (mStylePosition->mHeight.GetUnit() == eStyleUnit_Auto &&
+     frame->GetIntrinsicSize().height.GetUnit() == eStyleUnit_Percent);
 
-  // If we're the child of a table cell that performs special height
+  // If we're the descendant of a table cell that performs special height
   // reflows and we could be the child that requires them, always set
   // the vertical resize in case this is the first pass before the
   // special height reflow.
   if (!mFlags.mVResize && mCBReflowState &&
-      IS_TABLE_CELL(mCBReflowState->frame->GetType()) &&
-      dependsOnCBHeight)
+      (IS_TABLE_CELL(mCBReflowState->frame->GetType()) || 
+       mCBReflowState->mFlags.mHeightDependsOnAncestorCell) &&
+      dependsOnCBHeight) {
     mFlags.mVResize = PR_TRUE;
+    mFlags.mHeightDependsOnAncestorCell = PR_TRUE;
+  }
 
   // Set NS_FRAME_CONTAINS_RELATIVE_HEIGHT if it's needed.
 
@@ -577,8 +580,6 @@ nsHTMLReflowState::ComputeRelativeOffsets(const nsHTMLReflowState* cbrs,
                                           nscoord aContainingBlockWidth,
                                           nscoord aContainingBlockHeight)
 {
-  nsStyleCoord  coord;
-
   // Compute the 'left' and 'right' values. 'Left' moves the boxes to the right,
   // and 'right' moves the boxes to the left. The computed values are always:
   // left=-right
@@ -614,7 +615,7 @@ nsHTMLReflowState::ComputeRelativeOffsets(const nsHTMLReflowState* cbrs,
     } else {
       // 'Right' isn't 'auto' so compute its value
       ComputeWidthDependentValue(aContainingBlockWidth,
-                                 mStylePosition->mOffset.GetRight(coord),
+                                 mStylePosition->mOffset.GetRight(),
                                  mComputedOffsets.right);
       
       // Computed value for 'left' is minus the value of 'right'
@@ -626,7 +627,7 @@ nsHTMLReflowState::ComputeRelativeOffsets(const nsHTMLReflowState* cbrs,
     
     // 'Left' isn't 'auto' so compute its value
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               mStylePosition->mOffset.GetLeft(coord),
+                               mStylePosition->mOffset.GetLeft(),
                                mComputedOffsets.left);
 
     // Computed value for 'right' is minus the value of 'left'
@@ -662,7 +663,7 @@ nsHTMLReflowState::ComputeRelativeOffsets(const nsHTMLReflowState* cbrs,
     } else {
       // 'Bottom' isn't 'auto' so compute its value
       ComputeHeightDependentValue(aContainingBlockHeight,
-                                  mStylePosition->mOffset.GetBottom(coord),
+                                  mStylePosition->mOffset.GetBottom(),
                                   mComputedOffsets.bottom);
       
       // Computed value for 'top' is minus the value of 'bottom'
@@ -674,7 +675,7 @@ nsHTMLReflowState::ComputeRelativeOffsets(const nsHTMLReflowState* cbrs,
     
     // 'Top' isn't 'auto' so compute its value
     ComputeHeightDependentValue(aContainingBlockHeight,
-                                mStylePosition->mOffset.GetTop(coord),
+                                mStylePosition->mOffset.GetTop(),
                                 mComputedOffsets.top);
 
     // Computed value for 'bottom' is minus the value of 'top'
@@ -731,7 +732,9 @@ nsHTMLReflowState::GetNearestContainingBlock(nsIFrame* aFrame, nscoord& aCBLeftE
 // In that case depending on the progression direction either the left or
 // right edge would be marked as not being exact
 struct nsHypotheticalBox {
+  // offsets from left edge of containing block (which is a padding edge)
   nscoord       mLeft, mRight;
+  // offset from top edge of containing block (which is a padding edge)
   nscoord       mTop;
   PRPackedBool  mLeftIsExact, mRightIsExact;
 
@@ -775,28 +778,24 @@ nsHTMLReflowState::CalculateHorizBorderPaddingMargin(
 
   // See if the style system can provide us the padding directly
   if (!mStylePadding->GetPadding(padding)) {
-    nsStyleCoord left, right;
-
     // We have to compute the left and right values
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               mStylePadding->mPadding.GetLeft(left),
+                               mStylePadding->mPadding.GetLeft(),
                                padding.left);
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               mStylePadding->mPadding.GetRight(right),
+                               mStylePadding->mPadding.GetRight(),
                                padding.right);
   }
 
   // See if the style system can provide us the margin directly
   if (!mStyleMargin->GetMargin(margin)) {
-    nsStyleCoord left, right;
-
     // We have to compute the left and right values
     if (eStyleUnit_Auto == mStyleMargin->mMargin.GetLeftUnit()) {
       // XXX FIXME (or does CalculateBlockSideMargins do this?)
       margin.left = 0;  // just ignore
     } else {
       ComputeWidthDependentValue(aContainingBlockWidth,
-                                 mStyleMargin->mMargin.GetLeft(left),
+                                 mStyleMargin->mMargin.GetLeft(),
                                  margin.left);
     }
     if (eStyleUnit_Auto == mStyleMargin->mMargin.GetRightUnit()) {
@@ -804,7 +803,7 @@ nsHTMLReflowState::CalculateHorizBorderPaddingMargin(
       margin.right = 0;  // just ignore
     } else {
       ComputeWidthDependentValue(aContainingBlockWidth,
-                                 mStyleMargin->mMargin.GetRight(right),
+                                 mStyleMargin->mMargin.GetRight(),
                                  margin.right);
     }
   }
@@ -909,7 +908,7 @@ nsHTMLReflowState::CalculateHypotheticalBox(nsPresContext*    aPresContext,
     
     } else {
       // We need to compute it. It's important we do this, because if it's
-      // percentage based this computed value may be different from the comnputed
+      // percentage based this computed value may be different from the computed
       // value calculated using the absolute containing block width
       boxWidth = ComputeWidthValue(aBlockContentWidth,
                                    insideBoxSizing, outsideBoxSizing,
@@ -932,11 +931,11 @@ nsHTMLReflowState::CalculateHypotheticalBox(nsPresContext*    aPresContext,
   nsBlockFrame* blockFrame;
   if (NS_SUCCEEDED(aContainingBlock->QueryInterface(kBlockFrameCID,
                                   reinterpret_cast<void**>(&blockFrame)))) {
-    // We need the immediate child of the block frame, and that may not be
-    // the placeholder frame
-    nsIFrame *blockChild =
-      nsLayoutUtils::FindChildContainingDescendant(blockFrame, aPlaceholderFrame);
-    nsBlockFrame::line_iterator lineBox = blockFrame->FindLineFor(blockChild);
+    PRBool isValid;
+    nsBlockInFlowLineIterator iter(blockFrame, aPlaceholderFrame, &isValid);
+    NS_ASSERTION(isValid, "Can't find placeholder!");
+    NS_ASSERTION(iter.GetContainer() == blockFrame, "Found placeholder in wrong block!");
+    nsBlockFrame::line_iterator lineBox = iter.GetLine();
 
     // How we determine the hypothetical box depends on whether the element
     // would have been inline-level or block-level
@@ -1063,7 +1062,7 @@ nsHTMLReflowState::CalculateHypotheticalBox(nsPresContext*    aPresContext,
   // translate.
   nsMargin border = cbrs->mComputedBorderPadding - cbrs->mComputedPadding;
   aHypotheticalBox.mLeft -= border.left;
-  aHypotheticalBox.mRight -= border.right;
+  aHypotheticalBox.mRight -= border.left;
   aHypotheticalBox.mTop -= border.top;
 }
 
@@ -1104,13 +1103,12 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
   // Initialize the 'left' and 'right' computed offsets
   // XXX Handle new 'static-position' value...
   PRBool        leftIsAuto = PR_FALSE, rightIsAuto = PR_FALSE;
-  nsStyleCoord  coord;
   if (eStyleUnit_Auto == mStylePosition->mOffset.GetLeftUnit()) {
     mComputedOffsets.left = 0;
     leftIsAuto = PR_TRUE;
   } else {
     ComputeWidthDependentValue(containingBlockWidth,
-                               mStylePosition->mOffset.GetLeft(coord),
+                               mStylePosition->mOffset.GetLeft(),
                                mComputedOffsets.left);
   }
   if (eStyleUnit_Auto == mStylePosition->mOffset.GetRightUnit()) {
@@ -1118,18 +1116,16 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
     rightIsAuto = PR_TRUE;
   } else {
     ComputeWidthDependentValue(containingBlockWidth,
-                               mStylePosition->mOffset.GetRight(coord),
+                               mStylePosition->mOffset.GetRight(),
                                mComputedOffsets.right);
   }
-
-  PRUint8 direction = cbrs ? cbrs->mStyleVisibility->mDirection : NS_STYLE_DIRECTION_LTR;
 
   // Use the horizontal component of the hypothetical box in the cases
   // where it's needed.
   if (leftIsAuto && rightIsAuto) {
-    // Use the 'direction' to dictate whether 'left' or 'right' is
-    // treated like 'static-position'
-    if (NS_STYLE_DIRECTION_LTR == direction) {
+    // Use the direction of the original ("static-position") containing block
+    // to dictate whether 'left' or 'right' is treated like 'static-position'.
+    if (NS_STYLE_DIRECTION_LTR == cbFrame->GetStyleVisibility()->mDirection) {
       if (hypotheticalBox.mLeftIsExact) {
         mComputedOffsets.left = hypotheticalBox.mLeft;
         leftIsAuto = PR_FALSE;
@@ -1158,18 +1154,16 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
     mComputedOffsets.top = 0;
     topIsAuto = PR_TRUE;
   } else {
-    nsStyleCoord c;
     ComputeHeightDependentValue(containingBlockHeight,
-                                mStylePosition->mOffset.GetTop(c),
+                                mStylePosition->mOffset.GetTop(),
                                 mComputedOffsets.top);
   }
   if (eStyleUnit_Auto == mStylePosition->mOffset.GetBottomUnit()) {
     mComputedOffsets.bottom = 0;        
     bottomIsAuto = PR_TRUE;
   } else {
-    nsStyleCoord c;
     ComputeHeightDependentValue(containingBlockHeight,
-                                mStylePosition->mOffset.GetBottom(c),
+                                mStylePosition->mOffset.GetBottom(),
                                 mComputedOffsets.bottom);
   }
 
@@ -1201,6 +1195,9 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
                        shrinkWrap);
   mComputedWidth = size.width;
   mComputedHeight = size.height;
+  NS_ASSERTION(mComputedWidth >= 0, "Bogus width");
+  NS_ASSERTION(mComputedHeight == NS_UNCONSTRAINEDSIZE ||
+               mComputedHeight >= 0, "Bogus height");
 
   // XXX Now that we have ComputeSize, can we condense many of the
   // branches off of widthIsAuto?
@@ -1254,15 +1251,16 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
 
     if (availMarginSpace < 0 ||
         (!marginLeftIsAuto && !marginRightIsAuto)) {
-      // We're over-constrained so use 'direction' to dictate which
-      // value to ignore.  (And note that the spec says to ignore 'left'
-      // or 'right' rather than 'margin-left' or 'margin-right'.)
-      if (NS_STYLE_DIRECTION_LTR == direction) {
-        // Ignore the specified value for 'right'.
-        mComputedOffsets.right += availMarginSpace;
-      } else {
+      // We're over-constrained so use the direction of the containing block
+      // to dictate which value to ignore.  (And note that the spec says to ignore
+      // 'left' or 'right' rather than 'margin-left' or 'margin-right'.)
+      if (cbrs &&
+          NS_STYLE_DIRECTION_RTL == cbrs->mStyleVisibility->mDirection) {
         // Ignore the specified value for 'left'.
         mComputedOffsets.left += availMarginSpace;
+      } else {
+        // Ignore the specified value for 'right'.
+        mComputedOffsets.right += availMarginSpace;
       }
     } else if (marginLeftIsAuto) {
       if (marginRightIsAuto) {
@@ -1272,11 +1270,11 @@ nsHTMLReflowState::InitAbsoluteConstraints(nsPresContext* aPresContext,
         mComputedMargin.right = availMarginSpace - mComputedMargin.left;
       } else {
         // Just 'margin-left' is 'auto'
-        mComputedMargin.left = availMarginSpace - mComputedMargin.right;
+        mComputedMargin.left = availMarginSpace;
       }
     } else {
       // Just 'margin-right' is 'auto'
-      mComputedMargin.right = availMarginSpace - mComputedMargin.left;
+      mComputedMargin.right = availMarginSpace;
     }
   }
 
@@ -1571,7 +1569,6 @@ static PRBool BlinkIsAllowed(void)
   return sBlinkIsAllowed;
 }
 
-#ifdef FONT_LEADING_APIS_V2
 static eNormalLineHeightControl GetNormalLineHeightCalcControl(void)
 {
   if (sNormalLineHeightControl == eUninitialized) {
@@ -1583,7 +1580,16 @@ static eNormalLineHeightControl GetNormalLineHeightCalcControl(void)
   }
   return sNormalLineHeightControl;
 }
-#endif
+
+static inline PRBool
+IsSideCaption(nsIFrame* aFrame, const nsStyleDisplay* aStyleDisplay)
+{
+  if (aStyleDisplay->mDisplay != NS_STYLE_DISPLAY_TABLE_CAPTION)
+    return PR_FALSE;
+  PRUint8 captionSide = aFrame->GetStyleTableBorder()->mCaptionSide;
+  return captionSide == NS_STYLE_CAPTION_SIDE_LEFT ||
+         captionSide == NS_STYLE_CAPTION_SIDE_RIGHT;
+}
 
 // XXX refactor this code to have methods for each set of properties
 // we are computing: width,height,line-height; margin; offsets
@@ -1733,7 +1739,10 @@ nsHTMLReflowState::InitConstraints(nsPresContext* aPresContext,
           // cells have border and padding
           mComputedWidth -= mComputedBorderPadding.left +
             mComputedBorderPadding.right;
+          if (mComputedWidth < 0)
+            mComputedWidth = 0;
         }
+        NS_ASSERTION(mComputedWidth >= 0, "Bogus computed width");
       
       } else {
         NS_ASSERTION(widthUnit == mStylePosition->mWidth.GetUnit(),
@@ -1787,8 +1796,11 @@ nsHTMLReflowState::InitConstraints(nsPresContext* aPresContext,
 
       mComputedWidth = size.width;
       mComputedHeight = size.height;
+      NS_ASSERTION(mComputedWidth >= 0, "Bogus width");
+      NS_ASSERTION(mComputedHeight == NS_UNCONSTRAINEDSIZE ||
+                   mComputedHeight >= 0, "Bogus height");
 
-      if (isBlock)
+      if (isBlock && !IsSideCaption(frame, mStyleDisplay))
         CalculateBlockSideMargins(availableWidth, mComputedWidth);
     }
   }
@@ -1978,7 +1990,6 @@ GetNormalLineHeight(nsIFontMetrics* aFontMetrics)
 
   nscoord normalLineHeight;
 
-#ifdef FONT_LEADING_APIS_V2
   nscoord externalLeading, internalLeading, emHeight;
   aFontMetrics->GetExternalLeading(externalLeading);
   aFontMetrics->GetInternalLeading(internalLeading);
@@ -1997,9 +2008,6 @@ GetNormalLineHeight(nsIFontMetrics* aFontMetrics)
     //case eNoExternalLeading:
     normalLineHeight = emHeight + internalLeading;
   }
-#else
-  aFontMetrics->GetNormalLineHeight(normalLineHeight);
-#endif // FONT_LEADING_APIS_V2
   return normalLineHeight;
 }
 
@@ -2068,42 +2076,36 @@ nsCSSOffsetState::ComputeMargin(nscoord aContainingBlockWidth)
       mComputedMargin.right = 0;
 
       if (eStyleUnit_Coord == styleMargin->mMargin.GetLeftUnit()) {
-        nsStyleCoord left;
-        
-        styleMargin->mMargin.GetLeft(left),
-        mComputedMargin.left = left.GetCoordValue();
+        mComputedMargin.left = styleMargin->mMargin.GetLeft().GetCoordValue();
       }
       if (eStyleUnit_Coord == styleMargin->mMargin.GetRightUnit()) {
-        nsStyleCoord right;
-        
-        styleMargin->mMargin.GetRight(right),
-        mComputedMargin.right = right.GetCoordValue();
+        mComputedMargin.right = styleMargin->mMargin.GetRight().GetCoordValue();
       }
 
     } else {
-      nsStyleCoord left, right;
-
       ComputeWidthDependentValue(aContainingBlockWidth,
-                                 styleMargin->mMargin.GetLeft(left),
+                                 styleMargin->mMargin.GetLeft(),
                                  mComputedMargin.left);
       ComputeWidthDependentValue(aContainingBlockWidth,
-                                 styleMargin->mMargin.GetRight(right),
+                                 styleMargin->mMargin.GetRight(),
                                  mComputedMargin.right);
     }
 
-    nsStyleCoord top, bottom;
     // According to the CSS2 spec, margin percentages are
     // calculated with respect to the *width* of the containing
     // block, even for margin-top and margin-bottom.
     // XXX This isn't true for page boxes, if we implement them.
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               styleMargin->mMargin.GetTop(top),
+                               styleMargin->mMargin.GetTop(),
                                mComputedMargin.top);
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               styleMargin->mMargin.GetBottom(bottom),
+                               styleMargin->mMargin.GetBottom(),
                                mComputedMargin.bottom);
 
     // XXX We need to include 'auto' horizontal margins in this too!
+    // ... but if we did that, we'd need to fix nsFrame::GetUsedMargin
+    // to use it even when the margins are all zero (since sometimes
+    // they get treated as auto)
     frame->SetProperty(nsGkAtoms::usedMarginProperty,
                        new nsMargin(mComputedMargin),
                        DestroyMarginFunc);
@@ -2117,22 +2119,20 @@ nsCSSOffsetState::ComputePadding(nscoord aContainingBlockWidth)
   const nsStylePadding *stylePadding = frame->GetStylePadding();
   if (!stylePadding->GetPadding(mComputedPadding)) {
     // We have to compute the value
-    nsStyleCoord left, right, top, bottom;
-
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               stylePadding->mPadding.GetLeft(left),
+                               stylePadding->mPadding.GetLeft(),
                                mComputedPadding.left);
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               stylePadding->mPadding.GetRight(right),
+                               stylePadding->mPadding.GetRight(),
                                mComputedPadding.right);
 
     // According to the CSS2 spec, percentages are calculated with respect to
     // containing block width for padding-top and padding-bottom
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               stylePadding->mPadding.GetTop(top),
+                               stylePadding->mPadding.GetTop(),
                                mComputedPadding.top);
     ComputeWidthDependentValue(aContainingBlockWidth,
-                               stylePadding->mPadding.GetBottom(bottom),
+                               stylePadding->mPadding.GetBottom(),
                                mComputedPadding.bottom);
 
     frame->SetProperty(nsGkAtoms::usedPaddingProperty,

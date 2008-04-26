@@ -226,18 +226,18 @@ NS_IMPL_ISUPPORTS1(nsPrintEngine, nsIObserver)
 nsPrintEngine::nsPrintEngine() :
   mIsCreatingPrintPreview(PR_FALSE),
   mIsDoingPrinting(PR_FALSE),
+  mIsDoingPrintPreview(PR_FALSE),
+  mProgressDialogIsShown(PR_FALSE),
   mDocViewerPrint(nsnull),
   mContainer(nsnull),
   mDeviceContext(nsnull),
   mPrt(nsnull),
   mPagePrintTimer(nsnull),
   mPageSeqFrame(nsnull),
-  mIsDoingPrintPreview(PR_FALSE),
   mParentWidget(nsnull),
   mPrtPreview(nsnull),
   mOldPrtPreview(nsnull),
-  mDebugFile(nsnull),
-  mProgressDialogIsShown(PR_FALSE)
+  mDebugFile(nsnull)
 {
 }
 
@@ -729,6 +729,20 @@ nsPrintEngine::PrintPreview(nsIPrintSettings* aPrintSettings,
                                  nsIDOMWindow *aChildDOMWin, 
                                  nsIWebProgressListener* aWebProgressListener)
 {
+  // Get the DocShell and see if it is busy
+  // (We can't Print Preview this document if it is still busy)
+  nsCOMPtr<nsIDocShell> docShell(do_QueryInterface(mContainer));
+  NS_ASSERTION(docShell, "This has to be a docshell");
+
+  PRUint32 busyFlags = nsIDocShell::BUSY_FLAGS_NONE;
+  if (NS_FAILED(docShell->GetBusyFlags(&busyFlags)) ||
+      busyFlags != nsIDocShell::BUSY_FLAGS_NONE) {
+    CloseProgressDialog(aWebProgressListener);
+    ShowPrintErrorDialog(NS_ERROR_GFX_PRINTER_DOC_IS_BUSY_PP, PR_FALSE);
+    return NS_ERROR_FAILURE;
+  }
+
+  // Document is not busy -- go ahead with the Print Preview
   return CommonPrint(PR_TRUE, aPrintSettings, aWebProgressListener);
 }
 
@@ -1267,7 +1281,9 @@ nsPrintEngine::MapContentForPO(nsPrintObject*   aPO,
         po->mContent  = aContent;
 
         nsCOMPtr<nsIDOMHTMLFrameElement> frame(do_QueryInterface(aContent));
-        if (frame) {
+        // "frame" elements not in a frameset context should be treated
+        // as iframes
+        if (frame && po->mParent->mFrameType == eFrameSet) {
           po->mFrameType = eFrame;
         } else {
           // Assume something iframe-like, i.e. iframe, object, or embed
@@ -1711,7 +1727,7 @@ nsPrintEngine::SetupToPrintContent()
     rv = mPrt->mPrintDC->BeginDocument(docTitleStr, fileName, startPage, endPage);
   } 
 
-  if (mIsDoingPrintPreview) {
+  if (mIsCreatingPrintPreview) {
     // Print Preview -- Pass ownership of docTitleStr and docURLStr
     // to the pageSequenceFrame, to be displayed in the header
     nsIPageSequenceFrame *seqFrame = nsnull;
@@ -2178,10 +2194,7 @@ nsPrintEngine::DoPrint(nsPrintObject * aPO)
             mPrt->mPrintSettings->SetEndPageRange(endPageNum);
             nsMargin marginTwips(0,0,0,0);
             mPrt->mPrintSettings->GetMarginInTwips(marginTwips);
-            nsMargin margin(poPresContext->TwipsToAppUnits(marginTwips.left),
-                            poPresContext->TwipsToAppUnits(marginTwips.top),
-                            poPresContext->TwipsToAppUnits(marginTwips.right),
-                            poPresContext->TwipsToAppUnits(marginTwips.bottom));
+            nsMargin margin = poPresContext->TwipsToAppUnits(marginTwips);
 
             if (startPageNum == endPageNum) {
               {

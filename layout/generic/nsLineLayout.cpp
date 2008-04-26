@@ -56,6 +56,7 @@
 #include "nsStyleContext.h"
 #include "nsPresContext.h"
 #include "nsIFontMetrics.h"
+#include "nsIThebesFontMetrics.h"
 #include "nsIRenderingContext.h"
 #include "nsGkAtoms.h"
 #include "nsPlaceholderFrame.h"
@@ -66,6 +67,7 @@
 #include "nsBidiUtils.h"
 #include "nsLayoutUtils.h"
 #include "nsTextFrame.h"
+#include "nsCSSRendering.h"
 
 #ifdef DEBUG
 #undef  NOISY_HORIZONTAL_ALIGN
@@ -395,6 +397,7 @@ nsLineLayout::NewPerSpanData(PerSpanData** aResult)
   psd->mLastFrame = nsnull;
   psd->mContainsFloat = PR_FALSE;
   psd->mZeroEffectiveSpanBox = PR_FALSE;
+  psd->mHasNonemptyContent = PR_FALSE;
 
 #ifdef DEBUG
   mSpansAllocated++;
@@ -862,11 +865,16 @@ nsLineLayout::ReflowFrame(nsIFrame* aFrame,
   pfd->mJustificationNumSpaces = mTextJustificationNumSpaces;
   pfd->mJustificationNumLetters = mTextJustificationNumLetters;
 
-  // XXX See if the frame is a placeholderFrame and if it is process
-  // the float.
+  // See if the frame is a placeholderFrame and if it is process
+  // the float. At the same time, check if the frame has any non-collapsed-away
+  // content.
   PRBool placedFloat = PR_FALSE;
-  if (frameType) {
+  PRBool isEmpty;
+  if (!frameType) {
+    isEmpty = pfd->mFrame->IsEmpty();
+  } else {
     if (nsGkAtoms::placeholderFrame == frameType) {
+      isEmpty = PR_TRUE;
       pfd->SetFlag(PFD_SKIPWHENTRIMMINGWHITESPACE, PR_TRUE);
       nsIFrame* outOfFlowFrame = nsLayoutUtils::GetFloatFromPlaceholder(aFrame);
       if (outOfFlowFrame) {
@@ -887,11 +895,11 @@ nsLineLayout::ReflowFrame(nsIFrame* aFrame,
     else if (nsGkAtoms::textFrame == frameType) {
       // Note non-empty text-frames for inline frame compatibility hackery
       pfd->SetFlag(PFD_ISTEXTFRAME, PR_TRUE);
-      // XXX An empty text frame at the end of the line seems not
-      // to have zero width.
-      if (metrics.width) {
+      nsTextFrame* textFrame = static_cast<nsTextFrame*>(pfd->mFrame);
+      isEmpty = !textFrame->HasNoncollapsedCharacters();
+      if (!isEmpty) {
         pfd->SetFlag(PFD_ISNONEMPTYTEXTFRAME, PR_TRUE);
-        nsIContent* content = pfd->mFrame->GetContent();
+        nsIContent* content = textFrame->GetContent();
 
         const nsTextFragment* frag = content->GetText();
         if (frag) {
@@ -916,11 +924,18 @@ nsLineLayout::ReflowFrame(nsIFrame* aFrame,
         }
       }
     }
-    else if (nsGkAtoms::letterFrame==frameType) {
-      pfd->SetFlag(PFD_ISLETTERFRAME, PR_TRUE);
-    }
     else if (nsGkAtoms::brFrame == frameType) {
       pfd->SetFlag(PFD_SKIPWHENTRIMMINGWHITESPACE, PR_TRUE);
+      isEmpty = PR_FALSE;
+    } else {
+      if (nsGkAtoms::letterFrame==frameType) {
+        pfd->SetFlag(PFD_ISLETTERFRAME, PR_TRUE);
+      }
+      if (pfd->mSpan) {
+        isEmpty = !pfd->mSpan->mHasNonemptyContent && pfd->mFrame->IsSelfEmpty();
+      } else {
+        isEmpty = pfd->mFrame->IsEmpty();
+      }
     }
   }
 
@@ -990,12 +1005,21 @@ nsLineLayout::ReflowFrame(nsIFrame* aFrame,
     // runs (hence return false here) except for text frames and inline containers.
     PRBool continuingTextRun = aFrame->CanContinueTextRun();
     
+    // Clear any residual mTrimmableWidth if this isn't a text frame
+    if (!continuingTextRun && !pfd->GetFlag(PFD_SKIPWHENTRIMMINGWHITESPACE)) {
+      mTrimmableWidth = 0;
+    }
+
     // See if we can place the frame. If we can't fit it, then we
     // return now.
     PRBool optionalBreakAfterFits;
     if (CanPlaceFrame(pfd, reflowState, notSafeToBreak, continuingTextRun,
                       savedOptionalBreakContent != nsnull, metrics,
                       aReflowStatus, &optionalBreakAfterFits)) {
+      if (!isEmpty) {
+        psd->mHasNonemptyContent = PR_TRUE;
+      }
+
       // Place the frame, updating aBounds with the final size and
       // location.  Then apply the bottom+right margins (as
       // appropriate) to the frame.
@@ -1009,9 +1033,6 @@ nsLineLayout::ReflowFrame(nsIFrame* aFrame,
       }
       
       if (!continuingTextRun) {
-        if (!pfd->GetFlag(PFD_SKIPWHENTRIMMINGWHITESPACE)) {
-          mTrimmableWidth = 0;
-        }
         if (!psd->mNoWrap && (!CanPlaceFloatNow() || placedFloat)) {
           // record soft break opportunity after this content that can't be
           // part of a text run. This is not a text frame so we know
@@ -1575,8 +1596,7 @@ nsLineLayout::VerticalAlignFrames(PerSpanData* psd)
   nsCOMPtr<nsIFontMetrics> fm;
   rc->GetFontMetrics(*getter_AddRefs(fm));
 
-  PRBool preMode = (mStyleText->mWhiteSpace == NS_STYLE_WHITESPACE_PRE) ||
-    (mStyleText->mWhiteSpace == NS_STYLE_WHITESPACE_MOZ_PRE_WRAP);
+  PRBool preMode = mStyleText->WhiteSpaceIsSignificant();
 
   // See if the span is an empty continuation. It's an empty continuation iff:
   // - it has a prev-in-flow
@@ -2057,7 +2077,7 @@ nsLineLayout::VerticalAlignFrames(PerSpanData* psd)
       }
     }
     if (applyMinLH) {
-      if ((psd->mX != psd->mLeftEdge) || preMode || foundLI) {
+      if (psd->mHasNonemptyContent || preMode || foundLI) {
 #ifdef NOISY_VERTICAL_ALIGN
         printf("  [span]==> adjusting min/maxY: currentValues: %d,%d", minY, maxY);
 #endif
@@ -2586,6 +2606,8 @@ nsLineLayout::RelativePositionFrames(PerSpanData* psd, nsRect& aCombinedArea)
     combinedAreaResult.height = mFinalLineHeight;
   }
 
+  PRBool isStandardsMode =
+    mPresContext->CompatibilityMode() != eCompatibility_NavQuirks;
   for (PerFrameData* pfd = psd->mFirstFrame; pfd; pfd = pfd->mNext) {
     nsIFrame* frame = pfd->mFrame;
     nsPoint origin = frame->GetPosition();
@@ -2614,6 +2636,15 @@ nsLineLayout::RelativePositionFrames(PerSpanData* psd, nsRect& aCombinedArea)
     // <b>x</b> and <b>y</b> which were computed above.
     nsRect r;
     if (pfd->mSpan) {
+      if (isStandardsMode) {
+        // Combine the text decoration area for inline elements of standards
+        // mode
+        PRUint8 decorations = frame->GetStyleTextReset()->mTextDecoration;
+        if (decorations) {
+          nsLineLayout::CombineTextDecorations(mPresContext, decorations,
+                          frame, pfd->mSpan->mFrame->mCombinedArea);
+        }
+      }
       // Compute a new combined area for the child span before
       // aggregating it into our combined area.
       RelativePositionFrames(pfd->mSpan, r);
@@ -2656,4 +2687,64 @@ nsLineLayout::RelativePositionFrames(PerSpanData* psd, nsRect& aCombinedArea)
     frame->FinishAndStoreOverflow(&combinedAreaResult, frame->GetSize());
   }
   aCombinedArea = combinedAreaResult;
+}
+
+void
+nsLineLayout::CombineTextDecorations(nsPresContext* aPresContext,
+                                     PRUint8 aDecorations,
+                                     nsIFrame* aFrame,
+                                     nsRect& aCombinedArea,
+                                     nscoord aAscentOverride,
+                                     float aUnderlineSizeRatio)
+{
+  if (!(aDecorations & (NS_STYLE_TEXT_DECORATION_UNDERLINE |
+                        NS_STYLE_TEXT_DECORATION_OVERLINE |
+                        NS_STYLE_TEXT_DECORATION_LINE_THROUGH)))
+    return;
+
+  nsCOMPtr<nsIFontMetrics> fm;
+  nsLayoutUtils::GetFontMetricsForFrame(aFrame, getter_AddRefs(fm));
+  nsIThebesFontMetrics* tfm = static_cast<nsIThebesFontMetrics*>(fm.get());
+  gfxFontGroup* fontGroup = tfm->GetThebesFontGroup();
+  gfxFont* firstFont = fontGroup->GetFontAt(0);
+  if (!firstFont)
+      return; // OOM
+  const gfxFont::Metrics& metrics = firstFont->GetMetrics();
+
+  gfxFloat ascent = aAscentOverride == 0 ? metrics.maxAscent :
+                      aPresContext->AppUnitsToGfxUnits(aAscentOverride);
+  nsRect decorationArea;
+  if (aDecorations & (NS_STYLE_TEXT_DECORATION_UNDERLINE |
+                      NS_STYLE_TEXT_DECORATION_OVERLINE)) {
+    gfxSize size(aPresContext->AppUnitsToGfxUnits(aCombinedArea.width),
+                 metrics.underlineSize);
+    if (aDecorations & NS_STYLE_TEXT_DECORATION_OVERLINE) {
+      decorationArea =
+        nsCSSRendering::GetTextDecorationRect(aPresContext, size, ascent,
+                          ascent, NS_STYLE_TEXT_DECORATION_OVERLINE,
+                          NS_STYLE_BORDER_STYLE_SOLID);
+      aCombinedArea.UnionRect(aCombinedArea, decorationArea);
+    }
+    if (aDecorations & NS_STYLE_TEXT_DECORATION_UNDERLINE) {
+      aUnderlineSizeRatio = PR_MAX(aUnderlineSizeRatio, 1.0f);
+      size.height *= aUnderlineSizeRatio;
+      gfxFloat underlineOffset = fontGroup->GetUnderlineOffset();
+      decorationArea =
+        nsCSSRendering::GetTextDecorationRect(aPresContext, size, ascent,
+                          underlineOffset,
+                          NS_STYLE_TEXT_DECORATION_UNDERLINE,
+                          NS_STYLE_BORDER_STYLE_SOLID);
+      aCombinedArea.UnionRect(aCombinedArea, decorationArea);
+    }
+  }
+  if (aDecorations & NS_STYLE_TEXT_DECORATION_LINE_THROUGH) {
+    gfxSize size(aPresContext->AppUnitsToGfxUnits(aCombinedArea.width),
+                 metrics.strikeoutSize);
+    decorationArea =
+      nsCSSRendering::GetTextDecorationRect(aPresContext, size, ascent,
+                        metrics.strikeoutOffset,
+                        NS_STYLE_TEXT_DECORATION_LINE_THROUGH,
+                        NS_STYLE_BORDER_STYLE_SOLID);
+    aCombinedArea.UnionRect(aCombinedArea, decorationArea);
+  }
 }

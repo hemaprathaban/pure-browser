@@ -169,7 +169,7 @@ public:
 #endif
 
     return sXPCNativeWrapperClass &&
-      ::JS_GetClass(cx, obj) == sXPCNativeWrapperClass;
+      ::JS_GET_CLASS(cx, obj) == sXPCNativeWrapperClass;
   }
 
   static nsresult PreserveNodeWrapper(nsIXPConnectWrappedNative *aWrapper);
@@ -315,9 +315,6 @@ protected:
   static jsval sOncopy_id;
   static jsval sOncut_id;
   static jsval sOnpaste_id;
-  static jsval sOnbeforecopy_id;
-  static jsval sOnbeforecut_id;
-  static jsval sOnbeforepaste_id;
 #ifdef OJI
   static jsval sJava_id;
   static jsval sPackages_id;
@@ -980,8 +977,8 @@ protected:
   {
   }
 
-  nsresult GetPluginInstance(nsIXPConnectWrappedNative *aWrapper,
-                             nsIPluginInstance **aResult);
+  static nsresult GetPluginInstanceIfSafe(nsIXPConnectWrappedNative *aWrapper,
+                                          nsIPluginInstance **aResult);
 
   static nsresult GetPluginJSObject(JSContext *cx, JSObject *obj,
                                     nsIPluginInstance *plugin_inst,
@@ -1006,6 +1003,10 @@ public:
   NS_IMETHOD Call(nsIXPConnectWrappedNative *wrapper, JSContext *cx,
                   JSObject *obj, PRUint32 argc, jsval *argv, jsval *vp,
                   PRBool *_retval);
+
+
+  static nsresult SetupProtoChain(nsIXPConnectWrappedNative *wrapper,
+                                  JSContext *cx, JSObject *obj);
 
   static nsIClassInfo *doCreate(nsDOMClassInfoData* aData)
   {
@@ -1334,16 +1335,16 @@ public:
   }
 };
 
-// TextRectangleList helper
+// ClientRectList helper
 
-class nsTextRectangleListSH : public nsArraySH
+class nsClientRectListSH : public nsArraySH
 {
 protected:
-  nsTextRectangleListSH(nsDOMClassInfoData* aData) : nsArraySH(aData)
+  nsClientRectListSH(nsDOMClassInfoData* aData) : nsArraySH(aData)
   {
   }
 
-  virtual ~nsTextRectangleListSH()
+  virtual ~nsClientRectListSH()
   {
   }
 
@@ -1355,7 +1356,7 @@ protected:
 public:
   static nsIClassInfo *doCreate(nsDOMClassInfoData* aData)
   {
-    return new nsTextRectangleListSH(aData);
+    return new nsClientRectListSH(aData);
   }
 };
 

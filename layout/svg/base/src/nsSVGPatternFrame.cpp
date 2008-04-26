@@ -694,7 +694,7 @@ nsSVGPatternFrame::ConstructCTM(nsIDOMSVGMatrix **aCTM,
   viewRect->GetY(&viewBoxY);
   viewRect->GetHeight(&viewBoxHeight);
   viewRect->GetWidth(&viewBoxWidth);
-  if (viewBoxHeight != 0.0f && viewBoxWidth != 0.0f) {
+  if (viewBoxHeight > 0.0f && viewBoxWidth > 0.0f) {
 
     float viewportWidth = GetLengthValue(GetWidth());
     float viewportHeight = GetLengthValue(GetHeight());
@@ -835,8 +835,10 @@ nsSVGPatternFrame::SetupPaintServer(gfxContext *aContext,
                                     nsSVGGeometryFrame *aSource,
                                     float aGraphicOpacity)
 {
-  if (aGraphicOpacity == 0.0f)
-    return PR_FALSE;
+  if (aGraphicOpacity == 0.0f) {
+    aContext->SetColor(gfxRGBA(0, 0, 0, 0));
+    return PR_TRUE;
+  }
 
   gfxMatrix matrix = aContext->CurrentMatrix();
 
@@ -860,7 +862,7 @@ nsSVGPatternFrame::SetupPaintServer(gfxContext *aContext,
 
   nsRefPtr<gfxPattern> pattern = new gfxPattern(surface);
 
-  if (!pattern)
+  if (!pattern || pattern->CairoStatus())
     return PR_FALSE;
 
   pattern->SetMatrix(pMatrix);

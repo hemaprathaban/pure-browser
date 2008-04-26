@@ -3,7 +3,7 @@
 	For example style definitions for navigator can be found in navigator.css
 
    THIS FILE IS LOCKED DOWN.  YOU ARE NOT ALLOWED TO MODIFY IT WITHOUT FIRST HAVING YOUR
-   CHANGES REVIEWED BY mconnor@steelgryphon.com
+   CHANGES REVIEWED BY enndeakin@sympatico.ca
 **/
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
@@ -53,8 +53,7 @@ window[chromehidden~="toolbar"] .chromeclass-toolbar-additional
    :: or URI elements
    ::::: */
 
-textbox.uri-element,
-menulist.uri-element
+.uri-element
 {
   direction: ltr !important;
 }
@@ -277,7 +276,7 @@ menu.menu-iconic {
   -moz-binding: url("chrome://global/content/bindings/menu.xml#menu-iconic");
 }
 
-menu:empty {
+menubar > menu:empty {
   visibility: collapse;
 }
 
@@ -303,6 +302,17 @@ menuitem[type="radio"] {
 menuitem.menuitem-non-iconic {
   -moz-binding: url("chrome://global/content/bindings/menu.xml#menubutton-item");
 }
+
+%ifdef MOZ_WIDGET_GTK2
+/********* detection of system setting to use icons in menus ***********/
+menuitem:not([type]):not(:-moz-system-metric(images-in-menus)) > .menu-iconic-left {
+  visibility: hidden;
+}
+
+menu:not(:-moz-system-metric(images-in-menus)) > .menu-iconic-left {
+  visibility: hidden;
+}
+%endif
 
 /********* menuseparator ***********/
 
@@ -336,7 +346,7 @@ tooltip {
 tooltip {
   -moz-binding: url("chrome://global/content/bindings/popup.xml#tooltip");
   -moz-box-orient: vertical;
-  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
   margin-top: 21px;
 }
 
@@ -735,7 +745,7 @@ panel[type="autocomplete"] {
   -moz-binding: url("chrome://global/content/bindings/autocomplete.xml#autocomplete-result-popup");
 }
 
-panel[type="rich-autocomplete"] {
+panel[type="autocomplete-richlistbox"] {
   -moz-binding: url("chrome://global/content/bindings/autocomplete.xml#autocomplete-rich-result-popup");
 }
 
@@ -751,10 +761,17 @@ panel[type="rich-autocomplete"] {
 .autocomplete-richlistbox {
   -moz-binding: url("chrome://global/content/bindings/autocomplete.xml#autocomplete-richlistbox");
   -moz-user-focus: ignore;
+  -moz-appearance: none;
+}
+
+.autocomplete-richlistbox > scrollbox {
+  overflow-x: hidden !important;
 }
 
 .autocomplete-richlistitem {
   -moz-binding: url("chrome://global/content/bindings/autocomplete.xml#autocomplete-richlistitem");
+  -moz-box-orient: vertical;
+  overflow: -moz-hidden-unscrollable;
 }
 
 .autocomplete-treerows {
@@ -820,6 +837,7 @@ menulist[type="description"] {
 
 html|*.menulist-editable-input {
   -moz-appearance: none !important;
+  background: transparent ! important;
 }
 
 menulist > menupopup > menuitem {

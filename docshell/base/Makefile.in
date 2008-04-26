@@ -84,7 +84,6 @@ REQUIRES	= xpcom \
 		  editor \
 		  windowwatcher \
 		  imglib2 \
-		  mimetype \
 		  jar \
 		  $(NULL)
 
@@ -115,6 +114,7 @@ XPIDLSRCS	= \
 		nsIEditorDocShell.idl		\
 		nsIWebPageDescriptor.idl	\
 		nsIURIClassifier.idl		\
+		nsIChannelClassifier.idl	\
 		nsIDownloadHistory.idl \
 		$(NULL)
 

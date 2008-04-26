@@ -78,6 +78,9 @@ public:
 
   virtual void MarkIntrinsicWidthsDirty();
 
+  virtual nscoord
+  GetIntrinsicWidth(nsIRenderingContext *aRenderingContext);
+
   NS_IMETHOD
   AttributeChanged(PRInt32         aNameSpaceID,
                    nsIAtom*        aAttribute,
@@ -101,6 +104,8 @@ protected:
   nsOperatorFlags  mFlags;
   float            mMinSize;
   float            mMaxSize;
+
+  PRBool UseMathMLChar();
 
   // overload the base method so that we can setup our nsMathMLChar
   virtual void ProcessTextData();

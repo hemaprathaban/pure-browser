@@ -56,12 +56,13 @@
 #include "nsIXPConnect.h"
 #include "nsCOMPtr.h"
 #include "nsContentUtils.h"
+#include "nsIScriptSecurityManager.h"
 
 #include "nsDOMJSUtils.h" // for GetScriptContextFromJSContext
 
 JSBool
 nsJSUtils::GetCallingLocation(JSContext* aContext, const char* *aFilename,
-                              PRUint32* aLineno, JSPrincipals* aPrincipals)
+                              PRUint32* aLineno, nsIPrincipal* aPrincipal)
 {
   // Get the current filename and line number
   JSStackFrame* frame = nsnull;
@@ -77,15 +78,24 @@ nsJSUtils::GetCallingLocation(JSContext* aContext, const char* *aFilename,
   if (script) {
     // If aPrincipals is non-null then our caller is asking us to ensure
     // that the filename we return does not have elevated privileges.
-    if (aPrincipals) {
-      JSPrincipals* scriptPrins = JS_GetScriptPrincipals(aContext, script);
+    if (aPrincipal) {
+      uint32 flags = JS_GetScriptFilenameFlags(script);
 
-      // Return the weaker of the two principals if they differ.
-      if (scriptPrins && scriptPrins != aPrincipals &&
-          scriptPrins->subsume(scriptPrins, aPrincipals)) {
-        *aFilename = aPrincipals->codebase;
-        *aLineno = 0;
-        return JS_TRUE;
+      // Use the principal for the filename if it shouldn't be receiving
+      // implicit XPCNativeWrappers.
+      PRBool system;
+      if (flags & JSFILENAME_PROTECTED) {
+        nsIScriptSecurityManager *ssm = nsContentUtils::GetSecurityManager();
+
+        if (NS_FAILED(ssm->IsSystemPrincipal(aPrincipal, &system)) || !system) {
+          JSPrincipals* jsprins;
+          aPrincipal->GetJSPrincipals(aContext, &jsprins);
+
+          *aFilename = jsprins->codebase;
+          *aLineno = 0;
+          JSPRINCIPALS_DROP(aContext, jsprins);
+          return JS_TRUE;
+        }
       }
     }
 

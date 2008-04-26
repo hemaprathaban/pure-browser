@@ -406,8 +406,6 @@ NS_METHOD nsWindow::ScreenToWidget( const nsRect &aOldRect, nsRect &aNewRect)
 //-------------------------------------------------------------------------
 void nsWindow::InitEvent(nsGUIEvent& event, nsPoint* aPoint)
 {
-  NS_ADDREF(event.widget);
-
   // if no point was supplied, calculate it
   if (nsnull == aPoint) {
     // for most events, get the message position;  for drag events,
@@ -491,9 +489,7 @@ PRBool nsWindow::DispatchStandardEvent(PRUint32 aMsg)
   nsGUIEvent event(PR_TRUE, aMsg, this);
   InitEvent(event);
 
-  PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
-  return result;
+  return DispatchWindowEvent(&event);
 }
 
 //-------------------------------------------------------------------------
@@ -523,10 +519,7 @@ PRBool nsWindow::DispatchCommandEvent(PRUint32 aEventCommand)
   nsCommandEvent event(PR_TRUE, nsWidgetAtoms::onAppCommand, command, this);
 
   InitEvent(event);
-  PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
-
-  return result;
+  return DispatchWindowEvent(&event);
 }
 
 //-------------------------------------------------------------------------
@@ -545,10 +538,7 @@ PRBool nsWindow::DispatchDragDropEvent(PRUint32 aMsg)
   event.isAlt     = WinIsKeyDown(VK_ALT) || WinIsKeyDown(VK_ALTGRAF);
   event.isMeta    = PR_FALSE;
 
-  PRBool result = DispatchWindowEvent(&event);
-  NS_RELEASE(event.widget);
-
-  return result;
+  return DispatchWindowEvent(&event);
 }
 
 //-------------------------------------------------------------------------
@@ -1198,22 +1188,24 @@ void nsWindow::NS2PM( RECTL &rcl)
 //-------------------------------------------------------------------------
 NS_METHOD nsWindow::Show(PRBool bState)
 {
-   // doesn't seem to require a message queue.
-   if( mWnd)
-   {
-      HWND hwnd = GetMainWindow();
-      if( bState == PR_TRUE)
-      {
-        // don't try to show new windows (e.g. the Bookmark menu)
-        // during a native dragover because they'll remain invisible;
-      if (CheckDragStatus(ACTION_SHOW, 0))
-          WinShowWindow( hwnd, TRUE);
+  // doesn't seem to require a message queue.
+  if (mWnd) {
+    if (bState) {
+      // don't try to show new windows (e.g. the Bookmark menu)
+      // during a native dragover because they'll remain invisible;
+      if (CheckDragStatus(ACTION_SHOW, 0)) {
+        PRBool bVisible;
+        IsVisible(bVisible);
+        if (!bVisible)
+          PlaceBehind(eZPlacementTop, NULL, PR_FALSE);
+        WinShowWindow(mWnd, PR_TRUE);
       }
-      else
-         WinShowWindow( hwnd, FALSE);
-   }
+    } else {
+      WinShowWindow(mWnd, PR_FALSE);
+    }
+  }
 
-   return NS_OK;
+  return NS_OK;
 }
 
 //-------------------------------------------------------------------------
@@ -1236,12 +1228,29 @@ NS_METHOD nsWindow::IsVisible(PRBool & bState)
 NS_METHOD nsWindow::PlaceBehind(nsTopLevelWidgetZPlacement aPlacement,
                                 nsIWidget *aWidget, PRBool aActivate)
 {
-  HWND behind = aWidget ? (HWND)aWidget->GetNativeData(NS_NATIVE_WINDOW) : HWND_TOP;
+  HWND behind = HWND_TOP;
+  if (aPlacement == eZPlacementBottom)
+    behind = HWND_BOTTOM;
+  else if (aPlacement == eZPlacementBelow && aWidget)
+    behind = (HWND)aWidget->GetNativeData(NS_NATIVE_WINDOW);
   UINT flags = SWP_ZORDER;
   if (aActivate)
     flags |= SWP_ACTIVATE;
 
   WinSetWindowPos(mWnd, behind, 0, 0, 0, 0, flags);
+  return NS_OK;
+}
+
+//-------------------------------------------------------------------------
+//
+// Sets widget's position within its parent child list.
+//
+//-------------------------------------------------------------------------
+NS_METHOD nsWindow::SetZIndex(PRInt32 aZIndex)
+{
+  // nsBaseWidget::SetZIndex() never has done anything sensible but has
+  // randomly placed widgets behind others (see bug 117730#c25).
+  // To get bug #353011 solved simply override it here to do nothing.
   return NS_OK;
 }
 
@@ -2483,7 +2492,6 @@ PRBool nsWindow::OnKey(MPARAM mp1, MPARAM mp2)
 
   // Break off now if this was a key-up.
   if (fsFlags & KC_KEYUP) {
-    NS_RELEASE(event.widget);
     return rc;
   }
 
@@ -2494,7 +2502,6 @@ PRBool nsWindow::OnKey(MPARAM mp1, MPARAM mp2)
     mHaveDeadKey = FALSE;
     // actually, not sure whether we're supposed to abort the keypress
     //     or process it as though the dead key has been pressed.
-    NS_RELEASE(event.widget);
     return rc;
   }
 
@@ -2540,7 +2547,6 @@ PRBool nsWindow::OnKey(MPARAM mp1, MPARAM mp2)
     rc = DispatchWindowEvent(&pressEvent);
   }
 
-  NS_RELEASE(pressEvent.widget);
   return rc;
 }
 
@@ -2580,7 +2586,6 @@ void nsWindow::ConstrainZLevel(HWND *aAfter) {
     }
   }
   NS_IF_RELEASE(event.mActualBelow);
-  NS_RELEASE(event.widget);
 }
 
 
@@ -2596,7 +2601,6 @@ PRBool nsWindow::ProcessMessage( ULONG msg, MPARAM mp1, MPARAM mp2, MRESULT &rc)
            event.mCommand = SHORT1FROMMP(mp1);
            InitEvent(event);
            result = DispatchWindowEvent(&event);
-           NS_RELEASE(event.widget);
         }
 
         case WM_CONTROL: // remember this is resent to the orginator...
@@ -3059,16 +3063,13 @@ void nsWindow::OnDestroy()
 //
 //-------------------------------------------------------------------------
 PRBool nsWindow::OnMove(PRInt32 aX, PRInt32 aY)
-{            
+{
   // Params here are in XP-space for the desktop
   nsGUIEvent event(PR_TRUE, NS_MOVE, this);
   InitEvent( event);
   event.refPoint.x = aX;
   event.refPoint.y = aY;
-
-  PRBool result = DispatchWindowEvent( &event);
-  NS_RELEASE(event.widget);
-  return result;
+  return DispatchWindowEvent(&event);
 }
 
 //-------------------------------------------------------------------------
@@ -3158,7 +3159,6 @@ PRBool nsWindow::OnPaint()
           thebesContext->SetOperator(gfxContext::OPERATOR_SOURCE);
           thebesContext->Paint();
         }
-        NS_RELEASE(event.widget);
       } // if (mEventCallback)
       mThebesSurface->Refresh(&rcl, hPS);
     } // if (!WinIsRectEmpty(0, &rcl))
@@ -3218,7 +3218,6 @@ PRBool nsWindow::OnResize(PRInt32 aX, PRInt32 aY)
 
 PRBool nsWindow::DispatchResizeEvent( PRInt32 aX, PRInt32 aY)
 {
-   PRBool result;
    // call the event callback 
    nsSizeEvent event(PR_TRUE, NS_SIZE, this);
    nsRect      rect( 0, 0, aX, aY);
@@ -3228,10 +3227,8 @@ PRBool nsWindow::DispatchResizeEvent( PRInt32 aX, PRInt32 aY)
    event.mWinWidth = mBounds.width;
    event.mWinHeight = mBounds.height;
 
-   result = DispatchWindowEvent( &event);
-   NS_RELEASE(event.widget);
-   return result;
-}                                           
+   return DispatchWindowEvent(&event);
+}
 
 //-------------------------------------------------------------------------
 //
@@ -3363,13 +3360,7 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, MPARAM mp1, MPARAM mp2,
 
   // call the event callback 
   if (nsnull != mEventCallback) {
-    result = DispatchWindowEvent(&event);
-
-    // Release the widget with NS_IF_RELEASE() just in case
-    // the context menu key code in nsEventListenerManager::HandleEvent()
-    // released it already.
-    NS_IF_RELEASE(event.widget);
-    return result;
+    return DispatchWindowEvent(&event);
   }
 
   if (nsnull != mMouseListener) {
@@ -3399,7 +3390,6 @@ PRBool nsWindow::DispatchMouseEvent(PRUint32 aEventType, MPARAM mp1, MPARAM mp2,
     } // switch
   } 
 
-  NS_RELEASE(event.widget);
   return result;
 }
 
@@ -3440,10 +3430,7 @@ PRBool nsWindow::DispatchFocus(PRUint32 aEventType, PRBool isMozWindowTakingFocu
     }
 
     event.nativeMsg = (void *)&pluginEvent;
-
-    PRBool result = DispatchWindowEvent(&event);
-    NS_RELEASE(event.widget);
-    return result;
+    return DispatchWindowEvent(&event);
   }
   return PR_FALSE;
 }
@@ -3489,7 +3476,6 @@ PRBool nsWindow::OnVScroll( MPARAM mp1, MPARAM mp2)
             break;
         }
         DispatchWindowEvent(&scrollEvent);
-        NS_RELEASE(scrollEvent.widget);
     }
     return PR_FALSE;
 }
@@ -3524,7 +3510,6 @@ PRBool nsWindow::OnHScroll( MPARAM mp1, MPARAM mp2)
             break;
         }
         DispatchWindowEvent(&scrollEvent);
-        NS_RELEASE(scrollEvent.widget);
     }
     return PR_FALSE;
 }

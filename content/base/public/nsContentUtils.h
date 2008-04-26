@@ -90,12 +90,14 @@ class nsIWordBreaker;
 class nsIJSRuntimeService;
 class nsIEventListenerManager;
 class nsIScriptContext;
+class nsIRunnable;
 template<class E> class nsCOMArray;
 class nsIPref;
 class nsVoidArray;
 struct JSRuntime;
 class nsICaseConversion;
 class nsIWidget;
+class nsPIDOMWindow;
 #ifdef MOZ_XTF
 class nsIXTFService;
 #endif
@@ -267,11 +269,13 @@ public:
    *  node/offset pair
    *  Returns -1 if point1 < point2, 1, if point1 > point2,
    *  0 if error or if point1 == point2.
-   *  NOTE! The two nodes MUST be in the same connected subtree!
-   *  if they are not the result is undefined.
+   *  NOTE! If the two nodes aren't in the same connected subtree,
+   *  the result is undefined, but the optional aDisconnected parameter
+   *  is set to PR_TRUE.
    */
   static PRInt32 ComparePoints(nsINode* aParent1, PRInt32 aOffset1,
-                               nsINode* aParent2, PRInt32 aOffset2);
+                               nsINode* aParent2, PRInt32 aOffset2,
+                               PRBool* aDisconnected = nsnull);
 
   /**
    * Find the first child of aParent with a resolved tag matching
@@ -368,6 +372,10 @@ public:
 
   // Check if the (JS) caller can access aNode.
   static PRBool CanCallerAccess(nsIDOMNode *aNode);
+
+  // Check if the (JS) caller can access aWindow.
+  // aWindow can be either outer or inner window.
+  static PRBool CanCallerAccess(nsPIDOMWindow* aWindow);
 
   /**
    * Get the docshell through the JS context that's currently on the stack.
@@ -894,10 +902,13 @@ public:
    *
    * @param aContextNode the node which is used to resolve namespaces
    * @param aFragment the string which is parsed to a DocumentFragment
+   * @param aWillOwnFragment is PR_TRUE if ownership of the fragment should be
+   *                         transferred to the caller.
    * @param aReturn [out] the created DocumentFragment
    */
   static nsresult CreateContextualFragment(nsIDOMNode* aContextNode,
                                            const nsAString& aFragment,
+                                           PRBool aWillOwnFragment,
                                            nsIDOMDocumentFragment** aReturn);
 
   /**
@@ -1127,12 +1138,6 @@ public:
                           PRBool aClick, PRBool aIsUserTriggered);
 
   /**
-   * Return true if aContent or one of its ancestors in the
-   * bindingParent chain is native anonymous.
-   */
-  static PRBool IsNativeAnonymous(nsIContent* aContent);
-
-  /**
    * Return top-level widget in the parent chain.
    */
   static nsIWidget* GetTopLevelWidget(nsIWidget* aWidget);
@@ -1153,6 +1158,17 @@ public:
                                          PRBool aGetCharCode);
 
   /**
+   * Hide any XUL popups associated with aDocument, including any documents
+   * displayed in child frames.
+   */
+  static void HidePopupsInDocument(nsIDocument* aDocument);
+
+  /**
+   * Return true if aURI is a local file URI (i.e. file://).
+   */
+  static PRBool URIIsLocalFile(nsIURI *aURI);
+
+  /**
    * Get the application manifest URI for this context.  The manifest URI
    * is specified in the manifest= attribute of the root element of the
    * toplevel window.
@@ -1166,6 +1182,45 @@ public:
    * Check whether an application should be allowed to use offline APIs.
    */
   static PRBool OfflineAppAllowed(nsIURI *aURI);
+
+  /**
+   * Increases the count of blockers preventing scripts from running.
+   * NOTE: You might want to use nsAutoScriptBlocker rather than calling
+   * this directly
+   */
+  static void AddScriptBlocker();
+
+  /**
+   * Decreases the count of blockers preventing scripts from running.
+   * NOTE: You might want to use nsAutoScriptBlocker rather than calling
+   * this directly
+   *
+   * WARNING! Calling this function could synchronously execute scripts.
+   */
+  static void RemoveScriptBlocker();
+
+  /**
+   * Add a runnable that is to be executed as soon as it's safe to execute
+   * scripts.
+   * NOTE: If it's currently safe to execute scripts, aRunnable will be run
+   *       synchronously before the function returns.
+   *
+   * @param aRunnable  The nsIRunnable to run as soon as it's safe to execute
+   *                   scripts. Passing null is allowed and results in nothing
+   *                   happening. It is also allowed to pass an object that
+   *                   has not yet been AddRefed.
+   */
+  static PRBool AddScriptRunner(nsIRunnable* aRunnable);
+
+  /**
+   * Returns true if it's safe to execute content script and false otherwise.
+   *
+   * The only known case where this lies is mutation events. They run, and can
+   * run anything else, when this function returns false, but this is ok.
+   */
+  static PRBool IsSafeToRunScript() {
+    return sScriptBlockerCount == 0;
+  }
 
 private:
 
@@ -1185,6 +1240,9 @@ private:
   static nsresult HoldScriptObject(PRUint32 aLangID, void* aObject);
   PR_STATIC_CALLBACK(void) DropScriptObject(PRUint32 aLangID, void *aObject,
                                             void *aClosure);
+
+  static PRBool CanCallerAccess(nsIPrincipal* aSubjectPrincipal,
+                                nsIPrincipal* aPrincipal);
 
   static nsIDOMScriptObjectFactory *sDOMScriptObjectFactory;
 
@@ -1236,6 +1294,9 @@ private:
 #endif
 
   static PRBool sInitialized;
+  static PRUint32 sScriptBlockerCount;
+  static nsCOMArray<nsIRunnable>* sBlockedScriptRunners;
+  static PRUint32 sRunnersCountAtFirstBlocker;
 };
 
 #define NS_HOLD_JS_OBJECTS(obj, clazz)                                         \
@@ -1254,6 +1315,7 @@ public:
 
   // Returns PR_FALSE if something erroneous happened.
   PRBool Push(nsISupports *aCurrentTarget);
+  PRBool Push(JSContext *cx);
   void Pop();
 
 private:
@@ -1302,6 +1364,16 @@ private:
 
   void* mPtr;
   nsresult mResult;
+};
+
+class nsAutoScriptBlocker {
+public:
+  nsAutoScriptBlocker() {
+    nsContentUtils::AddScriptBlocker();
+  }
+  ~nsAutoScriptBlocker() {
+    nsContentUtils::RemoveScriptBlocker();
+  }
 };
 
 #define NS_AUTO_GCROOT_PASTE2(tok,line) tok##line

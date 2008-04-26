@@ -521,8 +521,25 @@ mozJSComponentLoader::ReallyInit()
     uint32 options = JS_GetOptions(mContext);
     JS_SetOptions(mContext, options | JSOPTION_XML);
 
-  // Always use the latest js version
-  JS_SetVersion(mContext, JSVERSION_LATEST);
+    // Always use the latest js version
+    JS_SetVersion(mContext, JSVERSION_LATEST);
+
+    // Limit C stack consumption to a reasonable 512K
+    int stackDummy;
+    const jsuword kStackSize = 0x80000;
+    jsuword stackLimit, currentStackAddr = (jsuword)&stackDummy;
+
+#if JS_STACK_GROWTH_DIRECTION < 0
+    stackLimit = (currentStackAddr > kStackSize)
+                 ? currentStackAddr - kStackSize
+                 : 0;
+#else
+    stackLimit = (currentStackAddr + kStackSize > currentStackAddr)
+                 ? currentStackAddr + kStackSize
+                 : (jsuword) -1;
+#endif
+    
+    JS_SetThreadStackLimit(mContext, stackLimit);
 
 #ifndef XPCONNECT_STANDALONE
     nsCOMPtr<nsIScriptSecurityManager> secman = 
@@ -1199,7 +1216,7 @@ mozJSComponentLoader::GlobalForLocation(nsILocalFile *aComponent,
         script = JS_CompileScriptForPrincipals(cx, global,
                                                jsPrincipals,
                                                buf, fileSize32,
-                                               nativePath.get(), 0);
+                                               nativePath.get(), 1);
         PR_MemUnmap(buf, fileSize32);
 
 #else  /* HAVE_PR_MEMMAP */

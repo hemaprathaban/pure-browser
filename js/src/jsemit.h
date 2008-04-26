@@ -78,7 +78,8 @@ typedef enum JSStmtType {
     STMT_DO_LOOP,               /* do/while loop statement */
     STMT_FOR_LOOP,              /* for loop statement */
     STMT_FOR_IN_LOOP,           /* for/in loop statement */
-    STMT_WHILE_LOOP             /* while loop statement */
+    STMT_WHILE_LOOP,            /* while loop statement */
+    STMT_LIMIT
 } JSStmtType;
 
 #define STMT_TYPE_IN_RANGE(t,b,e) ((uint)((t) - (b)) <= (uintN)((e) - (b)))
@@ -174,7 +175,7 @@ struct JSTreeContext {              /* tree context for semantic checks */
                                        XXX combine with blockChain? */
     JSAtomList      decls;          /* function, const, and var declarations */
     JSParseContext  *parseContext;
-    JSFunction      *fun;           /* function to store argument and variable
+    JSFunction      *funobj;        /* function to store argument and variable
                                        names when flags & TCF_IN_FUNCTION */
 };
 
@@ -215,7 +216,7 @@ struct JSTreeContext {              /* tree context for semantic checks */
      ATOM_LIST_INIT(&(tc)->decls),                                            \
      (tc)->blockNode = NULL,                                                  \
      (tc)->parseContext = (pc),                                               \
-     (tc)->fun = NULL)
+     (tc)->funobj = NULL)
 
 #define TREE_CONTEXT_FINISH(tc)                                               \
     ((void)0)

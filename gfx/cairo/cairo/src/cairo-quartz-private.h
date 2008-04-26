@@ -46,26 +46,52 @@
 typedef struct cairo_quartz_surface {
     cairo_surface_t base;
 
-    void *imageData;
-
-    cairo_surface_t *imageSurfaceEquiv;
-
     CGContextRef cgContext;
     CGAffineTransform cgContextBaseCTM;
+
+    void *imageData;
+    cairo_surface_t *imageSurfaceEquiv;
 
     cairo_rectangle_int_t extents;
 
     /* These are stored while drawing operations are in place, set up
      * by quartz_setup_source() and quartz_finish_source()
      */
+    CGAffineTransform sourceTransform;
+
     CGImageRef sourceImage;
     cairo_surface_t *sourceImageSurface;
-    CGAffineTransform sourceImageTransform;
     CGRect sourceImageRect;
 
     CGShadingRef sourceShading;
     CGPatternRef sourcePattern;
+
+    CGInterpolationQuality oldInterpolationQuality;
 } cairo_quartz_surface_t;
+
+typedef struct cairo_quartz_image_surface {
+    cairo_surface_t base;
+
+    cairo_rectangle_int_t extents;
+
+    CGImageRef image;
+    cairo_image_surface_t *imageSurface;
+} cairo_quartz_image_surface_t;
+
+cairo_bool_t
+_cairo_quartz_verify_surface_size(int width, int height);
+
+CGImageRef
+_cairo_quartz_create_cgimage (cairo_format_t format,
+			      unsigned int width,
+			      unsigned int height,
+			      unsigned int stride,
+			      void *data,
+			      cairo_bool_t interpolate,
+			      CGColorSpaceRef colorSpaceOverride,
+			      CGDataProviderReleaseDataCallback releaseCallback,
+			      void *releaseInfo);
+
 #endif /* CAIRO_HAS_QUARTZ_SURFACE */
 
 #if CAIRO_HAS_ATSUI_FONT

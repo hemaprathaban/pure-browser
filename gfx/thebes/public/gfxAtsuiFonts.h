@@ -44,18 +44,20 @@
 #include "gfxTypes.h"
 #include "gfxFont.h"
 #include "gfxFontUtils.h"
+#include "gfxPlatform.h"
 
 #include <Carbon/Carbon.h>
 
 class gfxAtsuiFontGroup;
 
 class MacOSFontEntry;
+class MacOSFamilyEntry;
 
 class gfxAtsuiFont : public gfxFont {
 public:
 
     gfxAtsuiFont(MacOSFontEntry *aFontEntry,
-                 const gfxFontStyle *fontStyle);
+                 const gfxFontStyle *fontStyle, PRBool aNeedsBold);
 
     virtual ~gfxAtsuiFont();
 
@@ -74,13 +76,15 @@ public:
     virtual nsString GetUniqueName();
 
     virtual PRUint32 GetSpaceGlyph() { return mSpaceGlyph; }
-    
+
     PRBool HasMirroringInfo();
 
     virtual void SetupGlyphExtents(gfxContext *aContext, PRUint32 aGlyphID,
             PRBool aNeedTight, gfxGlyphExtents *aExtents);
 
     PRBool TestCharacterMap(PRUint32 aCh);
+
+    MacOSFontEntry* GetFontEntry();
 
 protected:
     const gfxFontStyle *mFontStyle;
@@ -159,6 +163,12 @@ protected:
     /** Returns true for success */
     PRBool InitTextRun(gfxTextRun *aRun, const PRUnichar *aString, PRUint32 aLength,
                        PRBool aWrapped, PRUint32 aSegmentStart, PRUint32 aSegmentLength);
-
+    
+    // cache the most recent pref font to avoid general pref font lookup
+    nsRefPtr<MacOSFamilyEntry>    mLastPrefFamily;
+    nsRefPtr<gfxAtsuiFont>        mLastPrefFont;
+    eFontPrefLang                 mLastPrefLang;       // lang group for last pref font
+    PRBool                        mLastPrefFirstFont;  // is this the first font in the list of pref fonts for this lang group?
+    eFontPrefLang                 mPageLang;
 };
 #endif /* GFX_ATSUIFONTS_H */

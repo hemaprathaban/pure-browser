@@ -62,6 +62,7 @@
 #include "jsopcode.h"
 #include "jsregexp.h"
 #include "jsscan.h"
+#include "jsscope.h"
 #include "jsstr.h"
 
 typedef enum REOp {
@@ -237,7 +238,7 @@ GetCompactIndexWidth(size_t index)
     return width;
 }
 
-static jsbytecode *
+static JS_INLINE jsbytecode *
 WriteCompactIndex(jsbytecode *pc, size_t index)
 {
     size_t next;
@@ -250,7 +251,7 @@ WriteCompactIndex(jsbytecode *pc, size_t index)
     return pc;
 }
 
-static jsbytecode *
+static JS_INLINE jsbytecode *
 ReadCompactIndex(jsbytecode *pc, size_t *result)
 {
     size_t nextByte;
@@ -353,7 +354,7 @@ typedef struct REGlobalData {
  *    code point value is less than decimal 128, then return ch.
  * 6. Return cu.
  */
-static uintN
+static JS_INLINE uintN
 upcase(uintN ch)
 {
     uintN cu;
@@ -369,7 +370,7 @@ upcase(uintN ch)
     return (cu < 128) ? ch : cu;
 }
 
-static uintN
+static JS_INLINE uintN
 downcase(uintN ch)
 {
     JS_ASSERT((uintN) (jschar) ch == ch);
@@ -1055,18 +1056,25 @@ lexHex:
             break;
         }
         if (state->flags & JSREG_FOLD) {
-            c = (jschar) JS_MAX(upcase(localMax), downcase(localMax));
+            jschar uc = upcase(localMax);
+            jschar dc = downcase(localMax);
+
+            c = JS_MAX(uc, dc);
             if (c > localMax)
                 localMax = c;
-        }
-        if (inRange) {
-            if (rangeStart > localMax) {
+        } else {
+            /* Throw a SyntaxError here, per ECMA-262, 15.10.2.15. */
+            if (inRange && rangeStart > localMax) {
                 JS_ReportErrorNumber(state->context,
                                      js_GetErrorMessage, NULL,
                                      JSMSG_BAD_CLASS_RANGE);
                 return JS_FALSE;
             }
+        }
+
+        if (inRange) {
             inRange = JS_FALSE;
+            localMax = JS_MAX(localMax, rangeStart);
         } else {
             if (canStartRange && src < end - 1) {
                 if (*src == '-') {
@@ -2149,7 +2157,7 @@ FlatNMatcher(REGlobalData *gData, REMatchState *x, jschar *matchChars,
 }
 #endif
 
-static REMatchState *
+static JS_INLINE REMatchState *
 FlatNIMatcher(REGlobalData *gData, REMatchState *x, jschar *matchChars,
               size_t length)
 {
@@ -2233,12 +2241,19 @@ AddCharacterToCharSet(RECharSet *cs, jschar c)
 static void
 AddCharacterRangeToCharSet(RECharSet *cs, uintN c1, uintN c2)
 {
-    uintN i;
+    uintN tmp, i;
 
     uintN byteIndex1 = c1 >> 3;
     uintN byteIndex2 = c2 >> 3;
 
-    JS_ASSERT((c2 <= cs->length) && (c1 <= c2));
+    JS_ASSERT(c2 <= cs->length);
+
+    /* Swap, if c1 > c2. */
+    if (c1 > c2) {
+        tmp = c1;
+        c1 = c2;
+        c2 = tmp;
+    }
 
     c1 &= 0x7;
     c2 &= 0x7;
@@ -2508,7 +2523,7 @@ ReallocStateStack(REGlobalData *gData)
  * true, then update the current state's cp. Always update startpc to the next
  * op.
  */
-static REMatchState *
+static JS_INLINE REMatchState *
 SimpleMatch(REGlobalData *gData, REMatchState *x, REOp op,
             jsbytecode **startpc, JSBool updatecp)
 {
@@ -2717,7 +2732,7 @@ SimpleMatch(REGlobalData *gData, REMatchState *x, REOp op,
     return NULL;
 }
 
-static REMatchState *
+static JS_INLINE REMatchState *
 ExecuteREBytecode(REGlobalData *gData, REMatchState *x)
 {
     REMatchState *result = NULL;
@@ -3434,7 +3449,7 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
          * matches, an index property telling the length of the left context,
          * and an input property referring to the input string.
          */
-        obj = js_NewArrayObject(cx, 0, NULL);
+        obj = js_NewSlowArrayObject(cx);
         if (!obj) {
             ok = JS_FALSE;
             goto out;
@@ -3642,10 +3657,10 @@ regexp_setProperty(JSContext *cx, JSObject *obj, jsval id, jsval *vp)
         return ok;
     slot = JSVAL_TO_INT(id);
     if (slot == REGEXP_LAST_INDEX) {
-        if (!js_ValueToNumber(cx, *vp, &lastIndex))
+        if (!JS_ValueToNumber(cx, *vp, &lastIndex))
             return JS_FALSE;
         lastIndex = js_DoubleToInteger(lastIndex);
-        ok = js_NewNumberValue(cx, lastIndex, vp) &&
+        ok = JS_NewNumberValue(cx, lastIndex, vp) &&
              JS_SetReservedSlot(cx, obj, 0, *vp);
     }
     return ok;
@@ -3853,7 +3868,7 @@ regexp_xdrObject(JSXDRState *xdr, JSObject **objp)
         return JS_FALSE;
     }
     if (xdr->mode == JSXDR_DECODE) {
-        obj = js_NewObject(xdr->cx, &js_RegExpClass, NULL, NULL);
+        obj = js_NewObject(xdr->cx, &js_RegExpClass, NULL, NULL, 0);
         if (!obj)
             return JS_FALSE;
         STOBJ_SET_PARENT(obj, NULL);
@@ -3966,7 +3981,10 @@ js_regexp_toString(JSContext *cx, JSObject *obj, jsval *vp)
 static JSBool
 regexp_toString(JSContext *cx, uintN argc, jsval *vp)
 {
-    return js_regexp_toString(cx, JS_THIS_OBJECT(cx, vp), vp);
+    JSObject *obj;
+
+    obj = JS_THIS_OBJECT(cx, vp);
+    return obj && js_regexp_toString(cx, obj, vp);
 }
 
 static JSBool
@@ -4091,7 +4109,10 @@ created:
 static JSBool
 regexp_compile(JSContext *cx, uintN argc, jsval *vp)
 {
-    return regexp_compile_sub(cx, JS_THIS_OBJECT(cx, vp), argc, vp + 2, vp);
+    JSObject *obj;
+
+    obj = JS_THIS_OBJECT(cx, vp);
+    return obj && regexp_compile_sub(cx, obj, argc, vp + 2, vp);
 }
 
 static JSBool
@@ -4215,7 +4236,7 @@ RegExp(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval)
         }
 
         /* Otherwise, replace obj with a new RegExp object. */
-        obj = js_NewObject(cx, &js_RegExpClass, NULL, NULL);
+        obj = js_NewObject(cx, &js_RegExpClass, NULL, NULL, 0);
         if (!obj)
             return JS_FALSE;
 
@@ -4275,7 +4296,7 @@ js_NewRegExpObject(JSContext *cx, JSTokenStream *ts,
     if (!re)
         return NULL;
     JS_PUSH_TEMP_ROOT_STRING(cx, str, &tvr);
-    obj = js_NewObject(cx, &js_RegExpClass, NULL, NULL);
+    obj = js_NewObject(cx, &js_RegExpClass, NULL, NULL, 0);
     if (!obj || !JS_SetPrivate(cx, obj, re)) {
         js_DestroyRegExp(cx, re);
         obj = NULL;
@@ -4293,7 +4314,7 @@ js_CloneRegExpObject(JSContext *cx, JSObject *obj, JSObject *parent)
     JSRegExp *re;
 
     JS_ASSERT(OBJ_GET_CLASS(cx, obj) == &js_RegExpClass);
-    clone = js_NewObject(cx, &js_RegExpClass, NULL, parent);
+    clone = js_NewObject(cx, &js_RegExpClass, NULL, parent, 0);
     if (!clone)
         return NULL;
     re = (JSRegExp *) JS_GetPrivate(cx, obj);
@@ -4311,7 +4332,7 @@ js_GetLastIndex(JSContext *cx, JSObject *obj, jsdouble *lastIndex)
     jsval v;
 
     return JS_GetReservedSlot(cx, obj, 0, &v) &&
-           js_ValueToNumber(cx, v, lastIndex);
+           JS_ValueToNumber(cx, v, lastIndex);
 }
 
 JSBool
@@ -4319,7 +4340,7 @@ js_SetLastIndex(JSContext *cx, JSObject *obj, jsdouble lastIndex)
 {
     jsval v;
 
-    return js_NewNumberValue(cx, lastIndex, &v) &&
+    return JS_NewNumberValue(cx, lastIndex, &v) &&
            JS_SetReservedSlot(cx, obj, 0, v);
 }
 

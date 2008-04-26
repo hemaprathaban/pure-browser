@@ -790,6 +790,10 @@ typedef enum
 NS_IMETHODIMP
 nsXULAppInfo::GetUserCanElevate(PRBool *aUserCanElevate)
 {
+#ifdef WINCE
+  *aUserCanElevate = PR_FALSE;
+  return NS_OK;
+#else
   HANDLE hToken;
 
   VISTA_TOKEN_ELEVATION_TYPE elevationType;
@@ -817,6 +821,7 @@ nsXULAppInfo::GetUserCanElevate(PRBool *aUserCanElevate)
     CloseHandle(hToken);
 
   return NS_OK;
+#endif // WINCE
 }
 #endif
 
@@ -826,6 +831,16 @@ nsXULAppInfo::AnnotateCrashReport(const nsACString& key,
                                   const nsACString& data)
 {
   return CrashReporter::AnnotateCrashReport(key, data);
+}
+
+NS_IMETHODIMP
+nsXULAppInfo::WriteMinidumpForException(void* aExceptionInfo)
+{
+#ifdef XP_WIN32
+  return CrashReporter::WriteMinidumpForException(static_cast<EXCEPTION_POINTERS*>(aExceptionInfo));
+#else
+  return NS_ERROR_NOT_IMPLEMENTED;
+#endif
 }
 #endif
 
@@ -2356,6 +2371,10 @@ static void MOZ_gdk_display_close(GdkDisplay *display)
   }
   else {
     gdk_display_close(display);
+#if GTK_CHECK_VERSION(2,8,0) && \
+  (defined(DEBUG) || defined(NS_BUILD_REFCNT_LOGGING) || defined(NS_TRACE_MALLOC))
+    cairo_debug_reset_static_data();
+#endif
   }
 }
 #endif // MOZ_WIDGET_GTK2
@@ -2386,7 +2405,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
     NS_BREAK();
 #endif
 
-#ifdef XP_WIN32
+#if defined (XP_WIN32) && !defined (WINCE)
   // Suppress the "DLL Foo could not be found" dialog, such that if dependent
   // libraries (such as GDI+) are not preset, we gracefully fail to load those
   // XPCOM components, instead of being ungraceful.
@@ -2673,7 +2692,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
   }
 
 #ifdef XP_MACOSX
-  if (GetCurrentKeyModifiers() & optionKey)
+  if (GetCurrentEventKeyModifiers() & optionKey)
     gSafeMode = PR_TRUE;
 #endif
 

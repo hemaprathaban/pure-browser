@@ -214,6 +214,8 @@ const PRInt32 nsCSSProps::kAppearanceKTable[] = {
   eCSSKeyword_tab_right_edge,         NS_THEME_TAB_RIGHT_EDGE,
   eCSSKeyword_tabpanels,              NS_THEME_TAB_PANELS,
   eCSSKeyword_tabpanel,               NS_THEME_TAB_PANEL,
+  eCSSKeyword_tabscrollarrow_back,    NS_THEME_TAB_SCROLLARROW_BACK,
+  eCSSKeyword_tabscrollarrow_forward, NS_THEME_TAB_SCROLLARROW_FORWARD,
   eCSSKeyword_tooltip,                NS_THEME_TOOLTIP,
   eCSSKeyword_spinner,                NS_THEME_SPINNER,
   eCSSKeyword_spinner_upbutton,       NS_THEME_SPINNER_UP_BUTTON,
@@ -245,6 +247,7 @@ const PRInt32 nsCSSProps::kAppearanceKTable[] = {
   eCSSKeyword_scalethumbstart,        NS_THEME_SCALE_THUMB_START,
   eCSSKeyword_scalethumbend,          NS_THEME_SCALE_THUMB_END,
   eCSSKeyword_scalethumbtick,         NS_THEME_SCALE_TICK,
+  eCSSKeyword_groupbox,               NS_THEME_GROUPBOX,
   eCSSKeyword_checkboxcontainer,      NS_THEME_CHECKBOX_CONTAINER,
   eCSSKeyword_radiocontainer,         NS_THEME_RADIO_CONTAINER,
   eCSSKeyword_checkboxlabel,          NS_THEME_CHECKBOX_LABEL,
@@ -263,6 +266,9 @@ const PRInt32 nsCSSProps::kAppearanceKTable[] = {
   eCSSKeyword_menuarrow,              NS_THEME_MENUARROW,
   eCSSKeyword_menuimage,              NS_THEME_MENUIMAGE,
   eCSSKeyword_menuitemtext,           NS_THEME_MENUITEMTEXT,
+  eCSSKeyword_media_toolbox,          NS_THEME_MEDIA_TOOLBOX,
+  eCSSKeyword_communications_toolbox, NS_THEME_COMMUNICATIONS_TOOLBOX,
+  eCSSKeyword_browsertabbar_toolbox,  NS_THEME_BROWSER_TAB_BAR_TOOLBOX,
   eCSSKeyword_UNKNOWN,-1
 };
 
@@ -380,11 +386,13 @@ const PRInt32 nsCSSProps::kBoxSizingKTable[] = {
 };
 
 const PRInt32 nsCSSProps::kCaptionSideKTable[] = {
-  eCSSKeyword_top,    NS_SIDE_TOP,
-  eCSSKeyword_right,  NS_SIDE_RIGHT,
-  eCSSKeyword_bottom, NS_SIDE_BOTTOM,
-  eCSSKeyword_left,   NS_SIDE_LEFT,
-  eCSSKeyword_UNKNOWN,-1
+  eCSSKeyword_top,                  NS_STYLE_CAPTION_SIDE_TOP,
+  eCSSKeyword_right,                NS_STYLE_CAPTION_SIDE_RIGHT,
+  eCSSKeyword_bottom,               NS_STYLE_CAPTION_SIDE_BOTTOM,
+  eCSSKeyword_left,                 NS_STYLE_CAPTION_SIDE_LEFT,
+  eCSSKeyword_top_outside,          NS_STYLE_CAPTION_SIDE_TOP_OUTSIDE,
+  eCSSKeyword_bottom_outside,       NS_STYLE_CAPTION_SIDE_BOTTOM_OUTSIDE,
+  eCSSKeyword_UNKNOWN,              -1
 };
 
 const PRInt32 nsCSSProps::kClearKTable[] = {
@@ -955,7 +963,8 @@ const PRInt32 nsCSSProps::kVolumeKTable[] = {
 const PRInt32 nsCSSProps::kWhitespaceKTable[] = {
   eCSSKeyword_pre, NS_STYLE_WHITESPACE_PRE,
   eCSSKeyword_nowrap, NS_STYLE_WHITESPACE_NOWRAP,
-  eCSSKeyword__moz_pre_wrap, NS_STYLE_WHITESPACE_MOZ_PRE_WRAP,
+  eCSSKeyword_pre_wrap, NS_STYLE_WHITESPACE_PRE_WRAP,
+  eCSSKeyword__moz_pre_wrap, NS_STYLE_WHITESPACE_PRE_WRAP,
   eCSSKeyword_UNKNOWN,-1
 };
 

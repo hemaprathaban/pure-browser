@@ -38,6 +38,13 @@
 
 #include "gfxFontUtils.h"
 
+#include "nsIPref.h"  // for pref handling code
+#include "nsServiceManagerUtils.h"
+
+#include "nsIPrefBranch.h"
+#include "nsIPrefService.h"
+#include "nsIPrefLocalizedString.h"
+#include "nsISupportsPrimitives.h"
 
 #define NO_RANGE_FOUND 126 // bit 126 in the font unicode ranges is required to be 0
 
@@ -328,6 +335,10 @@ gfxFontUtils::ReadCMAPTableFormat4(PRUint8 *aBuf, PRInt32 aLength, gfxSparseBitS
     #define isSymbol(p,e)               ((e) == EncodingIDSymbol)
 #endif
 
+#define acceptableUCS4Encoding(p, e) \
+    ((platformID == PlatformIDMicrosoft && encodingID == EncodingIDUCS4ForMicrosoftPlatform) || \
+     (platformID == PlatformIDUnicode   && encodingID == EncodingIDUCS4ForUnicodePlatform))
+
 nsresult
 gfxFontUtils::ReadCMAP(PRUint8 *aBuf, PRUint32 aBufLength, gfxSparseBitSet& aCharacterMap, std::bitset<128>& aUnicodeRanges, 
     PRPackedBool& aUnicodeFont, PRPackedBool& aSymbolFont)
@@ -351,7 +362,8 @@ gfxFontUtils::ReadCMAP(PRUint8 *aBuf, PRUint32 aBufLength, gfxSparseBitSet& aCha
     enum {
         EncodingIDSymbol = 0,
         EncodingIDMicrosoft = 1,
-        EncodingIDUCS4 = 10
+        EncodingIDUCS4ForUnicodePlatform = 3,
+        EncodingIDUCS4ForMicrosoftPlatform = 10
     };
 
     PRUint16 version = ReadShortAt(aBuf, OffsetVersion);
@@ -385,7 +397,7 @@ gfxFontUtils::ReadCMAP(PRUint8 *aBuf, PRUint32 aBufLength, gfxSparseBitSet& aCha
         } else if (format == 4 && acceptableFormat4(platformID, encodingID, keepFormat)) {
             keepFormat = format;
             keepOffset = offset;
-        } else if (format == 12 && encodingID == EncodingIDUCS4) {
+        } else if (format == 12 && acceptableUCS4Encoding(platformID, encodingID)) {
             keepFormat = format;
             keepOffset = offset;
             break; // we don't want to try anything else when this format is available.
@@ -411,4 +423,46 @@ PRUint8 gfxFontUtils::CharRangeBit(PRUint32 ch) {
 
     return NO_RANGE_FOUND;
 }
+
+void gfxFontUtils::GetPrefsFontList(const char *aPrefName, nsTArray<nsAutoString>& aFontList)
+{
+    const PRUnichar kComma = PRUnichar(',');
+    
+    aFontList.Clear();
+    
+    // get the list of single-face font families
+    nsCOMPtr<nsIPrefBranch> prefs(do_GetService(NS_PREFSERVICE_CONTRACTID));
+
+    nsAutoString fontlistValue;
+    if (prefs) {
+        nsCOMPtr<nsISupportsString> prefString;
+        prefs->GetComplexValue(aPrefName, NS_GET_IID(nsISupportsString), getter_AddRefs(prefString));
+        if (!prefString) 
+            return;
+        prefString->GetData(fontlistValue);
+    }
+    
+    // append each font name to the list
+    nsAutoString fontname;
+    nsPromiseFlatString fonts(fontlistValue);
+    const PRUnichar *p, *p_end;
+    fonts.BeginReading(p);
+    fonts.EndReading(p_end);
+
+     while (p < p_end) {
+        const PRUnichar *nameStart = p;
+        while (++p != p_end && *p != kComma)
+        /* nothing */ ;
+
+        // pull out a single name and clean out leading/trailing whitespace        
+        fontname = Substring(nameStart, p);
+        fontname.CompressWhitespace(PR_TRUE, PR_TRUE);
+        
+        // append it to the list
+        aFontList.AppendElement(fontname);
+        ++p;
+    }
+
+}
+
 

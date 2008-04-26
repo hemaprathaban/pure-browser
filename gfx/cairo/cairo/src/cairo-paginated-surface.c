@@ -162,8 +162,10 @@ _cairo_paginated_surface_finish (void *abstract_surface)
     cairo_paginated_surface_t *surface = abstract_surface;
     cairo_status_t status = CAIRO_STATUS_SUCCESS;
 
-    if (surface->page_is_blank == FALSE || surface->page_num == 1)
-	status = cairo_surface_show_page (abstract_surface);
+    if (surface->page_is_blank == FALSE || surface->page_num == 1) {
+	cairo_surface_show_page (abstract_surface);
+	status = cairo_surface_status (abstract_surface);
+    }
 
     if (status == CAIRO_STATUS_SUCCESS) {
 	cairo_surface_finish (surface->target);
@@ -256,8 +258,8 @@ _paint_fallback_image (cairo_paginated_surface_t *surface,
     width = box->p2.x - x;
     height = box->p2.y - y;
     image = _cairo_paginated_surface_create_image_surface (surface,
-							   width  * x_scale,
-							   height * y_scale);
+							   ceil (width  * x_scale),
+							   ceil (height * y_scale));
     _cairo_surface_set_device_scale (image, x_scale, y_scale);
     /* set_device_offset just sets the x0/y0 components of the matrix;
      * so we have to do the scaling manually. */
@@ -332,6 +334,7 @@ _paint_page (cairo_paginated_surface_t *surface)
 	case CAIRO_SURFACE_TYPE_XCB:
 	case CAIRO_SURFACE_TYPE_GLITZ:
 	case CAIRO_SURFACE_TYPE_QUARTZ:
+	case CAIRO_SURFACE_TYPE_QUARTZ_IMAGE:
 	case CAIRO_SURFACE_TYPE_WIN32:
 	case CAIRO_SURFACE_TYPE_BEOS:
 	case CAIRO_SURFACE_TYPE_DIRECTFB:
@@ -444,7 +447,8 @@ _cairo_paginated_surface_copy_page (void *abstract_surface)
      * show_page and we implement the copying by simply not destroying
      * the meta-surface. */
 
-    return cairo_surface_show_page (surface->target);
+    cairo_surface_show_page (surface->target);
+    return cairo_surface_status (surface->target);
 }
 
 static cairo_int_status_t
@@ -461,7 +465,8 @@ _cairo_paginated_surface_show_page (void *abstract_surface)
     if (status)
 	return status;
 
-    status = cairo_surface_show_page (surface->target);
+    cairo_surface_show_page (surface->target);
+    status = cairo_surface_status (surface->target);
     if (status)
 	return status;
 

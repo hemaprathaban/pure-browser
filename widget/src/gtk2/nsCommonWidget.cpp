@@ -146,10 +146,12 @@ NS_IMETHODIMP
 nsCommonWidget::DispatchEvent(nsGUIEvent *aEvent,
                               nsEventStatus &aStatus)
 {
-    aStatus = nsEventStatus_eIgnore;
+#ifdef DEBUG
+    debug_DumpEvent(stdout, aEvent->widget, aEvent,
+                    nsCAutoString("something"), 0);
+#endif
 
-    // hold a widget reference while we dispatch this event
-    NS_ADDREF(aEvent->widget);
+    aStatus = nsEventStatus_eIgnore;
 
     // send it to the standard callback
     if (mEventCallback)
@@ -158,8 +160,6 @@ nsCommonWidget::DispatchEvent(nsGUIEvent *aEvent,
     // dispatch to event listener if event was not consumed
     if ((aStatus != nsEventStatus_eIgnore) && mEventListener)
         aStatus = mEventListener->ProcessEvent(*aEvent);
-
-    NS_IF_RELEASE(aEvent->widget);
 
     return NS_OK;
 }

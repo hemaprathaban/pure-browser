@@ -99,8 +99,10 @@ function OnRefTestLoad()
 
     try {
         ReadTopManifest(window.arguments[0]);
-        if (gServer)
+        if (gServer) {
+            gServer.registerContentType("sjs", "sjs");
             gServer.start(HTTP_SERVER_PORT);
+        }
         StartCurrentTest();
     } catch (ex) {
         //gBrowser.loadURI('data:text/plain,' + ex);
@@ -350,6 +352,13 @@ function OnDocumentLoad(event)
             var ps = PSSVC.newPrintSettings;
             ps.paperWidth = 5;
             ps.paperHeight = 3;
+
+            // Override any os-specific unwriteable margins
+            ps.unwriteableMarginTop = 0;
+            ps.unwriteableMarginLeft = 0;
+            ps.unwriteableMarginBottom = 0;
+            ps.unwriteableMarginRight = 0;
+
             ps.headerStrLeft = "";
             ps.headerStrCenter = "";
             ps.headerStrRight = "";

@@ -201,6 +201,7 @@ CONST_OID isoSHAWithRSASignature[]           = { ALGORITHM, 0x0f };
 CONST_OID desede[]                           = { ALGORITHM, 0x11 };
 CONST_OID sha1[]                             = { ALGORITHM, 0x1a };
 CONST_OID bogusDSASignaturewithSHA1Digest[]  = { ALGORITHM, 0x1b };
+CONST_OID isoSHA1WithRSASignature[]          = { ALGORITHM, 0x1d };
 
 CONST_OID pkcs1RSAEncryption[]         		= { PKCS1, 0x01 };
 CONST_OID pkcs1MD2WithRSAEncryption[]  		= { PKCS1, 0x02 };
@@ -1569,6 +1570,10 @@ const static SECOidData oids[] = {
         "SIA CA Repository",          CKM_INVALID_MECHANISM,
 	INVALID_CERT_EXTENSION ),
 
+    OD( isoSHA1WithRSASignature, SEC_OID_ISO_SHA1_WITH_RSA_SIGNATURE,
+	"ISO SHA1 with RSA Signature", 
+	CKM_INVALID_MECHANISM, INVALID_CERT_EXTENSION ),
+
 };
 
 /*
@@ -1590,34 +1595,21 @@ static SECOidData ** dynOidTable;	/* not in the pool */
 static int           dynOidEntriesAllocated;
 static int           dynOidEntriesUsed;
 
-/* Creates NSSRWLock and dynOidPool, if they don't exist.
-** This function MIGHT create the lock, but not the pool, so
-** code should test for dynOidPool, not dynOidLock, when deciding
-** whether or not to call this function.
+/* Creates NSSRWLock and dynOidPool at initialization time.
 */
 static SECStatus
 secoid_InitDynOidData(void)
 {
     SECStatus   rv = SECSuccess;
-    NSSRWLock * lock;
 
-    /* This function will create the lock if it doesn't exist,
-    ** and will return the address of the lock, whether it was 
-    ** previously created, or was created by the function.
-    */
-    lock = nssRWLock_AtomicCreate(&dynOidLock, 1, "dynamic OID data");
-    if (!lock) {
+    dynOidLock = NSSRWLock_New(1, "dynamic OID data");
+    if (!dynOidLock) {
     	return SECFailure; /* Error code should already be set. */
     }
-    PORT_Assert(lock == dynOidLock);
-    NSSRWLock_LockWrite(lock);
+    dynOidPool = PORT_NewArena(2048);
     if (!dynOidPool) {
-    	dynOidPool = PORT_NewArena(2048);
-	if (!dynOidPool) {
-	    rv = SECFailure /* Error code should already be set. */;
-	}
+        rv = SECFailure /* Error code should already be set. */;
     }
-    NSSRWLock_UnlockWrite(lock);
     return rv;
 }
 
@@ -1714,8 +1706,8 @@ SECOID_AddEntry(const SECOidData * src)
 	return ret;
     }
 
-    if (!dynOidPool && secoid_InitDynOidData() != SECSuccess) {
-	/* Caller has set error code. */
+    if (!dynOidPool || !dynOidLock) {
+	PORT_SetError(SEC_ERROR_NOT_INITIALIZED);
     	return ret;
     }
 
@@ -1796,18 +1788,20 @@ secoid_HashNumber(const void *key)
 
 
 SECStatus
-secoid_Init(void)
+SECOID_Init(void)
 {
     PLHashEntry *entry;
     const SECOidData *oid;
     int i;
 
-    if (!dynOidPool && secoid_InitDynOidData() != SECSuccess) {
-    	return SECFailure;
+    if (oidhash) {
+	return SECSuccess; /* already initialized */
     }
 
-    if (oidhash) {
-	return SECSuccess;
+    if (secoid_InitDynOidData() != SECSuccess) {
+        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+        PORT_Assert(0); /* this function should never fail */
+    	return SECFailure;
     }
     
     oidhash = PL_NewHashTable(0, SECITEM_Hash, SECITEM_HashCompare,

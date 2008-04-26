@@ -81,6 +81,7 @@ EXPORTS		= \
 		$(NULL)
 
 CPPSRCS		= \
+		nsClientRect.cpp \
 		nsGenericHTMLElement.cpp \
 		nsFormSubmission.cpp \
 		nsImageMapUtils.cpp \
@@ -130,10 +131,7 @@ CPPSRCS		= \
 		nsHTMLTableSectionElement.cpp \
 		nsHTMLTextAreaElement.cpp \
 		nsHTMLTitleElement.cpp \
-                nsTextRectangle.cpp \
 		$(NULL)
-
-GQI_SRCS = htmlcontent.gqi
 
 # we don't want the shared lib, but we want to force the creation of a static lib.
 FORCE_STATIC_LIB = 1

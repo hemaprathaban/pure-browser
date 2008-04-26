@@ -481,10 +481,12 @@ NS_IMETHODIMP nsWebBrowserPersist::SaveDocument(
     {
         // tell the listener we're done
         mProgressListener->OnStateChange(nsnull, nsnull,
-                                         nsIWebProgressListener::STATE_START,
+                                         nsIWebProgressListener::STATE_START |
+                                         nsIWebProgressListener::STATE_IS_NETWORK,
                                          NS_OK);
         mProgressListener->OnStateChange(nsnull, nsnull,
-                                         nsIWebProgressListener::STATE_STOP,
+                                         nsIWebProgressListener::STATE_STOP |
+                                         nsIWebProgressListener::STATE_IS_NETWORK,
                                          rv);
     }
 
@@ -912,6 +914,7 @@ NS_IMETHODIMP nsWebBrowserPersist::OnDataAvailable(
                     rv = StartUpload(storStream, data->mFile, contentType);
                     if (NS_FAILED(rv))
                     {
+                        readError = PR_FALSE;
                         cancel = PR_TRUE;
                     }
                 }
@@ -1344,6 +1347,7 @@ nsresult nsWebBrowserPersist::SaveChannelInternal(
         // Opening failed, but do we care?
         if (mPersistFlags & PERSIST_FLAGS_FAIL_ON_BROKEN_LINKS)
         {
+            SendErrorStatusChange(PR_TRUE, rv, aChannel, aFile);
             EndDownload(NS_ERROR_FAILURE);
             return NS_ERROR_FAILURE;
         }
@@ -1556,11 +1560,11 @@ nsresult nsWebBrowserPersist::SaveDocumentInternal(
                     break;
                 }
 
-                nsCAutoString dirName;
-                dataDirParent->GetNativeLeafName(dirName);
+                nsAutoString dirName;
+                dataDirParent->GetLeafName(dirName);
 
                 nsCAutoString newRelativePathToData;
-                newRelativePathToData = dirName
+                newRelativePathToData = NS_ConvertUTF16toUTF8(dirName)
                                       + NS_LITERAL_CSTRING("/")
                                       + relativePathToData;
                 relativePathToData = newRelativePathToData;
@@ -2222,7 +2226,7 @@ nsWebBrowserPersist::CalculateAndAppendFileExt(nsIURI *aURI, nsIChannel *aChanne
 
                 if (localFile)
                 {
-                    localFile->SetNativeLeafName(newFileName);
+                    localFile->SetLeafName(NS_ConvertUTF8toUTF16(newFileName));
 
                     // Resync the URI with the file after the extension has been appended
                     nsCOMPtr<nsIFileURL> fileURL = do_QueryInterface(aURI, &rv);

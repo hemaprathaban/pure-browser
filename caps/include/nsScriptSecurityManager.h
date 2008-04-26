@@ -395,6 +395,28 @@ public:
 
     JSContext* GetSafeJSContext();
 
+    /**
+     * Utility method for comparing two URIs.  For security purposes, two URIs
+     * are equivalent if their schemes, hosts, and ports (if any) match.  This
+     * method returns true if aSubjectURI and aObjectURI have the same origin,
+     * false otherwise.
+     */
+    static PRBool SecurityCompareURIs(nsIURI* aSourceURI, nsIURI* aTargetURI);
+
+    static nsresult 
+    ReportError(JSContext* cx, const nsAString& messageTag,
+                nsIURI* aSource, nsIURI* aTarget);
+    static nsresult
+    CheckSameOriginPrincipal(nsIPrincipal* aSubject,
+                             nsIPrincipal* aObject,
+                             PRBool aIsCheckConnect);
+
+    static PRBool
+    GetStrictFileOriginPolicy()
+    {
+        return sStrictFileOriginPolicy;
+    }
+
 private:
 
     // GetScriptSecurityManager is the only call that can make one
@@ -420,10 +442,6 @@ private:
     nsIPrincipal*
     doGetSubjectPrincipal(nsresult* rv);
     
-    static nsresult 
-    ReportError(JSContext* cx, const nsAString& messageTag,
-                nsIURI* aSource, nsIURI* aTarget);
-
     nsresult
     CheckPropertyAccessImpl(PRUint32 aAction,
                             nsAXPCNativeCallContext* aCallContext,
@@ -432,11 +450,6 @@ private:
                             nsIClassInfo* aClassInfo,
                             const char* aClassName, jsval aProperty,
                             void** aCachedClassPolicy);
-
-    nsresult
-    CheckSameOriginPrincipalInternal(nsIPrincipal* aSubject,
-                                     nsIPrincipal* aObject,
-                                     PRBool aIsCheckConnect);
 
     nsresult
     CheckSameOriginDOMProp(nsIPrincipal* aSubject, 
@@ -540,17 +553,6 @@ private:
                    nsISecurityPref* securityPref);
 
 
-    /**
-     * Utility method for comparing two URIs.  For security purposes, two URIs
-     * are equivalent if their schemes, hosts, and ports (if any) match.  This
-     * method returns true if aSubjectURI and aObjectURI have the same origin,
-     * false otherwise.
-     */
-    PRBool SecurityCompareURIs(nsIURI* aSourceURI, nsIURI* aTargetURI);
-
-    /* encapsulate the file comparison rules */
-    PRBool SecurityCompareFileURIs(nsIURI* aSourceURI, nsIURI* aTargetURI);
-
 #ifdef XPC_IDISPATCH_SUPPORT
     // While this header is included outside of caps, this class isn't 
     // referenced so this should be fine.
@@ -590,24 +592,13 @@ private:
     PRPackedBool mXPCDefaultGrantAll;
     static const char sXPCDefaultGrantAllName[];
 #endif
-    PRInt32 mFileURIOriginPolicy;
+
+    static PRBool sStrictFileOriginPolicy;
 
     static nsIIOService    *sIOService;
     static nsIXPConnect    *sXPConnect;
     static nsIStringBundle *sStrBundle;
     static JSRuntime       *sRuntime;
 };
-
-// Levels for file: URI same-origin policy:
-//   self:        same-origin only with itself
-//   samedir:     same-origin with files having the same path
-//   subdir:      same-origin with files having longer paths (asymetric)
-//   anyfile:     same-origin with any other file: URI (but not directories)
-//   traditional: any local file, any directory
-#define FILEURI_SOP_SELF        0
-#define FILEURI_SOP_SAMEDIR     1
-#define FILEURI_SOP_SUBDIR      2
-#define FILEURI_SOP_ANYFILE     3
-#define FILEURI_SOP_TRADITIONAL 4
 
 #endif // nsScriptSecurityManager_h__

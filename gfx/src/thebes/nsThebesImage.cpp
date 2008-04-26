@@ -111,7 +111,7 @@ nsThebesImage::Init(PRInt32 aWidth, PRInt32 aHeight, PRInt32 aDepth, nsMaskRequi
 
     mFormat = format;
 
-#if defined(XP_WIN)
+#ifdef XP_WIN
     if (!ShouldUseImageSurfaces()) {
         mWinSurface = new gfxWindowsSurface(gfxIntSize(mWidth, mHeight), format);
         if (mWinSurface && mWinSurface->CairoStatus() == 0) {
@@ -122,16 +122,6 @@ nsThebesImage::Init(PRInt32 aWidth, PRInt32 aHeight, PRInt32 aDepth, nsMaskRequi
 
     if (!mImageSurface)
         mWinSurface = nsnull;
-#elif defined(XP_MACOSX)
-    if (!ShouldUseImageSurfaces()) {
-        mQuartzSurface = new gfxQuartzSurface(gfxSize(mWidth, mHeight), format);
-        if (mQuartzSurface && mQuartzSurface->CairoStatus() == 0) {
-            mImageSurface = mQuartzSurface->GetImageSurface();
-        }
-    }
-
-    if (!mImageSurface)
-        mQuartzSurface = nsnull;
 #endif
 
     if (!mImageSurface)
@@ -142,6 +132,10 @@ nsThebesImage::Init(PRInt32 aWidth, PRInt32 aHeight, PRInt32 aDepth, nsMaskRequi
         // guess
         return NS_ERROR_OUT_OF_MEMORY;
     }
+
+#ifdef XP_MACOSX
+    mQuartzSurface = new gfxQuartzImageSurface(mImageSurface);
+#endif
 
     mStride = mImageSurface->Stride();
 
@@ -218,6 +212,10 @@ void
 nsThebesImage::ImageUpdated(nsIDeviceContext *aContext, PRUint8 aFlags, nsRect *aUpdateRect)
 {
     mDecoded.UnionRect(mDecoded, *aUpdateRect);
+#ifdef XP_MACOSX
+    if (mQuartzSurface)
+        mQuartzSurface->Flush();
+#endif
 }
 
 PRBool
@@ -237,30 +235,49 @@ nsThebesImage::Optimize(nsIDeviceContext* aContext)
     if (mOptSurface || mSinglePixel)
         return NS_OK;
 
-    if (mWidth == 1 && mHeight == 1) {
-        // yeah, let's optimize this.
-        if (mFormat == gfxImageSurface::ImageFormatARGB32 ||
-            mFormat == gfxImageSurface::ImageFormatRGB24)
-        {
-            PRUint32 pixel = *((PRUint32 *) mImageSurface->Data());
+    /* Figure out if the entire image is a constant color */
 
-            mSinglePixelColor = gfxRGBA
-                (pixel,
-                 (mFormat == gfxImageSurface::ImageFormatRGB24 ?
-                  gfxRGBA::PACKED_XRGB :
-                  gfxRGBA::PACKED_ARGB_PREMULTIPLIED));
+    // this should always be true
+    if (mStride == mWidth * 4) {
+        PRUint32 *imgData = (PRUint32*) mImageSurface->Data();
+        PRUint32 firstPixel = * (PRUint32*) imgData;
+        PRUint32 pixelCount = mWidth * mHeight + 1;
 
-            mSinglePixel = PR_TRUE;
+        while (--pixelCount && *imgData++ == firstPixel)
+            ;
 
-            return NS_OK;
+        if (pixelCount == 0) {
+            // all pixels were the same
+            if (mFormat == gfxImageSurface::ImageFormatARGB32 ||
+                mFormat == gfxImageSurface::ImageFormatRGB24)
+            {
+                mSinglePixelColor = gfxRGBA
+                    (firstPixel,
+                     (mFormat == gfxImageSurface::ImageFormatRGB24 ?
+                      gfxRGBA::PACKED_XRGB :
+                      gfxRGBA::PACKED_ARGB_PREMULTIPLIED));
+
+                mSinglePixel = PR_TRUE;
+
+                // blow away the older surfaces, to release data
+
+                mImageSurface = nsnull;
+                mOptSurface = nsnull;
+#ifdef XP_WIN
+                mWinSurface = nsnull;
+#endif
+#ifdef XP_MACOSX
+                mQuartzSurface = nsnull;
+#endif
+                return NS_OK;
+            }
         }
 
-        // if it's not RGB24/ARGB32, don't optimize, but we should
-        // never hit this.
+        // if it's not RGB24/ARGB32, don't optimize, but we never hit this at the moment
     }
 
     // if we're being forced to use image surfaces due to
-    // resource constraints, don't try to optimize beyond single-pixel.
+    // resource constraints, don't try to optimize beyond same-pixel.
     if (ShouldUseImageSurfaces())
         return NS_OK;
 
@@ -308,8 +325,10 @@ nsThebesImage::Optimize(nsIDeviceContext* aContext)
 #endif
 
 #ifdef XP_MACOSX
-    if (mQuartzSurface && !mFormatChanged)
+    if (mQuartzSurface) {
+        mQuartzSurface->Flush();
         mOptSurface = mQuartzSurface;
+    }
 #endif
 
     if (mOptSurface == nsnull)
@@ -364,7 +383,15 @@ nsThebesImage::LockImagePixels(PRBool aMaskPixels)
         else
             context.SetSource(mOptSurface);
         context.Paint();
+
+#ifdef XP_WIN
+        mWinSurface = nsnull;
+#endif
+#ifdef XP_MACOSX
+        mQuartzSurface = nsnull;
+#endif
     }
+
     return NS_OK;
 }
 
@@ -373,14 +400,11 @@ nsThebesImage::UnlockImagePixels(PRBool aMaskPixels)
 {
     if (aMaskPixels)
         return NS_ERROR_NOT_IMPLEMENTED;
-    if (mImageSurface && mOptSurface) {
-        gfxContext context(mOptSurface);
-        context.SetOperator(gfxContext::OPERATOR_SOURCE);
-        context.SetSource(mImageSurface);
-        context.Paint();
-        // Don't need the pixel data anymore
-        mImageSurface = nsnull;
-    }
+    mOptSurface = nsnull;
+#ifdef XP_MACOSX
+    if (mQuartzSurface)
+        mQuartzSurface->Flush();
+#endif
     return NS_OK;
 }
 
@@ -388,6 +412,7 @@ nsThebesImage::UnlockImagePixels(PRBool aMaskPixels)
 NS_IMETHODIMP
 nsThebesImage::Draw(nsIRenderingContext &aContext,
                     const gfxRect &aSourceRect,
+                    const gfxRect &aSubimageRect,
                     const gfxRect &aDestRect)
 {
     if (NS_UNLIKELY(aDestRect.IsEmpty())) {
@@ -412,10 +437,15 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
             return NS_OK;
 
         // otherwise
+        gfxContext::GraphicsOperator op = ctx->CurrentOperator();
+        if (op == gfxContext::OPERATOR_OVER && mSinglePixelColor.a == 1.0)
+            ctx->SetOperator(gfxContext::OPERATOR_SOURCE);
+
         ctx->SetColor(mSinglePixelColor);
         ctx->NewPath();
         ctx->Rectangle(aDestRect, PR_TRUE);
         ctx->Fill();
+        ctx->SetOperator(op);
         return NS_OK;
     }
 
@@ -423,21 +453,24 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
     gfxFloat yscale = aDestRect.size.height / aSourceRect.size.height;
 
     gfxRect srcRect(aSourceRect);
+    gfxRect subimageRect(aSubimageRect);
     gfxRect destRect(aDestRect);
 
     if (!GetIsImageComplete()) {
-      srcRect = srcRect.Intersect(gfxRect(mDecoded.x, mDecoded.y,
-                                          mDecoded.width, mDecoded.height));
+        gfxRect decoded = gfxRect(mDecoded.x, mDecoded.y,
+                                  mDecoded.width, mDecoded.height);
+        srcRect = srcRect.Intersect(decoded);
+        subimageRect = subimageRect.Intersect(decoded);
 
-      // This happens when mDecoded.width or height is zero. bug 368427.
-      if (NS_UNLIKELY(srcRect.size.width == 0 || srcRect.size.height == 0))
-          return NS_OK;
+        // This happens when mDecoded.width or height is zero. bug 368427.
+        if (NS_UNLIKELY(srcRect.size.width == 0 || srcRect.size.height == 0))
+            return NS_OK;
 
-      destRect.pos.x += (srcRect.pos.x - aSourceRect.pos.x)*xscale;
-      destRect.pos.y += (srcRect.pos.y - aSourceRect.pos.y)*yscale;
+        destRect.pos.x += (srcRect.pos.x - aSourceRect.pos.x)*xscale;
+        destRect.pos.y += (srcRect.pos.y - aSourceRect.pos.y)*yscale;
 
-      destRect.size.width  = srcRect.size.width * xscale;
-      destRect.size.height = srcRect.size.height * yscale;
+        destRect.size.width  = srcRect.size.width * xscale;
+        destRect.size.height = srcRect.size.height * yscale;
     }
 
     // if either rectangle is empty now (possibly after the image complete check)
@@ -448,7 +481,39 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
     if (!AllowedImageSize(destRect.size.width + 1, destRect.size.height + 1))
         return NS_ERROR_FAILURE;
 
+    // Expand the subimageRect to place its edges on integer coordinates.
+    // Basically, if we're allowed to sample part of a pixel we can
+    // sample the whole pixel.
+    subimageRect.RoundOut();
+
     nsRefPtr<gfxPattern> pat;
+    PRBool ctxHasNonTranslation = ctx->CurrentMatrix().HasNonTranslation();
+    if ((xscale == 1.0 && yscale == 1.0 && !ctxHasNonTranslation) ||
+        subimageRect == gfxRect(0, 0, mWidth, mHeight))
+    {
+        // No need to worry about sampling outside the subimage rectangle,
+        // so no need for a temporary
+        // XXX should we also check for situations where the source rect
+        // is well inside the subimage so we can't sample outside?
+        pat = new gfxPattern(ThebesSurface());
+    } else {
+        // Because of the RoundOut above, the subimageRect has
+        // integer width and height.
+        gfxIntSize size(PRInt32(subimageRect.Width()),
+                        PRInt32(subimageRect.Height()));
+        nsRefPtr<gfxASurface> temp =
+            gfxPlatform::GetPlatform()->CreateOffscreenSurface(size, mFormat);
+        if (!temp || temp->CairoStatus() != 0)
+            return NS_ERROR_FAILURE;
+
+        gfxContext tempctx(temp);
+        tempctx.SetSource(ThebesSurface(), -subimageRect.pos);
+        tempctx.SetOperator(gfxContext::OPERATOR_SOURCE);
+        tempctx.Paint();
+
+        pat = new gfxPattern(temp);
+        srcRect.MoveBy(-subimageRect.pos);
+    }
 
     /* See bug 364968 to understand the necessity of this goop; we basically
      * have to pre-downscale any image that would fall outside of a scaled 16-bit
@@ -471,13 +536,12 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
 
         gfxContext tempctx(temp);
 
-        gfxPattern srcpat(ThebesSurface());
         gfxMatrix mat;
         mat.Translate(srcRect.pos);
         mat.Scale(1.0 / xscale, 1.0 / yscale);
-        srcpat.SetMatrix(mat);
+        pat->SetMatrix(mat);
 
-        tempctx.SetPattern(&srcpat);
+        tempctx.SetPattern(pat);
         tempctx.SetOperator(gfxContext::OPERATOR_SOURCE);
         tempctx.NewPath();
         tempctx.Rectangle(gfxRect(0.0, 0.0, dim.width, dim.height));
@@ -494,10 +558,6 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
         yscale = 1.0;
     }
 
-    if (!pat) {
-        pat = new gfxPattern(ThebesSurface());
-    }
-
     gfxMatrix mat;
     mat.Translate(srcRect.pos);
     mat.Scale(1.0/xscale, 1.0/yscale);
@@ -509,25 +569,48 @@ nsThebesImage::Draw(nsIRenderingContext &aContext,
 
     pat->SetMatrix(mat);
 
-    // XXX bug 324698
-#ifndef XP_MACOSX
-    if (xscale > 1.0 || yscale > 1.0) {
-        // See bug 324698.  This is a workaround.
+    nsRefPtr<gfxASurface> target = ctx->CurrentSurface();
+    switch (target->GetType()) {
+    case gfxASurface::SurfaceTypeXlib:
+    case gfxASurface::SurfaceTypeXcb:
+        // See bug 324698.  This is a workaround for EXTEND_PAD not being
+        // implemented correctly on linux in the X server.
         //
         // Set the filter to CAIRO_FILTER_FAST if we're scaling up -- otherwise,
         // pixman's sampling will sample transparency for the outside edges and we'll
-        // get blurry edges.  CAIRO_EXTEND_PAD would also work here, but it's not
-        // implemented for image sources.
+        // get blurry edges.  CAIRO_EXTEND_PAD would also work here, if
+        // available
         //
         // This effectively disables smooth upscaling for images.
-        pat->SetFilter(0);
+        if (xscale > 1.0 || yscale > 1.0 || ctxHasNonTranslation)
+            pat->SetFilter(0);
+        break;
+
+    case gfxASurface::SurfaceTypeQuartz:
+    case gfxASurface::SurfaceTypeQuartzImage:
+        // Do nothing, Mac seems to be OK. Really?
+        break;
+
+    default:
+        // turn on EXTEND_PAD.
+        // This is what we really want for all surface types, if the
+        // implementation was universally good.
+        if (xscale != 1.0 || yscale != 1.0 || ctxHasNonTranslation)
+            pat->SetExtend(gfxPattern::EXTEND_PAD);
+        break;
     }
-#endif
+
+    gfxContext::GraphicsOperator op = ctx->CurrentOperator();
+    if (op == gfxContext::OPERATOR_OVER && mFormat == gfxASurface::ImageFormatRGB24)
+        ctx->SetOperator(gfxContext::OPERATOR_SOURCE);
 
     ctx->NewPath();
     ctx->SetPattern(pat);
     ctx->Rectangle(destRect);
     ctx->Fill();
+
+    ctx->SetOperator(op);
+    ctx->SetColor(gfxRGBA(0,0,0,0));
 
     return NS_OK;
 }
@@ -621,10 +704,15 @@ nsThebesImage::ThebesDrawTile(gfxContext *thebesContext,
         thebesContext->SetPattern(&pat);
     }
 
+    gfxContext::GraphicsOperator op = thebesContext->CurrentOperator();
+    if (op == gfxContext::OPERATOR_OVER && mFormat == gfxASurface::ImageFormatRGB24)
+        thebesContext->SetOperator(gfxContext::OPERATOR_SOURCE);
+
     thebesContext->NewPath();
     thebesContext->Rectangle(targetRect, doSnap);
     thebesContext->Fill();
 
+    thebesContext->SetOperator(op);
     thebesContext->SetColor(gfxRGBA(0,0,0,0));
 
     return NS_OK;

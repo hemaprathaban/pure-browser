@@ -114,6 +114,10 @@
 // The tab panels container.
 #define NS_THEME_TAB_PANELS                                65
 
+// The tabs scroll arrows (left/right)
+#define NS_THEME_TAB_SCROLLARROW_BACK                      66
+#define NS_THEME_TAB_SCROLLARROW_FORWARD                   67
+
 // A tooltip
 #define NS_THEME_TOOLTIP                                   71
 
@@ -190,6 +194,9 @@
 // The ticks for a slider.
 #define NS_THEME_SCALE_TICK                               117
 
+// A groupbox
+#define NS_THEME_GROUPBOX                                  149
+
 // A generic container that always repaints on state
 // changes.  This is a hack to make checkboxes and
 // radio buttons work.
@@ -227,3 +234,7 @@
 // For text on non-iconic menuitems only
 #define NS_THEME_MENUITEMTEXT                              220
 
+// Vista Rebars
+#define NS_THEME_COMMUNICATIONS_TOOLBOX                    221
+#define NS_THEME_MEDIA_TOOLBOX                             222
+#define NS_THEME_BROWSER_TAB_BAR_TOOLBOX                   223

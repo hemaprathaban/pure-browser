@@ -48,7 +48,6 @@
 #include "secerr.h"
 #include "nssilock.h"
 #include "prmon.h"
-#include "nsslocks.h"
 #include "base64.h"
 #include "sechash.h"
 #include "plhash.h"
@@ -362,8 +361,8 @@ CERT_AddTempCertToPerm(CERTCertificate *cert, char *nickname,
 }
 
 CERTCertificate *
-__CERT_NewTempCertificate(CERTCertDBHandle *handle, SECItem *derCert,
-			  char *nickname, PRBool isperm, PRBool copyDER)
+CERT_NewTempCertificate(CERTCertDBHandle *handle, SECItem *derCert,
+			char *nickname, PRBool isperm, PRBool copyDER)
 {
     NSSCertificate *c;
     CERTCertificate *cc;
@@ -481,12 +480,13 @@ loser:
     return NULL;
 }
 
+/* This symbol is exported for backward compatibility. */
 CERTCertificate *
-CERT_NewTempCertificate(CERTCertDBHandle *handle, SECItem *derCert,
-			char *nickname, PRBool isperm, PRBool copyDER)
+__CERT_NewTempCertificate(CERTCertDBHandle *handle, SECItem *derCert,
+			  char *nickname, PRBool isperm, PRBool copyDER)
 {
-    return( __CERT_NewTempCertificate(handle, derCert, nickname,
-                                      isperm, copyDER) );
+    return CERT_NewTempCertificate(handle, derCert, nickname,
+                                   isperm, copyDER);
 }
 
 /* maybe all the wincx's should be some const for internal token login? */

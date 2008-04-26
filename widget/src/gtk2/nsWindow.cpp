@@ -59,6 +59,9 @@
 #include <gtk/gtkwindow.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
+#include <X11/XF86keysym.h>
+
+#include "nsWidgetAtoms.h"
 
 #ifdef MOZ_ENABLE_STARTUP_NOTIFICATION
 #define SN_API_NOT_YET_FROZEN
@@ -134,8 +137,8 @@ static GdkWindow *get_inner_gdk_window (GdkWindow *aWindow,
                                         gint *retx, gint *rety);
 
 static inline PRBool is_context_menu_key(const nsKeyEvent& inKeyEvent);
-static void   key_event_to_context_menu_event(const nsKeyEvent* inKeyEvent,
-                                              nsMouseEvent* outCMEvent);
+static void   key_event_to_context_menu_event(nsMouseEvent &aEvent,
+                                              GdkEventKey *aGdkEvent);
 
 static int    is_parent_ungrab_enter(GdkEventCrossing *aEvent);
 static int    is_parent_grab_leave(GdkEventCrossing *aEvent);
@@ -1917,6 +1920,20 @@ nsWindow::OnEnterNotifyEvent(GtkWidget *aWidget, GdkEventCrossing *aEvent)
     DispatchEvent(&event, status);
 }
 
+static PRBool
+is_top_level_mouse_exit(GdkWindow* aWindow, GdkEventCrossing *aEvent)
+{
+    gint x = gint(aEvent->x_root);
+    gint y = gint(aEvent->y_root);
+    GdkDisplay* display = gdk_drawable_get_display(aWindow);
+    GdkWindow* winAtPt = gdk_display_get_window_at_pointer(display, &x, &y);
+    if (!winAtPt)
+        return PR_TRUE;
+    GdkWindow* topLevelAtPt = gdk_window_get_toplevel(winAtPt);
+    GdkWindow* topLevelWidget = gdk_window_get_toplevel(aWindow);
+    return topLevelAtPt != topLevelWidget;
+}
+
 void
 nsWindow::OnLeaveNotifyEvent(GtkWidget *aWidget, GdkEventCrossing *aEvent)
 {
@@ -1930,6 +1947,9 @@ nsWindow::OnLeaveNotifyEvent(GtkWidget *aWidget, GdkEventCrossing *aEvent)
     event.refPoint.y = nscoord(aEvent->y);
 
     event.time = aEvent->time;
+
+    event.exit = is_top_level_mouse_exit(mDrawingarea->inner_window, aEvent)
+        ? nsMouseEvent::eTopLevel : nsMouseEvent::eChild;
 
     LOG(("OnLeaveNotify: %p\n", (void *)this));
 
@@ -2087,6 +2107,34 @@ nsWindow::OnButtonPressEvent(GtkWidget *aWidget, GdkEventButton *aEvent)
     case 3:
         domButton = nsMouseEvent::eRightButton;
         break;
+    // These are mapped to horizontal scroll
+    case 6:
+    case 7:
+        {
+            nsMouseScrollEvent event(PR_TRUE, NS_MOUSE_SCROLL, this);
+            event.scrollFlags = nsMouseScrollEvent::kIsHorizontal;
+            event.refPoint.x = nscoord(aEvent->x);
+            event.refPoint.y = nscoord(aEvent->y);
+            event.delta = (aEvent->button == 6) ? -2 : 2;
+
+            event.isShift   = (aEvent->state & GDK_SHIFT_MASK) != 0;
+            event.isControl = (aEvent->state & GDK_CONTROL_MASK) != 0;
+            event.isAlt     = (aEvent->state & GDK_MOD1_MASK) != 0;
+            event.isMeta    = (aEvent->state & GDK_MOD4_MASK) != 0;
+
+            event.time = aEvent->time;
+
+            nsEventStatus status;
+            DispatchEvent(&event, status);
+            return;
+        }
+    // Map buttons 8-9 to back/forward
+    case 8:
+        DispatchCommandEvent(nsWidgetAtoms::Back);
+        return;
+    case 9:
+        DispatchCommandEvent(nsWidgetAtoms::Forward);
+        return;
     default:
         return;
     }
@@ -2236,6 +2284,15 @@ is_latin_shortcut_key(guint aKeyval)
             (GDK_a <= aKeyval && aKeyval <= GDK_z));
 }
 
+PRBool
+nsWindow::DispatchCommandEvent(nsIAtom* aCommand)
+{
+    nsEventStatus status;
+    nsCommandEvent event(PR_TRUE, nsWidgetAtoms::onAppCommand, aCommand, this);
+    DispatchEvent(&event, status);
+    return TRUE;
+}
+
 gboolean
 nsWindow::OnKeyPressEvent(GtkWidget *aWidget, GdkEventKey *aEvent)
 {
@@ -2297,6 +2354,25 @@ nsWindow::OnKeyPressEvent(GtkWidget *aWidget, GdkEventKey *aEvent)
         || aEvent->keyval == GDK_Meta_R) {
         return TRUE;
     }
+
+    // Look for specialized app-command keys
+    switch (aEvent->keyval) {
+        case XF86XK_Back:
+            return DispatchCommandEvent(nsWidgetAtoms::Back);
+        case XF86XK_Forward:
+            return DispatchCommandEvent(nsWidgetAtoms::Forward);
+        case XF86XK_Refresh:
+            return DispatchCommandEvent(nsWidgetAtoms::Reload);
+        case XF86XK_Stop:
+            return DispatchCommandEvent(nsWidgetAtoms::Stop);
+        case XF86XK_Search:
+            return DispatchCommandEvent(nsWidgetAtoms::Search);
+        case XF86XK_Favorites:
+            return DispatchCommandEvent(nsWidgetAtoms::Bookmarks);
+        case XF86XK_HomePage:
+            return DispatchCommandEvent(nsWidgetAtoms::Home);
+    }
+
     nsKeyEvent event(PR_TRUE, NS_KEY_PRESS, this);
     InitKeyEvent(event, aEvent);
     if (isKeyDownCancelled) {
@@ -2397,8 +2473,10 @@ nsWindow::OnKeyPressEvent(GtkWidget *aWidget, GdkEventKey *aEvent)
     // before we dispatch a key, check if it's the context menu key.
     // If so, send a context menu key event instead.
     if (is_context_menu_key(event)) {
-        nsMouseEvent contextMenuEvent(PR_TRUE, 0, nsnull, nsMouseEvent::eReal);
-        key_event_to_context_menu_event(&event, &contextMenuEvent);
+        nsMouseEvent contextMenuEvent(PR_TRUE, NS_CONTEXTMENU, this,
+                                      nsMouseEvent::eReal,
+                                      nsMouseEvent::eContextMenuKey);
+        key_event_to_context_menu_event(contextMenuEvent, aEvent);
         DispatchEvent(&contextMenuEvent, status);
     }
     else {
@@ -2466,11 +2544,11 @@ nsWindow::OnScrollEvent(GtkWidget *aWidget, GdkEventScroll *aEvent)
         break;
     case GDK_SCROLL_LEFT:
         event.scrollFlags = nsMouseScrollEvent::kIsHorizontal;
-        event.delta = -3;
+        event.delta = -1;
         break;
     case GDK_SCROLL_RIGHT:
         event.scrollFlags = nsMouseScrollEvent::kIsHorizontal;
-        event.delta = 3;
+        event.delta = 1;
         break;
     }
 
@@ -3076,6 +3154,20 @@ nsWindow::NativeCreate(nsIWidget        *aParent,
                 mShell = gtk_window_new(GTK_WINDOW_POPUP);
                 gtk_window_set_wmclass(GTK_WINDOW(mShell), "Popup", cBrand.get());
             }
+
+            GdkWindowTypeHint gtkTypeHint;
+            switch (aInitData->mPopupHint) {
+                case ePopupTypeMenu:
+                    gtkTypeHint = GDK_WINDOW_TYPE_HINT_POPUP_MENU;
+                    break;
+                case ePopupTypeTooltip:
+                    gtkTypeHint = GDK_WINDOW_TYPE_HINT_TOOLTIP;
+                    break;
+                default:
+                    gtkTypeHint = GDK_WINDOW_TYPE_HINT_UTILITY;
+                    break;
+            }
+            gtk_window_set_type_hint(GTK_WINDOW(mShell), gtkTypeHint);
 
             if (topLevelParent) {
                 gtk_window_set_transient_for(GTK_WINDOW(mShell),
@@ -5028,18 +5120,16 @@ is_context_menu_key(const nsKeyEvent& aKeyEvent)
 }
 
 void
-key_event_to_context_menu_event(const nsKeyEvent* aKeyEvent,
-                                nsMouseEvent* aCMEvent)
+key_event_to_context_menu_event(nsMouseEvent &aEvent,
+                                GdkEventKey *aGdkEvent)
 {
-    memcpy(aCMEvent, aKeyEvent, sizeof(nsInputEvent));
-    aCMEvent->eventStructType = NS_MOUSE_EVENT;
-    aCMEvent->message = NS_CONTEXTMENU;
-    aCMEvent->context = nsMouseEvent::eContextMenuKey;
-    aCMEvent->button = nsMouseEvent::eLeftButton;
-    aCMEvent->isShift = aCMEvent->isControl = PR_FALSE;
-    aCMEvent->isAlt = aCMEvent->isMeta = PR_FALSE;
-    aCMEvent->clickCount = 0;
-    aCMEvent->acceptActivation = PR_FALSE;
+    aEvent.refPoint = nsPoint(0, 0);
+    aEvent.isShift = PR_FALSE;
+    aEvent.isControl = PR_FALSE;
+    aEvent.isAlt = PR_FALSE;
+    aEvent.isMeta = PR_FALSE;
+    aEvent.time = aGdkEvent->time;
+    aEvent.clickCount = 1;
 }
 
 /* static */
@@ -6057,9 +6147,17 @@ nsWindow::GetThebesSurface()
     mThebesSurface = nsnull;
 
     if (!mThebesSurface) {
-        GdkDrawable* d = GDK_DRAWABLE(mDrawingarea->inner_window);
+        GdkDrawable* d;
+        gint x_offset, y_offset;
+        gdk_window_get_internal_paint_info(mDrawingarea->inner_window,
+                &d, &x_offset, &y_offset);
+
         gint width, height;
         gdk_drawable_get_size(d, &width, &height);
+        // Owen Taylor says this is the right thing to do!
+        width = PR_MIN(32767, width);
+        height = PR_MIN(32767, height);
+
         if (!gfxPlatform::UseGlitz()) {
             mThebesSurface = new gfxXlibSurface
                 (GDK_WINDOW_XDISPLAY(d),
@@ -6107,6 +6205,10 @@ nsWindow::GetThebesSurface()
             //fprintf (stderr, "## nsThebesDrawingSurface::Init Glitz DRAWABLE %p (DC: %p)\n", aWidget, aDC);
             mThebesSurface = new gfxGlitzSurface (gdraw, gsurf, PR_TRUE);
 #endif
+        }
+
+        if (mThebesSurface) {
+            mThebesSurface->SetDeviceOffset(gfxPoint(-x_offset, -y_offset));
         }
     }
 

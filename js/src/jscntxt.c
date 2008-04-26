@@ -890,17 +890,20 @@ js_ReportOutOfMemory(JSContext *cx)
      * rather than a native frame.
      */
     for (fp = cx->fp; fp; fp = fp->down) {
-        if (fp->script && fp->pc) {
+        if (fp->regs) {
             report.filename = fp->script->filename;
-            report.lineno = js_PCToLineNumber(cx, fp->script, fp->pc);
+            report.lineno = js_PCToLineNumber(cx, fp->script, fp->regs->pc);
             break;
         }
     }
 
     /*
-     * If debugErrorHook is present then we give it a chance to veto
-     * sending the error on to the regular ErrorReporter.
+     * If debugErrorHook is present then we give it a chance to veto sending
+     * the error on to the regular ErrorReporter. We also clear a pending
+     * exception if any now so the hooks can replace the out-of-memory error
+     * by a script-catchable exception.
      */
+    cx->throwing = JS_FALSE;
     if (onError) {
         JSDebugErrorHook hook = cx->debugHooks->debugErrorHook;
         if (hook &&
@@ -924,6 +927,12 @@ void
 js_ReportOverRecursed(JSContext *cx)
 {
     JS_ReportErrorNumber(cx, js_GetErrorMessage, NULL, JSMSG_OVER_RECURSED);
+}
+
+void
+js_ReportAllocationOverflow(JSContext *cx)
+{
+    JS_ReportErrorNumber(cx, js_GetErrorMessage, NULL, JSMSG_ALLOC_OVERFLOW);
 }
 
 JSBool
@@ -951,9 +960,9 @@ js_ReportErrorVA(JSContext *cx, uintN flags, const char *format, va_list ap)
 
     /* Find the top-most active script frame, for best line number blame. */
     for (fp = cx->fp; fp; fp = fp->down) {
-        if (fp->script && fp->pc) {
+        if (fp->regs) {
             report.filename = fp->script->filename;
-            report.lineno = js_PCToLineNumber(cx, fp->script, fp->pc);
+            report.lineno = js_PCToLineNumber(cx, fp->script, fp->regs->pc);
             break;
         }
     }
@@ -1163,9 +1172,9 @@ js_ReportErrorNumberVA(JSContext *cx, uintN flags, JSErrorCallback callback,
      * see if the next frame has a script/pc combo we can use.
      */
     for (fp = cx->fp; fp; fp = fp->down) {
-        if (fp->script && fp->pc) {
+        if (fp->regs) {
             report.filename = fp->script->filename;
-            report.lineno = js_PCToLineNumber(cx, fp->script, fp->pc);
+            report.lineno = js_PCToLineNumber(cx, fp->script, fp->regs->pc);
             break;
         }
     }

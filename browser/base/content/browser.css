@@ -23,6 +23,11 @@ toolbar[printpreview="true"] {
   -moz-binding: url("chrome://browser/content/urlbarBindings.xml#urlbar-rich-result-popup");
 }
 
+#urlbar-throbber:not([busy="true"]),
+#urlbar-throbber[busy="true"] + #page-proxy-favicon {
+  display: none;
+} 
+
 /* ::::: Unified Back-/Forward Button ::::: */
 #back-forward-dropmarker > image ,
 #back-forward-dropmarker > label {
@@ -59,4 +64,25 @@ window[chromehidden~="toolbar"] toolbar:not(.toolbar-primary):not(.chromeclass-m
 
 #FindToolbar {
   overflow-x: hidden;
+}
+
+/* Identity UI */
+#identity-popup-content-box.unknownIdentity > #identity-popup-connectedToLabel ,
+#identity-popup-content-box.unknownIdentity > #identity-popup-runByLabel ,
+#identity-popup-content-box.unknownIdentity > #identity-popup-content-host ,
+#identity-popup-content-box.unknownIdentity > #identity-popup-content-owner ,
+#identity-popup-content-box.verifiedIdentity > #identity-popup-connectedToLabel2 ,
+#identity-popup-content-box.verifiedDomain > #identity-popup-connectedToLabel2 {
+  display: none;
+}
+
+/* ::::: Fullscreen pseudo-toolbar ::::: */
+#fullscr-toggler {
+  display: none;
+  min-height: 5px;
+  height: 5px;
+}
+
+#navigator-toolbox[inFullscreen="true"] #fullscr-toggler {
+  display: -moz-box;
 }

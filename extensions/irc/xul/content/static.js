@@ -24,6 +24,7 @@
  *   Robert Ginda, <rginda@netscape.com>, original author
  *   Chiaki Koufugata chiaki@mozilla.gr.jp UI i18n
  *   Samuel Sieb, samuel@sieb.net, MIRC color codes, munger menu, and various
+ *   James Ross, silver@warwickcompsoc.co.uk
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -39,11 +40,11 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-const __cz_version   = "0.9.80";
+const __cz_version   = "0.9.81";
 const __cz_condition = "green";
 const __cz_suffix    = "";
 const __cz_guid      = "59c81df5-4b7a-477b-912d-4e0fdf64e5f2";
-const __cz_locale    = "0.9.80";
+const __cz_locale    = "0.9.81";
 
 var warn;
 var ASSERT;
@@ -438,6 +439,9 @@ function initApplicationCompatibility()
                 break;
             case "{3db10fab-e461-4c80-8b97-957ad5f8ea47}": // Netscape
                 client.host = "Netscape";
+                break;
+            case "songbird@songbirdnest.com": // Songbird
+                client.host = "Songbird";
                 break;
             default:
                 client.unknownUID = app.ID;
@@ -1192,12 +1196,30 @@ function msgIsImportant(msg, sourceNick, network)
     return false;
 }
 
-function isStartupURL(url)
+function ensureCachedCanonicalURLs(array)
 {
-    return arrayContains(client.prefs["initialURLs"], url);
+    if ("canonicalURLs" in array)
+        return;
+
+    /* Caching this on the array is safe because the PrefManager constructs
+     * a new array if the preference changes, but otherwise keeps the same
+     * one around.
+     */
+    array.canonicalURLs = new Array();
+    for (var i = 0; i < array.length; i++)
+        array.canonicalURLs.push(makeCanonicalIRCURL(array[i]));
 }
 
-function cycleView (amount)
+function isStartupURL(url)
+{
+    // We canonicalize all URLs before we do the (string) comparison.
+    url = makeCanonicalIRCURL(url);
+    var list = client.prefs["initialURLs"];
+    ensureCachedCanonicalURLs(list);
+    return arrayContains(list.canonicalURLs, url);
+}
+
+function cycleView(amount)
 {
     var len = client.viewsArray.length;
     if (len <= 1)
@@ -1832,8 +1854,7 @@ function gotoIRCURL(url, e)
                 var chan = new CIRCChannel(serv, null, target);
 
                 client.pendingViewContext = e;
-                d = { channelName: chan.unicodeName, key: key,
-                      charset: url.charset };
+                d = {channelToJoin: chan, key: key};
                 targetObject = network.dispatch("join", d);
                 delete client.pendingViewContext;
             }
@@ -3703,18 +3724,18 @@ function cli_load(url, scope)
 }
 
 client.sayToCurrentTarget =
-function cli_say(msg)
+function cli_say(msg, isInteractive)
 {
     if ("say" in client.currentObject)
     {
-        client.currentObject.dispatch("say", {message: msg});
+        client.currentObject.dispatch("say", {message: msg}, isInteractive);
         return;
     }
 
     switch (client.currentObject.TYPE)
     {
         case "IRCClient":
-            dispatch("eval", {expression: msg});
+            dispatch("eval", {expression: msg}, isInteractive);
             break;
 
         default:

@@ -73,9 +73,9 @@ pref("extensions.getAddons.showPane", true);
 pref("extensions.getAddons.browseAddons", "https://%LOCALE%.add-ons.mozilla.com/%LOCALE%/%APP%");
 pref("extensions.getAddons.maxResults", 5);
 pref("extensions.getAddons.recommended.browseURL", "https://%LOCALE%.add-ons.mozilla.com/%LOCALE%/%APP%/recommended");
-pref("extensions.getAddons.recommended.url", "https://services.addons.mozilla.org/%LOCALE%/%APP%/api/list/featured/all/10");
+pref("extensions.getAddons.recommended.url", "https://services.addons.mozilla.org/%LOCALE%/%APP%/api/%API_VERSION%/list/featured/all/10/%OS%/%VERSION%");
 pref("extensions.getAddons.search.browseURL", "https://%LOCALE%.add-ons.mozilla.com/%LOCALE%/%APP%/search?q=%TERMS%");
-pref("extensions.getAddons.search.url", "https://services.addons.mozilla.org/%LOCALE%/%APP%/api/search/%TERMS%");
+pref("extensions.getAddons.search.url", "https://services.addons.mozilla.org/%LOCALE%/%APP%/api/%API_VERSION%/search/%TERMS%/all/10/%OS%/%VERSION%");
 
 // Blocklist preferences
 pref("extensions.blocklist.enabled", true);
@@ -154,7 +154,7 @@ pref("app.update.incompatible.mode", 0);
 //  .. etc ..
 //
 pref("extensions.update.enabled", true);
-pref("extensions.update.url", "chrome://mozapps/locale/extensions/extensions.properties");
+pref("extensions.update.url", "https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=%ITEM_MAXAPPVERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&appOS=%APP_OS%&appABI=%APP_ABI%&locale=%APP_LOCALE%");
 pref("extensions.update.interval", 86400);  // Check for updates to Extensions and 
                                             // Themes every day
 // Non-symmetric (not shared by extensions) extension-specific [update] preferences
@@ -197,6 +197,9 @@ pref("browser.chrome.site_icons", true);
 pref("browser.chrome.favicons", true);
 pref("browser.formfill.enable", true);
 pref("browser.warnOnQuit", true);
+pref("browser.warnOnRestart", true);
+pref("browser.fullscreen.autohide", true);
+pref("browser.fullscreen.animateUp", 1);
 
 #ifdef UNIX_BUT_NOT_MAC
 pref("browser.urlbar.clickSelectsAll", false);
@@ -210,14 +213,16 @@ pref("browser.urlbar.doubleClickSelectsAll", false);
 #endif
 pref("browser.urlbar.autoFill", false);
 pref("browser.urlbar.matchOnlyTyped", false);
+pref("browser.urlbar.matchOnWordBoundary", true);
+pref("browser.urlbar.filter.javascript", true);
 
 // the maximum number of results to show in autocomplete when doing richResults
-pref("browser.urlbar.maxRichResults", 25);
+pref("browser.urlbar.maxRichResults", 12);
 // Size of "chunks" affects the number of places to process between each search
 // timeout (ms). Too big and the UI will be unresponsive; too small and we'll
 // be waiting on the timeout too often without many results.
 pref("browser.urlbar.search.chunkSize", 1000);
-pref("browser.urlbar.search.timeout", 50);
+pref("browser.urlbar.search.timeout", 100);
 
 pref("browser.download.useDownloadDir", true);
 pref("browser.download.folderList", 0);
@@ -233,6 +238,7 @@ pref("browser.download.manager.flashCount", 2);
 pref("browser.download.manager.addToRecentDocs", true);
 pref("browser.download.manager.quitBehavior", 0);
 pref("browser.download.manager.scanWhenDone", true);
+pref("browser.download.manager.resumeOnWakeDelay", 10000);
 
 // search engines URL
 pref("browser.search.searchEnginesURL",      "https://%LOCALE%.add-ons.mozilla.com/%LOCALE%/firefox/%VERSION%/search-engines/");
@@ -318,9 +324,10 @@ pref("browser.tabs.selectOwnerOnClose", true);
 pref("browser.bookmarks.sort.direction", "descending");
 pref("browser.bookmarks.sort.resource", "rdf:http://home.netscape.com/NC-rdf#Name");
 
-// By default, do not overwrite bookmarks.html in the profile directory
-// See bug #381216 for details
-pref("browser.bookmarks.overwrite",               false);
+// By default, do not export HTML at shutdown.
+// If true, at shutdown the bookmarks in your menu and toolbar will
+// be exported as HTML to the bookmarks.html file.
+pref("browser.bookmarks.autoExportHTML",          false);
 
 // Scripts & Windows prefs
 pref("dom.disable_open_during_load",              true);
@@ -340,6 +347,8 @@ pref("dom.disable_window_open_feature.status",    true);
 // without it there isn't a really good way to prevent chrome spoofing, see bug 337344
 pref("dom.disable_window_open_feature.location",  true);
 pref("dom.disable_window_status_change",          true);
+// allow JS to move and resize existing windows
+pref("dom.disable_window_move_resize",            false);
 // prevent JS from monkeying with window focus, etc
 pref("dom.disable_window_flip",                   true);
 
@@ -364,7 +373,7 @@ pref("privacy.sanitize.promptOnSanitize", true);
 
 pref("network.proxy.share_proxy_settings",  false); // use the same proxy settings for all protocols
 
-pref("network.cookie.cookieBehavior",       1); // 0-Accept, 1-dontAcceptForeign, 2-dontUse
+pref("network.cookie.cookieBehavior", 0); // 0-Accept, 1-dontAcceptForeign, 2-dontUse
 
 // l12n and i18n
 pref("intl.accept_languages", "chrome://global/locale/intl.properties");
@@ -406,7 +415,7 @@ pref("mousewheel.withmetakey.action",0);
 pref("mousewheel.withmetakey.sysnumlines",true);
 pref("mousewheel.withmetakey.numlines",1);
 #endif
-pref("mousewheel.withcontrolkey.action",5);
+pref("mousewheel.withcontrolkey.action",3);
 pref("mousewheel.withcontrolkey.sysnumlines",false);
 pref("mousewheel.withcontrolkey.numlines",1);
 
@@ -528,39 +537,59 @@ pref("browser.feeds.handler", "ask");
 pref("browser.videoFeeds.handler", "ask");
 pref("browser.audioFeeds.handler", "ask");
 
-// For now, this is living in content rather than in locales, as per Pike.
-// Eventually it will get merged into region.properties; see bug 395277.
-//
-// At startup, if the handler service notices that the version number here
-// is newer than the version number in the handler service datastore, it will
-// add any handlers it finds in the prefs (as seeded by this file) to its
-// datastore.  
-pref("gecko.handlerService.defaultHandlersVersion", "0");
-//
+// At startup, if the handler service notices that the version number in the
+// region.properties file is newer than the version number in the handler
+// service datastore, it will add any new handlers it finds in the prefs (as
+// seeded by this file) to its datastore.  
+pref("gecko.handlerService.defaultHandlersVersion", "chrome://browser-region/locale/region.properties");
+
 // The default set of web-based protocol handlers shown in the application
-// selection dialog
-pref("gecko.handlerService.schemes.webcal.0.name", "WebCal Test Handler");
-pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "http://handler-test.mozilla.org/webcal?url=%s");
+// selection dialog for webcal: ; I've arbitrarily picked 4 default handlers
+// per protocol, but if some locale wants more than that (or defaults for some
+// protocol not currently listed here), we should go ahead and add those.
+
+// webcal
+pref("gecko.handlerService.schemes.webcal.0.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.1.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.1.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.2.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.2.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.3.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.webcal.3.uriTemplate", "chrome://browser-region/locale/region.properties");
+
+// mailto
+pref("gecko.handlerService.schemes.mailto.0.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.0.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.1.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.1.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.2.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.2.uriTemplate", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.3.name", "chrome://browser-region/locale/region.properties");
+pref("gecko.handlerService.schemes.mailto.3.uriTemplate", "chrome://browser-region/locale/region.properties");
+
+
+// By default, we don't want protocol/content handlers to be registered from a different host, see bug 402287
+pref("gecko.handlerService.allowRegisterFromDifferentHost", false);
 
 #ifdef MOZ_SAFE_BROWSING
-// Safe browsing does nothing unless both these prefs are set.
+// Safe browsing does nothing unless this pref is set
 pref("browser.safebrowsing.enabled", true);
-pref("browser.safebrowsing.remoteLookups", false);
 
 // Prevent loading of pages identified as malware
 pref("browser.safebrowsing.malware.enabled", true);
 
 // Non-enhanced mode (local url lists) URL list to check for updates
-pref("browser.safebrowsing.provider.0.updateURL", "http://sb.google.com/safebrowsing/downloads?client={moz:client}&appver={moz:version}&pver=2.1");
+pref("browser.safebrowsing.provider.0.updateURL", "http://safebrowsing.clients.google.com/safebrowsing/downloads?client={moz:client}&appver={moz:version}&pver=2.1");
 
 pref("browser.safebrowsing.dataProvider", 0);
 
 // Does the provider name need to be localizable?
 pref("browser.safebrowsing.provider.0.name", "Google");
-pref("browser.safebrowsing.provider.0.lookupURL", "http://sb.google.com/safebrowsing/lookup?sourceid=firefox-antiphish&features=TrustRank&client={moz:client}&appver={moz:version}&");
-pref("browser.safebrowsing.provider.0.keyURL", "https://sb-ssl.google.com/safebrowsing/getkey?client={moz:client}&");
-pref("browser.safebrowsing.provider.0.reportURL", "http://sb.google.com/safebrowsing/report?");
-pref("browser.safebrowsing.provider.0.gethashURL", "http://sb.google.com/safebrowsing/gethash?client={moz:client}&appver={moz:version}&pver=2.1");
+pref("browser.safebrowsing.provider.0.lookupURL", "http://safebrowsing.clients.google.com/safebrowsing/lookup?sourceid=firefox-antiphish&features=TrustRank&client={moz:client}&appver={moz:version}&");
+pref("browser.safebrowsing.provider.0.keyURL", "https://sb-ssl.google.com/safebrowsing/newkey?client={moz:client}&appver={moz:version}&pver=2.1");
+pref("browser.safebrowsing.provider.0.reportURL", "http://safebrowsing.clients.google.com/safebrowsing/report?");
+pref("browser.safebrowsing.provider.0.gethashURL", "http://safebrowsing.clients.google.com/safebrowsing/gethash?client={moz:client}&appver={moz:version}&pver=2.1");
 
 // privacy policy -- Both url and fallbackurl must exist, although they may
 // point to the same file.  fallbackurl must be a chrome url
@@ -578,6 +607,13 @@ pref("browser.safebrowsing.warning.infoURL", "http://%LOCALE%.www.mozilla.com/%L
 // Name of the about: page contributed by safebrowsing to handle display of error
 // pages on phishing/malware hits.  (bug 399233)
 pref("urlclassifier.alternate_error_page", "blocked");
+
+// The number of random entries to send with a gethash request.
+pref("urlclassifier.gethashnoise", 4);
+
+// URL for checking the reason for a malware warning.
+pref("browser.safebrowsing.malware.reportURL", "http://www.stopbadware.org/reports/container?source=@APP_UA_NAME@&version=@APP_VERSION@&reportname=");
+
 #endif
 
 // defaults to true
@@ -589,7 +625,7 @@ pref("browser.EULA.version", 2);
 pref("browser.sessionstore.enabled", true);
 pref("browser.sessionstore.resume_from_crash", true);
 pref("browser.sessionstore.resume_session_once", false);
- 
+
 // minimal interval between two save operations in milliseconds
 pref("browser.sessionstore.interval", 10000);
 // maximum amount of POSTDATA to be saved in bytes per history entry (-1 = all of it)
@@ -600,8 +636,6 @@ pref("browser.sessionstore.postdata", 0);
 pref("browser.sessionstore.privacy_level", 1);
 // how many tabs can be reopened (per window)
 pref("browser.sessionstore.max_tabs_undo", 10);
-// maximum number of pages of back-history per tab to save
-pref("browser.sessionstore.max_tab_back_history", 10);
 
 // allow META refresh by default
 pref("accessibility.blockautorefresh", false);
@@ -616,6 +650,10 @@ pref("browser.places.createdSmartBookmarks", false);
 // bookmark post-data annotations (bug 398914)
 // XXX to be removed after beta 2 (bug 391419)
 pref("browser.places.migratePostDataAnnotations", true);
+
+// If true, will update the Smart Bookmarks uri for
+// recent tags (bug 385245). Useful just for FX3 beta users.
+pref("browser.places.updateRecentTagsUri", true);
 
 // the (maximum) number of the recent visits to sample
 // when calculating frecency
@@ -648,9 +686,9 @@ pref("places.frecency.defaultBucketWeight", 10);
 
 // bonus (in percent) for visit transition types for frecency calculations
 pref("places.frecency.embedVisitBonus", 0);
-pref("places.frecency.linkVisitBonus", 120);
-pref("places.frecency.typedVisitBonus", 200);
-pref("places.frecency.bookmarkVisitBonus", 140);
+pref("places.frecency.linkVisitBonus", 100);
+pref("places.frecency.typedVisitBonus", 2000);
+pref("places.frecency.bookmarkVisitBonus", 150);
 pref("places.frecency.downloadVisitBonus", 0);
 pref("places.frecency.permRedirectVisitBonus", 0);
 pref("places.frecency.tempRedirectVisitBonus", 0);
@@ -672,8 +710,21 @@ pref("browser.ssl_override_behavior", 1);
 // 2 - show full domain (e.g. bugzilla.mozilla.org)
 pref("browser.identity.ssl_domain_display", 0);
 
+// True if the user should be prompted when a web application supports
+// offline apps.
+pref("browser.offline-apps.notify", true);
+
+// if true, use full page zoom instead of text zoom
+pref("browser.zoom.full", true);
+
+// Whether or not to save and restore zoom levels on a per-site basis.
+pref("browser.zoom.siteSpecific", true);
+
 // replace newlines with spaces when pasting into <input type="text"> fields
 pref("editor.singleLine.pasteNewlines", 2);
 
 // The breakpad report server to link to in about:crashes
 pref("breakpad.reportURL", "http://crash-stats.mozilla.com/report/index/");
+
+// base URL for web-based support pages
+pref("app.support.baseURL", "http://support.mozilla.com/1/%APP%/%VERSION%/%OS%/%LOCALE%/");

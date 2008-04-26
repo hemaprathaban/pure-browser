@@ -438,6 +438,9 @@ CSSLoaderImpl::RecycleParser(nsICSSParser* aParser)
   if (!gParsers->AppendObject(aParser)) {
     return NS_ERROR_FAILURE;
   }
+
+  // Make sure the parser doesn't keep the last sheet it parsed alive
+  aParser->SetStyleSheet(nsnull);
   
   return NS_OK;
 }
@@ -1433,7 +1436,10 @@ CSSLoaderImpl::LoadSheet(SheetLoadData* aLoadData, StyleSheetState aSheetState)
     rv = NS_URIChainHasFlags(aLoadData->mURI,
                              nsIProtocolHandler::URI_INHERITS_SECURITY_CONTEXT,
                              &inherit);
-    if (NS_SUCCEEDED(rv) && inherit) {
+    if ((NS_SUCCEEDED(rv) && inherit) ||
+        (nsContentUtils::URIIsLocalFile(aLoadData->mURI) &&
+         NS_SUCCEEDED(aLoadData->mLoaderPrincipal->
+                      CheckMayLoad(aLoadData->mURI, PR_FALSE)))) {
       channel->SetOwner(aLoadData->mLoaderPrincipal);
     }
   }
@@ -1442,8 +1448,7 @@ CSSLoaderImpl::LoadSheet(SheetLoadData* aLoadData, StyleSheetState aSheetState)
   // model is: Necko owns the stream loader, which owns the load data,
   // which owns us
   nsCOMPtr<nsIUnicharStreamLoader> streamLoader;
-  rv = NS_NewUnicharStreamLoader(getter_AddRefs(streamLoader),
-                                 aLoadData);
+  rv = NS_NewUnicharStreamLoader(getter_AddRefs(streamLoader), aLoadData);
 
   if (NS_SUCCEEDED(rv))
     rv = channel->AsyncOpen(streamLoader, nsnull);
@@ -1497,9 +1502,6 @@ CSSLoaderImpl::ParseSheet(nsIUnicharInputStream* aStream,
     return rv;
   }
 
-  // The parser insists on passing out a strong ref to the sheet it
-  // parsed.  We don't care.
-  nsCOMPtr<nsICSSStyleSheet> dummySheet;
   // Push our load data on the stack so any kids can pick it up
   mParsingDatas.AppendElement(aLoadData);
   nsCOMPtr<nsIURI> sheetURI, baseURI;
@@ -1507,8 +1509,7 @@ CSSLoaderImpl::ParseSheet(nsIUnicharInputStream* aStream,
   aLoadData->mSheet->GetBaseURI(getter_AddRefs(baseURI));
   rv = parser->Parse(aStream, sheetURI, baseURI,
                      aLoadData->mSheet->Principal(), aLoadData->mLineNumber,
-                     aLoadData->mAllowUnsafeRules,
-                     *getter_AddRefs(dummySheet));
+                     aLoadData->mAllowUnsafeRules);
   mParsingDatas.RemoveElementAt(mParsingDatas.Count() - 1);
   RecycleParser(parser);
 

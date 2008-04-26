@@ -103,9 +103,6 @@ public:
     eDOMEvents_draggesture,
     eDOMEvents_drag,
     eDOMEvents_dragend,
-    eDOMEvents_dragstart,
-    eDOMEvents_dragleave,
-    eDOMEvents_drop,
     eDOMEvents_resize,
     eDOMEvents_scroll,
     eDOMEvents_overflow,
@@ -128,10 +125,7 @@ public:
     eDOMEvents_online,
     eDOMEvents_copy,
     eDOMEvents_cut,
-    eDOMEvents_paste,
-    eDOMEvents_beforecopy,
-    eDOMEvents_beforecut,
-    eDOMEvents_beforepaste
+    eDOMEvents_paste
 #ifdef MOZ_SVG
    ,
     eDOMEvents_SVGLoad,

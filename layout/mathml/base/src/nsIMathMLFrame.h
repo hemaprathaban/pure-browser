@@ -123,41 +123,6 @@ public:
           nsBoundingMetrics&   aContainerSize,
           nsHTMLReflowMetrics& aDesiredStretchSize) = 0;
 
- /* Place :
-  * This method is used before returning from Reflow(), or when a MathML frame
-  * has just been stretched. It is called to fine-tune the positions of the elements.
-  *
-  * IMPORTANT: This method uses the origin of child frames (rect.x and rect.y) as
-  * placeholders between calls: On invocation, child->GetRect(rect) should give a
-  * rect such that rect.x holds the child's descent, rect.y holds the child's ascent, 
-  * (rect.width should give the width, and rect.height should give the height).
-  * The Place() method will use this information to compute the desired size
-  * of the frame.
-  *
-  * @param aPlaceOrigin [in]
-  *        If aPlaceOrigin is false, compute your desired size using the
-  *        information in your children's rectangles. However, upon return,
-  *        the origins of your children should keep their ascent information, i.e., 
-  *        a child rect.x, and rect.y should still act like placeholders for the 
-  *        child's descent and ascent. 
-  *
-  *        If aPlaceOrigin is true, reflow is finished. You should position all
-  *        your children, and return your desired size. You should now convert
-  *        the origins of your child frames into the coordinate system 
-  *        expected by Gecko (which is relative to the upper-left
-  *        corner of the parent) and use FinishReflowChild() on your children
-  *        to complete post-reflow operations.
-  *
-  * @param aDesiredSize [out] parameter where you should return your
-  *        desired size and your ascent/descent info. Compute your desired size 
-  *        using the information in your children's rectangles, and include any
-  *        space you want for border/padding in the desired size you return.  
-  */
-  NS_IMETHOD
-  Place(nsIRenderingContext& aRenderingContext,
-        PRBool               aPlaceOrigin,
-        nsHTMLReflowMetrics& aDesiredSize) = 0;
-
  /* GetEmbellishData/SetEmbellishData :
   * Get/Set the mEmbellishData member variable.
   */
@@ -357,42 +322,42 @@ NS_DEFINE_STATIC_IID_ACCESSOR(nsIMathMLFrame, NS_IMATHMLFRAME_IID)
 // The bit merely tells the context of the frame. In the context of 
 // displaystyle="false", it is intended to slightly alter how the
 // rendering is done in inline mode.
-#define NS_MATHML_DISPLAYSTYLE                        0x00000001
+#define NS_MATHML_DISPLAYSTYLE                        0x00000001U
 
 // This bit is used to emulate TeX rendering. 
 // Internal use only, cannot be set by the user with an attribute.
-#define NS_MATHML_COMPRESSED                          0x00000002
+#define NS_MATHML_COMPRESSED                          0x00000002U
 
 // This bit is set if the frame will fire a vertical stretch
 // command on all its (non-empty) children.
 // Tags like <mrow> (or an inferred mrow), mpadded, etc, will fire a
 // vertical stretch command on all their non-empty children
-#define NS_MATHML_STRETCH_ALL_CHILDREN_VERTICALLY     0x00000004
+#define NS_MATHML_STRETCH_ALL_CHILDREN_VERTICALLY     0x00000004U
 
 // This bit is set if the frame will fire a horizontal stretch
 // command on all its (non-empty) children.
 // Tags like munder, mover, munderover, will fire a 
 // horizontal stretch command on all their non-empty children
-#define NS_MATHML_STRETCH_ALL_CHILDREN_HORIZONTALLY   0x00000008
+#define NS_MATHML_STRETCH_ALL_CHILDREN_HORIZONTALLY   0x00000008U
 
 // This bit is set if the frame has the explicit attribute
 // displaystyle="true" or "false". It is only relevant to <mstyle> and <mtable>
 // because they are the only tags where the attribute is allowed by the spec.
-#define NS_MATHML_EXPLICIT_DISPLAYSTYLE               0x00000020
+#define NS_MATHML_EXPLICIT_DISPLAYSTYLE               0x00000020U
 
 // This bit is set when the frame cannot be formatted due to an
 // error (e.g., invalid markup such as a <msup> without an overscript).
 // When set, a visual feedback will be provided to the user.
-#define NS_MATHML_ERROR                               0x80000000
+#define NS_MATHML_ERROR                               0x80000000U
 
 // a bit used for debug
-#define NS_MATHML_STRETCH_DONE                        0x20000000
+#define NS_MATHML_STRETCH_DONE                        0x20000000U
 
 // This bit is used for visual debug. When set, the bounding box
 // of your frame is painted. This visual debug enable to ensure that
 // you have properly filled your mReference and mBoundingMetrics in
 // Place().
-#define NS_MATHML_SHOW_BOUNDING_METRICS               0x10000000
+#define NS_MATHML_SHOW_BOUNDING_METRICS               0x10000000U
 
 // Macros that retrieve those bits
 

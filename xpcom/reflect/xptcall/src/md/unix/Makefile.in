@@ -76,7 +76,7 @@ endif
 # New code for Linux, et. al., with gcc
 # Migrate other platforms here after testing
 #
-ifneq (,$(filter Linux,$(OS_ARCH)))
+ifneq (,$(filter Linux GNU_%,$(OS_ARCH)))
 # Linux/x86-64
 ifeq (x86_64,$(OS_TEST))
 CPPSRCS		:= xptcinvoke_x86_64_linux.cpp xptcstubs_x86_64_linux.cpp
@@ -473,6 +473,20 @@ xptcstubs_asm_ppc_darwin.o: xptcstubs_asm_ppc_darwin.s.m4 $(PUBLIC)/xptcstubsdef
 	gm4 $(INCLUDES) $< > ./xptcstubs_asm_ppc_darwin.s && \
 	$(AS) -o $@ $(ASFLAGS) $(AS_DASH_C_FLAG) ./xptcstubs_asm_ppc_darwin.s
 	$(RM) -f ./xptcstubs_asm_ppc_darwin.s
+endif
+
+ifeq ($(OS_ARCH),AIX)
+ifdef HAVE_64BIT_OS
+xptcstubs_asm_ppc_aix64.o: xptcstubs_asm_ppc_aix64.s.m4 $(PUBLIC)/xptcstubsdef.inc Makefile
+	m4 -DAIX_OBJMODEL=$(AIX_OBJMODEL) $(INCLUDES) -I. $< > ./xptcstubs_asm_ppc_aix64.s && \
+	$(AS) -o $@ $(ASFLAGS) $(AS_DASH_C_FLAG) ./xptcstubs_asm_ppc_aix64.s
+	$(RM) ./xptcstubs_asm_ppc_aix64.s
+else
+xptcstubs_asm_ppc_aix.o: xptcstubs_asm_ppc_aix.s.m4 $(PUBLIC)/xptcstubsdef.inc Makefile
+	m4 -DAIX_OBJMODEL=$(AIX_OBJMODEL) $(INCLUDES) -I. $< > ./xptcstubs_asm_ppc_aix.s && \
+	$(AS) -o $@ $(ASFLAGS) $(AS_DASH_C_FLAG) ./xptcstubs_asm_ppc_aix.s
+	$(RM) ./xptcstubs_asm_ppc_aix.s
+endif
 endif
 
 ifeq ($(OS_ARCH),IRIX)

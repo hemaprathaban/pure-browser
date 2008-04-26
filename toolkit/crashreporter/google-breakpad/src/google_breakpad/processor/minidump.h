@@ -79,6 +79,7 @@
 #ifndef GOOGLE_BREAKPAD_PROCESSOR_MINIDUMP_H__
 #define GOOGLE_BREAKPAD_PROCESSOR_MINIDUMP_H__
 
+#include <unistd.h>
 
 #include <map>
 #include <string>
@@ -803,6 +804,9 @@ class Minidump {
 
   // Sets the position of the minidump file to offset.
   bool SeekSet(off_t offset);
+
+  // Returns the current position of the minidump file.
+  off_t Tell() { return valid_ ? lseek(fd_, 0, SEEK_CUR) : (off_t)-1; }
 
   // The next 2 methods are medium-level I/O routines.
 

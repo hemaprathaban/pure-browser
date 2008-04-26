@@ -94,6 +94,10 @@ EXTRA_SHARED_LIBS += \
 	$(NULL)
 endif
 
+ifeq ($(OS_TARGET),AIX)
+OS_LIBS += -lpthread
+endif
+
 ifeq ($(OS_TARGET),SunOS)
 # The -R '$ORIGIN' linker option instructs this library to search for its
 # dependencies in the same directory where it resides.
@@ -104,6 +108,3 @@ endif
 ifeq ($(OS_TARGET),WINCE)
 DEFINES += -DDBM_USING_NSPR
 endif
-
-# indicates dependency on freebl static lib
-$(SHARED_LIBRARY): $(CRYPTOLIB)

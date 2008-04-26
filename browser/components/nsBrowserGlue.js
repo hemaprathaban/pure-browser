@@ -45,6 +45,15 @@ const Cu = Components.utils;
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 Cu.import("resource:///modules/distribution.js");
 
+const PREF_EM_NEW_ADDONS_LIST = "extensions.newAddons";
+
+// Check to see if bookmarks need backing up once per
+// day on 1 hour idle.
+const BOOKMARKS_ARCHIVE_IDLE_TIME = 60 * 60;
+
+// Backup bookmarks once every 24 hours.
+const BOOKMARKS_ARCHIVE_INTERVAL = 86400 * 1000;
+
 // Factory object
 const BrowserGlueServiceFactory = {
   _instance: null,
@@ -61,11 +70,17 @@ const BrowserGlueServiceFactory = {
 
 function BrowserGlue() {
   this._init();
-  this._profileStarted = false;
 }
 
 BrowserGlue.prototype = {
   _saveSession: false,
+
+  _setPrefToSaveSession: function()
+  {
+    var prefBranch = Cc["@mozilla.org/preferences-service;1"].
+                     getService(Ci.nsIPrefBranch);
+    prefBranch.setBoolPref("browser.sessionstore.resume_session_once", true);
+  },
 
   // nsIObserver implementation 
   observe: function(subject, topic, data) 
@@ -74,10 +89,7 @@ BrowserGlue.prototype = {
       case "xpcom-shutdown":
         this._dispose();
         break;
-      case "profile-before-change":
-        this._onProfileChange();
-        break;
-      case "profile-change-teardown": 
+      case "quit-application": 
         this._onProfileShutdown();
         break;
       case "prefservice:after-app-defaults":
@@ -85,6 +97,9 @@ BrowserGlue.prototype = {
         break;
       case "final-ui-startup":
         this._onProfileStartup();
+        break;
+      case "sessionstore-windows-restored":
+        this._onBrowserStartup();
         break;
       case "browser:purge-session-history":
         // reset the console service's error buffer
@@ -98,28 +113,40 @@ BrowserGlue.prototype = {
         break;
       case "quit-application-granted":
         if (this._saveSession) {
-          var prefBranch = Cc["@mozilla.org/preferences-service;1"].
-                           getService(Ci.nsIPrefBranch);
-          prefBranch.setBoolPref("browser.sessionstore.resume_session_once", true);
+          this._setPrefToSaveSession();
+        }
+        this._shutdownPlaces();
+        this.idleService.removeIdleObserver(this, BOOKMARKS_ARCHIVE_IDLE_TIME);
+        break;
+      case "session-save":
+        this._setPrefToSaveSession();
+        subject.QueryInterface(Ci.nsISupportsPRBool);
+        subject.data = true;
+        break;
+      case "idle":
+        if (this.idleService.idleTime > BOOKMARKS_ARCHIVE_IDLE_TIME * 1000) {
+          // Back up bookmarks.
+          this._archiveBookmarks();
         }
         break;
     }
-  }
-, 
+  }, 
+
   // initialization (called on application startup) 
   _init: function() 
   {
     // observer registration
     const osvr = Cc['@mozilla.org/observer-service;1'].
                  getService(Ci.nsIObserverService);
-    osvr.addObserver(this, "profile-before-change", false);
-    osvr.addObserver(this, "profile-change-teardown", false);
+    osvr.addObserver(this, "quit-application", false);
     osvr.addObserver(this, "xpcom-shutdown", false);
     osvr.addObserver(this, "prefservice:after-app-defaults", false);
     osvr.addObserver(this, "final-ui-startup", false);
+    osvr.addObserver(this, "sessionstore-windows-restored", false);
     osvr.addObserver(this, "browser:purge-session-history", false);
     osvr.addObserver(this, "quit-application-requested", false);
     osvr.addObserver(this, "quit-application-granted", false);
+    osvr.addObserver(this, "session-save", false);
   },
 
   // cleanup (called on application shutdown)
@@ -128,14 +155,15 @@ BrowserGlue.prototype = {
     // observer removal 
     const osvr = Cc['@mozilla.org/observer-service;1'].
                  getService(Ci.nsIObserverService);
-    osvr.removeObserver(this, "profile-before-change");
-    osvr.removeObserver(this, "profile-change-teardown");
+    osvr.removeObserver(this, "quit-application");
     osvr.removeObserver(this, "xpcom-shutdown");
     osvr.removeObserver(this, "prefservice:after-app-defaults");
     osvr.removeObserver(this, "final-ui-startup");
+    osvr.removeObserver(this, "sessionstore-windows-restored");
     osvr.removeObserver(this, "browser:purge-session-history");
     osvr.removeObserver(this, "quit-application-requested");
     osvr.removeObserver(this, "quit-application-granted");
+    osvr.removeObserver(this, "session-save");
   },
 
   _onAppDefaults: function()
@@ -187,36 +215,38 @@ BrowserGlue.prototype = {
 
     // handle any UI migration
     this._migrateUI();
-
-    // indicate that the profile was initialized
-    this._profileStarted = true;
-  },
-
-  _onProfileChange: function()
-  {
-    // this block is for code that depends on _onProfileStartup() having 
-    // been called.
-    if (this._profileStarted) {
-      // final places cleanup
-      this._shutdownPlaces();
-    }
   },
 
   // profile shutdown handler (contains profile cleanup routines)
   _onProfileShutdown: function() 
   {
-    // here we enter last survival area, in order to avoid multiple
-    // "quit-application" notifications caused by late window closings
-    const appStartup = Cc['@mozilla.org/toolkit/app-startup;1'].
-                       getService(Ci.nsIAppStartup);
-    try {
-      appStartup.enterLastWindowClosingSurvivalArea();
+    this._shutdownPlaces();
+    this.Sanitizer.onShutdown();
+  },
 
-      this.Sanitizer.onShutdown();
-
-    } catch(ex) {
-    } finally {
-      appStartup.exitLastWindowClosingSurvivalArea();
+  // Browser startup complete. All initial windows have opened.
+  _onBrowserStartup: function()
+  {
+    var prefBranch = Cc["@mozilla.org/preferences-service;1"].
+                     getService(Ci.nsIPrefBranch);
+    // If new add-ons were installed during startup open the add-ons manager.
+    if (prefBranch.prefHasUserValue(PREF_EM_NEW_ADDONS_LIST)) {
+      var args = Cc["@mozilla.org/supports-array;1"].
+                 createInstance(Ci.nsISupportsArray);
+      var str = Cc["@mozilla.org/supports-string;1"].
+                createInstance(Ci.nsISupportsString);
+      str.data = "";
+      args.AppendElement(str);
+      var str = Cc["@mozilla.org/supports-string;1"].
+                createInstance(Ci.nsISupportsString);
+      str.data = prefBranch.getCharPref(PREF_EM_NEW_ADDONS_LIST);
+      args.AppendElement(str);
+      const EMURL = "chrome://mozapps/content/extensions/extensions.xul";
+      const EMFEATURES = "chrome,menubar,extra-chrome,toolbar,dialog=no,resizable";
+      var ww = Cc["@mozilla.org/embedcomp/window-watcher;1"].
+               getService(Ci.nsIWindowWatcher);
+      ww.openWindow(null, EMURL, "_blank", EMFEATURES, args);
+      prefBranch.clearUserPref(PREF_EM_NEW_ADDONS_LIST);
     }
   },
 
@@ -255,7 +285,9 @@ BrowserGlue.prototype = {
           prefBranch.getBoolPref("browser.sessionstore.resume_session_once"))
         showPrompt = false;
       else
-        showPrompt = prefBranch.getBoolPref("browser.warnOnQuit");
+        showPrompt = aQuitType == "restart" ?
+                     prefBranch.getBoolPref("browser.warnOnRestart") :
+                     prefBranch.getBoolPref("browser.warnOnQuit");
     } catch (ex) {}
 
     var buttonChoice = 0;
@@ -315,10 +347,15 @@ BrowserGlue.prototype = {
         break;
       case 0:
         this._saveSession = true;
-        // could also set browser.warnOnQuit to false here,
-        // but not setting it is a little safer.
-        if (neverAsk.value)
-          prefBranch.setIntPref("browser.startup.page", 3);
+        if (neverAsk.value) {
+          if (aQuitType == "restart")
+            prefBranch.setBoolPref("browser.warnOnRestart", false);
+          else {
+            // could also set browser.warnOnQuit to false here,
+            // but not setting it is a little safer.
+            prefBranch.setIntPref("browser.startup.page", 3);
+          }
+        }
         break;
       }
     }
@@ -335,6 +372,14 @@ BrowserGlue.prototype = {
     return Sanitizer;
   },
 
+  _idleService: null,
+  get idleService() {
+    if (!this._idleService)
+      this._idleService = Cc["@mozilla.org/widget/idleservice;1"].
+                          getService(Ci.nsIIdleService);
+    return this._idleService;
+  },
+
   /**
    * Initialize Places
    * - imports the bookmarks html file if bookmarks datastore is empty
@@ -347,10 +392,11 @@ BrowserGlue.prototype = {
     var histsvc = Cc["@mozilla.org/browser/nav-history-service;1"].
                   getService(Ci.nsINavHistoryService);
 
+    var prefBranch = Cc["@mozilla.org/preferences-service;1"].
+                     getService(Ci.nsIPrefBranch);
+
     var importBookmarks = false;
     try {
-      var prefBranch = Cc["@mozilla.org/preferences-service;1"].
-                       getService(Ci.nsIPrefBranch);
       importBookmarks = prefBranch.getBoolPref("browser.places.importBookmarksHTML");
     } catch(ex) {}
 
@@ -358,55 +404,86 @@ BrowserGlue.prototype = {
       // Call it here for Fx3 profiles created before the Places folder
       // has been added, otherwise it's called during import.
       this.ensurePlacesDefaultQueriesInitialized();
-      return;
     }
+    else {
+      // get latest backup
+      Cu.import("resource://gre/modules/utils.js");
+      var bookmarksFile = PlacesUtils.getMostRecentBackup();
 
-    var dirService = Cc["@mozilla.org/file/directory_service;1"].
-                     getService(Ci.nsIProperties);
-
-    var bookmarksFile = dirService.get("BMarks", Ci.nsILocalFile);
-
-    if (bookmarksFile.exists()) {
-      // import the file
-      try {
-        var importer = 
-          Cc["@mozilla.org/browser/places/import-export-service;1"].
-          getService(Ci.nsIPlacesImportExportService);
-        importer.importHTMLFromFile(bookmarksFile, true);
-      } catch(ex) {
-      } finally {
-        prefBranch.setBoolPref("browser.places.importBookmarksHTML", false);
+      if (bookmarksFile && bookmarksFile.leafName.match("\.json$")) {
+        // restore a JSON backup
+        PlacesUtils.restoreBookmarksFromJSONFile(bookmarksFile);
       }
+      else {
+        // if there's no json backup use bookmarks.html
 
-      // only back up pre-places bookmarks.html if we plan on overwriting it
-      if (prefBranch.getBoolPref("browser.bookmarks.overwrite")) {
-        // backup pre-places bookmarks.html
-        // XXXtodo remove this before betas, after import/export is solid
-        var profDir = dirService.get("ProfD", Ci.nsILocalFile);
-        var bookmarksBackup = profDir.clone();
-        bookmarksBackup.append("bookmarks.preplaces.html");
-        if (!bookmarksBackup.exists()) {
-          // save old bookmarks.html file as bookmarks.preplaces.html
-          try {
-            bookmarksFile.copyTo(profDir, "bookmarks.preplaces.html");
-          } catch(ex) {
-            dump("nsBrowserGlue::_initPlaces(): copy of bookmarks.html to bookmarks.preplaces.html failed: " + ex + "\n");
-          }
+        var dirService = Cc["@mozilla.org/file/directory_service;1"].
+                         getService(Ci.nsIProperties);
+        var bookmarksFile = dirService.get("BMarks", Ci.nsILocalFile);
+
+        // import the file
+        try {
+          var importer = Cc["@mozilla.org/browser/places/import-export-service;1"].
+                         getService(Ci.nsIPlacesImportExportService);
+          importer.importHTMLFromFile(bookmarksFile, true /* overwrite existing */);
+        } finally {
+          prefBranch.setBoolPref("browser.places.importBookmarksHTML", false);
         }
       }
     }
+
+    // Initialize bookmark archiving on idle.
+    // Once a day, either on idle or shutdown, bookmarks are backed up.
+    this.idleService.addIdleObserver(this, BOOKMARKS_ARCHIVE_IDLE_TIME);
   },
 
   /**
    * Places shut-down tasks
    * - back up and archive bookmarks
+   * - export bookmarks as HTML, if so configured
+   *
+   * Note: quit-application-granted notification is received twice
+   *       so replace this method with a no-op when first called.
    */
   _shutdownPlaces: function bg__shutdownPlaces() {
-    // backup bookmarks to bookmarks.html
-    var importer =
+    // Backup and archive Places bookmarks.
+    this._archiveBookmarks();
+
+    // Backup bookmarks to bookmarks.html to support apps that depend
+    // on the legacy format.
+    var autoExportHTML = false;
+    try {
+      autoExportHTML = prefs.getIntPref("browser.bookmarks.autoExportHTML");
+    } catch(ex) {}
+
+    if (autoExportHTML) {
       Cc["@mozilla.org/browser/places/import-export-service;1"].
-      getService(Ci.nsIPlacesImportExportService);
-    importer.backupBookmarksFile();
+        getService(Ci.nsIPlacesImportExportService).
+        backupBookmarksFile();
+    }
+  },
+
+  /**
+   * Back up and archive bookmarks
+   */
+  _archiveBookmarks: function nsBrowserGlue__archiveBookmarks() {
+    Cu.import("resource://gre/modules/utils.js");
+
+    var lastBackup = PlacesUtils.getMostRecentBackup();
+
+    // Backup bookmarks if there aren't any backups or 
+    // they haven't been backed up in the last 24 hrs.
+    if (!lastBackup ||
+        Date.now() - lastBackup.lastModifiedTime > BOOKMARKS_ARCHIVE_INTERVAL) {
+      var maxBackups = 5;
+      var prefs = Cc["@mozilla.org/preferences-service;1"].
+                  getService(Ci.nsIPrefBranch);
+      try {
+        maxBackups = prefs.getIntPref("browser.bookmarks.max_backups");
+      } catch(ex) {}
+
+      PlacesUtils.archiveBookmarksFile(maxBackups, false /* don't force */);
+    }
   },
 
   _migrateUI: function bg__migrateUI() {
@@ -422,67 +499,49 @@ BrowserGlue.prototype = {
 
       // grab the localstore.rdf and make changes needed for new UI
       this._rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
-      var localStore = this._rdf.GetDataSource("rdf:local-store");
-
-      // only move the home button if we find it on the nav-bar
-      var foundHome = false;
+      this._dataSource = this._rdf.GetDataSource("rdf:local-store");
+      this._dirty = false;
 
       var currentSet = this._rdf.GetResource("currentset");
-      var target = null;
-      var dirty = false;
 
       // get an nsIRDFResource for the nav-bar item
       var navBar = this._rdf.GetResource("chrome://browser/content/browser.xul#nav-bar");
-      target = this._getPersist(localStore, navBar, currentSet);
-      if (target) {
-        foundHome = (target.indexOf("home-button") != -1);
-        if (foundHome)
-          target = target.replace("home-button", "");
-        target = "unified-back-forward-button," + target;
-        this._setPersist(localStore, navBar, currentSet, target);
-        dirty = true;
-      }
-
-      // get an nsIRDFResource for the PersonalToolbar item
-      if (foundHome) {
-        var personalBar = this._rdf.GetResource("chrome://browser/content/browser.xul#PersonalToolbar");
-        target = this._getPersist(localStore, personalBar, currentSet);
-        if (target && target.indexOf("home-button") == -1) {
-          this._setPersist(localStore, personalBar, currentSet, "home-button," + target);
-          dirty = true;
-        }
-      }
+      var target = this._getPersist(navBar, currentSet);
+      if (target && !/(?:^|,)unified-back-forward-button(?:$|,)/.test(target))
+        this._setPersist(navBar, currentSet, "unified-back-forward-button," + target);
 
       // force the RDF to be saved
-      if (dirty)
-        localStore.QueryInterface(Ci.nsIRDFRemoteDataSource).Flush();
+      if (this._dirty)
+        this._dataSource.QueryInterface(Ci.nsIRDFRemoteDataSource).Flush();
 
       // free up the RDF service
       this._rdf = null;
+      this._dataSource = null;
 
       // update the migration version
       prefBranch.setIntPref("browser.migration.version", 1);
     }
   },
 
-  _getPersist: function bg__getPersist(aDataSource, aSource, aProperty) {
-    var target = aDataSource.GetTarget(aSource, aProperty, true);
+  _getPersist: function bg__getPersist(aSource, aProperty) {
+    var target = this._dataSource.GetTarget(aSource, aProperty, true);
     if (target instanceof Ci.nsIRDFLiteral)
       return target.Value;
     return null;
   },
 
-  _setPersist: function bg__setPersist(aDataSource, aSource, aProperty, aTarget) {
+  _setPersist: function bg__setPersist(aSource, aProperty, aTarget) {
+    this._dirty = true;
     try {
-      var oldTarget = aDataSource.GetTarget(aSource, aProperty, true);
+      var oldTarget = this._dataSource.GetTarget(aSource, aProperty, true);
       if (oldTarget) {
         if (aTarget)
-          aDataSource.Change(aSource, aProperty, oldTarget, this._rdf.GetLiteral(aTarget));
+          this._dataSource.Change(aSource, aProperty, oldTarget, this._rdf.GetLiteral(aTarget));
         else
-          aDataSource.Unassert(aSource, aProperty, oldTarget);
+          this._dataSource.Unassert(aSource, aProperty, oldTarget);
       }
       else {
-        aDataSource.Assert(aSource, aProperty, this._rdf.GetLiteral(aTarget), true);
+        this._dataSource.Assert(aSource, aProperty, this._rdf.GetLiteral(aTarget), true);
       }
     }
     catch(ex) {}
@@ -512,9 +571,6 @@ BrowserGlue.prototype = {
     var bmsvc = Cc["@mozilla.org/browser/nav-bookmarks-service;1"].
                 getService(Ci.nsINavBookmarksService);
 
-    // XXXmano bug 405497: this should be batched even if we're not called from
-    // the import service. However, calling runInBatchedMode from within a
-    // RunBatched implementation hangs the browser.
     var callback = {
       _placesBundle: Cc["@mozilla.org/intl/stringbundle;1"].
                      getService(Ci.nsIStringBundleService).
@@ -536,14 +592,10 @@ BrowserGlue.prototype = {
         var recentTagsTitle =
           this._placesBundle.GetStringFromName("recentTagsTitle");
 
-        var bookmarksMenuFolder = bmsvc.bookmarksMenuFolder;
-        var unfiledBookmarksFolder = bmsvc.unfiledBookmarksFolder;
-        var toolbarFolder = bmsvc.toolbarFolder;
-        var tagsFolder = bmsvc.tagsFolder;
         var defaultIndex = bmsvc.DEFAULT_INDEX;
 
         // index = 0, make it the first folder
-        var placesFolder = bmsvc.createFolder(toolbarFolder, smartBookmarksFolderTitle,
+        var placesFolder = bmsvc.createFolder(bmsvc.toolbarFolder, smartBookmarksFolderTitle,
                                               0);
 
         // XXX should this be a pref?  see bug #399268
@@ -560,9 +612,9 @@ BrowserGlue.prototype = {
         // excludeQueries=1 so that user created "saved searches" 
         // and these queries (added automatically) are excluded
         var recentlyBookmarkedItem = bmsvc.insertBookmark(placesFolder,
-          this._uri("place:folder=" + bookmarksMenuFolder + 
-              "&folder=" + unfiledBookmarksFolder +
-              "&folder=" + toolbarFolder +
+          this._uri("place:folder=BOOKMARKS_MENU" + 
+              "&folder=UNFILED_BOOKMARKS" +
+              "&folder=TOOLBAR" +
               "&queryType=" + Ci.nsINavHistoryQueryOptions.QUERY_TYPE_BOOKMARKS +
               "&sort=" +
               Ci.nsINavHistoryQueryOptions.SORT_BY_DATEADDED_DESCENDING +
@@ -574,21 +626,16 @@ BrowserGlue.prototype = {
         var sep =  bmsvc.insertSeparator(placesFolder, defaultIndex);
 
         var recentTagsItem = bmsvc.insertBookmark(placesFolder,
-          this._uri("place:folder=" + tagsFolder +
-              "&group=" + Ci.nsINavHistoryQueryOptions.GROUP_BY_FOLDER +
-              "&queryType=" + Ci.nsINavHistoryQueryOptions.QUERY_TYPE_BOOKMARKS +
-              "&applyOptionsToContainers=1" +
-              "&sort=" +
-              Ci.nsINavHistoryQueryOptions.SORT_BY_DATEADDED_DESCENDING +
+          this._uri("place:"+
+              "type=" + Ci.nsINavHistoryQueryOptions.RESULTS_AS_TAG_QUERY +
+              "&sort=" + Ci.nsINavHistoryQueryOptions.SORT_BY_LASTMODIFIED_DESCENDING +
               "&maxResults=" + maxResults),
-              defaultIndex, recentTagsTitle);
+          defaultIndex, recentTagsTitle);
       }
     };
 
     try {
-      callback.runBatched();
-      // See XXX note above
-      // bmsvc.runInBatchMode(callback, null);
+      bmsvc.runInBatchMode(callback, null);
     }
     catch(ex) {
       Components.utils.reportError(ex);

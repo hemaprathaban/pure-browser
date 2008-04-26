@@ -147,10 +147,32 @@ nsScriptLoaderObserverProxy::ScriptEvaluated(nsresult aResult,
 }
 
 
-NS_IMPL_ISUPPORTS3(nsContentSink,
-                   nsICSSLoaderObserver,
-                   nsISupportsWeakReference,
-                   nsIScriptLoaderObserver)
+NS_IMPL_CYCLE_COLLECTING_ADDREF(nsContentSink)
+NS_IMPL_CYCLE_COLLECTING_RELEASE(nsContentSink)
+
+NS_INTERFACE_MAP_BEGIN_CYCLE_COLLECTION(nsContentSink)
+  NS_INTERFACE_MAP_ENTRY(nsICSSLoaderObserver)
+  NS_INTERFACE_MAP_ENTRY(nsISupportsWeakReference)
+  NS_INTERFACE_MAP_ENTRY(nsIScriptLoaderObserver)
+  NS_INTERFACE_MAP_ENTRY(nsIDocumentObserver)
+  NS_INTERFACE_MAP_ENTRY(nsIMutationObserver)
+  NS_INTERFACE_MAP_ENTRY(nsITimerCallback)
+  NS_INTERFACE_MAP_ENTRY_AMBIGUOUS(nsISupports, nsIScriptLoaderObserver)
+NS_INTERFACE_MAP_END
+
+NS_IMPL_CYCLE_COLLECTION_CLASS(nsContentSink)
+NS_IMPL_CYCLE_COLLECTION_UNLINK_BEGIN(nsContentSink)
+  if (tmp->mDocument) {
+    tmp->mDocument->RemoveObserver(tmp);
+  }
+NS_IMPL_CYCLE_COLLECTION_UNLINK_NSCOMPTR(mDocument)
+NS_IMPL_CYCLE_COLLECTION_UNLINK_NSCOMPTR(mParser)
+NS_IMPL_CYCLE_COLLECTION_UNLINK_END
+NS_IMPL_CYCLE_COLLECTION_TRAVERSE_BEGIN(nsContentSink)
+NS_IMPL_CYCLE_COLLECTION_TRAVERSE_NSCOMPTR(mDocument)
+NS_IMPL_CYCLE_COLLECTION_TRAVERSE_NSCOMPTR(mParser)
+NS_IMPL_CYCLE_COLLECTION_TRAVERSE_END
+
 
 nsContentSink::nsContentSink()
 {
@@ -174,6 +196,11 @@ nsContentSink::nsContentSink()
 
 nsContentSink::~nsContentSink()
 {
+  if (mDocument) {
+    // Remove ourselves just to be safe, though we really should have
+    // been removed in DidBuildModel if everything worked right.
+    mDocument->RemoveObserver(this);
+  }
 }
 
 nsresult
@@ -286,7 +313,7 @@ nsContentSink::StyleSheetLoaded(nsICSSStyleSheet* aSheet,
       }
 
       // Go ahead and try to scroll to our ref if we have one
-      TryToScrollToRef();
+      ScrollToRef();
     }
     
     mScriptLoader->RemoveExecuteBlocker();
@@ -859,8 +886,7 @@ nsContentSink::ProcessOfflineManifest(nsIContent *aElement)
   }
 
   // Documents must list a manifest from the same origin
-  nsresult rv = nsContentUtils::GetSecurityManager()->
-                   CheckSameOriginURI(manifestURI, mDocumentURI, PR_TRUE);
+  nsresult rv = mDocument->NodePrincipal()->CheckMayLoad(manifestURI, PR_TRUE);
   if (NS_FAILED(rv)) {
     return;
   }
@@ -879,7 +905,9 @@ nsContentSink::ScrollToRef()
     return;
   }
 
-  PRBool didScroll = PR_FALSE;
+  if (mScrolledToRefAlready) {
+    return;
+  }
 
   char* tmpstr = ToNewCString(mRef);
   if (!tmpstr) {
@@ -1034,20 +1062,6 @@ nsContentSink::StartLayout(PRBool aIgnorePendingSheets)
 }
 
 void
-nsContentSink::TryToScrollToRef()
-{
-  if (mRef.IsEmpty()) {
-    return;
-  }
-
-  if (mScrolledToRefAlready) {
-    return;
-  }
-
-  ScrollToRef();
-}
-
-void
 nsContentSink::NotifyAppend(nsIContent* aContainer, PRUint32 aStartIndex)
 {
   if (aContainer->GetCurrentDoc() != mDocument) {
@@ -1114,7 +1128,7 @@ nsContentSink::Notify(nsITimer *timer)
 
     // Now try and scroll to the reference
     // XXX Should we scroll unconditionally for history loads??
-    TryToScrollToRef();
+    ScrollToRef();
   }
 
   mNotificationTimer = nsnull;
@@ -1174,7 +1188,7 @@ nsContentSink::WillInterruptImpl()
                     "run out time; backoff count: %d", mBackoffCount));
         result = FlushTags();
         if (mDroppedTimer) {
-          TryToScrollToRef();
+          ScrollToRef();
           mDroppedTimer = PR_FALSE;
         }
       } else if (!mNotificationTimer) {

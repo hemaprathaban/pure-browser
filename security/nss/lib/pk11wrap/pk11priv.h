@@ -110,10 +110,6 @@ void PK11_ClearSlotList(PK11SlotInfo *slot);
 /******************************************************************
  *           Slot initialization
  ******************************************************************/
-PRBool PK11_VerifyMechanism(PK11SlotInfo *slot,PK11SlotInfo *intern,
-  CK_MECHANISM_TYPE mech, SECItem *data, SECItem *iv);
-PRBool PK11_VerifySlotMechanisms(PK11SlotInfo *slot);
-SECStatus pk11_CheckVerifyTest(PK11SlotInfo *slot);
 SECStatus PK11_InitToken(PK11SlotInfo *slot, PRBool loadCerts);
 void PK11_InitSlot(SECMODModule *mod,CK_SLOT_ID slotID,PK11SlotInfo *slot);
 PRBool PK11_NeedPWInitForSlot(PK11SlotInfo *slot);
@@ -161,10 +157,6 @@ SECStatus PK11_TraverseCertsForSubject(CERTCertificate *cert,
 	SECStatus(*callback)(CERTCertificate *, void *), void *arg);
 CERTCertificate *PK11_FindCertFromDERCertItem(PK11SlotInfo *slot, 
 					  SECItem *derCert, void *wincx);
-CERTCertificate *PK11_FindCertFromDERSubjectAndNickname(
-					PK11SlotInfo *slot, 
-					CERTCertificate *cert, char *nickname,
-					void *wincx);
 SECStatus PK11_GetKEAMatchedCerts(PK11SlotInfo *slot1,
    PK11SlotInfo *slot2, CERTCertificate **cert1, CERTCertificate **cert2);
 SECStatus PK11_TraverseCertsInSlot(PK11SlotInfo *slot,

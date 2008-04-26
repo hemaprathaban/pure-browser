@@ -120,7 +120,7 @@ XBLFinalize(JSContext *cx, JSObject *obj)
     static_cast<nsIXBLDocumentInfo*>(::JS_GetPrivate(cx, obj));
   NS_RELEASE(docInfo);
   
-  nsXBLJSClass* c = static_cast<nsXBLJSClass*>(::JS_GetClass(cx, obj));
+  nsXBLJSClass* c = static_cast<nsXBLJSClass*>(::JS_GET_CLASS(cx, obj));
   c->Drop();
 }
 
@@ -158,7 +158,7 @@ XBLResolve(JSContext *cx, JSObject *obj, jsval id, uintN flags,
   }
 
   // We have this field.  Time to install it.  Get our node.
-  JSClass* nodeClass = ::JS_GetClass(cx, origObj);
+  JSClass* nodeClass = ::JS_GET_CLASS(cx, origObj);
   if (!nodeClass) {
     return JS_FALSE;
   }
@@ -272,8 +272,7 @@ nsXBLBinding::nsXBLBinding(nsXBLPrototypeBinding* aBinding)
   : mPrototypeBinding(aBinding),
     mInsertionPointTable(nsnull),
     mIsStyleBinding(PR_TRUE),
-    mMarkedForDeath(PR_FALSE),
-    mInstalledAPI(PR_FALSE)
+    mMarkedForDeath(PR_FALSE)
 {
   NS_ASSERTION(mPrototypeBinding, "Must have a prototype binding!");
   // Grab a ref to the document info so the prototype binding won't die
@@ -294,9 +293,11 @@ TraverseKey(nsISupports* aKey, nsInsertionPointList* aData, void* aClosure)
   nsCycleCollectionTraversalCallback &cb = 
     *static_cast<nsCycleCollectionTraversalCallback*>(aClosure);
 
+  NS_CYCLE_COLLECTION_NOTE_EDGE_NAME(cb, "mInsertionPointTable key");
   cb.NoteXPCOMChild(aKey);
   if (aData) {
-    NS_IMPL_CYCLE_COLLECTION_TRAVERSE_NSTARRAY(*aData, nsXBLInsertionPoint)
+    NS_IMPL_CYCLE_COLLECTION_TRAVERSE_NSTARRAY(*aData, nsXBLInsertionPoint,
+                                               "mInsertionPointTable value")
   }
   return PL_DHASH_NEXT;
 }
@@ -769,7 +770,9 @@ nsXBLBinding::GenerateAnonymousContent()
   const nsAttrName* attrName;
   for (PRUint32 i = 0; (attrName = content->GetAttrNameAt(i)); ++i) {
     PRInt32 namespaceID = attrName->NamespaceID();
-    nsIAtom* name = attrName->LocalName();
+    // Hold a strong reference here so that the atom doesn't go away during
+    // UnsetAttr.
+    nsCOMPtr<nsIAtom> name = attrName->LocalName();
 
     if (name != nsGkAtoms::includes) {
       if (!nsContentUtils::HasNonEmptyAttr(mBoundElement, namespaceID, name)) {
@@ -784,22 +787,6 @@ nsXBLBinding::GenerateAnonymousContent()
     if (mContent)
       mContent->UnsetAttr(namespaceID, name, PR_FALSE);
   }
-}
-
-nsresult
-nsXBLBinding::EnsureScriptAPI()
-{
-  if (mInstalledAPI) {
-    return NS_OK;
-  }
-  
-  // Set mInstalledAPI right away since we'll recurse into here from
-  // nsElementSH::PostCreate when InstallImplementation is called.
-  mInstalledAPI = PR_TRUE;
-
-  InstallEventHandlers();
-
-  return InstallImplementation();
 }
 
 void
@@ -1085,7 +1072,7 @@ nsXBLBinding::ChangeDocument(nsIDocument* aOldDocument, nsIDocument* aNewDocumen
                 break;
               }
 
-              JSClass* clazz = ::JS_GetClass(cx, proto);
+              JSClass* clazz = ::JS_GET_CLASS(cx, proto);
               if (!clazz ||
                   (~clazz->flags &
                    (JSCLASS_HAS_PRIVATE | JSCLASS_PRIVATE_IS_NSISUPPORTS)) ||

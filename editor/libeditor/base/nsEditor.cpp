@@ -131,10 +131,6 @@ extern nsIParserService *sParserService;
 //
 //---------------------------------------------------------------------------
 
-nsIAtom *nsEditor::gTypingTxnName;
-nsIAtom *nsEditor::gIMETxnName;
-nsIAtom *nsEditor::gDeleteTxnName;
-
 nsEditor::nsEditor()
 :  mModCount(0)
 ,  mPresShellWeak(nsnull)
@@ -161,56 +157,11 @@ nsEditor::nsEditor()
 ,  mPhonetic(nsnull)
 {
   //initialize member variables here
-  if (!gTypingTxnName)
-    gTypingTxnName = NS_NewAtom("Typing");
-  else
-    NS_ADDREF(gTypingTxnName);
-  if (!gIMETxnName)
-    gIMETxnName = NS_NewAtom("IME");
-  else
-    NS_ADDREF(gIMETxnName);
-  if (!gDeleteTxnName)
-    gDeleteTxnName = NS_NewAtom("Deleting");
-  else
-    NS_ADDREF(gDeleteTxnName);
 }
 
 nsEditor::~nsEditor()
 {
-  /* first, delete the transaction manager if there is one.
-     this will release any remaining transactions.
-     this is important because transactions can hold onto the atoms (gTypingTxnName, ...)
-     and to make the optimization (holding refcounted statics) work correctly, 
-     the editor instance needs to hold the last refcount.
-     If you get this wrong, expect to deref a garbage gTypingTxnName pointer if you bring up a second editor.
-  */
-  if (mTxnMgr) { 
-    mTxnMgr = 0;
-  }
-  nsrefcnt refCount=0;
-  if (gTypingTxnName)  // we addref'd in the constructor
-  { // want to release it without nulling out the pointer.
-    refCount = gTypingTxnName->Release();
-    if (0==refCount) {
-      gTypingTxnName = nsnull; 
-    }
-  }
-
-  if (gIMETxnName)  // we addref'd in the constructor
-  { // want to release it without nulling out the pointer.
-    refCount = gIMETxnName->Release();
-    if (0==refCount) {
-      gIMETxnName = nsnull;
-    }
-  }
-
-  if (gDeleteTxnName)  // we addref'd in the constructor
-  { // want to release it without nulling out the pointer.
-    refCount = gDeleteTxnName->Release();
-    if (0==refCount) {
-      gDeleteTxnName = nsnull;
-    }
-  }
+  mTxnMgr = nsnull;
 
   delete mPhonetic;
  
@@ -991,6 +942,9 @@ nsEditor::EndPlaceHolderTransaction()
     // time to turn off the batch
     EndUpdateViewBatch();
     // make sure selection is in view
+
+    // After ScrollSelectionIntoView(), the pending notifications might be
+    // flushed and PresShell/PresContext/Frames may be dead. See bug 418470.
     ScrollSelectionIntoView(PR_FALSE);
 
     // cached for frame offset are Not available now
@@ -2246,6 +2200,14 @@ nsEditor::GetPreferredIMEState(PRUint32 *aState)
 }
 
 NS_IMETHODIMP
+nsEditor::GetComposing(PRBool* aResult)
+{
+  NS_ENSURE_ARG_POINTER(aResult);
+  *aResult = IsIMEComposing();
+  return NS_OK;
+}
+
+NS_IMETHODIMP
 nsEditor::GetReconversionString(nsReconversionEventReply* aReply)
 {
   return NS_ERROR_NOT_IMPLEMENTED;
@@ -2552,6 +2514,8 @@ NS_IMETHODIMP nsEditor::ScrollSelectionIntoView(PRBool aScrollToAnchor)
       syncScroll = !(flags & nsIPlaintextEditor::eEditorUseAsyncUpdatesMask);
     }
 
+    // After ScrollSelectionIntoView(), the pending notifications might be
+    // flushed and PresShell/PresContext/Frames may be dead. See bug 418470.
     selCon->ScrollSelectionIntoView(nsISelectionController::SELECTION_NORMAL,
                                     region, syncScroll);
   }
@@ -4168,8 +4132,7 @@ nsEditor::IsPreformatted(nsIDOMNode *aNode, PRBool *aResult)
 
   const nsStyleText* styleText = frame->GetStyleText();
 
-  *aResult = NS_STYLE_WHITESPACE_PRE == styleText->mWhiteSpace ||
-             NS_STYLE_WHITESPACE_MOZ_PRE_WRAP == styleText->mWhiteSpace;
+  *aResult = styleText->WhiteSpaceIsSignificant();
   return NS_OK;
 }
 

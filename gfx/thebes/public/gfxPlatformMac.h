@@ -53,9 +53,14 @@ public:
     already_AddRefed<gfxASurface> CreateOffscreenSurface(const gfxIntSize& size,
                                                          gfxASurface::gfxImageFormat imageFormat);
 
+    already_AddRefed<gfxASurface> gfxPlatformMac::OptimizeImage(gfxImageSurface *aSurface,
+                                                                gfxASurface::gfxImageFormat format);
+
     nsresult ResolveFontName(const nsAString& aFontName,
                              FontResolverCallback aCallback,
                              void *aClosure, PRBool& aAborted);
+
+    nsresult GetStandardFamilyName(const nsAString& aFontName, nsAString& aFamilyName);
 
     gfxFontGroup *CreateFontGroup(const nsAString &aFamilies,
                                   const gfxFontStyle *aStyle);

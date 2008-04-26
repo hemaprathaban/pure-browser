@@ -41,7 +41,7 @@
 
 #include "nsComplexBreaker.h"
 
-#include <Usp10.h>
+#include <usp10.h>
 #include "nsUTF8Utils.h"
 #include "nsString.h"
 #include "nsTArray.h"
@@ -77,7 +77,8 @@ NS_GetComplexLineBreaks(const PRUnichar* aText, PRUint32 aLength,
     if (!sla.AppendElements(endOffset - startOffset))
       return;
 
-    if (ScriptBreak(aText, aLength, &items[iItem].a, sla.Elements()) < 0) 
+    if (ScriptBreak(aText + startOffset, endOffset - startOffset,
+                    &items[iItem].a,  sla.Elements()) < 0) 
       return;
 
     for (PRUint32 j=0; j+startOffset < endOffset; ++j) {

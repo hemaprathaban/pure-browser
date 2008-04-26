@@ -122,6 +122,8 @@ private:
   PRInt32 FolderCount(PRInt64 aFolder);
   nsresult GetFolderType(PRInt64 aFolder, nsACString &aType);
 
+  nsresult GetLastChildId(PRInt64 aFolder, PRInt64* aItemId);
+
   // remove me when there is better query initialization
   nsNavHistory* History() { return nsNavHistory::GetHistoryService(); }
 
@@ -145,9 +147,6 @@ private:
   // the level of nesting of batches, 0 when no batches are open
   PRInt32 mBatchLevel;
 
-  // lock for RunInBatchMode
-  PRLock* mLock;
-
   // true if the outermost batch has an associated transaction that should
   // be committed when our batch level reaches 0 again.
   PRBool mBatchHasTransaction;
@@ -164,6 +163,8 @@ private:
                                      PRInt32* aIndex);
 
   nsresult IsBookmarkedInDatabase(PRInt64 aBookmarkID, PRBool* aIsBookmarked);
+
+  nsresult SetItemDateInternal(mozIStorageStatement* aStatement, PRInt64 aItemId, PRTime aValue);
 
   // kGetInfoIndex_* results + kGetChildrenIndex_* results
   nsCOMPtr<mozIStorageStatement> mDBGetChildren;

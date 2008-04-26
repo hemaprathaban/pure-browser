@@ -306,10 +306,11 @@ struct nsBorderColors {
   }
 };
 
-// Border widths are rounded to the nearest integer number of pixels, but values
-// between zero and one device pixels are always rounded up to one device pixel.
+// Border widths are rounded to the nearest-below integer number of pixels,
+// but values between zero and one device pixels are always rounded up to
+// one device pixel.
 #define NS_ROUND_BORDER_TO_PIXELS(l,tpp) \
-  ((l) == 0) ? 0 : PR_MAX((tpp), ((l) + ((tpp) / 2)) / (tpp) * (tpp))
+  ((l) == 0) ? 0 : PR_MAX((tpp), (l) / (tpp) * (tpp))
 // Outline offset is rounded to the nearest integer number of pixels, but values
 // between zero and one device pixels are always rounded up to one device pixel.
 // Note that the offset can be negative.
@@ -697,12 +698,12 @@ struct nsStyleText {
   
   PRBool WhiteSpaceIsSignificant() const {
     return mWhiteSpace == NS_STYLE_WHITESPACE_PRE ||
-           mWhiteSpace == NS_STYLE_WHITESPACE_MOZ_PRE_WRAP;
+           mWhiteSpace == NS_STYLE_WHITESPACE_PRE_WRAP;
   }
 
   PRBool WhiteSpaceCanWrap() const {
     return mWhiteSpace == NS_STYLE_WHITESPACE_NORMAL ||
-           mWhiteSpace == NS_STYLE_WHITESPACE_MOZ_PRE_WRAP;
+           mWhiteSpace == NS_STYLE_WHITESPACE_PRE_WRAP;
   }
 };
 

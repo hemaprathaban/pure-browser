@@ -109,6 +109,16 @@ public:
                                                  nsIPersistentProperties *aAttributes);
 
   /**
+   * Set group attributes - 'level', 'setsize', 'posinset'.
+   *
+   * @param  aNode        XUL element that implements
+   *                      nsIDOMXULContainerItemElement interface
+   * @param  aAttributes  attributes container
+   */
+  static void SetAccAttrsForXULContainerItem(nsIDOMNode *aNode,
+                                             nsIPersistentProperties *aAttributes);
+
+  /**
    * Return true if the given node has registered event listener of the given
    * type.
    */
@@ -139,6 +149,13 @@ public:
                               nsIDOMNode *aPossibleDescendantNode);
 
   /**
+   * Are the first node and the second siblings?
+   * @return PR_TRUE if aDOMNode1 and aDOMNode2 have same parent
+   */
+   static PRBool AreSiblings(nsIDOMNode *aDOMNode1,
+                             nsIDOMNode *aDOMNode2);
+
+  /**
     * If an ancestor in this document exists with the given role, return it
     * @param aDescendant Descendant to start search with
     * @param aRole Role to find matching ancestor for
@@ -146,6 +163,19 @@ public:
     */
    static already_AddRefed<nsIAccessible>
      GetAncestorWithRole(nsIAccessible *aDescendant, PRUint32 aRole);
+
+   /**
+     * For an ARIA tree item , get the accessible that represents its conceptual parent.
+     * This method will use the correct method for the given way the tree is constructed.
+     * The conceptual parent is what the user sees as the parent, not the DOM or accessible parent.
+     * @param aStartTreeItem  The tree item to get the parent for
+     * @param aStartTreeItemContent  The content node for the tree item
+     * @param The tree item's parent, or null if none
+     */
+   static void
+     GetARIATreeItemParent(nsIAccessible *aStartTreeItem,
+                           nsIContent *aStartTreeItemContent,
+                           nsIAccessible **aTreeItemParent);
 
   /**
    * Helper method to scroll range into view, used for implementation of
@@ -340,6 +370,19 @@ public:
                                                     PRUint32 aAttrNum = 1,
                                                     nsIContent *aExcludeContent = nsnull,
                                                     nsIAtom *aTagType = nsAccessibilityAtoms::label);
+  
+  // Return PR_TRUE if the ARIA property should always be exposed as an object attribute
+  static PRBool IsARIAPropForObjectAttr(nsIAtom *aAtom);
+
+
+  /**
+   * Get container-foo live region attributes for the given node
+   * @param aAttributes     Where to store the attributes
+   * @param aStartContent   Node to start from
+   * @param aTopContent     Node to end at
+   */
+  static void GetLiveContainerAttributes(nsIPersistentProperties *aAttributes,
+                                         nsIContent *aStartContent, nsIContent *aTopContent);
 };
 
 #endif

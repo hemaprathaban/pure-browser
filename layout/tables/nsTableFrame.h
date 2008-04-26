@@ -469,6 +469,8 @@ public:
                          PRBool                aRemoveFromCache,
                          PRBool                aRemoveFromCellMap);
 
+  NS_IMETHOD GetIndexByRowAndColumn(PRInt32 aRow, PRInt32 aColumn, PRInt32 *aIndex);
+  NS_IMETHOD GetRowAndColumnByIndex(PRInt32 aIndex, PRInt32 *aRow, PRInt32 *aColumn);
   PRInt32 GetNumCellsOriginatingInCol(PRInt32 aColIndex) const;
   PRInt32 GetNumCellsOriginatingInRow(PRInt32 aRowIndex) const;
 
@@ -477,6 +479,23 @@ public:
 
   PRBool HasCellSpanningPctCol() const;
   void SetHasCellSpanningPctCol(PRBool aValue);
+
+  /**
+   * To be called on a frame by its parent after setting its size/position and
+   * calling DidReflow (possibly via FinishReflowChild()).  This can also be
+   * used for child frames which are not being reflown but did have their size
+   * or position changed.
+   *
+   * @param aFrame The frame to invalidate
+   * @param aOrigRect The original rect of aFrame (before the change).
+   * @param aOrigOverflowRect The original overflow rect of aFrame.
+   * @param aIsFirstReflow True if the size/position change is due to the
+   *                       first reflow of aFrame.
+   */
+  static void InvalidateFrame(nsIFrame* aFrame,
+                              const nsRect& aOrigRect,
+                              const nsRect& aOrigOverflowRect,
+                              PRBool aIsFirstReflow);
 
 protected:
 
@@ -538,6 +557,11 @@ protected:
       mTableLayoutStrategy;
   }
 
+private:
+  /* Handle a row that got inserted during reflow.  aNewHeight is the
+     new height of the table after reflow. */
+  void ProcessRowInserted(nscoord aNewHeight);
+
   // WIDTH AND HEIGHT CALCULATION
 
 public:
@@ -560,7 +584,9 @@ protected:
 
   void PlaceChild(nsTableReflowState&  aReflowState,
                   nsIFrame*            aKidFrame,
-                  nsHTMLReflowMetrics& aKidDesiredSize);
+                  nsHTMLReflowMetrics& aKidDesiredSize,
+                  const nsRect&        aOriginalKidRect,
+                  const nsRect&        aOriginalKidOverflowRect);
 
   nsIFrame* GetFirstBodyRowGroupFrame();
   PRBool MoveOverflowToChildList(nsPresContext* aPresContext);

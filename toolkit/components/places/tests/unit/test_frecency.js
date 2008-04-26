@@ -43,6 +43,9 @@
  * this also tests for non-empty inputs as well. Because the interactions among
  * *DIFFERENT* visit counts and visit dates is not well defined, this test
  * holds one of the two values constant when modifying the other.
+ *
+ * Also test bug 419068 to make sure tagged pages don't necessarily have to be
+ * first in the results.
  */
 var current_test = 0;
 
@@ -69,6 +72,7 @@ AutoCompleteInput.prototype = {
     return this.searches[aIndex];
   },
 
+  onSearchBegin: function() {},
   onSearchComplete: function() {},
 
   popupOpen: false,
@@ -111,7 +115,14 @@ function ensure_results(uris, searchTerm)
   // Search is asynchronous, so don't let the test finish immediately
   do_test_pending();
 
+  var numSearchesStarted = 0;
+  input.onSearchBegin = function() {
+    numSearchesStarted++;
+    do_check_eq(numSearchesStarted, 1);
+  };
+
   input.onSearchComplete = function() {
+    do_check_eq(numSearchesStarted, 1);
     do_check_eq(controller.searchStatus,
                 Ci.nsIAutoCompleteController.STATUS_COMPLETE_MATCH);
     do_check_eq(controller.matchCount, uris.length);
@@ -132,16 +143,17 @@ function ensure_results(uris, searchTerm)
 
 // Get history service
 try {
-  var histsvc = Cc["@mozilla.org/browser/nav-history-service;1"].getService(Ci.nsINavHistoryService);
+  var histsvc = Cc["@mozilla.org/browser/nav-history-service;1"].
+                getService(Ci.nsINavHistoryService);
   var bhist = histsvc.QueryInterface(Ci.nsIBrowserHistory);
+  var tagssvc = Cc["@mozilla.org/browser/tagging-service;1"].
+                getService(Ci.nsITaggingService);
 } catch(ex) {
   do_throw("Could not get history service\n");
 } 
 
 function setCountDate(aURI, aCount, aDate)
 {
-  // Set the visit count and date for a uri
-  histsvc.setPageDetails(aURI, aURI, aCount, false, true);
   // We need visits so that frecency can be computed over multiple visits
   for (let i = 0; i < aCount; i++)
     histsvc.addVisit(aURI, aDate, null, histsvc.TRANSITION_TYPED, false, 0);
@@ -169,24 +181,28 @@ function() {
   prepTest("0: same count, different date");
   setCountDate(uri1, c1, d1);
   setCountDate(uri2, c1, d2);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri1, uri2], "");
 },
 function() {
   prepTest("1: same count, different date");
   setCountDate(uri1, c1, d2);
   setCountDate(uri2, c1, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri2, uri1], "");
 },
 function() {
   prepTest("2: different count, same date");
   setCountDate(uri1, c1, d1);
   setCountDate(uri2, c2, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri1, uri2], "");
 },
 function() {
   prepTest("3: different count, same date");
   setCountDate(uri1, c2, d1);
   setCountDate(uri2, c1, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri2, uri1], "");
 },
 
@@ -195,24 +211,28 @@ function() {
   prepTest("4: same count, different date");
   setCountDate(uri1, c1, d1);
   setCountDate(uri2, c1, d2);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri1, uri2], "site");
 },
 function() {
   prepTest("5: same count, different date");
   setCountDate(uri1, c1, d2);
   setCountDate(uri2, c1, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri2, uri1], "site");
 },
 function() {
   prepTest("6: different count, same date");
   setCountDate(uri1, c1, d1);
   setCountDate(uri2, c2, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri1, uri2], "site");
 },
 function() {
   prepTest("7: different count, same date");
   setCountDate(uri1, c2, d1);
   setCountDate(uri2, c1, d1);
+  tagssvc.tagURI(uri1, ["site"]);
   ensure_results([uri2, uri1], "site");
 }
 ];

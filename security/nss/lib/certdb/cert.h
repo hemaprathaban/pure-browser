@@ -37,7 +37,7 @@
 /*
  * cert.h - public data structures and prototypes for the certificate library
  *
- * $Id: cert.h,v 1.63 2008/01/08 07:33:58 kaie%kuix.de Exp $
+ * $Id: cert.h,v 1.68 2008/03/15 02:15:34 alexei.volkov.bugs%sun.com Exp $
  */
 
 #ifndef _CERT_H_
@@ -1258,10 +1258,6 @@ CERT_CheckForEvilCert(CERTCertificate *cert);
 CERTGeneralName *
 CERT_GetCertificateNames(CERTCertificate *cert, PRArenaPool *arena);
 
-
-SECStatus 
-CERT_EncodeSubjectKeyID(PRArenaPool *arena, char *value, int len, SECItem *encodedValue);
-
 char *
 CERT_GetNickName(CERTCertificate   *cert, CERTCertDBHandle *handle, PRArenaPool *nicknameArena);
 
@@ -1519,11 +1515,6 @@ extern SECItem *
 CERT_GetSPKIDigest(PRArenaPool *arena, const CERTCertificate *cert,
                    SECOidTag digestAlg, SECItem *fill);
 
-/*
- * fill in nsCertType field of the cert based on the cert extension
- */
-extern SECStatus cert_GetCertType(CERTCertificate *cert);
-
 
 SECStatus CERT_CheckCRL(CERTCertificate* cert, CERTCertificate* issuer,
                         SECItem* dp, int64 t, void* wincx);
@@ -1607,6 +1598,29 @@ CERT_EncodeNoticeReference(PRArenaPool *arena,
                            CERTNoticeReference *reference,
                            SECItem *dest);
 
+/*
+ * Returns a pointer to a static structure.
+ */
+extern const CERTRevocationFlags*
+CERT_GetPKIXVerifyNistRevocationPolicy();
+
+/*
+ * Returns a pointer to a static structure.
+ */
+extern const CERTRevocationFlags*
+CERT_GetClassicOCSPEnabledSoftFailurePolicy();
+
+/*
+ * Returns a pointer to a static structure.
+ */
+extern const CERTRevocationFlags*
+CERT_GetClassicOCSPEnabledHardFailurePolicy();
+
+/*
+ * Returns a pointer to a static structure.
+ */
+extern const CERTRevocationFlags*
+CERT_GetClassicOCSPDisabledPolicy();
 
 /*
  * Verify a Cert with libpkix
@@ -1631,6 +1645,16 @@ extern SECStatus CERT_PKIXVerifyCert(
  * setting the value in paramsIn.
  */
 extern SECStatus CERT_PKIXSetDefaults(CERTValInParam *paramsIn);
+
+/* Makes old cert validation APIs(CERT_VerifyCert, CERT_VerifyCertificate)
+ * to use libpkix validation engine. The function should be called ones at
+ * application initialization time.
+ * Function is not thread safe.*/
+SECStatus CERT_SetUsePKIXForValidation(PRBool enable);
+
+/* The function return PR_TRUE if cert validation should use
+ * libpkix cert validation engine. */
+PRBool CERT_GetUsePKIXForValidation();
 
 SEC_END_PROTOS
 

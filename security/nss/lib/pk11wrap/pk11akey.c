@@ -87,6 +87,12 @@ pk11_MakeIDFromPublicKey(SECKEYPublicKey *pubKey)
 
 /*
  * import a public key into the desired slot
+ *
+ * This function takes a public key structure and creates a public key in a 
+ * given slot. If isToken is set, then a persistant public key is created.
+ *
+ * Note: it is possible for this function to return a handle for a key which
+ * is persistant, even if isToken is not set.
  */
 CK_OBJECT_HANDLE
 PK11_ImportPublicKey(PK11SlotInfo *slot, SECKEYPublicKey *pubKey, 
@@ -113,10 +119,12 @@ PK11_ImportPublicKey(PK11SlotInfo *slot, SECKEYPublicKey *pubKey,
     /* free the existing key */
     if (pubKey->pkcs11Slot != NULL) {
 	PK11SlotInfo *oSlot = pubKey->pkcs11Slot;
-	PK11_EnterSlotMonitor(oSlot);
-	(void) PK11_GETTAB(oSlot)->C_DestroyObject(oSlot->session,
+	if (!PK11_IsPermObject(pubKey->pkcs11Slot,pubKey->pkcs11ID)) {
+	    PK11_EnterSlotMonitor(oSlot);
+	    (void) PK11_GETTAB(oSlot)->C_DestroyObject(oSlot->session,
 							pubKey->pkcs11ID);
-	PK11_ExitSlotMonitor(oSlot);
+	    PK11_ExitSlotMonitor(oSlot);
+	}
 	PK11_FreeSlot(oSlot);
 	pubKey->pkcs11Slot = NULL;
     }
@@ -1889,6 +1897,15 @@ PK11_MakeIDFromPubKey(SECItem *pubKeyData)
     SECItem *certCKA_ID;
     SECStatus rv;
 
+    if (pubKeyData->len <= SHA1_LENGTH) {
+	/* probably an already hashed value. The strongest known public
+	 * key values <= 160 bits would be less than 40 bit symetric in
+	 * strength. Don't hash them, just return the value. There are
+	 * none at the time of this writing supported by previous versions
+	 * of NSS, so change is binary compatible safe */
+	return SECITEM_DupItem(pubKeyData);
+    }
+
     context = PK11_CreateDigestContext(SEC_OID_SHA1);
     if (context == NULL) {
 	return NULL;
@@ -1928,32 +1945,10 @@ PK11_MakeIDFromPubKey(SECItem *pubKeyData)
     return certCKA_ID;
 }
 
-SECItem *
-PK11_GetKeyIDFromPrivateKey(SECKEYPrivateKey *key, void *wincx)
-{
-    CK_ATTRIBUTE theTemplate[] = {
-	{ CKA_ID, NULL, 0 },
-    };
-    int tsize = sizeof(theTemplate)/sizeof(theTemplate[0]);
-    SECItem *item = NULL;
-    CK_RV crv;
+/* Looking for PK11_GetKeyIDFromPrivateKey?
+ * Call PK11_GetLowLevelKeyIDForPrivateKey instead.
+ */
 
-    crv = PK11_GetAttributes(NULL,key->pkcs11Slot,key->pkcs11ID,
-							theTemplate,tsize);
-    if (crv != CKR_OK) {
-	PORT_SetError( PK11_MapError(crv) );
-	goto loser;
-    }
-
-    item = PORT_ZNew(SECItem);
-    if (item) {
-        item->data = (unsigned char*) theTemplate[0].pValue;
-        item->len = theTemplate[0].ulValueLen;
-    }
-
-loser:
-    return item;
-}
 
 SECItem *
 PK11_GetLowLevelKeyIDForPrivateKey(SECKEYPrivateKey *privKey)

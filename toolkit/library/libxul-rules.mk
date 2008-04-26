@@ -51,6 +51,10 @@ else
 EXTRA_DSO_LDOPTS += $(MOZ_ZLIB_LIBS)
 endif
 
+ifdef MOZ_NATIVE_HUNSPELL
+EXTRA_DSO_LDOPTS += $(MOZ_HUNSPELL_LIBS)
+endif
+
 # need widget/src/windows for resource.h (included from widget.rc)
 LOCAL_INCLUDES += \
 	-I$(topsrcdir)/config \
@@ -70,7 +74,9 @@ DEFINES += \
 	$(NULL)
 
 ifeq ($(MOZ_WIDGET_TOOLKIT),windows)
-OS_LIBS += $(call EXPAND_LIBNAME,usp10)
+ifneq ($(OS_ARCH),WINCE)
+OS_LIBS += $(call EXPAND_LIBNAME,usp10 oleaut32)
+endif
 endif
 ifneq (,$(filter $(MOZ_WIDGET_TOOLKIT),mac cocoa))
 EXTRA_DSO_LDOPTS += -lcups

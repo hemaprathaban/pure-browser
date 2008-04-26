@@ -60,10 +60,10 @@ enum nsRectVisibility {
   nsRectVisibility_kZeroAreaRect
 }; 
 
-// 5a1e80e1-b51c-4f43-8950-1064bd1f39ee
+// 855e75b8-32cf-4e16-bc50-4e04c53f6cbc
 #define NS_IVIEWMANAGER_IID   \
-{ 0x5a1e80e1, 0xb51c, 0x4f43, \
-  { 0x89, 0x50, 0x10, 0x64, 0xbd, 0x1f, 0x39, 0xee } }
+{ 0x855e75b8, 0x32cf, 0x4e16, \
+  { 0xbc, 0x50, 0x4e, 0x04, 0xc5, 0x3f, 0x6c, 0xbc } }
 
 class nsIViewManager : public nsISupports
 {
@@ -481,6 +481,7 @@ public:
    * (aFromScroll is false) or scrolled (aFromScroll is true).
    */
   NS_IMETHOD SynthesizeMouseMove(PRBool aFromScroll)=0;
+
 };
 
 NS_DEFINE_STATIC_IID_ACCESSOR(nsIViewManager, NS_IVIEWMANAGER_IID)

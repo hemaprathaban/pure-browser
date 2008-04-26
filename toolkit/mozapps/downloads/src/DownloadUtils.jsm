@@ -1,5 +1,5 @@
 /* ***** BEGIN LICENSE BLOCK *****
- *   Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
  * 1.1 (the "License"); you may not use this file except in compliance with
@@ -34,7 +34,7 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-EXPORTED_SYMBOLS = [ "DownloadUtils" ];
+var EXPORTED_SYMBOLS = [ "DownloadUtils" ];
 
 /**
  * This module provides the DownloadUtils object which contains useful methods
@@ -72,8 +72,8 @@ const kDownloadProperties =
   "chrome://mozapps/locale/downloads/downloads.properties";
 
 // These strings will be converted to the corresponding ones from the string
-// bundle on load
-let gStr = {
+// bundle on use
+let kStrings = {
   statusFormat: "statusFormat2",
   transferSameUnits: "transferSameUnits",
   transferDiffUnits: "transferDiffUnits",
@@ -90,19 +90,60 @@ let gStr = {
   timeUnits: ["seconds", "minutes", "hours", "days"],
 };
 
-// Convert strings to those in the string bundle
-let (getStr = Cc["@mozilla.org/intl/stringbundle;1"].
-              getService(Ci.nsIStringBundleService).
-              createBundle(kDownloadProperties).
-              GetStringFromName) {
-  for (let [name, value] in Iterator(gStr)) {
-    try {
-      gStr[name] = typeof value == "string" ? getStr(value) : value.map(getStr);
-    } catch (e) {
-      log(["Couldn't get string '", name, "' from property '", value, "'"]);
-    }
-  }
-}
+// This object will lazily load the strings defined in kStrings
+let gStr = {
+  /**
+   * Initialize lazy string getters
+   */
+  _init: function()
+  {
+    // Make each "name" a lazy-loading string that knows how to load itself. We
+    // need to locally scope name and value to keep them around for the getter.
+    for (let [name, value] in Iterator(kStrings))
+      let ([n, v] = [name, value])
+        gStr.__defineGetter__(n, function() gStr._getStr(n, v));
+  },
+
+  /**
+   * Convert strings to those in the string bundle. This lazily loads the
+   * string bundle *once* only when used the first time.
+   */
+  get _getStr()
+  {
+    // Delete the getter to be overwritten
+    delete gStr._getStr;
+
+    // Lazily load the bundle into the closure on first call to _getStr
+    let getStr = Cc["@mozilla.org/intl/stringbundle;1"].
+                 getService(Ci.nsIStringBundleService).
+                 createBundle(kDownloadProperties).
+                 GetStringFromName;
+
+    // _getStr is a function that sets string "name" to stringbundle's "value"
+    return gStr._getStr = function(name, value) {
+      // Delete the getter to be overwritten
+      delete gStr[name];
+
+      try {
+        // "name" is a string or array of the stringbundle-loaded "value"
+        return gStr[name] = typeof value == "string" ?
+                            getStr(value) :
+                            value.map(getStr);
+      } catch (e) {
+        log(["Couldn't get string '", name, "' from property '", value, "'"]);
+        // Don't return anything (undefined), and because we deleted ourselves,
+        // future accesses will also be undefined
+      }
+    };
+  },
+};
+// Initialize the lazy string getters!
+gStr._init();
+
+// Keep track of at most this many second/lastSec pairs so that multiple calls
+// to getTimeLeft produce the same time left
+const kCachedLastMaxSize = 10;
+let gCachedLast = [];
 
 let DownloadUtils = {
   /**
@@ -211,6 +252,15 @@ let DownloadUtils = {
 
     if (aSeconds < 0)
       return [gStr.timeUnknown, aLastSec];
+
+    // Try to find a cached lastSec for the given second
+    aLastSec = gCachedLast.reduce(function(aResult, aItem)
+      aItem[0] == aSeconds ? aItem[1] : aResult, aLastSec);
+
+    // Add the current second/lastSec pair unless we have too many
+    gCachedLast.push([aSeconds, aLastSec]);
+    if (gCachedLast.length > kCachedLastMaxSize)
+      gCachedLast.shift();
 
     // Apply smoothing only if the new time isn't a huge change -- e.g., if the
     // new time is more than half the previous time; this is useful for

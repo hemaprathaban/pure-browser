@@ -52,10 +52,10 @@
 nsCSSValue::nsCSSValue(PRInt32 aValue, nsCSSUnit aUnit)
   : mUnit(aUnit)
 {
-  NS_ASSERTION((eCSSUnit_Integer == aUnit) ||
-               (eCSSUnit_Enumerated == aUnit), "not an int value");
-  if ((eCSSUnit_Integer == aUnit) ||
-      (eCSSUnit_Enumerated == aUnit)) {
+  NS_ASSERTION(aUnit == eCSSUnit_Integer || aUnit == eCSSUnit_Enumerated ||
+               aUnit == eCSSUnit_EnumColor, "not an int value");
+  if (aUnit == eCSSUnit_Integer || aUnit == eCSSUnit_Enumerated ||
+      aUnit == eCSSUnit_EnumColor) {
     mValue.mInt = aValue;
   }
   else {
@@ -127,30 +127,36 @@ nsCSSValue::nsCSSValue(nsCSSValue::Image* aValue)
 nsCSSValue::nsCSSValue(const nsCSSValue& aCopy)
   : mUnit(aCopy.mUnit)
 {
-  if ((eCSSUnit_String <= mUnit) && (mUnit <= eCSSUnit_Attr)) {
+  if (mUnit <= eCSSUnit_Dummy) {
+    // nothing to do, but put this important case first
+  }
+  else if (eCSSUnit_Percent <= mUnit) {
+    mValue.mFloat = aCopy.mValue.mFloat;
+  }
+  else if (eCSSUnit_String <= mUnit && mUnit <= eCSSUnit_Attr) {
     mValue.mString = aCopy.mValue.mString;
     mValue.mString->AddRef();
   }
-  else if ((eCSSUnit_Integer <= mUnit) && (mUnit <= eCSSUnit_Enumerated)) {
+  else if (eCSSUnit_Integer <= mUnit && mUnit <= eCSSUnit_EnumColor) {
     mValue.mInt = aCopy.mValue.mInt;
   }
-  else if (eCSSUnit_Color == mUnit){
+  else if (eCSSUnit_Color == mUnit) {
     mValue.mColor = aCopy.mValue.mColor;
   }
   else if (eCSSUnit_Array <= mUnit && mUnit <= eCSSUnit_Counters) {
     mValue.mArray = aCopy.mValue.mArray;
     mValue.mArray->AddRef();
   }
-  else if (eCSSUnit_URL == mUnit){
+  else if (eCSSUnit_URL == mUnit) {
     mValue.mURL = aCopy.mValue.mURL;
     mValue.mURL->AddRef();
   }
-  else if (eCSSUnit_Image == mUnit){
+  else if (eCSSUnit_Image == mUnit) {
     mValue.mImage = aCopy.mValue.mImage;
     mValue.mImage->AddRef();
   }
   else {
-    mValue.mFloat = aCopy.mValue.mFloat;
+    NS_NOTREACHED("unknown unit");
   }
 }
 
@@ -166,14 +172,14 @@ nsCSSValue& nsCSSValue::operator=(const nsCSSValue& aCopy)
 PRBool nsCSSValue::operator==(const nsCSSValue& aOther) const
 {
   if (mUnit == aOther.mUnit) {
-    if (mUnit <= eCSSUnit_System_Font) {
+    if (mUnit <= eCSSUnit_Dummy) {
       return PR_TRUE;
     }
     else if ((eCSSUnit_String <= mUnit) && (mUnit <= eCSSUnit_Attr)) {
       return (NS_strcmp(GetBufferValue(mValue.mString),
                         GetBufferValue(aOther.mValue.mString)) == 0);
     }
-    else if ((eCSSUnit_Integer <= mUnit) && (mUnit <= eCSSUnit_Enumerated)) {
+    else if ((eCSSUnit_Integer <= mUnit) && (mUnit <= eCSSUnit_EnumColor)) {
       return mValue.mInt == aOther.mValue.mInt;
     }
     else if (eCSSUnit_Color == mUnit) {
@@ -255,11 +261,11 @@ void nsCSSValue::DoReset()
 
 void nsCSSValue::SetIntValue(PRInt32 aValue, nsCSSUnit aUnit)
 {
-  NS_ASSERTION((eCSSUnit_Integer == aUnit) ||
-               (eCSSUnit_Enumerated == aUnit), "not an int value");
+  NS_ASSERTION(aUnit == eCSSUnit_Integer || aUnit == eCSSUnit_Enumerated ||
+               aUnit == eCSSUnit_EnumColor, "not an int value");
   Reset();
-  if ((eCSSUnit_Integer == aUnit) ||
-      (eCSSUnit_Enumerated == aUnit)) {
+  if (aUnit == eCSSUnit_Integer || aUnit == eCSSUnit_Enumerated ||
+      aUnit == eCSSUnit_EnumColor) {
     mUnit = aUnit;
     mValue.mInt = aValue;
   }

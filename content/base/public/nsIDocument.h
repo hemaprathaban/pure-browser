@@ -93,11 +93,12 @@ class nsBindingManager;
 class nsIDOMNodeList;
 class mozAutoSubtreeModified;
 struct JSObject;
+class nsFrameLoader;
 
 // IID for the nsIDocument interface
 #define NS_IDOCUMENT_IID      \
-{ 0x626d86d2, 0x615f, 0x4a12, \
- { 0x94, 0xd8, 0xe3, 0xdb, 0x3a, 0x29, 0x83, 0x72 } }
+{ 0xd76acf2e, 0x4b55, 0x420c, \
+  { 0xaa, 0xbf, 0x5c, 0x4d, 0xbf, 0xc9, 0x81, 0x08 } }
 
 // Flag for AddStyleSheet().
 #define NS_STYLESHEET_FROM_CATALOG                (1 << 0)
@@ -595,6 +596,8 @@ public:
   // To make this easy and painless, use the mozAutoDocUpdate helper class.
   virtual void BeginUpdate(nsUpdateType aUpdateType) = 0;
   virtual void EndUpdate(nsUpdateType aUpdateType) = 0;
+  virtual PRUint32 GetUpdateNestingLevel() = 0;
+  virtual PRBool AllUpdatesAreContent() = 0;
   virtual void BeginLoad() = 0;
   virtual void EndLoad() = 0;
   // notify that one or two content nodes changed state
@@ -941,6 +944,21 @@ public:
     mJSObject = aJSObject;
   }
 
+  // This method should return an addrefed nsIParser* or nsnull. Implementations
+  // should transfer ownership of the parser to the caller.
+  virtual already_AddRefed<nsIParser> GetFragmentParser() {
+    return nsnull;
+  }
+
+  virtual void SetFragmentParser(nsIParser* aParser) {
+    // Do nothing.
+  }
+
+  // In case of failure, the document really can't initialize the frame loader.
+  virtual nsresult InitializeFrameLoader(nsFrameLoader* aLoader) = 0;
+  // In case of failure, the caller must handle the error, for example by
+  // finalizing frame loader asynchronously.
+  virtual nsresult FinalizeFrameLoader(nsFrameLoader* aLoader) = 0;
 protected:
   ~nsIDocument()
   {

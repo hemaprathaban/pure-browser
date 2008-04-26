@@ -50,6 +50,11 @@
 class nsCocoaWindow;
 class nsChildView;
 
+typedef struct _nsCocoaWindowList {
+  _nsCocoaWindowList() : prev(NULL), window(NULL) {}
+  struct _nsCocoaWindowList *prev;
+  nsCocoaWindow *window; // Weak
+} nsCocoaWindowList;
 
 @interface NSApplication (Undocumented)
 
@@ -250,7 +255,10 @@ public:
     PRBool IsResizing () const { return mIsResizing; }
     void StartResizing () { mIsResizing = PR_TRUE; }
     void StopResizing () { mIsResizing = PR_FALSE; }
-    
+
+    PRBool HasModalDescendents() { return mNumModalDescendents > 0; }
+    NSWindow *GetCocoaWindow() { return mWindow; }
+
     // nsIKBStateControl interface
     NS_IMETHOD ResetInputState();
     
@@ -270,9 +278,11 @@ protected:
 
   PRPackedBool         mIsResizing;     // we originated the resize, prevent infinite recursion
   PRPackedBool         mWindowMadeHere; // true if we created the window, false for embedding
-  PRPackedBool         mVisible;        // Whether or not we're visible.
   PRPackedBool         mSheetNeedsShow; // if this is a sheet, are we waiting to be shown?
+                                        // this is used for sibling sheet contention only
   PRPackedBool         mModal;
+
+  PRInt32              mNumModalDescendents;
 };
 
 

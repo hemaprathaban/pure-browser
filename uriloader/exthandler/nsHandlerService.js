@@ -49,8 +49,10 @@ const CLASS_PROTOCOLINFO    = "scheme";
 // namespace prefix
 const NC_NS                 = "http://home.netscape.com/NC-rdf#";
 
-// the most recent default handlers that have been injected
-const NC_DEFAULT_HANDLERS_VERSION = NC_NS + "defaultHandlersVersion";
+// the most recent default handlers that have been injected.  Note that
+// this is used to construct an RDF resource, which needs to have NC_NS
+// prepended, since that hasn't been done yet
+const DEFAULT_HANDLERS_VERSION = "defaultHandlersVersion";
 
 // type list properties
 
@@ -140,22 +142,30 @@ HandlerService.prototype = {
     }
 
     try {
-      // if the default prefs have changed, inject any new default handers
-      // into the datastore
+      // if we don't have the current version of the default prefs for
+      // this locale, inject any new default handers into the datastore
       if (defaultHandlersVersion < this._prefsDefaultHandlersVersion) {
+
         // set the new version first so that if we recurse we don't
         // call _injectNewDefaults several times
         this._datastoreDefaultHandlersVersion =
           this._prefsDefaultHandlersVersion;
         this._injectNewDefaults();
-      }
+      } 
     } catch (ex) {
       // if injecting the defaults failed, set the version back to the
       // previous value
-      this._datastoreDefaultHandlersVersion = defaultHandlersVersion;      
+      this._datastoreDefaultHandlersVersion = defaultHandlersVersion;
     }
   },
-  
+
+  get _currentLocale() {
+    var chromeRegistry = Cc["@mozilla.org/chrome/chrome-registry;1"].
+                         getService(Ci.nsIXULChromeRegistry);
+    var currentLocale = chromeRegistry.getSelectedLocale("global");
+    return currentLocale;
+  }, 
+
   _destroy: function HS__destroy() {
     this._observerSvc.removeObserver(this, "profile-before-change");
     this._observerSvc.removeObserver(this, "xpcom-shutdown");
@@ -183,15 +193,17 @@ HandlerService.prototype = {
     return false;
   },
 
+  // note that this applies to the current locale only 
   get _datastoreDefaultHandlersVersion() {
-    var version = this._getValue("urn:root", NC_DEFAULT_HANDLERS_VERSION); 
+    var version = this._getValue("urn:root", NC_NS + this._currentLocale +
+                                             "_" + DEFAULT_HANDLERS_VERSION);
     
     return version ? version : -1;
   },
 
   set _datastoreDefaultHandlersVersion(aNewVersion) {
-    return this._setLiteral("urn:root", NC_DEFAULT_HANDLERS_VERSION, 
-                            aNewVersion);
+    return this._setLiteral("urn:root", NC_NS + this._currentLocale + "_" + 
+                            DEFAULT_HANDLERS_VERSION, aNewVersion);
   },
 
   get _prefsDefaultHandlersVersion() {
@@ -199,12 +211,11 @@ HandlerService.prototype = {
     var prefSvc = Cc["@mozilla.org/preferences-service;1"].
                   getService(Ci.nsIPrefService);
     var handlerSvcBranch = prefSvc.getBranch("gecko.handlerService.");
-  
+
     // get the version of the preferences for this locale
-    var version = handlerSvcBranch.getComplexValue("defaultHandlersVersion",
-                                                   Ci.nsISupportsString).data;
-                                                   
-    return version;                                                   
+    return Number(handlerSvcBranch.
+                  getComplexValue("defaultHandlersVersion", 
+                                  Ci.nsIPrefLocalizedString).data);
   },
   
   _injectNewDefaults: function HS__injectNewDefaults() {
@@ -215,9 +226,6 @@ HandlerService.prototype = {
     let schemesPrefBranch = prefSvc.getBranch("gecko.handlerService.schemes.");
     let schemePrefList = schemesPrefBranch.getChildList("", {}); 
 
-    let protoSvc = Cc["@mozilla.org/uriloader/external-protocol-service;1"].
-                   getService(Ci.nsIExternalProtocolService);
-
     var schemes = {};
 
     // read all the scheme prefs into a hash
@@ -225,21 +233,42 @@ HandlerService.prototype = {
 
       let [scheme, handlerNumber, attribute] = schemePrefName.split(".");
 
-      if (!(scheme in schemes))
-        schemes[scheme] = {};
-      if (!(handlerNumber in schemes[scheme]))
-        schemes[scheme][handlerNumber] = {};
+      try {
+        var attrData =
+          schemesPrefBranch.getComplexValue(schemePrefName,
+                                            Ci.nsIPrefLocalizedString).data;
+        if (!(scheme in schemes))
+          schemes[scheme] = {};
+  
+        if (!(handlerNumber in schemes[scheme]))
+          schemes[scheme][handlerNumber] = {};
         
-      schemes[scheme][handlerNumber][attribute] = 
-        schemesPrefBranch.getComplexValue(schemePrefName,
-                                          Ci.nsISupportsString).data;
+        schemes[scheme][handlerNumber][attribute] = attrData;
+      } catch (ex) {}
     }
 
+    let protoSvc = Cc["@mozilla.org/uriloader/external-protocol-service;1"].
+                   getService(Ci.nsIExternalProtocolService);
     for (var scheme in schemes) {
 
-      // get a protocol info object for that scheme and cache the possible
-      // handlers to avoid extra xpconnect traversals
-      let protoInfo = protoSvc.getProtocolHandlerInfo(scheme);  
+      // This clause is essentially a reimplementation of 
+      // nsIExternalProtocolHandlerService.getProtocolHandlerInfo().
+      // Necessary because calling that from here would make XPConnect barf
+      // when getService tried to re-enter the constructor for this
+      // service.
+      let osDefaultHandlerFound = {};
+      let protoInfo = protoSvc.getProtocolHandlerInfoFromOS(scheme, 
+                               osDefaultHandlerFound);
+      
+      try {
+        this.fillHandlerInfo(protoInfo, null);
+      } catch (ex) {
+        // pick some sane defaults
+        protoSvc.setProtocolHandlerDefaults(protoInfo, 
+                                            osDefaultHandlerFound.value);
+      }
+
+      // cache the possible handlers to avoid extra xpconnect traversals.      
       let possibleHandlers = protoInfo.possibleApplicationHandlers;
 
       for each (var handlerPrefs in schemes[scheme]) {
@@ -251,7 +280,7 @@ HandlerService.prototype = {
         handlerApp.name = handlerPrefs.name;                
 
         if (!this._isInHandlerArray(possibleHandlers, handlerApp)) {
-             possibleHandlers.appendElement(handlerApp, false);
+          possibleHandlers.appendElement(handlerApp, false);
         }
       }
 
@@ -326,14 +355,28 @@ HandlerService.prototype = {
                                aHandlerInfo.possibleApplicationHandlers,
                                aHandlerInfo.preferredApplicationHandler);
 
-    // Retrieve the "always ask" flag.
-    // Note: we only set the flag to false if we are absolutely sure the user
-    // does not want to be asked.  Any sort of bogus data should mean we ask.
-    // So there must be an "alwaysAsk" property in the datastore for the handler
-    // info object, and it must be set to "false", in order for us not to ask.
-    aHandlerInfo.alwaysAskBeforeHandling =
-      !this._hasValue(infoID, NC_ALWAYS_ASK) ||
-      this._getValue(infoID, NC_ALWAYS_ASK) != "false";
+    // If we have an "always ask" flag stored in the RDF, always use its
+    // value. Otherwise, use the default value stored in the pref service.
+    var alwaysAsk;
+    if (this._hasValue(infoID, NC_ALWAYS_ASK)) {
+      alwaysAsk = (this._getValue(infoID, NC_ALWAYS_ASK) != "false");
+    } else {
+      var prefSvc = Cc["@mozilla.org/preferences-service;1"].
+                    getService(Ci.nsIPrefService);
+      var prefBranch = prefSvc.getBranch("network.protocol-handler.");
+      try {
+        alwaysAsk = prefBranch.getBoolPref("warn-external." + type);
+      } catch (e) {
+        // will throw if pref didn't exist.
+        try {
+          alwaysAsk = prefBranch.getBoolPref("warn-external-default");
+        } catch (e) {
+          // Nothing to tell us what to do, so be paranoid and prompt.
+          alwaysAsk = true;
+        }
+      }
+    }
+    aHandlerInfo.alwaysAskBeforeHandling = alwaysAsk;
 
     // If the object represents a MIME type handler, then also retrieve
     // any file extensions.

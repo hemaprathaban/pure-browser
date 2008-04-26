@@ -290,11 +290,8 @@ GK_ATOM(dragevent, "dragevent")
 GK_ATOM(dragexit, "dragexit")
 GK_ATOM(draggesture, "draggesture")
 GK_ATOM(dragging, "dragging")
-GK_ATOM(dragleave, "dragleave")
 GK_ATOM(dragover, "dragover")
 GK_ATOM(dragSession, "dragSession")
-GK_ATOM(dragstart, "dragstart")
-GK_ATOM(drop, "drop")
 GK_ATOM(dropAfter, "dropAfter")
 GK_ATOM(dropBefore, "dropBefore")
 GK_ATOM(dropOn, "dropOn")
@@ -761,6 +758,7 @@ GK_ATOM(setcookie, "set-cookie")
 GK_ATOM(setter, "setter")
 GK_ATOM(shape, "shape")
 GK_ATOM(show, "show")
+GK_ATOM(showcaret, "showcaret")
 GK_ATOM(simple, "simple")
 GK_ATOM(single, "single")
 GK_ATOM(size, "size")
@@ -1491,6 +1489,9 @@ GK_ATOM(changeListProperty, "ChangeListProperty") // void*
 GK_ATOM(collapseOffsetProperty, "CollapseOffsetProperty")  // nsPoint*
 GK_ATOM(computedOffsetProperty, "ComputedOffsetProperty")  // nsPoint*
 GK_ATOM(generatedContent, "GeneratedContentProperty")  // nsCOMArray<nsIContent>*
+#ifdef MOZ_MATHML
+GK_ATOM(HTMLReflowMetricsProperty, "HTMLReflowMetricsProperty") // nsHTMLReflowMetrics*
+#endif
 GK_ATOM(IBSplitSpecialPrevSibling, "IBSplitSpecialPrevSibling")// nsIFrame*
 GK_ATOM(IBSplitSpecialSibling, "IBSplitSpecialSibling")    // nsIFrame*
 GK_ATOM(lineCursorProperty, "LineCursorProperty") // nsLineBox*
@@ -1518,3 +1519,8 @@ GK_ATOM(Chinese, "zh-CN")
 GK_ATOM(Taiwanese, "zh-TW")
 GK_ATOM(HongKongChinese, "zh-HK")
 GK_ATOM(Unicode, "x-unicode")
+
+// Names for editor transactions
+GK_ATOM(TypingTxnName, "Typing")
+GK_ATOM(IMETxnName, "IME")
+GK_ATOM(DeleteTxnName, "Deleting")

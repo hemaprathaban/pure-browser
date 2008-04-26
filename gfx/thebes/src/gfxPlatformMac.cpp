@@ -40,6 +40,7 @@
 
 #include "gfxImageSurface.h"
 #include "gfxQuartzSurface.h"
+#include "gfxQuartzImageSurface.h"
 
 #include "gfxQuartzFontCache.h"
 #include "gfxAtsuiFonts.h"
@@ -144,6 +145,26 @@ gfxPlatformMac::CreateOffscreenSurface(const gfxIntSize& size,
     return newSurface;
 }
 
+already_AddRefed<gfxASurface>
+gfxPlatformMac::OptimizeImage(gfxImageSurface *aSurface,
+                              gfxASurface::gfxImageFormat format)
+{
+    const gfxIntSize& surfaceSize = aSurface->GetSize();
+    nsRefPtr<gfxImageSurface> isurf = aSurface;
+
+    if (format != aSurface->Format()) {
+        isurf = new gfxImageSurface (surfaceSize, format);
+        if (!isurf->CopyFrom (aSurface)) {
+            // don't even bother doing anything more
+            NS_ADDREF(aSurface);
+            return aSurface;
+        }
+    }
+
+    nsRefPtr<gfxASurface> ret = new gfxQuartzImageSurface(isurf);
+    return ret.forget();
+}
+
 nsresult
 gfxPlatformMac::ResolveFontName(const nsAString& aFontName,
                                 FontResolverCallback aCallback,
@@ -156,6 +177,13 @@ gfxPlatformMac::ResolveFontName(const nsAString& aFontName,
         return NS_OK;
     }
     aAborted = !(*aCallback)(resolvedName, aClosure);
+    return NS_OK;
+}
+
+nsresult
+gfxPlatformMac::GetStandardFamilyName(const nsAString& aFontName, nsAString& aFamilyName)
+{
+    gfxQuartzFontCache::SharedFontCache()->GetStandardFamilyName(aFontName, aFamilyName);
     return NS_OK;
 }
 

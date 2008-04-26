@@ -79,6 +79,7 @@
 #include "nsAOLCiter.h"
 #include "nsInternetCiter.h"
 #include "nsEventDispatcher.h"
+#include "nsGkAtoms.h"
 
 // Drag & Drop, Clipboard
 #include "nsIClipboard.h"
@@ -417,7 +418,7 @@ NS_IMETHODIMP nsPlaintextEditor::HandleKeyPress(nsIDOMKeyEvent* aKeyEvent)
 NS_IMETHODIMP nsPlaintextEditor::TypedText(const nsAString& aString,
                                       PRInt32 aAction)
 {
-  nsAutoPlaceHolderBatch batch(this, gTypingTxnName);
+  nsAutoPlaceHolderBatch batch(this, nsGkAtoms::TypingTxnName);
 
   switch (aAction)
   {
@@ -643,7 +644,7 @@ NS_IMETHODIMP nsPlaintextEditor::DeleteSelection(nsIEditor::EDirection aAction)
   nsresult result;
 
   // delete placeholder txns merge.
-  nsAutoPlaceHolderBatch batch(this, gDeleteTxnName);
+  nsAutoPlaceHolderBatch batch(this, nsGkAtoms::DeleteTxnName);
   nsAutoRules beginRulesSniffing(this, kOpDeleteSelection, aAction);
 
   // pre-process
@@ -678,6 +679,7 @@ NS_IMETHODIMP nsPlaintextEditor::DeleteSelection(nsIEditor::EDirection aAction)
   // This needs to happen inside selection batching,
   // otherwise the deleted text is autocopied to the clipboard.
   if (aAction == eNextWord || aAction == ePreviousWord
+      || (aAction == eNext && bCollapsed)
       || aAction == eToBeginningOfLine || aAction == eToEndOfLine)
   {
     nsCOMPtr<nsISelectionController> selCont (do_QueryReferent(mSelConWeak));
@@ -694,6 +696,10 @@ NS_IMETHODIMP nsPlaintextEditor::DeleteSelection(nsIEditor::EDirection aAction)
           break;
         case ePreviousWord:
           result = selCont->WordExtendForDelete(PR_FALSE);
+          aAction = eNone;
+          break;
+        case eNext:
+          result = selCont->CharacterExtendForDelete();
           aAction = eNone;
           break;
         case eToBeginningOfLine:
@@ -1039,12 +1045,12 @@ nsPlaintextEditor::SetWrapWidth(PRInt32 aWrapColumn)
   // and now we're ready to set the new whitespace/wrapping style.
   if (aWrapColumn > 0 && !mWrapToWindow)        // Wrap to a fixed column
   {
-    styleValue.AppendLiteral("white-space: -moz-pre-wrap; width: ");
+    styleValue.AppendLiteral("white-space: pre-wrap; width: ");
     styleValue.AppendInt(aWrapColumn);
     styleValue.AppendLiteral("ch;");
   }
   else if (mWrapToWindow || aWrapColumn == 0)
-    styleValue.AppendLiteral("white-space: -moz-pre-wrap;");
+    styleValue.AppendLiteral("white-space: pre-wrap;");
   else
     styleValue.AppendLiteral("white-space: pre;");
 
@@ -1215,12 +1221,8 @@ NS_IMETHODIMP nsPlaintextEditor::CanCut(PRBool *aCanCut)
   NS_ENSURE_ARG_POINTER(aCanCut);
   *aCanCut = PR_FALSE;
 
-  nsresult rv = FireClipboardEvent(NS_BEFORECUT, aCanCut);
-  if (NS_FAILED(rv) || *aCanCut)
-    return rv;
-
   nsCOMPtr<nsISelection> selection;
-  rv = GetSelection(getter_AddRefs(selection));
+  nsresult rv = GetSelection(getter_AddRefs(selection));
   if (NS_FAILED(rv)) return rv;
     
   PRBool isCollapsed;
@@ -1248,12 +1250,8 @@ NS_IMETHODIMP nsPlaintextEditor::CanCopy(PRBool *aCanCopy)
   NS_ENSURE_ARG_POINTER(aCanCopy);
   *aCanCopy = PR_FALSE;
 
-  nsresult rv = FireClipboardEvent(NS_BEFORECOPY, aCanCopy);
-  if (NS_FAILED(rv) || *aCanCopy)
-    return rv;
-
   nsCOMPtr<nsISelection> selection;
-  rv = GetSelection(getter_AddRefs(selection));
+  nsresult rv = GetSelection(getter_AddRefs(selection));
   if (NS_FAILED(rv)) return rv;
     
   PRBool isCollapsed;
@@ -1715,7 +1713,7 @@ nsPlaintextEditor::SetCompositionString(const nsAString& aCompositionString, nsI
     // GetCaretCoordinates so the states in Frame system sync with content
     // therefore, we put the nsAutoPlaceHolderBatch into a inner block
     {
-      nsAutoPlaceHolderBatch batch(this, gIMETxnName);
+      nsAutoPlaceHolderBatch batch(this, nsGkAtoms::IMETxnName);
 
       SetIsIMEComposing(); // We set mIsIMEComposing properly.
 

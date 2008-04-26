@@ -105,8 +105,20 @@ _cairo_win32_tmpfile (void);
 #define M_SQRT2 1.41421356237309504880
 #endif
 
+#ifndef M_SQRT1_2
+#define M_SQRT1_2 0.707106781186547524400844362104849039
+#endif
+
 #undef  ARRAY_LENGTH
 #define ARRAY_LENGTH(__array) ((int) (sizeof (__array) / sizeof (__array[0])))
+
+
+/* This has to be updated whenever #cairo_status_t is extended.  That's
+ * a bit of a pain, but it should be easy to always catch as long as
+ * one adds a new test case to test a trigger of the new status value.
+ */
+#define CAIRO_STATUS_LAST_STATUS CAIRO_STATUS_INVALID_STRIDE
+
 
 /* Size in bytes of buffer to use off the stack per functions.
  * Mostly used by text functions.  For larger allocations, they'll
@@ -186,6 +198,12 @@ _cairo_box_round_to_rectangle (cairo_box_t *box, cairo_rectangle_int_t *rectangl
 cairo_private void
 _cairo_rectangle_intersect (cairo_rectangle_int_t *dest, cairo_rectangle_int_t *src);
 
+cairo_private cairo_bool_t
+_cairo_box_intersects_line_segment (cairo_box_t *box, cairo_line_t *line);
+
+cairo_private cairo_bool_t
+_cairo_box_contains_point (cairo_box_t *box, cairo_point_t *point);
+
 /* cairo_array.c structures and functions */
 
 cairo_private void
@@ -251,7 +269,7 @@ _cairo_hash_string (const char *c);
 typedef struct _cairo_unscaled_font_backend cairo_unscaled_font_backend_t;
 
 /*
- * A cairo_unscaled_font_t is just an opaque handle we use in the
+ * A #cairo_unscaled_font_t is just an opaque handle we use in the
  * glyph cache.
  */
 typedef struct _cairo_unscaled_font {
@@ -298,7 +316,7 @@ struct _cairo_unscaled_font_backend {
     void (*destroy)     	    (void		             *unscaled_font);
 };
 
-/* cairo_toy_font_face_t - simple family/slant/weight font faces used for
+/* #cairo_toy_font_face_t - simple family/slant/weight font faces used for
  * the built-in font API
  */
 
@@ -697,6 +715,7 @@ struct _cairo_image_surface {
     unsigned char *data;
     cairo_bool_t owns_data;
     cairo_bool_t has_clip;
+    cairo_image_transparency_t transparency;
 
     int width;
     int height;
@@ -708,7 +727,7 @@ struct _cairo_image_surface {
 
 extern const cairo_private cairo_surface_backend_t cairo_image_surface_backend;
 
-/* XXX: Right now, the cairo_color structure puts unpremultiplied
+/* XXX: Right now, the _cairo_color structure puts unpremultiplied
    color in the doubles and premultiplied color in the shorts. Yes,
    this is crazy insane, (but at least we don't export this
    madness). I'm still working on a cleaner API, but in the meantime,
@@ -829,7 +848,7 @@ typedef struct _cairo_traps {
 #define CAIRO_FONT_WEIGHT_DEFAULT  CAIRO_FONT_WEIGHT_NORMAL
 
 #define CAIRO_WIN32_FONT_FAMILY_DEFAULT "Arial"
-#define CAIRO_ATSUI_FONT_FAMILY_DEFAULT  "Monaco"
+#define CAIRO_ATSUI_FONT_FAMILY_DEFAULT  "Helvetica"
 #define CAIRO_FT_FONT_FAMILY_DEFAULT     ""
 
 #if   CAIRO_HAS_WIN32_FONT
@@ -1016,7 +1035,7 @@ _cairo_gstate_backend_to_user_rectangle (cairo_gstate_t *gstate,
                                          double *x2, double *y2,
                                          cairo_bool_t *is_tight);
 
-cairo_private void
+cairo_private cairo_status_t
 _cairo_gstate_path_extents (cairo_gstate_t     *gstate,
 			    cairo_path_fixed_t *path,
 			    double *x1, double *y1,
@@ -1224,8 +1243,13 @@ cairo_private cairo_status_t
 _cairo_scaled_font_set_error (cairo_scaled_font_t *scaled_font,
 			      cairo_status_t status);
 
+cairo_private cairo_scaled_font_t *
+_cairo_scaled_font_create_in_error (cairo_status_t status);
+
+cairo_private void
+_cairo_scaled_font_reset_static_data (void);
+
 extern const cairo_private cairo_font_face_t _cairo_font_face_nil;
-extern const cairo_private cairo_scaled_font_t _cairo_scaled_font_nil;
 
 cairo_private void
 _cairo_font_face_init (cairo_font_face_t               *font_face,
@@ -1366,7 +1390,7 @@ _cairo_path_fixed_interpret_flat (cairo_path_fixed_t	  *path,
 		       void				  *closure,
 		       double				  tolerance);
 
-cairo_private void
+cairo_private cairo_status_t
 _cairo_path_fixed_bounds (cairo_path_fixed_t *path,
 			  double *x1, double *y1,
 			  double *x2, double *y2,
@@ -1375,6 +1399,17 @@ _cairo_path_fixed_bounds (cairo_path_fixed_t *path,
 cairo_private void
 _cairo_path_fixed_device_transform (cairo_path_fixed_t	*path,
 				    cairo_matrix_t	*device_transform);
+
+cairo_private cairo_bool_t
+_cairo_path_fixed_is_empty (cairo_path_fixed_t *path);
+
+cairo_private cairo_bool_t
+_cairo_path_fixed_is_box (cairo_path_fixed_t *path,
+                          cairo_box_t *box);
+
+cairo_private cairo_bool_t
+_cairo_path_fixed_is_rectangle (cairo_path_fixed_t *path,
+				cairo_box_t        *box);
 
 /* cairo_path_fill.c */
 cairo_private cairo_status_t
@@ -1402,7 +1437,7 @@ _cairo_scaled_font_init (cairo_scaled_font_t               *scaled_font,
 			 const cairo_font_options_t	   *options,
 			 const cairo_scaled_font_backend_t *backend);
 
-cairo_private void
+cairo_private cairo_status_t
 _cairo_scaled_font_set_metrics (cairo_scaled_font_t	    *scaled_font,
 				cairo_font_extents_t	    *fs_metrics);
 
@@ -1482,6 +1517,11 @@ _cairo_stroke_style_init_copy (cairo_stroke_style_t *style,
 
 cairo_private void
 _cairo_stroke_style_fini (cairo_stroke_style_t *style);
+
+cairo_private void
+_cairo_stroke_style_max_distance_from_path (const cairo_stroke_style_t *style,
+                                            const cairo_matrix_t *ctm,
+                                            double *dx, double *dy);
 
 /* cairo-surface.c */
 
@@ -1763,24 +1803,24 @@ _cairo_surface_has_device_transform (cairo_surface_t *surface);
 
 /* cairo_image_surface.c */
 
-/* XXX: In cairo 1.2.0 we added a new CAIRO_FORMAT_RGB16_565 but
+/* XXX: In cairo 1.2.0 we added a new %CAIRO_FORMAT_RGB16_565 but
  * neglected to adjust this macro. The net effect is that it's
  * impossible to externally create an image surface with this
  * format. This is perhaps a good thing since we also neglected to fix
- * up things like cairo_surface_write_to_png for the new format
+ * up things like cairo_surface_write_to_png() for the new format
  * (-Wswitch-enum will tell you where). Is it obvious that format was
  * added in haste?
  *
  * The reason for the new format was to allow the xlib backend to be
  * used on X servers with a 565 visual. So the new format did its job
  * for that, even without being considered "valid" for the sake of
- * things like cairo_image_surface_create.
+ * things like cairo_image_surface_create().
  *
  * Since 1.2.0 we ran into the same situtation with X servers with BGR
- * visuals. This time we invented cairo_internal_format_t instead,
+ * visuals. This time we invented #cairo_internal_format_t instead,
  * (see it for more discussion).
  *
- * The punchline is that CAIRO_FORMAT_VALID must not conside any
+ * The punchline is that %CAIRO_FORMAT_VALID must not conside any
  * internal format to be valid. Also we need to decide if the
  * RGB16_565 should be moved to instead be an internal format. If so,
  * this macro need not change for it. (We probably will need to leave
@@ -1788,9 +1828,9 @@ _cairo_surface_has_device_transform (cairo_surface_t *surface);
  * might have that value in it.)
  *
  * If we do decide to start fully supporting RGB16_565 as an external
- * format, then CAIRO_FORMAT_VALID needs to be adjusted to include
+ * format, then %CAIRO_FORMAT_VALID needs to be adjusted to include
  * it. But that should not happen before all necessary code is fixed
- * to support it (at least cairo_surface_write_to_png and a few spots
+ * to support it (at least cairo_surface_write_to_png() and a few spots
  * in cairo-xlib-surface.c--again see -Wswitch-enum).
  */
 #define CAIRO_FORMAT_INVALID ((unsigned int) -1)
@@ -1802,8 +1842,8 @@ _cairo_surface_has_device_transform (cairo_surface_t *surface);
 						      CAIRO_CONTENT_COLOR_ALPHA))\
 				       == 0))
 
-cairo_private cairo_format_t
-_cairo_format_width (cairo_format_t format);
+cairo_private int
+_cairo_format_bits_per_pixel (cairo_format_t format);
 
 cairo_private cairo_format_t
 _cairo_format_from_content (cairo_content_t content);
@@ -1818,7 +1858,7 @@ _cairo_image_surface_create_for_pixman_image (pixman_image_t		*pixman_image,
 cairo_private pixman_format_code_t
 _pixman_format_from_masks (cairo_format_masks_t *masks);
 
-void
+cairo_private void
 _pixman_format_to_masks (pixman_format_code_t	 pixman_format,
 			 uint32_t		*bpp,
 			 uint32_t		*red,
@@ -1870,6 +1910,9 @@ _cairo_image_surface_set_clip_region (void *abstract_surface,
 cairo_private cairo_image_surface_t *
 _cairo_image_surface_clone (cairo_image_surface_t	*surface,
 			    cairo_format_t		 format);
+
+cairo_private cairo_image_transparency_t
+_cairo_image_analyze_transparency (cairo_image_surface_t      *image);
 
 cairo_private cairo_bool_t
 _cairo_surface_is_image (const cairo_surface_t *surface);
@@ -1974,7 +2017,7 @@ _cairo_matrix_is_invertible (const cairo_matrix_t *matrix);
 cairo_private void
 _cairo_matrix_compute_determinant (const cairo_matrix_t *matrix, double *det);
 
-cairo_private void
+cairo_private cairo_status_t
 _cairo_matrix_compute_scale_factors (const cairo_matrix_t *matrix,
 				     double *sx, double *sy, int x_major);
 
@@ -2002,6 +2045,10 @@ _cairo_traps_init (cairo_traps_t *traps);
 cairo_private void
 _cairo_traps_limit (cairo_traps_t	*traps,
 		    cairo_box_t		*limits);
+
+cairo_private cairo_bool_t
+_cairo_traps_get_limit (cairo_traps_t *traps,
+                        cairo_box_t   *limits);
 
 cairo_private cairo_status_t
 _cairo_traps_init_box (cairo_traps_t *traps,
@@ -2060,12 +2107,6 @@ _cairo_slope_init (cairo_slope_t *slope, cairo_point_t *a, cairo_point_t *b);
 
 cairo_private int
 _cairo_slope_compare (cairo_slope_t *a, cairo_slope_t *b);
-
-cairo_private int
-_cairo_slope_clockwise (cairo_slope_t *a, cairo_slope_t *b);
-
-cairo_private int
-_cairo_slope_counter_clockwise (cairo_slope_t *a, cairo_slope_t *b);
 
 /* cairo_pattern.c */
 
@@ -2214,6 +2255,7 @@ slim_hidden_proto (cairo_image_surface_create);
 slim_hidden_proto (cairo_image_surface_create_for_data);
 slim_hidden_proto (cairo_image_surface_get_height);
 slim_hidden_proto (cairo_image_surface_get_width);
+slim_hidden_proto (cairo_format_stride_for_width);
 slim_hidden_proto (cairo_line_to);
 slim_hidden_proto (cairo_mask);
 slim_hidden_proto (cairo_matrix_init);

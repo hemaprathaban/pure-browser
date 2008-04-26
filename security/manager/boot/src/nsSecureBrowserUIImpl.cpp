@@ -82,6 +82,7 @@
 #include "nsThreadUtils.h"
 #include "nsNetUtil.h"
 #include "nsCRT.h"
+#include "nsAutoLock.h"
 
 #define SECURITY_STRING_BUNDLE_URL "chrome://pipnss/locale/security.properties"
 
@@ -134,12 +135,32 @@ static PLDHashTableOps gMapOps = {
   RequestMapInitEntry
 };
 
+class nsAutoAtomic {
+  public:
+    nsAutoAtomic(PRInt32 &i)
+    :mI(i) {
+      PR_AtomicIncrement(&mI);
+    }
+
+    ~nsAutoAtomic() {
+      PR_AtomicDecrement(&mI);
+    }
+
+  protected:
+    PRInt32 &mI;
+
+  private:
+    nsAutoAtomic(); // not accessible
+};
+
 
 nsSecureBrowserUIImpl::nsSecureBrowserUIImpl()
-  : mPreviousSecurityState(lis_no_security),
-    mPreviousToplevelWasEV(PR_FALSE),
+  : mNotifiedSecurityState(lis_no_security),
+    mNotifiedToplevelIsEV(PR_FALSE),
     mIsViewSource(PR_FALSE)
 {
+  mMonitor = PR_NewMonitor();
+  mOnStateLocationChangeReentranceDetection = 0;
   mTransferringRequests.ops = nsnull;
   mNewToplevelSecurityState = STATE_IS_INSECURE;
   mNewToplevelIsEV = PR_FALSE;
@@ -158,25 +179,31 @@ nsSecureBrowserUIImpl::~nsSecureBrowserUIImpl()
     PL_DHashTableFinish(&mTransferringRequests);
     mTransferringRequests.ops = nsnull;
   }
+  if (mMonitor)
+    PR_DestroyMonitor(mMonitor);
 }
 
-NS_IMPL_ISUPPORTS6(nsSecureBrowserUIImpl,
-                   nsISecureBrowserUI,
-                   nsIWebProgressListener,
-                   nsIFormSubmitObserver,
-                   nsIObserver,
-                   nsISupportsWeakReference,
-                   nsISSLStatusProvider)
-
+NS_IMPL_THREADSAFE_ISUPPORTS6(nsSecureBrowserUIImpl,
+                              nsISecureBrowserUI,
+                              nsIWebProgressListener,
+                              nsIFormSubmitObserver,
+                              nsIObserver,
+                              nsISupportsWeakReference,
+                              nsISSLStatusProvider)
 
 NS_IMETHODIMP
-nsSecureBrowserUIImpl::Init(nsIDOMWindow *window)
+nsSecureBrowserUIImpl::Init(nsIDOMWindow *aWindow)
 {
-  PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
-         ("SecureUI:%p: Init: mWindow: %p, window: %p\n", this, mWindow.get(),
-          window));
 
-  if (!window) {
+#ifdef PR_LOGGING
+  nsCOMPtr<nsIDOMWindow> window(do_QueryReferent(mWindow));
+
+  PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
+         ("SecureUI:%p: Init: mWindow: %p, aWindow: %p\n", this,
+          window.get(), aWindow));
+#endif
+
+  if (!aWindow) {
     NS_WARNING("Null window passed to nsSecureBrowserUIImpl::Init()");
     return NS_ERROR_INVALID_ARG;
   }
@@ -185,9 +212,10 @@ nsSecureBrowserUIImpl::Init(nsIDOMWindow *window)
     NS_WARNING("Trying to init an nsSecureBrowserUIImpl twice");
     return NS_ERROR_ALREADY_INITIALIZED;
   }
-  
-  nsresult rv = NS_OK;
-  mWindow = window;
+
+  nsresult rv;
+  mWindow = do_GetWeakReference(aWindow, &rv);
+  NS_ENSURE_SUCCESS(rv, rv);
 
   nsCOMPtr<nsIStringBundleService> service(do_GetService(NS_STRINGBUNDLE_CONTRACTID, &rv));
   if (NS_FAILED(rv)) return rv;
@@ -206,7 +234,7 @@ nsSecureBrowserUIImpl::Init(nsIDOMWindow *window)
     rv = svc->AddObserver(this, NS_FORMSUBMIT_SUBJECT, PR_TRUE);
   }
   
-  nsCOMPtr<nsPIDOMWindow> piwindow(do_QueryInterface(mWindow));
+  nsCOMPtr<nsPIDOMWindow> piwindow(do_QueryInterface(aWindow));
   if (!piwindow) return NS_ERROR_FAILURE;
 
   nsIDocShell *docShell = piwindow->GetDocShell();
@@ -235,7 +263,8 @@ nsSecureBrowserUIImpl::Init(nsIDOMWindow *window)
 NS_IMETHODIMP
 nsSecureBrowserUIImpl::GetState(PRUint32* aState)
 {
-  return MapInternalToExternalState(aState, mPreviousSecurityState, mPreviousToplevelWasEV);
+  nsAutoMonitor lock(mMonitor);
+  return MapInternalToExternalState(aState, mNotifiedSecurityState, mNotifiedToplevelIsEV);
 }
 
 nsresult
@@ -276,14 +305,23 @@ nsSecureBrowserUIImpl::MapInternalToExternalState(PRUint32* aState, lockIconStat
 NS_IMETHODIMP
 nsSecureBrowserUIImpl::GetTooltipText(nsAString& aText)
 {
-  if (mPreviousSecurityState == lis_mixed_security)
+  lockIconState state;
+  nsXPIDLString tooltip;
+
+  {
+    nsAutoMonitor lock(mMonitor);
+    state = mNotifiedSecurityState;
+    tooltip = mInfoTooltip;
+  }
+
+  if (state == lis_mixed_security)
   {
     GetBundleString(NS_LITERAL_STRING("SecurityButtonMixedContentTooltipText").get(),
                     aText);
   }
-  else if (!mInfoTooltip.IsEmpty())
+  else if (!tooltip.IsEmpty())
   {
-    aText = mInfoTooltip;
+    aText = tooltip;
   }
   else
   {
@@ -353,12 +391,12 @@ static PRUint32 GetSecurityStateFromChannel(nsIChannel* aChannel)
 
 NS_IMETHODIMP
 nsSecureBrowserUIImpl::Notify(nsIDOMHTMLFormElement* aDOMForm,
-                              nsIDOMWindowInternal* window, nsIURI* actionURL,
+                              nsIDOMWindowInternal* aWindow, nsIURI* actionURL,
                               PRBool* cancelSubmit)
 {
   // Return NS_OK unless we want to prevent this form from submitting.
   *cancelSubmit = PR_FALSE;
-  if (!window || !actionURL || !aDOMForm)
+  if (!aWindow || !actionURL || !aDOMForm)
     return NS_OK;
   
   nsCOMPtr<nsIContent> formNode = do_QueryInterface(aDOMForm);
@@ -391,8 +429,15 @@ nsSecureBrowserUIImpl::Notify(nsIDOMHTMLFormElement* aDOMForm,
     return NS_OK;
   }
 
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
   PRBool isChild;
-  IsChildOfDomWindow(mWindow, postingWindow, &isChild);
+  IsChildOfDomWindow(window, postingWindow, &isChild);
   
   // This notify call is not for our window, ignore it.
   if (!isChild)
@@ -422,6 +467,8 @@ nsSecureBrowserUIImpl::OnProgressChange(nsIWebProgress* aWebProgress,
 
 void nsSecureBrowserUIImpl::ResetStateTracking()
 {
+  nsAutoMonitor lock(mMonitor);
+
   mInfoTooltip.Truncate();
   mDocumentRequestsInProgress = 0;
   mSubRequestsHighSecurity = 0;
@@ -441,15 +488,25 @@ nsSecureBrowserUIImpl::EvaluateAndUpdateSecurityState(nsIRequest *aRequest)
 {
   nsCOMPtr<nsIChannel> channel(do_QueryInterface(aRequest));
 
-  mNewToplevelSecurityState = nsIWebProgressListener::STATE_IS_INSECURE;
-  mNewToplevelIsEV = PR_FALSE;
+  /* I explicitly ignore the camelCase variable naming style here,
+     I want to make it clear these are temp variables that relate to the 
+     member variables with the same suffix.*/
+
+  PRUint32 temp_NewToplevelSecurityState = nsIWebProgressListener::STATE_IS_INSECURE;
+  PRBool temp_NewToplevelIsEV = PR_FALSE;
+
+  PRBool updateStatus = PR_FALSE;
+  nsCOMPtr<nsISupports> temp_SSLStatus;
+
+  PRBool updateTooltip = PR_FALSE;
+  nsXPIDLString temp_InfoTooltip;
 
   if (channel) {
-    mNewToplevelSecurityState = GetSecurityStateFromChannel(channel);
+    temp_NewToplevelSecurityState = GetSecurityStateFromChannel(channel);
 
     PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
            ("SecureUI:%p: OnStateChange: remember mNewToplevelSecurityState => %x\n", this,
-            mNewToplevelSecurityState));
+            temp_NewToplevelSecurityState));
 
     // Get SSL Status information if possible
     nsCOMPtr<nsISupports> info;
@@ -457,28 +514,43 @@ nsSecureBrowserUIImpl::EvaluateAndUpdateSecurityState(nsIRequest *aRequest)
     nsCOMPtr<nsISSLStatusProvider> sp = do_QueryInterface(info);
     if (sp) {
       // Ignore result
-      sp->GetSSLStatus(getter_AddRefs(mSSLStatus));
+      updateStatus = PR_TRUE;
+      sp->GetSSLStatus(getter_AddRefs(temp_SSLStatus));
     }
 
     if (info) {
       nsCOMPtr<nsITransportSecurityInfo> secInfo(do_QueryInterface(info));
       if (secInfo) {
-        secInfo->GetShortSecurityDescription(getter_Copies(mInfoTooltip));
+        updateTooltip = PR_TRUE;
+        secInfo->GetShortSecurityDescription(getter_Copies(temp_InfoTooltip));
       }
 
       nsCOMPtr<nsIIdentityInfo> idinfo = do_QueryInterface(info);
       if (idinfo) {
         PRBool aTemp;
-        if (NS_SUCCEEDED(idinfo->GetIsExtendedValidation(&aTemp)))
-          mNewToplevelIsEV = aTemp;
+        if (NS_SUCCEEDED(idinfo->GetIsExtendedValidation(&aTemp))) {
+          temp_NewToplevelIsEV = aTemp;
+        }
       }
     }
   }
 
-  // assume mNewToplevelSecurityState was set in this scope!
+  // assume temp_NewToplevelSecurityState was set in this scope!
   // see code that is directly above
 
-  mNewToplevelSecurityStateKnown = PR_TRUE;
+  {
+    nsAutoMonitor lock(mMonitor);
+    mNewToplevelSecurityStateKnown = PR_TRUE;
+    mNewToplevelSecurityState = temp_NewToplevelSecurityState;
+    mNewToplevelIsEV = temp_NewToplevelIsEV;
+    if (updateStatus) {
+      mSSLStatus = temp_SSLStatus;
+    }
+    if (updateTooltip) {
+      mInfoTooltip = temp_InfoTooltip;
+    }
+  }
+
   return UpdateSecurityState(aRequest);
 }
 
@@ -493,6 +565,9 @@ nsSecureBrowserUIImpl::UpdateSubrequestMembers(nsIRequest *aRequest)
   if (channel) {
     reqState = GetSecurityStateFromChannel(channel);
   }
+
+  // the code above this line should run without a lock
+  nsAutoMonitor lock(mMonitor);
 
   if (reqState & STATE_IS_SECURE) {
     if (reqState & STATE_SECURE_LOW || reqState & STATE_SECURE_MED) {
@@ -515,14 +590,16 @@ nsSecureBrowserUIImpl::UpdateSubrequestMembers(nsIRequest *aRequest)
   }
 }
 
-
-
 NS_IMETHODIMP
 nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
                                      nsIRequest* aRequest,
                                      PRUint32 aProgressStateFlags,
                                      nsresult aStatus)
 {
+  nsAutoAtomic atomic(mOnStateLocationChangeReentranceDetection);
+  NS_ASSERTION(mOnStateLocationChangeReentranceDetection == 1,
+               "unexpected parallel nsIWebProgress OnStateChange and/or OnLocationChange notification");
+
   /*
     All discussion, unless otherwise mentioned, only refers to
     http, https, file or wyciwig requests.
@@ -616,7 +693,17 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
   nsCOMPtr<nsIDOMWindow> windowForProgress;
   aWebProgress->GetDOMWindow(getter_AddRefs(windowForProgress));
 
-  const PRBool isToplevelProgress = (windowForProgress.get() == mWindow.get());
+  nsCOMPtr<nsIDOMWindow> window;
+  PRBool isViewSource;
+
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+    isViewSource = mIsViewSource;
+  }
+
+  const PRBool isToplevelProgress = (windowForProgress.get() == window.get());
   
 #ifdef PR_LOGGING
   if (windowForProgress)
@@ -642,7 +729,7 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
   PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
          ("SecureUI:%p: OnStateChange\n", this));
 
-  if (mIsViewSource)
+  if (isViewSource)
     return NS_OK;
 
   if (!aRequest)
@@ -855,6 +942,7 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
     // The listing of a request in mTransferringRequests
     // means, there has already been data transfered.
 
+    nsAutoMonitor lock(mMonitor);
     PL_DHashTableOperate(&mTransferringRequests, aRequest, PL_DHASH_ADD);
     
     return NS_OK;
@@ -866,6 +954,7 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
       &&
       aProgressStateFlags & STATE_IS_REQUEST)
   {
+    nsAutoMonitor lock(mMonitor);
     PLDHashEntryHdr *entry = PL_DHashTableOperate(&mTransferringRequests, aRequest, PL_DHASH_LOOKUP);
     if (PL_DHASH_ENTRY_IS_BUSY(entry))
     {
@@ -891,6 +980,7 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
       &&
       loadFlags & nsIChannel::LOAD_DOCUMENT_URI)
   {
+    nsAutoMonitor lock(mMonitor);
     if (!mDocumentRequestsInProgress)
     {
       PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
@@ -922,7 +1012,16 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
       &&
       loadFlags & nsIChannel::LOAD_DOCUMENT_URI)
   {
-    if (mDocumentRequestsInProgress <= 0)
+    PRInt32 temp_DocumentRequestsInProgress;
+    nsCOMPtr<nsISecurityEventSink> temp_ToplevelEventSink;
+
+    {
+      nsAutoMonitor lock(mMonitor);
+      temp_DocumentRequestsInProgress = mDocumentRequestsInProgress;
+      temp_ToplevelEventSink = mToplevelEventSink;
+    }
+
+    if (temp_DocumentRequestsInProgress <= 0)
     {
       // Ignore stop requests unless a document load is in progress
       // Unfortunately on application start, see some stops without having seen any starts...
@@ -933,12 +1032,16 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
            ("SecureUI:%p: OnStateChange: --mDocumentRequestsInProgress\n", this
             ));
 
-    if (!mToplevelEventSink && channel)
+    if (!temp_ToplevelEventSink && channel)
     {
-      ObtainEventSink(channel);
+      ObtainEventSink(channel, temp_ToplevelEventSink);
     }
 
-    --mDocumentRequestsInProgress;
+    {
+      nsAutoMonitor lock(mMonitor);
+      mToplevelEventSink = temp_ToplevelEventSink;
+      --mDocumentRequestsInProgress;
+    }
 
     if (requestHasTransferedData) {
       // Data has been transferred for the single toplevel
@@ -975,7 +1078,13 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
       //
       // We skip updating the security state in this case.
 
-      if (mNewToplevelSecurityStateKnown)
+      PRBool temp_NewToplevelSecurityStateKnown;
+      {
+        nsAutoMonitor lock(mMonitor);
+        temp_NewToplevelSecurityStateKnown = mNewToplevelSecurityStateKnown;
+      }
+
+      if (temp_NewToplevelSecurityStateKnown)
         return UpdateSecurityState(aRequest);
     }
 
@@ -985,18 +1094,31 @@ nsSecureBrowserUIImpl::OnStateChange(nsIWebProgress* aWebProgress,
   return NS_OK;
 }
 
-void nsSecureBrowserUIImpl::ObtainEventSink(nsIChannel *channel)
+// I'm keeping this as a separate function, in order to simplify the review
+// for bug 412456. We should inline this in a follow up patch.
+void nsSecureBrowserUIImpl::ObtainEventSink(nsIChannel *channel, 
+                                            nsCOMPtr<nsISecurityEventSink> &sink)
 {
-  if (!mToplevelEventSink)
-    NS_QueryNotificationCallbacks(channel, mToplevelEventSink);
+  if (!sink)
+    NS_QueryNotificationCallbacks(channel, sink);
 }
 
 nsresult nsSecureBrowserUIImpl::UpdateSecurityState(nsIRequest* aRequest)
 {
-  lockIconState newSecurityState;
-
+  lockIconState warnSecurityState = lis_no_security;
   PRBool showWarning = PR_FALSE;
-  lockIconState warnSecurityState;
+
+  UpdateMyFlags(showWarning, warnSecurityState);
+  return TellTheWorld(showWarning, warnSecurityState, aRequest);
+}
+
+// must not fail, by definition, only trivial assignments
+// or string operations are allowed
+void nsSecureBrowserUIImpl::UpdateMyFlags(PRBool &showWarning, lockIconState &warnSecurityState)
+{
+  nsAutoMonitor lock(mMonitor);
+
+  lockIconState newSecurityState;
 
   if (mNewToplevelSecurityState & STATE_IS_SECURE)
   {
@@ -1049,10 +1171,10 @@ nsresult nsSecureBrowserUIImpl::UpdateSecurityState(nsIRequest* aRequest)
 
   PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
          ("SecureUI:%p: UpdateSecurityState:  old-new  %d - %d\n", this,
-         mPreviousSecurityState, newSecurityState
+         mNotifiedSecurityState, newSecurityState
           ));
 
-  if (mPreviousSecurityState != newSecurityState)
+  if (mNotifiedSecurityState != newSecurityState)
   {
     // must show alert
     
@@ -1093,7 +1215,7 @@ nsresult nsSecureBrowserUIImpl::UpdateSecurityState(nsIRequest* aRequest)
 
     showWarning = PR_TRUE;
     
-    switch (mPreviousSecurityState)
+    switch (mNotifiedSecurityState)
     {
       case lis_no_security:
       case lis_broken_security:
@@ -1117,9 +1239,7 @@ nsresult nsSecureBrowserUIImpl::UpdateSecurityState(nsIRequest* aRequest)
       warnSecurityState = newSecurityState;
     }
     
-    mPreviousSecurityState = newSecurityState;
-    mPreviousToplevelWasEV = mNewToplevelIsEV;
-    
+    mNotifiedSecurityState = newSecurityState;
 
     if (lis_no_security == newSecurityState)
     {
@@ -1128,16 +1248,36 @@ nsresult nsSecureBrowserUIImpl::UpdateSecurityState(nsIRequest* aRequest)
     }
   }
 
-  if (mToplevelEventSink)
+  mNotifiedToplevelIsEV = mNewToplevelIsEV;
+}
+
+nsresult nsSecureBrowserUIImpl::TellTheWorld(PRBool &showWarning, 
+                                             lockIconState &warnSecurityState, 
+                                             nsIRequest* aRequest)
+{
+  nsCOMPtr<nsISecurityEventSink> temp_ToplevelEventSink;
+  lockIconState temp_NotifiedSecurityState;
+  PRBool temp_NotifiedToplevelIsEV;
+
+  {
+    nsAutoMonitor lock(mMonitor);
+    temp_ToplevelEventSink = mToplevelEventSink;
+    temp_NotifiedSecurityState = mNotifiedSecurityState;
+    temp_NotifiedToplevelIsEV = mNotifiedToplevelIsEV;
+  }
+
+  if (temp_ToplevelEventSink)
   {
     PRUint32 newState = STATE_IS_INSECURE;
-    MapInternalToExternalState(&newState, newSecurityState, mNewToplevelIsEV);
+    MapInternalToExternalState(&newState, 
+                               temp_NotifiedSecurityState, 
+                               temp_NotifiedToplevelIsEV);
 
     PR_LOG(gSecureDocLog, PR_LOG_DEBUG,
            ("SecureUI:%p: UpdateSecurityState: calling OnSecurityChange\n", this
             ));
 
-    mToplevelEventSink->OnSecurityChange(aRequest, newState);
+    temp_ToplevelEventSink->OnSecurityChange(aRequest, newState);
   }
   else
   {
@@ -1178,6 +1318,14 @@ nsSecureBrowserUIImpl::OnLocationChange(nsIWebProgress* aWebProgress,
                                         nsIRequest* aRequest,
                                         nsIURI* aLocation)
 {
+  nsAutoAtomic atomic(mOnStateLocationChangeReentranceDetection);
+  NS_ASSERTION(mOnStateLocationChangeReentranceDetection == 1,
+               "unexpected parallel nsIWebProgress OnStateChange and/or OnLocationChange notification");
+
+  PRBool updateIsViewSource = PR_FALSE;
+  PRBool temp_IsViewSource = PR_FALSE;
+  nsCOMPtr<nsIDOMWindow> window;
+
   if (aLocation)
   {
     PRBool vs;
@@ -1190,10 +1338,19 @@ nsSecureBrowserUIImpl::OnLocationChange(nsIWebProgress* aWebProgress,
              ("SecureUI:%p: OnLocationChange: view-source\n", this));
     }
 
-    mIsViewSource = vs;
+    updateIsViewSource = PR_TRUE;
+    temp_IsViewSource = vs;
   }
 
-  mCurrentURI = aLocation;
+  {
+    nsAutoMonitor lock(mMonitor);
+    if (updateIsViewSource) {
+      mIsViewSource = temp_IsViewSource;
+    }
+    mCurrentURI = aLocation;
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
 
   // If the location change does not have a corresponding request, then we
   // assume that it does not impact the security state.
@@ -1211,7 +1368,7 @@ nsSecureBrowserUIImpl::OnLocationChange(nsIWebProgress* aWebProgress,
   nsCOMPtr<nsIDOMWindow> windowForProgress;
   aWebProgress->GetDOMWindow(getter_AddRefs(windowForProgress));
 
-  if (windowForProgress.get() == mWindow.get()) {
+  if (windowForProgress.get() == window.get()) {
     // For toplevel channels, update the security state right away.
     return EvaluateAndUpdateSecurityState(aRequest);
   }
@@ -1230,7 +1387,13 @@ nsSecureBrowserUIImpl::OnLocationChange(nsIWebProgress* aWebProgress,
   //
   // We skip updating the security state in this case.
 
-  if (mNewToplevelSecurityStateKnown)
+  PRBool temp_NewToplevelSecurityStateKnown;
+  {
+    nsAutoMonitor lock(mMonitor);
+    temp_NewToplevelSecurityStateKnown = mNewToplevelSecurityStateKnown;
+  }
+
+  if (temp_NewToplevelSecurityStateKnown)
     return UpdateSecurityState(aRequest);
 
   return NS_OK;
@@ -1277,6 +1440,7 @@ nsSecureBrowserUIImpl::GetSSLStatus(nsISupports** _result)
 {
   NS_ENSURE_ARG_POINTER(_result);
 
+  nsAutoMonitor lock(mMonitor);
   *_result = mSSLStatus;
   NS_IF_ADDREF(*_result);
 
@@ -1309,10 +1473,17 @@ void
 nsSecureBrowserUIImpl::GetBundleString(const PRUnichar* name,
                                        nsAString &outString)
 {
-  if (mStringBundle && name) {
+  nsCOMPtr<nsIStringBundle> temp_StringBundle;
+
+  {
+    nsAutoMonitor lock(mMonitor);
+    temp_StringBundle = mStringBundle;
+  }
+
+  if (temp_StringBundle && name) {
     PRUnichar *ptrv = nsnull;
-    if (NS_SUCCEEDED(mStringBundle->GetStringFromName(name,
-                                                      &ptrv)))
+    if (NS_SUCCEEDED(temp_StringBundle->GetStringFromName(name,
+                                                          &ptrv)))
       outString = ptrv;
     else
       outString.SetLength(0);
@@ -1395,6 +1566,7 @@ nsUIContext::~nsUIContext()
 /* void getInterface (in nsIIDRef uuid, [iid_is (uuid), retval] out nsQIResult result); */
 NS_IMETHODIMP nsUIContext::GetInterface(const nsIID & uuid, void * *result)
 {
+  NS_ENSURE_TRUE(mWindow, NS_ERROR_FAILURE);
   nsresult rv;
 
   if (uuid.Equals(NS_GET_IID(nsIPrompt))) {
@@ -1446,7 +1618,14 @@ ConfirmEnteringSecure()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool confirms;
   dialogs->ConfirmEnteringSecure(ctx, &confirms);
@@ -1462,7 +1641,14 @@ ConfirmEnteringWeak()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool confirms;
   dialogs->ConfirmEnteringWeak(ctx, &confirms);
@@ -1478,7 +1664,14 @@ ConfirmLeavingSecure()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool confirms;
   dialogs->ConfirmLeavingSecure(ctx, &confirms);
@@ -1494,7 +1687,14 @@ ConfirmMixedMode()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool confirms;
   dialogs->ConfirmMixedMode(ctx, &confirms);
@@ -1517,7 +1717,14 @@ ConfirmPostToInsecure()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool result;
 
@@ -1542,7 +1749,14 @@ ConfirmPostToInsecureFromSecure()
   GetNSSDialogs(getter_AddRefs(dialogs));
   if (!dialogs) return PR_FALSE;  // Should this allow PR_TRUE for unimplemented?
 
-  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(mWindow);
+  nsCOMPtr<nsIDOMWindow> window;
+  {
+    nsAutoMonitor lock(mMonitor);
+    window = do_QueryReferent(mWindow);
+    NS_ASSERTION(window, "Window has gone away?!");
+  }
+
+  nsCOMPtr<nsIInterfaceRequestor> ctx = new nsUIContext(window);
 
   PRBool result;
 

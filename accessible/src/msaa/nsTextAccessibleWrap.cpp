@@ -84,7 +84,8 @@ STDMETHODIMP nsTextAccessibleWrap::QueryInterface(REFIID iid, void** ppv)
 STDMETHODIMP nsTextAccessibleWrap::get_domText( 
     /* [retval][out] */ BSTR __RPC_FAR *aDomText)
 {
-  *aDomText = nsnull;
+__try {
+  *aDomText = NULL;
 
   if (!mDOMNode) {
     return E_FAIL; // Node already shut down
@@ -92,7 +93,14 @@ STDMETHODIMP nsTextAccessibleWrap::get_domText(
   nsAutoString nodeValue;
 
   mDOMNode->GetNodeValue(nodeValue);
-  *aDomText = ::SysAllocString(nodeValue.get());
+  if (nodeValue.IsEmpty())
+    return S_FALSE;
+
+  *aDomText = ::SysAllocStringLen(nodeValue.get(), nodeValue.Length());
+  if (!*aDomText)
+    return E_OUTOFMEMORY;
+
+} __except(FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
   return S_OK;
 }
@@ -105,6 +113,8 @@ STDMETHODIMP nsTextAccessibleWrap::get_clippedSubstringBounds(
     /* [out] */ int __RPC_FAR *aWidth,
     /* [out] */ int __RPC_FAR *aHeight)
 {
+__try {
+  *aX = *aY = *aWidth = *aHeight = 0;
   nscoord x, y, width, height, docX, docY, docWidth, docHeight;
   HRESULT rv = get_unclippedSubstringBounds(aStartIndex, aEndIndex, &x, &y, &width, &height);
   if (FAILED(rv)) {
@@ -127,6 +137,7 @@ STDMETHODIMP nsTextAccessibleWrap::get_clippedSubstringBounds(
   *aY = clippedRect.y;
   *aWidth = clippedRect.width;
   *aHeight = clippedRect.height;
+} __except(FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
   return S_OK;
 }
@@ -139,6 +150,9 @@ STDMETHODIMP nsTextAccessibleWrap::get_unclippedSubstringBounds(
     /* [out] */ int __RPC_FAR *aWidth,
     /* [out] */ int __RPC_FAR *aHeight)
 {
+__try {
+  *aX = *aY = *aWidth = *aHeight = 0;
+
   if (!mDOMNode) {
     return E_FAIL; // Node already shut down
   }
@@ -147,6 +161,7 @@ STDMETHODIMP nsTextAccessibleWrap::get_unclippedSubstringBounds(
                                     aX, aY, aWidth, aHeight))) {
     return NS_ERROR_FAILURE;
   }
+} __except(FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
   return S_OK;
 }
@@ -156,10 +171,14 @@ STDMETHODIMP nsTextAccessibleWrap::scrollToSubstring(
     /* [in] */ unsigned int aStartIndex,
     /* [in] */ unsigned int aEndIndex)
 {
+__try {
   nsresult rv = nsAccUtils::ScrollSubstringTo(GetFrame(), mDOMNode, aStartIndex,
                                               mDOMNode, aEndIndex,
                                               nsIAccessibleScrollType::SCROLL_TYPE_ANYWHERE);
-  return NS_FAILED(rv) ? E_FAIL : S_OK;
+  if (NS_FAILED(rv))
+    return E_FAIL;
+} __except(FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+  return S_OK;
 }
 
 nsIFrame* nsTextAccessibleWrap::GetPointFromOffset(nsIFrame *aContainingFrame, 
@@ -175,7 +194,6 @@ nsIFrame* nsTextAccessibleWrap::GetPointFromOffset(nsIFrame *aContainingFrame,
   }
 
   textFrame->GetPointFromOffset(aOffset, &aOutPoint);
-
   return textFrame;
 }
 
@@ -186,6 +204,7 @@ nsresult nsTextAccessibleWrap::GetCharacterExtents(PRInt32 aStartOffset, PRInt32
                                                    PRInt32* aX, PRInt32* aY, 
                                                    PRInt32* aWidth, PRInt32* aHeight) 
 {
+  *aX = *aY = *aWidth = *aHeight = 0;
   nsPresContext *presContext = GetPresContext();
   NS_ENSURE_TRUE(presContext, NS_ERROR_FAILURE);
 
@@ -226,7 +245,8 @@ nsresult nsTextAccessibleWrap::GetCharacterExtents(PRInt32 aStartOffset, PRInt32
 STDMETHODIMP nsTextAccessibleWrap::get_fontFamily(
     /* [retval][out] */ BSTR __RPC_FAR *aFontFamily)
 {
-  *aFontFamily = nsnull;
+__try {
+  *aFontFamily = NULL;
 
   nsIFrame *frame = GetFrame();
   nsCOMPtr<nsIPresShell> presShell = GetPresShell();
@@ -262,7 +282,14 @@ STDMETHODIMP nsTextAccessibleWrap::get_fontFamily(
 
   nsAutoString fontFamily;
   deviceContext->FirstExistingFont(fm->Font(), fontFamily);
-  
-  *aFontFamily = ::SysAllocString(fontFamily.get());
+  if (fontFamily.IsEmpty())
+    return S_FALSE;
+
+  *aFontFamily = ::SysAllocStringLen(fontFamily.get(), fontFamily.Length());
+  if (!*aFontFamily)
+    return E_OUTOFMEMORY;
+
+} __except(FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+
   return S_OK;
 }

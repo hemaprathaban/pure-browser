@@ -1,4 +1,3 @@
-version(180);
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* vim:set ts=2 sw=2 sts=2 et: */
 /* ***** BEGIN LICENSE BLOCK *****
@@ -63,7 +62,8 @@ function add_visit(aURI, aVisitDate, aVisitType) {
 
 // create test data
 var searchTerm = "ユニコード";
-var url = uri("http://www.foobar.com/" + searchTerm + "/");
+var decoded = "http://www.foobar.com/" + searchTerm + "/";
+var url = uri(decoded);
 add_visit(url, Date.now(), Ci.nsINavHistoryService.TRANSITION_LINK);
 
 function AutoCompleteInput(aSearches) {
@@ -90,6 +90,7 @@ AutoCompleteInput.prototype = {
     return this.searches[aIndex];
   },
 
+  onSearchBegin: function() {},
   onSearchComplete: function() {},
 
   popupOpen: false,
@@ -131,12 +132,22 @@ function run_test() {
   // Search is asynchronous, so don't let the test finish immediately
   do_test_pending();
 
+  var numSearchesStarted = 0;
+  input.onSearchBegin = function() {
+    numSearchesStarted++;
+    do_check_eq(numSearchesStarted, 1);
+  };
+
   input.onSearchComplete = function() {
+    do_check_eq(numSearchesStarted, 1);
     do_check_eq(controller.searchStatus,
                 Ci.nsIAutoCompleteController.STATUS_COMPLETE_MATCH);
 
     // test that we found the entry we added
     do_check_eq(controller.matchCount, 1);
+
+    // Make sure the url is the same according to spec, so it can be deleted
+    do_check_eq(controller.getValueAt(0), url.spec);
 
     do_test_finished();
   };

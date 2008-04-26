@@ -39,14 +39,17 @@ bin\nspr4.dll
 bin\xul.dll
 #else
 bin\xpcom_core.dll
-bin\xpistub.dll
 bin\components\xpinstal.dll
 bin\components\jar50.dll
 #endif
+#ifndef MOZ_MEMORY
 bin\Microsoft.VC80.CRT.manifest
 bin\msvcm80.dll
 bin\msvcp80.dll
 bin\msvcr80.dll
+#else
+bin\mozcrt19.dll
+#endif
 
 [browser]
 ; [Base Browser Files]
@@ -54,12 +57,10 @@ bin\@MOZ_APP_NAME@.exe
 bin\application.ini
 bin\platform.ini
 bin\plugins\npnul32.dll
-bin\res\cmessage.txt
-bin\res\effective_tld_names.dat
-bin\xpicleanup.exe
 bin\LICENSE
 bin\README.txt
 bin\sqlite3.dll
+bin\blocklist.xml
 
 ; [Components]
 bin\components\alerts.xpt
@@ -88,7 +89,6 @@ bin\components\content_xslt.xpt
 bin\components\content_xtf.xpt
 bin\components\contentprefs.xpt
 bin\components\cookie.xpt
-bin\components\crashreporter.xpt
 bin\components\directory.xpt
 bin\components\docshell_base.xpt
 bin\components\dom.xpt
@@ -114,6 +114,7 @@ bin\components\downloads.xpt
 bin\components\editor.xpt
 bin\components\embed_base.xpt
 bin\components\exthandler.xpt
+bin\components\exthelper.xpt
 bin\components\fastfind.xpt
 bin\components\feeds.xpt
 bin\components\find.xpt
@@ -241,13 +242,13 @@ bin\components\nsContentPrefService.js
 bin\components\nsContentDispatchChooser.js
 bin\components\nsHandlerService.js
 bin\components\nsWebHandlerApp.js
+bin\components\aboutRobots.js
 
 ; Modules
 bin\modules\*
 
 ; Safe Browsing
 bin\components\nsSafebrowsingApplication.js
-bin\components\safebrowsing.xpt
 bin\components\nsUrlClassifierListManager.js
 bin\components\nsUrlClassifierLib.js
 bin\components\url-classifier.xpt
@@ -353,11 +354,3 @@ bin\crashreporter.exe
 bin\crashreporter.ini
 bin\crashreporter-override.ini
 
-; [Additional Developer Tools]
-[adt]
-bin\extensions\inspector@mozilla.org\install.rdf
-bin\extensions\inspector@mozilla.org\components\inspector-cmdline.js
-bin\extensions\inspector@mozilla.org\chrome.manifest
-bin\extensions\inspector@mozilla.org\chrome\inspector.jar
-bin\extensions\inspector@mozilla.org\defaults\preferences\inspector.js
-bin\extensions\inspector@mozilla.org\platform\WINNT\chrome\icons\default\winInspectorMain.ico

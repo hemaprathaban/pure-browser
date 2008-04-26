@@ -389,7 +389,7 @@ static PRBool SetColor(const nsCSSValue& aValue, const nscolor aParentColor,
       result = PR_TRUE;
     }
   }
-  else if (eCSSUnit_Integer == unit) {
+  else if (eCSSUnit_EnumColor == unit) {
     PRInt32 intValue = aValue.GetIntValue();
     if (0 <= intValue) {
       nsILookAndFeel* look = aPresContext->LookAndFeel();
@@ -725,7 +725,7 @@ CheckColorCallback(const nsRuleDataStruct& aData,
       static_cast<const nsRuleDataColor&>(aData);
 
   // currentColor values for color require inheritance
-  if (colorData.mColor.GetUnit() == eCSSUnit_Integer && 
+  if (colorData.mColor.GetUnit() == eCSSUnit_EnumColor && 
       colorData.mColor.GetIntValue() == NS_COLOR_CURRENTCOLOR) {
     NS_ASSERTION(aResult == nsRuleNode::eRuleFullReset,
                  "we should already be counted as full-reset");
@@ -2401,7 +2401,11 @@ nsRuleNode::SetFont(nsPresContext* aPresContext, nsStyleContext* aContext,
 #endif
 
   // enforce the user' specified minimum font-size on the value that we expose
-  aFont->mFont.size = PR_MAX(aFont->mSize, aMinFontSize);
+  // (but don't change font-size:0)
+  if (0 < aFont->mSize && aFont->mSize < aMinFontSize)
+    aFont->mFont.size = aMinFontSize;
+  else
+    aFont->mFont.size = aFont->mSize;
 
   // font-size-adjust: number, none, inherit
   if (eCSSUnit_Number == aFontData.mSizeAdjust.GetUnit()) {
@@ -3381,7 +3385,7 @@ nsRuleNode::ComputeColorData(void* aStartStruct,
   // color: color, string, inherit
   // Special case for currentColor.  According to CSS3, setting color to 'currentColor'
   // should behave as if it is inherited
-  if (colorData.mColor.GetUnit() == eCSSUnit_Integer && 
+  if (colorData.mColor.GetUnit() == eCSSUnit_EnumColor && 
       colorData.mColor.GetIntValue() == NS_COLOR_CURRENTCOLOR) {
     color->mColor = parentColor->mColor;
     inherited = PR_TRUE;
@@ -3595,7 +3599,6 @@ nsRuleNode::ComputeMarginData(void* aStartStruct,
 
   // margin: length, percent, auto, inherit
   nsStyleCoord  coord;
-  nsStyleCoord  parentCoord;
   nsCSSRect ourMargin(marginData.mMargin);
   AdjustLogicalBoxProp(aContext,
                        marginData.mMarginLeftLTRSource,
@@ -3608,7 +3611,7 @@ nsRuleNode::ComputeMarginData(void* aStartStruct,
                        marginData.mMarginEnd, marginData.mMarginStart,
                        NS_SIDE_RIGHT, ourMargin, inherited);
   NS_FOR_CSS_SIDES(side) {
-    parentMargin->mMargin.Get(side, parentCoord);
+    nsStyleCoord parentCoord = parentMargin->mMargin.Get(side);
     if (SetCoord(ourMargin.*(nsCSSRect::sides[side]),
                  coord, parentCoord, SETCOORD_LPAH | SETCOORD_INITIAL_ZERO,
                  aContext, mPresContext, inherited)) {
@@ -3632,7 +3635,6 @@ nsRuleNode::ComputeBorderData(void* aStartStruct,
 
   // border-width, border-*-width: length, enum, inherit
   nsStyleCoord  coord;
-  nsStyleCoord  parentCoord;
   nsCSSRect ourBorderWidth(marginData.mBorderWidth);
   AdjustLogicalBoxProp(aContext,
                        marginData.mBorderLeftWidthLTRSource,
@@ -3665,8 +3667,9 @@ nsRuleNode::ComputeBorderData(void* aStartStruct,
         border->SetBorderWidth(side,
                                (mPresContext->GetBorderWidthTable())[value.GetIntValue()]);
       }
-      else if (SetCoord(value, coord, parentCoord, SETCOORD_LENGTH, aContext,
-                        mPresContext, inherited)) {
+      // OK to pass bad aParentCoord since we're not passing SETCOORD_INHERIT
+      else if (SetCoord(value, coord, nsStyleCoord(), SETCOORD_LENGTH,
+                        aContext, mPresContext, inherited)) {
         if (coord.GetUnit() == eStyleUnit_Coord) {
           border->SetBorderWidth(side, coord.GetCoordValue());
         }
@@ -3803,7 +3806,7 @@ nsRuleNode::ComputeBorderData(void* aStartStruct,
   // -moz-border-radius: length, percent, inherit
   { // scope for compilers with broken |for| loop scoping
     NS_FOR_CSS_SIDES(side) {
-      parentBorder->mBorderRadius.Get(side, parentCoord);
+      nsStyleCoord parentCoord = parentBorder->mBorderRadius.Get(side);
       if (SetCoord(marginData.mBorderRadius.*(nsCSSRect::sides[side]), coord,
                    parentCoord, SETCOORD_LPH | SETCOORD_INITIAL_ZERO,
                    aContext, mPresContext, inherited))
@@ -3836,7 +3839,6 @@ nsRuleNode::ComputePaddingData(void* aStartStruct,
 
   // padding: length, percent, inherit
   nsStyleCoord  coord;
-  nsStyleCoord  parentCoord;
   nsCSSRect ourPadding(marginData.mPadding);
   AdjustLogicalBoxProp(aContext,
                        marginData.mPaddingLeftLTRSource,
@@ -3849,7 +3851,7 @@ nsRuleNode::ComputePaddingData(void* aStartStruct,
                        marginData.mPaddingEnd, marginData.mPaddingStart,
                        NS_SIDE_RIGHT, ourPadding, inherited);
   NS_FOR_CSS_SIDES(side) {
-    parentPadding->mPadding.Get(side, parentCoord);
+    nsStyleCoord parentCoord = parentPadding->mPadding.Get(side);
     if (SetCoord(ourPadding.*(nsCSSRect::sides[side]),
                  coord, parentCoord, SETCOORD_LPH | SETCOORD_INITIAL_ZERO,
                  aContext, mPresContext, inherited)) {
@@ -3921,10 +3923,9 @@ nsRuleNode::ComputeOutlineData(void* aStartStruct,
 
   // -moz-outline-radius: length, percent, inherit
   nsStyleCoord  coord;
-  nsStyleCoord  parentCoord;
   { // scope for compilers with broken |for| loop scoping
     NS_FOR_CSS_SIDES(side) {
-      parentOutline->mOutlineRadius.Get(side, parentCoord);
+      nsStyleCoord parentCoord = parentOutline->mOutlineRadius.Get(side);
       if (SetCoord(marginData.mOutlineRadius.*(nsCSSRect::sides[side]), coord,
                    parentCoord, SETCOORD_LPH | SETCOORD_INITIAL_ZERO,
                    aContext, mPresContext, inherited))
@@ -4045,9 +4046,8 @@ nsRuleNode::ComputePositionData(void* aStartStruct,
 
   // box offsets: length, percent, auto, inherit
   nsStyleCoord  coord;
-  nsStyleCoord  parentCoord;
   NS_FOR_CSS_SIDES(side) {
-    parentPos->mOffset.Get(side, parentCoord);
+    nsStyleCoord parentCoord = parentPos->mOffset.Get(side);
     if (SetCoord(posData.mOffset.*(nsCSSRect::sides[side]),
                  coord, parentCoord, SETCOORD_LPAH | SETCOORD_INITIAL_AUTO,
                  aContext, mPresContext, inherited)) {
@@ -4182,7 +4182,7 @@ nsRuleNode::ComputeTableBorderData(void* aStartStruct,
     table->mCaptionSide = parentTable->mCaptionSide;
   }
   else if (eCSSUnit_Initial == tableData.mCaptionSide.GetUnit()) {
-    table->mCaptionSide = NS_SIDE_TOP;
+    table->mCaptionSide = NS_STYLE_CAPTION_SIDE_TOP;
   }
 
   // empty-cells: enum, inherit

@@ -41,7 +41,7 @@
 
 #include "nsCOMPtr.h"
 #include "nsStringAPI.h"
-#include "nsISchema.h"
+#include "nsISVSchema.h"
 #include "nsIDOMNode.h"
 #include "nsCOMArray.h"
 #include "nsIServiceManager.h"
@@ -124,7 +124,7 @@ public:
 } ;
 
 struct nsSchemaDerivedSimpleType {
-  nsISchemaSimpleType* mBaseType;
+  nsISVSchemaSimpleType* mBaseType;
 
   nsSchemaIntFacet length;
   nsSchemaIntFacet minLength;
@@ -182,7 +182,9 @@ public:
 
   static PRBool ParseDateTime(const nsAString & aNodeValue,
                               nsSchemaDateTime *aResult);
-  static PRBool ParseSchemaDate(const nsAString & aStrValue, nsSchemaDate *aDate);
+  static PRBool ParseSchemaDate(const nsAString & aStrValue,
+                                PRBool aAllowTimeZone,
+                                nsSchemaDate *aDate);
   static PRBool ParseSchemaTime(const nsAString & aStrValue, nsSchemaTime *aTime);
 
   static PRBool ParseSchemaTimeZone(const nsAString & aStrValue, 
@@ -233,7 +235,7 @@ public:
   static void RemoveLeadingZeros(nsAString & aString);
   static void RemoveTrailingZeros(nsAString & aString);
 
-  static nsresult GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
+  static nsresult GetDerivedSimpleType(nsISVSchemaSimpleType *aSimpleType,
                                        nsSchemaDerivedSimpleType *aDerived);
   static void CopyDerivedSimpleType(nsSchemaDerivedSimpleType *aDerivedDest,
                                     nsSchemaDerivedSimpleType *aDerivedSrc);

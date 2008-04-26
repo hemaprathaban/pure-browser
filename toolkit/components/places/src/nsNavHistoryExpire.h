@@ -103,11 +103,12 @@ protected:
   nsresult ExpireHistoryParanoid(mozIStorageConnection* aConnection, PRInt32 aMaxRecords);
   nsresult ExpireFaviconsParanoid(mozIStorageConnection* aConnection);
   nsresult ExpireAnnotationsParanoid(mozIStorageConnection* aConnection);
+  nsresult ExpireInputHistoryParanoid(mozIStorageConnection* aConnection);
 
   PRBool ExpireForDegenerateRuns();
 
   nsresult StartTimer(PRUint32 aMilleseconds);
   static void TimerCallback(nsITimer* aTimer, void* aClosure);
 
-  PRTime GetExpirationTimeAgo();
+  PRTime GetExpirationTimeAgo(PRInt32 aExpireDays);
 };

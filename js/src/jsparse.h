@@ -445,14 +445,6 @@ struct JSParseContext {
     JSParsedObjectBox   *traceListHead; /* list of parsed object for GC
                                            tracing */
     JSTempValueRooter   tempRoot;       /* root to trace traceListHead */
-#ifdef DEBUG
-    /*
-     * JSContext.tempPool mark after the last allocation of JSParseNode or
-     * JSParsedObjectBox to assist with asserting that we do not release the
-     * parsed structures until they are no longer used.
-     */
-    void                *lastAllocMark;
-#endif
 };
 
 /*
@@ -472,7 +464,8 @@ js_CompileScript(JSContext *cx, JSObject *obj, JSPrincipals *principals,
                  FILE *file, const char *filename, uintN lineno);
 
 extern JSBool
-js_CompileFunctionBody(JSContext *cx, JSFunction *fun, JSPrincipals *principals,
+js_CompileFunctionBody(JSContext *cx, JSFunction *funobj,
+                       JSPrincipals *principals,
                        const jschar *chars, size_t length,
                        const char *filename, uintN lineno);
 

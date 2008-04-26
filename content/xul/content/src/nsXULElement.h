@@ -77,6 +77,7 @@
 #include "nsAutoPtr.h"
 #include "nsGenericElement.h"
 #include "nsDOMScriptObjectHolder.h"
+#include "nsIFrameLoader.h"
 
 class nsIDocument;
 class nsString;
@@ -548,6 +549,9 @@ public:
                                    PRBool aNotify);
 
     // nsIContent
+    virtual nsresult BindToTree(nsIDocument* aDocument, nsIContent* aParent,
+                                nsIContent* aBindingParent,
+                                PRBool aCompileEventHandlers);
     virtual void UnbindFromTree(PRBool aDeep, PRBool aNullParent);
     virtual nsresult RemoveChildAt(PRUint32 aIndex, PRBool aNotify);
     virtual nsIAtom *GetIDAttributeName() const;
@@ -604,7 +608,7 @@ public:
     void ClearLazyState(LazyState aFlags)
     { UnsetFlags(aFlags << XUL_ELEMENT_LAZY_STATE_OFFSET); }
     PRBool GetLazyState(LazyState aFlag)
-    { return GetFlags() & (aFlag << XUL_ELEMENT_LAZY_STATE_OFFSET); }
+    { return !!(GetFlags() & (aFlag << XUL_ELEMENT_LAZY_STATE_OFFSET)); }
 
     // nsIDOMNode
     NS_FORWARD_NSIDOMNODE(nsGenericElement::)
@@ -619,6 +623,9 @@ public:
     virtual PRInt32 IntrinsicState() const;
 
     nsresult GetStyle(nsIDOMCSSStyleDeclaration** aStyle);
+
+    
+    nsresult GetFrameLoader(nsIFrameLoader** aFrameLoader);
 
     virtual void RecompileScriptEventListeners();
 
@@ -655,9 +662,13 @@ protected:
     public:
        nsXULSlots(PtrBits aFlags);
        virtual ~nsXULSlots();
+
+       nsCOMPtr<nsIFrameLoader> mFrameLoader;
     };
 
     virtual nsINode::nsSlots* CreateSlots();
+
+    nsresult LoadSrc();
 
     // Required fields
     nsRefPtr<nsXULPrototypeElement>     mPrototype;

@@ -1,3 +1,4 @@
+/* -*- Mode: c; tab-width: 8; c-basic-offset: 4; indent-tabs-mode: t; -*- */
 /* cairo - a vector graphics library with display and print output
  *
  * Copyright © 2002 University of Southern California
@@ -61,7 +62,7 @@ typedef cairo_array_t cairo_user_data_array_t;
  * cairo_hash_entry_t:
  *
  * A #cairo_hash_entry_t contains both a key and a value for
- * cairo_hash_table_t. User-derived types for cairo_hash_entry_t must
+ * #cairo_hash_table_t. User-derived types for #cairo_hash_entry_t must
  * be type-compatible with this structure (eg. they must have an
  * unsigned long as the first parameter. The easiest way to get this
  * is to use:
@@ -72,21 +73,21 @@ typedef cairo_array_t cairo_user_data_array_t;
  *	} my_entry_t;
  *
  * which then allows a pointer to my_entry_t to be passed to any of
- * the cairo_hash_table functions as follows without requiring a cast:
+ * the #cairo_hash_table_t functions as follows without requiring a cast:
  *
  *	_cairo_hash_table_insert (hash_table, &my_entry->base);
  *
  * IMPORTANT: The caller is reponsible for initializing
  * my_entry->base.hash with a hash code derived from the key. The
  * essential property of the hash code is that keys_equal must never
- * return TRUE for two keys that have different hashes. The best hash
+ * return %TRUE for two keys that have different hashes. The best hash
  * code will reduce the frequency of two keys with the same code for
- * which keys_equal returns FALSE.
+ * which keys_equal returns %FALSE.
  *
  * Which parts of the entry make up the "key" and which part make up
  * the value are entirely up to the caller, (as determined by the
  * computation going into base.hash as well as the keys_equal
- * function). A few of the cairo_hash_table functions accept an entry
+ * function). A few of the #cairo_hash_table_t functions accept an entry
  * which will be used exclusively as a "key", (indicated by a
  * parameter name of key). In these cases, the value-related fields of
  * the entry need not be initialized if so desired.
@@ -183,50 +184,44 @@ typedef struct _cairo_trapezoid {
     cairo_line_t left, right;
 } cairo_trapezoid_t;
 
-typedef struct _cairo_rectangle_int16 {
+struct _cairo_rectangle_int16 {
     int16_t x, y;
     uint16_t width, height;
-} cairo_rectangle_int16_t, cairo_glyph_size_t;
+};
 
-typedef struct _cairo_rectangle_int32 {
+struct _cairo_rectangle_int32 {
     int32_t x, y;
     uint32_t width, height;
-} cairo_rectangle_int32_t;
+};
 
-typedef struct _cairo_point_int16 {
+typedef struct _cairo_rectangle_int16 cairo_glyph_size_t;
+
+struct _cairo_point_int16 {
     int16_t x, y;
-} cairo_point_int16_t;
+};
 
-typedef struct _cairo_point_int32 {
+struct _cairo_point_int32 {
     int32_t x, y;
-} cairo_point_int32_t;
-
-typedef struct _cairo_box_int16 {
-    cairo_point_int16_t p1;
-    cairo_point_int16_t p2;
-} cairo_box_int16_t;
-
-typedef struct _cairo_box_int32 {
-    cairo_point_int32_t p1;
-    cairo_point_int32_t p2;
-} cairo_box_int32_t;
-
+};
 
 #if CAIRO_FIXED_BITS == 32 && CAIRO_FIXED_FRAC_BITS >= 16
-typedef cairo_rectangle_int16_t cairo_rectangle_int_t;
-typedef cairo_point_int16_t cairo_point_int_t;
-typedef cairo_box_int16_t cairo_box_int_t;
+typedef struct _cairo_rectangle_int16 cairo_rectangle_int_t;
+typedef struct _cairo_point_int16 cairo_point_int_t;
 #define CAIRO_RECT_INT_MIN INT16_MIN
 #define CAIRO_RECT_INT_MAX INT16_MAX
 #elif CAIRO_FIXED_BITS == 32
-typedef cairo_rectangle_int32_t cairo_rectangle_int_t;
-typedef cairo_point_int32_t cairo_point_int_t;
-typedef cairo_box_int32_t cairo_box_int_t;
+typedef struct _cairo_rectangle_int32 cairo_rectangle_int_t;
+typedef struct _cairo_point_int32 cairo_point_int_t;
 #define CAIRO_RECT_INT_MIN INT32_MIN
 #define CAIRO_RECT_INT_MAX INT32_MAX
 #else
-#error Not sure how to pick a cairo_rectangle_int_t for your CAIRO_FIXED_BITS!
+#error Not sure how to pick a cairo_rectangle_int_t and cairo_point_int_t for your CAIRO_FIXED_BITS!
 #endif
+
+typedef struct _cairo_box_int {
+    cairo_point_int_t p1;
+    cairo_point_int_t p2;
+} cairo_box_int_t;
 
 typedef enum _cairo_direction {
     CAIRO_DIRECTION_FORWARD,
@@ -317,5 +312,12 @@ typedef enum {
     CAIRO_STOCK_BLACK,
     CAIRO_STOCK_TRANSPARENT
 } cairo_stock_t;
+
+typedef enum _cairo_image_transparency {
+    CAIRO_IMAGE_IS_OPAQUE,
+    CAIRO_IMAGE_HAS_BILEVEL_ALPHA,
+    CAIRO_IMAGE_HAS_ALPHA,
+    CAIRO_IMAGE_UNKNOWN
+} cairo_image_transparency_t;
 
 #endif /* CAIRO_TYPES_PRIVATE_H */

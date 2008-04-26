@@ -1396,7 +1396,7 @@ Engine.prototype = {
     this._urls.push(new EngineURL("text/html", aMethod, aTemplate));
 
     this._name = aName;
-    this._alias = aAlias;
+    this.alias = aAlias;
     this._description = aDescription;
     this._setIcon(aIconURL, true);
 
@@ -1526,9 +1526,6 @@ Engine.prototype = {
           break;
 
         // Non-OpenSearch elements
-        case "Alias":
-          this._alias = child.textContent;
-          break;
         case "SearchForm":
           this._searchForm = child.textContent;
           break;
@@ -1905,7 +1902,6 @@ Engine.prototype = {
       }
     }
 
-    appendTextNode(MOZSEARCH_NS_10, "Alias", this.alias);
     appendTextNode(MOZSEARCH_NS_10, "UpdateInterval", this._updateInterval);
     appendTextNode(MOZSEARCH_NS_10, "UpdateUrl", this._updateURL);
     appendTextNode(MOZSEARCH_NS_10, "IconUpdateUrl", this._iconUpdateURL);
@@ -2758,6 +2754,12 @@ SearchService.prototype = {
       engineToRemove.hidden = true;
       engineToRemove.alias = null;
     } else {
+      // Cancel the lazy serialization timer if it's running
+      if (engineToRemove._serializeTimer) {
+        engineToRemove._serializeTimer.cancel();
+        engineToRemove._serializeTimer = null;
+      }
+
       // Remove the engine file from disk (this might throw)
       engineToRemove._remove();
       engineToRemove._file = null;

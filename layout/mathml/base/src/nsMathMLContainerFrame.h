@@ -83,11 +83,6 @@ public:
           nsHTMLReflowMetrics& aDesiredStretchSize);
 
   NS_IMETHOD
-  Place(nsIRenderingContext& aRenderingContext,
-        PRBool               aPlaceOrigin,
-        nsHTMLReflowMetrics& aDesiredSize);
-
-  NS_IMETHOD
   UpdatePresentationDataFromChildAt(PRInt32         aFirstIndex,
                                     PRInt32         aLastIndex,
                                     PRUint32        aFlagsValues,
@@ -119,6 +114,8 @@ public:
       nsHTMLContainerFrame::IsFrameOfType(aFlags & ~(nsIFrame::eMathML));
   }
 
+  virtual PRIntn GetSkipSides() const { return 0; }
+
   NS_IMETHOD
   AppendFrames(nsIAtom*        aListName,
                nsIFrame*       aFrameList);
@@ -131,6 +128,18 @@ public:
   NS_IMETHOD
   RemoveFrame(nsIAtom*        aListName,
               nsIFrame*       aOldFrame);
+
+  /**
+   * Both GetMinWidth and GetPrefWidth return whatever
+   * GetIntrinsicWidth returns.
+   */
+  virtual nscoord GetMinWidth(nsIRenderingContext *aRenderingContext);
+  virtual nscoord GetPrefWidth(nsIRenderingContext *aRenderingContext);
+
+  /**
+   * Return the intrinsic width of the frame's content area.
+   */
+  virtual nscoord GetIntrinsicWidth(nsIRenderingContext *aRenderingContext);
 
   NS_IMETHOD
   Reflow(nsPresContext*          aPresContext,
@@ -184,6 +193,54 @@ public:
   // --------------------------------------------------------------------------
   // Additional methods 
 
+protected:
+  /* Place :
+   * This method is used to measure or position child frames and other
+   * elements.  It may be called any number of times with aPlaceOrigin
+   * false to measure, and the final call of the Reflow process before
+   * returning from Reflow() or Stretch() will have aPlaceOrigin true
+   * to position the elements.
+   *
+   * IMPORTANT: This method uses GetReflowAndBoundingMetricsFor() which must
+   * have been set up with SaveReflowAndBoundingMetricsFor().
+   *
+   * The Place() method will use this information to compute the desired size
+   * of the frame.
+   *
+   * @param aPlaceOrigin [in]
+   *        If aPlaceOrigin is false, compute your desired size using the
+   *        information from GetReflowAndBoundingMetricsFor.  However, child
+   *        frames or other elements should not be repositioned.
+   *
+   *        If aPlaceOrigin is true, reflow is finished. You should position
+   *        all your children, and return your desired size. You should now
+   *        use FinishReflowChild() on your children to complete post-reflow
+   *        operations.
+   *
+   * @param aDesiredSize [out] parameter where you should return your desired
+   *        size and your ascent/descent info. Compute your desired size using
+   *        the information from GetReflowAndBoundingMetricsFor, and include
+   *        any space you want for border/padding in the desired size you
+   *        return.
+   */
+  virtual nsresult
+  Place(nsIRenderingContext& aRenderingContext,
+        PRBool               aPlaceOrigin,
+        nsHTMLReflowMetrics& aDesiredSize);
+
+  // MeasureChildFrames:
+  //
+  // A method used by nsMathMLContainerFrame::GetIntrinsicWidth to get the
+  // width that a particular Place method desires.  For most frames, this will
+  // just call the object's Place method.  However <msqrt> uses
+  // nsMathMLContainerFrame::GetIntrinsicWidth to measure the child frames as
+  // if in an <mrow>, and so <msqrt> frames implement MeasureChildFrames to
+  // use nsMathMLContainerFrame::Place.
+  virtual nsresult
+  MeasureChildFrames(nsIRenderingContext& aRenderingContext,
+                     nsHTMLReflowMetrics& aDesiredSize);
+
+
   // helper to re-sync the automatic data in our children and notify our parent to
   // reflow us when changes (e.g., append/insert/remove) happen in our child list
   virtual nsresult
@@ -191,15 +248,16 @@ public:
 
   // helper to get the preferred size that a container frame should use to fire
   // the stretch on its stretchy child frames.
-  virtual void
+  void
   GetPreferredStretchSize(nsIRenderingContext& aRenderingContext,
                           PRUint32             aOptions,
                           nsStretchDirection   aStretchDirection,
                           nsBoundingMetrics&   aPreferredStretchSize);
 
+public:
   // error handlers to provide a visual feedback to the user when an error
   // (typically invalid markup) was encountered during reflow.
-  virtual nsresult
+  nsresult
   ReflowError(nsIRenderingContext& aRenderingContext,
               nsHTMLReflowMetrics& aDesiredSize);
 
@@ -213,6 +271,7 @@ public:
               const nsHTMLReflowState& aReflowState,
               nsReflowStatus&          aStatus);
 
+protected:
   // helper to add the inter-spacing when <math> is the immediate parent.
   // Since we don't (yet) handle the root <math> element ourselves, we need to
   // take special care of the inter-frame spacing on elements for which <math>
@@ -229,17 +288,28 @@ public:
   FinalizeReflow(nsIRenderingContext& aRenderingContext,
                  nsHTMLReflowMetrics& aDesiredSize);
 
-  // helper method to facilitate getting the reflow and bounding metrics.
-  // The argument aMathMLFrameType, when non null, will return the 'type' of
-  // the frame, which is used to determine the inter-frame spacing.
-  // IMPORTANT: This function is only meant to be called in Place() methods 
-  // where it is assumed that the frame's rect is still acting as place holder
-  // for the frame's ascent and descent information
+  // Record metrics of a child frame for recovery through the following method
+  static void
+  SaveReflowAndBoundingMetricsFor(nsIFrame*                  aFrame,
+                                  const nsHTMLReflowMetrics& aReflowMetrics,
+                                  const nsBoundingMetrics&   aBoundingMetrics);
+
+  // helper method to facilitate getting the reflow and bounding metrics of a
+  // child frame.  The argument aMathMLFrameType, when non null, will return
+  // the 'type' of the frame, which is used to determine the inter-frame
+  // spacing.
+  // IMPORTANT: This function is only meant to be called in Place() methods as
+  // the information is available only when set up with the above method
+  // during Reflow/Stretch() and GetPrefWidth().
   static void
   GetReflowAndBoundingMetricsFor(nsIFrame*            aFrame,
                                  nsHTMLReflowMetrics& aReflowMetrics,
                                  nsBoundingMetrics&   aBoundingMetrics,
                                  eMathMLFrameType*    aMathMLFrameType = nsnull);
+
+  // helper method to clear metrics saved with
+  // SaveReflowAndBoundingMetricsFor() from all child frames.
+  void ClearSavedChildMetrics();
 
   // helper to let the update of presentation data pass through
   // a subtree that may contain non-MathML container frames
@@ -248,6 +318,7 @@ public:
                                PRUint32        aFlagsValues,
                                PRUint32        aFlagsToUpdate);
 
+public:
   static void
   PropagatePresentationDataFromChildAt(nsIFrame*       aParentFrame,
                                        PRInt32         aFirstChildIndex,
@@ -284,8 +355,6 @@ public:
   ReLayoutChildren(nsIFrame* aParentFrame, nsFrameState aBits);
 
 protected:
-  virtual PRIntn GetSkipSides() const { return 0; }
-
   // Helper method which positions child frames as an <mrow> on given baseline
   // y = aBaseline starting from x = aOffsetX, calling FinishReflowChild()
   // on the frames.

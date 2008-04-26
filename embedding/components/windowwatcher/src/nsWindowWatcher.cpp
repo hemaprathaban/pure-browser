@@ -556,9 +556,14 @@ nsWindowWatcher::OpenWindowJSInternal(nsIDOMWindow *aParent,
                                      aDialog, uriToLoadIsChrome,
                                      !aParent || chromeParent);
 
-  if ((chromeFlags & nsIWebBrowserChrome::CHROME_MODAL) &&
-      !(chromeFlags & nsIWebBrowserChrome::CHROME_OPENAS_CHROME)) {
+  // If we're not called through our JS version of the API, and we got
+  // our internal modal option, treat the window we're opening as a
+  // modal content window (and set the modal chrome flag).
+  if (!aCalledFromJS && argv &&
+      WinHasOption(features.get(), "-moz-internal-modal", 0, nsnull)) {
     windowIsModalContentDialog = PR_TRUE;
+
+    chromeFlags |= nsIWebBrowserChrome::CHROME_MODAL;
   }
 
   SizeSpec sizeSpec;
@@ -738,11 +743,10 @@ nsWindowWatcher::OpenWindowJSInternal(nsIDOMWindow *aParent,
 
   /* allow a window that we found by name to keep its name (important for cases
      like _self where the given name is different (and invalid)).  Also, _blank
-     and _new are not window names. */
+     is not a window name. */
   if (windowNeedsName)
     newDocShellItem->SetName(nameSpecified &&
-                             !name.LowerCaseEqualsLiteral("_blank") &&
-                             !name.LowerCaseEqualsLiteral("_new") ?
+                             !name.LowerCaseEqualsLiteral("_blank") ?
                              name.get() : nsnull);
 
 
@@ -1542,7 +1546,8 @@ PRUint32 nsWindowWatcher::CalculateChromeFlags(const char *aFeatures,
        prevents untrusted script from opening modal windows in general
        while still allowing alerts and the like. */
     if (!aChromeURL)
-      chromeFlags &= ~nsIWebBrowserChrome::CHROME_OPENAS_CHROME;
+      chromeFlags &= ~(nsIWebBrowserChrome::CHROME_MODAL |
+                       nsIWebBrowserChrome::CHROME_OPENAS_CHROME);
   }
 
   if (!(chromeFlags & nsIWebBrowserChrome::CHROME_OPENAS_CHROME)) {

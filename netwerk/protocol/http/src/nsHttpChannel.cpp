@@ -600,7 +600,10 @@ nsHttpChannel::SetupTransaction()
                             mUploadStream, mUploadStreamHasHeaders,
                             NS_GetCurrentThread(), callbacks, this,
                             getter_AddRefs(responseStream));
-    if (NS_FAILED(rv)) return rv;
+    if (NS_FAILED(rv)) {
+        NS_RELEASE(mTransaction);
+        return rv;
+    }
 
     rv = nsInputStreamPump::Create(getter_AddRefs(mTransactionPump),
                                    responseStream);
@@ -2548,9 +2551,9 @@ nsHttpChannel::GenCredsAndSetEntry(nsIHttpAuthenticator *auth,
     // find out if this authenticator allows reuse of credentials and/or
     // challenge.
     PRBool saveCreds =
-        authFlags & nsIHttpAuthenticator::REUSABLE_CREDENTIALS;
+        0 != (authFlags & nsIHttpAuthenticator::REUSABLE_CREDENTIALS);
     PRBool saveChallenge =
-        authFlags & nsIHttpAuthenticator::REUSABLE_CHALLENGE;
+        0 != (authFlags & nsIHttpAuthenticator::REUSABLE_CHALLENGE);
 
     // this getter never fails
     nsHttpAuthCache *authCache = gHttpHandler->AuthCache();

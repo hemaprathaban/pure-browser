@@ -103,7 +103,7 @@
 #include "nsICRLManager.h"
 #include "nsNSSShutDown.h"
 #include "nsSmartCardEvent.h"
-#include "nsICryptoHash.h"
+#include "nsIKeyModule.h"
 
 #include "nss.h"
 #include "pk11func.h"
@@ -1596,6 +1596,10 @@ nsNSSComponent::InitializeNSS(PRBool showWarningBox)
       mPrefBranch->GetBoolPref("security.enable_tls", &enabled);
       SSL_OptionSetDefault(SSL_ENABLE_TLS, enabled);
 
+      // Configure TLS session tickets
+      mPrefBranch->GetBoolPref("security.enable_tls_session_tickets", &enabled);
+      SSL_OptionSetDefault(SSL_ENABLE_SESSION_TICKETS, enabled);
+
       // Disable any ciphers that NSS might have enabled by default
       for (PRUint16 i = 0; i < SSL_NumImplementedCiphers; ++i)
       {
@@ -1680,6 +1684,7 @@ nsNSSComponent::ShutdownNSS()
     ShutdownSmartCardThreads();
     SSL_ClearSessionCache();
     UnloadLoadableRoots();
+    CleanupIdentityInfo();
     PR_LOG(gPIPNSSLog, PR_LOG_DEBUG, ("evaporating psm resources\n"));
     mShutdownObjectList->evaporateAllNSSResources();
     if (SECSuccess != ::NSS_Shutdown()) {
@@ -1689,8 +1694,6 @@ nsNSSComponent::ShutdownNSS()
     else {
       PR_LOG(gPIPNSSLog, PR_LOG_DEBUG, ("NSS shutdown =====>> OK <<=====\n"));
     }
-
-    CleanupIdentityInfo();
   }
 
   return rv;
@@ -2047,6 +2050,9 @@ nsNSSComponent::Observe(nsISupports *aSubject, const char *aTopic,
       mPrefBranch->GetBoolPref("security.enable_tls", &enabled);
       SSL_OptionSetDefault(SSL_ENABLE_TLS, enabled);
       clearSessionCache = PR_TRUE;
+    } else if (prefName.Equals("security.enable_tls_session_tickets")) {
+      mPrefBranch->GetBoolPref("security.enable_tls_session_tickets", &enabled);
+      SSL_OptionSetDefault(SSL_ENABLE_SESSION_TICKETS, enabled);
     } else if (prefName.Equals("security.OCSP.enabled")
                || prefName.Equals("security.OCSP.require")) {
       setOCSPOptions(mPrefBranch);
@@ -2485,13 +2491,13 @@ nsCryptoHash::UpdateFromStream(nsIInputStream *data, PRUint32 len)
     return NS_ERROR_NOT_AVAILABLE;
   
   char buffer[NS_CRYPTO_HASH_BUFFER_SIZE];
-  PRUint32 read;
+  PRUint32 read, readLimit;
   
   while(NS_SUCCEEDED(rv) && len>0)
   {
-    read = PR_MIN(NS_CRYPTO_HASH_BUFFER_SIZE, len);
+    readLimit = PR_MIN(NS_CRYPTO_HASH_BUFFER_SIZE, len);
     
-    rv = data->Read(buffer, read, &read);
+    rv = data->Read(buffer, readLimit, &read);
     
     if (NS_SUCCEEDED(rv))
       rv = Update((const PRUint8*)buffer, read);
@@ -2520,6 +2526,8 @@ nsCryptoHash::Finish(PRBool ascii, nsACString & _retval)
   if (ascii)
   {
     char *asciiData = BTOA_DataToAscii(buffer, hashLen);
+    NS_ENSURE_TRUE(asciiData, NS_ERROR_OUT_OF_MEMORY);
+
     _retval.Assign(asciiData);
     PORT_Free(asciiData);
   }
@@ -2531,6 +2539,179 @@ nsCryptoHash::Finish(PRBool ascii, nsACString & _retval)
   return NS_OK;
 }
 
+//---------------------------------------------
+// Implementing nsICryptoHMAC
+//---------------------------------------------
+
+NS_IMPL_ISUPPORTS1(nsCryptoHMAC, nsICryptoHMAC)
+
+nsCryptoHMAC::nsCryptoHMAC()
+{
+  mHMACContext = nsnull;
+}
+
+nsCryptoHMAC::~nsCryptoHMAC()
+{
+  if (mHMACContext)
+    PK11_DestroyContext(mHMACContext, PR_TRUE);
+}
+
+/* void init (in unsigned long aAlgorithm, in nsIKeyObject aKeyObject); */
+NS_IMETHODIMP nsCryptoHMAC::Init(PRUint32 aAlgorithm, nsIKeyObject *aKeyObject)
+{
+  if (mHMACContext)
+  {
+    PK11_DestroyContext(mHMACContext, PR_TRUE);
+    mHMACContext = nsnull;
+  }
+
+  CK_MECHANISM_TYPE HMACMechType;
+  switch (aAlgorithm)
+  {
+  case nsCryptoHMAC::MD2:
+    HMACMechType = CKM_MD2_HMAC; break;
+  case nsCryptoHMAC::MD5:
+    HMACMechType = CKM_MD5_HMAC; break;
+  case nsCryptoHMAC::SHA1:
+    HMACMechType = CKM_SHA_1_HMAC; break;
+  case nsCryptoHMAC::SHA256:
+    HMACMechType = CKM_SHA256_HMAC; break;
+  case nsCryptoHMAC::SHA384:
+    HMACMechType = CKM_SHA384_HMAC; break;
+  case nsCryptoHMAC::SHA512:
+    HMACMechType = CKM_SHA512_HMAC; break;
+  default:
+    return NS_ERROR_INVALID_ARG;
+  }
+
+  NS_ENSURE_ARG_POINTER(aKeyObject);
+
+  nsresult rv;
+
+  PRInt16 keyType;
+  rv = aKeyObject->GetType(&keyType);
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  NS_ENSURE_TRUE(keyType == nsIKeyObject::SYM_KEY, NS_ERROR_INVALID_ARG);
+
+  PK11SymKey* key;
+  // GetKeyObj doesn't addref the key
+  rv = aKeyObject->GetKeyObj((void**)&key);
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  SECItem rawData;
+  rawData.data = 0;
+  rawData.len = 0;
+  mHMACContext = PK11_CreateContextBySymKey(
+      HMACMechType, CKA_SIGN, key, &rawData);
+  NS_ENSURE_TRUE(mHMACContext, NS_ERROR_FAILURE);
+
+  SECStatus ss = PK11_DigestBegin(mHMACContext);
+  NS_ENSURE_TRUE(ss == SECSuccess, NS_ERROR_FAILURE);
+
+  return NS_OK;
+}
+
+/* void update ([array, size_is (aLen), const] in octet aData, in unsigned long aLen); */
+NS_IMETHODIMP nsCryptoHMAC::Update(const PRUint8 *aData, PRUint32 aLen)
+{
+  if (!mHMACContext)
+    return NS_ERROR_NOT_INITIALIZED;
+
+  if (!aData)
+    return NS_ERROR_INVALID_ARG;
+
+  SECStatus ss = PK11_DigestOp(mHMACContext, aData, aLen);
+  NS_ENSURE_TRUE(ss == SECSuccess, NS_ERROR_FAILURE);
+  
+  return NS_OK;
+}
+
+/* void updateFromStream (in nsIInputStream aStream, in unsigned long aLen); */
+NS_IMETHODIMP nsCryptoHMAC::UpdateFromStream(nsIInputStream *aStream, PRUint32 aLen)
+{
+  if (!mHMACContext)
+    return NS_ERROR_NOT_INITIALIZED;
+
+  if (!aStream)
+    return NS_ERROR_INVALID_ARG;
+
+  PRUint32 n;
+  nsresult rv = aStream->Available(&n);
+  if (NS_FAILED(rv))
+    return rv;
+
+  // if the user has passed PR_UINT32_MAX, then read
+  // everything in the stream
+
+  if (aLen == PR_UINT32_MAX)
+    aLen = n;
+
+  // So, if the stream has NO data available for the hash,
+  // or if the data available is less then what the caller
+  // requested, we can not fulfill the HMAC update.  In this
+  // case, just return NS_ERROR_NOT_AVAILABLE indicating
+  // that there is not enough data in the stream to satisify
+  // the request.
+
+  if (n == 0 || n < aLen)
+    return NS_ERROR_NOT_AVAILABLE;
+  
+  char buffer[NS_CRYPTO_HASH_BUFFER_SIZE];
+  PRUint32 read, readLimit;
+  
+  while(NS_SUCCEEDED(rv) && aLen > 0)
+  {
+    readLimit = PR_MIN(NS_CRYPTO_HASH_BUFFER_SIZE, aLen);
+    
+    rv = aStream->Read(buffer, readLimit, &read);
+    if (read == 0)
+      return NS_BASE_STREAM_CLOSED;
+    
+    if (NS_SUCCEEDED(rv))
+      rv = Update((const PRUint8*)buffer, read);
+    
+    aLen -= read;
+  }
+  
+  return rv;
+}
+
+/* ACString finish (in PRBool aASCII); */
+NS_IMETHODIMP nsCryptoHMAC::Finish(PRBool aASCII, nsACString & _retval)
+{
+  if (!mHMACContext)
+    return NS_ERROR_NOT_INITIALIZED;
+  
+  PRUint32 hashLen = 0;
+  unsigned char buffer[HASH_LENGTH_MAX];
+  unsigned char* pbuffer = buffer;
+
+  PK11_DigestFinal(mHMACContext, pbuffer, &hashLen, HASH_LENGTH_MAX);
+  if (aASCII)
+  {
+    char *asciiData = BTOA_DataToAscii(buffer, hashLen);
+    NS_ENSURE_TRUE(asciiData, NS_ERROR_OUT_OF_MEMORY);
+
+    _retval.Assign(asciiData);
+    PORT_Free(asciiData);
+  }
+  else
+  {
+    _retval.Assign((const char*)buffer, hashLen);
+  }
+
+  return NS_OK;
+}
+
+/* void reset (); */
+NS_IMETHODIMP nsCryptoHMAC::Reset()
+{
+  SECStatus ss = PK11_DigestBegin(mHMACContext);
+  NS_ENSURE_TRUE(ss == SECSuccess, NS_ERROR_FAILURE);
+
+  return NS_OK;
+}
 
 NS_IMPL_ISUPPORTS1(PipUIContext, nsIInterfaceRequestor)
 

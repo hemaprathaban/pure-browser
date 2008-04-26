@@ -82,6 +82,7 @@
 #include "nsTextFragment.h"
 #include "nsCSSRuleProcessor.h"
 #include "nsXMLHttpRequest.h"
+#include "nsIFocusEventSuppressor.h"
 
 #ifdef MOZ_XUL
 #include "nsXULPopupManager.h"
@@ -111,6 +112,8 @@ PRBool NS_SVGEnabled();
 
 #include "nsError.h"
 #include "nsTraceRefcnt.h"
+
+#include "nsCycleCollector.h"
 
 static nsrefcnt sLayoutStaticRefcnt;
 
@@ -216,11 +219,13 @@ nsLayoutStatics::Initialize()
     return rv;
   }
 
+#ifndef DEBUG_CC
   rv = nsCCUncollectableMarker::Init();
   if (NS_FAILED(rv)) {
     NS_ERROR("Could not initialize nsCCUncollectableMarker");
     return rv;
   }
+#endif
 
 #ifdef MOZ_XUL
   rv = nsXULPopupManager::Init();
@@ -305,7 +310,7 @@ nsLayoutStatics::Shutdown()
   nsTextServicesDocument::Shutdown();
 #endif
 
-  nsXMLHttpRequest::ShutdownACCache();
+  NS_ShutdownFocusSuppressor();
 }
 
 void

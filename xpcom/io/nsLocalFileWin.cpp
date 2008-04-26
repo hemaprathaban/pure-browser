@@ -1145,6 +1145,24 @@ nsLocalFile::Normalize()
         WCHAR cwd[MAX_PATH];
         WCHAR * pcwd = cwd;
         int drive = TOUPPER(path.First()) - 'A' + 1;
+        /* We need to worry about IPH, for details read bug 419326.
+         * _getdrives - http://msdn2.microsoft.com/en-us/library/xdhk0xd2.aspx 
+         * uses a bitmask, bit 0 is 'a:'
+         * _chdrive - http://msdn2.microsoft.com/en-us/library/0d1409hb.aspx
+         * _getdcwd - http://msdn2.microsoft.com/en-us/library/7t2zk3s4.aspx
+         * take an int, 1 is 'a:'.
+         *
+         * Because of this, we need to do some math. Subtract 1 to convert from
+         * _chdrive/_getdcwd format to _getdrives drive numbering.
+         * Shift left x bits to convert from integer indexing to bitfield indexing.
+         * And of course, we need to find out if the drive is in the bitmask.
+         *
+         * If we're really unlucky, we can still lose, but only if the user
+         * manages to eject the drive between our call to _getdrives() and
+         * our *calls* to _wgetdcwd.
+         */
+        if (!((1 << (drive - 1)) & _getdrives()))
+            return NS_ERROR_FILE_INVALID_PATH;
         if (!_wgetdcwd(drive, pcwd, MAX_PATH))
             pcwd = _wgetdcwd(drive, 0, 0);
         if (!pcwd)
@@ -2869,7 +2887,9 @@ nsLocalFile::EnsureShortPath()
 {
     if (!mShortWorkingPath.IsEmpty())
         return;
-
+#ifdef WINCE
+	 mShortWorkingPath.Assign(mWorkingPath);
+#else
     WCHAR thisshort[MAX_PATH];
     DWORD thisr = ::GetShortPathNameW(mWorkingPath.get(), thisshort,
                                       sizeof(thisshort));
@@ -2878,6 +2898,7 @@ nsLocalFile::EnsureShortPath()
         mShortWorkingPath.Assign(thisshort);
     else
         mShortWorkingPath.Assign(mWorkingPath);
+#endif
 }
 
 // nsIHashable

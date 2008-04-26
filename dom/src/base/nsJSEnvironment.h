@@ -99,6 +99,7 @@ public:
                                        const char** aArgNames,
                                        const nsAString& aBody,
                                        const char *aURL, PRUint32 aLineNo,
+                                       PRUint32 aVersion,
                                        nsScriptObjectHolder &aHandler);
   virtual nsresult CallEventHandler(nsISupports* aTarget, void *aScope,
                                     void* aHandler,
@@ -117,6 +118,7 @@ public:
                                    const nsAString& aBody,
                                    const char* aURL,
                                    PRUint32 aLineNo,
+                                   PRUint32 aVersion,
                                    PRBool aShared,
                                    void** aFunctionObject);
 
@@ -163,6 +165,8 @@ public:
 
   virtual nsresult DropScriptObject(void *object);
   virtual nsresult HoldScriptObject(void *object);
+
+  virtual void ReportPendingException();
 
   NS_DECL_NSIXPCSCRIPTNOTIFY
 

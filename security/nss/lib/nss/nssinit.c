@@ -36,7 +36,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-/* $Id: nssinit.c,v 1.87 2007/12/19 23:03:55 alexei.volkov.bugs%sun.com Exp $ */
+/* $Id: nssinit.c,v 1.93 2008/03/11 20:48:53 alexei.volkov.bugs%sun.com Exp $ */
 
 #include <ctype.h>
 #include "seccomon.h"
@@ -413,7 +413,6 @@ nss_FindExternalRoot(const char *dbpath, const char* secmodprefix)
 static PRBool nss_IsInitted = PR_FALSE;
 static void* plContext = NULL;
 
-extern SECStatus secoid_Init(void);
 static SECStatus nss_InitShutdownList(void);
 
 #ifdef DEBUG
@@ -422,7 +421,10 @@ static CERTCertificate dummyCert;
 
 static SECStatus
 nss_Init(const char *configdir, const char *certPrefix, const char *keyPrefix,
-		 const char *secmodName, PRBool readOnly, PRBool noCertDB, 
+		 const char *secmodName, const char *updateDir, 
+		 const char *updCertPrefix, const char *updKeyPrefix,
+		 const char *updateID, const char *updateName,
+			PRBool readOnly, PRBool noCertDB, 
 			PRBool noModDB, PRBool forceOpen, PRBool noRootInit,
 			PRBool optimizeSpace, PRBool noSingleThreadedModules,
 			PRBool allowAlreadyInitializedModules,
@@ -435,6 +437,11 @@ nss_Init(const char *configdir, const char *certPrefix, const char *keyPrefix,
     char *lcertPrefix = NULL;
     char *lkeyPrefix = NULL;
     char *lsecmodName = NULL;
+    char *lupdateDir = NULL;
+    char *lupdCertPrefix = NULL;
+    char *lupdKeyPrefix = NULL;
+    char *lupdateID = NULL;
+    char *lupdateName = NULL;
     PKIX_UInt32 actualMinorVersion = 0;
     PKIX_Error *pkixError = NULL;;
 
@@ -481,6 +488,26 @@ nss_Init(const char *configdir, const char *certPrefix, const char *keyPrefix,
     if (lsecmodName == NULL) {
 	goto loser;
     }
+    lupdateDir = nss_doubleEscape(updateDir);
+    if (lupdateDir == NULL) {
+	goto loser;
+    }
+    lupdCertPrefix = nss_doubleEscape(updCertPrefix);
+    if (lupdCertPrefix == NULL) {
+	goto loser;
+    }
+    lupdKeyPrefix = nss_doubleEscape(updKeyPrefix);
+    if (lupdKeyPrefix == NULL) {
+	goto loser;
+    }
+    lupdateID = nss_doubleEscape(updateID);
+    if (lupdateID == NULL) {
+	goto loser;
+    }
+    lupdateName = nss_doubleEscape(updateName);
+    if (lupdateName == NULL) {
+	goto loser;
+    }
     if (noSingleThreadedModules || allowAlreadyInitializedModules ||
         dontFinalizeModules) {
         pk11_setGlobalOptions(noSingleThreadedModules,
@@ -488,10 +515,15 @@ nss_Init(const char *configdir, const char *certPrefix, const char *keyPrefix,
                               dontFinalizeModules);
     }
 
-    moduleSpec = PR_smprintf("name=\"%s\" parameters=\"configdir='%s' certPrefix='%s' keyPrefix='%s' secmod='%s' flags=%s %s\" NSS=\"flags=internal,moduleDB,moduleDBOnly,critical\"",
+    moduleSpec = PR_smprintf(
+     "name=\"%s\" parameters=\"configdir='%s' certPrefix='%s' keyPrefix='%s' "
+     "secmod='%s' flags=%s updatedir='%s' updateCertPrefix='%s' "
+     "updateKeyPrefix='%s' updateid='%s' updateTokenDescription='%s' %s\" "
+     "NSS=\"flags=internal,moduleDB,moduleDBOnly,critical\"",
 		pk11_config_name ? pk11_config_name : NSS_DEFAULT_MOD_NAME,
 		lconfigdir,lcertPrefix,lkeyPrefix,lsecmodName,flags,
-		pk11_config_strings ? pk11_config_strings : "");
+		lupdateDir, lupdCertPrefix, lupdKeyPrefix, lupdateID, 
+		lupdateName, pk11_config_strings ? pk11_config_strings : "");
 
 loser:
     PORT_Free(flags);
@@ -499,6 +531,11 @@ loser:
     if (lcertPrefix) PORT_Free(lcertPrefix);
     if (lkeyPrefix) PORT_Free(lkeyPrefix);
     if (lsecmodName) PORT_Free(lsecmodName);
+    if (lupdateDir) PORT_Free(lupdateDir);
+    if (lupdCertPrefix) PORT_Free(lupdCertPrefix);
+    if (lupdKeyPrefix) PORT_Free(lupdKeyPrefix);
+    if (lupdateID) PORT_Free(lupdateID);
+    if (lupdateName) PORT_Free(lupdateName);
 
     if (moduleSpec) {
 	SECMODModule *module = SECMOD_LoadModule(moduleSpec,NULL,PR_TRUE);
@@ -510,7 +547,7 @@ loser:
     }
 
     if (rv == SECSuccess) {
-	if (secoid_Init() != SECSuccess) {
+	if (SECOID_Init() != SECSuccess) {
 	    return SECFailure;
 	}
 	if (STAN_LoadDefaultNSS3TrustDomain() != PR_SUCCESS) {
@@ -544,7 +581,7 @@ loser:
 	} else {
             char *ev = getenv("NSS_ENABLE_PKIX_VERIFY");
             if (ev && ev[0]) {
-                cert_SetPKIXValidation(PR_TRUE);
+                CERT_SetUsePKIXForValidation(PR_TRUE);
             }
         }
     }
@@ -556,15 +593,17 @@ loser:
 SECStatus
 NSS_Init(const char *configdir)
 {
-    return nss_Init(configdir, "", "", SECMOD_DB, PR_TRUE, 
-		PR_FALSE, PR_FALSE, PR_FALSE, PR_FALSE, PR_TRUE, PR_FALSE, PR_FALSE, PR_FALSE);
+    return nss_Init(configdir, "", "", SECMOD_DB, "", "", "", "", "",
+		PR_TRUE, PR_FALSE, PR_FALSE, PR_FALSE, PR_FALSE, 
+		PR_TRUE, PR_FALSE, PR_FALSE, PR_FALSE);
 }
 
 SECStatus
 NSS_InitReadWrite(const char *configdir)
 {
-    return nss_Init(configdir, "", "", SECMOD_DB, PR_FALSE, 
-		PR_FALSE, PR_FALSE, PR_FALSE, PR_FALSE, PR_TRUE, PR_FALSE, PR_FALSE, PR_FALSE);
+    return nss_Init(configdir, "", "", SECMOD_DB, "", "", "", "", "",
+		PR_FALSE, PR_FALSE, PR_FALSE, PR_FALSE, PR_FALSE, 
+		PR_TRUE, PR_FALSE, PR_FALSE, PR_FALSE);
 }
 
 /*
@@ -619,7 +658,28 @@ SECStatus
 NSS_Initialize(const char *configdir, const char *certPrefix, 
 	const char *keyPrefix, const char *secmodName, PRUint32 flags)
 {
-    return nss_Init(configdir, certPrefix, keyPrefix, secmodName, 
+    return nss_Init(configdir, certPrefix, keyPrefix, secmodName,
+	"", "", "", "", "",
+	((flags & NSS_INIT_READONLY) == NSS_INIT_READONLY),
+	((flags & NSS_INIT_NOCERTDB) == NSS_INIT_NOCERTDB),
+	((flags & NSS_INIT_NOMODDB) == NSS_INIT_NOMODDB),
+	((flags & NSS_INIT_FORCEOPEN) == NSS_INIT_FORCEOPEN),
+	((flags & NSS_INIT_NOROOTINIT) == NSS_INIT_NOROOTINIT),
+	((flags & NSS_INIT_OPTIMIZESPACE) == NSS_INIT_OPTIMIZESPACE),
+        ((flags & NSS_INIT_PK11THREADSAFE) == NSS_INIT_PK11THREADSAFE),
+        ((flags & NSS_INIT_PK11RELOAD) == NSS_INIT_PK11RELOAD),
+        ((flags & NSS_INIT_NOPK11FINALIZE) == NSS_INIT_NOPK11FINALIZE));
+}
+
+SECStatus
+NSS_InitWithMerge(const char *configdir, const char *certPrefix, 
+	const char *keyPrefix, const char *secmodName, 
+	const char *updateDir, const char *updCertPrefix,
+	const char *updKeyPrefix, const char *updateID, 
+	const char *updateName, PRUint32 flags)
+{
+    return nss_Init(configdir, certPrefix, keyPrefix, secmodName,
+	updateDir, updCertPrefix, updKeyPrefix, updateID, updateName,
 	((flags & NSS_INIT_READONLY) == NSS_INIT_READONLY),
 	((flags & NSS_INIT_NOCERTDB) == NSS_INIT_NOCERTDB),
 	((flags & NSS_INIT_NOMODDB) == NSS_INIT_NOMODDB),
@@ -637,7 +697,7 @@ NSS_Initialize(const char *configdir, const char *certPrefix,
 SECStatus
 NSS_NoDB_Init(const char * configdir)
 {
-      return nss_Init("","","","",
+      return nss_Init("","","","", "", "", "", "", "",
 			PR_TRUE,PR_TRUE,PR_TRUE,PR_TRUE,PR_TRUE,PR_TRUE,
 			PR_FALSE,PR_FALSE,PR_FALSE);
 }
@@ -652,8 +712,8 @@ struct NSSShutdownFuncPair {
 
 static struct NSSShutdownListStr {
     PZLock		*lock;
-    int			maxFuncs;
-    int			numFuncs;
+    int			allocatedFuncs;
+    int			peakFuncs;
     struct NSSShutdownFuncPair	*funcs;
 } nssShutdownList = { 0 };
 
@@ -664,7 +724,7 @@ static int
 nss_GetShutdownEntry(NSS_ShutdownFunc sFunc, void *appData)
 {
     int count, i;
-    count = nssShutdownList.numFuncs;
+    count = nssShutdownList.peakFuncs;
     /* expect the list to be short, just do a linear search */
     for (i=0; i < count; i++) {
 	if ((nssShutdownList.funcs[i].func == sFunc) &&
@@ -697,34 +757,34 @@ NSS_RegisterShutdown(NSS_ShutdownFunc sFunc, void *appData)
 
     /* make sure we don't have a duplicate */
     i = nss_GetShutdownEntry(sFunc, appData);
-    if (i > 0) {
+    if (i >= 0) {
 	PZ_Unlock(nssShutdownList.lock);
 	PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
 	return SECFailure;
     }
     /* find an empty slot */
     i = nss_GetShutdownEntry(NULL, NULL);
-    if (i > 0) {
+    if (i >= 0) {
 	nssShutdownList.funcs[i].func = sFunc;
 	nssShutdownList.funcs[i].appData = appData;
 	PZ_Unlock(nssShutdownList.lock);
-	return SECFailure;
+	return SECSuccess;
     }
-    if (nssShutdownList.maxFuncs == nssShutdownList.numFuncs) {
+    if (nssShutdownList.allocatedFuncs == nssShutdownList.peakFuncs) {
 	struct NSSShutdownFuncPair *funcs = 
 		(struct NSSShutdownFuncPair *)PORT_Realloc
 		(nssShutdownList.funcs, 
-		(nssShutdownList.maxFuncs + NSS_SHUTDOWN_STEP) 
+		(nssShutdownList.allocatedFuncs + NSS_SHUTDOWN_STEP) 
 		*sizeof(struct NSSShutdownFuncPair));
 	if (!funcs) {
 	    return SECFailure;
 	}
 	nssShutdownList.funcs = funcs;
-	nssShutdownList.maxFuncs += NSS_SHUTDOWN_STEP;
+	nssShutdownList.allocatedFuncs += NSS_SHUTDOWN_STEP;
     }
-    nssShutdownList.funcs[nssShutdownList.numFuncs].func = sFunc;
-    nssShutdownList.funcs[nssShutdownList.numFuncs].appData = appData;
-    nssShutdownList.numFuncs++;
+    nssShutdownList.funcs[nssShutdownList.peakFuncs].func = sFunc;
+    nssShutdownList.funcs[nssShutdownList.peakFuncs].appData = appData;
+    nssShutdownList.peakFuncs++;
     PZ_Unlock(nssShutdownList.lock);
     return SECSuccess;
 }
@@ -744,7 +804,7 @@ NSS_UnregisterShutdown(NSS_ShutdownFunc sFunc, void *appData)
     PORT_Assert(nssShutdownList.lock);
     PZ_Lock(nssShutdownList.lock);
     i = nss_GetShutdownEntry(sFunc, appData);
-    if (i > 0) {
+    if (i >= 0) {
 	nssShutdownList.funcs[i].func = NULL;
 	nssShutdownList.funcs[i].appData = NULL;
     }
@@ -774,8 +834,8 @@ nss_InitShutdownList(void)
     	nssShutdownList.lock = NULL;
 	return SECFailure;
     }
-    nssShutdownList.maxFuncs = NSS_SHUTDOWN_STEP;
-    nssShutdownList.numFuncs = 0;
+    nssShutdownList.allocatedFuncs = NSS_SHUTDOWN_STEP;
+    nssShutdownList.peakFuncs = 0;
 
     return SECSuccess;
 }
@@ -787,7 +847,7 @@ nss_ShutdownShutdownList(void)
     int i;
 
     /* call all the registerd functions first */
-    for (i=0; i < nssShutdownList.numFuncs; i++) {
+    for (i=0; i < nssShutdownList.peakFuncs; i++) {
 	struct NSSShutdownFuncPair *funcPair = &nssShutdownList.funcs[i];
 	if (funcPair->func) {
 	    if ((*funcPair->func)(funcPair->appData,NULL) != SECSuccess) {
@@ -796,8 +856,8 @@ nss_ShutdownShutdownList(void)
 	}
     }
 
-    nssShutdownList.numFuncs = 0;
-    nssShutdownList.maxFuncs = 0;
+    nssShutdownList.peakFuncs = 0;
+    nssShutdownList.allocatedFuncs = 0;
     PORT_Free(nssShutdownList.funcs);
     nssShutdownList.funcs = NULL;
     if (nssShutdownList.lock) {
@@ -838,6 +898,7 @@ NSS_Shutdown(void)
 	shutdownRV = SECFailure;
     }
     pk11sdr_Shutdown();
+    nssArena_Shutdown();
     if (status == PR_FAILURE) {
 	if (NSS_GetError() == NSS_ERROR_BUSY) {
 	    PORT_SetError(SEC_ERROR_BUSY);

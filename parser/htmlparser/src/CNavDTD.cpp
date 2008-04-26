@@ -113,11 +113,18 @@ static const  char kInvalidTagStackPos[] = "Error: invalid tag stack position";
 #define NS_DTD_FLAG_HAS_MAIN_CONTAINER     (NS_DTD_FLAG_HAD_BODY |            \
                                             NS_DTD_FLAG_HAD_FRAMESET)
 
-NS_IMPL_ISUPPORTS1(CNavDTD, nsIDTD)
+NS_INTERFACE_MAP_BEGIN_CYCLE_COLLECTION(CNavDTD)
+  NS_INTERFACE_MAP_ENTRY(nsIDTD)
+  NS_INTERFACE_MAP_ENTRY_AMBIGUOUS(nsISupports, nsIDTD)
+NS_INTERFACE_MAP_END
+
+NS_IMPL_CYCLE_COLLECTING_ADDREF(CNavDTD)
+NS_IMPL_CYCLE_COLLECTING_RELEASE(CNavDTD)
+
+NS_IMPL_CYCLE_COLLECTION_1(CNavDTD, mSink)
 
 CNavDTD::CNavDTD()
   : mMisplacedContent(0),
-    mSink(0),
     mTokenAllocator(0),
     mBodyContext(new nsDTDContext()),
     mTempContext(0),
@@ -181,8 +188,6 @@ CNavDTD::~CNavDTD()
     }
   }
 #endif
-
-  NS_IF_RELEASE(mSink);
 }
 
 nsresult
@@ -212,7 +217,7 @@ CNavDTD::WillBuildModel(const CParserContext& aParserContext,
     START_TIMER();
 
     if (NS_SUCCEEDED(result) && !mSink) {
-      result = CallQueryInterface(aSink, &mSink);
+      mSink = do_QueryInterface(aSink, &result);
       if (NS_FAILED(result)) {
         mFlags |= NS_DTD_FLAG_STOP_PARSING;
         return result;
@@ -474,6 +479,52 @@ CNavDTD::GetType()
   return NS_IPARSER_FLAG_HTML; 
 }
 
+/**
+ * Text and some tags require a body when they're added, this function returns
+ * true for those tags.
+ *
+ * @param aToken The current token that we care about.
+ * @param aTokenizer A tokenizer that we can get the tags attributes off of.
+ * @return PR_TRUE if aToken does indeed force the body to open.
+ */
+static PRBool
+DoesRequireBody(CToken* aToken, nsITokenizer* aTokenizer)
+{
+  PRBool result = PR_FALSE;
+
+  if (aToken) {
+    eHTMLTags theTag = (eHTMLTags)aToken->GetTypeID();
+    if (gHTMLElements[theTag].HasSpecialProperty(kRequiresBody)) {
+      if (theTag == eHTMLTag_input) {
+        // IE & Nav4x opens up a body for type=text - Bug 66985
+        // XXXbz but we don't want to open one for <input> with no
+        // type attribute?  That's pretty whack.
+        PRInt32 ac = aToken->GetAttributeCount();
+        for(PRInt32 i = 0; i < ac; ++i) {
+          CAttributeToken* attr = static_cast<CAttributeToken*>
+                                             (aTokenizer->GetTokenAt(i));
+          const nsSubstring& name = attr->GetKey();
+          const nsAString& value = attr->GetValue();
+          // XXXbz note that this stupid case-sensitive comparison is
+          // actually depended on by sites...
+          if ((name.EqualsLiteral("type") || 
+               name.EqualsLiteral("TYPE"))    
+              && 
+              !(value.EqualsLiteral("hidden") || 
+              value.EqualsLiteral("HIDDEN"))) {
+            result = PR_TRUE; 
+            break;
+          }
+        }
+      } else {
+        result = PR_TRUE;
+      }
+    }
+  }
+ 
+  return result;
+}
+
 static PRBool
 ValueIsHidden(const nsAString& aValue)
 {
@@ -685,10 +736,7 @@ CNavDTD::HandleToken(CToken* aToken, nsIParser* aParser)
               // end tag.
             }
 
-            if (gHTMLElements[theTag].HasSpecialProperty(kRequiresBody) &&
-                (theTag != eHTMLTag_input ||
-                 theType != eToken_start ||
-                 !IsHiddenInput(aToken, mTokenizer))) {
+            if (DoesRequireBody(aToken, mTokenizer)) {
               CToken* theBodyToken =
                 mTokenAllocator->CreateTokenOfType(eToken_start,
                                                    eHTMLTag_body,
@@ -884,6 +932,9 @@ CNavDTD::HandleDefaultStartToken(CToken* aToken, eHTMLTags aChildTag,
 
     do {
       eHTMLTags theParentTag = mBodyContext->TagAt(--theIndex);
+      if (theParentTag == eHTMLTag_userdefined) {
+        continue;
+      }
 
       // Figure out whether this is a hidden input inside a
       // table/tbody/thead/tfoot/tr
@@ -1010,7 +1061,7 @@ CNavDTD::HandleDefaultStartToken(CToken* aToken, eHTMLTags aChildTag,
                 break;
               }
             } else {
-              CreateContextStackFor(aChildTag);
+              CreateContextStackFor(theParentTag, aChildTag);
               theIndex = mBodyContext->GetCount();
             }
           }
@@ -1702,6 +1753,7 @@ CNavDTD::HandleEndToken(CToken* aToken)
                   result = HandleToken(theStartToken, mParser);
                   NS_ENSURE_SUCCESS(result, result);
 
+                  IF_HOLD(aToken);
                   result = HandleToken(aToken, mParser);
                 }
               }
@@ -3048,19 +3100,18 @@ CNavDTD::AddHeadContent(nsIParserNode *aNode)
 }
 
 void
-CNavDTD::CreateContextStackFor(eHTMLTags aChild)
+CNavDTD::CreateContextStackFor(eHTMLTags aParent, eHTMLTags aChild)
 {
   mScratch.Truncate();
 
-  eHTMLTags theTop = mBodyContext->Last();
-  PRBool    result = ForwardPropagate(mScratch, theTop, aChild);
+  PRBool    result = ForwardPropagate(mScratch, aParent, aChild);
 
   if (!result) {
-    if (eHTMLTag_unknown == theTop) {
+    if (eHTMLTag_unknown == aParent) {
       result = BackwardPropagate(mScratch, eHTMLTag_html, aChild);
-    } else if (theTop != aChild) {
+    } else if (aParent != aChild) {
       // Don't even bother if we're already inside a similar element...
-      result = BackwardPropagate(mScratch, theTop, aChild);
+      result = BackwardPropagate(mScratch, aParent, aChild);
     }
   }
 

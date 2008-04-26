@@ -125,6 +125,7 @@
 #include "nsEditorUtils.h"
 #include "nsWSRunObject.h"
 #include "nsHTMLObjectResizer.h"
+#include "nsGkAtoms.h"
 
 #include "nsIFrame.h"
 #include "nsIView.h"
@@ -161,9 +162,9 @@ nsHTMLEditor::nsHTMLEditor()
 , mIsMoving(PR_FALSE)
 , mSnapToGridEnabled(PR_FALSE)
 , mIsInlineTableEditingEnabled(PR_TRUE)
-, mGridSize(0)
 , mInfoXIncrement(20)
 , mInfoYIncrement(20)
+, mGridSize(0)
 {
 } 
 
@@ -1345,7 +1346,7 @@ NS_IMETHODIMP nsHTMLEditor::HandleKeyPress(nsIDOMKeyEvent* aKeyEvent)
 NS_IMETHODIMP nsHTMLEditor::TypedText(const nsAString& aString,
                                       PRInt32 aAction)
 {
-  nsAutoPlaceHolderBatch batch(this, gTypingTxnName);
+  nsAutoPlaceHolderBatch batch(this, nsGkAtoms::TypingTxnName);
 
   switch (aAction)
   {
@@ -4232,23 +4233,6 @@ nsHTMLEditor::SelectEntireDocument(nsISelection *aSelection)
   return nsEditor::SelectEntireDocument(aSelection);
 }
 
-static nsIContent*
-FindEditableRoot(nsIContent *aContent)
-{
-  nsIDocument *document = aContent->GetCurrentDoc();
-  if (!document || document->HasFlag(NODE_IS_EDITABLE) ||
-      !aContent->HasFlag(NODE_IS_EDITABLE)) {
-    return nsnull;
-  }
-
-  nsIContent *parent, *content = aContent;
-  while ((parent = content->GetParent()) && parent->HasFlag(NODE_IS_EDITABLE)) {
-    content = parent;
-  }
-
-  return content;
-}
-
 NS_IMETHODIMP
 nsHTMLEditor::SelectAll()
 {
@@ -4270,10 +4254,9 @@ nsHTMLEditor::SelectAll()
   nsCOMPtr<nsIContent> anchorContent = do_QueryInterface(anchorNode, &rv);
   NS_ENSURE_SUCCESS(rv, rv);
 
-  nsIContent *rootContent = FindEditableRoot(anchorContent);
-  if (!rootContent) {
-    return SelectEntireDocument(selection);
-  }
+  nsCOMPtr<nsIPresShell> ps = do_QueryReferent(mPresShellWeak);
+  nsIContent *rootContent = anchorContent->GetSelectionRootContent(ps);
+  NS_ASSERTION(rootContent, "GetSelectionRootContent failed");
 
   nsCOMPtr<nsIDOMNode> rootElement = do_QueryInterface(rootContent, &rv);
   NS_ENSURE_SUCCESS(rv, rv);

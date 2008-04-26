@@ -41,7 +41,7 @@
 #include "nsStringAPI.h"
 #include "nsUnicharUtils.h"
 
-#include "nsISchema.h"
+#include "nsISVSchema.h"
 #include "nsSchemaValidator.h"
 #include "nsSchemaValidatorUtils.h"
 #include "nsISchemaValidatorRegexp.h"
@@ -170,9 +170,11 @@ nsSchemaValidatorUtils::ParseDateTime(const nsAString & aNodeValue,
 
   // if no T, invalid
   if (findString >= 0) {
-    isValid = ParseSchemaDate(Substring(aNodeValue, 0, findString+1), &aResult->date);
+    // we get the date part (from 0 to before 'T')
+    isValid = ParseSchemaDate(Substring(aNodeValue, 0, findString), PR_FALSE, &aResult->date);
 
     if (isValid) {
+      // we get the time part (from after the 'T' till the end)
       isValid = ParseSchemaTime(
                   Substring(aNodeValue, findString + 1, aNodeValue.Length()),
                   &aResult->time);
@@ -184,13 +186,16 @@ nsSchemaValidatorUtils::ParseDateTime(const nsAString & aNodeValue,
 
 PRBool
 nsSchemaValidatorUtils::ParseSchemaDate(const nsAString & aStrValue,
+                                        PRBool aAllowTimeZone,
                                         nsSchemaDate *aDate)
 {
   PRBool isValid = PR_FALSE;
 
   /*
     http://www.w3.org/TR/xmlschema-2/#date
-    (-)CCYY-MM-DDT
+    (-)CCYY-MM-DD
+    then optionally: Z
+      or [+/-]hh:mm
   */
 
   const PRUnichar *start, *end, *buffStart;
@@ -204,6 +209,8 @@ nsSchemaValidatorUtils::ParseSchemaDate(const nsAString & aStrValue,
   nsAutoString year;
   char month[3] = "";
   char day[3] = "";
+  char timezoneHour[3] = "";
+  char timezoneMinute[3] = "";
 
   // if year is negative, skip it
   if (aStrValue.First() == '-') {
@@ -261,10 +268,24 @@ nsSchemaValidatorUtils::ParseSchemaDate(const nsAString & aStrValue,
         // day
         if (buffLength > 2) {
           done = PR_TRUE;
-        } else if (currentChar == 'T') {
-          if ((start == end) && (buffLength == 2) && (strcmp(day, "31") < 1))
+        } else if (currentChar == 'Z') {
+          if (aAllowTimeZone) {
+            if ((start == end) && (buffLength == 2) && (strcmp(day, "31") < 1)) {
             isValid = PR_TRUE;
+            }
+          }
+
           done = PR_TRUE;
+        } else if ((currentChar == '+') || (currentChar == '-')) {
+          // timezone
+          if (aAllowTimeZone) {
+            state = 3;
+            buffLength = 0;
+            buffStart = start;
+          } else {
+            // no timezones allowed
+            done = PR_TRUE;
+          }
         } else {
           // has to be a numerical character or else abort
           if ((currentChar > '9') || (currentChar < '0'))
@@ -273,10 +294,26 @@ nsSchemaValidatorUtils::ParseSchemaDate(const nsAString & aStrValue,
             day[buffLength] = currentChar;
           }
           buffLength++;
+
+          // are we at the end?
+          if (start == end && buffLength == 2) {
+            isValid = PR_TRUE;
+            done = PR_TRUE;
+          }
         }
         break;
       }
 
+      case 3: {
+        // timezone hh:mm
+        if (end-buffStart == 5) {
+          isValid = ParseSchemaTimeZone(Substring(buffStart, end), timezoneHour,
+                                        timezoneMinute);
+        }
+
+        done = PR_TRUE;
+        break;
+      }
     }
   }
 
@@ -466,6 +503,11 @@ nsSchemaValidatorUtils::ParseSchemaTime(const nsAString & aStrValue,
           // has to be a numerical character or else abort
           if ((currentChar > '9') || (currentChar < '0'))
             done = PR_TRUE;
+          else if (start == end) {
+            usec.Assign(Substring(buffStart, end));
+            isValid = PR_TRUE;
+            done = PR_TRUE;
+          }
           buffLength++;
         }
         break;
@@ -1209,8 +1251,8 @@ nsSchemaValidatorUtils::GetMaximumDayInMonthFor(PRUint32 aYearValue, PRUint8 aMo
     Return Value      Condition
     31                month is either 1, 3, 5, 7, 8, 10, 12
     30                month is either 4, 6, 9, 11
-    29                month is 2 AND either (year % 400 == 0) OR (year % 100 == 0)
-                                            AND (year % 4 == 0)
+    29                month is 2 AND either ((year % 4 == 0) AND (year % 100 != 0))
+                                            OR (year % 400 == 0)
     28                Otherwise
   */
 
@@ -1219,7 +1261,7 @@ nsSchemaValidatorUtils::GetMaximumDayInMonthFor(PRUint32 aYearValue, PRUint8 aMo
     maxDay = 31;
   else if ((month == 4) || (month == 6) || (month == 9) || (month == 11))
     maxDay = 30;
-  else if ((month == 2) && ((year % 400 == 0) || (year % 100 == 0) && (year % 4 == 0)))
+  else if ((month == 2) && (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)))
     maxDay = 29;
 
   return maxDay;
@@ -1678,11 +1720,11 @@ nsSchemaValidatorUtils::RemoveTrailingZeros(nsAString & aString)
 // it makes sure that it won't be overwritten by the same facet defined in one
 // of the inherited types.
 nsresult
-nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
+nsSchemaValidatorUtils::GetDerivedSimpleType(nsISVSchemaSimpleType *aSimpleType,
                                              nsSchemaDerivedSimpleType *aDerived)
 {
   PRBool done = PR_FALSE, hasEnumerations = PR_FALSE;
-  nsCOMPtr<nsISchemaSimpleType> simpleType(aSimpleType);
+  nsCOMPtr<nsISVSchemaSimpleType> simpleType(aSimpleType);
   PRUint16 simpleTypeValue;
   PRUint32 facetCount;
 
@@ -1695,13 +1737,13 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
     NS_ENSURE_SUCCESS(rv, rv);
 
     switch (simpleTypeValue) {
-      case nsISchemaSimpleType::SIMPLE_TYPE_RESTRICTION: {
+      case nsISVSchemaSimpleType::SIMPLE_TYPE_RESTRICTION: {
         // handle the facets
 
-        nsCOMPtr<nsISchemaRestrictionType> restrictionType =
+        nsCOMPtr<nsISVSchemaRestrictionType> restrictionType =
           do_QueryInterface(simpleType);
 
-        nsCOMPtr<nsISchemaFacet> facet;
+        nsCOMPtr<nsISVSchemaFacet> facet;
         PRUint32 facetCounter;
         PRUint16 facetType;
 
@@ -1721,7 +1763,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
           facet->GetFacetType(&facetType);
 
           switch (facetType) {
-            case nsISchemaFacet::FACET_TYPE_LENGTH: {
+            case nsISVSchemaFacet::FACET_TYPE_LENGTH: {
               nsSchemaIntFacet *length = &aDerived->length;
               if (!length->isDefined) {
                 length->isDefined = PR_TRUE;
@@ -1732,7 +1774,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MINLENGTH: {
+            case nsISVSchemaFacet::FACET_TYPE_MINLENGTH: {
               nsSchemaIntFacet *minLength = &aDerived->minLength;
               if (!minLength->isDefined) {
                 minLength->isDefined = PR_TRUE;
@@ -1743,7 +1785,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MAXLENGTH: {
+            case nsISVSchemaFacet::FACET_TYPE_MAXLENGTH: {
               nsSchemaIntFacet *maxLength = &aDerived->maxLength;
               if (!maxLength->isDefined) {
                 maxLength->isDefined = PR_TRUE;
@@ -1754,7 +1796,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_PATTERN: {
+            case nsISVSchemaFacet::FACET_TYPE_PATTERN: {
               nsSchemaStringFacet *pattern = &aDerived->pattern;
               if (!pattern->isDefined) {
                 pattern->isDefined = PR_TRUE;
@@ -1765,7 +1807,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_ENUMERATION: {
+            case nsISVSchemaFacet::FACET_TYPE_ENUMERATION: {
               if (!hasEnumerations) {
                 facet->GetValue(enumeration);
                 aDerived->enumerationList.AppendString(enumeration);
@@ -1775,13 +1817,13 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_WHITESPACE: {
+            case nsISVSchemaFacet::FACET_TYPE_WHITESPACE: {
               if (!aDerived->isWhitespaceDefined)
                 facet->GetWhitespaceValue(&aDerived->whitespace);
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MAXINCLUSIVE: {
+            case nsISVSchemaFacet::FACET_TYPE_MAXINCLUSIVE: {
               nsSchemaStringFacet *maxInclusive = &aDerived->maxInclusive;
               if (!maxInclusive->isDefined) {
                 maxInclusive->isDefined = PR_TRUE;
@@ -1792,7 +1834,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MININCLUSIVE: {
+            case nsISVSchemaFacet::FACET_TYPE_MININCLUSIVE: {
               nsSchemaStringFacet *minInclusive = &aDerived->minInclusive;
               if (!minInclusive->isDefined) {
                 minInclusive->isDefined = PR_TRUE;
@@ -1803,7 +1845,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MAXEXCLUSIVE: {
+            case nsISVSchemaFacet::FACET_TYPE_MAXEXCLUSIVE: {
               nsSchemaStringFacet *maxExclusive = &aDerived->maxExclusive;
               if (!maxExclusive->isDefined) {
                 maxExclusive->isDefined = PR_TRUE;
@@ -1814,7 +1856,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_MINEXCLUSIVE: {
+            case nsISVSchemaFacet::FACET_TYPE_MINEXCLUSIVE: {
               nsSchemaStringFacet *minExclusive = &aDerived->minExclusive;
               if (!minExclusive->isDefined) {
                 minExclusive->isDefined = PR_TRUE;
@@ -1825,7 +1867,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_TOTALDIGITS: {
+            case nsISVSchemaFacet::FACET_TYPE_TOTALDIGITS: {
               nsSchemaIntFacet *totalDigits = &aDerived->totalDigits;
               if (!totalDigits->isDefined) {
                 totalDigits->isDefined = PR_TRUE;
@@ -1836,7 +1878,7 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
               break;
             }
 
-            case nsISchemaFacet::FACET_TYPE_FRACTIONDIGITS: {
+            case nsISVSchemaFacet::FACET_TYPE_FRACTIONDIGITS: {
               nsSchemaIntFacet *fractionDigits = &aDerived->fractionDigits;
               if (!fractionDigits->isDefined) {
                 fractionDigits->isDefined = PR_TRUE;
@@ -1855,21 +1897,21 @@ nsSchemaValidatorUtils::GetDerivedSimpleType(nsISchemaSimpleType *aSimpleType,
         break;
       }
 
-      case nsISchemaSimpleType::SIMPLE_TYPE_BUILTIN: {
+      case nsISVSchemaSimpleType::SIMPLE_TYPE_BUILTIN: {
         // we are done
         aDerived->mBaseType = simpleType;
         done = PR_TRUE;
         break;
       }
 
-      case nsISchemaSimpleType::SIMPLE_TYPE_LIST: {
+      case nsISVSchemaSimpleType::SIMPLE_TYPE_LIST: {
         // set as base type
         aDerived->mBaseType = simpleType;
         done = PR_TRUE;
         break;
       }
 
-      case nsISchemaSimpleType::SIMPLE_TYPE_UNION: {
+      case nsISVSchemaSimpleType::SIMPLE_TYPE_UNION: {
         // set as base type
         aDerived->mBaseType = simpleType;
         done = PR_TRUE;

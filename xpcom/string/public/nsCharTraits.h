@@ -315,7 +315,12 @@ struct nsCharTraits<PRUnichar>
     ASCIIToLower( char_type c )
       {
         if (c < 0x100)
-          return (c >= 'A' && c <= 'Z') ? c + ('a' - 'A') : c;
+          {
+            if (c >= 'A' && c <= 'Z')
+              return char_type(c + ('a' - 'A'));
+          
+            return c;
+          }
         else
           {
             if (c == 0x212A) // KELVIN SIGN
@@ -570,7 +575,10 @@ struct nsCharTraits<char>
     char_type
     ASCIIToLower( char_type c )
       {
-        return (c >= 'A' && c <= 'Z') ? (c + ('a' - 'A')) : c;
+        if (c >= 'A' && c <= 'Z')
+          return char_type(c + ('a' - 'A'));
+
+        return c;
       }
 
     static
@@ -663,7 +671,7 @@ struct nsCharSourceTraits
     readable_distance( const InputIterator& first, const InputIterator& last )
       {
         // assumes single fragment
-        return last.get() - first.get();
+        return PRUint32(last.get() - first.get());
       }
 
     static

@@ -474,6 +474,8 @@ public:
   // observers.
   virtual void BeginUpdate(nsUpdateType aUpdateType);
   virtual void EndUpdate(nsUpdateType aUpdateType);
+  virtual PRUint32 GetUpdateNestingLevel();
+  virtual PRBool AllUpdatesAreContent();
   virtual void BeginLoad();
   virtual void EndLoad();
   virtual void ContentStatesChanged(nsIContent* aContent1,
@@ -648,6 +650,9 @@ public:
                                                  nsIDOMNodeList** aResult);
   virtual NS_HIDDEN_(void) FlushSkinBindings();
 
+  virtual NS_HIDDEN_(nsresult) InitializeFrameLoader(nsFrameLoader* aLoader);
+  virtual NS_HIDDEN_(nsresult) FinalizeFrameLoader(nsFrameLoader* aLoader);
+
   NS_DECL_CYCLE_COLLECTION_CLASS_AMBIGUOUS(nsDocument, nsIDocument)
 
   /**
@@ -776,11 +781,13 @@ protected:
   // True if document has ever had script handling object.
   PRPackedBool mHasHadScriptHandlingObject:1;
 
+  PRPackedBool mHasWarnedAboutBoxObjects:1;
+
   PRUint8 mXMLDeclarationBits;
 
   PRUint8 mDefaultElementType;
 
-  nsInterfaceHashtable<nsISupportsHashKey, nsPIBoxObject> *mBoxObjectTable;
+  nsInterfaceHashtable<nsVoidPtrHashKey, nsPIBoxObject> *mBoxObjectTable;
   nsInterfaceHashtable<nsVoidPtrHashKey, nsISupports> *mContentWrapperHash;
 
   // The channel that got passed to StartDocumentLoad(), if any
@@ -795,8 +802,10 @@ protected:
 
   // Our update nesting level
   PRUint32 mUpdateNestLevel;
+  // Our UPDATE_CONTENT_MODEL update nesting level
+  PRUint32 mContentUpdateNestLevel;
 
-protected:
+private:
   friend class nsUnblockOnloadEvent;
 
   void PostUnblockOnloadEvent();
@@ -837,6 +846,9 @@ protected:
 
   // Member to store out last-selected stylesheet set.
   nsString mLastStyleSheetSet;
+
+  nsTArray<nsRefPtr<nsFrameLoader> > mInitializableFrameLoaders;
+  nsTArray<nsRefPtr<nsFrameLoader> > mFinalizableFrameLoaders;
 };
 
 

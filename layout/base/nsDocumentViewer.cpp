@@ -1011,6 +1011,7 @@ DocumentViewerImpl::LoadComplete(nsresult aStatus)
   if (mPresShell && !mStopped) {
     nsCOMPtr<nsIPresShell> shellDeathGrip(mPresShell); // bug 378682
     mPresShell->UnsuppressPainting();
+    mPresShell->ScrollToAnchor();
   }
 
   nsJSContext::LoadEnd();
@@ -1046,6 +1047,8 @@ DocumentViewerImpl::PermitUnload(PRBool *aPermitUnload)
     NS_WARNING("window not set for document!");
     return NS_OK;
   }
+
+  NS_ASSERTION(nsContentUtils::IsSafeToRunScript(), "This is unsafe");
 
   // Now, fire an BeforeUnload event to the document and see if it's ok
   // to unload...
@@ -1179,9 +1182,8 @@ DocumentViewerImpl::PageHide(PRBool aIsUnload)
 #ifdef MOZ_XUL
   // look for open menupopups and close them after the unload event, in case
   // the unload event listeners open any new popups
-  nsXULPopupManager* pm = nsXULPopupManager::GetInstance();
-  if (pm && mDocument)
-    pm->HidePopupsInDocument(mDocument);
+  if (mDocument)
+    nsContentUtils::HidePopupsInDocument(mDocument);
 #endif
 
   return NS_OK;
@@ -2451,12 +2453,9 @@ NS_IMETHODIMP DocumentViewerImpl::GetCopyable(PRBool *aCopyable)
   NS_ENSURE_ARG_POINTER(aCopyable);
   *aCopyable = PR_FALSE;
 
-  nsresult rv = FireClipboardEvent(NS_BEFORECOPY, aCopyable);
-  if (NS_FAILED(rv) || *aCopyable)
-    return rv;
-
+  NS_ENSURE_STATE(mPresShell);
   nsCOMPtr<nsISelection> selection;
-  rv = mPresShell->GetSelectionForCopy(getter_AddRefs(selection));
+  nsresult rv = mPresShell->GetSelectionForCopy(getter_AddRefs(selection));
   if (NS_FAILED(rv))
     return rv;
 
@@ -2479,10 +2478,7 @@ NS_IMETHODIMP DocumentViewerImpl::GetCutable(PRBool *aCutable)
 {
   NS_ENSURE_ARG_POINTER(aCutable);
   *aCutable = PR_FALSE;
-
-  // If event handler requests to prevent default behavior, enable
-  // the cut command -- pass aCutable in as aPreventDefault.
-  return FireClipboardEvent(NS_BEFORECUT, aCutable);
+  return NS_OK;
 }
 
 NS_IMETHODIMP DocumentViewerImpl::Paste()
@@ -2497,10 +2493,7 @@ NS_IMETHODIMP DocumentViewerImpl::GetPasteable(PRBool *aPasteable)
 {
   NS_ENSURE_ARG_POINTER(aPasteable);
   *aPasteable = PR_FALSE;
-
-  // If event handler requests to prevent default behavior, enable
-  // the paste command -- pass aPasteable in as aPreventDefault.
-  return FireClipboardEvent(NS_BEFOREPASTE, aPasteable);
+  return NS_OK;
 }
 
 /* AString getContents (in string mimeType, in boolean selectionOnly); */
@@ -3093,11 +3086,10 @@ NS_IMETHODIMP DocumentViewerImpl::SizeToContent()
 
    // so how big is it?
    nsRect shellArea = presContext->GetVisibleArea();
-   if (shellArea.width == NS_UNCONSTRAINEDSIZE ||
-       shellArea.height == NS_UNCONSTRAINEDSIZE) {
-     // Protect against bogus returns here
-     return NS_ERROR_FAILURE;
-   }
+   // Protect against bogus returns here
+   NS_ENSURE_TRUE(shellArea.width != NS_UNCONSTRAINEDSIZE &&
+                  shellArea.height != NS_UNCONSTRAINEDSIZE,
+                  NS_ERROR_FAILURE);
    width = presContext->AppUnitsToDevPixels(shellArea.width);
    height = presContext->AppUnitsToDevPixels(shellArea.height);
 
@@ -3657,16 +3649,16 @@ DocumentViewerImpl::PrintPreviewNavigate(PRInt16 aType, PRInt32 aPageNum)
     if (NS_SUCCEEDED(CallQueryInterface(seqFrame, &sqf))) {
       sqf->GetDeadSpaceValue(&deadSpaceGapTwips);
     }
-    nscoord deadSpaceGap = mPresContext->TwipsToAppUnits(deadSpaceGapTwips);
 
-    // XXXdholbert: deadSpaceGap should be subtracted from
-    // fndPageFrame->GetPosition().y, before the scaling.  However,
-    // deadSpaceGap isn't matching up to the actual visible dead space in Print
-    // Preview right now -- see bug 414075.  Hence, ignoring deadSpaceGap for
-    // now -- instead, we'll navigate to exactly the top of the given page.
+    // To compute deadSpaceGap, use the same presContext as was used
+    // to layout the seqFrame. (That presContext may have different
+    // TwipsToAppUnits conversion from this->mPresContext)
+    nscoord deadSpaceGap = 
+      seqFrame->PresContext()->TwipsToAppUnits(deadSpaceGapTwips);
+
     nscoord newYPosn = 
       nscoord(mPrintEngine->GetPrintPreviewScale() * 
-              float(fndPageFrame->GetPosition().y));
+              float(fndPageFrame->GetPosition().y - deadSpaceGap));
     scrollableView->ScrollTo(0, newYPosn, PR_TRUE);
   }
   return NS_OK;
@@ -3984,6 +3976,9 @@ DocumentViewerImpl::ReturnToGalleyPresentation()
   nsCOMPtr<nsIDocShell> docShell(do_QueryReferent(mContainer));
   ResetFocusState(docShell);
 
+  if (mPresContext)
+    mPresContext->RestoreImageAnimationMode();
+
   SetTextZoom(mTextZoom);
   SetFullZoom(mPageZoom);
   Show();
@@ -4062,6 +4057,8 @@ DocumentViewerImpl::OnDonePrinting()
       mClosingWhilePrinting = PR_FALSE;
       NS_RELEASE_THIS();
     }
+    if (mPresContext)
+      mPresContext->RestoreImageAnimationMode();
   }
 #endif // NS_PRINTING && NS_PRINT_PREVIEW
 }

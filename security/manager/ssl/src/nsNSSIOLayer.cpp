@@ -79,6 +79,7 @@
 #include "nsNSSCleaner.h"
 #include "nsThreadUtils.h"
 #include "nsIDocShell.h"
+#include "nsIDocShellTreeItem.h"
 #include "nsISecureBrowserUI.h"
 #include "nsProxyRelease.h"
 #include "nsIClassInfoImpl.h"
@@ -175,6 +176,9 @@ nsSSLSocketThreadData::~nsSSLSocketThreadData()
                &&
                mSSLState != ssl_pending_read, 
                "oops??? ssl socket is not idle at the time it is being destroyed");
+  if (mSSLDataBuffer) {
+    nsMemory::Free(mSSLDataBuffer);
+  }
 }
 
 PRBool nsSSLSocketThreadData::ensure_buffer_size(PRInt32 amount)
@@ -333,7 +337,24 @@ nsNSSSocketInfo::SetNotificationCallbacks(nsIInterfaceRequestor* aCallbacks)
   // with a socket close, and the socket transport might detach the callbacks 
   // instance prior to our error reporting.
 
-  nsCOMPtr<nsIDocShell> docshell(do_GetInterface(mCallbacks));
+  nsCOMPtr<nsIDocShell> docshell;
+
+  nsCOMPtr<nsIDocShellTreeItem> item(do_GetInterface(mCallbacks));
+  if (item)
+  {
+    nsCOMPtr<nsIDocShellTreeItem> proxiedItem;
+    nsCOMPtr<nsIDocShellTreeItem> rootItem;
+    NS_GetProxyForObject(NS_PROXY_TO_MAIN_THREAD,
+                         NS_GET_IID(nsIDocShellTreeItem),
+                         item.get(),
+                         NS_PROXY_SYNC,
+                         getter_AddRefs(proxiedItem));
+
+    proxiedItem->GetSameTypeRootTreeItem(getter_AddRefs(rootItem));
+    docshell = do_QueryInterface(rootItem);
+    NS_ASSERTION(docshell, "rootItem do_QI is null");
+  }
+
   if (docshell)
   {
     nsCOMPtr<nsIDocShell> proxiedDocShell;

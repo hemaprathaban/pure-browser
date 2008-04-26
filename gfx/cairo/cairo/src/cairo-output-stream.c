@@ -25,8 +25,7 @@
  * OF ANY KIND, either express or implied. See the LGPL or the MPL for
  * the specific language governing rights and limitations.
  *
- * The Original Code is cairo_output_stream.c as distributed with the
- *   cairo graphics library.
+ * The Original Code is the cairo graphics library.
  *
  * The Initial Developer of the Original Code is Red Hat, Inc.
  *
@@ -34,18 +33,16 @@
  *	Kristian Høgsberg <krh@redhat.com>
  */
 
+#define _BSD_SOURCE /* for snprintf() */
 #include "cairoint.h"
 
 #include "cairo-output-stream-private.h"
+#include "cairo-compiler-private.h"
 
 #include <stdio.h>
 #include <locale.h>
 #include <ctype.h>
 #include <errno.h>
-
-#ifdef _MSC_VER
-#define snprintf _snprintf
-#endif /* _MSC_VER */
 
 
 void

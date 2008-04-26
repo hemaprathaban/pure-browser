@@ -81,7 +81,7 @@
 #include "nsIDownloadHistory.h"
 #include "nsDocShellCID.h"
 
-#ifdef XP_WIN
+#if defined(XP_WIN) && !defined(WINCE) 
 #include <shlobj.h>
 #ifndef __MINGW32__
 #include "nsDownloadScanner.h"
@@ -94,9 +94,9 @@
 #define PREF_BDM_SHOWALERTINTERVAL "browser.download.manager.showAlertInterval"
 #define PREF_BDM_RETENTION "browser.download.manager.retention"
 #define PREF_BDM_QUITBEHAVIOR "browser.download.manager.quitBehavior"
-#define PREF_BDM_CLOSEWHENDONE "browser.download.manager.closeWhenDone"
 #define PREF_BDM_ADDTORECENTDOCS "browser.download.manager.addToRecentDocs"
 #define PREF_BDM_SCANWHENDONE "browser.download.manager.scanWhenDone"
+#define PREF_BDM_RESUMEONWAKEDELAY "browser.download.manager.resumeOnWakeDelay"
 #define PREF_BH_DELETETEMPFILEONEXIT "browser.helperApps.deleteTempFileOnExit"
 
 static const PRInt64 gUpdateInterval = 400 * PR_USEC_PER_MSEC;
@@ -230,6 +230,14 @@ nsDownloadManager::RemoveAllDownloads()
   return rv;
 }
 
+void // static
+nsDownloadManager::ResumeOnWakeCallback(nsITimer *aTimer, void *aClosure)
+{
+  // Resume the downloads that were set to autoResume
+  nsDownloadManager *dlMgr = static_cast<nsDownloadManager *>(aClosure);
+  (void)dlMgr->ResumeAllDownloads(PR_FALSE);
+}
+
 nsresult
 nsDownloadManager::InitDB(PRBool *aDoImport)
 {
@@ -249,8 +257,9 @@ nsDownloadManager::InitDB(PRBool *aDoImport)
 
   rv = storage->OpenDatabase(dbFile, getter_AddRefs(mDBConn));
   if (rv == NS_ERROR_FILE_CORRUPTED) {
-    // delete and try again
-    rv = dbFile->Remove(PR_TRUE);
+    // delete and try again, since we don't care so much about losing a users
+    // download history
+    rv = dbFile->Remove(PR_FALSE);
     NS_ENSURE_SUCCESS(rv, rv);
     rv = storage->OpenDatabase(dbFile, getter_AddRefs(mDBConn));
   }
@@ -480,8 +489,8 @@ nsDownloadManager::InitDB(PRBool *aDoImport)
       // if the statement fails, that means all the columns were not there.
       // First we backup the database
       nsCOMPtr<nsIFile> backup;
-      rv = mDBConn->BackupDB(DM_DB_CORRUPT_FILENAME, nsnull,
-                             getter_AddRefs(backup));
+      rv = storage->BackupDatabaseFile(dbFile, DM_DB_CORRUPT_FILENAME, nsnull,
+                                       getter_AddRefs(backup));
       NS_ENSURE_SUCCESS(rv, rv);
 
       // Then we dump it
@@ -708,6 +717,27 @@ nsDownloadManager::RestoreDatabaseState()
   rv = stmt->Execute();
   NS_ENSURE_SUCCESS(rv, rv);
 
+  // Switch any download that is supposed to automatically resume and is in a
+  // finished state to *not* automatically resume.  See Bug 409179 for details.
+  rv = mDBConn->CreateStatement(NS_LITERAL_CSTRING(
+    "UPDATE moz_downloads "
+    "SET autoResume = ?1 "
+    "WHERE state = ?2 "
+      "AND autoResume = ?3"),
+    getter_AddRefs(stmt));
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  i = 0;
+  rv = stmt->BindInt32Parameter(i++, nsDownload::DONT_RESUME);
+  NS_ENSURE_SUCCESS(rv, rv);
+  rv = stmt->BindInt32Parameter(i++, nsIDownloadManager::DOWNLOAD_FINISHED);
+  NS_ENSURE_SUCCESS(rv, rv);
+  rv = stmt->BindInt32Parameter(i++, nsDownload::AUTO_RESUME);
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  rv = stmt->Execute();
+  NS_ENSURE_SUCCESS(rv, rv);
+
   return NS_OK;
 }
 
@@ -841,7 +871,7 @@ nsDownloadManager::Init()
                                    getter_AddRefs(mBundle));
   NS_ENSURE_SUCCESS(rv, rv);
 
-#if defined(XP_WIN) && !defined(__MINGW32__)
+#if defined(XP_WIN) && !defined(__MINGW32__) && !defined(WINCE)
   mScanner = new nsDownloadScanner();
   if (!mScanner)
     return NS_ERROR_OUT_OF_MEMORY;
@@ -866,7 +896,7 @@ nsDownloadManager::Init()
   NS_ENSURE_SUCCESS(rv, rv);
 
   rv = RestoreActiveDownloads();
-  NS_ENSURE_SUCCESS(rv, rv);
+  NS_WARN_IF_FALSE(NS_SUCCEEDED(rv), "Failed to restore all active downloads");
 
   // The following three AddObserver calls must be the last lines in this function,
   // because otherwise, this function may fail (and thus, this object would be not
@@ -880,6 +910,8 @@ nsDownloadManager::Init()
   mObserverService->AddObserver(this, "quit-application", PR_FALSE);
   mObserverService->AddObserver(this, "quit-application-requested", PR_FALSE);
   mObserverService->AddObserver(this, "offline-requested", PR_FALSE);
+  mObserverService->AddObserver(this, "sleep_notification", PR_FALSE);
+  mObserverService->AddObserver(this, "wake_notification", PR_FALSE);
 
   return NS_OK;
 }
@@ -1094,7 +1126,7 @@ nsDownloadManager::GetDefaultDownloadsDirectory(nsILocalFile **aResult)
   // XP/2K:
   // Desktop/Downloads
   // Linux:
-  // Home/Downloads
+  // XDG user dir spec, with a fallback to Home/Downloads
 
   nsXPIDLString folderName;
   mBundle->GetStringFromName(NS_LITERAL_STRING("downloadsFolder").get(),
@@ -1119,7 +1151,7 @@ nsDownloadManager::GetDefaultDownloadsDirectory(nsILocalFile **aResult)
     rv = downloadDir->Append(folderName);
     NS_ENSURE_SUCCESS(rv, rv);
   }
-#elif defined (XP_WIN)
+#elif defined(XP_WIN) && !defined(WINCE)
   rv = dirService->Get(NS_WIN_DEFAULT_DOWNLOAD_DIR,
                        NS_GET_IID(nsILocalFile),
                        getter_AddRefs(downloadDir));
@@ -1135,6 +1167,19 @@ nsDownloadManager::GetDefaultDownloadsDirectory(nsILocalFile **aResult)
   NS_NAMED_LITERAL_STRING(osVersion, "version");
   rv = infoService->GetPropertyAsInt32(osVersion, &version);
   if (version < 6) { // XP/2K
+    rv = downloadDir->Append(folderName);
+    NS_ENSURE_SUCCESS(rv, rv);
+  }
+#elif defined(XP_UNIX)
+  rv = dirService->Get(NS_UNIX_DEFAULT_DOWNLOAD_DIR,
+                       NS_GET_IID(nsILocalFile),
+                       getter_AddRefs(downloadDir));
+  // fallback to Home/Downloads
+  if (NS_FAILED(rv)) {
+    rv = dirService->Get(NS_UNIX_HOME_DIR,
+                         NS_GET_IID(nsILocalFile),
+                         getter_AddRefs(downloadDir));
+    NS_ENSURE_SUCCESS(rv, rv);
     rv = downloadDir->Append(folderName);
     NS_ENSURE_SUCCESS(rv, rv);
   }
@@ -1319,6 +1364,19 @@ nsDownloadManager::AddDownload(DownloadType aDownloadType,
     (void)aMIMEInfo->GetPreferredAction(&action);
   }
 
+  DownloadState startState = nsIDownloadManager::DOWNLOAD_QUEUED;
+#if defined(XP_WIN) && !defined(__MINGW32__) && !defined(WINCE)
+  if (mScanner) {
+    AVCheckPolicyState res = mScanner->CheckPolicy(aSource, aTarget);
+    if (res == AVPOLICY_BLOCKED) {
+      // This download will get deleted during a call to IAE's Save,
+      // so go ahead and mark it as blocked and avoid the download.
+      (void)dl->Cancel();
+      startState = nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY;
+    }
+  }
+#endif
+
   PRInt64 id = AddDownloadToDB(dl->mDisplayName, source, target, tempPath,
                                dl->mStartTime, dl->mLastUpdate,
                                nsIDownloadManager::DOWNLOAD_NOTSTARTED,
@@ -1327,7 +1385,7 @@ nsDownloadManager::AddDownload(DownloadType aDownloadType,
   dl->mID = id;
 
   rv = AddToCurrentDownloads(dl);
-  (void)dl->SetState(nsIDownloadManager::DOWNLOAD_QUEUED);
+  (void)dl->SetState(startState);
   NS_ENSURE_SUCCESS(rv, rv);
 
   NS_ADDREF(*aDownload = dl);
@@ -1414,7 +1472,8 @@ nsDownloadManager::RetryDownload(PRUint32 aID)
 
   // if our download is not canceled or failed, we should fail
   if (dl->mDownloadState != nsIDownloadManager::DOWNLOAD_FAILED &&
-      dl->mDownloadState != nsIDownloadManager::DOWNLOAD_BLOCKED &&
+      dl->mDownloadState != nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL &&
+      dl->mDownloadState != nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY &&
       dl->mDownloadState != nsIDownloadManager::DOWNLOAD_DIRTY &&
       dl->mDownloadState != nsIDownloadManager::DOWNLOAD_CANCELED)
     return NS_ERROR_FAILURE;
@@ -1489,7 +1548,8 @@ nsDownloadManager::CleanUp()
   DownloadState states[] = { nsIDownloadManager::DOWNLOAD_FINISHED,
                              nsIDownloadManager::DOWNLOAD_FAILED,
                              nsIDownloadManager::DOWNLOAD_CANCELED,
-                             nsIDownloadManager::DOWNLOAD_BLOCKED,
+                             nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL,
+                             nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY,
                              nsIDownloadManager::DOWNLOAD_DIRTY };
 
   nsCOMPtr<mozIStorageStatement> stmt;
@@ -1499,7 +1559,8 @@ nsDownloadManager::CleanUp()
       "OR state = ?2 "
       "OR state = ?3 "
       "OR state = ?4 "
-      "OR state = ?5"), getter_AddRefs(stmt));
+      "OR state = ?5 "
+      "OR state = ?6"), getter_AddRefs(stmt));
   NS_ENSURE_SUCCESS(rv, rv);
   for (PRUint32 i = 0; i < NS_ARRAY_LENGTH(states); ++i) {
     rv = stmt->BindInt32Parameter(i, states[i]);
@@ -1508,6 +1569,19 @@ nsDownloadManager::CleanUp()
 
   rv = stmt->Execute();
   NS_ENSURE_SUCCESS(rv, rv);
+
+  // privacy cleanup, if there's an old downloads.rdf around, just delete it
+  nsCOMPtr<nsIFile> oldDownloadsFile;
+  rv = NS_GetSpecialDirectory(NS_APP_DOWNLOADS_50_FILE,
+                              getter_AddRefs(oldDownloadsFile));
+
+  if (NS_FAILED(rv)) return rv;
+
+  PRBool fileExists;
+  if (NS_SUCCEEDED(oldDownloadsFile->Exists(&fileExists)) && fileExists) {
+    rv = oldDownloadsFile->Remove(PR_FALSE);
+    NS_ENSURE_SUCCESS(rv, rv);
+  }
 
   // Notify the UI with the topic and null subject to indicate "remove all"
   return mObserverService->NotifyObservers(nsnull,
@@ -1523,7 +1597,8 @@ nsDownloadManager::GetCanCleanUp(PRBool *aResult)
   DownloadState states[] = { nsIDownloadManager::DOWNLOAD_FINISHED,
                              nsIDownloadManager::DOWNLOAD_FAILED,
                              nsIDownloadManager::DOWNLOAD_CANCELED,
-                             nsIDownloadManager::DOWNLOAD_BLOCKED,
+                             nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL,
+                             nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY,
                              nsIDownloadManager::DOWNLOAD_DIRTY };
 
   nsCOMPtr<mozIStorageStatement> stmt;
@@ -1534,7 +1609,8 @@ nsDownloadManager::GetCanCleanUp(PRBool *aResult)
       "OR state = ?2 "
       "OR state = ?3 "
       "OR state = ?4 "
-      "OR state = ?5"), getter_AddRefs(stmt));
+      "OR state = ?5 "
+      "OR state = ?6"), getter_AddRefs(stmt));
   NS_ENSURE_SUCCESS(rv, rv);
   for (PRUint32 i = 0; i < NS_ARRAY_LENGTH(states); ++i) {
     rv = stmt->BindInt32Parameter(i, states[i]);
@@ -1706,6 +1782,22 @@ nsDownloadManager::Observe(nsISupports *aSubject,
       do_GetService("@mozilla.org/download-manager-ui;1", &rv);
     NS_ENSURE_SUCCESS(rv, rv);
     return dmui->Show(nsnull, 0);
+  } else if (strcmp(aTopic, "sleep_notification") == 0) {
+    // Pause downloads if we're sleeping, and mark the downloads as auto-resume
+    (void)PauseAllDownloads(PR_TRUE);
+  } else if (strcmp(aTopic, "wake_notification") == 0) {
+    PRInt32 resumeOnWakeDelay = 10000;
+    nsCOMPtr<nsIPrefBranch> pref = do_GetService(NS_PREFSERVICE_CONTRACTID);
+    if (pref)
+      (void)pref->GetIntPref(PREF_BDM_RESUMEONWAKEDELAY, &resumeOnWakeDelay);
+
+    // Wait a little bit before trying to resume to avoid resuming when network
+    // connections haven't restarted yet
+    mResumeOnWakeTimer = do_CreateInstance("@mozilla.org/timer;1");
+    if (resumeOnWakeDelay >= 0 && mResumeOnWakeTimer) {
+      (void)mResumeOnWakeTimer->InitWithFuncCallback(ResumeOnWakeCallback,
+        this, resumeOnWakeDelay, nsITimer::TYPE_ONE_SHOT);
+    }
   }
 
   return NS_OK;
@@ -1812,14 +1904,15 @@ nsDownload::SetState(DownloadState aState)
   // the database *before* notifying listeners.  At this point, you can safely
   // dispatch to the observers as well.
   switch (aState) {
-    case nsIDownloadManager::DOWNLOAD_BLOCKED:
+    case nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL:
+    case nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY:
     case nsIDownloadManager::DOWNLOAD_DIRTY:
     case nsIDownloadManager::DOWNLOAD_CANCELED:
     case nsIDownloadManager::DOWNLOAD_FAILED:
       // Transfers are finished, so break the reference cycle
       Finalize();
       break;
-#if defined(XP_WIN) && !defined(__MINGW32__)
+#if defined(XP_WIN) && !defined(__MINGW32__) && !defined(WINCE)
     case nsIDownloadManager::DOWNLOAD_SCANNING:
     {
       nsresult rv = mDownloadManager->mScanner ? mDownloadManager->mScanner->ScanDownload(this) : NS_ERROR_NOT_INITIALIZED;
@@ -1879,7 +1972,7 @@ nsDownload::SetState(DownloadState aState)
             }
         }
       }
-#ifdef XP_WIN
+#if defined(XP_WIN) && !defined(WINCE)
       // Default is to add the download to the system's "recent documents"
       // list, with a pref to disable.
       PRBool addToRecentDocs = PR_TRUE;
@@ -1942,7 +2035,8 @@ nsDownload::SetState(DownloadState aState)
     case nsIDownloadManager::DOWNLOAD_FINISHED:
       mDownloadManager->SendEvent(this, "dl-done");
       break;
-    case nsIDownloadManager::DOWNLOAD_BLOCKED:
+    case nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL:
+    case nsIDownloadManager::DOWNLOAD_BLOCKED_POLICY:
       mDownloadManager->SendEvent(this, "dl-blocked");
       break;
     case nsIDownloadManager::DOWNLOAD_DIRTY:
@@ -1971,8 +2065,13 @@ nsDownload::OnProgressChange64(nsIWebProgress *aWebProgress,
     // Obtain the referrer
     nsresult rv;
     nsCOMPtr<nsIChannel> channel(do_QueryInterface(aRequest));
+    nsCOMPtr<nsIURI> referrer = mReferrer;
     if (channel)
       (void)NS_GetReferrerFromChannel(channel, getter_AddRefs(mReferrer));
+
+    // Restore the original referrer if the new one isn't useful
+    if (!mReferrer)
+      mReferrer = referrer;
 
     // If we have a MIME info, we know that exthandler has already added this to
     // the history, but if we do not, we'll have to add it ourselves.
@@ -2095,8 +2194,8 @@ nsDownload::OnStateChange(nsIWebProgress *aWebProgress,
         // Cancel using the provided object
         (void)Cancel();
 
-        // Fail the download - DOWNLOAD_BLOCKED
-        (void)SetState(nsIDownloadManager::DOWNLOAD_BLOCKED);
+        // Fail the download
+        (void)SetState(nsIDownloadManager::DOWNLOAD_BLOCKED_PARENTAL);
       }
     }
   } else if ((aStateFlags & STATE_STOP) && (aStateFlags & STATE_IS_NETWORK) &&
@@ -2130,7 +2229,7 @@ nsDownload::OnStateChange(nsIWebProgress *aWebProgress,
       mPercentComplete = 100;
       mLastUpdate = PR_Now();
 
-#if defined(XP_WIN) && !defined(__MINGW32__)
+#if defined(XP_WIN) && !defined(__MINGW32__) && !defined(WINCE)
       PRBool scan = PR_TRUE;
       nsCOMPtr<nsIPrefBranch> prefs(do_GetService(NS_PREFSERVICE_CONTRACTID));
       if (prefs)
@@ -2309,6 +2408,9 @@ nsDownload::Finalize()
 
   // Remove ourself from the active downloads
   (void)mDownloadManager->mCurrentDownloads.RemoveObject(this);
+
+  // Make sure we do not automatically resume
+  mAutoResume = DONT_RESUME;
 }
 
 nsresult

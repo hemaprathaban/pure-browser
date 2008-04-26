@@ -533,12 +533,12 @@ nsXPConnect::Collect()
     return gCollected;
 }
 
-// JSTRACE_FUNCTION can hold on to a lot of objects, adding it to the cycle
-// collector reduces the number of edges to those objects.
+// JSTRACE_SCRIPTED_FUNCTION can hold on to a lot of objects, adding it to the
+// cycle collector reduces the number of edges to those objects.
 // JSTRACE_XML can recursively hold on to more JSTRACE_XML objects, adding it to
 // the cycle collector avoids stack overflow.
 #define ADD_TO_CC(_kind) \
-    ((_kind) == JSTRACE_OBJECT || (_kind) == JSTRACE_FUNCTION || \
+    ((_kind) == JSTRACE_OBJECT || (_kind) == JSTRACE_SCRIPTED_FUNCTION || \
      (_kind) == JSTRACE_XML)
 
 #ifdef DEBUG_CC
@@ -725,6 +725,23 @@ NoteJSChild(JSTracer *trc, void *thing, uint32 kind)
     if(ADD_TO_CC(kind))
     {
         TraversalTracer *tracer = static_cast<TraversalTracer*>(trc);
+#if defined(DEBUG) && defined(DEBUG_CC)
+        // based on DumpNotify in jsapi.c
+        if (tracer->debugPrinter) {
+            char buffer[200];
+            tracer->debugPrinter(trc, buffer, sizeof(buffer));
+            tracer->cb.NoteNextEdgeName(buffer);
+        } else if (tracer->debugPrintIndex != (size_t)-1) {
+            char buffer[200];
+            JS_snprintf(buffer, sizeof(buffer), "%s[%lu]",
+                        static_cast<const char *>(tracer->debugPrintArg),
+                        tracer->debugPrintIndex);
+            tracer->cb.NoteNextEdgeName(buffer);
+        } else {
+            tracer->cb.NoteNextEdgeName(
+              static_cast<const char*>(tracer->debugPrintArg));
+        }
+#endif
         tracer->cb.NoteScriptChild(nsIProgrammingLanguage::JAVASCRIPT, thing);
     }
     else if(kind != JSTRACE_DOUBLE && kind != JSTRACE_STRING)
@@ -749,22 +766,35 @@ nsXPConnect::Traverse(void *p, nsCycleCollectionTraversalCallback &cb)
     CCNodeType type;
 
 #ifdef DEBUG_CC
+    {
+    // Note that the conditions under which we specify GCMarked vs.
+    // GCUnmarked are different between ExplainLiveExpectedGarbage and
+    // the normal case.  In the normal case, we're saying that anything
+    // reachable from a JS runtime root is itself such a root.  This
+    // doesn't actually break anything; it really just does some of the
+    // cycle collector's work for it.  However, when debugging, we
+    // (1) actually need to know what the root is and (2) don't want to
+    // do an extra GC, so we use mJSRoots, built from JS_TraceRuntime,
+    // which produces a different result because we didn't call
+    // JS_TraceChildren to trace everything that was reachable.
     if(mJSRoots.ops)
     {
+        // ExplainLiveExpectedGarbage codepath
         PLDHashEntryHdr* entry =
             PL_DHashTableOperate(&mJSRoots, p, PL_DHASH_LOOKUP);
         type = PL_DHASH_ENTRY_IS_BUSY(entry) ? GCMarked : GCUnmarked;
     }
     else
     {
+        // Normal codepath (matches non-DEBUG_CC codepath).
         type = JS_IsAboutToBeFinalized(cx, p) ? GCUnmarked : GCMarked;
     }
 
+    char name[72];
     if(traceKind == JSTRACE_OBJECT)
     {
         JSObject *obj = static_cast<JSObject*>(p);
         JSClass *clazz = OBJ_GET_CLASS(cx, obj);
-        char name[72];
         if(XPCNativeWrapper::IsNativeWrapperClass(clazz))
         {
             XPCWrappedNative* wn = XPCNativeWrapper::GetWrappedNative(obj);
@@ -838,10 +868,11 @@ nsXPConnect::Traverse(void *p, nsCycleCollectionTraversalCallback &cb)
             else if(clazz == &js_FunctionClass)
             {
                 JSFunction* fun = (JSFunction*) xpc_GetJSPrivate(obj);
-                if(fun->atom && ATOM_IS_STRING(fun->atom))
+                JSString* str = JS_GetFunctionId(fun);
+                if(str)
                 {
                     NS_ConvertUTF16toUTF8
-                        fname(JS_GetStringChars(ATOM_TO_STRING(fun->atom)));
+                        fname(JS_GetStringChars(str));
                     JS_snprintf(name, sizeof(name), "JS Object (Function - %s)",
                                 fname.get());
                 }
@@ -855,12 +886,33 @@ nsXPConnect::Traverse(void *p, nsCycleCollectionTraversalCallback &cb)
                 JS_snprintf(name, sizeof(name), "JS Object (%s)", clazz->name);
             }
         }
-
-        cb.DescribeNode(type, 0, sizeof(JSObject), name);
     }
     else
     {
-        cb.DescribeNode(type, 0, sizeof(JSObject), "JS Object");
+        static const char trace_types[JSTRACE_LIMIT][10] = {
+            "Object",
+            "Double",
+            "String",
+            "Function",
+            "Namespace",
+            "Qname",
+            "Xml"
+        };
+        JS_snprintf(name, sizeof(name), "JS %s", trace_types[traceKind]);
+    }
+
+    if(traceKind == JSTRACE_OBJECT || traceKind == JSTRACE_NAMESPACE ||
+       traceKind == JSTRACE_QNAME || traceKind == JSTRACE_XML) {
+        JSObject *global = static_cast<JSObject*>(p), *parent;
+        while((parent = JS_GetParent(cx, global)))
+            global = parent;
+        char fullname[100];
+        JS_snprintf(fullname, sizeof(fullname), "%s (global=%p)", name, global);
+        cb.DescribeNode(type, 0, sizeof(JSObject), fullname);
+    } else {
+        cb.DescribeNode(type, 0, sizeof(JSObject), name);
+    }
+
     }
 #else
     type = JS_IsAboutToBeFinalized(cx, p) ? GCUnmarked : GCMarked;
@@ -964,6 +1016,7 @@ public:
 #ifdef DEBUG_CC
         cb.DescribeNode(RefCounted, refCount, sizeof(JSContext),
                         "JSContext");
+        cb.NoteNextEdgeName("[global object]");
 #else
         cb.DescribeNode(RefCounted, refCount);
 #endif

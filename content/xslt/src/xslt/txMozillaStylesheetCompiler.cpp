@@ -69,6 +69,8 @@
 #include "txXMLUtils.h"
 #include "nsAttrName.h"
 #include "nsIScriptError.h"
+#include "nsIURL.h"
+#include "nsDOMError.h"
 
 static NS_DEFINE_CID(kCParserCID, NS_PARSER_CID);
 
@@ -378,23 +380,23 @@ txStylesheetSink::OnChannelRedirect(nsIChannel *aOldChannel,
                                     nsIChannel *aNewChannel,
                                     PRUint32    aFlags)
 {
-    NS_PRECONDITION(aNewChannel, "Redirect without a channel?");
-
-    nsresult rv;
-    nsCOMPtr<nsIScriptSecurityManager> secMan =
-        do_GetService(NS_SCRIPTSECURITYMANAGER_CONTRACTID, &rv);
-    NS_ENSURE_SUCCESS(rv, rv);
+    NS_PRECONDITION(aNewChannel, "Redirecting to null channel?");
 
     nsCOMPtr<nsIURI> oldURI;
-    rv = aOldChannel->GetURI(getter_AddRefs(oldURI)); // The original URI
+    nsresult rv = aOldChannel->GetURI(getter_AddRefs(oldURI));
     NS_ENSURE_SUCCESS(rv, rv);
 
     nsCOMPtr<nsIURI> newURI;
-    rv = aNewChannel->GetURI(getter_AddRefs(newURI)); // The new URI
+    rv = aNewChannel->GetURI(getter_AddRefs(newURI));
     NS_ENSURE_SUCCESS(rv, rv);
 
-    return secMan->CheckSameOriginURI(oldURI, newURI, PR_TRUE);
+    rv = nsContentUtils::GetSecurityManager()->
+        CheckSameOriginURI(oldURI, newURI, PR_TRUE);
+    NS_ENSURE_SUCCESS(rv, rv);
+
+    return NS_OK;
 }
+
 
 NS_IMETHODIMP
 txStylesheetSink::GetInterface(const nsIID& aIID, void** aResult)
@@ -492,7 +494,7 @@ txCompileObserver::loadURI(const nsAString& aUri,
       GetCodebasePrincipal(referrerUri, getter_AddRefs(referrerPrincipal));
     NS_ENSURE_SUCCESS(rv, rv);
 
-    // Do security check.
+    // Do security check
     rv = nsContentUtils::
       CheckSecurityBeforeLoad(uri, referrerPrincipal,
                               nsIScriptSecurityManager::STANDARD, PR_FALSE,
@@ -714,6 +716,7 @@ txSyncCompileObserver::loadURI(const nsAString& aUri,
       GetCodebasePrincipal(referrerUri, getter_AddRefs(referrerPrincipal));
     NS_ENSURE_SUCCESS(rv, rv);
 
+    // Security checks
     rv = nsContentUtils::
       CheckSecurityBeforeLoad(uri, referrerPrincipal,
                               nsIScriptSecurityManager::STANDARD,
@@ -724,8 +727,8 @@ txSyncCompileObserver::loadURI(const nsAString& aUri,
     // This is probably called by js, a loadGroup for the channel doesn't
     // make sense.
     nsCOMPtr<nsIDOMDocument> document;
-    rv = nsSyncLoadService::LoadDocument(uri, referrerUri, nsnull, PR_FALSE,
-                                         getter_AddRefs(document));
+    rv = nsSyncLoadService::LoadDocument(uri, referrerPrincipal, nsnull,
+                                         PR_FALSE, getter_AddRefs(document));
     NS_ENSURE_SUCCESS(rv, rv);
 
     nsCOMPtr<nsIDocument> doc = do_QueryInterface(document);
@@ -771,8 +774,18 @@ TX_CompileStylesheet(nsINode* aNode, txMozillaXSLTProcessor* aProcessor,
     uri->GetSpec(spec);
     NS_ConvertUTF8toUTF16 baseURI(spec);
 
-    uri = doc->GetDocumentURI();
+    nsIURI* docUri = doc->GetDocumentURI();
+    NS_ENSURE_TRUE(docUri, NS_ERROR_FAILURE);
+
+    docUri->Clone(getter_AddRefs(uri));
     NS_ENSURE_TRUE(uri, NS_ERROR_FAILURE);
+
+    // We need to remove the ref, a URL with a ref would mean that we have an
+    // embedded stylesheet.
+    nsCOMPtr<nsIURL> url = do_QueryInterface(uri);
+    if (url) {
+        url->SetRef(EmptyCString());
+    }
 
     uri->GetSpec(spec);
     NS_ConvertUTF8toUTF16 stylesheetURI(spec);

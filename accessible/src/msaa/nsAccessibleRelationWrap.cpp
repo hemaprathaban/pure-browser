@@ -41,6 +41,7 @@
 #include "nsAccessibleRelationWrap.h"
 
 #include "AccessibleRelation_i.c"
+#include "nsAccessNodeWrap.h"
 
 #include "nsArrayUtils.h"
 
@@ -84,6 +85,7 @@ nsAccessibleRelationWrap::QueryInterface(REFIID iid, void** ppv)
 STDMETHODIMP
 nsAccessibleRelationWrap::get_relationType(BSTR *aRelationType)
 {
+__try {
   *aRelationType = NULL;
 
   PRUint32 type = 0;
@@ -91,6 +93,7 @@ nsAccessibleRelationWrap::get_relationType(BSTR *aRelationType)
   if (NS_FAILED(rv))
     return E_FAIL;
 
+  INT res;
   switch (type) {
     case RELATION_CONTROLLED_BY:
       *aRelationType = ::SysAllocString(IA2_RELATION_CONTROLLED_BY);
@@ -141,28 +144,39 @@ nsAccessibleRelationWrap::get_relationType(BSTR *aRelationType)
       return E_FAIL;
   }
 
-  return !aRelationType ? E_OUTOFMEMORY : S_OK;
+  if (!res)
+    return E_OUTOFMEMORY;
+
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+  
+  return S_OK;
 }
 
 STDMETHODIMP
 nsAccessibleRelationWrap::get_localizedRelationType(BSTR *aLocalizedRelationType)
 {
+  ::SysFreeString(*aLocalizedRelationType);
   return E_NOTIMPL;
 }
 
 STDMETHODIMP
 nsAccessibleRelationWrap::get_nTargets(long *aNTargets)
 {
+__try {
   PRUint32 count = 0;
   nsresult rv = GetTargetsCount(&count);
   *aNTargets = count;
+  if (NS_FAILED(rv))
+    return E_FAIL;
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
 
-  return NS_FAILED(rv) ? E_FAIL : S_OK;
+  return S_OK;
 }
 
 STDMETHODIMP
 nsAccessibleRelationWrap::get_target(long aTargetIndex, IUnknown **aTarget)
 {
+__try {
   nsCOMPtr<nsIAccessible> accessible;
   nsresult rv = GetTarget(aTargetIndex, getter_AddRefs(accessible));
 
@@ -176,6 +190,8 @@ nsAccessibleRelationWrap::get_target(long aTargetIndex, IUnknown **aTarget)
     return E_FAIL;
 
   *aTarget = static_cast<IUnknown*>(instancePtr);
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+
   return S_OK;
 }
 
@@ -183,6 +199,7 @@ STDMETHODIMP
 nsAccessibleRelationWrap::get_targets(long aMaxTargets, IUnknown **aTarget,
                                       long *aNTargets)
 {
+__try {
   *aNTargets = 0;
 
   nsCOMPtr<nsIArray> targets;
@@ -221,6 +238,8 @@ nsAccessibleRelationWrap::get_targets(long aMaxTargets, IUnknown **aTarget,
   }
 
   *aNTargets = count;
+} __except(nsAccessNodeWrap::FilterA11yExceptions(::GetExceptionCode(), GetExceptionInformation())) { }
+
   return S_OK;
 }
 

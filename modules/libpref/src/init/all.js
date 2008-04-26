@@ -180,6 +180,9 @@ pref("browser.frames.enabled", true);
 // form submission
 pref("browser.forms.submit.backwards_compatible", true);
 
+// Number of characters to consider emphasizing for rich autocomplete results
+pref("toolkit.autocomplete.richBoundaryCutoff", 200);
+
 pref("toolkit.scrollbox.smoothScroll", true);
 pref("toolkit.scrollbox.scrollIncrement", 20);
 pref("toolkit.scrollbox.clickToScroll.scrollDelay", 150);
@@ -245,12 +248,26 @@ pref("print.whileInPrintPreview", true);
 // Cache old Presentation when going into Print Preview
 pref("print.always_cache_old_pres", false);
 
-// Enables you to specify the gap from the edge of the paper to the margin
-// this is used by both Printing and Print Preview
-pref("print.print_edge_top", 0); // 1/100 of an inch
-pref("print.print_edge_left", 0); // 1/100 of an inch
-pref("print.print_edge_right", 0); // 1/100 of an inch
-pref("print.print_edge_bottom", 0); // 1/100 of an inch
+// Enables you to specify the amount of the paper that is to be treated
+// as unwriteable.  The print_edge_XXX and print_margin_XXX preferences
+// are treated as offsets that are added to this pref.
+// Default is "-1", which means "use the system default".  (If there is
+// no system default, then the -1 is treated as if it were 0.)
+// This is used by both Printing and Print Preview.
+// Units are in 1/100ths of an inch.
+pref("print.print_unwriteable_margin_top",    -1);
+pref("print.print_unwriteable_margin_left",   -1);
+pref("print.print_unwriteable_margin_right",  -1);
+pref("print.print_unwriteable_margin_bottom", -1);
+
+// Enables you to specify the gap from the edge of the paper's 
+// unwriteable area to the margin.
+// This is used by both Printing and Print Preview
+// Units are in 1/100ths of an inch.
+pref("print.print_edge_top", 0);
+pref("print.print_edge_left", 0);
+pref("print.print_edge_right", 0);
+pref("print.print_edge_bottom", 0);
 
 // Pref used by the spellchecker extension to control the 
 // maximum number of misspelled words that will be underlined
@@ -441,6 +458,7 @@ pref("capability.policy.default.Clipboard.paste", "noAccess");
 // Scripts & Windows prefs
 pref("dom.disable_image_src_set",           false);
 pref("dom.disable_window_flip",             false);
+pref("dom.disable_window_move_resize",      false);
 pref("dom.disable_window_status_change",    false);
 
 pref("dom.disable_window_open_feature.titlebar",    false);
@@ -482,8 +500,8 @@ pref("security.enable_java",                true);
 pref("advanced.mailftp",                    false);
 pref("image.animation_mode",                "normal");
 
-// Same-origin policy for file: URIs: 0=self, 1=samedir, 2=subdir, 3=anyfile
-pref("security.fileuri.origin_policy", 2);
+// Same-origin policy for file URIs, "false" is traditional
+pref("security.fileuri.strict_origin_policy", true);
 
 // If there is ever a security firedrill that requires
 // us to block certian ports global, this is the pref 
@@ -553,22 +571,22 @@ pref("network.http.proxy.keep-alive", true);
 pref("network.http.keep-alive.timeout", 300);
 
 // limit the absolute number of http connections.
-pref("network.http.max-connections", 24);
+pref("network.http.max-connections", 30);
 
 // limit the absolute number of http connections that can be established per
 // host.  if a http proxy server is enabled, then the "server" is the proxy
 // server.  Otherwise, "server" is the http origin server.
-pref("network.http.max-connections-per-server", 8);
+pref("network.http.max-connections-per-server", 15);
 
 // if network.http.keep-alive is true, and if NOT connecting via a proxy, then
 // a new connection will only be attempted if the number of active persistent
 // connections to the server is less then max-persistent-connections-per-server.
-pref("network.http.max-persistent-connections-per-server", 2);
+pref("network.http.max-persistent-connections-per-server", 6);
 
 // if network.http.keep-alive is true, and if connecting via a proxy, then a
 // new connection will only be attempted if the number of active persistent
 // connections to the proxy is less then max-persistent-connections-per-proxy.
-pref("network.http.max-persistent-connections-per-proxy", 4);
+pref("network.http.max-persistent-connections-per-proxy", 8);
 
 // amount of time (in seconds) to suspend pending requests, before spawning a
 // new connection, once the limit on the number of persistent connections per
@@ -592,6 +610,7 @@ pref("network.http.redirection-limit", 20);
 pref("network.http.accept-encoding" ,"gzip,deflate");
 
 pref("network.http.pipelining"      , false);
+pref("network.http.pipelining.ssl"  , true); // enable pipelining over SSL
 pref("network.http.proxy.pipelining", false);
 
 // Max number of requests in the pipeline
@@ -642,6 +661,7 @@ pref("network.IDN.whitelist.li", true);
 pref("network.IDN.whitelist.lt", true);
 pref("network.IDN.whitelist.no", true);
 pref("network.IDN.whitelist.pl", true);
+pref("network.IDN.whitelist.pr", true);
 pref("network.IDN.whitelist.se", true);
 pref("network.IDN.whitelist.sh", true);
 pref("network.IDN.whitelist.th", true);
@@ -656,6 +676,10 @@ pref("network.IDN.whitelist.info", true);
 pref("network.IDN.whitelist.museum", true);
 pref("network.IDN.whitelist.org", true);
 
+// NOTE: Before these can be removed, one of bug 414812's tests must be updated
+//       or it will likely fail!  Please CC jwalden+bmo on the bug associated
+//       with removing these so he can provide a patch to make the necessary
+//       changes to avoid bustage.
 // ".test" localised TLDs for ICANN's top-level IDN trial
 pref("network.IDN.whitelist.xn--0zwm56d", true);
 pref("network.IDN.whitelist.xn--11b5bs3a9aj6g", true);
@@ -758,7 +782,17 @@ pref("network.ntlm.send-lm-response", false);
 pref("network.hosts.nntp_server",           "news.mozilla.org");
 
 pref("permissions.default.image",           1); // 1-Accept, 2-Deny, 3-dontAcceptForeign
+
+#ifndef XP_MACOSX
+#ifdef XP_UNIX
+pref("network.proxy.type",                  5);
+#else
 pref("network.proxy.type",                  0);
+#endif
+#else
+pref("network.proxy.type",                  0);
+#endif
+
 pref("network.proxy.ftp",                   "");
 pref("network.proxy.ftp_port",              0);
 pref("network.proxy.gopher",                "");
@@ -820,6 +854,10 @@ pref("font.language.group",                 "chrome://global/locale/intl.propert
 
 pref("font.mathfont-family", "STIXNonUnicode, STIXSize1, STIXGeneral, Cambria Math, Standard Symbols L, DejaVu Sans");
 
+// Some CJK fonts have bad underline offset, their CJK character glyphs are overlapped (or adjoined)  to its underline.
+// These fonts are ignored the underline offset, instead of it, the underline is lowered to bottom of its em descent.
+pref("font.blacklist.underline_offset", "FangSong,Gulim,GulimChe,MingLiU,MingLiU-ExtB,MingLiU_HKSCS,MingLiU-HKSCS-ExtB,MS Gothic,MS Mincho,MS PGothic,MS PMincho,MS UI Gothic,PMingLiU,PMingLiU-ExtB,SimHei,SimSun,SimSun-ExtB,Hei,Kai,Apple LiGothic,Apple LiSung,Osaka");
+
 pref("images.dither", "auto");
 pref("security.directory",              "");
 
@@ -877,25 +915,6 @@ pref("mousewheel.withmetakey.action",0);
 pref("mousewheel.withmetakey.numlines",1);
 pref("mousewheel.withmetakey.sysnumlines",true);
 
-// on platforms where scroll messages differ between horizontal scroll
-// and back/forward button events we can activate them by default
-#ifdef XP_WIN
-#define HORIZSCROLL_AVAILABLE
-#endif
-#ifdef XP_MACOSX
-#define HORIZSCROLL_AVAILABLE
-// The Mac does interesting things with horizontal scrolling.  If a
-// scroll event comes from a pointing device with a scroll wheel for
-// the vertical axis, and the user is holding the shift key, the event
-// comes through as a horizontal scroll event with the shift key
-// (mousewheel.horizscroll.withshiftkey) and not mousewheel.withshiftkey.
-// These events should map to horizontal scroll to maintain platform
-// UI consistency.
-#endif
-#ifdef XP_OS2
-#define HORIZSCROLL_AVAILABLE
-#endif
-#ifdef HORIZSCROLL_AVAILABLE
 // activate horizontal scrolling by default
 pref("mousewheel.horizscroll.withnokey.action",0);
 pref("mousewheel.horizscroll.withnokey.numlines",1);
@@ -912,25 +931,6 @@ pref("mousewheel.horizscroll.withaltkey.sysnumlines",false);
 pref("mousewheel.horizscroll.withmetakey.action",0);
 pref("mousewheel.horizscroll.withmetakey.numlines",1);
 pref("mousewheel.horizscroll.withmetakey.sysnumlines",true);
-#endif
-#ifndef HORIZSCROLL_AVAILABLE
-// disable horizontal scrolling to be able to use back/forward buttons
-pref("mousewheel.horizscroll.withnokey.action",2);
-pref("mousewheel.horizscroll.withnokey.numlines",-1);
-pref("mousewheel.horizscroll.withnokey.sysnumlines",false);
-pref("mousewheel.horizscroll.withcontrolkey.action",2);
-pref("mousewheel.horizscroll.withcontrolkey.numlines",-1);
-pref("mousewheel.horizscroll.withcontrolkey.sysnumlines",false);
-pref("mousewheel.horizscroll.withshiftkey.action",2);
-pref("mousewheel.horizscroll.withshiftkey.numlines",-1);
-pref("mousewheel.horizscroll.withshiftkey.sysnumlines",false);
-pref("mousewheel.horizscroll.withaltkey.action",2);
-pref("mousewheel.horizscroll.withaltkey.numlines",-1);
-pref("mousewheel.horizscroll.withaltkey.sysnumlines",false);
-pref("mousewheel.horizscroll.withmetakey.action",2);
-pref("mousewheel.horizscroll.withmetakey.numlines",-1);
-pref("mousewheel.horizscroll.withmetakey.sysnumlines",false);
-#endif
 
 pref("profile.confirm_automigration",true);
 // profile.migration_behavior determines how the profiles root is set
@@ -1636,11 +1636,11 @@ pref("font.name-list.cursive.x-western", "Apple Chancery");
 pref("font.name-list.fantasy.x-western", "Papyrus");
 
 pref("font.name.serif.zh-CN", "华文宋体");
-pref("font.name.sans-serif.zh-CN", "Hei");
-pref("font.name.monospace.zh-CN", "Hei");
+pref("font.name.sans-serif.zh-CN", "STHeiti");
+pref("font.name.monospace.zh-CN", "STHeiti");
 pref("font.name-list.serif.zh-CN", "华文宋体");
-pref("font.name-list.sans-serif.zh-CN", "Hei");
-pref("font.name-list.monospace.zh-CN", "Hei");
+pref("font.name-list.sans-serif.zh-CN", "STHeiti");
+pref("font.name-list.monospace.zh-CN", "STHeiti");
 
 pref("font.name.serif.zh-TW", "Apple LiSung"); 
 pref("font.name.sans-serif.zh-TW", "Apple LiGothic");  
@@ -1762,6 +1762,14 @@ pref("font.size.fixed.zh-HK", 16);
 
 // Apple's Symbol is Unicode so use it
 pref("font.mathfont-family", "STIXNonUnicode, STIXSize1, STIXGeneral, Cambria Math, Symbol, DejaVu Sans");
+
+// individual font faces to be treated as independent families
+// names are Postscript names of each face
+pref("font.single-face-list", "Osaka-Mono");
+
+// optimization hint for fonts with localized names to be read in at startup, otherwise read in at lookup miss
+// names are canonical family names (typically English names)
+pref("font.preload-names-list", "Hiragino Kaku Gothic Pro,Hiragino Mincho Pro,STSong");
 
 pref("browser.urlbar.clickAtEndSelects", false);
 
@@ -2124,13 +2132,6 @@ pref("print.print_color", true);
 pref("print.print_landscape", false);
 pref("print.print_paper_size", 0);
 
-// Enables you to specify the gap from the edge of the paper to the margin
-// this is used by both Printing and Print Preview
-pref("print.print_edge_top", 4); // 1/100 of an inch
-pref("print.print_edge_left", 4); // 1/100 of an inch
-pref("print.print_edge_right", 4); // 1/100 of an inch
-pref("print.print_edge_bottom", 4); // 1/100 of an inch
-
 // print_extra_margin enables platforms to specify an extra gap or margin
 // around the content of the page for Print Preview only
 pref("print.print_extra_margin", 0); // twips
@@ -2155,10 +2156,6 @@ pref("font.name.monospace.he", "monospace");
 pref("font.name.serif.ja", "serif");
 pref("font.name.sans-serif.ja", "sans-serif");
 pref("font.name.monospace.ja", "monospace");
-// Include Latin fonts explicitly for bug 339513
-pref("font.name-list.sans-serif.ja", "Bitstream Vera Sans, DejaVu Sans, Verdana");
-pref("font.name-list.serif.ja", "Bitstream Vera Serif, DejaVu Serif, Times New Roman");
-pref("font.name-list.monospace.ja", "Bitstream Vera Sans Mono, DejaVu Sans Mono, Andale Mono");
 
 pref("font.name.serif.ko", "serif");
 pref("font.name.sans-serif.ko", "sans-serif");
@@ -2197,18 +2194,12 @@ pref("font.name.monospace.x-western", "monospace");
 pref("font.name.serif.zh-CN", "serif");
 pref("font.name.sans-serif.zh-CN", "sans-serif");
 pref("font.name.monospace.zh-CN", "monospace");
-pref("font.name-list.sans-serif.zh-CN", "Bitstream Vera Sans, DejaVu Sans, Verdana");
-pref("font.name-list.serif.zh-CN", "Bitstream Vera Serif, DejaVu Serif, Times New Roman");
-pref("font.name-list.monospace.zh-CN", "Bitstream Vera Sans Mono, DejaVu Sans Mono, Andale Mono");
 
 // ming_uni.ttf (HKSCS-2001) 
 // http://www.info.gov.hk/digital21/eng/hkscs/download/uime.exe
 pref("font.name.serif.zh-HK", "serif");
 pref("font.name.sans-serif.zh-HK", "sans-serif");
 pref("font.name.monospace.zh-HK", "monospace");
-pref("font.name-list.sans-serif.zh-HK", "Bitstream Vera Sans, DejaVu Sans, Verdana");
-pref("font.name-list.serif.zh-HK", "Bitstream Vera Serif, DejaVu Serif, Times New Roman");
-pref("font.name-list.monospace.zh-HK", "Bitstream Vera Sans Mono, DejaVu Sans Mono, Andale Mono");
 
 // zh-TW
 
@@ -2414,6 +2405,7 @@ pref("signon.autofillForms",                true);
 pref("signon.debug",                        false); // logs to Error Console
 
 // Zoom prefs
-pref("fullZoom.minPercent", 50);
-pref("fullZoom.maxPercent", 300);
-pref("toolkit.zoomManager.fullZoomValues", ".5,.75,1,1.25,1.5,2,3");
+pref("browser.zoom.full", false);
+pref("zoom.minPercent", 30);
+pref("zoom.maxPercent", 300);
+pref("toolkit.zoomManager.zoomValues", ".3,.5,.67,.8,.9,1,1.1,1.2,1.33,1.5,1.7,2,2.4,3");

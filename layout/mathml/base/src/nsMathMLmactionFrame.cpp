@@ -288,8 +288,8 @@ nsMathMLmactionFrame::Reflow(nsPresContext*          aPresContext,
                                        childFrame, availSize);
     rv = ReflowChild(childFrame, aPresContext, aDesiredSize,
                      childReflowState, aStatus);
-    childFrame->SetRect(nsRect(0,aDesiredSize.ascent,
-                        aDesiredSize.width,aDesiredSize.height));
+    SaveReflowAndBoundingMetricsFor(childFrame, aDesiredSize,
+                                    aDesiredSize.mBoundingMetrics);
     mBoundingMetrics = aDesiredSize.mBoundingMetrics;
   }
   FinalizeReflow(*aReflowState.rendContext, aDesiredSize);
@@ -298,7 +298,7 @@ nsMathMLmactionFrame::Reflow(nsPresContext*          aPresContext,
 }
 
 // Only place the selected child ...
-NS_IMETHODIMP
+/* virtual */ nsresult
 nsMathMLmactionFrame::Place(nsIRenderingContext& aRenderingContext,
                             PRBool               aPlaceOrigin,
                             nsHTMLReflowMetrics& aDesiredSize)

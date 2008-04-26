@@ -6,6 +6,8 @@
 function DummyCompleter() {
   this.fragments = {};
   this.queries = [];
+  this.cachable = true;
+  this.tableName = "test-phish-simple";
 }
 
 DummyCompleter.prototype =
@@ -23,8 +25,9 @@ complete: function(partialHash, cb)
 {
   this.queries.push(partialHash);
   var fragments = this.fragments;
+  var self = this;
   var doCallback = function() {
-      if (this.alwaysFail) {
+      if (self.alwaysFail) {
         cb.completionFinished(1);
         return;
       }
@@ -33,7 +36,7 @@ complete: function(partialHash, cb)
         for (var i = 0; i < fragments[partialHash].length; i++) {
           var chunkId = fragments[partialHash][i][0];
           var hash = fragments[partialHash][i][1];
-          cb.completion(hash, "test-phish-simple", chunkId);
+          cb.completion(hash, self.tableName, chunkId, self.cachable);
         }
       }
     cb.completionFinished(0);
@@ -94,9 +97,10 @@ compareQueries: function(fragments)
 }
 };
 
-function setupCompleter(table, hits, conflicts, alwaysFail)
+function setupCompleter(table, hits, conflicts)
 {
   var completer = new DummyCompleter();
+  completer.tableName = table;
   for (var i = 0; i < hits.length; i++) {
     var chunkId = hits[i][0];
     var fragments = hits[i][1];
@@ -119,11 +123,20 @@ function setupCompleter(table, hits, conflicts, alwaysFail)
 
 function installCompleter(table, fragments, conflictFragments)
 {
-  return setupCompleter(table, fragments, conflictFragments, false);
+  return setupCompleter(table, fragments, conflictFragments);
 }
 
 function installFailingCompleter(table) {
-  return setupCompleter(table, [], [], true);
+  var completer = setupCompleter(table, [], []);
+  completer.alwaysFail = true;
+  return completer;
+}
+
+function installUncachableCompleter(table, fragments, conflictFragments)
+{
+  var completer = setupCompleter(table, fragments, conflictFragments);
+  completer.cachable = false;
+  return completer;
 }
 
 // Helper assertion for checking dummy completer queries
@@ -307,32 +320,6 @@ function testMixedSizesDifferentDomains() {
   doTest([update1, update2], assertions);
 }
 
-function testMixedSizesNoCompleter() {
-  var add1Urls = [ "foo.com/a" ];
-  var add2Urls = [ "foo.com/b" ];
-
-  var update1 = buildPhishingUpdate(
-    [
-      { "chunkNum" : 1,
-        "urls" : add1Urls }],
-    4);
-  var update2 = buildPhishingUpdate(
-    [
-      { "chunkNum" : 2,
-        "urls" : add2Urls }],
-    32);
-
-  var assertions = {
-    "tableData" : "test-phish-simple;a:1-2",
-    // add1Urls shouldn't work, because there is no completer.
-    "urlsDontExist" : add1Urls,
-    // but add2Urls were complete, they should work.
-    "urlsExist" : add2Urls
-  };
-
-  doTest([update1, update2], assertions);
-}
-
 function testInvalidHashSize()
 {
   var addUrls = [ "foo.com/a", "foo.com/b", "bar.com/c" ];
@@ -362,11 +349,46 @@ function testWrongTable()
           { "chunkNum" : 1,
             "urls" : addUrls
           }],
-        32);
+        4);
   var completer = installCompleter('test-malware-simple', // wrong table
-                                   [[1, addUrls]]);
+                                   [[1, addUrls]], []);
 
-  doTest([update], assertions);
+  // The above installCompleter installs the completer for test-malware-simple,
+  // we want it to be used for test-phish-simple too.
+  dbservice.setHashCompleter("test-phish-simple", completer);
+
+
+  var assertions = {
+    "tableData" : "test-phish-simple;a:1",
+    // The urls were added as phishing urls, but the completer is claiming
+    // that they are malware urls, and we trust the completer in this case.
+    "malwareUrlsExist" : addUrls,
+    // Make sure the completer was actually queried.
+    "completerQueried" : [completer, addUrls]
+  };
+
+  doUpdateTest([update], assertions,
+               function() {
+                 // Give the dbservice a chance to (not) cache the result.
+                 var timer = new Timer(3000, function() {
+                     // The dbservice shouldn't have cached this result,
+                     // so this completer should be queried.
+                     var newCompleter = installCompleter('test-malware-simple', [[1, addUrls]], []);
+
+                     // The above installCompleter installs the
+                     // completer for test-malware-simple, we want it
+                     // to be used for test-phish-simple too.
+                     dbservice.setHashCompleter("test-phish-simple",
+                                                newCompleter);
+
+
+                     var assertions = {
+                       "malwareUrlsExist" : addUrls,
+                       "completerQueried" : [newCompleter, addUrls]
+                     };
+                     checkAssertions(assertions, runNextTest);
+                   });
+               }, updateError);
 }
 
 function testWrongChunk()
@@ -377,12 +399,33 @@ function testWrongChunk()
           { "chunkNum" : 1,
             "urls" : addUrls
           }],
-        32);
+        4);
   var completer = installCompleter('test-phish-simple',
-                                   [[2, // Wrong chunk number
-                                     addUrls]]);
+                                   [[2, // wrong chunk number
+                                     addUrls]], []);
 
-  doTest([update], assertions);
+  var assertions = {
+    "tableData" : "test-phish-simple;a:1",
+    "urlsExist" : addUrls,
+    // Make sure the completer was actually queried.
+    "completerQueried" : [completer, addUrls]
+  };
+
+  doUpdateTest([update], assertions,
+               function() {
+                 // Give the dbservice a chance to (not) cache the result.
+                 var timer = new Timer(3000, function() {
+                     // The dbservice shouldn't have cached this result,
+                     // so this completer should be queried.
+                     var newCompleter = installCompleter('test-phish-simple', [[2, addUrls]], []);
+
+                     var assertions = {
+                       "urlsExist" : addUrls,
+                       "completerQueried" : [newCompleter, addUrls]
+                     };
+                     checkAssertions(assertions, runNextTest);
+                   });
+               }, updateError);
 }
 
 function setupCachedResults(addUrls, part2)
@@ -466,6 +509,49 @@ function testCachedResultsWithExpire() {
     });
 }
 
+function setupUncachedResults(addUrls, part2)
+{
+  var update = buildPhishingUpdate(
+        [
+          { "chunkNum" : 1,
+            "urls" : addUrls
+          }],
+        4);
+
+  var completer = installUncachableCompleter('test-phish-simple', [[1, addUrls]], []);
+
+  var assertions = {
+    "tableData" : "test-phish-simple;a:1",
+    // Request the add url.  This should cause the completion to be cached.
+    "urlsExist" : addUrls,
+    // Make sure the completer was actually queried.
+    "completerQueried" : [completer, addUrls]
+  };
+
+  doUpdateTest([update], assertions,
+               function() {
+                 // Give the dbservice a chance to cache the result.
+                 var timer = new Timer(3000, part2);
+               }, updateError);
+}
+
+function testUncachedResults()
+{
+  setupUncachedResults(["foo.com/a"], function(add) {
+      // This is called after setupCachedResults().  Verify that
+      // checking the url again does not cause a completer request.
+
+      // install a new completer, this one should be queried.
+      var newCompleter = installCompleter('test-phish-simple', [[1, ["foo.com/a"]]], []);
+      var assertions = {
+        "urlsExist" : ["foo.com/a"],
+        "completerQueried" : [newCompleter, ["foo.com/a"]]
+      };
+      checkAssertions(assertions, runNextTest);
+    });
+}
+
+
 function run_test()
 {
   runTests([
@@ -476,11 +562,13 @@ function run_test()
     testCompleterFailure,
     testMixedSizesSameDomain,
     testMixedSizesDifferentDomains,
-    testMixedSizesNoCompleter,
     testInvalidHashSize,
+    testWrongTable,
+    testWrongChunk,
     testCachedResults,
     testCachedResultsWithSub,
     testCachedResultsWithExpire,
+    testUncachedResults,
   ]);
 }
 

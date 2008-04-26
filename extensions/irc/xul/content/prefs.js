@@ -92,6 +92,12 @@ function initPrefs()
         gotos = ["goto-url-external", "goto-url-external",
                  "goto-url-external", "goto-url-external"];
     }
+    else if (client.host == "Songbird")
+    {
+        // Songbird has a browser, but only supports a single browser window
+        gotos = ["goto-url",        "goto-url-newtab",
+                 "goto-url-newtab", "goto-url-newtab"];
+    }
 
     // Set up default nickname, if possible.
     var defaultNick = DEFAULT_NICK;
@@ -786,6 +792,8 @@ function onPrefChanged(prefName, newValue, oldValue)
 
         case "timestamps":
         case "timestamps.display":
+        case "collapseActions":
+        case "collapseMsgs":
             client.dispatch("sync-timestamp");
             break;
 
@@ -873,6 +881,8 @@ function onNetworkPrefChanged(network, prefName, newValue, oldValue)
 
         case "timestamps":
         case "timestamps.display":
+        case "collapseActions":
+        case "collapseMsgs":
             network.dispatch("sync-timestamp");
             break;
 
@@ -937,6 +947,8 @@ function onChannelPrefChanged(channel, prefName, newValue, oldValue)
 
         case "timestamps":
         case "timestamps.display":
+        case "collapseActions":
+        case "collapseMsgs":
             channel.dispatch("sync-timestamp");
             break;
 
@@ -982,6 +994,8 @@ function onUserPrefChanged(user, prefName, newValue, oldValue)
 
         case "timestamps":
         case "timestamps.display":
+        case "collapseActions":
+        case "collapseMsgs":
             user.dispatch("sync-timestamp");
             break;
 
@@ -1024,6 +1038,8 @@ function onDCCUserPrefChanged(user, prefName, newValue, oldValue)
 
             case "timestamps":
             case "timestamps.display":
+            case "collapseActions":
+            case "collapseMsgs":
                 view.dispatch("sync-timestamp");
                 break;
 

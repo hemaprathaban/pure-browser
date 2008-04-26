@@ -61,6 +61,7 @@
 #include "nsIDocument.h"
 #include "nsInterfaceHashtable.h"
 #include "nsCycleCollectionParticipant.h"
+#include "nsChangeHint.h"
 // XXX we need only gfxTypes.h, but we cannot include it directly.
 #include "gfxPoint.h"
 class nsImageLoader;
@@ -200,7 +201,7 @@ public:
     { return GetPresShell()->FrameManager(); } 
 #endif
 
-  void RebuildAllStyleData();
+  void RebuildAllStyleData(nsChangeHint aExtraHint);
   void PostRebuildAllStyleDataEvent();
 
   /**
@@ -219,6 +220,7 @@ public:
    * Access the image animation mode for this context
    */
   PRUint16     ImageAnimationMode() const { return mImageAnimationMode; }
+  void RestoreImageAnimationMode() { SetImageAnimationMode(mImageAnimationModePref); }
   virtual NS_HIDDEN_(void) SetImageAnimationModeExternal(PRUint16 aMode);
   NS_HIDDEN_(void) SetImageAnimationModeInternal(PRUint16 aMode);
 #ifdef _IMPL_NS_LAYOUT
@@ -465,7 +467,7 @@ public:
   float TextZoom() { return mTextZoom; }
   void SetTextZoom(float aZoom) {
     mTextZoom = aZoom;
-    RebuildAllStyleData();
+    RebuildAllStyleData(NS_STYLE_HINT_REFLOW);
   }
 
   float GetFullZoom() { return mFullZoom; }
@@ -506,12 +508,23 @@ public:
   { return NSAppUnitsToIntPixels(aAppUnits,
                                  mDeviceContext->AppUnitsPerDevPixel()); }
 
+  // If there is a remainder, it is rounded to nearest app units.
+  nscoord GfxUnitsToAppUnits(gfxFloat aGfxUnits) const
+  { return mDeviceContext->GfxUnitsToAppUnits(aGfxUnits); }
+
   gfxFloat AppUnitsToGfxUnits(nscoord aAppUnits) const
   { return mDeviceContext->AppUnitsToGfxUnits(aAppUnits); }
 
   nscoord TwipsToAppUnits(PRInt32 aTwips) const
   { return NSToCoordRound(NS_TWIPS_TO_INCHES(aTwips) *
                           mDeviceContext->AppUnitsPerInch()); }
+
+  // Margin-specific version, since they often need TwipsToAppUnits
+  nsMargin TwipsToAppUnits(const nsMargin &marginInTwips) const
+  { return nsMargin(TwipsToAppUnits(marginInTwips.left), 
+                    TwipsToAppUnits(marginInTwips.top),
+                    TwipsToAppUnits(marginInTwips.right),
+                    TwipsToAppUnits(marginInTwips.bottom)); }
 
   PRInt32 AppUnitsToTwips(nscoord aTwips) const
   { return NS_INCHES_TO_TWIPS((float)aTwips /
@@ -849,6 +862,7 @@ protected:
   unsigned              mPrefScrollbarSide : 2;
   unsigned              mPendingSysColorChanged : 1;
   unsigned              mPendingThemeChanged : 1;
+  unsigned              mPrefChangePendingNeedsReflow : 1;
   unsigned              mRenderedPositionVaryingContent : 1;
 
   // resize reflow is supressed when the only change has been to zoom

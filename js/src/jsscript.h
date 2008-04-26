@@ -1,4 +1,3 @@
-
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  * vim: set ts=8 sw=4 et tw=78:
  *
@@ -84,6 +83,10 @@ typedef struct JSObjectArray {
 #define JS_OBJECT_ARRAY_SIZE(length)                                          \
     (offsetof(JSObjectArray, vector) + sizeof(JSObject *) * (length))
 
+#if defined DEBUG && defined JS_THREADSAFE
+# define CHECK_SCRIPT_OWNER 1
+#endif
+
 struct JSScript {
     jsbytecode      *code;      /* bytecodes and their immediate operands */
     uint32          length;     /* length of code vector */
@@ -103,6 +106,9 @@ struct JSScript {
     uintN           depth;      /* maximum stack depth in slots */
     JSPrincipals    *principals;/* principals for this script */
     JSObject        *object;    /* optional Script-class object wrapper */
+#ifdef CHECK_SCRIPT_OWNER
+    JSThread        *owner;     /* for thread-safe life-cycle assertions */
+#endif
 };
 
 /* No need to store script->notes now that it is allocated right after code. */
@@ -221,10 +227,10 @@ js_NewScriptFromCG(JSContext *cx, JSCodeGenerator *cg);
  * of js_XDRScript, the hook should be invoked only after successful decode
  * of any owning function (the fun parameter) or script object (null fun).
  */
-extern JS_FRIEND_API(void)
+extern void
 js_CallNewScriptHook(JSContext *cx, JSScript *script, JSFunction *fun);
 
-extern JS_FRIEND_API(void)
+extern void
 js_CallDestroyScriptHook(JSContext *cx, JSScript *script);
 
 extern void

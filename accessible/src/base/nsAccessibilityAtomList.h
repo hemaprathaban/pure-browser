@@ -116,6 +116,10 @@ ACCESSIBILITY_ATOM(label, "label")
 ACCESSIBILITY_ATOM(legend, "legend")
 ACCESSIBILITY_ATOM(li, "li")
 ACCESSIBILITY_ATOM(link, "link")
+ACCESSIBILITY_ATOM(listcols, "listcols") // XUL
+ACCESSIBILITY_ATOM(listcol, "listcol") // XUL
+ACCESSIBILITY_ATOM(listhead, "listhead") // XUL
+ACCESSIBILITY_ATOM(listheader, "listheader") // XUL
 ACCESSIBILITY_ATOM(map, "map")
 ACCESSIBILITY_ATOM(math, "math")
 ACCESSIBILITY_ATOM(menu, "menu")    // XUL
@@ -153,6 +157,7 @@ ACCESSIBILITY_ATOM(anonid, "anonid") // Used for ID's in XBL
 ACCESSIBILITY_ATOM(contenteditable, "contenteditable")
 ACCESSIBILITY_ATOM(control, "control")
 ACCESSIBILITY_ATOM(disabled, "disabled")
+ACCESSIBILITY_ATOM(_class, "class")
 ACCESSIBILITY_ATOM(cycles, "cycles") // used for XUL cycler attribute
 ACCESSIBILITY_ATOM(curpos, "curpos") // XUL
 ACCESSIBILITY_ATOM(data, "data")
@@ -211,13 +216,13 @@ ACCESSIBILITY_ATOM(aria_pressed, "aria-pressed")
 ACCESSIBILITY_ATOM(aria_readonly, "aria-readonly")
 ACCESSIBILITY_ATOM(aria_relevant, "aria-relevant")
 ACCESSIBILITY_ATOM(aria_required, "aria-required")
-ACCESSIBILITY_ATOM(aria_secret, "aria-secret")
 ACCESSIBILITY_ATOM(aria_selected, "aria-selected")
 ACCESSIBILITY_ATOM(aria_setsize, "aria-setsize")
 ACCESSIBILITY_ATOM(aria_sort, "aria-sort")
 ACCESSIBILITY_ATOM(aria_valuenow, "aria-valuenow")
 ACCESSIBILITY_ATOM(aria_valuemin, "aria-valuemin")
 ACCESSIBILITY_ATOM(aria_valuemax, "aria-valuemax")
+ACCESSIBILITY_ATOM(aria_valuetext, "aria-valuetext")
 
   // misc atoms
 // a form property used to obtain the default label
@@ -229,3 +234,8 @@ ACCESSIBILITY_ATOM(level, "level")
 ACCESSIBILITY_ATOM(posinset, "posinset") 
 ACCESSIBILITY_ATOM(setsize, "setsize")
 ACCESSIBILITY_ATOM(lineNumber, "line-number")
+ACCESSIBILITY_ATOM(containerRelevant, "container-relevant")
+ACCESSIBILITY_ATOM(containerLive, "container-live")
+ACCESSIBILITY_ATOM(containerChannel, "container-channel")
+ACCESSIBILITY_ATOM(containerAtomic, "container-atomic")
+ACCESSIBILITY_ATOM(containerBusy, "container-busy")
