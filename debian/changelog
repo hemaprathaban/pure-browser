@@ -1,3 +1,20 @@
+iceweasel (3.0~b5-3) experimental; urgency=low
+
+  * debian/README.Debian: Change the paragraph about pango, since this is now
+    the only font backend and MOZ_DISABLE_PANGO is effectless.
+  * debian/presubj: Remove the paragraph about MOZ_DISABLE_PANGO.
+  * debian/iceweasel-runner: Don't export the MOZ_DISABLE_PANGO variable.
+  * debian/rules:
+    - Remove old unused stuff.
+    - Use upstream optimization flags.
+    - Arrange LDFLAGS so that -Wl,--as-needed appears before -lpthread.
+  * debian/iceweasel-gnome-support.install: Remove the imgicon component from
+    the iceweasel-gnome-support package. (Closes: #477661)
+  * xpcom/reflect/xptcall/src/md/unix/Makefile.in: Fix FTBFS on hppa.
+    (Closes: #473766)
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 26 Apr 2008 09:35:27 +0200
+
 iceweasel (3.0~b5-2) experimental; urgency=low
 
   [ Mike Hommey ]
