@@ -1,3 +1,61 @@
+iceweasel (3.0~b5-4) experimental; urgency=low
+
+  [ Eric Dorland ]
+  * debian/control:
+    - Add Replaces on iceweasel-gnome-support for imgicon move.
+      (Closes: #478084)
+    - Fix GNOME spelling errors.
+    - Remove binutils and dpkg-dev build dependencies that were workarounds
+      for broken version that are no longer in Debian.
+  * debian/rules: Add calls to dh_desktop.
+  * debian/iceweasel.postinst: Fix inverted check for a running
+    iceweasel. Thanks Andreas Beckmann. (Closes: #473756)
+  * debian/iceweasel.desktop: Add trailing semicolons to Categories and
+    Mimetype to comply the standard. Thanks Michael Biebl. (Closes:
+    #468117)
+
+  [ Mike Hommey ]
+  * debian/control:
+    - Replace a bunch of build dependencies with xulrunner-dev and
+      xulrunner-1.9-common (a versioned dependency is required for this one
+      because of an incompatible platform.ini in 1.9~b5-1).
+    - iceweasel now depends on xulrunner-1.9 (we rely on xulrunner-stub from
+      version 1.9~b5-4).
+    - iceweasel-dbg depends on xulrunner-1.9-dbg.
+    - iceweasel-gnome-support is transformed into a dummy package to install
+      xulrunner-1.9-gnome-support.
+  * debian/iceweasel-gnome-support.*: Removed.
+  * debian/iceweasel.install, debian/iceweasel.links:
+    - Don't install files that are provided by xulrunner-1.9, including the
+      firefox binary, which is a copy of xulrunner-stub.
+    - defaults/pref is now defaults/preferences.
+    - Install application.ini in /usr/lib/iceweasel instead of
+      /usr/share/iceweasel. Xulrunner following symlinks, it fails running
+      iceweasel without the file being in /usr/lib/iceweasel.
+  * debian/rules:
+    - Build against xulrunner-1.9.
+    - Don't install files in the iceweasel-gnome-support package and don't
+      filter anything in the iceweasel package.
+    - Don't set general.useragent.product and general.useragent.productSub,
+      they have no effect anymore.
+    - defaults/pref is now defaults/preferences.
+    - Remove specific CFLAGS for alpha and ppc64, since we don't build from
+      code that may require it.
+    - Properly cleanup debian/branding with clean rule.
+  * debian/iceweasel.links:
+    - Install the xulrunner-stub as a /usr/lib/iceweasel/firefox-bin symlink.
+      It will also allow smooth upgrade for those whose session manager stored
+      firefox-bin as iceweasel main executable.
+    - Help xulrunner-stub by pointing to xulrunner's home with a
+      /usr/lib/iceweasel/xulrunner symlink to /usr/lib/xulrunner-1.9.
+  * debian/iceweasel.postinst: Remove /usr/lib/iceweasel/.autoreg on upgrade.
+  * debian/iceweasel-xremote-client: Don't set MOZILLA_FIVE_HOME anymore.
+  * toolkit/library/Makefile.in,
+    xpcom/reflect/xptcall/src/md/unix/Makefile.in: Revert changes to these
+    files, as they are not used for the build anymore.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 01 May 2008 18:56:40 +0200
+
 iceweasel (3.0~b5-3) experimental; urgency=low
 
   * debian/README.Debian: Change the paragraph about pango, since this is now

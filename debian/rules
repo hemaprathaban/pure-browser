@@ -16,8 +16,6 @@ DEBIAN_VERSION := $(shell dpkg-parsechangelog | sed -n 's/Version: *\(.*\)/\1/ p
 UPSTREAM_VERSION := $(shell echo $(DEBIAN_VERSION) | sed 's/-.*$$//')
 DEBIAN_REV_CODE := $(shell echo $(DEBIAN_VERSION) | sed 's/^.*-\([0-9]*\)[^-]*$$/0\1/ ; s/^.*\(..\)$$/\1/')
 
-BUILD_DATE=$(shell perl -e '($$s,$$m,$$h,$$d,$$M,$$y) = gmtime((stat("client.mk"))[9]); printf "%04d%02d%02d\n",$$y + 1900,$$M + 1,$$d;')
-
 AUTOCONF_DIRS := ./nsprpub/build/autoconf/ ./build/autoconf/
 
 LIB_DIR := /usr/lib/iceweasel
@@ -25,49 +23,19 @@ SHARE_DIR := /usr/share/iceweasel
 
 CFLAGS := -g
 
-ifeq ($(DEB_BUILD_ARCH),alpha)
-	CFLAGS += -Wl,--no-relax
-endif
-
-ifeq ($(DEB_BUILD_ARCH),ppc64)
-	CFLAGS += -mminimal-toc
-endif
-
 CONFIGURE_OPTIONS = \
 	--with-distribution-id=org.debian \
-	--enable-default-toolkit=cairo-gtk2 \
-	--with-default-mozilla-five-home=$(LIB_DIR) \
-	--enable-pango \
+	--with-libxul-sdk=/usr/lib/xulrunner-devel-1.9 \
 	--with-user-appdir=.mozilla \
-	--with-system-jpeg=/usr \
-	--disable-mailnews \
-	--disable-composer \
-	--disable-ldap \
-	--enable-postscript \
 	--disable-installer \
-	--enable-xprint \
-	--enable-crypto \
 	--disable-strip \
 	--disable-install-strip \
-	--enable-canvas \
-	--enable-svg \
-	--enable-svg-renderer=cairo \
-	--enable-system-cairo \
-	--enable-mathml \
 	--disable-tests \
 	--disable-gtktest \
-	--disable-debug \
-	--enable-xft \
-	--with-system-zlib=/usr \
-	--enable-xinerama \
 	--enable-extensions=default \
-	--disable-pedantic \
-	--disable-long-long-warning \
 	--enable-single-profile \
 	--disable-profilesharing \
-	--enable-gnomevfs \
 	--enable-application=browser \
-	--disable-installer \
 	--disable-updater \
 	--disable-elf-dynstr-gc \
 	--with-branding=debian/branding \
@@ -153,7 +121,7 @@ clean:
 		debian/*.png \
 		debian/*.xpm \
 	rm -f debian/branding/*.png debian/branding/*.xpm \
-		debian/branding/content/*.png
+		debian/branding/*.ico debian/branding/content/*.png
 
 	[ ! -f Makefile ] || $(MAKE) distclean
 
@@ -178,8 +146,7 @@ install-stamp: build-stamp
 	chmod a-x debian/tmp/$(LIB_DIR)/components/*.js
 
 # Exclude gnome components from iceweasel
-	dh_install -piceweasel -Xgnome
-	dh_install -piceweasel-gnome-support
+	dh_install -piceweasel
 
 #Install helpers
 	install -m 755 debian/iceweasel-runner \
@@ -200,14 +167,8 @@ install-stamp: build-stamp
 	rm -f debian/iceweasel/$(SHARE_DIR)/defaults/pref/firefox-l10n.js
 
 # Add Debian package version to preferences
-	echo // Debian package version \
-		> debian/iceweasel/$(SHARE_DIR)/defaults/pref/vendor.js
-	echo "pref(\"general.useragent.product\",\"Gecko\");" \
-		>> debian/iceweasel/$(SHARE_DIR)/defaults/pref/vendor.js
-	echo "pref(\"general.useragent.productSub\",\"$(BUILD_DATE)\");" \
-		>> debian/iceweasel/$(SHARE_DIR)/defaults/pref/vendor.js
 	echo "pref(\"general.useragent.extra.firefoxComment\",\"(Debian-$(DEBIAN_VERSION))\");" \
-		>> debian/iceweasel/$(SHARE_DIR)/defaults/pref/vendor.js
+		> debian/iceweasel/$(SHARE_DIR)/defaults/preferences/vendor.js
 
 	cp -f LICENSE MPL
 	touch install-stamp
@@ -225,6 +186,7 @@ binary-indep: build install
 	dh_installmime -i
 	dh_installchangelogs -i
 	dh_link -i
+	dh_desktop -i
 	dh_compress -i
 	dh_fixperms -i
 	dh_installdeb -i
@@ -245,6 +207,7 @@ binary-arch: build install
 	dh_installmime -a
 	dh_installchangelogs -a
 	dh_link -a
+	dh_desktop -a
 	dh_strip -a --dbg-package=iceweasel-dbg
 	dh_compress -piceweasel -XREADME.Debian
 	dh_compress -a -Niceweasel
