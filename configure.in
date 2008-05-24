@@ -4001,8 +4001,8 @@ if test -n "$MOZ_NATIVE_NSPR"; then
     CFLAGS=$_SAVE_CFLAGS
 else
   if test -n "$LIBXUL_SDK"; then
-      NSPR_CFLAGS="-I$(LIBXUL_SDK_DIR)/sdk/include"
-      NSPR_LIBS="-L$(LIBXUL_SDK_DIR)/sdk/lib -lnspr$NSPR_VERSION -lplc$NSPR_VERSION -lplds$NSPR_VERSION"
+      NSPR_CFLAGS="-I$LIBXUL_SDK_DIR/sdk/include"
+      NSPR_LIBS="-L$LIBXUL_SDK_DIR/sdk/lib -lnspr$NSPR_VERSION -lplc$NSPR_VERSION -lplds$NSPR_VERSION"
   else
     NSPR_CFLAGS='`$(DEPTH)/nsprpub/config/nspr-config --prefix=$(LIBXUL_DIST) --includedir=$(LIBXUL_DIST)/include/nspr --cflags`'
     # explicitly set libs for Visual Age C++ for OS/2
@@ -6261,7 +6261,7 @@ MOZ_ARG_ENABLE_BOOL(jemalloc,
     MOZ_MEMORY=1,
     MOZ_MEMORY=)
 
-if test "$NS_TRACE_MALLOC"; then
+if test "$NS_TRACE_MALLOC" || test "$LIBXUL_SDK"; then
     MOZ_MEMORY=
 fi
 
