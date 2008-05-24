@@ -1,3 +1,40 @@
+iceweasel (3.0~rc1-1) experimental; urgency=low
+
+  * configure.in, configure: Fix LIBXUL_SDK_DIR variable use. Closes: #479041.
+  * debian/iceweasel-runner: Work around problems with aoss and libjemalloc by
+    preloading the glibc. Closes: #475166.
+  * debian/iceweasel.postinst:
+    - Remove any compreg.dat and xpti.dat that would be left from earlier runs
+      of iceweasel as root, causing possible random crashes with xpcom.
+      Closes: #481020.
+    - Touch .autoreg on install/upgrade, so that components registration is
+      triggered for the components provided by iceweasel.
+  * debian/control:
+    - Build depend on xulrunner-dev 1.9~rc1 and stop build depending on
+      xulrunner-1.9-common which was only required because of incompatible
+      platform.ini in xulrunner-1.9-common 1.9~b5-1.
+    - iceweasel depends on xulrunner >= 1.9~rc1.
+  * debian/about_debian.js: Removed, as this component will be provided by
+    xulrunner.
+  * debian/iceweasel.install: Don't install about_debian.js.
+  * debian/rules: Use proper flag to disable optimization.
+  * debian/branding/branding.nsi, debian/branding/content/contents.rdf:
+    Removed useless branding files.
+  * debian/branding/locales/en-US/brand.dtd: Removed useless entity.
+  * debian/vendor.js:
+    - Add package name for debAbout.js component.
+    - Avoid displaying useless EULA at iceweasel startup.
+  * debian/rules: Install debian/vendor.js and append
+    general.useragent.extra.firefoxComment there.
+  * configure.in, configure: Don't build libjemalloc when building against
+    libxul-sdk.
+  * browser/base/content/baseMenuOverlay.xul,
+    browser/components/safebrowsing/content/report-phishing-overlay.xul,
+    extensions/reporter/resources/content/reporter/reporterOverlay.xul:
+    Arrange menu overlays so that nothing ends up after "About Iceweasel".
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 24 May 2008 22:48:48 +0200
+
 iceweasel (3.0~b5-4) experimental; urgency=low
 
   [ Eric Dorland ]
