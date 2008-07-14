@@ -90,7 +90,6 @@ config.status:
 		debian/iceweasel_icon.svg
 	cp -f debian/branding/default64.png debian/branding/content/icon64.png
 
-
 	rsvg-convert -w 48 -h 48 -o debian/branding/default48.png \
 		debian/iceweasel_icon.svg
 	cp -f debian/branding/default48.png debian/branding/content/icon48.png
@@ -161,6 +160,9 @@ install-stamp: build-stamp
 	install -d -m 755 debian/iceweasel/usr/share/icons/hicolor/32x32/apps
 	install -m 644 debian/iceweasel.png \
 		debian/iceweasel/usr/share/icons/hicolor/32x32/apps/iceweasel.png
+	install -d -m 755 debian/iceweasel/usr/share/icons/hicolor/64x64/apps
+	install -m 644 debian/branding/default64.png \
+		debian/iceweasel/usr/share/icons/hicolor/64x64/apps/iceweasel.png
 	install -d -m 755 debian/iceweasel/usr/share/icons/hicolor/scalable/apps
 	install -m 644 debian/iceweasel_icon.svg \
 		debian/iceweasel/usr/share/icons/hicolor/scalable/apps/iceweasel.svg
@@ -175,6 +177,8 @@ install-stamp: build-stamp
 # Add Debian package version to preferences
 	echo "pref(\"general.useragent.extra.firefoxComment\",\"(Debian-$(DEBIAN_VERSION))\");" \
 		>> debian/iceweasel/$(SHARE_DIR)/defaults/preferences/vendor.js
+
+	sed -i 's/\(MinVersion=1.9\).*/\1/;s/\(MaxVersion=1.9\).*/\1.0.*/' debian/tmp/usr/lib/iceweasel/application.ini
 
 	cp -f LICENSE MPL
 	touch install-stamp
