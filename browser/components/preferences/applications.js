@@ -669,7 +669,7 @@ FeedHandlerInfo.prototype = {
       defaultFeedReader = this._shellSvc.defaultFeedReader;
     }
     catch(ex) {
-      // no default reader
+      // no default reader or _shellSvc is null
     }
 #endif
 
@@ -696,7 +696,7 @@ FeedHandlerInfo.prototype = {
         return true;
     }
     catch(ex) {
-      // no default reader
+      // no default reader or _shellSvc is null
     }
 #endif
 

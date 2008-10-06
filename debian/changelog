@@ -1,3 +1,21 @@
+iceweasel (3.0.3-1) unstable; urgency=high
+
+  * New upstream release. (Closes: #500374)
+  
+  * debian/presubj: Fix typo. Thanks Rémi Vanicat. (Closes: #444736)
+  * browser/app/application.ini: Our name should be Iceweasel and not
+    Firefox. This name here is used early in the startup, for things like
+    the group leader window name. (Closes: #428836)
+  * browser/app/application.ini: Set the profile path explicitely now that
+    we have a different application name.
+  * debian/iceweasel-runner: Add the -profile and
+    -install-global-extension to the list of single arg flags for
+    iceweasel. (Closes: #425874, #440455)
+  * debian/iceweasel.desktop: Fixed Finnish desktop file
+    translation. Thanks Timo Jyrinki. (Closes: #483941)
+
+ -- Eric Dorland <eric@debian.org>  Mon, 06 Oct 2008 01:59:30 -0400
+
 iceweasel (3.0.1-1) unstable; urgency=low
 
   * New upstream release.
