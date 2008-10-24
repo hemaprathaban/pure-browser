@@ -1,3 +1,20 @@
+iceweasel (3.0.3-3) unstable; urgency=low
+
+  * browser/app/profile/firefox.js: Replace %APP% with firefox in some places.
+    Closes: #501540, #502450.
+  * browser/branding/unofficial/locales/browserconfig.properties: Change the
+    homepage to about:. Closes: #499346.
+  * browser/app/profile/firefox.js, browser/locales/en-US/firefox-l10n.js:
+    Remove general.useragent.locale prefs from firefox*.js. Closes: #495381.
+  * browser/components/feeds/src/FeedConverter.js: Allow external web feed
+    application to work without gnome libraries. Closes: #406380.
+  * debian/presubj: Minor changes and add a note about MOZILLA_DISABLE_PLUGINS
+    environment variable.
+  * debian/control: Depend on a version of xulrunner-1.9 that handles the
+    MOZILLA_DISABLE_PLUGINS environment variable.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 24 Oct 2008 08:16:02 +0200
+
 iceweasel (3.0.3-2) unstable; urgency=low
 
   * debian/iceweasel-xremote-client, debian/iceweasel-runner: Use 'iceweasel'
