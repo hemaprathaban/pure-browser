@@ -455,16 +455,16 @@ HexToNum(char ch)
     return ch - '0';
 
   if ('A' <= ch && 'F' >= ch)
-    return ch - 'A';
+    return ch - 'A' + 10;
 
   if ('a' <= ch && 'f' >= ch)
-    return ch - 'a';
+    return ch - 'a' + 10;
 
   return 0;
 }
   
 
-// In: 3 or 6-character RRGGBB hex string
+// In: 3, 6 or 12-character RRGGBB hex string
 // Out: component colors
 static PRBool
 HexToRGB(const nsCString& aColorSpec,
@@ -474,12 +474,22 @@ HexToRGB(const nsCString& aColorSpec,
 {
   const char *buf = aColorSpec.get();
 
-  if (aColorSpec.Length() == 6) {
-    aRed =    HexToNum(buf[0]) >> 4 |
+  if (aColorSpec.Length() == 12) {
+    aRed =    HexToNum(buf[0]) << 4 |
               HexToNum(buf[1]);
-    aGreen =  HexToNum(buf[2]) >> 4 |
+    aGreen =  HexToNum(buf[4]) << 4 |
+              HexToNum(buf[5]);
+    aBlue =   HexToNum(buf[8]) << 4 |
+              HexToNum(buf[9]);
+    return PR_TRUE;
+  }
+
+  if (aColorSpec.Length() == 6) {
+    aRed =    HexToNum(buf[0]) << 4 |
+              HexToNum(buf[1]);
+    aGreen =  HexToNum(buf[2]) << 4 |
               HexToNum(buf[3]);
-    aBlue =   HexToNum(buf[4]) >> 4 |
+    aBlue =   HexToNum(buf[4]) << 4 |
               HexToNum(buf[5]);
     return PR_TRUE;
   }
@@ -489,9 +499,9 @@ HexToRGB(const nsCString& aColorSpec,
     aGreen = HexToNum(buf[1]);
     aBlue = HexToNum(buf[2]);
 
-    aRed |= aRed >> 4;
-    aGreen |= aGreen >> 4;
-    aBlue |= aBlue >> 4;
+    aRed |= aRed << 4;
+    aGreen |= aGreen << 4;
+    aBlue |= aBlue << 4;
 
     return PR_TRUE;
   }
