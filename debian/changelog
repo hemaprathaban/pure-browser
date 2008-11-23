@@ -1,3 +1,29 @@
+iceweasel (3.0.4-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #505557)
+  
+  [ Mike Hommey ]
+  * debian/iceweasel-gnome-support.postinst,
+    debian/iceweasel-gnome-support.prerm: Handle gnome-www-browser alternative.
+    Restored from 3.0~b5-3. Closes: #492286.
+  * debian/branding/locales/browserconfig.properties: Change the homepage to
+    about:. Closes: #499346
+  * browser/branding/unofficial/locales/browserconfig.properties: Revert
+    previous change, this is not the installed file.
+  * debian/homepagereset.js: Force homepage reset if it was previously set to
+    the granparadiso homepage.
+  * debian/iceweasel-restart-required.update-notifier: Added japanese
+    translation. Thanks Hideki Yamane. Closes: #503595.
+  * browser/components/shell/src/nsGNOMEShellService.cpp: Fix various problems
+    in the handling of GNOME background color. Closes: #495897.
+
+  [ Eric Dorland ]
+  * debian/iceweasel.desktop: Just specify "iceweasel" as the icon, so it
+    can pick the scalable one under certain circumstances. (Closes:
+    #451943)
+
+ -- Eric Dorland <eric@debian.org>  Sun, 23 Nov 2008 01:32:40 -0500
+
 iceweasel (3.0.3-3) unstable; urgency=low
 
   * browser/app/profile/firefox.js: Replace %APP% with firefox in some places.
