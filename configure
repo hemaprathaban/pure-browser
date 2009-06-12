@@ -16262,29 +16262,29 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo $ac_n "checking for sqlite3 >= $SQLITE_VERSION""... $ac_c" 1>&6
-echo "configure:16267: checking for sqlite3 >= $SQLITE_VERSION" >&5
+        echo $ac_n "checking for sqlite3""... $ac_c" 1>&6
+echo "configure:16267: checking for sqlite3" >&5
 
-        if $PKG_CONFIG --exists "sqlite3 >= $SQLITE_VERSION" ; then
+        if $PKG_CONFIG --exists "sqlite3" ; then
             echo "$ac_t""yes" 1>&6
             succeeded=yes
 
             echo $ac_n "checking SQLITE_CFLAGS""... $ac_c" 1>&6
 echo "configure:16274: checking SQLITE_CFLAGS" >&5
-            SQLITE_CFLAGS=`$PKG_CONFIG --cflags "sqlite3 >= $SQLITE_VERSION"`
+            SQLITE_CFLAGS=`$PKG_CONFIG --cflags "sqlite3"`
             echo "$ac_t""$SQLITE_CFLAGS" 1>&6
 
             echo $ac_n "checking SQLITE_LIBS""... $ac_c" 1>&6
 echo "configure:16279: checking SQLITE_LIBS" >&5
             ## Remove evil flags like -Wl,--export-dynamic
-            SQLITE_LIBS="`$PKG_CONFIG --libs \"sqlite3 >= $SQLITE_VERSION\" |sed s/-Wl,--export-dynamic//g`"
+            SQLITE_LIBS="`$PKG_CONFIG --libs \"sqlite3\" |sed s/-Wl,--export-dynamic//g`"
             echo "$ac_t""$SQLITE_LIBS" 1>&6
         else
             SQLITE_CFLAGS=""
             SQLITE_LIBS=""
             ## If we have a custom action on failure, don't print errors, but 
             ## do set a variable so people can do so.
-            SQLITE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "sqlite3 >= $SQLITE_VERSION"`
+            SQLITE_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "sqlite3"`
             echo $SQLITE_PKG_ERRORS
         fi
 
@@ -16300,7 +16300,7 @@ echo "configure:16279: checking SQLITE_LIBS" >&5
      :
   else
      if test "$COMPILE_ENVIRONMENT"; then 
-       { echo "configure: error: Library requirements (sqlite3 >= $SQLITE_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." 1>&2; exit 1; }
+       { echo "configure: error: Library requirements (sqlite3) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." 1>&2; exit 1; }
      fi
   fi
 
