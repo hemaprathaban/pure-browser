@@ -1684,7 +1684,9 @@ nsNSSComponent::InitializeNSS(PRBool showWarningBox)
 
       // Set up OCSP //
       setOCSPOptions(mPrefBranch);
+#if 0
       RegisterMyOCSPAIAInfoCallback();
+#endif
 
       mHttpForNSS.initTable();
       mHttpForNSS.registerHttpClient();
@@ -1734,7 +1736,9 @@ nsNSSComponent::ShutdownNSS()
 
     PK11_SetPasswordFunc((PK11PasswordFunc)nsnull);
     mHttpForNSS.unregisterHttpClient();
+#if 0
     UnregisterMyOCSPAIAInfoCallback();
+#endif
 
     if (mPrefBranch) {
       nsCOMPtr<nsIPrefBranch2> pbi = do_QueryInterface(mPrefBranch);
