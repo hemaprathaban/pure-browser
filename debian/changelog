@@ -1,3 +1,16 @@
+xulrunner (1.9.0.14-0lenny1) stable-security; urgency=high
+
+  * New upstream release.
+  * Fixes mfsa-2009-{47-50}, also known as
+    CVE-2009-3070, CVE-2009-3071, CVE-2009-3072, CVE-2009-3074,
+    CVE-2009-3075, CVE-2009-3076, CVE-2009-3077, CVE-2009-3078.
+  * security/manager/ssl/src/nsNSSCallbacks.{h,cpp},
+    security/manager/ssl/src/nsNSSComponent.cpp,
+    security/manager/ssl/src/nsNSSCertHelper.cpp: Revert previous changes.
+  * debian/control: Build depend on newer libnss3-dev.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 10 Sep 2009 09:06:07 +0200
+
 xulrunner (1.9.0.13-0lenny1) stable-security; urgency=high
 
   * New upstream release.
