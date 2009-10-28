@@ -1,3 +1,16 @@
+xulrunner (1.9.0.15-0lenny1) stable-security; urgency=high
+
+  * New upstream release.
+  * Fixes mfsa-2009-{52,53,55-57,59,61,62,64}, also known as
+    CVE-2009-3370, CVE-2009-3274, CVE-2009-3372, CVE-2009-3373,
+    CVE-2009-3374, CVE-2009-1563, CVE-2009-3375, CVE-2009-3376,
+    CVE-2009-3380, CVE-2009-3382.
+  * modules/libpref/src/prefapi.cpp: Avoid writing out locked prefs default
+    value in user preferences. Closes: #512111.
+  * debian/libmozjs1d.symbols: Add new symbols.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 28 Oct 2009 14:54:31 +0100
+
 xulrunner (1.9.0.14-0lenny1) stable-security; urgency=high
 
   * New upstream release.
