@@ -52,7 +52,7 @@ xpidl-install-src: $(xpidl-install-src-preqs)
 
 xpidl-install-headers-preqs =\
   $(patsubst %.idl,$(XPIDL_GEN_DIR)/%.h, $(XPIDLSRCS)) \
-  $(call mkdir_deps,$(DIST)/include) \
+  $(call mkdir_deps,$(INCLUDE_DIR)) \
   $(NULL)
 xpidl-install-headers: $(xpidl-install-headers-preqs)
 	$(call install_cmd,$(IFLAGS1) $(foreach val,$^,$(call mkdir_stem,$(val))))
