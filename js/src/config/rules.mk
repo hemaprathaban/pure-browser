@@ -32,6 +32,16 @@ ifdef SDK_HEADERS
 EXPORTS += $(SDK_HEADERS)
 endif
 
+ifneq (,$(findstring sample,$(MODULE))$(findstring test,$(MODULE))$(findstring Test,$(MODULE)))
+INCLUDE_DIR := $(DIST)/include/testing
+IDL_DIR := $(DIST)/tests/idl
+LOCAL_INCLUDES += -I$(XPIDL_GEN_DIR) -I$(INCLUDE_DIR)
+override MOZ_JAVAXPCOM :=
+XPIDL_FLAGS += -I$(DIST)/idl
+else
+INCLUDE_DIR := $(DIST)/include
+endif
+
 REPORT_BUILD = @echo $(notdir $<)
 
 ifeq ($(OS_ARCH),OS2)
@@ -1342,7 +1352,6 @@ endif # NO_GEN_XPT
 GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
 
 endif #} XPIDLSRCS
-
 
 ifndef INCLUDED_XPIDL_MK
   include $(topsrcdir)/config/makefiles/xpidl.mk
