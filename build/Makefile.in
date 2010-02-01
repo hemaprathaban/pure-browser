@@ -160,4 +160,6 @@ check::
           echo "TEST-PASS | build/ | unify unified files with differing line ordering!"; \
         fi
 endif
+
+GARBAGE += automationutils.pyc
 endif # ENABLE_TESTS
