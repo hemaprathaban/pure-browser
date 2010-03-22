@@ -305,6 +305,7 @@ Service::getSingleton()
     return gService;
   }
 
+#if 0
   // Ensure that we are using the same version of SQLite that we compiled with
   // or newer.  Our configure check ensures we are using a new enough version
   // at compile time.
@@ -320,6 +321,7 @@ Service::getSingleton()
     }
     ::PR_Abort();
   }
+#endif
 
   gService = new Service();
   if (gService) {
