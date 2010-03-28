@@ -889,12 +889,6 @@ ProcessExtKeyUsage(SECItem  *extData,
   return NS_OK;
 }
 
-#include <nss.h>
-#if (NSS_VMAJOR == 3 && NSS_VMINOR == 12 && NSS_VPATCH < 3) || (NSS_VMAJOR == 3 && NSS_VMINOR < 12)
-extern "C" NS_EXPORT SECStatus
-CERT_RFC1485_EscapeAndQuote(char *dst, int dstlen, char *src, int srclen);
-#endif
-
 static nsresult
 ProcessRDN(CERTRDN* rdn, nsAString &finalString, nsINSSComponent *nssComponent)
 {
