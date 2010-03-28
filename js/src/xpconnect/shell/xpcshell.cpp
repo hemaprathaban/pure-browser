@@ -911,7 +911,7 @@ ProcessArgs(JSContext *cx, JSObject *obj, char **argv, int argc)
 
 class FullTrustSecMan
 #ifndef XPCONNECT_STANDALONE
-  : public nsIScriptSecurityManager
+  : public nsIScriptSecurityManager_1_9_0_BRANCH
 #else
   : public nsIXPCSecurityManager
 #endif
@@ -921,6 +921,7 @@ public:
   NS_DECL_NSIXPCSECURITYMANAGER
 #ifndef XPCONNECT_STANDALONE
   NS_DECL_NSISCRIPTSECURITYMANAGER
+  NS_DECL_NSISCRIPTSECURITYMANAGER_1_9_0_BRANCH
 #endif
 
   FullTrustSecMan();
@@ -1206,6 +1207,13 @@ FullTrustSecMan::IsSystemPrincipal(nsIPrincipal *aPrincipal, PRBool *_retval)
 NS_IMETHODIMP_(nsIPrincipal *)
 FullTrustSecMan::GetCxSubjectPrincipal(JSContext *cx)
 {
+    return mSystemPrincipal;
+}
+
+NS_IMETHODIMP_(nsIPrincipal *)
+FullTrustSecMan::GetCxSubjectPrincipalAndFrame(JSContext *cx, JSStackFrame **fp)
+{
+    *fp = nsnull;
     return mSystemPrincipal;
 }
 
