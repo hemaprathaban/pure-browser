@@ -1037,7 +1037,6 @@ SECStatus PR_CALLBACK AuthCertificateCallback(void* client_data, PRFileDesc* fd,
   return rv;
 }
 
-#if 0
 struct OCSPDefaultResponders {
     const char *issuerName_string;
     CERTName *issuerName;
@@ -1216,4 +1215,3 @@ SECStatus UnregisterMyOCSPAIAInfoCallback() {
   cleanUpMyDefaultOCSPResponders();
   return SECSuccess;
 }
-#endif
