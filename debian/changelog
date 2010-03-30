@@ -1,3 +1,14 @@
+xulrunner (1.9.0.19-1) stable-security; urgency=low
+
+  * New upstream release.
+  * Fixes mfsa-2010-{16-21}, also known as
+    CVE-2010-0174, CVE-2010-0175, CVE-2010-0176, CVE-2010-0177,
+    CVE-2010-0178, CVE-2010-0179.
+  * modules/libpr0n/decoders/png/nsPNGDecoder.cpp: Fix breakage with png
+    decoder update in 1.9.0.19.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 30 Mar 2010 22:45:04 +0200
+
 xulrunner (1.9.0.18-1) stable-security; urgency=low
 
   * New upstream release.
