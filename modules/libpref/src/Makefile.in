@@ -7,6 +7,10 @@ DEFINES += -DOS_ARCH=$(OS_ARCH) \
            -DMOZ_WIDGET_TOOLKIT=$(MOZ_WIDGET_TOOLKIT) \
            $(NULL)
 
+ifdef MOZ_OFFICIAL_BRANDING
+DEFINES += -DMOZ_OFFICIAL_BRANDING
+endif
+
 include $(topsrcdir)/config/rules.mk
 
 GARBAGE		+= $(addprefix $(DIST)/bin/defaults/pref/, \
