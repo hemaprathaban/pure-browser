@@ -10,7 +10,11 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/Services.jsm");
 
+#ifdef MOZ_OFFICIAL_BRANDING
 const phishingList = "goog-phish-shavar";
+#else
+const phishingList = "googpub-phish-shavar";
+#endif
 const malwareList  = "goog-malware-shavar";
 
 var debug = false;
