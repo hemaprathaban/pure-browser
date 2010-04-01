@@ -138,6 +138,10 @@ libs::
 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(FINAL_TARGET)/chrome/icons/default
 endif
 
+ifdef MOZ_OFFICIAL_BRANDING
+DEFINES += -DMOZ_OFFICIAL_BRANDING
+endif
+
 libs:: $(srcdir)/profile/prefs.js
 	$(INSTALL) $(IFLAGS1) $^ $(FINAL_TARGET)/defaults/profile
 
