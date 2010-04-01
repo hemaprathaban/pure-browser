@@ -4432,7 +4432,11 @@ pref("dom.inter-app-communication-api.enabled", false);
 
 // The tables used for Safebrowsing phishing and malware checks.
 pref("urlclassifier.malware_table", "goog-malware-shavar,test-malware-simple");
+#ifdef MOZ_OFFICIAL_BRANDING
 pref("urlclassifier.phish_table", "goog-phish-shavar,test-phish-simple");
+#else
+pref("urlclassifier.phish_table", "googpub-phish-shavar,test-phish-simple");
+#endif
 pref("urlclassifier.downloadBlockTable", "");
 pref("urlclassifier.downloadAllowTable", "");
 pref("urlclassifier.disallow_completions", "test-malware-simple,test-phish-simple,goog-downloadwhite-digest256");
