@@ -24,4 +24,8 @@ EXTRA_PP_JS_MODULES = \
   SafeBrowsing.jsm \
   $(NULL)
 
+ifdef MOZ_OFFICIAL_BRANDING
+DEFINES += -DMOZ_OFFICIAL_BRANDING
+endif
+
 include $(topsrcdir)/config/rules.mk
