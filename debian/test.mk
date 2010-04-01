@@ -48,4 +48,4 @@ xpcshell-tests-skip:
 	rm -f _tests/xpcshell/test_uriloader_exthandler/unit/test_handlerService.js
 
 override_dh_auto_clean::
-	rm -rf debian/locales
+	rm -rf debian/locales debian/reftest-app/stub
