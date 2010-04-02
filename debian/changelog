@@ -1,3 +1,14 @@
+xulrunner (1.9.1.9-3) unstable; urgency=low
+
+  * debian/rules, debian/test.mk: Move reftest-app cleanup to debian/test.mk.
+  * debian/python-xpcom.prerm.in: python-xpcom prerm needs to be pre-processed.
+  * debian/remove.nonfree: There are still some .cvsignore files in the
+    upstream tarballs.
+  * debian/extra-stuff/packages-static.xulrunner: Install debian.jar and
+    debian.manifest ; without them, the upgrade notifier doesn't work.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 02 Apr 2010 20:50:15 +0200
+
 xulrunner (1.9.1.9-2) unstable; urgency=low
 
   * debian/control.in: Update debian/control.in, that was mistakenly left
