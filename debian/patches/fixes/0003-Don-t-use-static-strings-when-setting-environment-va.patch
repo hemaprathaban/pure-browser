@@ -1,7 +1,7 @@
-From 7d28fd94d8e94d1f01a7ff6618f4ec2988c1d3b3 Mon Sep 17 00:00:00 2001
+From 128a036e55d4709db3ce442398d190dedad636d1 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Fri, 27 Jun 2008 20:34:32 +0200
-Subject: [PATCH 03/30] Don't use static strings when setting environment variables
+Subject: [PATCH 03/32] Don't use static strings when setting environment variables
 
 There are situations where libxul.so gets dlclose()d, making static
 strings unavailable and leading to strange segmentation faults.

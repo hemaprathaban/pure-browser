@@ -1,0 +1,46 @@
+From 06928db25cda3d5e3abf0503e6d0c1b7bd1a3a6e Mon Sep 17 00:00:00 2001
+From: Mike Hommey <glandium@debian.org>
+Date: Tue, 6 Apr 2010 09:13:16 +0200
+Subject: [PATCH 31/32] KDE/Gnome startup notification not disappearing when app window is up
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=416053
+Closes: #562970
+---
+ toolkit/xre/nsAppRunner.cpp |   14 +++++++-------
+ 1 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
+index 2d27266..2495770 100644
+--- a/toolkit/xre/nsAppRunner.cpp
++++ b/toolkit/xre/nsAppRunner.cpp
+@@ -3183,13 +3183,6 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
+ 
+         nsCOMPtr<nsICommandLineRunner> cmdLine;
+ 
+-#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_WIDGET_GTK2)
+-        nsRefPtr<nsGTKToolkit> toolkit = GetGTKToolkit();
+-        if (toolkit && !desktopStartupID.IsEmpty()) {
+-          toolkit->SetDesktopStartupID(desktopStartupID);
+-        }
+-#endif
+-
+         nsCOMPtr<nsIFile> workingDir;
+         rv = NS_GetSpecialDirectory(NS_OS_CURRENT_WORKING_DIR, getter_AddRefs(workingDir));
+         NS_ENSURE_SUCCESS(rv, 1);
+@@ -3215,6 +3208,13 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
+           NS_TIMELINE_LEAVE("appStartup->CreateHiddenWindow");
+           NS_ENSURE_SUCCESS(rv, 1);
+ 
++#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_WIDGET_GTK2)
++          nsRefPtr<nsGTKToolkit> toolkit = GetGTKToolkit();
++          if (toolkit && !desktopStartupID.IsEmpty()) {
++            toolkit->SetDesktopStartupID(desktopStartupID);
++          }
++#endif
++
+           // Extension Compatibility Checking and Startup
+           if (gAppData->flags & NS_XRE_ENABLE_EXTENSION_MANAGER) {
+             nsCOMPtr<nsIExtensionManager> em(do_GetService("@mozilla.org/extensions/manager;1"));
+-- 
+1.7.0.rc0.69.g2ee80
+

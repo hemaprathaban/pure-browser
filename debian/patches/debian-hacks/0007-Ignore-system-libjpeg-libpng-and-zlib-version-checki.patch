@@ -1,7 +1,7 @@
-From f9fa43546038f9b534e8933c35a61a3f48191113 Mon Sep 17 00:00:00 2001
+From 0eed06f9971ccb109f4d5718c7cfea37e0a3ea98 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Thu, 13 Mar 2008 07:33:42 +0100
-Subject: [PATCH 07/44] Ignore system libjpeg, libpng and zlib version checking
+Subject: [PATCH 07/45] Ignore system libjpeg, libpng and zlib version checking
 
 Make sure we won't be bitten by upstream changing libjpeg, libpng or zlib
 internal version, which makes system library not used even though

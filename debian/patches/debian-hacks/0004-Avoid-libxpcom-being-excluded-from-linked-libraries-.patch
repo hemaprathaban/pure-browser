@@ -1,7 +1,7 @@
-From 6cf464b0472fdba1eeabaadcf3db9cbc9a689ed7 Mon Sep 17 00:00:00 2001
+From 5b2a1bce74f0a80fee7c7755731ffa1ae3b46abe Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Wed, 12 Mar 2008 23:18:23 +0100
-Subject: [PATCH 04/44] Avoid libxpcom being excluded from linked libraries by -Wl,--as-needed
+Subject: [PATCH 04/45] Avoid libxpcom being excluded from linked libraries by -Wl,--as-needed
 
 Force libxpcom to be linked to xulrunner-bin and xpcshell so that it is
 loaded in most cases.

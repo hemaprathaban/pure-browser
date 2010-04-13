@@ -1,7 +1,7 @@
-From 1ecbeecbdb39699e44db3d9e1d92c4d7893f8103 Mon Sep 17 00:00:00 2001
+From 6996ebda6bdbef86dea34849723883882d71025c Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Sun, 29 Jun 2008 14:36:53 +0200
-Subject: [PATCH 05/30] Allow memory to be allocated from a small pool of static memory during init
+Subject: [PATCH 05/32] Allow memory to be allocated from a small pool of static memory during init
 
 Some LD_PRELOADed libraries such as libaoss and libtrash can divert some
 functions used by jemalloc initialization, themselves needing malloc or
