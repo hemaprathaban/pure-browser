@@ -227,8 +227,6 @@ nsPresContext::nsPresContext(nsIDocument* aDocument, nsPresContextType aType)
 
 nsPresContext::~nsPresContext()
 {
-  mImageLoaders.Enumerate(destroy_loads, nsnull);
-
   NS_PRECONDITION(!mShell, "Presshell forgot to clear our mShell pointer");
   SetShell(nsnull);
 
@@ -332,9 +330,6 @@ NS_IMPL_CYCLE_COLLECTION_UNLINK_BEGIN(nsPresContext)
 
   // NS_RELEASE(tmp->mLookAndFeel); // a service
   // NS_RELEASE(tmp->mLangGroup); // an atom
-
-  tmp->mImageLoaders.Enumerate(destroy_loads, nsnull);
-  tmp->mImageLoaders.Clear();
 
   // NS_IMPL_CYCLE_COLLECTION_UNLINK_NSCOMPTR(mTheme); // a service
   // NS_IMPL_CYCLE_COLLECTION_UNLINK_NSCOMPTR(mLangService); // a service
@@ -910,6 +905,13 @@ nsPresContext::SetShell(nsIPresShell* aShell)
         UpdateCharSet(doc->GetDocumentCharacterSet());
       }
     }
+  } else {
+    // Destroy image loaders now that the presshell is going away.
+    // This is important since imageloaders can have pointers to frames and
+    // we don't want those pointers to outlive the destruction of the frame
+    // arena.
+    mImageLoaders.Enumerate(destroy_loads, nsnull);
+    mImageLoaders.Clear();
   }
 }
 
@@ -1170,6 +1172,8 @@ nsPresContext::SetFullZoom(float aZoom)
 imgIRequest*
 nsPresContext::LoadImage(imgIRequest* aImage, nsIFrame* aTargetFrame)
 {
+  NS_ASSERTION(mShell, "Shouldn't load image after the shell is gone");
+ 
   // look and see if we have a loader for the target frame.
   nsCOMPtr<nsImageLoader> loader;
   mImageLoaders.Get(aTargetFrame, getter_AddRefs(loader));
