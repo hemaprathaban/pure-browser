@@ -1,3 +1,27 @@
+xulrunner (1.9.1.9-4) unstable; urgency=low
+
+  * toolkit/xre/nsAppRunner.cpp:
+    - KDE/Gnome startup notification not disappearing when app window is up.
+      bz#416053. Closes: #562970.
+    - KDE/Gnome startup notification not disappearing for the first time
+      startup (needsRestart). bz#534845.
+  * configure*, js/src/configure*: Revert change to force not to use
+    -fshort-wchar.
+  * configure*, js/src/configure*, js/src/config/autoconf.mk.in,
+    xpcom/glue/nsStringAPI.h, xpcom/string/public/nsLiteralString.h,
+    xpcom/xpcom-config.h.in: Use char16_t when available, and when it is,
+    don't test for -fshort-wchar. bz#502298.
+  * embedding/components/find/src/nsFind.cpp, layout/base/nsCSSRendering.cpp,
+    layout/generic/nsTextFrameThebes.cpp,
+    modules/libpr0n/decoders/jpeg/nsJPEGDecoder.cpp,
+    modules/plugin/base/public/npruntime.h,
+    xpcom/tests/TestEncoding.cpp: Fix compiler errors with g++ 4.4 with
+    -std=gnu++0x of the form: error: narrowing conversion ... inside { }.
+    bz#502301.
+  * debian/rules: Build with -std=gnu++0x.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 13 Apr 2010 12:07:30 +0200
+
 xulrunner (1.9.1.9-3) unstable; urgency=low
 
   * debian/rules, debian/test.mk: Move reftest-app cleanup to debian/test.mk.
