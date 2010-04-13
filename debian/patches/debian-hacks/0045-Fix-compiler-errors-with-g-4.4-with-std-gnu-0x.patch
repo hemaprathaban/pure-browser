@@ -1,4 +1,4 @@
-From 34030d1887576eea8c723c96835a39642995357e Mon Sep 17 00:00:00 2001
+From 20308fe4fdc91b217127144e3f19393e6f4cb995 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Wed, 7 Apr 2010 18:58:35 +0200
 Subject: [PATCH 45/45] Fix compiler errors with g++ 4.4 with -std=gnu++0x
@@ -7,13 +7,14 @@ of the form: error: narrowing conversion ... inside { }
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=502301
 ---
- embedding/components/find/src/nsFind.cpp        |    2 +-
- layout/base/nsCSSRendering.cpp                  |   36 ++-
- layout/generic/nsTextFrameThebes.cpp            |    2 +-
- modules/libpr0n/decoders/jpeg/nsJPEGDecoder.cpp |  344 +++++++++++-----------
- modules/plugin/base/public/npruntime.h          |    4 +-
- xpcom/tests/TestEncoding.cpp                    |   11 +-
- 6 files changed, 203 insertions(+), 196 deletions(-)
+ embedding/components/find/src/nsFind.cpp          |    2 +-
+ layout/base/nsCSSRendering.cpp                    |   36 ++-
+ layout/generic/nsTextFrameThebes.cpp              |    2 +-
+ modules/libpr0n/decoders/jpeg/nsJPEGDecoder.cpp   |  344 ++++++++++----------
+ modules/plugin/base/public/npruntime.h            |    4 +-
+ netwerk/streamconv/converters/nsBinHexDecoder.cpp |    2 +-
+ xpcom/tests/TestEncoding.cpp                      |   11 +-
+ 7 files changed, 204 insertions(+), 197 deletions(-)
 
 diff --git a/embedding/components/find/src/nsFind.cpp b/embedding/components/find/src/nsFind.cpp
 index fc7387e..9562722 100644
@@ -501,6 +502,19 @@ index 5a2dc75..24fd773 100644
      (_v).value.stringValue = str;                                             \
  NP_END_MACRO
  
+diff --git a/netwerk/streamconv/converters/nsBinHexDecoder.cpp b/netwerk/streamconv/converters/nsBinHexDecoder.cpp
+index 8189724..de72ae4 100644
+--- a/netwerk/streamconv/converters/nsBinHexDecoder.cpp
++++ b/netwerk/streamconv/converters/nsBinHexDecoder.cpp
+@@ -98,7 +98,7 @@ NS_INTERFACE_MAP_END
+ 
+ // The binhex 4.0 decoder table....
+ 
+-static char binhex_decode[256] =
++static signed char binhex_decode[256] =
+ {
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 diff --git a/xpcom/tests/TestEncoding.cpp b/xpcom/tests/TestEncoding.cpp
 index d295248..b010048 100644
 --- a/xpcom/tests/TestEncoding.cpp
