@@ -87,6 +87,7 @@ inline uint32_t LiteralWStringLength(const wchar_t (&c)[n])
   #define NS_NAMED_MULTILINE_LITERAL_STRING(n,s)  const nsDependentString n(reinterpret_cast<const nsAString::char_type*>(s), mozilla::internal::LiteralWStringLength(s))
   typedef nsDependentString nsLiteralString;
 #else
+  #warning Using conversions for literal strings. Please consider using 2-bytes wchar_t or char16_t instead
   #define NS_LL(s)                                s
   #define NS_MULTILINE_LITERAL_STRING(s)          NS_ConvertASCIItoUTF16(s, mozilla::internal::LiteralStringLength(s))
   #define NS_MULTILINE_LITERAL_STRING_INIT(n,s)   n(s, mozilla::internal::LiteralStringLength(s))
