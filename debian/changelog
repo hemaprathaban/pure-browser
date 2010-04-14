@@ -1,3 +1,13 @@
+xulrunner (1.9.1.9-6) unstable; urgency=low
+
+  * xulrunner/installer/libxul-embedding*: Put -ldl in the proper field in
+    libxul-embedding*.pc.
+  * xpcom/glue/nsStringAPI.h, xpcom/string/public/nsLiteralString.h,
+    xpcom/base/nscore.h: Do build time detection of 2-bytes wchar_t and
+    char16_t support. bz#559278. Closes: #577677.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 14 Apr 2010 10:56:31 +0200
+
 xulrunner (1.9.1.9-5) unstable; urgency=low
 
   * netwerk/streamconv/converters/nsBinHexDecoder.cpp: Additional fix for
