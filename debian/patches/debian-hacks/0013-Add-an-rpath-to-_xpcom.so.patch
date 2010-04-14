@@ -1,7 +1,6 @@
-From c1ef1c463eebdca5b19a426065cf1f65b2734b62 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Wed, 30 Apr 2008 08:29:06 +0200
-Subject: [PATCH 13/45] Add an rpath to _xpcom.so
+Subject: Add an rpath to _xpcom.so
 
 This makes its dependencies, libxpcom.so and libpyxpcom.so, be found when
 importing _xpcom.so from python.

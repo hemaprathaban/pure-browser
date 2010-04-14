@@ -1,7 +1,6 @@
-From 4d4c39b5ee24228931b423e8f91efc7d35ae45dd Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Mon, 23 Nov 2009 20:03:10 +0100
-Subject: [PATCH 11/32] Add -ldl in libxul-embedding*.pc
+Subject: Add -ldl in libxul-embedding*.pc
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=530534
 
@@ -12,25 +11,27 @@ Closes: #556888
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/xulrunner/installer/libxul-embedding-unstable.pc.in b/xulrunner/installer/libxul-embedding-unstable.pc.in
-index c9464ce..ad9d374 100644
+index c9464ce..a95cef3 100644
 --- a/xulrunner/installer/libxul-embedding-unstable.pc.in
 +++ b/xulrunner/installer/libxul-embedding-unstable.pc.in
-@@ -8,4 +8,4 @@ Name: libxul-embedding-unstable
+@@ -7,5 +7,5 @@ includetype=unstable
+ Name: libxul-embedding-unstable
  Description: Static library for version-independent embedding of the Mozilla runtime (unstable API)
  Version: %MOZILLA_VERSION%
- Libs: -L${sdkdir}/lib -lxpcomglue
--Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS%
-+Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS% -ldl
+-Libs: -L${sdkdir}/lib -lxpcomglue
++Libs: -L${sdkdir}/lib -lxpcomglue -ldl
+ Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS%
 diff --git a/xulrunner/installer/libxul-embedding.pc.in b/xulrunner/installer/libxul-embedding.pc.in
-index bb49399..4195b73 100644
+index bb49399..1b11e6d 100644
 --- a/xulrunner/installer/libxul-embedding.pc.in
 +++ b/xulrunner/installer/libxul-embedding.pc.in
-@@ -12,4 +12,4 @@ Name: libxul-embedding
+@@ -11,5 +11,5 @@ includetype=stable
+ Name: libxul-embedding
  Description: Static library for version-independent embedding of the Mozilla runtime
  Version: %MOZILLA_VERSION%
- Libs: -L${sdkdir}/lib -lxpcomglue
--Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS%
-+Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS% -ldl
+-Libs: -L${sdkdir}/lib -lxpcomglue
++Libs: -L${sdkdir}/lib -lxpcomglue -ldl
+ Cflags: -DXPCOM_GLUE -I${includedir}/${includetype} %WCHAR_CFLAGS%
 -- 
 1.7.0.rc0.69.g2ee80
 

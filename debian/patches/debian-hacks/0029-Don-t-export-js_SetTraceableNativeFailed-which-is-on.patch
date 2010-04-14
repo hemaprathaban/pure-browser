@@ -1,7 +1,6 @@
-From 901e19594d8ad1b2cce993bebd95d3cbbd3cb359 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <glandium@debian.org>
 Date: Tue, 7 Jul 2009 20:26:46 +0200
-Subject: [PATCH 29/45] Don't export js_SetTraceableNativeFailed, which is only used internally
+Subject: Don't export js_SetTraceableNativeFailed, which is only used internally
 
 Otherwise, this is one more different symbol between JIT and non-JIT builds
 ---
