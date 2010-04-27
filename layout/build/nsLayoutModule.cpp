@@ -100,6 +100,7 @@
 #include "nsILanguageAtomService.h"
 #include "nsStyleSheetService.h"
 #include "nsXULPopupManager.h"
+#include "nsIContentUtils.h"
 
 // Transformiix stuff
 #include "nsXPathEvaluator.h"
@@ -531,6 +532,8 @@ NS_GENERIC_FACTORY_CONSTRUCTOR(nsDataDocumentContentPolicy)
 NS_GENERIC_FACTORY_CONSTRUCTOR(nsNoDataProtocolContentPolicy)
 NS_GENERIC_FACTORY_CONSTRUCTOR(nsSyncLoadService)
 MAKE_CTOR(CreatePluginDocument,           nsIDocument,                 NS_NewPluginDocument)
+
+NS_GENERIC_FACTORY_CONSTRUCTOR(nsIContentUtils)
 
 #ifdef MOZ_ENABLE_CANVAS
 MAKE_CTOR(CreateCanvasRenderingContext2D, nsIDOMCanvasRenderingContext2D, NS_NewCanvasRenderingContext2D)
@@ -1391,6 +1394,11 @@ static const nsModuleComponentInfo gComponents[] = {
       "@mozilla.org/textservices/textservicesdocument;1",
       nsTextServicesDocumentConstructor },
 #endif
+
+    { "Content Utils",
+      NS_ICONTENTUTILS_CID,
+      "@mozilla.org/content/contentutils;1",
+      nsIContentUtilsConstructor },
 };
 
 NS_IMPL_NSGETMODULE_WITH_CTOR(nsLayoutModule, gComponents, Initialize)
