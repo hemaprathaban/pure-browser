@@ -1207,6 +1207,17 @@ nsXPCWrappedJSClass::CallMethod(nsXPCWrappedJS* wrapper, uint16 methodIndex,
     xpcc->SetException(nsnull);
     ccx.GetThreadData()->SetException(nsnull);
 
+    if(XPCPerThreadData::IsMainThread(ccx))
+    {
+        ssm = XPCWrapper::GetSecurityManager();
+        if(ssm && !PushObjectPrincipal(cx, obj, ssm, &popPrincipal))
+        {
+            JS_ReportOutOfMemory(cx);
+            retval = NS_ERROR_OUT_OF_MEMORY;
+            goto pre_call_clean_up;
+        }
+    }
+
     // We use js_AllocStack, js_Invoke, and js_FreeStack so that the gcthings
     // we use as args will be rooted by the engine as we do conversions and
     // prepare to do the function call. This adds a fair amount of complexity,
@@ -1548,17 +1559,6 @@ pre_call_clean_up:
 
     JS_ClearPendingException(cx);
 
-    if(XPCPerThreadData::IsMainThread(ccx))
-    {
-        ssm = XPCWrapper::GetSecurityManager();
-        if(ssm && !PushObjectPrincipal(cx, obj, ssm, &popPrincipal))
-        {
-            JS_ReportOutOfMemory(cx);
-            retval = NS_ERROR_OUT_OF_MEMORY;
-            goto done;
-        }
-    }
-
     if(XPT_MD_IS_GETTER(info->flags))
         success = JS_GetProperty(cx, obj, name, &result);
     else if(XPT_MD_IS_SETTER(info->flags))
@@ -1594,9 +1594,6 @@ pre_call_clean_up:
             success = JS_FALSE;
         }
     }
-
-    if(popPrincipal)
-        ssm->PopContextPrincipal(ccx);
 
     if(!success)
     {
@@ -1816,6 +1813,9 @@ pre_call_clean_up:
 done:
     if(sp)
         js_FreeStack(cx, mark);
+
+    if(popPrincipal)
+        ssm->PopContextPrincipal(ccx);
 
 #ifdef DEBUG_stats_jband
     endTime = PR_IntervalNow();
