@@ -2,15 +2,6 @@ diff --git a/configure b/configure
 index 794bcf4..d2efa03 100755
 --- a/configure
 +++ b/configure
-@@ -8235,7 +8235,7 @@ if test "$ac_cv_have_usable_wchar_v2" = "yes"; then
- EOF
- 
-     HAVE_CPP_2BYTE_WCHAR_T=1
--else
-+elif false; then
- 
-     
-     ac_ext=C
 @@ -12363,6 +12363,10 @@ fi
  rm -f conftest*
      CFLAGS=$_SAVE_CFLAGS

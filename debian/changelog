@@ -1,3 +1,21 @@
+iceweasel (3.5.9-3) unstable; urgency=low
+
+  * debian/iceweasel-runner: Don't override MOZ_APP_LAUNCHER, which was
+    already set.
+  * debian/firefox, debian/iceweasel.install, debian/iceweasel.postrm,
+    debian/iceweasel.preinst: Divert /usr/bin/firefox and put a wrapper script
+    instead. The wrapper script runs the diverted firefox if it exists, and
+    iceweasel otherwise. Closes: #576392.
+  * debian/README.Debian: Add a note about safe browsing in README.Debian.
+    Closes: #575039.
+  * debian/rules: Build with --std=gnu++0x.
+  * debian/control: Remove dependency on psmisc as we've not been using fuser
+    for years.
+
+  * configure.in: Revert change to force not to use -fshort-wchar.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 29 Apr 2010 17:37:46 +0200
+
 iceweasel (3.5.9-2) unstable; urgency=low
 
   * debian/remove.nonfree: There are still some .cvsignore files in the
