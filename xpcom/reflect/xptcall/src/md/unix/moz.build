@@ -324,5 +324,10 @@ if CONFIG['OS_ARCH'] == 'Linux':
             'xptcinvoke_linux_s390x.cpp',
             'xptcstubs_linux_s390x.cpp',
         ]
+    elif CONFIG['OS_TEST'] in ('sh4', 'sh4a'):
+        SOURCES += [
+            'xptcinvoke_linux_sh.cpp',
+            'xptcstubs_linux_sh.cpp',
+        ]
 
 FINAL_LIBRARY = 'xpcom_core'
