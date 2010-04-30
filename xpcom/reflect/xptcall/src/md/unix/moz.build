@@ -252,6 +252,12 @@ if CONFIG['OS_ARCH'] == 'Linux':
             'xptcstubs_linux_s390x.cpp',
         ]
 
+    if CONFIG['OS_TEST'] in ('sh4', 'sh4a'):
+        SOURCES += [
+            'xptcinvoke_linux_sh.cpp',
+            'xptcstubs_linux_sh.cpp',
+        ]
+
 LIBRARY_NAME = 'xptcmd'
 
 # we don't want the shared lib, but we want to force the creation of a static lib.
