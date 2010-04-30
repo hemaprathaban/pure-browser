@@ -107,15 +107,8 @@ Package: libmozjs2d-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: libmozjs2d (= ${binary:Version})
-         | spidermonkey-bin (= ${binary:Version}),
+Depends: libmozjs2d (= ${binary:Version}),
          ${misc:Depends}
-Conflicts: libmozjs0d-dbg,
-           libmozjs1d-dbg,
-           libmozjs2d (<< ${binary:Version}),
-           libmozjs2d (>> ${binary:Version}),
-           spidermonkey-bin (<< ${binary:Version}),
-           spidermonkey-bin (>> ${binary:Version})
 Description: Development files for the Mozilla SpiderMonkey JavaScript library
  This library provides the embeddable JavaScript/ECMAScript engine from
  the Mozilla project (used among others by the Mozilla, Epiphany, Firefox
