@@ -1,3 +1,22 @@
+xulrunner (1.9.1.9-7) unstable; urgency=low
+
+  * debian/control*, debian/rules: Don't include spidermonkey-bin debugging
+    symbols in libmozjs-dbg. There is actually not much to be debugged in smjs
+    itself, while the need to conflict with all other libmozjs-dbg packages is
+    a big caveat. Closes: #579251.
+  * debian/extra-stuff/addonsInfo.js, debian/extra-stuff/debUpdateNotifier.js:
+    Use the nsIPluginTag_1_9_2 interface when available, in debian/extra-stuff
+    components.
+
+  * xpcom/reflect/xptcall/src/md/unix/Makefile.in,
+    xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp,
+    xpcom/reflect/xptcall/src/md/unix/xptcstubs_linux_sh.cpp: Add xptcall
+    support for SH4 processors. Closes: #553593. bz#382214.
+  * xpcom/threads/nsProcessCommon.cpp: Fix remaining race condition when
+    calling nsProcess.Kill. bz#543441.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 01 May 2010 10:03:32 +0200
+
 xulrunner (1.9.1.9-6) unstable; urgency=low
 
   * xulrunner/installer/libxul-embedding*: Put -ldl in the proper field in
