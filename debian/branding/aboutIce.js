@@ -39,18 +39,22 @@ const Ci = Components.interfaces;
 const Cr = Components.results;
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
-function AboutIceweasel() {}
+var ice = Cc["@mozilla.org/xre/app-info;1"]
+          .getService(Ci.nsIXULAppInfo)
+          .QueryInterface(Ci.nsIXULRuntime).name.toLowerCase();
 
-AboutIceweasel.prototype = {
+function AboutIce() {}
+
+AboutIce.prototype = {
   QueryInterface: XPCOMUtils.generateQI([Ci.nsIAboutModule]),
-  classDescription: "about:iceweasel",
+  classDescription: "about:" + ice,
   classID: Components.ID("{5df05c89-5e9a-41f4-bd6a-700e4aa305fc}"),
-  contractID: "@mozilla.org/network/protocol/about;1?what=iceweasel",
+  contractID: "@mozilla.org/network/protocol/about;1?what=" + ice,
 
   newChannel: function(uri)
   {
     var ioService = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-    var channel = ioService.newChannel("chrome://iceweasel/content/iceweasel.xhtml", null, null);
+    var channel = ioService.newChannel("chrome://ice/content/ice.xhtml", null, null);
     var securityManager = Cc["@mozilla.org/scriptsecuritymanager;1"].getService(Ci.nsIScriptSecurityManager);
     var principal = securityManager.getCodebasePrincipal(uri);
     channel.originalURI = uri;
@@ -64,4 +68,4 @@ AboutIceweasel.prototype = {
   }
 }
 
-var NSGetModule = XPCOMUtils.generateNSGetModule([AboutIceweasel]);
+var NSGetModule = XPCOMUtils.generateNSGetModule([AboutIce]);
