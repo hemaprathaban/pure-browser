@@ -1808,7 +1808,7 @@ UpdateService.prototype = {
    * See nsIUpdateService.idl
    */
   get canUpdate() {
-    return gCanApplyUpdates && gCanCheckForUpdates;
+    return gCanCheckForUpdates && gCanApplyUpdates;
   },
 
   /**
