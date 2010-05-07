@@ -37,10 +37,6 @@ xpcshell-tests: xpcshell-tests-skip $(if $(HAS_LOCALE),,debian/locales/$(LOCALE)
 xpcshell-tests-skip:
 # APNG is not supported
 	rm -f _tests/xpcshell/test_libpr0n/unit/test_encoder_apng.js
-# Image tests fail because of the use of system library which don't give the same result
-	rm -f _tests/xpcshell/test_libpr0n/unit/test_encoder_png.js \
-	      _tests/xpcshell/test_libpr0n/unit/test_imgtools.js \
-	      _tests/xpcshell/test_places/unit/test_favicons.js
 # This one fails because it relies on a sqlite bug that is fixed in the system one
 # See http://hg.mozilla.org/mozilla-central/raw-rev/1192461c259d
 	rm -f _tests/xpcshell/test_storage/unit/test_storage_combined_sharing.js
