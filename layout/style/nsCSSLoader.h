@@ -145,6 +145,15 @@ public:
   NS_DECL_NSIRUNNABLE
   NS_DECL_NSIUNICHARSTREAMLOADEROBSERVER
 
+  enum MimeProblem {
+    MimeProblem_rejected,
+    MimeProblem_quirksload,
+    MimeProblem_quirksload_xd,
+    MimeProblem_abandoned
+  };
+
+  void ReportMimeProblem(MimeProblem aProblem, nsIURI* aURI);
+
   // Hold a ref to the CSSLoader so we can call back to it to let it
   // know the load finished
   CSSLoaderImpl*             mLoader; // strong ref
@@ -213,6 +222,10 @@ public:
   // this sheet, no matter what the channel principal is.  Only true for sync
   // loads.
   PRPackedBool               mUseSystemPrincipal : 1;
+
+  // mCheckInitialSyntax is true if the CSS parser should abandon the sheet
+  // if there's a syntax error in its first full construct.  See bug 524223.
+  PRPackedBool               mCheckInitialSyntax : 1;
   
   // This is the element that imported the sheet.  Needed to get the
   // charset set on it.
@@ -223,6 +236,10 @@ public:
 
   // The principal that identifies who started loading us.
   nsCOMPtr<nsIPrincipal> mLoaderPrincipal;
+
+  // The server-reported MIME type of the sheet.  Used primarily for
+  // diagnostics.
+  nsCString mContentType;
 };
 
 class nsURIAndPrincipalHashKey : public nsURIHashKey

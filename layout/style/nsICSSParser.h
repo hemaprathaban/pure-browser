@@ -60,6 +60,10 @@ class nsIPrincipal;
 { 0xad4a3778, 0xdae0, 0x4640, \
  { 0xb2, 0x5a, 0x24, 0xff, 0x09, 0xc3, 0x70, 0xef } }
 
+#define NS_ICSS_PARSER_1_9_IID \
+{ 0x50be628d, 0x9273, 0x45c1,   \
+  { 0x9f, 0x25, 0xb4, 0xba, 0x71, 0x82, 0x45, 0xd5 } }
+
 // Rule processing function
 typedef void (*PR_CALLBACK RuleAppendFunc) (nsICSSRule* aRule, void* aData);
 
@@ -99,7 +103,7 @@ public:
    * @param aBaseURI the URI to use for relative URI resolution
    * @param aSheetPrincipal the principal of the stylesheet.  This must match
    *                        the principal of the sheet passed to SetStyleSheet.
-   * @param aLineNumber the line number of the first line of the sheet.   
+   * @param aLineNumber the line number of the first line of the sheet.
    * @param aAllowUnsafeRules see aEnableUnsafeRules in
    *                          nsICSSLoader::LoadSheetSync
    */
@@ -171,6 +175,26 @@ public:
 };
 
 NS_DEFINE_STATIC_IID_ACCESSOR(nsICSSParser, NS_ICSS_PARSER_IID)
+
+class nsICSSParser_1_9 : public nsICSSParser {
+public:
+  NS_DECLARE_STATIC_IID_ACCESSOR(NS_ICSS_PARSER_1_9_IID)
+
+  /**
+   * Identical to nsICSSParser::Parse(), except that if there is a
+   * syntax error within the first top-level construct, the entire
+   * sheet is discarded and the return value is NS_ERROR_DOM_SYNTAX_ERR.
+   * See bug 524223.
+   */
+  NS_IMETHOD ParseWithInitialSyntaxCheck(nsIUnicharInputStream* aInput,
+                                         nsIURI*       aSheetURL,
+                                         nsIURI*       aBaseURI,
+                                         nsIPrincipal* aSheetPrincipal,
+                                         PRUint32      aLineNumber,
+                                         PRBool        aAllowUnsafeRules) = 0;
+};
+
+NS_DEFINE_STATIC_IID_ACCESSOR(nsICSSParser_1_9, NS_ICSS_PARSER_1_9_IID)
 
 nsresult
 NS_NewCSSParser(nsICSSParser** aInstancePtrResult);

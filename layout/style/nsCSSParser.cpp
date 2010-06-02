@@ -79,6 +79,7 @@
 #include "nsILookAndFeel.h"
 #include "nsStyleUtil.h"
 #include "nsIPrincipal.h"
+#include "nsDOMError.h"
 
 #include "prprf.h"
 #include "math.h"
@@ -86,7 +87,7 @@
 //----------------------------------------------------------------------
 
 // Your basic top-down recursive descent style parser
-class CSSParserImpl : public nsICSSParser {
+class CSSParserImpl : public nsICSSParser_1_9 {
 public:
   CSSParserImpl();
   virtual ~CSSParserImpl();
@@ -111,6 +112,13 @@ public:
                    nsIPrincipal*          aSheetPrincipal,
                    PRUint32               aLineNumber,
                    PRBool                 aAllowUnsafeRules);
+
+  NS_IMETHOD ParseWithInitialSyntaxCheck(nsIUnicharInputStream* aInput,
+                                         nsIURI*       aSheetURL,
+                                         nsIURI*       aBaseURI,
+                                         nsIPrincipal* aSheetPrincipal,
+                                         PRUint32      aLineNumber,
+                                         PRBool        aAllowUnsafeRules);
 
   NS_IMETHOD ParseStyleAttribute(const nsAString&  aAttributeValue,
                                  nsIURI*           aDocURL,
@@ -180,6 +188,14 @@ protected:
       CSSParserImpl* mParser;
   };
 
+  nsresult Parse(nsIUnicharInputStream* aInput,
+                 nsIURI*                aSheetURI,
+                 nsIURI*                aBaseURI,
+                 nsIPrincipal*          aSheetPrincipal,
+                 PRUint32               aLineNumber,
+                 PRBool                 aAllowUnsafeRules,
+                 PRBool                 aCheckInitialSyntax);
+
   nsresult InitScanner(nsIUnicharInputStream* aInput, nsIURI* aSheetURI,
                        PRUint32 aLineNumber, nsIURI* aBaseURI,
                        nsIPrincipal* aSheetPrincipal);
@@ -203,7 +219,7 @@ protected:
   nsSubstring* NextIdent(nsresult& aErrorCode);
   void SkipUntil(nsresult& aErrorCode, PRUnichar aStopSymbol);
   void SkipRuleSet(nsresult& aErrorCode);
-  PRBool SkipAtRule(nsresult& aErrorCode);
+  void SkipAtRule(nsresult& aErrorCode);
   PRBool SkipDeclaration(nsresult& aErrorCode, PRBool aCheckForBraces);
   PRBool GetNonCloseParenToken(nsresult& aErrorCode, PRBool aSkipWS);
 
@@ -562,7 +578,7 @@ CSSParserImpl::CSSParserImpl()
 {
 }
 
-NS_IMPL_ISUPPORTS1(CSSParserImpl, nsICSSParser)
+NS_IMPL_ISUPPORTS2(CSSParserImpl, nsICSSParser, nsICSSParser_1_9)
 
 CSSParserImpl::~CSSParserImpl()
 {
@@ -677,6 +693,7 @@ CSSParserImpl::ReleaseScanner(void)
 }
 
 
+// Wrapper methods to preserve the as-shipped 1.9 API.
 NS_IMETHODIMP
 CSSParserImpl::Parse(nsIUnicharInputStream* aInput,
                      nsIURI*                aSheetURI,
@@ -684,6 +701,31 @@ CSSParserImpl::Parse(nsIUnicharInputStream* aInput,
                      nsIPrincipal*          aSheetPrincipal,
                      PRUint32               aLineNumber,
                      PRBool                 aAllowUnsafeRules)
+{
+  return Parse(aInput, aSheetURI, aBaseURI, aSheetPrincipal,
+               aLineNumber, aAllowUnsafeRules, PR_FALSE);
+}
+
+NS_IMETHODIMP
+CSSParserImpl::ParseWithInitialSyntaxCheck(nsIUnicharInputStream* aInput,
+                                           nsIURI*       aSheetURI,
+                                           nsIURI*       aBaseURI,
+                                           nsIPrincipal* aSheetPrincipal,
+                                           PRUint32      aLineNumber,
+                                           PRBool        aAllowUnsafeRules)
+{
+  return Parse(aInput, aSheetURI, aBaseURI, aSheetPrincipal,
+               aLineNumber, aAllowUnsafeRules, PR_TRUE);
+}
+
+nsresult
+CSSParserImpl::Parse(nsIUnicharInputStream* aInput,
+                     nsIURI*                aSheetURI,
+                     nsIURI*                aBaseURI,
+                     nsIPrincipal*          aSheetPrincipal,
+                     PRUint32               aLineNumber,
+                     PRBool                 aAllowUnsafeRules,
+                     PRBool                 aCheckInitialSyntax)
 {
   NS_PRECONDITION(aSheetPrincipal, "Must have principal here!");
   
@@ -743,6 +785,7 @@ CSSParserImpl::Parse(nsIUnicharInputStream* aInput,
   mUnsafeRulesEnabled = aAllowUnsafeRules;
 
   nsCSSToken* tk = &mToken;
+  nsresult rv = NS_OK;
   for (;;) {
     // Get next non-whitespace token
     if (!GetToken(errorCode, PR_TRUE)) {
@@ -753,19 +796,29 @@ CSSParserImpl::Parse(nsIUnicharInputStream* aInput,
       continue; // legal here only
     }
     if (eCSSToken_AtKeyword == tk->mType) {
-      ParseAtRule(errorCode, AppendRuleToSheet, this);
-      continue;
+      PRBool good = ParseAtRule(errorCode, AppendRuleToSheet, this);
+      if (!good && aCheckInitialSyntax) {
+        rv = NS_ERROR_DOM_SYNTAX_ERR;
+        break;
+      }
+    } else {
+      UngetToken();
+      if (ParseRuleSet(errorCode, AppendRuleToSheet, this)) {
+        mSection = eCSSSection_General;
+      } else if (aCheckInitialSyntax) {
+        rv = NS_ERROR_DOM_SYNTAX_ERR;
+        break;
+      }
     }
-    UngetToken();
-    if (ParseRuleSet(errorCode, AppendRuleToSheet, this)) {
-      mSection = eCSSSection_General;
-    }
+    // If we get to this point we have successfully parsed one top-level
+    // construct, so stop bailing out on syntax errors.
+    aCheckInitialSyntax = PR_FALSE;
   }
   ReleaseScanner();
 
   mUnsafeRulesEnabled = PR_FALSE;
 
-  return NS_OK;
+  return rv;
 }
 
 /**
@@ -1202,31 +1255,28 @@ nsSubstring* CSSParserImpl::NextIdent(nsresult& aErrorCode)
   return &mToken.mIdent;
 }
 
-PRBool CSSParserImpl::SkipAtRule(nsresult& aErrorCode)
+void CSSParserImpl::SkipAtRule(nsresult& aErrorCode)
 {
   for (;;) {
     if (!GetToken(aErrorCode, PR_TRUE)) {
       REPORT_UNEXPECTED_EOF(PESkipAtRuleEOF);
-      return PR_FALSE;
+      return;
     }
     if (eCSSToken_Symbol == mToken.mType) {
-      PRUnichar symbol = mToken.mSymbol;
-      if (symbol == ';') {
-        break;
-      }
-      if (symbol == '{') {
-        SkipUntil(aErrorCode, '}');
-        break;
-      } else if (symbol == '(') {
-        SkipUntil(aErrorCode, ')');
-      } else if (symbol == '[') {
-        SkipUntil(aErrorCode, ']');
+      switch (mToken.mSymbol) {
+      case ';': return;
+      case '{': SkipUntil(aErrorCode, '}'); return;
+      case '[': SkipUntil(aErrorCode, ']'); break;
+      case '(': SkipUntil(aErrorCode, ')'); break;
+      default: break;
       }
     }
   }
-  return PR_TRUE;
 }
 
+// Note: returns PR_FALSE if the rule had a syntax error, but consumes
+// the complete rule (or the complete construct to be skipped by error
+// recovery) regardless.
 PRBool CSSParserImpl::ParseAtRule(nsresult& aErrorCode, RuleAppendFunc aAppendFunc,
                                   void* aData)
 {
@@ -1282,7 +1332,8 @@ PRBool CSSParserImpl::ParseAtRule(nsresult& aErrorCode, RuleAppendFunc aAppendFu
   }
 
   // Skip over unsupported at rule, don't advance section
-  return SkipAtRule(aErrorCode);
+  SkipAtRule(aErrorCode);
+  return PR_FALSE;
 }
 
 PRBool CSSParserImpl::ParseCharsetRule(nsresult& aErrorCode, RuleAppendFunc aAppendFunc,
@@ -1657,8 +1708,13 @@ PRBool CSSParserImpl::ParseFontFaceRule(nsresult& aErrorCode, RuleAppendFunc aAp
 
 PRBool CSSParserImpl::ParsePageRule(nsresult& aErrorCode, RuleAppendFunc aAppendFunc, void* aData)
 {
-  // XXX not yet implemented
-  return PR_FALSE;
+  // Report as an error, and skip, but *succeed*, so that a style
+  // sheet beginning with an @page rule will not be discarded by the
+  // "initial syntax is valid" check.
+  REPORT_UNEXPECTED_TOKEN(PEUnknownAtRule);
+  OUTPUT_ERROR();
+  SkipAtRule(aErrorCode);
+  return PR_TRUE;
 }
 
 void CSSParserImpl::SkipUntil(nsresult& aErrorCode, PRUnichar aStopSymbol)

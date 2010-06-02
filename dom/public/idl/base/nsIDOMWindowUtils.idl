@@ -179,3 +179,13 @@ interface nsIDOMWindowUtils : nsISupports {
    */
   void garbageCollect();
 };
+
+[scriptable, uuid(e947d605-6d3c-40fe-a0b1-4429df635b8b)]
+interface nsIDOMWindowUtils_1_9 : nsISupports
+{
+  /**
+   * Exposes the CSS parser's "initial syntax is valid" heuristic for
+   * testing.
+   */
+  boolean cssInitialSyntaxIsValid(in AString aSheet);
+};
