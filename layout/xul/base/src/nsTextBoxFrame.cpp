@@ -819,7 +819,7 @@ nsTextBoxFrame::UpdateAccessTitle()
     }
 
     if (InsertSeparatorBeforeAccessKey() &&
-        !NS_IS_SPACE(mTitle[offset - 1])) {
+        offset > 0 && !NS_IS_SPACE(mTitle[offset - 1])) {
         mTitle.Insert(' ', offset);
         offset++;
     }
