@@ -1,3 +1,13 @@
+iceweasel (3.5.10-1) unstable; urgency=high
+
+  * New upstream release.
+  * debian/branding/Makefile.in, debian/branding/aboutIce.js,
+    debian/branding/ice.*, debian/branding/jar.mn, debian/iceweasel.install:
+    Add a about:iceweasel page similar to about:mozilla. Closes: #413725.
+  * debian/copyright: Synchronize with that of xulrunner.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 23 Jun 2010 15:04:50 +0200
+
 iceweasel (3.5.9-3) unstable; urgency=low
 
   * debian/iceweasel-runner: Don't override MOZ_APP_LAUNCHER, which was
