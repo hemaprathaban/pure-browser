@@ -1,3 +1,32 @@
+xulrunner (1.9.1.10-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes mfsa-2010-{26-33}, also known as
+    CVE-2010-1200, CVE-2010-1201, CVE-2010-1202, CVE-2010-0183,
+    CVE-2010-1198, CVE-2010-1196, CVE-2010-1199, CVE-2010-1125,
+    CVE-2010-1197, CVE-2008-5913.
+    Closes: #532516
+
+  * debian/rules: Strip symbols in the spidermonkey-bin package.
+  * debian/control.*:
+    - xulrunner-1.9.x needs to depend on a strict version of libmozjs.
+      Closes: #580173.
+    - libmozjs2d breaks older xulrunner-1.9.1. Closes: #580104.
+
+  * modules/libpr0n/encoders/png/nsPNGEncoder.cpp: Use png_set_filter to make
+    libpng not use write filters. bz#564410.
+  * netwerk/protocol/http/src/nsHttpChannel.cpp: Make sure to call
+    OnStartRequest even if we're failing on an SSL CONNECT. bz#561536.
+    Closes: #553635.
+  * memory/jemalloc/jemalloc.c: Use syscall() for mmap and munmap, and disable
+    ncpus use in jemalloc to work around deadlocks. Replaces the previous patch
+    to use a small pool of static memory during initialization. bz#435683
+
+  * debian/test.mk: Re-enable PNG xpcshell tests that were failing when using
+    system library.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 23 Jun 2010 11:48:22 +0200
+
 xulrunner (1.9.1.9-7) unstable; urgency=low
 
   * debian/control*, debian/rules: Don't include spidermonkey-bin debugging
