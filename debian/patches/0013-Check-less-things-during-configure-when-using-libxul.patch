@@ -1,7 +1,6 @@
-From a37b8319d6498830849b4cb22f498ddfd3fa3e3c Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 19 Apr 2008 23:01:20 +0200
-Subject: [PATCH 15/15] Check less things during configure when using libxul-sdk
+Subject: Check less things during configure when using libxul-sdk
 
 We don't need to check e.g. cairo or pango when using libxul-sdk, since
 we won't be building most of the toolkit.
@@ -152,6 +151,3 @@ index 32eaa11..715fdf7 100644
  if test "$MOZ_X11"; then
      dnl ====================================================
      dnl = Check if X headers exist
--- 
-1.7.0.rc0.69.g2ee80
-

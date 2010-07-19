@@ -1,7 +1,6 @@
-From 791e8139c52462b32c62733f5e2a46d393f7d441 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Thu, 1 Apr 2010 15:34:59 +0200
-Subject: [PATCH 13/15] Use googpub-phish-shavar instead of goog-phish-shavar for safe browsing
+Subject: Use googpub-phish-shavar instead of goog-phish-shavar for safe browsing
 
 This is a first step for fixing safe browsing. Either the current setup will work
 if Google allows our client string to get this data, or we'll be allowed to say
@@ -37,6 +36,3 @@ index f5be69f..66821f8 100644
    this.phishWarden.maybeToggleUpdateChecking();
  }
  
--- 
-1.7.0.rc0.69.g2ee80
-

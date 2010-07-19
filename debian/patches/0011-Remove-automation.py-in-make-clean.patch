@@ -1,7 +1,6 @@
-From c7dd1e3c7c6a0e8f1d6e7835f7c8bc90333f9758 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sun, 24 Jan 2010 08:56:44 +0100
-Subject: [PATCH 06/15] Remove automation.py in make clean
+Subject: Remove automation.py in make clean
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=541768
 ---
@@ -18,6 +17,3 @@ index 7bfa5a4..0a2df8d 100644
  	$(AUTOMATION_PPARGS) $(DEFINES) $(ACDEFINES) $< > $@
 +
 +GARBAGE += automation.py
--- 
-1.7.0.rc0.69.g2ee80
-

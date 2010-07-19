@@ -1,0 +1,45 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Mon, 19 Jul 2010 17:28:08 +0200
+Subject: Revert bz#569057, as it only applies to the Firefox brand
+
+---
+ browser/base/content/aboutDialog.css |    7 +------
+ browser/base/content/aboutDialog.xul |    1 -
+ 2 files changed, 1 insertions(+), 7 deletions(-)
+
+diff --git a/browser/base/content/aboutDialog.css b/browser/base/content/aboutDialog.css
+index dbefc6c..c2765a2 100644
+--- a/browser/base/content/aboutDialog.css
++++ b/browser/base/content/aboutDialog.css
+@@ -78,18 +78,13 @@
+   -moz-margin-start: 17px;
+ }
+ 
+-#copyright, #charlton {
++#copyright {
+   margin-top: 0;
+   -moz-margin-end: 16px;
+   margin-bottom: 3px;
+   -moz-margin-start: 16px;
+ }
+ 
+-#charlton {
+-  direction: ltr;
+-  unicode-bidi: bidi-override;
+-}
+-
+ button[dlgtype="extra2"] {
+   -moz-margin-start: 13px;
+ }
+diff --git a/browser/base/content/aboutDialog.xul b/browser/base/content/aboutDialog.xul
+index 11c4c43..98bf8de 100644
+--- a/browser/base/content/aboutDialog.xul
++++ b/browser/base/content/aboutDialog.xul
+@@ -89,7 +89,6 @@
+         >&licenseLinkText;</label>&copyrightInfo2;
+         &logoCopyright;
+       </description>
+-      <description dir="ltr" id="charlton">Some of the trademarks used under license from The Charlton Company.</description>
+       <textbox id="userAgent" multiline="true" readonly="true" flex="1"/>
+     </vbox>
+     <vbox flex="1" id="creditsBox">
