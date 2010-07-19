@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+# xulrunner trigger needs that to happen before running
+if [ "$1" = "configure" ]; then
+	update-python-modules -p
+fi
+
+#DEBHELPER#
