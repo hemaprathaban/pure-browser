@@ -31,7 +31,7 @@ index 380feef..94e3c82 100644
  ifdef WINCE
  EXTRA_LIBS += $(JEMALLOC_LIBS)
 diff --git a/js/src/js.cpp b/js/src/js.cpp
-index dd170e6..9cca114 100644
+index e440424..e104835 100644
 --- a/js/src/js.cpp
 +++ b/js/src/js.cpp
 @@ -650,7 +650,7 @@ ProcessArgs(JSContext *cx, JSObject *obj, char **argv, int argc)
@@ -53,7 +53,7 @@ index dd170e6..9cca114 100644
          const char *expected = ToSource(cx, &argv[1]);
          JS_ReportErrorNumber(cx, my_GetErrorMessage, NULL, JSSMSG_ASSERT_EQ_FAILED,
 diff --git a/js/src/jstracer.cpp b/js/src/jstracer.cpp
-index 808099a..55f1d7a 100644
+index 091a823..f7db001 100644
 --- a/js/src/jstracer.cpp
 +++ b/js/src/jstracer.cpp
 @@ -238,7 +238,11 @@ JSClass jitstats_class = {

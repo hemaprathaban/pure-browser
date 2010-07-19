@@ -54,7 +54,7 @@ index 7a7a40a..1320dcf 100644
  AC_SUBST(SYSTEM_BZ2)
  
 diff --git a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
-index 666db42..dc5ffe1 100644
+index 898c237..7d98859 100644
 --- a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
 +++ b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
 @@ -62,8 +62,10 @@
@@ -154,9 +154,9 @@ index 666db42..dc5ffe1 100644
      return;
 +#endif
  
-   if (new_row) {
-     PRInt32 width;
-@@ -883,6 +899,7 @@ row_callback(png_structp png_ptr, png_bytep new_row,
+   PRInt32 height;
+   decoder->mFrame->GetHeight(&height);
+@@ -888,6 +904,7 @@ row_callback(png_structp png_ptr, png_bytep new_row,
    }
  }
  
@@ -164,7 +164,7 @@ index 666db42..dc5ffe1 100644
  // got the header of a new frame that's coming
  void
  frame_info_callback(png_structp png_ptr, png_uint_32 frame_num)
-@@ -892,11 +909,15 @@ frame_info_callback(png_structp png_ptr, png_uint_32 frame_num)
+@@ -897,11 +914,15 @@ frame_info_callback(png_structp png_ptr, png_uint_32 frame_num)
    
    nsPNGDecoder *decoder = static_cast<nsPNGDecoder*>(png_get_progressive_ptr(png_ptr));
    
@@ -180,7 +180,7 @@ index 666db42..dc5ffe1 100644
    
    x_offset = png_get_next_frame_x_offset(png_ptr, decoder->mInfo);
    y_offset = png_get_next_frame_y_offset(png_ptr, decoder->mInfo);
-@@ -905,6 +926,7 @@ frame_info_callback(png_structp png_ptr, png_uint_32 frame_num)
+@@ -910,6 +931,7 @@ frame_info_callback(png_structp png_ptr, png_uint_32 frame_num)
    
    decoder->CreateFrame(x_offset, y_offset, width, height, decoder->format);
  }
@@ -188,7 +188,7 @@ index 666db42..dc5ffe1 100644
  
  void
  end_callback(png_structp png_ptr, png_infop info_ptr)
-@@ -923,12 +945,14 @@ end_callback(png_structp png_ptr, png_infop info_ptr)
+@@ -928,12 +950,14 @@ end_callback(png_structp png_ptr, png_infop info_ptr)
  
    nsPNGDecoder *decoder = static_cast<nsPNGDecoder*>(png_get_progressive_ptr(png_ptr));
    
