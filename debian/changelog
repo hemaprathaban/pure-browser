@@ -1,3 +1,15 @@
+iceweasel (3.5.11-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes mfsa-2009-45, also known as CVE-2010-1206.
+  * debian/control:
+    - Remove conflict with very old package.
+    - Bump Standards-Version to 3.9.0.0.
+  * browser/base/content/aboutDialog.*: Revert bz#569057, as it only applies
+    to the Firefox brand.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 19 Jul 2010 16:39:39 +0200
+
 iceweasel (3.5.10-1) unstable; urgency=high
 
   * New upstream release.

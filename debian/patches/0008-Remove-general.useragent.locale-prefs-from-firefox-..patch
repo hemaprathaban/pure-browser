@@ -1,7 +1,6 @@
-From 21b4bebc2b0d05230dab9f6cd6a1e331af3498df Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 18 Oct 2008 14:30:06 +0200
-Subject: [PATCH 07/15] Remove general.useragent.locale prefs from firefox*.js
+Subject: Remove general.useragent.locale prefs from firefox*.js
 
 It is better defined in the GRE provided by xulrunner-1.9
 ---
@@ -10,7 +9,7 @@ It is better defined in the GRE provided by xulrunner-1.9
  2 files changed, 0 insertions(+), 2 deletions(-)
 
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 6deed70..441a1c0 100644
+index 2803671..d547c3e 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
 @@ -174,7 +174,6 @@ pref("xpinstall.whitelist.add.103", "addons.mozilla.org");
@@ -30,6 +29,3 @@ index e9027aa..a683b7f 100644
  #filter substitution
  
 -pref("general.useragent.locale", "@AB_CD@");
--- 
-1.7.0.rc0.69.g2ee80
-

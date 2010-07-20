@@ -1,7 +1,6 @@
-From 848c123ae5f530b1ab9ce6b5c53bc9e964543637 Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 18 Oct 2008 13:56:55 +0200
-Subject: [PATCH 12/15] Replace %APP% with firefox in some places
+Subject: Replace %APP% with firefox in some places
 
 Add-ons search and some other stuff are using %APP% in urls which won't work
 for iceweasel but for firefox. Hardcode firefox there.
@@ -53,6 +52,3 @@ index 6deed70..e3f80a9 100644
  
  // Name of alternate about: page for certificate errors (when undefined, defaults to about:neterror)
  pref("security.alternate_certificate_error_page", "certerror");
--- 
-1.7.0.rc0.69.g2ee80
-
