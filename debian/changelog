@@ -1,8 +1,34 @@
-xulrunner (1.9.1.11-1) UNRELEASED; urgency=low
+xulrunner (1.9.1.11-1) unstable; urgency=high
 
   * New upstream release.
+  * Fixes mfsa-2010-{34-37,39-42,45-47}, also known as
+    CVE-2010-1211, CVE-2010-1208, CVE-2010-1209, CVE-2010-1214,
+    CVE-2010-2752, CVE-2010-2753, CVE-2010-1205, CVE-2010-1213,
+    CVE-2010-2751, CVE-2010-0654, CVE-2010-2754.
 
- -- Mike Hommey <glandium@debian.org>  Mon, 19 Jul 2010 12:57:57 +0200
+  * debian/control*:
+    - Add build-depends on libglib2.0-dev (>= 2.18.0) for filemonitor.
+      Closes: #587636.
+    - Bump libnss build-depends to fit what configure is looking for.
+      Closes: #587637.
+    - Remove conflict/replace for very old packages.
+    - Bump Standards-Version to 3.9.0.0.
+    - Fit the Uploaders field to reality.
+  * debian/mozconfig.in, debian/rules: Check if mozconfig system library
+    options will properly set the right variables. Closes: #587639
+  * debian/reftest-app/application.ini: Set a MaxVersion in our reftest-app
+    application.ini.
+  * debian/extra-stuff/Makefile.in: Use Preprocessor.py instead of
+    preprocessor.pl in debian/extra-stuff.
+  * debian/python-xpcom.postinst: Run update-python-modules -p after
+    python-xpcom installation so that xulrunner trigger doesn't choke.
+    Closes: #582071.
+  * debian/rules: Only set -std=gnu++0x flag when using g++ 4.4+.
+
+  * xpcom/reflect/xptcall/src/md/unix/*ppc_linux*: Add support for powerpcspe.
+    Closes: #586072.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 20 Jul 2010 23:42:15 +0200
 
 xulrunner (1.9.1.10-1) unstable; urgency=high
 
