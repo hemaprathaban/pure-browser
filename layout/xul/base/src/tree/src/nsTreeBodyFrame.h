@@ -376,6 +376,8 @@ protected:
       InvalidateRow(aRow + aOrientation);
   }
 
+public:
+  static
   already_AddRefed<nsTreeColumn> GetColumnImpl(nsITreeColumn* aUnknownCol) {
     if (!aUnknownCol)
       return nsnull;
@@ -384,6 +386,8 @@ protected:
     aUnknownCol->QueryInterface(kTreeColumnImplCID, (void**)&col);
     return col;
   }
+
+protected:
 
   // Create a new timer. This method is used to delay various actions like
   // opening/closing folders or tree scrolling.
