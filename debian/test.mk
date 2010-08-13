@@ -15,7 +15,7 @@ endif
 
 override_dh_auto_test: $(TESTS)
 
-debian/reftest-app/stub: $(CURDIR)/dist/bin/xulrunner-stub
+debian/reftest-app/stub: $(CURDIR)/build-xulrunner/dist/bin/xulrunner-stub
 	ln -s $< $@
 
 ifndef HAS_LOCALE
@@ -24,24 +24,24 @@ endif
 xpcshell-tests: export LC_ALL=$(LOCALE)
 reftest crashtest: debian/reftest-app/stub
 reftest crashtest: export EXTRA_TEST_ARGS += --appname=$(CURDIR)/debian/reftest-app/stub
-reftest crashtest: export GRE_HOME = $(CURDIR)/dist/bin
+reftest crashtest: export GRE_HOME = $(CURDIR)/build-xulrunner/dist/bin
 reftest crashtest: XVFB_RUN = xvfb-run -s "-screen 0 1024x768x24"
 
 $(TESTS):
 	GNOME22_USER_DIR="$(CURDIR)/dist/.gnome2" \
 	HOME="$(CURDIR)/dist" \
-	$(XVFB_RUN) $(MAKE) $@ 2>&1 | sed -u 's/^/$@> /'
+	$(XVFB_RUN) $(MAKE) -C build-xulrunner $@ 2>&1 | sed -u 's/^/$@> /'
 
 xpcshell-tests: xpcshell-tests-skip $(if $(HAS_LOCALE),,debian/locales/$(LOCALE))
 
 xpcshell-tests-skip:
 # APNG is not supported
-	rm -f _tests/xpcshell/test_libpr0n/unit/test_encoder_apng.js
+	rm -f build-xulrunner/_tests/xpcshell/test_libpr0n/unit/test_encoder_apng.js
 # This one fails because it relies on a sqlite bug that is fixed in the system one
 # See http://hg.mozilla.org/mozilla-central/raw-rev/1192461c259d
-	rm -f _tests/xpcshell/test_storage/unit/test_storage_combined_sharing.js
+	rm -f build-xulrunner/_tests/xpcshell/test_storage/unit/test_storage_combined_sharing.js
 # This one fails because it supposes some kind of preexisting gnome/mailcap configuration
-	rm -f _tests/xpcshell/test_uriloader_exthandler/unit/test_handlerService.js
+	rm -f build-xulrunner/_tests/xpcshell/test_uriloader_exthandler/unit/test_handlerService.js
 
 override_dh_auto_clean::
 	rm -rf debian/locales debian/reftest-app/stub
