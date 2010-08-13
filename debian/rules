@@ -12,12 +12,6 @@ MAIN_LDFLAGS := -Wl,--as-needed
 
 AUTOCONF_DIRS := build/autoconf js/src/build/autoconf
 
-JAVA_VARS := \
-	MOZ_JAVAXPCOM=1 \
-	JAVA_INCLUDE_PATH=$(CURDIR)/sun-java/stubs/include \
-	JAVAC=javac \
-	JAR=jar \
-
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
 	CONFIGURE_FLAGS += --disable-optimize
 endif
@@ -97,9 +91,7 @@ check-system-libs:
 	END { if (error) { exit 1 }}' debian/mozconfig.in
 
 override_dh_auto_build: check-system-libs
-	dh_auto_build --parallel -- \
-		$(JAVA_VARS) \
-		$(if $(wildcard /usr/bin/javac),,DEB_NO_JAR=1)
+	dh_auto_build --parallel
 	$(MAKE) -C debian/extra-stuff
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
@@ -112,7 +104,7 @@ override_dh_auto_clean::
 	rm -f $(GENERATED_FILES)
 
 	[ ! -f config/autoconf.mk ] || $(MAKE) -C debian/extra-stuff distclean
-	dh_auto_clean --parallel -- $(JAVA_VARS)
+	dh_auto_clean --parallel
 
 	for dir in $(AUTOCONF_DIRS); do \
 		for file in config.guess config.sub; do \
@@ -171,8 +163,7 @@ override_dh_installdocs: MPL
 	dh_installdocs -A $^
 
 override_dh_install: debian/dh/dh_xulrunner
-	dh_install -a --fail-missing -XMozillaInterfaces -XMozillaGlue -Xjavaxpcom.jar
-	dh_install -i
+	dh_install -a --fail-missing
 	# Make sure dh_xulrunner is able to spot the current XPCOM standalone glue.
 	perl $< -pxulrunner-$(BASE_VERSION) --no-act -v 2>&1 | grep -q "..*"
 
