@@ -1708,6 +1708,7 @@ PRBool CSSParserImpl::ParseFontFaceRule(nsresult& aErrorCode, RuleAppendFunc aAp
 
 PRBool CSSParserImpl::ParsePageRule(nsresult& aErrorCode, RuleAppendFunc aAppendFunc, void* aData)
 {
+  // XXX not yet implemented
   // Report as an error, and skip, but *succeed*, so that a style
   // sheet beginning with an @page rule will not be discarded by the
   // "initial syntax is valid" check.
