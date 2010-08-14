@@ -769,8 +769,8 @@ SheetLoadData::ReportMimeProblem(MimeProblem aProblem, nsIURI* aURI)
     if (NS_FAILED(rv)) return;
     if (aProblem == MimeProblem_quirksload_xd) {
       formattedMessage.AppendLiteral("  This cross-domain request will be "
-                                     "ignored by the next major release of "
-                                     "this browser.");
+                                     "ignored by Gecko 2.0 (e.g. Firefox "
+                                     "4.0).");
     }
     break;
 
