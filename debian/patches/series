@@ -54,9 +54,7 @@ prefs/Set-DPI-to-system-settings.patch
 system-libs/Add-readline-support-to-xpcshell.patch
 system-libs/Avoid-visibility-hidden-issues-with-readline-symbols.patch
 system-libs/Fix-FTBFS-of-xpcshell-when-EDITLINE-is-set.patch
-debian-hacks/Allow-to-override-the-PYTHON_SO-variable.patch
 debian-hacks/Put-the-crmf-library-before-the-NSS-libraries.patch
-debian-hacks/Allow-to-build-java-jar-files-in-2-pass.patch
 debian-hacks/Avoid-libxpcom-being-excluded-from-linked-libraries-.patch
 debian-hacks/Don-t-build-example-component.patch
 debian-hacks/Don-t-install-system-profile.patch
@@ -66,8 +64,6 @@ debian-hacks/Add-soname-to-appropriate-libraries.patch
 debian-hacks/Install-applications-in-usr-local-lib-instead-of-usr.patch
 debian-hacks/Remove-un-registering-system.patch
 debian-hacks/Disable-APNG-support-when-system-libpng-doesn-t-supp.patch
-debian-hacks/Add-an-rpath-to-_xpcom.so.patch
-debian-hacks/Add-an-rpath-to-libpyloader.so.patch
 debian-hacks/Use-application.ini-from-where-the-xulrunner-stub-li.patch
 debian-hacks/Move-about-handling-to-nsAboutRedirector-and-allow-c.patch
 debian-hacks/Don-t-hardcode-the-XRE-version-number-in-the-about-p.patch
@@ -84,8 +80,6 @@ debian-hacks/Avoid-some-symbols-from-being-exported-in-C-mangled-.patch
 debian-hacks/Use-a-variable-for-xulrunner-base-version-in-various.patch
 debian-hacks/Don-t-export-js_SetTraceableNativeFailed-which-is-on.patch
 debian-hacks/Avoid-extension-manager-failure-when-there-is-no-bra.patch
-debian-hacks/Disable-tests-for-javaxpcom.patch
-debian-hacks/Disable-python-xpcom-tests-for-now.patch
 debian-hacks/Gross-workaround-to-avoid-installing-test-idl-and-in.patch
 debian-hacks/Install-missing-nanojit-and-.tbl-headers-from-js-src.patch
 debian-hacks/Don-t-build-the-null-plugin.patch
