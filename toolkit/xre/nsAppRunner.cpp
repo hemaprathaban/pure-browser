@@ -292,6 +292,16 @@ static char **gRestartArgv;
 #include "nsGTKToolkit.h"
 #endif
 
+// Save literal putenv string to environment variable.
+static void
+SaveToEnv(const char *putenv)
+{
+  char *expr = strdup(putenv);
+  if (expr)
+    PR_SetEnv(expr);
+  // We intentionally leak |expr| here since it is required by PR_SetEnv.
+}
+
 // Save the given word to the specified environment variable.
 static void
 SaveWordToEnv(const char *name, const nsACString & word)
@@ -1191,28 +1201,28 @@ DumpHelp()
 
 #ifdef MOZ_X11
   printf("X11 options\n"
-         "\t--display=DISPLAY\t\tX display to use\n"
-         "\t--sync\t\tMake X calls synchronous\n"
-         "\t--no-xshm\t\tDon't use X shared memory extension\n"
-         "\t--xim-preedit=STYLE\n"
-         "\t--xim-status=STYLE\n");
+         "  --display=DISPLAY  X display to use\n"
+         "  --sync             Make X calls synchronous\n"
+         "  --no-xshm          Don't use X shared memory extension\n"
+         "  --xim-preedit=STYLE\n"
+         "  --xim-status=STYLE\n");
 #endif
 #ifdef XP_UNIX
-  printf("\t--g-fatal-warnings\t\tMake all warnings fatal\n"
+  printf("  --g-fatal-warnings Make all warnings fatal\n"
          "\n%s options\n", gAppData->name);
 #endif
 
-  printf("\t-h or -help\t\tPrint this message.\n"
-         "\t-v or -version\t\tPrint %s version.\n"
-         "\t-P <profile>\t\tStart with <profile>.\n"
-         "\t-migration\t\tStart with migration wizard.\n"
-         "\t-ProfileManager\t\tStart with ProfileManager.\n"
-         "\t-no-remote\t\tOpen new instance, not a new window in running instance.\n"
-         "\t-UILocale <locale>\tStart with <locale> resources as UI Locale.\n"
-         "\t-safe-mode\t\tDisables extensions and themes for this session.\n", gAppData->name);
+  printf("  -h or -help        Print this message.\n"
+         "  -v or -version     Print %s version.\n"
+         "  -P <profile>       Start with <profile>.\n"
+         "  -migration         Start with migration wizard.\n"
+         "  -ProfileManager    Start with ProfileManager.\n"
+         "  -no-remote         Open new instance, not a new window in running instance.\n"
+         "  -UILocale <locale> Start with <locale> resources as UI Locale.\n"
+         "  -safe-mode         Disables extensions and themes for this session.\n", gAppData->name);
 
 #if defined(XP_WIN) || defined(XP_OS2)
-  printf("\t-console\t\tStart %s with a debugging console.\n", gAppData->name);
+  printf("  -console           Start %s with a debugging console.\n", gAppData->name);
 #endif
 
   // this works, but only after the components have registered.  so if you drop in a new command line handler, -help
@@ -1605,7 +1615,7 @@ static nsresult LaunchChild(nsINativeAppSupport* aNative,
     gRestartArgv[gRestartArgc] = nsnull;
   }
 
-  PR_SetEnv("MOZ_LAUNCHED_CHILD=1");
+  SaveToEnv("MOZ_LAUNCHED_CHILD=1");
 
 #if defined(XP_MACOSX)
   SetupMacCommandLine(gRestartArgc, gRestartArgv);
@@ -1832,7 +1842,7 @@ ShowProfileManager(nsIToolkitProfileService* aProfileSvc,
   PRBool offline = PR_FALSE;
   aProfileSvc->GetStartOffline(&offline);
   if (offline) {
-    PR_SetEnv("XRE_START_OFFLINE=1");
+    SaveToEnv("XRE_START_OFFLINE=1");
   }
 
   return LaunchChild(aNative);
@@ -1844,7 +1854,7 @@ ImportProfiles(nsIToolkitProfileService* aPService,
 {
   nsresult rv;
 
-  PR_SetEnv("XRE_IMPORT_PROFILES=1");
+  SaveToEnv("XRE_IMPORT_PROFILES=1");
 
   // try to import old-style profiles
   { // scope XPCOM
@@ -2791,7 +2801,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
   }
 #endif
 
-  PR_SetEnv("MOZ_LAUNCHED_CHILD=");
+  SaveToEnv("MOZ_LAUNCHED_CHILD=");
 
   gRestartArgc = gArgc;
   gRestartArgv = (char**) malloc(sizeof(char*) * (gArgc + 1 + (override ? 2 : 0)));
@@ -2838,7 +2848,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
     PR_fprintf(PR_STDERR, "Error: argument -a requires an application name\n");
     return 1;
   } else if (ar == ARG_FOUND) {
-    PR_SetEnv("MOZ_NO_REMOTE=1");
+    SaveToEnv("MOZ_NO_REMOTE=1");
   }
 
   // Handle -help and -version command line arguments.
@@ -3173,13 +3183,6 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
 
         nsCOMPtr<nsICommandLineRunner> cmdLine;
 
-#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_WIDGET_GTK2)
-        nsRefPtr<nsGTKToolkit> toolkit = GetGTKToolkit();
-        if (toolkit && !desktopStartupID.IsEmpty()) {
-          toolkit->SetDesktopStartupID(desktopStartupID);
-        }
-#endif
-
         nsCOMPtr<nsIFile> workingDir;
         rv = NS_GetSpecialDirectory(NS_OS_CURRENT_WORKING_DIR, getter_AddRefs(workingDir));
         NS_ENSURE_SUCCESS(rv, 1);
@@ -3204,6 +3207,13 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
           rv = appStartup->CreateHiddenWindow();
           NS_TIMELINE_LEAVE("appStartup->CreateHiddenWindow");
           NS_ENSURE_SUCCESS(rv, 1);
+
+#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_WIDGET_GTK2)
+          nsRefPtr<nsGTKToolkit> toolkit = GetGTKToolkit();
+          if (toolkit && !desktopStartupID.IsEmpty()) {
+            toolkit->SetDesktopStartupID(desktopStartupID);
+          }
+#endif
 
           // Extension Compatibility Checking and Startup
           if (gAppData->flags & NS_XRE_ENABLE_EXTENSION_MANAGER) {
@@ -3258,14 +3268,14 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
 
           // clear out any environment variables which may have been set 
           // during the relaunch process now that we know we won't be relaunching.
-          PR_SetEnv("XRE_PROFILE_PATH=");
-          PR_SetEnv("XRE_PROFILE_LOCAL_PATH=");
-          PR_SetEnv("XRE_PROFILE_NAME=");
-          PR_SetEnv("XRE_START_OFFLINE=");
-          PR_SetEnv("XRE_IMPORT_PROFILES=");
-          PR_SetEnv("NO_EM_RESTART=");
-          PR_SetEnv("XUL_APP_FILE=");
-          PR_SetEnv("XRE_BINARY_PATH=");
+          SaveToEnv("XRE_PROFILE_PATH=");
+          SaveToEnv("XRE_PROFILE_LOCAL_PATH=");
+          SaveToEnv("XRE_PROFILE_NAME=");
+          SaveToEnv("XRE_START_OFFLINE=");
+          SaveToEnv("XRE_IMPORT_PROFILES=");
+          SaveToEnv("NO_EM_RESTART=");
+          SaveToEnv("XUL_APP_FILE=");
+          SaveToEnv("XRE_BINARY_PATH=");
 
           if (!shuttingDown) {
 #ifdef XP_MACOSX
@@ -3376,10 +3386,10 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
       else {
         char* noEMRestart = PR_GetEnv("NO_EM_RESTART");
         if (noEMRestart && *noEMRestart) {
-          PR_SetEnv("NO_EM_RESTART=1");
+          SaveToEnv("NO_EM_RESTART=1");
         }
         else {
-          PR_SetEnv("NO_EM_RESTART=0");
+          SaveToEnv("NO_EM_RESTART=0");
         }
       }
 
@@ -3396,20 +3406,13 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
       }
 #endif
 
-// XXXkt s/MOZ_TOOLKIT_GTK2/MOZ_WIDGET_GTK2/?
-// but the hidden window has been destroyed so toolkit is NULL anyway.
-#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_TOOLKIT_GTK2)
-      nsGTKToolkit* toolkit = GetGTKToolkit();
-      if (toolkit) {
-        nsCAutoString currentDesktopStartupID;
-        toolkit->GetDesktopStartupID(&currentDesktopStartupID);
-        if (!currentDesktopStartupID.IsEmpty()) {
-          nsCAutoString desktopStartupEnv;
-          desktopStartupEnv.AssignLiteral("DESKTOP_STARTUP_ID=");
-          desktopStartupEnv.Append(currentDesktopStartupID);
-          // Leak it with extreme prejudice!
-          PR_SetEnv(ToNewCString(desktopStartupEnv));
-        }
+#if defined(HAVE_DESKTOP_STARTUP_ID) && defined(MOZ_WIDGET_GTK2)
+      if (!desktopStartupID.IsEmpty()) {
+        nsCAutoString desktopStartupEnv;
+        desktopStartupEnv.AssignLiteral("DESKTOP_STARTUP_ID=");
+        desktopStartupEnv.Append(desktopStartupID);
+        // Leak it with extreme prejudice!
+        PR_SetEnv(ToNewCString(desktopStartupEnv));
       }
 #endif
 

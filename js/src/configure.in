@@ -923,6 +923,7 @@ if test -n "$CROSS_COMPILE"; then
     case "${target_os}" in
         linux*)       OS_ARCH=Linux OS_TARGET=Linux ;;
         kfreebsd*-gnu) OS_ARCH=GNU_kFreeBSD OS_TARGET=GNU_kFreeBSD ;;
+        gnu*)         OS_ARCH=GNU ;;
         solaris*)     OS_ARCH=SunOS OS_RELEASE=5 ;;
         mingw*)       OS_ARCH=WINNT ;;
         wince*)       OS_ARCH=WINCE ;;
@@ -1524,7 +1525,7 @@ case "$host" in
     LIBXUL_LIBS='$(XPCOM_FROZEN_LDOPTS) $(LIBXUL_DIST)/bin/XUL -lobjc'
     ;;
 
-*-linux*|*-kfreebsd*-gnu)
+*-linux*|*-kfreebsd*-gnu|*-gnu*)
     HOST_CFLAGS="$HOST_CFLAGS -DXP_UNIX"
     HOST_NSPR_MDCPUCFG='\"md/_linux.cfg\"'
     HOST_OPTIMIZE_FLAGS="${HOST_OPTIMIZE_FLAGS=-O3}"
@@ -2423,7 +2424,7 @@ dnl ========================================================
 dnl = Flags to strip unused symbols from .so components
 dnl ========================================================
 case "$target" in
-    *-linux*|*-kfreebsd*-gnu)
+    *-linux*|*-kfreebsd*-gnu|*-gnu*)
         MOZ_COMPONENTS_VERSION_SCRIPT_LDFLAGS='-Wl,--version-script -Wl,$(BUILD_TOOLS)/gnu-ld-scripts/components-version-script'
         ;;
     *-solaris*)
@@ -2504,6 +2505,9 @@ solaris*)
     AC_DEFINE(AVMPLUS_UNIX)
     ;;
 freebsd*|kfreebsd*)
+    AC_DEFINE(AVMPLUS_UNIX)
+    ;;
+gnu*)
     AC_DEFINE(AVMPLUS_UNIX)
     ;;
 *cygwin*|*mingw*|*mks*|*msvc*|*wince)
@@ -2711,52 +2715,6 @@ else
 fi
 
 AC_LANG_C
-
-dnl Check for usable wchar_t (2 bytes, unsigned)
-dnl (we really don't need the unsignedness check anymore)
-dnl ========================================================
-
-AC_CACHE_CHECK(for usable wchar_t (2 bytes, unsigned),
-    ac_cv_have_usable_wchar_v2,
-    [AC_TRY_COMPILE([#include <stddef.h>
-                     $configure_static_assert_macros],
-                    [CONFIGURE_STATIC_ASSERT(sizeof(wchar_t) == 2);
-                     CONFIGURE_STATIC_ASSERT((wchar_t)-1 > (wchar_t) 0)],
-                    ac_cv_have_usable_wchar_v2="yes",
-                    ac_cv_have_usable_wchar_v2="no")])
-if test "$ac_cv_have_usable_wchar_v2" = "yes"; then
-    AC_DEFINE(HAVE_CPP_2BYTE_WCHAR_T)
-    HAVE_CPP_2BYTE_WCHAR_T=1
-else
-dnl This is really gcc-only
-dnl Do this test using CXX only since some versions of gcc
-dnl 2.95-2.97 have a signed wchar_t in c++ only and some versions
-dnl only have short-wchar support for c++.
-dnl Note that we assume that mac & win32 have short wchar (see nscore.h)
-
-    AC_LANG_SAVE
-    AC_LANG_CPLUSPLUS
-    _SAVE_CXXFLAGS=$CXXFLAGS
-    CXXFLAGS="$CXXFLAGS -fshort-wchar"
-
-    AC_CACHE_CHECK(for compiler -fshort-wchar option, 
-        ac_cv_have_usable_wchar_option_v2,
-        [AC_TRY_LINK([#include <stddef.h>
-                      $configure_static_assert_macros],
-                     [CONFIGURE_STATIC_ASSERT(sizeof(wchar_t) == 2);
-                      CONFIGURE_STATIC_ASSERT((wchar_t)-1 > (wchar_t) 0)],
-                     ac_cv_have_usable_wchar_option_v2="yes",
-                     ac_cv_have_usable_wchar_option_v2="no")])
-
-    if test "$ac_cv_have_usable_wchar_option_v2" = "yes"; then
-        AC_DEFINE(HAVE_CPP_2BYTE_WCHAR_T)
-        HAVE_CPP_2BYTE_WCHAR_T=1
-        WCHAR_CFLAGS="-fshort-wchar"
-    else    
-        CXXFLAGS=$_SAVE_CXXFLAGS
-    fi
-    AC_LANG_RESTORE
-fi
 
 dnl Check for .hidden assembler directive and visibility attribute.
 dnl Borrowed from glibc configure.in
@@ -3095,7 +3053,7 @@ then
 			fi
 			;;
 
-	    *-*-linux*|*-*-kfreebsd*-gnu)
+	    *-*-linux*|*-*-kfreebsd*-gnu|*-*-gnu*)
 			AC_DEFINE(_REENTRANT) 
 			;;
 
@@ -3878,6 +3836,29 @@ if test -n "$MOZ_NATIVE_NSPR"; then
                 AC_MSG_ERROR([system NSPR does not support PR_STATIC_ASSERT]))
     CFLAGS=$_SAVE_CFLAGS
 fi
+
+dnl readline Support
+dnl ========================================================
+READLINE_DIR=no
+MOZ_ARG_WITH_STRING(readline,
+[  --with-readline[=PFX]
+                          Use libreadline [installed at prefix PFX]],
+    READLINE_DIR=$withval)
+
+if test -n "${READLINE_DIR}" -a "${READLINE_DIR}" != "no"; then
+    _SAVE_LDFLAGS=$LDFLAGS
+    LDFLAGS="-L${READLINE_DIR}/lib $LDFLAGS"
+    AC_CHECK_LIB(readline, readline, [HAVE_READLINE=1 READLINE_LIBS="-lreadline"],
+          [HAVE_READLINE= READLINE_LIBS=])
+    LDFLAGS=$_SAVE_LDFLAGS
+fi
+
+if test "${READLINE_DIR}" -a -d "${READLINE_DIR}" -a "$HAVE_READLINE" = 1; then
+    READLINE_LIBS="-L${READLINE_DIR}/lib ${READLINE_LIBS}"
+fi
+
+AC_SUBST(HAVE_READLINE)
+AC_SUBST(READLINE_LIBS)
 
 dnl ========================================================
 dnl Use ARM userspace kernel helpers; tell NSPR to enable
@@ -5046,7 +5027,6 @@ AC_SUBST(COMPILE_CXXFLAGS)
 AC_SUBST(LDFLAGS)
 AC_SUBST(LIBS)
 AC_SUBST(CROSS_COMPILE)
-AC_SUBST(WCHAR_CFLAGS)
 
 AC_SUBST(HOST_CC)
 AC_SUBST(HOST_CXX)
