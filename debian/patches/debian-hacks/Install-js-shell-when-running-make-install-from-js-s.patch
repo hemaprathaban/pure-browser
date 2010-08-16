@@ -1,0 +1,21 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 26 Feb 2010 16:25:15 +0100
+Subject: Install js shell when running make install from js/src
+
+---
+ js/src/Makefile.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/js/src/Makefile.in b/js/src/Makefile.in
+index 1c75fea..6014d44 100644
+--- a/js/src/Makefile.in
++++ b/js/src/Makefile.in
+@@ -614,7 +614,7 @@ endif
+ install:: $(filter-out nanojit/%,$(INSTALLED_HEADERS))
+ 	$(SYSINSTALL) $(IFLAGS1) $^ $(DESTDIR)$(includedir)/$(MODULE)
+ 
+-install:: $(SCRIPTS)
++install:: $(SCRIPTS) $(SIMPLE_PROGRAMS)
+ 	$(SYSINSTALL) $(IFLAGS2) $^ $(DESTDIR)$(bindir)
+ 
+ install:: $(LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY)

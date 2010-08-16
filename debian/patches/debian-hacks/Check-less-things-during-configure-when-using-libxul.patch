@@ -9,10 +9,10 @@ we won't be building most of the toolkit.
  1 files changed, 28 insertions(+), 6 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index 32eaa11..715fdf7 100644
+index 8399825..98647d1 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -4131,6 +4131,10 @@ if test -n "$MOZ_NATIVE_NSPR"; then
+@@ -4139,6 +4139,10 @@ if test -n "$MOZ_NATIVE_NSPR"; then
                  AC_MSG_ERROR([system NSPR does not support PR_STATIC_ASSERT]))
      CFLAGS=$_SAVE_CFLAGS
  else
@@ -23,7 +23,7 @@ index 32eaa11..715fdf7 100644
      if test "$OS_ARCH" = "WINCE"; then
          NSPR_CFLAGS="-I${LIBXUL_DIST}/include/nspr"
          NSPR_LIBS="${LIBXUL_DIST}/lib/nspr${NSPR_VERSION}.lib ${LIBXUL_DIST}/lib/plc${NSPR_VERSION}.lib ${LIBXUL_DIST}/lib/plds${NSPR_VERSION}.lib "
-@@ -4145,6 +4149,7 @@ else
+@@ -4153,6 +4157,7 @@ else
          NSPR_CFLAGS='`$(LIBXUL_DIST)/bin/nspr-config --prefix='${LIBXUL_DIST}' --includedir='${LIBXUL_DIST}'/include/nspr --cflags`'
          NSPR_LIBS='`$(LIBXUL_DIST)/bin/nspr-config --prefix='${LIBXUL_DIST}' --libdir='${LIBXUL_DIST}'/lib --libs`'
      fi
@@ -31,7 +31,7 @@ index 32eaa11..715fdf7 100644
  fi
  
  dnl ========================================================
-@@ -4710,6 +4715,10 @@ dnl =
+@@ -4741,6 +4746,10 @@ dnl =
  dnl ========================================================
  MOZ_ARG_HEADER(Toolkit Options)
  
@@ -42,7 +42,7 @@ index 32eaa11..715fdf7 100644
      dnl ========================================================
      dnl = Select the default toolkit
      dnl ========================================================
-@@ -4746,6 +4755,7 @@ MOZ_ARG_HEADER(Toolkit Options)
+@@ -4777,6 +4786,7 @@ MOZ_ARG_HEADER(Toolkit Options)
      else
          AC_MSG_ERROR([You must specify a default toolkit (perhaps $_PLATFORM_DEFAULT_TOOLKIT).])
      fi
@@ -50,7 +50,7 @@ index 32eaa11..715fdf7 100644
  
  AC_DEFINE_UNQUOTED(MOZ_DEFAULT_TOOLKIT,"$MOZ_WIDGET_TOOLKIT")
  
-@@ -4868,6 +4878,7 @@ dnl ========================================================
+@@ -4899,6 +4909,7 @@ dnl ========================================================
  dnl = startup-notification support module
  dnl ========================================================
  
@@ -58,7 +58,7 @@ index 32eaa11..715fdf7 100644
  if test "$MOZ_ENABLE_GTK2"
  then
      MOZ_ENABLE_STARTUP_NOTIFICATION=
-@@ -4895,6 +4906,7 @@ then
+@@ -4926,6 +4937,7 @@ then
  
      TK_LIBS="$TK_LIBS $MOZ_STARTUP_NOTIFICATION_LIBS"
  fi
@@ -66,7 +66,7 @@ index 32eaa11..715fdf7 100644
  AC_SUBST(MOZ_ENABLE_STARTUP_NOTIFICATION)
  AC_SUBST(MOZ_STARTUP_NOTIFICATION_CFLAGS)
  AC_SUBST(MOZ_STARTUP_NOTIFICATION_LIBS)
-@@ -4955,6 +4967,12 @@ AC_SUBST(MOZ_QT_LIBS)
+@@ -4986,6 +4998,12 @@ AC_SUBST(MOZ_QT_LIBS)
  AC_SUBST(MOC)
  
  AC_SUBST(MOZ_DFB)
@@ -79,7 +79,7 @@ index 32eaa11..715fdf7 100644
  AC_SUBST(MOZ_X11)
  
  dnl ========================================================
-@@ -5037,7 +5055,7 @@ MOZ_ARG_DISABLE_BOOL(pango,
+@@ -5068,7 +5086,7 @@ MOZ_ARG_DISABLE_BOOL(pango,
  dnl ========================================================
  dnl = Pango
  dnl ========================================================
@@ -88,7 +88,7 @@ index 32eaa11..715fdf7 100644
  then
      AC_SUBST(MOZ_PANGO)
  
-@@ -5072,6 +5090,7 @@ dnl ========================================================
+@@ -5103,6 +5121,7 @@ dnl ========================================================
  dnl = GnomeVFS support module
  dnl ========================================================
  
@@ -96,7 +96,7 @@ index 32eaa11..715fdf7 100644
  if test "$MOZ_X11"
  then
      dnl build the gnomevfs extension by default only when the
-@@ -5208,6 +5227,9 @@ AC_SUBST(MOZ_ENABLE_DBUS)
+@@ -5239,6 +5258,9 @@ AC_SUBST(MOZ_ENABLE_DBUS)
  AC_SUBST(MOZ_DBUS_GLIB_CFLAGS)
  AC_SUBST(MOZ_DBUS_GLIB_LIBS)
  
@@ -106,7 +106,7 @@ index 32eaa11..715fdf7 100644
  dnl ========================================================
  dnl = Build Personal Security Manager
  dnl ========================================================
-@@ -5465,7 +5487,7 @@ dnl = Check alsa availability on Linux if using sydneyaudio
+@@ -5496,7 +5518,7 @@ dnl = Check alsa availability on Linux if using sydneyaudio
  dnl ========================================================
  
  dnl If using sydneyaudio with Linux, ensure that the alsa library is available
@@ -115,7 +115,7 @@ index 32eaa11..715fdf7 100644
  if test -n "$MOZ_SYDNEYAUDIO"; then
     case "$target_os" in
  linux*)
-@@ -6472,7 +6494,7 @@ MOZ_ARG_ENABLE_BOOL(jemalloc,
+@@ -6503,7 +6525,7 @@ MOZ_ARG_ENABLE_BOOL(jemalloc,
      MOZ_MEMORY=1,
      MOZ_MEMORY=)
  
@@ -124,7 +124,7 @@ index 32eaa11..715fdf7 100644
      MOZ_MEMORY=
  fi
  
-@@ -7373,7 +7395,7 @@ msvc*|mks*|cygwin*|mingw*|wince*)
+@@ -7404,7 +7426,7 @@ msvc*|mks*|cygwin*|mingw*|wince*)
      ;;
  esac
  
@@ -133,7 +133,7 @@ index 32eaa11..715fdf7 100644
      SKIP_IDL_CHECK="yes"
  fi
  
-@@ -7480,7 +7502,7 @@ if test -n "$CROSS_COMPILE"; then
+@@ -7511,7 +7533,7 @@ if test -n "$CROSS_COMPILE"; then
      fi
  fi
  
@@ -142,7 +142,7 @@ index 32eaa11..715fdf7 100644
  if test -z "${GLIB_CFLAGS}" || test -z "${GLIB_LIBS}" ; then
      if test "$MOZ_ENABLE_GTK2" || test "$USE_ELF_DYNSTR_GC" ; then
          PKG_CHECK_MODULES(GLIB, glib-2.0 >= 1.3.7 gobject-2.0)
-@@ -8212,7 +8234,7 @@ if test "$USING_HCC"; then
+@@ -8243,7 +8265,7 @@ if test "$USING_HCC"; then
  fi
  
  dnl Check for missing components

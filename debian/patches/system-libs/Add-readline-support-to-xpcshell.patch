@@ -1,0 +1,23 @@
+From: Mike Hommey <glandium@debian.org>
+Date: Sat, 8 Dec 2007 16:34:00 +0100
+Subject: Add readline support to xpcshell
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=331776
+---
+ js/src/xpconnect/shell/Makefile.in |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/js/src/xpconnect/shell/Makefile.in b/js/src/xpconnect/shell/Makefile.in
+index 10d74118..3c92752 100644
+--- a/js/src/xpconnect/shell/Makefile.in
++++ b/js/src/xpconnect/shell/Makefile.in
+@@ -100,7 +100,7 @@ endif
+ # look at mozilla/js/src/editline, which is license-free (but not part
+ # of the mozilla build.)
+ #
+-ifdef JS_READLINE
++ifdef HAVE_READLINE
+ DEFINES += -DEDITLINE
+-LIBS += -lreadline $(JS_READLINE_EXTRA_LIBS)
++LIBS += $(READLINE_LIBS)
+ endif
