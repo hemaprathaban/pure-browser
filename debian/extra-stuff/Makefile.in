@@ -14,9 +14,10 @@ EXTRA_COMPONENTS := addonsInfo.js debUpdateNotifier.js
 include $(topsrcdir)/config/rules.mk
 
 places.js: $(topsrcdir)/browser/app/profile/firefox.js
-	grep '\(places\.frecency\.\|browser\.\(formfill\.enable\|history_expire_days\|urlbar\.\(restrict\.\|match\.\|default\.behavior\|filter\.javascript\)\)\)' $< > $@
+	$(PYTHON) $(topsrcdir)/config/Preprocessor.py $(DEFINES) $(ACDEFINES) $^ | grep '\(places\.frecency\.\|browser\.\(formfill\.enable\|history_expire_days\|urlbar\.\(restrict\.\|match\.\|default\.behavior\|filter\.javascript\)\)\)' > $@
 
 DEFINES += -DAB_CD=$(MOZ_UI_LOCALE) -DMOZ_APP_NAME=$(MOZ_APP_NAME) -DPREF_DIR=$(PREF_DIR)
+DEFINES += -DAPP_UA_NAME=a -DAPP_VERSION=0
 
 packages-static: $(topsrcdir)/browser/installer/unix/packages-static $(srcdir)/packages-static.$(MOZ_APP_NAME)
 	$(PYTHON) $(topsrcdir)/config/Preprocessor.py $(DEFINES) $(ACDEFINES) $^ | sed 's/^\[browser\]/[$(MOZ_APP_NAME)]/' > $@
