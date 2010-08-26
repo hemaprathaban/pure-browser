@@ -30,7 +30,7 @@ $(TESTS):
 	HOME="$(CURDIR)/build-xulrunner/dist" \
 	$(XVFB_RUN) $(MAKE) -C build-xulrunner $@ 2>&1 | sed -u 's/^/$@> /'
 
-xpcshell-tests: xpcshell-tests-skip $(if $(HAS_LOCALE),,debian/locales/$(LOCALE))
+xpcshell-tests: $(if $(HAS_LOCALE),,debian/locales/$(LOCALE))
 
 xpcshell-tests-skip:
 # APNG is not supported
@@ -44,4 +44,6 @@ xpcshell-tests-skip:
 override_dh_auto_clean::
 	rm -rf debian/locales
 
-.PHONY: test $(TESTS) xpcshell-tests-skip
+$(TESTS): %: %-skip
+
+.PHONY: test $(TESTS) $(TESTS:%=%-skip)
