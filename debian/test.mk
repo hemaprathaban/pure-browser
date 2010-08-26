@@ -11,15 +11,11 @@ TESTS := check xpcshell-tests reftest crashtest
 
 override_dh_auto_test: $(TESTS)
 
-debian/reftest-app/stub: $(CURDIR)/build-xulrunner/dist/bin/xulrunner-stub
-	ln -s $< $@
-
 ifndef HAS_LOCALE
 xpcshell-tests: export LOCPATH = $(CURDIR)/debian/locales
 endif
 xpcshell-tests: export LC_ALL=$(LOCALE)
-reftest crashtest: debian/reftest-app/stub
-reftest crashtest: export EXTRA_TEST_ARGS += --appname=$(CURDIR)/debian/reftest-app/stub
+reftest crashtest: export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-iceweasel/dist/bin/firefox
 reftest crashtest: export GRE_HOME = $(CURDIR)/build-xulrunner/dist/bin
 reftest crashtest: XVFB_RUN = xvfb-run -s "-screen 0 1024x768x24"
 
@@ -46,6 +42,6 @@ xpcshell-tests-skip:
 	rm -f build-xulrunner/_tests/xpcshell/test_uriloader_exthandler/unit/test_handlerService.js
 
 override_dh_auto_clean::
-	rm -rf debian/locales debian/reftest-app/stub
+	rm -rf debian/locales
 
 .PHONY: test $(TESTS) xpcshell-tests-skip
