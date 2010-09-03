@@ -3367,9 +3367,12 @@ js_LookupPropertyWithFlags(JSContext *cx, JSObject *obj, jsid id, uintN flags,
                         }
                         scope = OBJ_SCOPE(obj2);
                         if (!MAP_IS_NATIVE(&scope->map)) {
+                            JSTempValueRooter root;
                             /* Whoops, newresolve handed back a foreign obj2. */
                             JS_ASSERT(obj2 != obj);
+                            JS_PUSH_SINGLE_TEMP_ROOT(cx, obj2, &root);
                             ok = OBJ_LOOKUP_PROPERTY(cx, obj2, id, objp, propp);
+                            JS_POP_TEMP_ROOT(cx, &root);
                             if (!ok || *propp)
                                 goto cleanup;
                             JS_LOCK_OBJ(cx, obj2);
@@ -3433,7 +3436,12 @@ js_LookupPropertyWithFlags(JSContext *cx, JSObject *obj, jsid id, uintN flags,
         if (!proto)
             break;
         if (!OBJ_IS_NATIVE(proto)) {
-            if (!OBJ_LOOKUP_PROPERTY(cx, proto, id, objp, propp))
+            JSTempValueRooter root;
+            JSBool rv;
+            JS_PUSH_SINGLE_TEMP_ROOT(cx, proto, &root);
+            rv = OBJ_LOOKUP_PROPERTY(cx, proto, id, objp, propp);
+            JS_POP_TEMP_ROOT(cx, &root);
+            if (!rv)
                 return -1;
             return protoIndex + 1;
         }

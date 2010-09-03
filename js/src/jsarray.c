@@ -687,6 +687,8 @@ array_lookupProperty(JSContext *cx, JSObject *obj, jsid id, JSObject **objp,
          obj->dslots[i] == JSVAL_HOLE))
     {
         JSObject *proto = STOBJ_GET_PROTO(obj);
+        JSTempValueRooter root;
+        JSBool rv;
 
         if (!proto) {
             *objp = NULL;
@@ -694,7 +696,10 @@ array_lookupProperty(JSContext *cx, JSObject *obj, jsid id, JSObject **objp,
             return JS_TRUE;
         }
 
-        return OBJ_LOOKUP_PROPERTY(cx, proto, id, objp, propp);
+        JS_PUSH_SINGLE_TEMP_ROOT(cx, proto, &root);
+        rv = OBJ_LOOKUP_PROPERTY(cx, proto, id, objp, propp);
+        JS_POP_TEMP_ROOT(cx, &root);
+        return rv;
     }
 
     /* FIXME 417501: threadsafety: could race with a lookup on another thread.
