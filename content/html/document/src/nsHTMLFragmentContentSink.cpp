@@ -72,7 +72,6 @@
 #include "nsICSSStyleRule.h"
 #include "nsUnicharInputStream.h"
 #include "nsCSSStyleSheet.h"
-#include "nsICSSRuleList.h"
 #include "nsCSSDeclaration.h"
 #include "nsCSSProperty.h"
 #include "nsIDOMCSSRule.h"
