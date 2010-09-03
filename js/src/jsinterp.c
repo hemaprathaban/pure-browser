@@ -1851,6 +1851,7 @@ js_InvokeConstructor(JSContext *cx, uintN argc, jsval *vp)
     JSObject *obj, *obj2, *proto, *parent;
     jsval lval, rval;
     JSClass *clasp;
+    JSTempValueRooter tvr;
 
     fun = NULL;
     obj2 = NULL;
@@ -1897,10 +1898,13 @@ js_InvokeConstructor(JSContext *cx, uintN argc, jsval *vp)
     if (!obj)
         return JS_FALSE;
 
+    JS_PUSH_SINGLE_TEMP_ROOT(cx, obj, &tvr);
+
     /* Now we have an object with a constructor method; call it. */
     vp[1] = OBJECT_TO_JSVAL(obj);
     if (!js_Invoke(cx, argc, vp, JSINVOKE_CONSTRUCT)) {
         cx->weakRoots.newborn[GCX_OBJECT] = NULL;
+        JS_POP_TEMP_ROOT(cx, &tvr);
         return JS_FALSE;
     }
 
@@ -1912,12 +1916,14 @@ js_InvokeConstructor(JSContext *cx, uintN argc, jsval *vp)
             JS_ReportErrorNumber(cx, js_GetErrorMessage, NULL,
                                  JSMSG_BAD_NEW_RESULT,
                                  js_ValueToPrintableString(cx, rval));
+            JS_POP_TEMP_ROOT(cx, &tvr);
             return JS_FALSE;
         }
         *vp = OBJECT_TO_JSVAL(obj);
     }
 
     JS_RUNTIME_METER(cx->runtime, constructs);
+    JS_POP_TEMP_ROOT(cx, &tvr);
     return JS_TRUE;
 }
 
