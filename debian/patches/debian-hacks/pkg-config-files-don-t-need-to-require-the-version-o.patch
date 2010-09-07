@@ -1,0 +1,71 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Tue, 7 Sep 2010 08:52:43 +0200
+Subject: pkg-config files don't need to require the version of nspr xulrunner was built against
+
+---
+ xulrunner/installer/libxul-unstable.pc.in |    2 +-
+ xulrunner/installer/libxul.pc.in          |    2 +-
+ xulrunner/installer/mozilla-js.pc.in      |    2 +-
+ xulrunner/installer/mozilla-nss.pc.in     |    2 +-
+ xulrunner/installer/mozilla-plugin.pc.in  |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/xulrunner/installer/libxul-unstable.pc.in b/xulrunner/installer/libxul-unstable.pc.in
+index 4489ef1..7879ec6 100644
+--- a/xulrunner/installer/libxul-unstable.pc.in
++++ b/xulrunner/installer/libxul-unstable.pc.in
+@@ -7,6 +7,6 @@ includetype=unstable
+ Name: libxul
+ Description: The Mozilla Runtime and Embedding Engine (unstable API)
+ Version: %MOZILLA_VERSION%
+-Requires: %NSPR_NAME% >= %NSPR_VERSION%
++Requires: %NSPR_NAME%
+ Libs: -L${sdkdir}/lib -lxpcomglue_s -lxul -lxpcom
+ Cflags: -I${includedir}/${includetype} %WCHAR_CFLAGS%
+diff --git a/xulrunner/installer/libxul.pc.in b/xulrunner/installer/libxul.pc.in
+index 3a69f1e..013278d 100644
+--- a/xulrunner/installer/libxul.pc.in
++++ b/xulrunner/installer/libxul.pc.in
+@@ -11,6 +11,6 @@ includetype=stable
+ Name: libxul
+ Description: The Mozilla Runtime and Embedding Engine
+ Version: %MOZILLA_VERSION%
+-Requires: %NSPR_NAME% >= %NSPR_VERSION%
++Requires: %NSPR_NAME%
+ Libs: -L${sdkdir}/lib -lxpcomglue_s -lxul -lxpcom
+ Cflags: -I${includedir}/${includetype} %WCHAR_CFLAGS%
+diff --git a/xulrunner/installer/mozilla-js.pc.in b/xulrunner/installer/mozilla-js.pc.in
+index 4fe30bb..fcd2ea2 100644
+--- a/xulrunner/installer/mozilla-js.pc.in
++++ b/xulrunner/installer/mozilla-js.pc.in
+@@ -5,6 +5,6 @@ includedir=%includedir%
+ Name: JavaScript
+ Description: The Mozilla JavaScript Library
+ Version: %MOZILLA_VERSION%
+-Requires: %NSPR_NAME% >= %NSPR_VERSION%
++Requires: %NSPR_NAME%
+ Libs: -L${sdkdir}/lib -lmozjs
+ Cflags: -I${includedir}/stable -DXP_UNIX -DJS_THREADSAFE
+diff --git a/xulrunner/installer/mozilla-nss.pc.in b/xulrunner/installer/mozilla-nss.pc.in
+index 92e4ad9..0d75dcb 100644
+--- a/xulrunner/installer/mozilla-nss.pc.in
++++ b/xulrunner/installer/mozilla-nss.pc.in
+@@ -5,6 +5,6 @@ includedir=%includedir%
+ Name: NSS
+ Description: Mozilla Network Security Services
+ Version: %MOZILLA_VERSION%
+-Requires: %NSPR_NAME% >= %NSPR_VERSION%
++Requires: %NSPR_NAME%
+ Libs: -L${sdkdir}/lib -lsmime3 -lssl3 -lnss3 -lnssutil3
+ Cflags: -I${includedir}/stable
+diff --git a/xulrunner/installer/mozilla-plugin.pc.in b/xulrunner/installer/mozilla-plugin.pc.in
+index cbcc88c..ef9c575 100644
+--- a/xulrunner/installer/mozilla-plugin.pc.in
++++ b/xulrunner/installer/mozilla-plugin.pc.in
+@@ -5,5 +5,5 @@ includedir=%includedir%
+ Name: Mozilla Plug-In API
+ Description: Mozilla Plug-In API
+ Version: %MOZILLA_VERSION%
+-Requires: %NSPR_NAME% >= %NSPR_VERSION%
++Requires: %NSPR_NAME%
+ Cflags: -I${includedir}/stable -DXP_UNIX %ojidef%
