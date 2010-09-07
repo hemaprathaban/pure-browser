@@ -7,6 +7,6 @@ includetype=unstable
 Name: libxul
 Description: The Mozilla Runtime and Embedding Engine (unstable API)
 Version: %MOZILLA_VERSION%
-Requires: %NSPR_NAME% >= %NSPR_VERSION%
+Requires: %NSPR_NAME%
 Libs: -L${sdkdir}/lib -lxpcomglue_s -lxul -lxpcom
 Cflags: -I${includedir}/${includetype} %WCHAR_CFLAGS%
