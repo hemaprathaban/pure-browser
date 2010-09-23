@@ -738,13 +738,9 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
 
         valcnt = 0;
         if (prop) {
-            ok = OBJ_GET_ATTRIBUTES(cx, obj2, id, prop, &attrs);
-            if (!ok) {
-                OBJ_DROP_PROPERTY(cx, obj2, prop);
-                goto error;
-            }
-            if (OBJ_IS_NATIVE(obj2) &&
-                (attrs & (JSPROP_GETTER | JSPROP_SETTER))) {
+            if (OBJ_IS_NATIVE(obj2)) {
+                JSScopeProperty *sprop = (JSScopeProperty *) prop;
+                attrs = sprop->attrs;
                 if (attrs & JSPROP_GETTER) {
                     val[valcnt] = (jsval) ((JSScopeProperty *)prop)->getter;
                     gsopold[valcnt] =
@@ -763,13 +759,18 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
 
                     valcnt++;
                 }
+                JS_UNLOCK_OBJ(cx, obj2);
             } else {
+                OBJ_DROP_PROPERTY(cx, obj2, prop);
+            }
+            if (!valcnt) {
                 valcnt = 1;
                 gsop[0] = NULL;
                 gsopold[0] = NULL;
                 ok = OBJ_GET_PROPERTY(cx, obj, id, &val[0]);
+                if (!ok)
+                    goto error;
             }
-            OBJ_DROP_PROPERTY(cx, obj2, prop);
         }
 
 #else  /* !JS_HAS_GETTER_SETTER */
@@ -784,11 +785,10 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
         gsop[0] = NULL;
         gsopold[0] = NULL;
         ok = OBJ_GET_PROPERTY(cx, obj, id, &val[0]);
-
-#endif /* !JS_HAS_GETTER_SETTER */
-
         if (!ok)
             goto error;
+
+#endif /* !JS_HAS_GETTER_SETTER */
 
         /*
          * If id is a string that's not an identifier, then it needs to be
