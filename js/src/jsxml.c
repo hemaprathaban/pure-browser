@@ -7050,7 +7050,7 @@ xml_setNamespace(JSContext *cx, uintN argc, jsval *vp)
     ns = (JSXMLNamespace *) JS_GetPrivate(cx, nsobj);
     ns->declared = JS_TRUE;
 
-    qnargv[0] = vp[2] = OBJECT_TO_JSVAL(nsobj);
+    qnargv[0] = OBJECT_TO_JSVAL(nsobj);
     qnargv[1] = OBJECT_TO_JSVAL(xml->name->object);
     qnobj = js_ConstructObject(cx, &js_QNameClass.base, NULL, NULL, 2, qnargv);
     if (!qnobj)
