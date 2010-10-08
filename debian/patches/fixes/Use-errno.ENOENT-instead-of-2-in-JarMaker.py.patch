@@ -1,4 +1,3 @@
-From 3630e5168a6f5be3035210eb07e4fa9f6c52813b Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 11 Sep 2010 09:31:09 +0200
 Subject: Use errno.ENOENT instead of "2" in JarMaker.py
@@ -38,6 +37,3 @@ index 9bd5111..3029120 100644
            raise
        os.symlink(src, out)
  
--- 
-1.7.2.rc1.13.gd67bc
-

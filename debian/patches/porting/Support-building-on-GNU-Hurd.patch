@@ -14,7 +14,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=555901
  7 files changed, 30 insertions(+), 9 deletions(-)
 
 diff --git a/config/rules.mk b/config/rules.mk
-index cd2059c..e66e66e 100644
+index d9864a0..f0b80ea 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
 @@ -666,6 +666,14 @@ endif
@@ -33,7 +33,7 @@ index cd2059c..e66e66e 100644
  #
  ifeq ($(OS_ARCH),WINNT)
 diff --git a/configure.in b/configure.in
-index bdeeb35..8399825 100644
+index bcd7b88..2edb875 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -1022,6 +1022,7 @@ if test -n "$CROSS_COMPILE"; then
@@ -72,7 +72,7 @@ index bdeeb35..8399825 100644
  			;;
  
 diff --git a/js/src/config/rules.mk b/js/src/config/rules.mk
-index cd2059c..e66e66e 100644
+index d9864a0..f0b80ea 100644
 --- a/js/src/config/rules.mk
 +++ b/js/src/config/rules.mk
 @@ -666,6 +666,14 @@ endif
