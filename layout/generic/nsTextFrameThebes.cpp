@@ -1861,6 +1861,50 @@ BuildTextRunsScanner::SetupBreakSinksForTextRun(gfxTextRun* aTextRun,
   }
 }
 
+// Find the flow corresponding to aContent in aUserData
+static inline TextRunMappedFlow*
+FindFlowForContent(TextRunUserData* aUserData, nsIContent* aContent)
+{
+  // Find the flow that contains us
+  PRInt32 i = aUserData->mLastFlowIndex;
+  PRInt32 delta = 1;
+  PRInt32 sign = 1;
+  // Search starting at the current position and examine close-by
+  // positions first, moving further and further away as we go.
+  while (i >= 0 && i < aUserData->mMappedFlowCount) {
+    TextRunMappedFlow* flow = &aUserData->mMappedFlows[i];
+    if (flow->mStartFrame->GetContent() == aContent) {
+      return flow;
+    }
+
+    i += delta;
+    delta = -delta - sign;
+    sign = -sign;
+  }
+
+  // We ran into an array edge.  Add |delta| to |i| once more to get
+  // back to the side where we still need to search, then step in
+  // the |sign| direction.
+  i += delta;
+  if (sign > 0) {
+    for (; i < aUserData->mMappedFlowCount; ++i) {
+      TextRunMappedFlow* flow = &aUserData->mMappedFlows[i];
+      if (flow->mStartFrame->GetContent() == aContent) {
+        return flow;
+      }
+    }
+  } else {
+    for (; i >= 0; --i) {
+      TextRunMappedFlow* flow = &aUserData->mMappedFlows[i];
+      if (flow->mStartFrame->GetContent() == aContent) {
+        return flow;
+      }
+    }
+  }
+
+  return nsnull;
+}
+
 void
 BuildTextRunsScanner::AssignTextRun(gfxTextRun* aTextRun)
 {
@@ -1892,30 +1936,50 @@ BuildTextRunsScanner::AssignTextRun(gfxTextRun* aTextRun)
         }
       }
 #endif
-#ifdef DEBUG
+
       gfxTextRun* oldTextRun = f->GetTextRun();
-      nsTextFrame* firstFrame = nsnull;
       if (oldTextRun) {
+        nsTextFrame* firstFrame = nsnull;
+        PRUint32 startOffset = 0;
         if (oldTextRun->GetFlags() & nsTextFrameUtils::TEXT_IS_SIMPLE_FLOW) {
           firstFrame = static_cast<nsTextFrame*>(oldTextRun->GetUserData());
         }
         else {
-          TextRunUserData* userData =
-            static_cast<TextRunUserData*>(oldTextRun->GetUserData());
+          TextRunUserData* userData = static_cast<TextRunUserData*>(oldTextRun->GetUserData());
           firstFrame = userData->mMappedFlows[0].mStartFrame;
+          if (NS_UNLIKELY(f != firstFrame)) {
+            TextRunMappedFlow* flow = FindFlowForContent(userData, f->GetContent());
+            if (flow) {
+              startOffset = flow->mDOMOffsetToBeforeTransformOffset;
+            }
+            else {
+              NS_ERROR("Can't find flow containing frame 'f'");
+            }
+          }
         }
-      }
-#endif
-      f->ClearTextRun(f);
+
+        // Optimization: if |f| is the first frame in the flow then there are no
+        // prev-continuations that use |oldTextRun|.
+        nsTextFrame* clearFrom = nsnull;
+        if (NS_UNLIKELY(f != firstFrame)) {
+          // If all the frames in the mapped flow starting at |f| (inclusive)
+          // are empty then we let the prev-continuations keep the old text run.
+          gfxSkipCharsIterator iter(oldTextRun->GetSkipChars(), startOffset, f->GetContentOffset());
+          PRUint32 textRunOffset = iter.ConvertOriginalToSkipped(f->GetContentOffset());
+          clearFrom = textRunOffset == oldTextRun->GetLength() ? f : nsnull;
+        }
+        f->ClearTextRun(clearFrom);
+
 #ifdef DEBUG
-      if (firstFrame && !firstFrame->GetTextRun()) {
-        // oldTextRun was destroyed - assert that we don't reference it.
-        for (PRUint32 i = 0; i < mBreakSinks.Length(); ++i) {
-          NS_ASSERTION(oldTextRun != mBreakSinks[i]->mTextRun,
-                       "destroyed text run is still in use");
+        if (firstFrame && !firstFrame->GetTextRun()) {
+          // oldTextRun was destroyed - assert that we don't reference it.
+          for (PRUint32 i = 0; i < mBreakSinks.Length(); ++i) {
+            NS_ASSERTION(oldTextRun != mBreakSinks[i]->mTextRun,
+                         "destroyed text run is still in use");
+          }
         }
-      }
 #endif
+      }
       f->SetTextRun(aTextRun);
     }
     // Set this bit now; we can't set it any earlier because
