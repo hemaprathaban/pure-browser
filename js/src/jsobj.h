@@ -711,6 +711,9 @@ js_ReportGetterOnlyAssignment(JSContext *cx);
 extern JS_FRIEND_API(JSBool)
 js_GetterOnlyPropertyStub(JSContext *cx, JSObject *obj, jsval id, jsval *vp);
 
+extern JS_FRIEND_API(void)
+js_SetObjectWeakRoot(JSContext *cx, JSObject *obj);
+
 JS_END_EXTERN_C
 
 #endif /* jsobj_h___ */
