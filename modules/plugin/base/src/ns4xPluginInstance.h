@@ -189,9 +189,10 @@ protected:
     PRPackedBool  mTransparent;
     PRPackedBool  mStarted;
     PRPackedBool  mCached;
-    PRPackedBool  mIsJavaPlugin;
 
 public:
+    PRPackedBool  mIsJavaPlugin;
+
     // True while creating the plugin, or calling NPP_SetWindow() on
     // it.
     PRPackedBool  mInPluginInitCall;
@@ -199,6 +200,8 @@ public:
     nsInstanceStream *mStreams;
 
     nsVoidArray mPopupStates;
+
+    nsXPIDLCString mFakeURL;
 };
 
 #endif // ns4xPluginInstance_h__
