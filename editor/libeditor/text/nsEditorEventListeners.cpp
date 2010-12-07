@@ -73,6 +73,20 @@
 
 //#define DEBUG_IME
 
+class nsAutoEditorKeypressOperation {
+public:
+  nsAutoEditorKeypressOperation(nsEditor *aEditor, nsIDOMNSEvent *aEvent)
+    : mEditor(aEditor) {
+    mEditor->BeginKeypressHandling(aEvent);
+  }
+  ~nsAutoEditorKeypressOperation() {
+    mEditor->EndKeypressHandling();
+  }
+
+private:
+  nsEditor *mEditor;
+};
+
 /*
  * nsTextEditorKeyListener implementation
  */
@@ -117,6 +131,10 @@ nsTextEditorKeyListener::KeyUp(nsIDOMEvent* aKeyEvent)
 nsresult
 nsTextEditorKeyListener::KeyPress(nsIDOMEvent* aKeyEvent)
 {
+  // Transfer the event's trusted-ness to our editor
+  nsCOMPtr<nsIDOMNSEvent> NSEvent = do_QueryInterface(aKeyEvent);
+  nsAutoEditorKeypressOperation operation(static_cast<nsEditor*> (mEditor), NSEvent);
+
   // DOM event handling happens in two passes, the client pass and the system
   // pass.  We do all of our processing in the system pass, to allow client
   // handlers the opportunity to cancel events and prevent typing in the editor.
@@ -869,6 +887,11 @@ nsTextEditorCompositionListener::HandleEndComposition(nsIDOMEvent* aCompositionE
 #ifdef DEBUG_IME
    printf("nsTextEditorCompositionListener::HandleEndComposition\n");
 #endif
+
+  // Transfer the event's trusted-ness to our editor
+  nsCOMPtr<nsIDOMNSEvent> NSEvent = do_QueryInterface(aCompositionEvent);
+  nsAutoEditorKeypressOperation operation(static_cast<nsEditor*> (mEditor), NSEvent);
+
    return mEditor->EndComposition();
 }
 
