@@ -110,6 +110,7 @@ class nsIXTFService;
 #ifdef IBMBIDI
 class nsIBidiKeyboard;
 #endif
+class nsIChannel;
 
 extern const char kLoadAsData[];
 
