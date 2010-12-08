@@ -4372,6 +4372,14 @@ nsIContentUtils::IsSafeToRunScript()
   return nsContentUtils::IsSafeToRunScript();
 }
 
+NS_IMPL_ISUPPORTS1(nsIContentUtils2, nsIContentUtils2)
+
+nsresult
+nsIContentUtils2::CheckSameOrigin(nsIChannel *aOldChannel, nsIChannel *aNewChannel)
+{
+  return nsContentUtils::CheckSameOrigin(aOldChannel, aNewChannel);
+}
+
 /* static */
 PRBool
 nsContentUtils::AddScriptRunner(nsIRunnable* aRunnable)
@@ -4601,20 +4609,12 @@ nsContentUtils::GetSameOriginChecker()
   return sSameOriginChecker;
 }
 
-
-NS_IMPL_ISUPPORTS2(nsSameOriginChecker,
-                   nsIChannelEventSink,
-                   nsIInterfaceRequestor)
-
-NS_IMETHODIMP
-nsSameOriginChecker::OnChannelRedirect(nsIChannel *aOldChannel,
-                                       nsIChannel *aNewChannel,
-                                       PRUint32    aFlags)
+/* static */
+nsresult
+nsContentUtils::CheckSameOrigin(nsIChannel *aOldChannel, nsIChannel *aNewChannel)
 {
-  NS_PRECONDITION(aNewChannel, "Redirecting to null channel?");
-  if (!nsContentUtils::GetSecurityManager()) {
+  if (!nsContentUtils::GetSecurityManager())
     return NS_ERROR_NOT_AVAILABLE;
-  }
 
   nsCOMPtr<nsIPrincipal> oldPrincipal;
   nsContentUtils::GetSecurityManager()->
@@ -4631,7 +4631,22 @@ nsSameOriginChecker::OnChannelRedirect(nsIChannel *aOldChannel,
   if (NS_SUCCEEDED(rv) && newOriginalURI != newURI) {
     rv = oldPrincipal->CheckMayLoad(newOriginalURI, PR_FALSE);
   }
+
   return rv;
+}
+
+NS_IMPL_ISUPPORTS2(nsSameOriginChecker,
+                   nsIChannelEventSink,
+                   nsIInterfaceRequestor)
+
+NS_IMETHODIMP
+nsSameOriginChecker::OnChannelRedirect(nsIChannel *aOldChannel,
+                                       nsIChannel *aNewChannel,
+                                       PRUint32    aFlags)
+{
+  NS_PRECONDITION(aNewChannel, "Redirecting to null channel?");
+
+  return nsContentUtils::CheckSameOrigin(aOldChannel, aNewChannel);
 }
 
 NS_IMETHODIMP
