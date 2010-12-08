@@ -534,6 +534,7 @@ NS_GENERIC_FACTORY_CONSTRUCTOR(nsSyncLoadService)
 MAKE_CTOR(CreatePluginDocument,           nsIDocument,                 NS_NewPluginDocument)
 
 NS_GENERIC_FACTORY_CONSTRUCTOR(nsIContentUtils)
+NS_GENERIC_FACTORY_CONSTRUCTOR(nsIContentUtils2)
 
 #ifdef MOZ_ENABLE_CANVAS
 MAKE_CTOR(CreateCanvasRenderingContext2D, nsIDOMCanvasRenderingContext2D, NS_NewCanvasRenderingContext2D)
@@ -1399,6 +1400,11 @@ static const nsModuleComponentInfo gComponents[] = {
       NS_ICONTENTUTILS_CID,
       "@mozilla.org/content/contentutils;1",
       nsIContentUtilsConstructor },
+
+    { "Content Utils 2",
+      NS_ICONTENTUTILS2_CID,
+      "@mozilla.org/content/contentutils2;1",
+      nsIContentUtils2Constructor },
 };
 
 NS_IMPL_NSGETMODULE_WITH_CTOR(nsLayoutModule, gComponents, Initialize)

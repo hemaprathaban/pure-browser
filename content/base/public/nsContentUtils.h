@@ -1286,7 +1286,9 @@ public:
     return sRemovableScriptBlockerCount;
   }
 
-                                             
+
+  // Returns NS_OK for same origin, error (NS_ERROR_DOM_BAD_URI) if not.
+  static nsresult CheckSameOrigin(nsIChannel *aOldChannel, nsIChannel *aNewChannel);
   static nsIInterfaceRequestor* GetSameOriginChecker();
                                            
 private:
