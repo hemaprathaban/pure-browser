@@ -115,6 +115,7 @@ class nsIXTFService;
 class nsIBidiKeyboard;
 #endif
 class nsIMIMEHeaderParam;
+class nsIChannel;
 
 extern const char kLoadAsData[];
 
