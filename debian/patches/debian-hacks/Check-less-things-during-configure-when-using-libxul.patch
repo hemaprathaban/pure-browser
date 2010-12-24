@@ -9,7 +9,7 @@ we won't be building most of the toolkit.
  1 files changed, 28 insertions(+), 6 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index 2edb875..e17bcb5 100644
+index bc19dc1..979a7f6 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -4139,6 +4139,10 @@ if test -n "$MOZ_NATIVE_NSPR"; then
@@ -142,7 +142,7 @@ index 2edb875..e17bcb5 100644
  if test -z "${GLIB_CFLAGS}" || test -z "${GLIB_LIBS}" ; then
      if test "$MOZ_ENABLE_GTK2" || test "$USE_ELF_DYNSTR_GC" ; then
          PKG_CHECK_MODULES(GLIB, glib-2.0 >= 1.3.7 gobject-2.0)
-@@ -8243,7 +8265,7 @@ if test "$USING_HCC"; then
+@@ -8249,7 +8271,7 @@ if test "$USING_HCC"; then
  fi
  
  dnl Check for missing components

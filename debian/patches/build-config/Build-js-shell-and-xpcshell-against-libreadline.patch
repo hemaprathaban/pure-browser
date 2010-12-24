@@ -11,7 +11,7 @@ Subject: Build js shell and xpcshell against libreadline
  5 files changed, 55 insertions(+), 0 deletions(-)
 
 diff --git a/config/autoconf.mk.in b/config/autoconf.mk.in
-index 1e5626d..403b8b9 100644
+index c695e74..d1a7d98 100644
 --- a/config/autoconf.mk.in
 +++ b/config/autoconf.mk.in
 @@ -87,6 +87,8 @@ MOZ_X11			= @MOZ_X11@
@@ -24,7 +24,7 @@ index 1e5626d..403b8b9 100644
  MOZ_DEBUG	= @MOZ_DEBUG@
  MOZ_DEBUG_MODULES = @MOZ_DEBUG_MODULES@
 diff --git a/configure.in b/configure.in
-index d681f75..78461a3 100644
+index 16ba74b..24dbdc9 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -4357,6 +4357,29 @@ fi

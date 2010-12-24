@@ -9,7 +9,7 @@ Subject: Avoid some symbols from being exported in C++ mangled form
  3 files changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/js/src/jscntxt.cpp b/js/src/jscntxt.cpp
-index 93ea913..17b675c 100644
+index f2d69fb..fdeec5c 100644
 --- a/js/src/jscntxt.cpp
 +++ b/js/src/jscntxt.cpp
 @@ -898,7 +898,7 @@ resolving_HashKey(JSDHashTable *table, const void *ptr)
@@ -22,7 +22,7 @@ index 93ea913..17b675c 100644
                       const JSDHashEntryHdr *hdr,
                       const void *ptr)
 diff --git a/js/src/jsobj.h b/js/src/jsobj.h
-index 3a65199..b385bca 100644
+index a0991eb..8cff22f 100644
 --- a/js/src/jsobj.h
 +++ b/js/src/jsobj.h
 @@ -482,6 +482,11 @@ js_HasOwnProperty(JSContext *cx, JSLookupPropOp lookup, JSObject *obj, jsid id,

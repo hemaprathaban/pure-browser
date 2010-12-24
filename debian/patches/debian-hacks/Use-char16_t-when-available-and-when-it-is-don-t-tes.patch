@@ -13,7 +13,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=502298
  6 files changed, 44 insertions(+), 62 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index d490c71..121bf23 100644
+index 6efb76f..9eafba2 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -2832,7 +2832,24 @@ else
@@ -71,7 +71,7 @@ index d490c71..121bf23 100644
  dnl Check for .hidden assembler directive and visibility attribute.
  dnl Borrowed from glibc configure.in
  dnl ===============================================================
-@@ -8382,6 +8398,7 @@ HAVE_CPP_2BYTE_WCHAR_T
+@@ -8388,6 +8404,7 @@ HAVE_CPP_2BYTE_WCHAR_T
  HAVE_CPP_ACCESS_CHANGING_USING
  HAVE_CPP_AMBIGUITY_RESOLVING_USING
  HAVE_CPP_BOOL

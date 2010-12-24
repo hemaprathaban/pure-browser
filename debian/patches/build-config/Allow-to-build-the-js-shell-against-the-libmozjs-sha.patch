@@ -53,7 +53,7 @@ index e440424..e104835 100644
          const char *expected = ToSource(cx, &argv[1]);
          JS_ReportErrorNumber(cx, my_GetErrorMessage, NULL, JSSMSG_ASSERT_EQ_FAILED,
 diff --git a/js/src/jstracer.cpp b/js/src/jstracer.cpp
-index d3ac8bb..8b627de 100644
+index 85eb222..7c0db4e 100644
 --- a/js/src/jstracer.cpp
 +++ b/js/src/jstracer.cpp
 @@ -238,7 +238,11 @@ JSClass jitstats_class = {
