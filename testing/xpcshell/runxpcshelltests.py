@@ -4,7 +4,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import re, sys, os, os.path, logging, shutil, signal, math, time
+import re, sys, os, os.path, logging, shutil, signal, math, time, select
 import xml.dom.minidom
 from glob import glob
 from optparse import OptionParser
@@ -719,7 +719,21 @@ class XPCShellTests(object):
         # - don't move this line above launchProcess, or child will inherit the SIG_IGN
         signal.signal(signal.SIGINT, markGotSIGINT)
         # |stderr == None| as |pStderr| was either |None| or redirected to |stdout|.
-        stdout, stderr = self.communicate(proc)
+        if pStdout == PIPE:
+          stdout = ""
+          while True:
+            (r, w, e) = select.select([proc.stdout], [], [], 120)
+            if len(r) == 0:
+              stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
+              proc.kill()
+              break
+            line = proc.stdout.read(1)
+            if line == "":
+              break
+            stdout += line
+          proc.wait()
+        else:
+          stdout, stderr = self.communicate(proc)
         signal.signal(signal.SIGINT, signal.SIG_DFL)
 
         if interactive:
