@@ -37,7 +37,7 @@
 #
 # ***** END LICENSE BLOCK ***** */
 
-import re, sys, os, os.path, logging, shutil, signal
+import re, sys, os, os.path, logging, shutil, signal, select
 from glob import glob
 from optparse import OptionParser
 from subprocess import Popen, PIPE, STDOUT
@@ -225,7 +225,21 @@ def runTests(xpcshell, xrePath=None, symbolsPath=None,
         # - don't move this line above Popen, or child will inherit the SIG_IGN
         signal.signal(signal.SIGINT, signal.SIG_IGN)
         # |stderr == None| as |pStderr| was either |None| or redirected to |stdout|.
-        stdout, stderr = proc.communicate()
+        if pStdout == PIPE:
+            stdout = ""
+            while True:
+                (r, w, e) = select.select([proc.stdout], [], [], 120)
+                if len(r) == 0:
+                    stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
+                    proc.kill()
+                    break
+                line = proc.stdout.readline()
+                if line == "":
+                    break
+                stdout += line
+            proc.wait()
+        else:
+            stdout, stderr = proc.communicate()
         signal.signal(signal.SIGINT, signal.SIG_DFL)
 
         if interactive:
