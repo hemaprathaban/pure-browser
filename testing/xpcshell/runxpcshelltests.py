@@ -11,6 +11,7 @@ import os
 import os.path
 import random
 import re
+import select
 import shutil
 import signal
 import socket
@@ -628,7 +629,21 @@ class XPCShellTestThread(Thread):
             if self.interactive:
                 self.log.info("TEST-INFO | %s | Process ID: %d" % (name, proc.pid))
 
-            stdout, stderr = self.communicate(proc)
+            if self.pStdout == PIPE:
+                stdout = ""
+                while True:
+                    (r, w, e) = select.select([proc.stdout], [], [], 120)
+                    if len(r) == 0:
+                        stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
+                        proc.kill()
+                        break
+                    line = proc.stdout.read(1)
+                    if line == "":
+                        break
+                    stdout += line
+                proc.wait()
+            else:
+                stdout, stderr = self.communicate(proc)
 
             if self.interactive:
                 # Not sure what else to do here...
