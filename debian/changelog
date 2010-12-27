@@ -1,8 +1,14 @@
-iceweasel (3.5.16-3) UNRELEASED; urgency=low
+iceweasel (3.5.16-3) unstable; urgency=low
 
-  * 
+  * debian/xulrunner-GRE_VERSION.postinst.in: Trigger components registration
+    after postinst with dpkg-trigger.
 
- -- Mike Hommey <glandium@debian.org>  Mon, 27 Dec 2010 10:44:40 +0100
+  * testing/xpcshell/head.js: Revert previous change.
+  * testing/xpcshell/runxpcshelltests.py: Add a 2 minutes timeout on xpcshell
+    tests. The previous approach (from within xpcshell) didn't seem to work
+    well, so this time, just kill the process from outside.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 27 Dec 2010 10:54:18 +0100
 
 iceweasel (3.5.16-2) unstable; urgency=low
 
