@@ -1,28 +1,44 @@
-From: Mike Hommey <glandium@debian.org>
-Date: Fri, 20 Aug 2010 18:43:18 +0200
+From: Mike Hommey <mh@glandium.org>
+Date: Mon, 27 Dec 2010 10:44:28 +0100
 Subject: [PATCH] Add a 2 minutes timeout on xpcshell tests
 
 ---
- testing/xpcshell/head.js |    6 ++++++
- 1 files changed, 6 insertions(+), 0 deletions(-)
+ testing/xpcshell/runxpcshelltests.py |   18 ++++++++++++++++--
+ 1 files changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/testing/xpcshell/head.js b/testing/xpcshell/head.js
-index deb3618..4ef35c0 100644
---- a/testing/xpcshell/head.js
-+++ b/testing/xpcshell/head.js
-@@ -79,9 +79,15 @@ function _do_main() {
-   var thr = Components.classes["@mozilla.org/thread-manager;1"]
-                       .getService().currentThread;
+diff --git a/testing/xpcshell/runxpcshelltests.py b/testing/xpcshell/runxpcshelltests.py
+index 30f9bba..b93bf37 100644
+--- a/testing/xpcshell/runxpcshelltests.py
++++ b/testing/xpcshell/runxpcshelltests.py
+@@ -37,7 +37,7 @@
+ #
+ # ***** END LICENSE BLOCK ***** */
  
-+  var timer = Components.classes["@mozilla.org/timer;1"]
-+                        .createInstance(Components.interfaces.nsITimer);
-+  timer.initWithCallback(function () { _passed = false; dump("TEST-UNEXPECTED-FAIL | test is taking more than 2 minutes\n"); _do_quit() }, 120000, timer.TYPE_ONE_SHOT);
-+
-   while (!_quit)
-     thr.processNextEvent(true);
+-import re, sys, os, os.path, logging, shutil, signal
++import re, sys, os, os.path, logging, shutil, signal, select
+ from glob import glob
+ from optparse import OptionParser
+ from subprocess import Popen, PIPE, STDOUT
+@@ -225,7 +225,21 @@ def runTests(xpcshell, xrePath=None, symbolsPath=None,
+         # - don't move this line above Popen, or child will inherit the SIG_IGN
+         signal.signal(signal.SIGINT, signal.SIG_IGN)
+         # |stderr == None| as |pStderr| was either |None| or redirected to |stdout|.
+-        stdout, stderr = proc.communicate()
++        if pStdout == PIPE:
++            stdout = ""
++            while True:
++                (r, w, e) = select.select([proc.stdout], [], [], 120)
++                if len(r) == 0:
++                    stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
++                    proc.kill()
++                    break
++                line = proc.stdout.readline()
++                if line == "":
++                    break
++                stdout += line
++            proc.wait()
++        else:
++            stdout, stderr = proc.communicate()
+         signal.signal(signal.SIGINT, signal.SIG_DFL)
  
-+  timer.cancel();
-+
-   while (thr.hasPendingEvents())
-     thr.processNextEvent(true);
- }
+         if interactive:
