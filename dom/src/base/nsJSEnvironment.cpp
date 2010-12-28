@@ -1949,9 +1949,8 @@ nsJSContext::CallEventHandler(nsISupports* aTarget, void *aScope, void *aHandler
   // xxxmarkh - this comment is no longer true - principals are not used at
   // all now, and never were in some cases.
 
-  nsCOMPtr<nsIJSContextStack> stack =
-    do_GetService("@mozilla.org/js/xpc/ContextStack;1", &rv);
-  if (NS_FAILED(rv) || NS_FAILED(stack->Push(mContext)))
+  nsCxPusher pusher;
+  if (!pusher.Push(mContext))
     return NS_ERROR_FAILURE;
 
   // check if the event handler can be run on the object in question
@@ -1972,6 +1971,8 @@ nsJSContext::CallEventHandler(nsISupports* aTarget, void *aScope, void *aHandler
           if (context && context != this) {
             JSContext* cx =
               static_cast<JSContext*>(context->GetNativeContext());
+            nsCOMPtr<nsIJSContextStack> stack =
+              do_GetService("@mozilla.org/js/xpc/ContextStack;1", &rv);
             rv = stack->Push(cx);
             if (NS_SUCCEEDED(rv)) {
               rv = sSecurityManager->CheckFunctionAccess(cx, aHandler,
@@ -2005,14 +2006,24 @@ nsJSContext::CallEventHandler(nsISupports* aTarget, void *aScope, void *aHandler
     // in the same scope as aTarget.
     rv = ConvertSupportsTojsvals(aargv, target, &argc,
                                  reinterpret_cast<void **>(&argv), &mark);
-    if (NS_FAILED(rv)) {
-      stack->Pop(nsnull);
-      return rv;
-    }
+    NS_ENSURE_SUCCESS(rv, rv);
   
     AutoFreeJSStack stackGuard(mContext, mark); // ensure always freed.
 
-    jsval funval = OBJECT_TO_JSVAL(aHandler);
+
+    JSObject *funobj = static_cast<JSObject *>(aHandler);
+    nsCOMPtr<nsIPrincipal> principal;
+    rv = sSecurityManager->GetObjectPrincipal(mContext, funobj,
+                                              getter_AddRefs(principal));
+    NS_ENSURE_SUCCESS(rv, rv);
+
+    JSStackFrame *currentfp = nsnull;
+    rv = sSecurityManager->PushContextPrincipal(mContext,
+                                                JS_FrameIterator(mContext, &currentfp),
+                                                principal);
+    NS_ENSURE_SUCCESS(rv, rv);
+
+    jsval funval = OBJECT_TO_JSVAL(funobj);
     JSAutoRequest ar(mContext);
     PRBool ok = ::JS_CallFunctionValue(mContext, target,
                                        funval, argc, argv, &rval);
@@ -2032,10 +2043,11 @@ nsJSContext::CallEventHandler(nsISupports* aTarget, void *aScope, void *aHandler
       // Tell the caller that the handler threw an error.
       rv = NS_ERROR_FAILURE;
     }
+
+    sSecurityManager->PopContextPrincipal(mContext);
   }
 
-  if (NS_FAILED(stack->Pop(nsnull)))
-    return NS_ERROR_FAILURE;
+  pusher.Pop();
 
   // Convert to variant before calling ScriptEvaluated, as it may GC, meaning
   // we would need to root rval.
