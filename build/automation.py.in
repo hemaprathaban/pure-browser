@@ -48,6 +48,7 @@ import signal
 import subprocess
 import sys
 import threading
+import select
 
 """
 Runs the browser from a script, and provides useful utilities
@@ -481,10 +482,16 @@ def runApp(testURL, env, app, profileDir, extraArgs,
   if outputPipe is None:
     log.info("TEST-INFO: Not logging stdout or stderr due to debugger connection")
   else:
-    line = proc.stdout.readline()
-    while line != "":
-      log.info(line.rstrip())
+    while True:
+      (r, w, e) = select.select([proc.stdout], [], [], 120)
+      if len(r) == 0:
+        log.info("TEST-UNEXPECTED-FAIL | automation.py | application timed out after 120 seconds with no output")
+        proc.kill()
+        break
       line = proc.stdout.readline()
+      if line == "":
+        break
+      log.info(line.rstrip())
 
   status = proc.wait()
   if status != 0:
