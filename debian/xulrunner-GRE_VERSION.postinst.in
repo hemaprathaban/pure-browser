@@ -2,7 +2,8 @@
 
 set -e
 
-if [ "$1" = "triggered" ]; then
+if [ "$1" = "configure" ] || [ "$1" = "triggered" ] ||
+   [ "$1" = "abort-upgrade" ]; then
     touch /usr/lib/xulrunner-##GRE_VERSION##/.autoreg
     rm -f /usr/lib/xulrunner-##GRE_VERSION##/components/compreg.dat \
           /usr/lib/xulrunner-##GRE_VERSION##/components/xpti.dat
@@ -12,10 +13,6 @@ if [ "$1" = "triggered" ]; then
     rm -f /usr/lib/xulrunner-##GRE_VERSION##/components/compreg.dat \
           /usr/lib/xulrunner-##GRE_VERSION##/components/xpti.dat
     rm -rf "$HOME"
-fi
-
-if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
-    dpkg-trigger /usr/lib/xulrunner-##GRE_VERSION##/components
 fi
 
 if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] ; then
