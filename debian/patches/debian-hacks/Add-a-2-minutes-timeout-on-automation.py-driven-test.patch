@@ -1,0 +1,40 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 7 Jan 2011 10:50:20 +0100
+Subject: Add a 2 minutes timeout on automation.py-driven tests
+
+---
+ build/automation.py.in |   13 ++++++++++---
+ 1 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/build/automation.py.in b/build/automation.py.in
+index dbedd3a..79668a1 100644
+--- a/build/automation.py.in
++++ b/build/automation.py.in
+@@ -48,6 +48,7 @@ import signal
+ import subprocess
+ import sys
+ import threading
++import select
+ 
+ """
+ Runs the browser from a script, and provides useful utilities
+@@ -481,10 +482,16 @@ def runApp(testURL, env, app, profileDir, extraArgs,
+   if outputPipe is None:
+     log.info("TEST-INFO: Not logging stdout or stderr due to debugger connection")
+   else:
+-    line = proc.stdout.readline()
+-    while line != "":
+-      log.info(line.rstrip())
++    while True:
++      (r, w, e) = select.select([proc.stdout], [], [], 120)
++      if len(r) == 0:
++        log.info("TEST-UNEXPECTED-FAIL | automation.py | application timed out after 120 seconds with no output")
++        proc.kill()
++        break
+       line = proc.stdout.readline()
++      if line == "":
++        break
++      log.info(line.rstrip())
+ 
+   status = proc.wait()
+   if status != 0:
