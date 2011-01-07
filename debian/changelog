@@ -1,8 +1,18 @@
-iceweasel (3.5.16-4) UNRELEASED; urgency=low
+iceweasel (3.5.16-4) unstable; urgency=low
 
-  * 
+  * debian/iceweasel.README.Debian: Fix for the default dsp wrapper behaviour.
+  * debian/xulrunner-GRE_VERSION.postinst.in: Revert components registration
+    trigger, it didn't fix anything for python-xpcom.
+  * debian/iceweasel.desktop: Add russian translation. Closes: #608876.
+    Thanks Alexander Sashanov.
+  * debian/control.in, debian/rules, debian/xulrunner-GRE_VERSION.links.in:
+    Use /usr/share/myspell/dicts for dictionaries when building for lenny.
+    Closes: #609111.
 
- -- Mike Hommey <glandium@debian.org>  Fri, 07 Jan 2011 10:19:20 +0100
+  * build/automation.py.in: Add a 2 minutes timeout on automation.py-driven
+    tests.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 07 Jan 2011 14:11:08 +0100
 
 iceweasel (3.5.16-3) unstable; urgency=low
 
