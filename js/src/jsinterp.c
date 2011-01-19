@@ -6814,6 +6814,9 @@ interrupt:
         JSTryNote *tn, *tnlimit;
         uint32 offset;
 
+        /* Restore atoms local in case we will resume. */
+        atoms = script->atomMap.vector;
+
         /* Call debugger throw hook if set. */
         handler = cx->debugHooks->throwHook;
         if (handler) {
