@@ -404,10 +404,14 @@ txExecutionState::pushTemplateRule(txStylesheet::ImportFrame* aFrame,
                                    txVariableMap* aParams)
 {
     TemplateRule* rule = mTemplateRules.AppendElement();
+    NS_ENSURE_TRUE(rule, NS_ERROR_OUT_OF_MEMORY);
+
     rule->mFrame = aFrame;
     rule->mModeNsId = aMode.mNamespaceID;
     rule->mModeLocalName = aMode.mLocalName;
     rule->mParams = aParams;
+
+    return NS_OK;
 }
 
 void
