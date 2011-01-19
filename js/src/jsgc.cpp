@@ -947,7 +947,7 @@ NewGCArena(JSContext *cx)
     JSGCArenaInfo *a;
 
     JSRuntime *rt = cx->runtime;
-    if (rt->gcBytes >= rt->gcMaxBytes && HAS_TITLES_TO_SHARE(cx))
+    if (rt->gcBytes >= rt->gcMaxBytes && !HAS_TITLES_TO_SHARE(cx))
         return NULL;
 
 #if CHUNKED_ARENA_ALLOCATION
