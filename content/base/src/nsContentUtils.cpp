@@ -1094,22 +1094,37 @@ nsContentUtils::InProlog(nsINode *aNode)
 }
 
 // static
+JSObject*
+nsContentUtils::GetCachedWrapper(nsWrapperCache *aCache)
+{
+  JSObject *obj = nsnull;
+  nsIXPConnectWrappedNative *wrapper =
+    static_cast<nsIXPConnectWrappedNative*>(aCache->GetWrapper());
+  if (wrapper) {
+    wrapper->GetJSObject(&obj);
+  }
+
+  return obj;
+}
+
+// static
 nsresult
 nsContentUtils::doReparentContentWrapper(nsIContent *aNode,
                                          JSContext *cx,
-                                         JSObject *aOldGlobal,
                                          JSObject *aNewGlobal,
                                          nsIDocument *aOldDocument,
                                          nsIDocument *aNewDocument)
 {
-  nsCOMPtr<nsIXPConnectJSObjectHolder> old_wrapper;
-
   nsresult rv;
 
-  rv = sXPConnect->ReparentWrappedNativeIfFound(cx, aOldGlobal, aNewGlobal,
-                                                aNode,
-                                                getter_AddRefs(old_wrapper));
-  NS_ENSURE_SUCCESS(rv, rv);
+  JSObject *wrapper = GetCachedWrapper(aNode);
+  if (wrapper) {
+    nsCOMPtr<nsIXPConnectJSObjectHolder> old_wrapper;
+    rv = sXPConnect->ReparentWrappedNativeIfFound(cx, wrapper, aNewGlobal,
+                                                  aNode,
+                                                  getter_AddRefs(old_wrapper));
+    NS_ENSURE_SUCCESS(rv, rv);
+  }
 
   // Whether or not aChild is already wrapped we must iterate through
   // its descendants since there's no guarantee that a descendant isn't
@@ -1123,8 +1138,7 @@ nsContentUtils::doReparentContentWrapper(nsIContent *aNode,
     nsIContent *child = aNode->GetChildAt(i);
     NS_ENSURE_TRUE(child, NS_ERROR_UNEXPECTED);
 
-    rv = doReparentContentWrapper(child, cx, 
-                                  aOldGlobal, aNewGlobal,
+    rv = doReparentContentWrapper(child, cx, aNewGlobal,
                                   aOldDocument, aNewDocument);
     NS_ENSURE_SUCCESS(rv, rv);
   }
@@ -1133,22 +1147,17 @@ nsContentUtils::doReparentContentWrapper(nsIContent *aNode,
 }
 
 static JSContext *
-GetContextFromDocument(nsIDocument *aDocument, JSObject** aGlobalObject)
+GetContextFromDocument(nsIDocument *aDocument)
 {
   nsIScriptGlobalObject *sgo = aDocument->GetScopeObject();
   if (!sgo) {
     // No script global, no context.
-
-    *aGlobalObject = nsnull;
-
     return nsnull;
   }
 
-  *aGlobalObject = sgo->GetGlobalJSObject();
-
   nsIScriptContext *scx = sgo->GetContext();
   if (!scx) {
-    // No context left in the old scope...
+    // No context left in the scope...
 
     return nsnull;
   }
@@ -1170,54 +1179,41 @@ nsContentUtils::ReparentContentWrapper(nsIContent *aContent,
   }
 
   JSContext *cx;
-  JSObject *oldScope, *newScope;
-  nsresult rv = GetContextAndScopes(aOldDocument, aNewDocument, &cx, &oldScope,
-                                    &newScope);
+  JSObject *newScope;
+  nsresult rv = GetContextAndScope(aOldDocument, aNewDocument, &cx, &newScope);
   NS_ENSURE_SUCCESS(rv, rv);
 
   if (!cx) {
     return NS_OK;
   }
 
-  return doReparentContentWrapper(aContent, cx, oldScope, newScope, 
+  return doReparentContentWrapper(aContent, cx, newScope,
                                   aOldDocument, aNewDocument);
 }
 
 // static
 nsresult
-nsContentUtils::GetContextAndScopes(nsIDocument *aOldDocument,
-                                    nsIDocument *aNewDocument, JSContext **aCx,
-                                    JSObject **aOldScope, JSObject **aNewScope)
+nsContentUtils::GetContextAndScope(nsIDocument *aOldDocument,
+                                   nsIDocument *aNewDocument, JSContext **aCx,
+                                   JSObject **aNewScope)
 {
   *aCx = nsnull;
-  *aOldScope = nsnull;
   *aNewScope = nsnull;
 
-  JSObject *newScope = nsnull;
-  nsIScriptGlobalObject *newSGO = aNewDocument->GetScopeObject();
-  if (!newSGO || !(newScope = newSGO->GetGlobalJSObject())) {
-    return NS_OK;
+  JSObject *newScope = GetCachedWrapper(aNewDocument);
+  JSObject *global;
+  if (!newScope) {
+    nsIScriptGlobalObject *newSGO = aNewDocument->GetScopeObject();
+    if (!newSGO || !(global = newSGO->GetGlobalJSObject())) {
+      return NS_OK;
+    }
   }
 
   NS_ENSURE_TRUE(sXPConnect, NS_ERROR_NOT_INITIALIZED);
 
-  // Make sure to get our hands on the right scope object, since
-  // GetWrappedNativeOfNativeObject doesn't call PreCreate and hence won't get
-  // the right scope if we pass in something bogus.  The right scope lives on
-  // the script global of the old document.
-  // XXXbz note that if GetWrappedNativeOfNativeObject did call PreCreate it
-  // would get the wrong scope (that of the _new_ document), so we should be
-  // glad it doesn't!
-  JSObject *oldScope = nsnull;
-  JSContext *cx = GetContextFromDocument(aOldDocument, &oldScope);
-
-  if (!oldScope) {
-    return NS_OK;
-  }
-
+  JSContext *cx = aOldDocument ? GetContextFromDocument(aOldDocument) : nsnull;
   if (!cx) {
-    JSObject *dummy;
-    cx = GetContextFromDocument(aNewDocument, &dummy);
+    cx = GetContextFromDocument(aNewDocument);
 
     if (!cx) {
       // No context reachable from the old or new document, use the
@@ -1239,8 +1235,18 @@ nsContentUtils::GetContextAndScopes(nsIDocument *aOldDocument,
     }
   }
 
+  if (!newScope && cx) {
+    nsCOMPtr<nsIXPConnectJSObjectHolder> holder;
+    jsval v;
+    nsresult rv = sXPConnect->WrapNativeToJSVal(cx, global, aNewDocument,
+                                                &NS_GET_IID(nsISupports), &v,
+                                                getter_AddRefs(holder));
+    NS_ENSURE_SUCCESS(rv, rv);
+
+    newScope = JSVAL_TO_OBJECT(v);
+  }
+
   *aCx = cx;
-  *aOldScope = oldScope;
   *aNewScope = newScope;
 
   return NS_OK;
