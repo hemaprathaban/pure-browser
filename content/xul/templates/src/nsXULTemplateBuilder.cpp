@@ -1152,7 +1152,6 @@ nsXULTemplateBuilder::ContentRemoved(nsIDocument* aDocument,
 
         mDB = nsnull;
         mCompDB = nsnull;
-        mRoot = nsnull;
         mDataSource = nsnull;
     }
 }
@@ -1171,7 +1170,6 @@ nsXULTemplateBuilder::NodeWillBeDestroyed(const nsINode* aNode)
     mDataSource = nsnull;
     mDB = nsnull;
     mCompDB = nsnull;
-    mRoot = nsnull;
 
     nsContentUtils::AddScriptRunner(
         NS_NEW_RUNNABLE_METHOD(nsXULTemplateBuilder, this, UninitTrue));
