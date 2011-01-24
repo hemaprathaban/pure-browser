@@ -812,6 +812,15 @@ struct ChildSheetListBuilder {
     aSheet->mParent = parent;
     aSheet->SetOwningDocument(parent->mDocument);
   }
+
+  static void ReparentChildList(nsCSSStyleSheet* aPrimarySheet,
+                                nsCSSStyleSheet* aFirstChild)
+  {
+    for (nsCSSStyleSheet *child = aFirstChild; child; child = child->mNext) {
+      child->mParent = aPrimarySheet;
+      child->SetOwningDocument(aPrimarySheet->mDocument);
+    }
+  }
 };
   
 PRBool
@@ -908,6 +917,9 @@ nsCSSStyleSheetInner::RemoveSheet(nsICSSStyleSheet* aSheet)
     NS_ASSERTION(mSheets.Count(), "no parents");
     mOrderedRules.EnumerateForwards(SetStyleSheetReference,
                                     (nsICSSStyleSheet*)mSheets.ElementAt(0));
+
+    ChildSheetListBuilder::ReparentChildList(static_cast<nsCSSStyleSheet*>(
+      (nsICSSStyleSheet*)mSheets.ElementAt(0)), mFirstChild);
   }
   else {
     mSheets.RemoveElement(aSheet);
