@@ -710,6 +710,9 @@ nsCanvasRenderingContext2D::SetDimensions(PRInt32 width, PRInt32 height)
     mSaveCount = 0;
 
     ContextState *state = mStyleStack.AppendElement();
+    if (!state) {
+        return NS_ERROR_OUT_OF_MEMORY;
+    }
     state->globalAlpha = 1.0;
     for (int i = 0; i < STYLE_MAX; i++)
         state->colorStyles[i] = NS_RGB(0,0,0);
@@ -845,7 +848,9 @@ NS_IMETHODIMP
 nsCanvasRenderingContext2D::Save()
 {
     ContextState state = CurrentState();
-    mStyleStack.AppendElement(state);
+    if (!mStyleStack.AppendElement(state)) {
+        return NS_ERROR_OUT_OF_MEMORY;
+    }
     cairo_save (mCairo);
     mSaveCount++;
     return NS_OK;
