@@ -908,8 +908,7 @@ nsBlockFrame::Reflow(nsPresContext*           aPresContext,
   // and we may even delete the line with the line cursor.
   ClearLineCursor();
 
-  if (IsFrameTreeTooDeep(aReflowState, aMetrics)) {
-    aStatus = NS_FRAME_COMPLETE;
+  if (IsFrameTreeTooDeep(aReflowState, aMetrics, aStatus)) {
     return NS_OK;
   }
 
