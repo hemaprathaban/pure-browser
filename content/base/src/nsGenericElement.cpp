@@ -3203,6 +3203,29 @@ nsGenericElement::InsertChildAt(nsIContent* aKid,
                          mAttrsAndChildren);
 }
 
+static nsresult
+AdoptNodeIntoOwnerDoc(nsINode *aParent, nsIDOMNode *aNode)
+{
+  nsIDocument *doc = aParent->GetOwnerDoc();
+
+  nsresult rv;
+  nsCOMPtr<nsIDOM3Document> domDoc = do_QueryInterface(doc, &rv);
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  nsCOMPtr<nsIDOMNode> adoptedNode;
+  rv = domDoc->AdoptNode(aNode, getter_AddRefs(adoptedNode));
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  if (doc != aParent->GetOwnerDoc()) {
+    return NS_ERROR_DOM_WRONG_DOCUMENT_ERR;
+  }
+
+  NS_ASSERTION(adoptedNode == aNode, "Uh, adopt node changed nodes?");
+  NS_ASSERTION(aParent->HasSameOwnerDoc(nsCOMPtr<nsINode>(do_QueryInterface(aNode))),
+               "ownerDocument changed again after adopting!");
+
+  return NS_OK;
+}
 
 /* static */
 nsresult
@@ -3226,20 +3249,13 @@ nsGenericElement::doInsertChildAt(nsIContent* aKid, PRUint32 aIndex,
     rv = kid->GetNodeType(&nodeType);
     NS_ENSURE_SUCCESS(rv, rv);
 
-    nsCOMPtr<nsIDOM3Document> domDoc =
-      do_QueryInterface(container->GetOwnerDoc());
-
     // DocumentType nodes are the only nodes that can have a null
     // ownerDocument according to the DOM spec, and we need to allow
     // inserting them w/o calling AdoptNode().
 
-    if (domDoc && (nodeType != nsIDOMNode::DOCUMENT_TYPE_NODE ||
-                   aKid->GetOwnerDoc())) {
-      nsCOMPtr<nsIDOMNode> adoptedKid;
-      rv = domDoc->AdoptNode(kid, getter_AddRefs(adoptedKid));
+    if (nodeType != nsIDOMNode::DOCUMENT_TYPE_NODE || aKid->GetOwnerDoc()) {
+      rv = AdoptNodeIntoOwnerDoc(container, kid);
       NS_ENSURE_SUCCESS(rv, rv);
-
-      NS_ASSERTION(adoptedKid == kid, "Uh, adopt node changed nodes?");
     }
   }
 
@@ -3767,15 +3783,8 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
   if (!container->HasSameOwnerDoc(newContent) &&
       (nodeType != nsIDOMNode::DOCUMENT_TYPE_NODE ||
        newContent->GetOwnerDoc())) {
-    nsCOMPtr<nsIDOM3Document> domDoc = do_QueryInterface(aDocument);
-
-    if (domDoc) {
-      nsCOMPtr<nsIDOMNode> adoptedKid;
-      nsresult rv = domDoc->AdoptNode(aNewChild, getter_AddRefs(adoptedKid));
-      NS_ENSURE_SUCCESS(rv, rv);
-
-      NS_ASSERTION(adoptedKid == aNewChild, "Uh, adopt node changed nodes?");
-    }
+    res = AdoptNodeIntoOwnerDoc(container, aNewChild);
+    NS_ENSURE_SUCCESS(res, res);
   }
 
   // If we're replacing
