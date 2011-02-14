@@ -461,6 +461,20 @@ nsDummyJavaPluginOwner::Destroy()
 NS_IMETHODIMP
 nsDummyJavaPluginOwner::SetInstance(nsIPluginInstance *aInstance)
 {
+  // If we're going to null out mInstance after use, be sure to call
+  // InvalidateOwner() here, since it now won't be called from
+  // nsDummyJavaPluginOwner::Destroy().
+  if (mInstance && !aInstance) {
+    nsCOMPtr<nsIPluginInstancePeer> peer;
+    mInstance->GetPeer(getter_AddRefs(peer));
+
+    nsCOMPtr<nsIPluginInstancePeer2_1_9_1_BRANCH> peer2(do_QueryInterface(peer));
+
+    // This plugin owner is going away, tell the peer.
+    if (peer2)
+      peer2->InvalidateOwner();
+  }
+
   mInstance = aInstance;
 
   return NS_OK;

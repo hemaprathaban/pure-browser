@@ -206,6 +206,7 @@ struct JSObject {
  * hidden slot used to store the length of the vector.
  */
 #define MAX_DSLOTS_LENGTH   (JS_MAX(~(uint32)0, ~(size_t)0) / sizeof(jsval))
+#define MAX_DSLOTS_LENGTH32 (~uint32(0) / sizeof(jsval) - 1)
 
 /*
  * STOBJ prefix means Single Threaded Object. Use the following fast macros to

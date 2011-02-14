@@ -22,8 +22,8 @@ bool Failure(const char *f, int l, const char *fn);
 #endif
 
 #if defined(_MSC_VER)
-// MSVC supports C99 style variadic macros.
-#define OTS_WARNING(format, ...)
+#pragma warning( disable : 4002 )
+#define OTS_WARNING(format)
 #else
 // GCC
 #if defined(OTS_DEBUG)
