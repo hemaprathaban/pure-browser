@@ -941,12 +941,13 @@ RemoveChunkFromList(JSRuntime *rt, JSGCChunkInfo *ci)
 #endif
 
 static JSGCArenaInfo *
-NewGCArena(JSRuntime *rt)
+NewGCArena(JSContext *cx)
 {
     jsuword chunk;
     JSGCArenaInfo *a;
 
-    if (rt->gcBytes >= rt->gcMaxBytes)
+    JSRuntime *rt = cx->runtime;
+    if (rt->gcBytes >= rt->gcMaxBytes && !HAS_TITLES_TO_SHARE(cx))
         return NULL;
 
 #if CHUNKED_ARENA_ALLOCATION
@@ -1795,10 +1796,11 @@ EnsureLocalFreeList(JSContext *cx)
 #endif
 
 static JS_INLINE bool
-IsGCThresholdReached(JSRuntime *rt)
+IsGCThresholdReached(JSContext *cx)
 {
+    JSRuntime *rt = cx->runtime;
 #ifdef JS_GC_ZEAL
-    if (rt->gcZeal >= 1)
+    if (rt->gcZeal >= 1 && !HAS_TITLES_TO_SHARE(cx))
         return true;
 #endif
 
@@ -1807,8 +1809,9 @@ IsGCThresholdReached(JSRuntime *rt)
      * zero (see the js_InitGC function) the return value is false when
      * the gcBytes value is close to zero at the JS engine start.
      */
-    return rt->gcMallocBytes >= rt->gcMaxMallocBytes ||
-           rt->gcBytes / rt->gcTriggerFactor >= rt->gcLastBytes / 100;
+    return (rt->gcMallocBytes >= rt->gcMaxMallocBytes ||
+            rt->gcBytes / rt->gcTriggerFactor >= rt->gcLastBytes / 100) &&
+           !HAS_TITLES_TO_SHARE(cx);
 }
 
 void *
@@ -1883,7 +1886,7 @@ js_NewGCThing(JSContext *cx, uintN flags, size_t nbytes)
 #endif
 
     arenaList = &rt->gcArenaList[flindex];
-    doGC = IsGCThresholdReached(rt);
+    doGC = IsGCThresholdReached(cx);
     for (;;) {
         if (doGC
 #ifdef JS_TRACER
@@ -1969,9 +1972,9 @@ testReservedObjects:
             }
 #endif
 
-            a = NewGCArena(rt);
+            a = NewGCArena(cx);
             if (!a) {
-                if (doGC || JS_ON_TRACE(cx))
+                if (doGC || JS_ON_TRACE(cx) || HAS_TITLES_TO_SHARE(cx))
                     goto fail;
                 doGC = true;
                 continue;
@@ -2105,7 +2108,7 @@ RefillDoubleFreeList(JSContext *cx)
         return NULL;
     }
 
-    if (IsGCThresholdReached(rt))
+    if (IsGCThresholdReached(cx))
         goto do_gc;
 
     /*
@@ -2119,10 +2122,10 @@ RefillDoubleFreeList(JSContext *cx)
             ARENA_INFO_OFFSET) {
             if (doubleFlags == DOUBLE_BITMAP_SENTINEL ||
                 !((JSGCArenaInfo *) doubleFlags)->prev) {
-                a = NewGCArena(rt);
+                a = NewGCArena(cx);
                 if (!a) {
                   do_gc:
-                    if (didGC || JS_ON_TRACE(cx)) {
+                    if (didGC || JS_ON_TRACE(cx) || HAS_TITLES_TO_SHARE(cx)) {
                         METER(rt->gcStats.doubleArenaStats.fail++);
                         JS_UNLOCK_GC(rt);
                         js_ReportOutOfMemory(cx);
@@ -2298,9 +2301,10 @@ js_AddAsGCBytes(JSContext *cx, size_t sz)
     JSRuntime *rt;
 
     rt = cx->runtime;
-    if (rt->gcBytes >= rt->gcMaxBytes ||
-        sz > (size_t) (rt->gcMaxBytes - rt->gcBytes) ||
-        IsGCThresholdReached(rt)) {
+    if ((rt->gcBytes >= rt->gcMaxBytes ||
+         sz > (size_t) (rt->gcMaxBytes - rt->gcBytes) ||
+         IsGCThresholdReached(cx)) &&
+        !HAS_TITLES_TO_SHARE(cx)) {
         if (JS_ON_TRACE(cx)) {
             /*
              * If we can't leave the trace, signal OOM condition, otherwise

@@ -267,8 +267,8 @@ JO(JSContext *cx, jsval *vp, StringifyContext *scx)
     if (!scx->callback(&c, 1, scx->data))
         return JS_FALSE;
 
-    jsval vec[3] = {JSVAL_NULL, JSVAL_NULL, JSVAL_NULL};
-    JSAutoTempValueRooter tvr(cx, 3, vec);
+    jsval vec[] = {JSVAL_NULL, JSVAL_NULL, JSVAL_NULL, *vp};
+    JSAutoTempValueRooter tvr(cx, JS_ARRAY_LENGTH(vec), vec);
     jsval& key = vec[0];
     jsval& outputValue = vec[1];
 

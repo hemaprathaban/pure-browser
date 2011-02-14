@@ -329,7 +329,7 @@ ResizeSlots(JSContext *cx, JSObject *obj, uint32 oldsize, uint32 size)
      * MAX_DSLOTS_LENGTH is the maximum net capacity supported. Since we allocate
      * one additional slot to hold the array length, we have to use >= here.
      */
-    if (size >= MAX_DSLOTS_LENGTH) {
+    if (size >= MAX_DSLOTS_LENGTH32) {
         js_ReportAllocationOverflow(cx);
         return JS_FALSE;
     }
