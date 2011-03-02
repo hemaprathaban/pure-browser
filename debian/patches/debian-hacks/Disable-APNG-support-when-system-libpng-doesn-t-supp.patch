@@ -12,10 +12,10 @@ Subject: Disable APNG support when system libpng doesn't support it
  6 files changed, 69 insertions(+), 10 deletions(-)
 
 diff --git a/config/autoconf.mk.in b/config/autoconf.mk.in
-index 3b6e912..dbf0df9 100644
+index 6bacaf0..1da40f3 100644
 --- a/config/autoconf.mk.in
 +++ b/config/autoconf.mk.in
-@@ -241,6 +241,7 @@ MOZ_NATIVE_ZLIB	= @SYSTEM_ZLIB@
+@@ -244,6 +244,7 @@ MOZ_NATIVE_ZLIB	= @SYSTEM_ZLIB@
  MOZ_NATIVE_BZ2	= @SYSTEM_BZ2@
  MOZ_NATIVE_JPEG	= @SYSTEM_JPEG@
  MOZ_NATIVE_PNG	= @SYSTEM_PNG@
@@ -24,7 +24,7 @@ index 3b6e912..dbf0df9 100644
  
  MOZ_UPDATE_XTERM = @MOZ_UPDATE_XTERM@
 diff --git a/configure.in b/configure.in
-index 2399cc3..f1f873a 100644
+index 8aa3a12..77c9601 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -4466,6 +4466,7 @@ if test -n "${PNG_DIR}" -a "${PNG_DIR}" != "yes"; then
@@ -45,7 +45,7 @@ index 2399cc3..f1f873a 100644
                   $_SAVE_PNG_LIBS)
  fi
  if test "$SYSTEM_PNG" = 0; then
-@@ -8381,6 +8383,7 @@ AC_SUBST(SYSTEM_MAKEDEPEND)
+@@ -8410,6 +8412,7 @@ AC_SUBST(SYSTEM_MAKEDEPEND)
  AC_SUBST(SYSTEM_LIBXUL)
  AC_SUBST(SYSTEM_JPEG)
  AC_SUBST(SYSTEM_PNG)

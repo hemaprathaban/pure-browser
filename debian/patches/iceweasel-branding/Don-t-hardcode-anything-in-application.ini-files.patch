@@ -1,4 +1,3 @@
-From 752c0307f2e6721e86f6acaa8915480be213b5cc Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 19 Feb 2011 10:38:14 +0100
 Subject: Don't hardcode anything in application.ini files
@@ -31,7 +30,7 @@ index 15fb695..de22085 100644
  
  ifdef LIBXUL_SDK
 diff --git a/browser/app/application.ini b/browser/app/application.ini
-index 8ae9f3b..a2978a9 100644
+index b866f47..f55002a 100644
 --- a/browser/app/application.ini
 +++ b/browser/app/application.ini
 @@ -37,9 +37,12 @@
@@ -78,10 +77,10 @@ index c1fbb20..4d98e4e 100644
  MOZ_APP_UA_EXTRA = @MOZ_APP_UA_EXTRA@
  
 diff --git a/configure.in b/configure.in
-index d63137c..5623be3 100644
+index db92704..cb01cb9 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -7662,7 +7662,7 @@ MOZ_ARG_ENABLE_BOOL(libxul,
+@@ -7669,7 +7669,7 @@ MOZ_ARG_ENABLE_BOOL(libxul,
      MOZ_ENABLE_LIBXUL=)
  
  if test -n "$MOZ_STATIC_BUILD_UNSUPPORTED" -a -n "$BUILD_STATIC_LIBS"; then
@@ -90,7 +89,7 @@ index d63137c..5623be3 100644
  fi
  
  if test -n "$MOZ_ENABLE_LIBXUL" -a -n "$BUILD_STATIC_LIBS"; then
-@@ -8289,8 +8289,37 @@ AC_SUBST(MOZ_POST_PROGRAM_COMMAND)
+@@ -8296,8 +8296,37 @@ AC_SUBST(MOZ_POST_PROGRAM_COMMAND)
  AC_SUBST(MOZ_TIMELINE)
  AC_SUBST(OGLES_SDK_DIR)
  
@@ -128,6 +127,3 @@ index d63137c..5623be3 100644
  AC_SUBST(MOZ_APP_VERSION)
  AC_SUBST(MOZ_APP_UA_EXTRA)
  AC_SUBST(FIREFOX_VERSION)
--- 
-1.7.4.1
-

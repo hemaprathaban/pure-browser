@@ -1,4 +1,3 @@
-From fbf16e404a383991bc0a61c186ccc023ff18c3bd Mon Sep 17 00:00:00 2001
 From: Mike Hommey <mh@glandium.org>
 Date: Sat, 19 Feb 2011 12:18:14 +0100
 Subject: Use &brandTrade; instead of &trade;
@@ -10,7 +9,7 @@ Subject: Use &brandTrade; instead of &trade;
  3 files changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/browser/base/content/credits.xhtml b/browser/base/content/credits.xhtml
-index 5b4b2cb..0d83186 100644
+index e52f740..50f3bf0 100644
 --- a/browser/base/content/credits.xhtml
 +++ b/browser/base/content/credits.xhtml
 @@ -54,7 +54,7 @@
@@ -35,8 +34,8 @@ index 5b4b2cb..0d83186 100644
          <p id="gecko" class="center" dir="&locale.dir;">&credit.poweredByGeckoReg;</p>
  
          <p class="footnote" dir="&locale.dir;">
--          &brandFullName;&trade; &license.part0; &copy;1998-2010 &license.part1;
-+          &brandFullName;&brandTrade; &license.part0; &copy;1998-2010 &license.part1;
+-          &brandFullName;&trade; &license.part0; &copy;1998-2011 &license.part1;
++          &brandFullName;&brandTrade; &license.part0; &copy;1998-2011 &license.part1;
            <a href="" link="about:credits" onclick="visitLink(event);">&license.contrib;</a>,
            &license.part2;
            <a href="" link="about:license" onclick="visitLink(event);">about:license</a>
@@ -61,6 +60,3 @@ index 6268cf2..b425a65 100644
  <!ENTITY  vendorShortName       "mozilla.org">
  <!ENTITY  logoCopyright         " ">
  
--- 
-1.7.4.1
-

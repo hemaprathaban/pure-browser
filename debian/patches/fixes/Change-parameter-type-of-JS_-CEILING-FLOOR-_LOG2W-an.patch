@@ -76,11 +76,11 @@ index 81e6511..9576675 100644
      JS_ASSERT(n != 0);
  
 diff --git a/js/src/jstl.h b/js/src/jstl.h
-index 42e7240..ae721de 100644
+index c3b3f3b..8dd093d 100644
 --- a/js/src/jstl.h
 +++ b/js/src/jstl.h
 @@ -195,7 +195,6 @@ class ReentrancyGuard
- static JS_ALWAYS_INLINE size_t
+ JS_ALWAYS_INLINE size_t
  RoundUpPow2(size_t x)
  {
 -    typedef tl::StaticAssert<tl::IsSameType<size_t,JSUword>::result>::result _;
