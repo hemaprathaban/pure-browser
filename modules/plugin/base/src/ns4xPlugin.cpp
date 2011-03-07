@@ -1932,7 +1932,7 @@ _getproperty(NPP npp, NPObject* npobj, NPIdentifier property,
   // crash (to throw a RuntimeException in Plugin2Manager.getDocumentBase()).
   // Also don't pass back a value that Java is likely to mishandle.
 
-  nsNPAPIPluginInstance* inst = (nsNPAPIPluginInstance*) npp->ndata;
+  ns4xPluginInstance* inst = (ns4xPluginInstance*) npp->ndata;
   if (!inst)
     return false;
   if (!inst->mIsJavaPlugin)
