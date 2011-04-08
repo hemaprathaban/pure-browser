@@ -2177,33 +2177,27 @@ nsJSContext::CallEventHandler(nsISupports* aTarget, void *aScope, void *aHandler
                                        funval, argc, argv, &rval);
 
     if (!ok) {
-      // Tell XPConnect about any pending exceptions. This is needed
-      // to avoid dropping JS exceptions in case we got here through
-      // nested calls through XPConnect.
-
-      ReportPendingException();
-
       // Don't pass back results from failed calls.
       rval = JSVAL_VOID;
 
       // Tell the caller that the handler threw an error.
       rv = NS_ERROR_FAILURE;
+    } else if (rval == JSVAL_NULL) {
+      *arv = nsnull;
+    } else {
+      rv = nsContentUtils::XPConnect()->JSToVariant(mContext, rval, arv);
     }
+
+    // Tell XPConnect about any pending exceptions. This is needed
+    // to avoid dropping JS exceptions in case we got here through
+    // nested calls through XPConnect.
+    if (NS_FAILED(rv))
+      ReportPendingException();
 
     sSecurityManager->PopContextPrincipal(mContext);
   }
 
   pusher.Pop();
-
-  // Convert to variant before calling ScriptEvaluated, as it may GC, meaning
-  // we would need to root rval.
-  JSAutoRequest ar(mContext);
-  if (NS_SUCCEEDED(rv)) {
-    if (rval == JSVAL_NULL)
-      *arv = nsnull;
-    else
-      rv = nsContentUtils::XPConnect()->JSToVariant(mContext, rval, arv);
-  }
 
   // ScriptEvaluated needs to come after we pop the stack
   ScriptEvaluated(PR_TRUE);
