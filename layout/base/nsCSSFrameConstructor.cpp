@@ -10274,7 +10274,10 @@ nsCSSFrameConstructor::EndUpdate()
     RecalcQuotesAndCounters();
     NS_ASSERTION(mUpdateCount == 1, "Odd update count");
   }
-  --mUpdateCount;
+  // Negative update counts don't make sense
+  if (mUpdateCount > 0) {
+    --mUpdateCount;
+  }
   if (mFocusSuppressCount) {
     NS_UnsuppressFocusEvent();
     --mFocusSuppressCount;
