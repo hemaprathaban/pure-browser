@@ -72,6 +72,7 @@
 #include "nsIDocShell.h"
 #include "nsIContentViewer.h"
 #include "nsIMarkupDocumentViewer.h"
+#include "nsIJSContextStack.h"
 
 #define AUTOMATIC_IMAGE_RESIZING_PREF "browser.enable_automatic_image_resizing"
 
@@ -336,7 +337,20 @@ nsImageDocument::Destroy()
     // Break reference cycle with mImageContent, if we have one
     nsCOMPtr<nsIImageLoadingContent> imageLoader = do_QueryInterface(mImageContent);
     if (imageLoader) {
+      // Push a null JSContext on the stack so that code that
+      // nsImageLoadingContent doesn't think it's being called by JS.  See
+      // Bug 631241
+
+      nsIThreadJSContextStack* stack = nsContentUtils::ThreadJSContextStack();
+      if (stack) {
+        stack->Push(nsnull);
+      }
+
       imageLoader->RemoveObserver(this);
+
+      if (stack) {
+        stack->Pop(nsnull);
+      }
     }
 
     mImageContent = nsnull;
@@ -622,6 +636,14 @@ nsImageDocument::CreateSyntheticDocument()
   nsCAutoString src;
   mDocumentURI->GetSpec(src);
 
+  // Push a null JSContext on the stack so that code that runs within
+  // the below code doesn't think it's being called by JS. See bug
+  // 604262.
+  nsIThreadJSContextStack* stack = nsContentUtils::ThreadJSContextStack();
+  if (stack) {
+    stack->Push(nsnull);
+  }
+
   NS_ConvertUTF8toUTF16 srcString(src);
   // Make sure not to start the image load from here...
   imageLoader->SetLoadingEnabled(PR_FALSE);
@@ -630,6 +652,10 @@ nsImageDocument::CreateSyntheticDocument()
 
   body->AppendChildTo(mImageContent, PR_FALSE);
   imageLoader->SetLoadingEnabled(PR_TRUE);
+
+  if (stack) {
+    stack->Pop(nsnull);
+  }
 
   return NS_OK;
 }
