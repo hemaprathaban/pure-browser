@@ -435,6 +435,8 @@ public:
   virtual nsresult SetArguments(nsIArray *aArguments, nsIPrincipal *aOrigin);
 
 protected:
+  friend class nsBarProp;
+
   // Object Management
   virtual ~nsGlobalWindow();
   void CleanUp();
