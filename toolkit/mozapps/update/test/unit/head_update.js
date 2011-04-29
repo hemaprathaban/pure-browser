@@ -456,6 +456,22 @@ function writeStatusFile(aStatus) {
 }
 
 /**
+ * Writes the current update version to a file in the patch directory,
+ * indicating to the patching system the version of the update.
+ *
+ * @param  aVersion
+ *         The version value to write.
+ */
+function writeVersionFile(aVersion) {
+  var file = getCurrentProcessDir();
+  file.append("updates");
+  file.append("0");
+  file.append("update.version");
+  aVersion += "\n";
+  writeFile(file, aVersion);
+}
+
+/**
  * Writes text to a file. This will replace existing text if the file exists
  * and create the file if it doesn't exist.
  * @param   aFile

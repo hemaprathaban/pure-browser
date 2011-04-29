@@ -65,7 +65,7 @@ const ACTION_ADD = 1;
 const TYPE_FOLDER = 0;
 const TYPE_BOOKMARK = 1;
 
-const TEST_URL = "http://www.mozilla.org/";
+const TEST_URL = "http://www.example.com/";
 
 var wm = Cc["@mozilla.org/appshell/window-mediator;1"].
          getService(Ci.nsIWindowMediator);
