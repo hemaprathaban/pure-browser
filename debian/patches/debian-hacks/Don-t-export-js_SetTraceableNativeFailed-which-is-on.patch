@@ -1,6 +1,7 @@
 From: Mike Hommey <glandium@debian.org>
 Date: Tue, 7 Jul 2009 20:26:46 +0200
-Subject: Don't export js_SetTraceableNativeFailed, which is only used internally
+Subject: Don't export js_SetTraceableNativeFailed, which is only used
+ internally
 
 Otherwise, this is one more different symbol between JIT and non-JIT builds
 ---

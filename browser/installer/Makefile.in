@@ -107,7 +107,7 @@ endif
 include $(topsrcdir)/toolkit/mozapps/installer/packager.mk
 
 libs::
-	$(MAKE) -C $(DEPTH)/browser/locales langpack PKG_LANGPACK_PATH=
+	$(MAKE) -C $(DEPTH)/browser/locales langpack
 
 UPLOAD_EXTRA_FILES += $(PKG_LANGPACK_BASENAME).xpi
 

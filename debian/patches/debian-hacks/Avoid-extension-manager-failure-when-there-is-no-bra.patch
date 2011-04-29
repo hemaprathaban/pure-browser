@@ -1,6 +1,7 @@
 From: Mike Hommey <mh@glandium.org>
 Date: Tue, 26 Jan 2010 14:00:18 +0100
-Subject: Avoid extension manager failure when there is no branding (like in the testsuite)
+Subject: Avoid extension manager failure when there is no branding (like in
+ the testsuite)
 
 Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=455238
 ---
@@ -8,7 +9,7 @@ Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=455238
  1 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/mozapps/extensions/src/nsExtensionManager.js.in b/toolkit/mozapps/extensions/src/nsExtensionManager.js.in
-index 8a2facc..6f23c57 100644
+index 46b24e1..7fc40f6 100644
 --- a/toolkit/mozapps/extensions/src/nsExtensionManager.js.in
 +++ b/toolkit/mozapps/extensions/src/nsExtensionManager.js.in
 @@ -226,8 +226,10 @@ var BundleManager = {

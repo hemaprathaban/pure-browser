@@ -113,6 +113,7 @@
 #include "nsINameSpaceManager.h"
 #include "nsIHTMLDocument.h"
 #include "nsIParserService.h"
+#include "nsIDOMNSEvent.h"
 
 #define NS_ERROR_EDITOR_NO_SELECTION NS_ERROR_GENERATE_FAILURE(NS_ERROR_MODULE_EDITOR,1)
 #define NS_ERROR_EDITOR_NO_TEXTNODE  NS_ERROR_GENERATE_FAILURE(NS_ERROR_MODULE_EDITOR,2)
@@ -155,6 +156,7 @@ nsEditor::nsEditor()
 ,  mDocDirtyState(-1)
 ,  mDocWeak(nsnull)
 ,  mPhonetic(nsnull)
+,  mLastKeypressEventWasTrusted(eTriUnset)
 {
   //initialize member variables here
 }
@@ -207,6 +209,7 @@ NS_IMPL_CYCLE_COLLECTION_TRAVERSE_BEGIN(nsEditor)
 NS_IMPL_CYCLE_COLLECTION_TRAVERSE_END
 
 NS_INTERFACE_MAP_BEGIN_CYCLE_COLLECTION(nsEditor)
+ NS_INTERFACE_MAP_ENTRY(nsIEditor_MOZILLA_1_9_2_BRANCH)
  NS_INTERFACE_MAP_ENTRY(nsIMutationObserver)
  NS_INTERFACE_MAP_ENTRY(nsIPhonetic)
  NS_INTERFACE_MAP_ENTRY(nsISupportsWeakReference)
@@ -5385,4 +5388,29 @@ PRBool
 nsEditor::IsModifiableNode(nsIDOMNode *aNode)
 {
   return PR_TRUE;
+}
+
+NS_IMETHODIMP
+nsEditor::GetLastKeypressEventTrusted(PRBool *aWasTrusted)
+{
+  NS_ENSURE_ARG_POINTER(aWasTrusted);
+
+  if (mLastKeypressEventWasTrusted == eTriUnset) {
+    return NS_ERROR_UNEXPECTED;
+  }
+
+  *aWasTrusted = (mLastKeypressEventWasTrusted == eTriTrue);
+  return NS_OK;
+}
+
+void
+nsEditor::BeginKeypressHandling(nsIDOMNSEvent* aEvent)
+{
+  NS_ASSERTION(mLastKeypressEventWasTrusted == eTriUnset, "How come our status is not clear?");
+
+  if (aEvent) {
+    PRBool isTrusted = PR_FALSE;
+    aEvent->GetIsTrusted(&isTrusted);
+    mLastKeypressEventWasTrusted = isTrusted ? eTriTrue : eTriFalse;
+  }
 }
