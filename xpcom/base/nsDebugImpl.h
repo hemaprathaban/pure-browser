@@ -39,6 +39,7 @@
 class nsDebugImpl : public nsIDebug
 {
 public:
+    nsDebugImpl() {}
     NS_DECL_ISUPPORTS
     NS_DECL_NSIDEBUG
     

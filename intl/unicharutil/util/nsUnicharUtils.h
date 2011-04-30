@@ -72,6 +72,7 @@ inline PRBool IsLowerCase(PRUnichar c) {
 class nsCaseInsensitiveStringComparator : public nsStringComparator
 {
 public:
+  nsCaseInsensitiveStringComparator() {}
   virtual int operator() (const PRUnichar*,
                           const PRUnichar*,
                           PRUint32 aLength) const;
