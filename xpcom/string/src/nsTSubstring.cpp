@@ -36,6 +36,8 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+#include <prlog.h>
+
 nsTSubstring_CharT::nsTSubstring_CharT( char_type *data, size_type length,
                                         PRUint32 flags)
 #ifdef MOZ_V1_STRING_ABI
