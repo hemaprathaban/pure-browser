@@ -7,10 +7,10 @@ Subject: Allow TestPoisonArea to work on more architectures
  1 files changed, 50 insertions(+), 4 deletions(-)
 
 diff --git a/layout/base/tests/TestPoisonArea.cpp b/layout/base/tests/TestPoisonArea.cpp
-index 67cb211..5227858 100644
+index afba867..b65f76a 100644
 --- a/layout/base/tests/TestPoisonArea.cpp
 +++ b/layout/base/tests/TestPoisonArea.cpp
-@@ -156,6 +156,8 @@ typedef unsigned int uint32_t;
+@@ -162,6 +162,8 @@ typedef unsigned int uint32_t;
  
  /* This program assumes that a whole number of return instructions fit into
   * 32 bits, and that 32-bit alignment is sufficient for a branch destination.
@@ -19,7 +19,7 @@ index 67cb211..5227858 100644
   */
  
  #if defined __i386__ || defined __x86_64__ ||   \
-@@ -174,10 +176,40 @@ typedef unsigned int uint32_t;
+@@ -180,10 +182,40 @@ typedef unsigned int uint32_t;
  #elif defined __sparc || defined __sparcv9
  #define RETURN_INSTR 0x81c3e008 /* retl */
  
@@ -60,7 +60,7 @@ index 67cb211..5227858 100644
  // Miscellaneous Windows/Unix portability gumph
  
  #ifdef _WIN32
-@@ -376,8 +408,8 @@ ReserveNegativeControl()
+@@ -451,8 +483,8 @@ ReserveNegativeControl()
    }
  
    // Fill the page with return instructions.
@@ -71,7 +71,7 @@ index 67cb211..5227858 100644
    while (p < limit)
      *p++ = RETURN_INSTR;
  
-@@ -394,6 +426,20 @@ ReserveNegativeControl()
+@@ -469,6 +501,20 @@ ReserveNegativeControl()
    return (uintptr_t)result;
  }
  
@@ -92,7 +92,7 @@ index 67cb211..5227858 100644
  /* Test each page.  */
  static bool
  TestPage(const char *pagelabel, uintptr_t pageaddr, int should_succeed)
-@@ -417,7 +463,7 @@ TestPage(const char *pagelabel, uintptr_t pageaddr, int should_succeed)
+@@ -492,7 +538,7 @@ TestPage(const char *pagelabel, uintptr_t pageaddr, int should_succeed)
        unsigned char scratch;
        switch (test) {
        case 0: scratch = *(volatile unsigned char *)opaddr; break;
@@ -101,7 +101,7 @@ index 67cb211..5227858 100644
        case 2: *(volatile unsigned char *)opaddr = 0; break;
        default: abort();
        }
-@@ -451,7 +497,7 @@ TestPage(const char *pagelabel, uintptr_t pageaddr, int should_succeed)
+@@ -561,7 +607,7 @@ TestPage(const char *pagelabel, uintptr_t pageaddr, int should_succeed)
        volatile unsigned char scratch;
        switch (test) {
        case 0: scratch = *(volatile unsigned char *)opaddr; break;
