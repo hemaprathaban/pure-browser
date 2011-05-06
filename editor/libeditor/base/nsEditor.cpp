@@ -170,8 +170,8 @@ nsEditor::~nsEditor()
   NS_IF_RELEASE(mViewManager);
 }
 
-NS_IMPL_ISUPPORTS5(nsEditor, nsIEditor, nsIEditorIMESupport,
-                   nsISupportsWeakReference, nsIPhonetic, nsIMutationObserver)
+NS_IMPL_ISUPPORTS6(nsEditor, nsIEditor, nsIEditorIMESupport,
+                   nsISupportsWeakReference, nsIPhonetic, nsIMutationObserver, nsIEditor_MOZILLA_1_9_2_BRANCH)
 
 #ifdef XP_MAC
 #pragma mark -
