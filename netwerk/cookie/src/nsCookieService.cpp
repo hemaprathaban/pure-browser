@@ -731,7 +731,11 @@ nsCookieService::SetCookieStringInternal(nsIURI     *aHostURI,
  
   // switch to a nice string type now, and process each cookie in the header
   nsDependentCString cookieHeader(aCookieHeader);
-  while (SetCookieInternal(aHostURI, aChannel, cookieHeader, serverTime, aFromHttp));
+  while (SetCookieInternal(aHostURI, aChannel, cookieHeader, serverTime, aFromHttp)) {
+    // document.cookie can only set one cookie at a time
+    if (!aFromHttp)
+      break;
+  }
 
   return NS_OK;
 }
