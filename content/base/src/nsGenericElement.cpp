@@ -3244,6 +3244,8 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
     return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
   }
 
+  nsMutationGuard guard;
+
   // DocumentType nodes are the only nodes that can have a null
   // ownerDocument according to the DOM spec, and we need to allow
   // inserting them w/o calling AdoptNode().
@@ -3252,6 +3254,19 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
        newContent->GetOwnerDoc())) {
     res = AdoptNodeIntoOwnerDoc(container, aNewChild);
     NS_ENSURE_SUCCESS(res, res);
+  }
+  
+  if (guard.Mutated(0)) {
+    insPos = refContent ? container->IndexOf(refContent) :
+                          container->GetChildCount();
+    if (insPos < 0) {
+      return NS_ERROR_DOM_NOT_FOUND_ERR;
+    }
+
+    if (!IsAllowedAsChild(newContent, nodeType, aParent, aDocument, aReplace,
+                          refContent)) {
+      return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
+    }
   }
 
   // If we're replacing
