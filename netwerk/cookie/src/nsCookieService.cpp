@@ -1182,6 +1182,7 @@ nsCookieService::GetCookieInternal(nsIURI      *aHostURI,
   PRInt64 currentTime = currentTimeInUsec / PR_USEC_PER_SEC;
   const char *currentDot = hostFromURI.get();
   const char *nextDot = currentDot + 1;
+  const char *end = currentDot + (hostFromURI.Length() - 1);
   PRBool stale = PR_FALSE;
 
   // begin hash lookup, walking up the subdomain levels.
@@ -1240,7 +1241,7 @@ nsCookieService::GetCookieInternal(nsIURI      *aHostURI,
     if (currentDot)
       nextDot = strchr(currentDot + 1, '.');
 
-  } while (currentDot && (*(currentDot + 1) != '.'));
+  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0'));
 
   PRInt32 count = foundCookieList.Count();
   if (count == 0)
@@ -2096,6 +2097,7 @@ nsCookieService::CountCookiesFromHostInternal(const nsACString  &aHost,
 
   const char *currentDot = hostWithDot.get();
   const char *nextDot = currentDot + 1;
+  const char *end = currentDot + (hostWithDot.Length() - 1);
   do {
     nsCookieEntry *entry = mHostTable.GetEntry(currentDot);
     for (nsListIter iter(entry); iter.current; ++iter) {
@@ -2115,7 +2117,7 @@ nsCookieService::CountCookiesFromHostInternal(const nsACString  &aHost,
     if (currentDot)
       nextDot = strchr(currentDot + 1, '.');
 
-  } while (currentDot && (*(currentDot + 1) != '.'));
+  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0'));
 
   return countFromHost;
 }
