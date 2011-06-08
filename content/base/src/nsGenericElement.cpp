@@ -3743,8 +3743,6 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
 
   nsINode* container = NODE_FROM(aParent, aDocument);
 
-  mozAutoDocConditionalContentUpdateBatch batch(aDocument, PR_TRUE);
-
   // Figure out which index to insert at
   if (aRefChild) {
     refContent = do_QueryInterface(aRefChild);
@@ -3801,6 +3799,8 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
       return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
     }
   }
+
+  mozAutoDocConditionalContentUpdateBatch batch(aDocument, PR_TRUE);
 
   // If we're replacing
   if (aReplace) {
