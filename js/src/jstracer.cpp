@@ -10723,7 +10723,7 @@ TraceRecorder::record_JSOP_CALLGVAR()
 
     jsval& v = STOBJ_GET_SLOT(globalObj, slot);
     stack(0, get(&v));
-    stack(1, INS_CONSTPTR(NULL));
+    stack(1, INS_CONSTPTR(globalObj));
     return JSRS_CONTINUE;
 }
 
