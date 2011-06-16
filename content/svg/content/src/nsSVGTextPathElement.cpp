@@ -43,6 +43,7 @@
 #include "nsIFrame.h"
 #include "nsSVGTextPathElement.h"
 #include "nsDOMError.h"
+#include "nsIDOMSVGPoint.h"
 
 nsSVGElement::LengthInfo nsSVGTextPathElement::sLengthInfo[1] =
 {
@@ -237,9 +238,10 @@ NS_IMETHODIMP nsSVGTextPathElement::GetRotationOfChar(PRUint32 charnum, float *_
 NS_IMETHODIMP nsSVGTextPathElement::GetCharNumAtPosition(nsIDOMSVGPoint *point,
                                                          PRInt32 *_retval)
 {
-  // null check when implementing - this method can be used by scripts!
-  if (!point)
+  nsCOMPtr<nsISVGValue> p = do_QueryInterface(point);
+  if (!p) {
     return NS_ERROR_DOM_SVG_WRONG_TYPE_ERR;
+  }
 
   nsCOMPtr<nsISVGTextContentMetrics> metrics = GetTextContentMetrics();
 
