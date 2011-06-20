@@ -1,0 +1,23 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Mon, 20 Jun 2011 06:44:53 +0200
+Subject: Don't use a static string when setting the NO_AT_BRIDGE environment
+ variable
+
+Closes: #630589
+---
+ toolkit/xre/nsAppRunner.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
+index 791bb63..ea12bcc 100644
+--- a/toolkit/xre/nsAppRunner.cpp
++++ b/toolkit/xre/nsAppRunner.cpp
+@@ -2674,7 +2674,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
+   }
+ 
+   // Suppress atk-bridge init at startup, it works after GNOME 2.24.2
+-  PR_SetEnv("NO_AT_BRIDGE=1");
++  SaveToEnv("NO_AT_BRIDGE=1");
+ #endif
+ 
+   gArgc = argc;
