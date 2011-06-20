@@ -185,7 +185,7 @@ index e69de29..5e9e750 100644
 +#define NS_BADCERTLISTENER_CONTRACTID "@mozilla.org/nsBadCertListener;1"
 +%}
 diff --git a/security/manager/ssl/src/nsNSSIOLayer.cpp b/security/manager/ssl/src/nsNSSIOLayer.cpp
-index edc493c..ea4c626 100644
+index c5b54a7..490cb59 100644
 --- a/security/manager/ssl/src/nsNSSIOLayer.cpp
 +++ b/security/manager/ssl/src/nsNSSIOLayer.cpp
 @@ -60,6 +60,7 @@
@@ -291,7 +291,7 @@ index edc493c..ea4c626 100644
        if (!wantRetry // no decision yet
            && !socketInfo->GetHasCleartextPhase()) // mirror PR_CONNECT_RESET_ERROR treament
        {
-@@ -3431,6 +3490,48 @@ nsNSSBadCertHandler(void *arg, PRFileDesc *sslSocket)
+@@ -3438,6 +3497,48 @@ nsNSSBadCertHandler(void *arg, PRFileDesc *sslSocket)
          rv = proxy_bcl->NotifyCertProblem(csi, status, hostWithPortString, 
                                            &suppressMessage);
        }

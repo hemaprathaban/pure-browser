@@ -8238,6 +8238,11 @@ TraceRecorder::incProp(jsint incr, bool pre)
         ABORT_TRACE("incProp on invalid slot");
 
     jsval& v = STOBJ_GET_SLOT(obj, slot);
+    // Bug 655742: if the array element is a double, box_jsval can
+    // OOM after we have already overwritten the array object in
+    // the stack.
+    if (JSVAL_IS_DOUBLE(v))
+        return JSRS_STOP;
     CHECK_STATUS(inc(v, v_ins, incr, pre));
 
     LIns* dslots_ins = NULL;
@@ -8261,6 +8266,11 @@ TraceRecorder::incElem(jsint incr, bool pre)
 
     CHECK_STATUS(denseArrayElement(l, r, vp, v_ins, addr_ins));
     if (!addr_ins) // if we read a hole, abort
+        return JSRS_STOP;
+    // Bug 655742: if the array element is a double, box_jsval can
+    // OOM after we have already overwritten the array object in
+    // the stack.
+    if (JSVAL_IS_DOUBLE(*vp))
         return JSRS_STOP;
     CHECK_STATUS(inc(*vp, v_ins, incr, pre));
     lir->insStorei(box_jsval(*vp, v_ins), addr_ins, 0);
@@ -13904,7 +13914,7 @@ TraceRecorder::record_JSOP_CALLGVAR()
 
     jsval& v = STOBJ_GET_SLOT(globalObj, slot);
     stack(0, get(&v));
-    stack(1, INS_NULL());
+    stack(1, INS_CONSTOBJ(globalObj));
     return JSRS_CONTINUE;
 }
 
