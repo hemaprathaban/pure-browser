@@ -1,3 +1,23 @@
+iceweasel (3.6.18-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2011-{09,19-24}, also known as
+    CVE-2011-0061, CVE-2011-2374, CVE-2011-2376, CVE-2011-2364,
+    CVE-2011-2365, CVE-2011-2373, CVE-2011-2372, CVE-2011-2371,
+    CVE-2011-0083, CVE-2011-2363, CVE-2011-0085, CVE-2011-2362.
+
+  * configure*: Allow to build against SQLite 3.7.3 for backports.
+  * toolkit/xre/nsAppRunner.cpp: Don't use a static string when setting the
+    NO_AT_BRIDGE environment variable. Closes: #630589.
+  * xpcom/base/nsDebugImpl.h, xpcom/base/nsTraceRefcntImpl.h,
+    xpcom/glue/nsEnumeratorUtils.cpp, xpcom/io/nsUnicharInputStream.h,
+    gfx/ots/src/os2.cc, intl/unicharutil/util/nsUnicharUtils.h,
+    toolkit/xre/nsAppRunner.cpp, embedding/browser/gtk/src/EmbedPrivate.cpp:
+    Add missing constructors according to 8.5 [dcl.init], para 9 in C++03,
+    para 6 in C++0x, because gcc 4.6 enforces it.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 20 Jun 2011 15:38:00 +0900
+
 iceweasel (3.6.17-1) UNRELEASED; urgency=low
 
   * New upstream release.
