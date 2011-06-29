@@ -1241,7 +1241,7 @@ nsCookieService::GetCookieInternal(nsIURI      *aHostURI,
     if (currentDot)
       nextDot = strchr(currentDot + 1, '.');
 
-  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0'));
+  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0' && *currentDot == '.'));
 
   PRInt32 count = foundCookieList.Count();
   if (count == 0)
@@ -2117,7 +2117,7 @@ nsCookieService::CountCookiesFromHostInternal(const nsACString  &aHost,
     if (currentDot)
       nextDot = strchr(currentDot + 1, '.');
 
-  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0'));
+  } while (currentDot && !(currentDot <= end && *(currentDot + 1) == '\0' && *currentDot == '.'));
 
   return countFromHost;
 }
