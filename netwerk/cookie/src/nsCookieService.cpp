@@ -1357,7 +1357,7 @@ nsCookieService::GetCookieInternal(nsIURI      *aHostURI,
         stale = PR_TRUE;
     }
 
-    if (!nextDot || (nextDot <= end && *(nextDot + 1) == '\0'))
+    if (!nextDot || (nextDot <= end && *(nextDot + 1) == '\0' && *nextDot == '.'))
       break;
 
     currentDot = nextDot;
@@ -2237,7 +2237,7 @@ nsCookieService::CountCookiesFromHostInternal(const nsACString  &aHost,
       }
     }
 
-    if (!nextDot || (nextDot <= end && *(nextDot + 1) == '\0'))
+    if (!nextDot || (nextDot <= end && *(nextDot + 1) == '\0' && *nextDot == '.'))
       break;
 
     currentDot = nextDot;
