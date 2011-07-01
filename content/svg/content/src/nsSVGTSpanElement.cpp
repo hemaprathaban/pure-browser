@@ -46,6 +46,7 @@
 #include "nsISVGTextContentMetrics.h"
 #include "nsIFrame.h"
 #include "nsDOMError.h"
+#include "nsIDOMSVGPoint.h"
 
 typedef nsSVGStylableElement nsSVGTSpanElementBase;
 
@@ -335,9 +336,10 @@ NS_IMETHODIMP nsSVGTSpanElement::GetRotationOfChar(PRUint32 charnum, float *_ret
 NS_IMETHODIMP nsSVGTSpanElement::GetCharNumAtPosition(nsIDOMSVGPoint *point,
                                                       PRInt32 *_retval)
 {
-  // null check when implementing - this method can be used by scripts!
-  if (!point)
+  nsCOMPtr<nsISVGValue> p = do_QueryInterface(point);
+  if (!p) {
     return NS_ERROR_DOM_SVG_WRONG_TYPE_ERR;
+  }
 
   nsCOMPtr<nsISVGTextContentMetrics> metrics = GetTextContentMetrics();
 

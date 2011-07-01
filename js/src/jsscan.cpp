@@ -1099,6 +1099,7 @@ js_GetToken(JSContext *cx, JSTokenStream *ts)
                 c = GetChar(ts);
             } while (JS_ISXMLSPACE(c));
             UngetChar(ts, c);
+            tp->pos.end.lineno = ts->lineno;
             tt = TOK_XMLSPACE;
             goto out;
         }
