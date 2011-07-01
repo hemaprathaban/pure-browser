@@ -1,0 +1,22 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 1 Jul 2011 10:02:28 +0200
+Subject: Avoid crash after connecting to an existing instance
+
+Closes: #630589
+---
+ toolkit/xre/nsAppRunner.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
+index 83d8572..15806d3 100644
+--- a/toolkit/xre/nsAppRunner.cpp
++++ b/toolkit/xre/nsAppRunner.cpp
+@@ -2579,7 +2579,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
+   }
+ 
+   // Suppress atk-bridge init at startup, it works after GNOME 2.24.2
+-  PR_SetEnv("NO_AT_BRIDGE=1");
++  SaveToEnv("NO_AT_BRIDGE=1");
+ #endif
+ 
+ #ifndef WINCE
