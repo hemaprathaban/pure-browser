@@ -1,3 +1,14 @@
+iceweasel (3.5.19-3) unstable; urgency=high
+
+  * Fixes for mfsa2011-{19,20,22-24}, also known as
+    CVE-2011-2374, CVE-2011-2376, CVE-2011-2365, CVE-2011-2373,
+    CVE-2011-2371, CVE-2011-0083, CVE-2011-2363, CVE-2011-0085,
+    CVE-2011-2362.
+  * toolkit/xre/nsAppRunner.cpp: Avoid crash after connecting to an existing
+    instance. Closes: #630589.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 01 Jul 2011 11:59:44 +0200
+
 iceweasel (3.5.19-2) unstable; urgency=low
 
   * xpcom/base/nsDebugImpl.h, xpcom/base/nsTraceRefcntImpl.h,
