@@ -529,10 +529,10 @@ CallWithoutStatics(JSContext *cx, JSObject *obj, jsval fval, uintN argc,
                    jsval *argv, jsval *rval)
 {
   JSRegExpStatics statics;
-  JSTempValueRooter tvr;
-  js_SaveAndClearRegExpStatics(cx, &statics, &tvr);
+  JSTempValueRooter tvr, tvr2;
+  js_SaveAndClearRegExpStatics(cx, &statics, &tvr, &tvr2);
   JSBool ok = ::JS_CallFunctionValue(cx, obj, fval, argc, argv, rval);
-  js_RestoreRegExpStatics(cx, &statics, &tvr);
+  js_RestoreRegExpStatics(cx, &statics, &tvr, &tvr2);
   return ok;
 }
 
