@@ -5730,7 +5730,7 @@ JS_SetRegExpInput(JSContext *cx, JSString *input, JSBool multiline)
     CHECK_REQUEST(cx);
     /* No locking required, cx is thread-private and input must be live. */
     res = &cx->regExpStatics;
-    res->input = input;
+    res->pendingInput = input;
     res->multiline = multiline;
     cx->runtime->gcPoke = JS_TRUE;
 }
@@ -5742,15 +5742,7 @@ JS_ClearRegExpStatics(JSContext *cx)
 
     /* No locking required, cx is thread-private and input must be live. */
     res = &cx->regExpStatics;
-    res->input = NULL;
-    res->multiline = JS_FALSE;
-    res->parenCount = 0;
-    res->lastMatch = res->lastParen = js_EmptySubString;
-    res->leftContext = res->rightContext = js_EmptySubString;
-    if (res->moreParens) {
-        JS_free(cx, res->moreParens);
-        res->moreParens = NULL;
-    }
+    clearJSRegExpStatics(cx, res);
     cx->runtime->gcPoke = JS_TRUE;
 }
 
@@ -5762,6 +5754,7 @@ JS_ClearRegExpRoots(JSContext *cx)
     /* No locking required, cx is thread-private and input must be live. */
     res = &cx->regExpStatics;
     res->input = NULL;
+    res->pendingInput = NULL;
     cx->runtime->gcPoke = JS_TRUE;
 }
 
