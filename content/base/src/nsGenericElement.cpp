@@ -3423,7 +3423,9 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
       }
     }
 
-    if (!container->HasSameOwnerDoc(newContent)) {
+    if (!container->HasSameOwnerDoc(newContent) &&
+        (nodeType != nsIDOMNode::DOCUMENT_TYPE_NODE ||
+         newContent->GetOwnerDoc())) {
       return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
     }
 
