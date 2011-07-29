@@ -3396,7 +3396,7 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
     size_t i, length, start;
     JSSubString *morepar;
     JSBool ok;
-    JSRegExpStatics *res;
+    JSRegExpStatics *res = NULL;
     ptrdiff_t matchlen;
     uintN num, morenum;
     JSString *parstr, *matchstr;
@@ -3601,7 +3601,7 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
     res->rightContext.length = gData.cpend - ep;
 
 out:
-    if (!ok)
+    if (!ok && res)
         clearJSRegExpStatics(cx, res);
     JS_FinishArenaPool(&gData.pool);
     return ok;
