@@ -4051,14 +4051,13 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
     size_t i, length, start;
     JSSubString *morepar;
     JSBool ok;
-    JSRegExpStatics *res;
+    JSRegExpStatics *res = NULL;
     ptrdiff_t matchlen;
     uintN num, morenum;
     JSString *parstr, *matchstr;
     JSObject *obj;
 
     RECapture *parsub = NULL;
-    void *mark;
     int64 *timestamp;
 
     /*
@@ -4085,7 +4084,7 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
             return JS_FALSE;
         *timestamp = JS_Now();
     }
-    mark = JS_ARENA_MARK(&cx->regexpPool);
+    void *mark = JS_ARENA_MARK(&cx->regexpPool);
 
     x = InitMatch(cx, &gData, re, length);
 
@@ -4261,7 +4260,7 @@ js_ExecuteRegExp(JSContext *cx, JSRegExp *re, JSString *str, size_t *indexp,
     res->rightContext.length = gData.cpend - ep;
 
 out:
-    if (!ok)
+    if (!ok && res)
         clearJSRegExpStatics(cx, res);
     JS_ARENA_RELEASE(&cx->regexpPool, mark);
     return ok;
