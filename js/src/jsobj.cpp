@@ -654,7 +654,7 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
     JSHashEntry *he;
     JSIdArray *ida;
     jschar *chars, *ochars, *vsharp;
-    const jschar *idstrchars, *vchars;
+    const jschar *vchars;
     size_t nchars, idstrlength, gsoplength, vlength, vsharplength, curlen;
     const char *comma;
     jsint i, j, length, valcnt;
@@ -841,7 +841,7 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
             }
             *vp = STRING_TO_JSVAL(idstr);               /* local root */
         }
-        JSSTRING_CHARS_AND_LENGTH(idstr, idstrchars, idstrlength);
+        idstrlength = JSSTRING_LENGTH(idstr);
 
         for (j = 0; j < valcnt; j++) {
             /* Convert val[j] to its canonical source form. */
@@ -883,6 +883,7 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
                         gsop[j] = gsopold[j];
                     }
                     js_LeaveSharpObject(cx, NULL);
+                    vchars = JSSTRING_CHARS(valstr);
                 }
             }
 #endif
@@ -973,6 +974,7 @@ obj_toSource(JSContext *cx, uintN argc, jsval *vp)
             }
             comma = ", ";
 
+            const jschar *idstrchars = JSSTRING_CHARS(idstr);
             if (needOldStyleGetterSetter) {
                 js_strncpy(&chars[nchars], idstrchars, idstrlength);
                 nchars += idstrlength;

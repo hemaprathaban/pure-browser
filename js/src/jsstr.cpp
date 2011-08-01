@@ -1092,9 +1092,7 @@ str_indexOf(JSContext *cx, uintN argc, jsval *vp)
             return JS_FALSE;
     }
 
-    text = JSSTRING_CHARS(str);
     textlen = (jsint) JSSTRING_LENGTH(str);
-    pat = JSSTRING_CHARS(str2);
     patlen = (jsint) JSSTRING_LENGTH(str2);
 
     if (argc > 1) {
@@ -1116,6 +1114,8 @@ str_indexOf(JSContext *cx, uintN argc, jsval *vp)
         return JS_TRUE;
     }
 
+    text = JSSTRING_CHARS(str);
+    pat = JSSTRING_CHARS(str2);
     /* XXX tune the BMH threshold (512) */
     if (textlen - i >= 512 && (jsuint)(patlen - 2) <= BMH_PATLEN_MAX - 2) {
         index = js_BoyerMooreHorspool(text, textlen, pat, patlen, i);
@@ -1151,7 +1151,6 @@ str_lastIndexOf(JSContext *cx, uintN argc, jsval *vp)
     jsdouble d;
 
     NORMALIZE_THIS(cx, vp, str);
-    text = JSSTRING_CHARS(str);
     textlen = (jsint) JSSTRING_LENGTH(str);
 
     if (argc != 0 && JSVAL_IS_STRING(vp[2])) {
@@ -1161,7 +1160,6 @@ str_lastIndexOf(JSContext *cx, uintN argc, jsval *vp)
         if (!str2)
             return JS_FALSE;
     }
-    pat = JSSTRING_CHARS(str2);
     patlen = (jsint) JSSTRING_LENGTH(str2);
 
     i = textlen - patlen; // Start searching here
@@ -1196,6 +1194,8 @@ str_lastIndexOf(JSContext *cx, uintN argc, jsval *vp)
         return JS_TRUE;
     }
 
+    text = JSSTRING_CHARS(str);
+    pat = JSSTRING_CHARS(str2);
     j = 0;
     while (i >= 0) {
         /* This is always safe because i <= textlen - patlen and j < patlen */
@@ -1881,8 +1881,6 @@ find_split(JSContext *cx, JSString *str, JSRegExp *re, jsint *ip,
     if ((size_t)i > length)
         return -1;
 
-    chars = JSSTRING_CHARS(str);
-
     /*
      * Match a regular expression against the separator at or above index i.
      * Call js_ExecuteRegExp with true for the test argument.  On successful
@@ -1942,6 +1940,8 @@ find_split(JSContext *cx, JSString *str, JSRegExp *re, jsint *ip,
     if (sep->length == 0)
         return ((size_t)i == length) ? -1 : i + 1;
 
+    chars = JSSTRING_CHARS(str);
+
     /*
      * Now that we know sep is non-empty, search starting at i in str for an
      * occurrence of all of sep's chars.  If we find them, return the index of
@@ -1984,6 +1984,7 @@ str_split(JSContext *cx, uintN argc, jsval *vp)
         v = STRING_TO_JSVAL(str);
         ok = OBJ_SET_PROPERTY(cx, arrayobj, INT_TO_JSID(0), &v);
     } else {
+        JSString *str2 = NULL;
         if (VALUE_IS_REGEXP(cx, vp[2])) {
             re = (JSRegExp *) JS_GetPrivate(cx, JSVAL_TO_OBJECT(vp[2]));
             sep = &tmp;
@@ -1992,20 +1993,11 @@ str_split(JSContext *cx, uintN argc, jsval *vp)
             sep->chars = NULL;
             sep->length = 0;
         } else {
-            JSString *str2 = js_ValueToString(cx, vp[2]);
+            str2 = js_ValueToString(cx, vp[2]);
             if (!str2)
                 return JS_FALSE;
             vp[2] = STRING_TO_JSVAL(str2);
-
-            /*
-             * Point sep at a local copy of str2's header because find_split
-             * will modify sep->length.
-             */
-            JSSTRING_CHARS_AND_LENGTH(str2, tmp.chars, tmp.length);
-            sep = &tmp;
-            re = NULL;
         }
-
         /* Use the second argument as the split limit, if given. */
         limited = (argc > 1) && !JSVAL_IS_VOID(vp[3]);
         limit = 0; /* Avoid warning. */
@@ -2018,6 +2010,16 @@ str_split(JSContext *cx, uintN argc, jsval *vp)
             limit = js_DoubleToECMAUint32(d);
             if (limit > JSSTRING_LENGTH(str))
                 limit = 1 + JSSTRING_LENGTH(str);
+        }
+
+        if (str2) {
+            /*
+             * Point sep at a local copy of str2's header because find_split
+             * will modify sep->length.
+             */
+            JSSTRING_CHARS_AND_LENGTH(str2, tmp.chars, tmp.length);
+            sep = &tmp;
+            re = NULL;
         }
 
         len = i = 0;
