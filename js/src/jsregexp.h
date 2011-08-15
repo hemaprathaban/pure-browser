@@ -54,6 +54,7 @@ JS_BEGIN_EXTERN_C
 
 struct JSRegExpStatics {
     JSString    *input;         /* input string to match (perl $_, GC root) */
+    JSString    *pendingInput;  /* pending input string to match */
     JSBool      multiline;      /* whether input contains newlines (perl $*) */
     uint16      parenCount;     /* number of valid elements in parens[] */
     uint16      moreLength;     /* number of allocated elements in moreParens */
@@ -65,13 +66,15 @@ struct JSRegExpStatics {
     JSSubString rightContext;   /* input to right of last match (perl $') */
 };
 
+extern void clearJSRegExpStatics(JSContext *cx, JSRegExpStatics *statics);
+
 extern JS_FRIEND_API(void)
 js_SaveAndClearRegExpStatics(JSContext *cx, JSRegExpStatics *statics,
-                             JSTempValueRooter *tvr);
+                             JSTempValueRooter *tvr, JSTempValueRooter *tvr2);
 
 extern JS_FRIEND_API(void)
 js_RestoreRegExpStatics(JSContext *cx, JSRegExpStatics *statics,
-                        JSTempValueRooter *tvr);
+                        JSTempValueRooter *tvr, JSTempValueRooter *tvr2);
 
 /*
  * This struct holds a bitmap representation of a class from a regexp.

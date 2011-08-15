@@ -3895,6 +3895,10 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
 
       nsMutationGuard guard;
 
+      if (!container->HasSameOwnerDoc(childContent)) {
+        return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
+      }
+
       // XXXbz how come no reparenting here?  That seems odd...
       // Insert the child.
       res = container->InsertChildAt(childContent, insPos, PR_TRUE);
@@ -3958,6 +3962,12 @@ nsGenericElement::doReplaceOrInsertBefore(PRBool aReplace,
           return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
         }
       }
+    }
+
+    if (!container->HasSameOwnerDoc(newContent) &&
+        (nodeType != nsIDOMNode::DOCUMENT_TYPE_NODE ||
+         newContent->GetOwnerDoc())) {
+      return NS_ERROR_DOM_HIERARCHY_REQUEST_ERR;
     }
 
     if (!newContent->IsNodeOfType(eXUL)) {
