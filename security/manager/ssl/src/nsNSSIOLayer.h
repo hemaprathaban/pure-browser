@@ -208,6 +208,12 @@ public:
   
   PRStatus CloseSocketAndDestroy();
   
+  PRBool IsCertIssuerBlacklisted() const {
+    return mIsCertIssuerBlacklisted;
+  }
+  void SetCertIssuerBlacklisted() {
+    mIsCertIssuerBlacklisted = PR_TRUE;
+  }
 protected:
   nsCOMPtr<nsIInterfaceRequestor> mCallbacks;
   PRFileDesc* mFd;
@@ -236,6 +242,7 @@ protected:
   PRIntervalTime mHandshakeStartTime;
   PRInt32 mPort;
   nsXPIDLCString mHostName;
+  PRErrorCode mIsCertIssuerBlacklisted;
 
   /* SSL Status */
   nsRefPtr<nsSSLStatus> mSSLStatus;
