@@ -1,0 +1,225 @@
+From: Kai Engert <kaie@kuix.de>
+Date: Tue, 30 Aug 2011 10:32:25 -0400
+Subject: Bug 682927, 683449, 683883 - Mark DigiNotar root certificates as
+ revoked
+
+---
+ security/manager/ssl/src/nsIdentityChecking.cpp |   12 ---
+ security/manager/ssl/src/nsNSSCallbacks.cpp     |   94 ++++++++++++++++++++++-
+ security/manager/ssl/src/nsNSSCallbacks.h       |    3 +
+ security/manager/ssl/src/nsNSSIOLayer.cpp       |    7 ++-
+ security/manager/ssl/src/nsNSSIOLayer.h         |    7 ++
+ 5 files changed, 108 insertions(+), 15 deletions(-)
+
+diff --git a/security/manager/ssl/src/nsIdentityChecking.cpp b/security/manager/ssl/src/nsIdentityChecking.cpp
+index 9a0bfee..d690dbc 100644
+--- a/security/manager/ssl/src/nsIdentityChecking.cpp
++++ b/security/manager/ssl/src/nsIdentityChecking.cpp
+@@ -117,18 +117,6 @@ static struct nsMyTrustedEVInfo myTrustedEVInfos[] = {
+     nsnull
+   },
+   {
+-    // E=info@diginotar.nl,CN=DigiNotar Root CA,O=DigiNotar,C=NL
+-    "2.16.528.1.1001.1.1.1.12.6.1.1.1",
+-    "DigiNotar EV OID",
+-    SEC_OID_UNKNOWN,
+-    "C0:60:ED:44:CB:D8:81:BD:0E:F8:6C:0B:A2:87:DD:CF:81:67:47:8C",
+-    "MF8xCzAJBgNVBAYTAk5MMRIwEAYDVQQKEwlEaWdpTm90YXIxGjAYBgNVBAMTEURp"
+-    "Z2lOb3RhciBSb290IENBMSAwHgYJKoZIhvcNAQkBFhFpbmZvQGRpZ2lub3Rhci5u"
+-    "bA==",
+-    "DHbanJEMTiye/hXQWJM8TA==",
+-    nsnull
+-  },
+-  {
+     // CN=SwissSign Gold CA - G2,O=SwissSign AG,C=CH
+     "2.16.756.1.89.1.2.1.1",
+     "SwissSign EV OID",
+diff --git a/security/manager/ssl/src/nsNSSCallbacks.cpp b/security/manager/ssl/src/nsNSSCallbacks.cpp
+index 3f0a221..cf30b44 100644
+--- a/security/manager/ssl/src/nsNSSCallbacks.cpp
++++ b/security/manager/ssl/src/nsNSSCallbacks.cpp
+@@ -1000,6 +1000,70 @@ static struct nsSerialBinaryBlacklistEntry myUTNBlacklistEntries[] = {
+   { 0, 0 } // end marker
+ };
+ 
++// Call this if we have already decided that a cert should be treated as INVALID,
++// in order to check if we to worsen the error to REVOKED.
++PRErrorCode
++PSM_SSL_DigiNotarTreatAsRevoked(CERTCertificate * serverCert,
++                                CERTCertList * serverCertChain)
++{
++  // If any involved cert was issued by DigiNotar, 
++  // and serverCert was issued after 01-JUL-2011,
++  // then worsen the error to revoked.
++  
++  PRTime cutoff = 0;
++  PRStatus status = PR_ParseTimeString("01-JUL-2011 00:00", PR_TRUE, &cutoff);
++  if (status != PR_SUCCESS) {
++    NS_ASSERTION(status == PR_SUCCESS, "PR_ParseTimeString failed");
++    // be safe, assume it's afterwards, keep going
++  } else {
++    PRTime notBefore = 0, notAfter = 0;
++    if (CERT_GetCertTimes(serverCert, &notBefore, &notAfter) == SECSuccess &&
++           notBefore < cutoff) {
++      // no worsening for certs issued before the cutoff date
++      return 0;
++    }
++  }
++  
++  for (CERTCertListNode *node = CERT_LIST_HEAD(serverCertChain);
++       !CERT_LIST_END(node, serverCertChain);
++       node = CERT_LIST_NEXT(node)) {
++    if (node->cert->issuerName &&
++        strstr(node->cert->issuerName, "CN=DigiNotar")) {
++      return SEC_ERROR_REVOKED_CERTIFICATE;
++    }
++  }
++  
++  return 0;
++}
++
++// Call this only if a cert has been reported by NSS as VALID
++PRErrorCode
++PSM_SSL_BlacklistDigiNotar(CERTCertificate * serverCert,
++                           CERTCertList * serverCertChain)
++{
++  PRBool isDigiNotarIssuedCert = PR_FALSE;
++
++  for (CERTCertListNode *node = CERT_LIST_HEAD(serverCertChain);
++       !CERT_LIST_END(node, serverCertChain);
++       node = CERT_LIST_NEXT(node)) {
++    if (!node->cert->issuerName)
++      continue;
++
++    if (strstr(node->cert->issuerName, "CN=DigiNotar")) {
++      isDigiNotarIssuedCert = PR_TRUE;
++    }
++  }
++
++  if (isDigiNotarIssuedCert) {
++    // let's see if we want to worsen the error code to revoked.
++    PRErrorCode revoked_code = PSM_SSL_DigiNotarTreatAsRevoked(serverCert, serverCertChain);
++    return (revoked_code != 0) ? revoked_code : SEC_ERROR_UNTRUSTED_ISSUER;
++  }
++
++  return 0;
++}
++
++
+ SECStatus PR_CALLBACK AuthCertificateCallback(void* client_data, PRFileDesc* fd,
+                                               PRBool checksig, PRBool isServer) {
+   nsNSSShutDownPreventionLock locker;
+@@ -1061,14 +1125,37 @@ SECStatus PR_CALLBACK AuthCertificateCallback(void* client_data, PRFileDesc* fd,
+       nsc = new nsNSSCertificate(serverCert);
+     }
+ 
++    CERTCertList *certList = nsnull;
++    certList = CERT_GetCertChainFromCert(serverCert, PR_Now(), certUsageSSLCA);
++    if (!certList) {
++      rv = SECFailure;
++    } else {
++      PRErrorCode blacklistErrorCode;
++      if (rv == SECSuccess) { // PSM_SSL_PKIX_AuthCertificate said "valid cert"
++        blacklistErrorCode = PSM_SSL_BlacklistDigiNotar(serverCert, certList);
++      } else { // PSM_SSL_PKIX_AuthCertificate said "invalid cert"
++        PRErrorCode savedErrorCode = PORT_GetError();
++        // Check if we want to worsen the error code to "revoked".
++        blacklistErrorCode = PSM_SSL_DigiNotarTreatAsRevoked(serverCert, certList);
++        if (blacklistErrorCode == 0) {
++          // we don't worsen the code, let's keep the original error code from NSS
++          PORT_SetError(savedErrorCode);
++        }
++      }
++
++      if (blacklistErrorCode != 0) {
++        infoObject->SetCertIssuerBlacklisted();
++        PORT_SetError(blacklistErrorCode);
++        rv = SECFailure;
++      }
++    }
++
+     if (SECSuccess == rv) {
+       if (nsc) {
+         PRBool dummyIsEV;
+         nsc->GetIsExtendedValidation(&dummyIsEV); // the nsc object will cache the status
+       }
+     
+-      CERTCertList *certList = CERT_GetCertChainFromCert(serverCert, PR_Now(), certUsageSSLCA);
+-
+       nsCOMPtr<nsINSSComponent> nssComponent;
+       
+       for (CERTCertListNode *node = CERT_LIST_HEAD(certList);
+@@ -1104,6 +1191,9 @@ SECStatus PR_CALLBACK AuthCertificateCallback(void* client_data, PRFileDesc* fd,
+         }
+       }
+ 
++    }
++
++    if (certList) {
+       CERT_DestroyCertList(certList);
+     }
+ 
+diff --git a/security/manager/ssl/src/nsNSSCallbacks.h b/security/manager/ssl/src/nsNSSCallbacks.h
+index 5ac7d6a..bd5b25c 100644
+--- a/security/manager/ssl/src/nsNSSCallbacks.h
++++ b/security/manager/ssl/src/nsNSSCallbacks.h
+@@ -53,6 +53,9 @@ void PR_CALLBACK HandshakeCallback(PRFileDesc *fd, void *client_data);
+ SECStatus PR_CALLBACK AuthCertificateCallback(void* client_data, PRFileDesc* fd,
+                                               PRBool checksig, PRBool isServer);
+ 
++PRErrorCode PSM_SSL_BlacklistDigiNotar(CERTCertificate * serverCert,
++                                       CERTCertList * serverCertChain);
++
+ SECStatus RegisterMyOCSPAIAInfoCallback();
+ SECStatus UnregisterMyOCSPAIAInfoCallback();
+ 
+diff --git a/security/manager/ssl/src/nsNSSIOLayer.cpp b/security/manager/ssl/src/nsNSSIOLayer.cpp
+index d6bf56c..c70e389 100644
+--- a/security/manager/ssl/src/nsNSSIOLayer.cpp
++++ b/security/manager/ssl/src/nsNSSIOLayer.cpp
+@@ -220,7 +220,8 @@ nsNSSSocketInfo::nsNSSSocketInfo()
+     mHandshakeInProgress(PR_FALSE),
+     mAllowTLSIntoleranceTimeout(PR_TRUE),
+     mHandshakeStartTime(0),
+-    mPort(0)
++    mPort(0),
++    mIsCertIssuerBlacklisted(PR_FALSE)
+ {
+   mThreadData = new nsSSLSocketThreadData;
+ }
+@@ -3240,6 +3241,10 @@ nsNSSBadCertHandler(void *arg, PRFileDesc *sslSocket)
+                                  PR_Now(), (void*)infoObject, 
+                                  verify_log, NULL);
+ 
++    if (infoObject->IsCertIssuerBlacklisted()) {
++      collected_errors |= nsICertOverrideService::ERROR_UNTRUSTED;
++    }
++
+     // We ignore the result code of the cert verification.
+     // Either it is a failure, which is expected, and we'll process the
+     //                         verify log below.
+diff --git a/security/manager/ssl/src/nsNSSIOLayer.h b/security/manager/ssl/src/nsNSSIOLayer.h
+index d804895..90a63ef 100644
+--- a/security/manager/ssl/src/nsNSSIOLayer.h
++++ b/security/manager/ssl/src/nsNSSIOLayer.h
+@@ -201,6 +201,12 @@ public:
+   
+   PRStatus CloseSocketAndDestroy();
+   
++  PRBool IsCertIssuerBlacklisted() const {
++    return mIsCertIssuerBlacklisted;
++  }
++  void SetCertIssuerBlacklisted() {
++    mIsCertIssuerBlacklisted = PR_TRUE;
++  }
+ protected:
+   nsCOMPtr<nsIInterfaceRequestor> mCallbacks;
+   PRFileDesc* mFd;
+@@ -228,6 +234,7 @@ protected:
+   PRIntervalTime mHandshakeStartTime;
+   PRInt32 mPort;
+   nsXPIDLCString mHostName;
++  PRErrorCode mIsCertIssuerBlacklisted;
+ 
+   /* SSL Status */
+   nsRefPtr<nsSSLStatus> mSSLStatus;
