@@ -1,3 +1,15 @@
+xulrunner (1.9.0.19-14) oldstable-security; urgency=low
+
+  * Fixes for mfsa2011-{36-40}, also known as
+    CVE-2011-2995, CVE-2011-2998, CVE-2011-2999, CVE-2011-3000,
+    CVE-2011-2372.
+  * security/manager/ssl/src/nsIdentityChecking.cpp,
+    security/manager/ssl/src/nsNSSCallbacks.*,
+    security/manager/ssl/src/nsNSSIOLayer.*: Mark DigiNotar root certificates
+    as revoked instead of untrusted.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 29 Sep 2011 08:01:50 +0200
+
 xulrunner (1.9.0.19-13) oldstable-security; urgency=low
 
   * Fixes for mfsa2011-30, including:
