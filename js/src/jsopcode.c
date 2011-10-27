@@ -141,11 +141,17 @@ js_GetIndexFromBytecode(JSContext *cx, JSScript *script, jsbytecode *pc,
     span = js_CodeSpec[op].length;
     base = 0;
     if (pc - script->code + span < script->length) {
-        if (pc[span] == JSOP_RESETBASE) {
+        JSOp next = (JSOp)*(pc + span);
+        if (next == JSOP_TRAP)
+            next = JS_GetTrapOpcode(cx, script, pc + span);
+        if (next == JSOP_RESETBASE) {
             base = GET_INDEXBASE(pc - JSOP_INDEXBASE_LENGTH);
-        } else if (pc[span] == JSOP_RESETBASE0) {
-            JS_ASSERT(JSOP_INDEXBASE1 <= pc[-1] || pc[-1] <= JSOP_INDEXBASE3);
-            base = (pc[-1] - JSOP_INDEXBASE1 + 1) << 16;
+        } else if (next == JSOP_RESETBASE0) {
+            JSOp prev = (JSOp)*(pc - 1);
+            if (prev == JSOP_TRAP)
+                prev = JS_GetTrapOpcode(cx, script, pc - 1);
+            JS_ASSERT(JSOP_INDEXBASE1 <= prev && prev <= JSOP_INDEXBASE3);
+            base = (prev - JSOP_INDEXBASE1 + 1) << 16;
         }
     }
     return base + GET_UINT16(pc + pcoff);
