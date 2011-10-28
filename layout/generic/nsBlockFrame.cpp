@@ -5425,7 +5425,7 @@ found_frame:;
       NS_ASSERTION(!(aFlags & PRESERVE_REMOVED_FRAMES),
                    "We can't not destroy overflow containers");
       static_cast<nsContainerFrame*>(deletedNextContinuation->GetParent())
-        ->DeleteNextInFlowChild(presContext, deletedNextContinuation, PR_FALSE);
+        ->DeleteNextInFlowChild(presContext, deletedNextContinuation);
       deletedNextContinuation = nsnull;
     }
 

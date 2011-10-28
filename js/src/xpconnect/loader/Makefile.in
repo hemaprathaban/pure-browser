@@ -52,7 +52,10 @@ REQUIRES	= xpcom \
 		  js \
 		  caps \
 		  necko \
+		  dom \
 		  $(NULL)
+
+LOCAL_INCLUDES	+= -I$(srcdir)/../src
 
 CPPSRCS		= mozJSComponentLoader.cpp mozJSSubScriptLoader.cpp
 
