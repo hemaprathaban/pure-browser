@@ -159,7 +159,13 @@ mozJSSubScriptLoader::LoadSubScript (const PRUnichar * /*url*/
     nsCOMPtr<nsIPrincipal> principal = mSystemPrincipal;
     JSObject *result_obj = target_obj;
 
-    target_obj = target_obj ? XPCWrapper::Unwrap(cx, target_obj) : nsnull;
+    // This is very hacky: we know that our caller must be chrome here, and
+    // therefore if XPCWrappe::Unwrap returns null, then the object that we
+    // passed in was not a security wrapper (and not that it was an object
+    // that we couldn't access). In that case, we can use the original object
+    // without any changes.
+    if (target_obj && !(target_obj = XPCWrapper::Unwrap(cx, target_obj)))
+        target_obj = result_obj;
 
     if (!target_obj)
     {
