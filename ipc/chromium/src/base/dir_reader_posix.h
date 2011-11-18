@@ -18,7 +18,7 @@
 // seems worse than falling back to enumerating all file descriptors so we will
 // probably never implement this on the Mac.
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) && defined(__linux__)
 #include "base/dir_reader_linux.h"
 #elif defined(OS_BSD)
 #include "base/dir_reader_bsd.h"
@@ -28,7 +28,7 @@
 
 namespace base {
 
-#if defined(OS_LINUX)
+#if defined(OS_LINUX) && defined(__linux__)
 typedef DirReaderLinux DirReaderPosix;
 #elif defined(OS_BSD)
 typedef DirReaderBSD DirReaderPosix;
