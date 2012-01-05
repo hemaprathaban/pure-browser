@@ -110,19 +110,10 @@
 #include "nsIPropertyBag2.h"
 
 #ifdef ACCESSIBILITY
-#include "nsIAccessibilityService.h"
+#include "nsAccessibilityService.h"
 #include "nsIAccessibleDocument.h"
-#include "prenv.h"
-#include "stdlib.h"
 
 using namespace mozilla;
-
-static bool sAccessibilityChecked = false;
-/* static */
-bool nsWindow::sAccessibilityEnabled = false;
-static const char sSysPrefService [] = "@mozilla.org/system-preference-service;1";
-static const char sAccEnv [] = "GNOME_ACCESSIBILITY";
-static const char sAccessibilityKey [] = "config.use_system_prefs.accessibility";
 #endif
 
 /* For SetIcon */
@@ -1116,9 +1107,8 @@ nsWindow::Show(bool aState)
     }
 
 #ifdef ACCESSIBILITY
-    if (aState && sAccessibilityEnabled) {
+    if (aState && a11y::ShouldA11yBeEnabled())
         CreateRootAccessible();
-    }
 #endif
 
     NativeShow(aState);
@@ -3890,6 +3880,11 @@ nsWindow::Create(nsIWidget        *aParent,
 
     NS_ASSERTION(!mWindowGroup, "already have window group (leaking it)");
 
+#ifdef ACCESSIBILITY
+    // Send a DBus message to check whether a11y is enabled
+    a11y::PreInit();
+#endif
+
     // Ensure that the toolkit is created.
     nsGTKToolkit::GetToolkit();
 
@@ -4282,33 +4277,6 @@ nsWindow::Create(nsIWidget        *aParent,
     // resize so that everything is set to the right dimensions
     if (!mIsTopLevel)
         Resize(mBounds.x, mBounds.y, mBounds.width, mBounds.height, false);
-
-#ifdef ACCESSIBILITY
-    nsresult rv;
-    if (!sAccessibilityChecked) {
-        sAccessibilityChecked = true;
-
-        //check if accessibility enabled/disabled by environment variable
-        const char *envValue = PR_GetEnv(sAccEnv);
-        if (envValue) {
-            sAccessibilityEnabled = atoi(envValue) != 0;
-            LOG(("Accessibility Env %s=%s\n", sAccEnv, envValue));
-        }
-        //check gconf-2 setting
-        else {
-            nsCOMPtr<nsIPrefBranch> sysPrefService =
-                do_GetService(sSysPrefService, &rv);
-            if (NS_SUCCEEDED(rv) && sysPrefService) {
-
-                // do the work to get gconf setting.
-                // will be done soon later.
-                sysPrefService->GetBoolPref(sAccessibilityKey,
-                                            &sAccessibilityEnabled);
-            }
-
-        }
-    }
-#endif
 
 #ifdef MOZ_DFB
     if (!mDFB) {
@@ -6516,7 +6484,7 @@ nsWindow::DispatchAccessibleEvent()
 void
 nsWindow::DispatchEventToRootAccessible(PRUint32 aEventType)
 {
-    if (!sAccessibilityEnabled) {
+    if (!a11y::ShouldA11yBeEnabled()) {
         return;
     }
 
