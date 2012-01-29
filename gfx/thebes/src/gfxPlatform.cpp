@@ -339,9 +339,11 @@ gfxPlatform::DownloadableFontsEnabled()
         initialized = PR_TRUE;
 #if defined(XP_MACOSX)
         // Work around a serious bug in how Apple handles downloaded fonts
-        // on the most recent developer previews of OS X 10.7 (Lion, builds
-        // 11A480b and 11A494a).  See bug 663688.
-        if (gfxPlatformMac::GetPlatform()->OSXVersion() >= 0x1070) {
+        // in the initial release of OS X 10.7 (Lion). See bug 663688.
+        // This is fixed in 10.7.2, so we revert to the generic preference
+        // there; see bug 696702.
+        PRInt32 osxVers = gfxPlatformMac::GetPlatform()->OSXVersion();
+        if (osxVers >= 0x1070 && osxVers < 0x1072) {
             allowDownloadableFonts =
                 GetBoolPref(GFX_DOWNLOADABLE_FONTS_ENABLED_LION);
         } else {
