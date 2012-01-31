@@ -733,7 +733,7 @@ txStylesheetCompilerState::popPtr(enumStackType aType)
 {
     PRUint32 stacklen = mTypeStack.Length();
     if (stacklen == 0) {
-        NS_RUNTIMEABORT("Attempt to pop when type stack is empty");
+        NS_DebugBreak(NS_DEBUG_ABORT, "Attempt to pop when type stack is empty", nsnull, __FILE__, __LINE__);
     }
 
     enumStackType type = mTypeStack.ElementAt(stacklen - 1);
@@ -745,7 +745,7 @@ txStylesheetCompilerState::popPtr(enumStackType aType)
 #endif
     
     if (type != aType) {
-        NS_RUNTIMEABORT("Expected type does not match top element type");
+        NS_DebugBreak(NS_DEBUG_ABORT, "Expected type does not match top element type", nsnull, __FILE__, __LINE__);
     }
 
     return value;
