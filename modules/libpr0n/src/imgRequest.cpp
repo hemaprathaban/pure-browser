@@ -180,7 +180,10 @@ nsresult imgRequest::RemoveProxy(imgRequestProxy *proxy, nsresult aStatus, PRBoo
 {
   LOG_SCOPE_WITH_PARAM(gImgLog, "imgRequest::RemoveProxy", "proxy", proxy);
 
-  mObservers.RemoveElement(proxy);
+  if (!mObservers.RemoveElement(proxy)) {
+    // Not one of our proxies; we're done
+    return NS_OK;
+  }
 
   /* Check mState below before we potentially call Cancel() below. Since
      Cancel() may result in OnStopRequest being called back before Cancel()
