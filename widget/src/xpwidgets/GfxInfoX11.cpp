@@ -68,6 +68,7 @@ GfxInfo::Init()
     mIsMesa = false;
     mIsNVIDIA = false;
     mIsFGLRX = false;
+    mIsNouveau = false;
     mHasTextureFromPixmap = false;
     return GfxInfoBase::Init();
 }
@@ -208,6 +209,8 @@ GfxInfo::GetData()
         // with Mesa, the version string contains "Mesa major.minor" and that's all the version information we get:
         // there is no actual driver version info.
         whereToReadVersionNumbers = Mesa_in_version_string + strlen("Mesa");
+        if (strcasestr(mVendor.get(), "nouveau"))
+            mIsNouveau = true;
     } else if (strstr(mVendor.get(), "NVIDIA Corporation")) {
         mIsNVIDIA = true;
         // with the NVIDIA driver, the version string contains "NVIDIA major.minor"
@@ -311,7 +314,10 @@ GfxInfo::GetFeatureStatusImpl(PRInt32 aFeature,
             *aStatus = nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION;
             aSuggestedDriverVersion.AssignLiteral("Not Mesa");
         }
-        if (version(mMajorVersion, mMinorVersion, mRevisionVersion) < version(7,10,3)) {
+        if (mIsNouveau) {
+            *aStatus = nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION;
+            aSuggestedDriverVersion.AssignLiteral("<Not the Nouveau driver>");
+        } else if (version(mMajorVersion, mMinorVersion, mRevisionVersion) < version(7,10,3)) {
             *aStatus = nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION;
             aSuggestedDriverVersion.AssignLiteral("Mesa 7.10.3");
         }
