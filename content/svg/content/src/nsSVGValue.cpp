@@ -66,13 +66,17 @@ void
 nsSVGValue::NotifyObservers(SVGObserverNotifyFunction f,
                             modificationType aModType)
 {
-  PRInt32 count = mObservers.Count();
+  // Since notification can cause untold changes to the observers list, copy it
+  // first before iterating.
+  nsSmallVoidArray observersCopy;
+  observersCopy = mObservers;
+  PRInt32 count = observersCopy.Count();
 
   // Since notification might cause the listeners to remove themselves
   // from the observer list (mod_die), walk backwards through the list
   // to catch everyone.
   for (PRInt32 i = count - 1; i >= 0; i--) {
-    nsIWeakReference* wr = static_cast<nsIWeakReference*>(mObservers.ElementAt(i));
+    nsIWeakReference* wr = static_cast<nsIWeakReference*>(observersCopy.ElementAt(i));
     nsCOMPtr<nsISVGValueObserver> observer = do_QueryReferent(wr);
     if (observer)
        (static_cast<nsISVGValueObserver*>(observer)->*f)(this, aModType);
