@@ -7568,10 +7568,17 @@ nsDocShell::GetInheritedPrincipal(PRBool aConsiderCurrentDocument)
 
         // Don't allow loads in typeContent docShells to inherit the system
         // principal from existing documents.
-        if (inheritedFromCurrent &&
-            mItemType == typeContent &&
-            nsContentUtils::IsSystemPrincipal(docPrincipal)) {
-            return nsnull;
+        if (inheritedFromCurrent && mItemType == typeContent) {
+            PRBool isSystem;
+            nsresult rv;
+            nsCOMPtr<nsIScriptSecurityManager> secMan =
+                do_GetService(NS_SCRIPTSECURITYMANAGER_CONTRACTID, &rv);
+            NS_ENSURE_SUCCESS(rv, nsnull);
+            rv = secMan->IsSystemPrincipal(docPrincipal, &isSystem);
+            NS_ENSURE_SUCCESS(rv, nsnull);
+
+            if (isSystem)
+                return nsnull;
         }
 
         return docPrincipal;
