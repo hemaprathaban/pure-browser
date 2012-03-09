@@ -146,7 +146,7 @@ nsSVGFE::SetupScalingFilter(nsSVGFilterInstance *aInstance,
     return result;
   }
 
-  float kernelX, kernelY;
+  gfxFloat kernelX, kernelY;
   nsSVGLength2 val;
   val.Init(nsSVGUtils::X, 0xff,
            aUnitX->GetAnimValue(),
