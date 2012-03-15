@@ -5074,7 +5074,7 @@ var contentAreaDNDObserver = {
       // isn't a valid url, or if it's a javascript: or data: url,
       // bail out
       if (!url || !url.length || url.indexOf(" ", 0) != -1 ||
-          /^\s*(javascript|data):/.test(url))
+          /^\s*(javascript|data):/i.test(url))
         return;
 
       nsDragAndDrop.dragDropSecurityCheck(aEvent, aDragSession, url);

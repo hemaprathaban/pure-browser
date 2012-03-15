@@ -2214,7 +2214,7 @@
               // valid urls don't contain spaces ' '; if we have a space it isn't a valid url.
               // Also disallow dropping javascript: or data: urls--bail out
               if (!url || !url.length || url.indexOf(" ", 0) != -1 ||
-                  /^\s*(javascript|data):/.test(url))
+                  /^\s*(javascript|data):/i.test(url))
                 return;
 
               // XXXmano: temporary fix until dragDropSecurityCheck make the
