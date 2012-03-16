@@ -1624,7 +1624,7 @@ unwind_callback (struct _Unwind_Context *context, void *closure)
     void *pc = reinterpret_cast<void *>(_Unwind_GetIP(context));
     if (IsCriticalAddress(pc)) {
         printf("Aborting stack trace, PC is critical\n");
-        return _URC_NORMAL_STOP;
+        return _URC_FOREIGN_EXCEPTION_CAUGHT;
     }
     if (--info->skip < 0)
         (*info->callback)(pc, info->closure);
