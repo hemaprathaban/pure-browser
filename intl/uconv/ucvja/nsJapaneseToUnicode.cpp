@@ -51,6 +51,9 @@ static NS_DEFINE_CID(kCharsetConverterManagerCID, NS_ICHARSETCONVERTERMANAGER_CI
 #define JIS0208_INDEX mMapIndex[1]
 #define JIS0212_INDEX gJIS0212Index
 #define UNICODE_REPLACEMENT_CHARACTER 0xfffd
+#define IN_GR_RANGE(b) \
+  ((PRUint8(0xa1) <= PRUint8(b)) && (PRUint8(b) <= PRUint8(0xfe)))
+
 
 void nsJapaneseToUnicode::setMapMode()
 {
@@ -365,7 +368,7 @@ NS_IMETHODIMP nsEUCJPToUnicodeV2::Convert(
 
           case 3: // JIS 0212
           {
-            if(*src & 0x80)
+            if(IN_GR_RANGE(*src))
             {
               mData = JIS0212_INDEX[*src & 0x7F];
               if(mData != 0xFFFD )
@@ -375,26 +378,35 @@ NS_IMETHODIMP nsEUCJPToUnicodeV2::Convert(
                  mState = 5; // error
               }
             } else {
-              mState = 5; // error
+              // First "JIS 0212" byte is not in the valid GR range: save it
+              *dest++ = 0xFFFD;
+              --src;
+              mState = 0;
+              if(dest >= destEnd)
+                goto error1;
             }
           }
           break;
           case 4:
           {
             PRUint8 off = sbIdx[*src];
-            if(0xFF == off) {
-               *dest++ = 0xFFFD;
-            } else {
+            if(0xFF != off) {
                *dest++ = gJapaneseMap[mData+off];
+               mState = 0;
+              if(dest >= destEnd)
+                goto error1;
+              break;
             }
-            mState = 0;
-            if(dest >= destEnd)
-              goto error1;
+            // else fall through to error handler
           }
-          break;
           case 5: // two bytes undefined
           {
             *dest++ = 0xFFFD;
+            // Undefined JIS 0212 two byte sequence. If the second byte is in
+            // the valid range for a two byte sequence (0xa1 - 0xfe) consume
+            // both bytes. Otherwise resynchronize on the second byte.
+            if (!IN_GR_RANGE(*src))
+              --src;
             mState = 0;
             if(dest >= destEnd)
               goto error1;
