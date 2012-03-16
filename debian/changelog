@@ -1,3 +1,10 @@
+iceweasel (10.0.3esr-2) unstable; urgency=low
+
+  * xpcom/base/nsStackWalk.cpp: Fixup bz#730195 for Linux ARM (use
+    _URC_FOREIGN_EXCEPTION_CAUGHT instead of _URC_NORMAL_STOP).
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 16 Mar 2012 08:28:56 +0100
+
 iceweasel (10.0.3esr-1) unstable; urgency=low
 
   * New upstream release.
