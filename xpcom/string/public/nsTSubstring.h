@@ -423,7 +423,7 @@ class nsTSubstring_CharT
 
       NS_COM void NS_FASTCALL SetCapacity( size_type newCapacity );
 
-      NS_COM void NS_FASTCALL SetLength( size_type newLength );
+      NS_COM PRBool NS_FASTCALL SetLength( size_type newLength );
 
       void Truncate( size_type newLength = 0 )
         {

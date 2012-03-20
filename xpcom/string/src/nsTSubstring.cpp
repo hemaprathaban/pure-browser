@@ -317,16 +317,9 @@ nsTSubstring_CharT::EnsureMutable( size_type newLen )
         if ((mFlags & F_SHARED) && !nsStringBuffer::FromData(mData)->IsReadonly())
           return PR_TRUE;
 
-        // promote to a shared string buffer
-        char_type* prevData = mData;
-        Assign(string_type(mData, mLength));
-        return mData != prevData;
+        newLen = mLength;
       }
-    else
-      {
-        SetLength(newLen);
-        return mLength == newLen;
-      }
+    return SetLength(newLen);
   }
 
 // ---------------------------------------------------------------------------
@@ -599,7 +592,7 @@ nsTSubstring_CharT::SetCapacity( size_type capacity )
       }
   }
 
-void
+PRBool
 nsTSubstring_CharT::SetLength( size_type length )
   {
     SetCapacity(length);
@@ -609,8 +602,11 @@ nsTSubstring_CharT::SetLength( size_type length )
     // changed as expected as a means of error checking.
  
     size_type capacity = Capacity();
-    if (capacity != size_type(-1) && capacity >= length)
+    if (capacity != size_type(-1) && capacity >= length) {
       mLength = length;
+      return PR_TRUE;
+    }
+    return PR_FALSE;
   }
 
 void
