@@ -1,3 +1,25 @@
+iceweasel (10.0.3esr-3) unstable; urgency=low
+
+  * debian/extra-stuff/addonsInfo.js: Remove debugging info from
+    dump-addons-info output, and avoid failure on addons that don't have the
+    getResourceURI method (like personas).
+  * debian/duckduckgo.xml: Add t=debian to duckduckgo query url.
+  * debian/iceweasel.install, debian/iceweasel.links.in,
+    debian/rules: Move search plugins under /etc/iceweasel. Closes: #632698.
+  * debian/l10n/recommends: Recommend xul-ext-mozvoikko instead of myspell-fi
+    for -l10n-fi. Closes: #635361.
+  * debian/branding/content/Makefile.in: Work around imagemagick svg support
+    broken by latest librsvg2-bin.
+  * debian/vendor.js: Default to en-US searchplugins when locale's aren't
+    found. Closes: #665817.
+  * debian/extra-stuff/addonsInfo.js: Synchronously get addons list.
+  * debian/branding/aboutIce.js: Use Services.jsm in aboutIce.js.
+
+  * browser/components/dirprovider/DirectoryProvider.cpp: Load distribution
+    search plugins from /etc/<appname>/searchplugins.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 30 Mar 2012 18:53:07 +0200
+
 iceweasel (10.0.3esr-2) unstable; urgency=low
 
   * xpcom/base/nsStackWalk.cpp: Fixup bz#730195 for Linux ARM (use
