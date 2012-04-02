@@ -247,7 +247,7 @@ protected:
   nsCString mQuotaDomainDBKey;
 
   friend class nsIDOMStorage2;
-  nsPIDOMStorage* mSecurityChecker;
+  nsCOMPtr<nsIPrincipal> mPrincipal;
 
 public:
   // e.g. "moc.rab.oof.:" or "moc.rab.oof.:http:80" depending
