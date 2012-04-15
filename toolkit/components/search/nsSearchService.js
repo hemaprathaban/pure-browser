@@ -751,6 +751,7 @@ function getMozParamPref(prefName)
  *
  * @see nsIBrowserSearchService.idl
  */
+let gForceCacheInvalidation = false;
 let gInitialized = false;
 function notifyAction(aEngine, aVerb) {
   if (gInitialized) {
@@ -2071,6 +2072,20 @@ Engine.prototype = {
    **/
   _initWithJSON: function SRCH_ENG__initWithJSON(aJson) {
     this.__id = aJson._id;
+    try {
+      let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+      file.initWithPath(this.__id);
+      let loadDirs = [];
+      let locations = getDir(NS_APP_SEARCH_DIR_LIST, Ci.nsISimpleEnumerator);
+      while (locations.hasMoreElements()) {
+        let dir = locations.getNext().QueryInterface(Ci.nsIFile);
+        loadDirs.push(dir);
+      }
+      if (loadDirs.some(function (element) element.equals(file.parent))) {
+        this.__id = "[app]/" + file.leafName;
+        gForceCacheInvalidation = true;
+      }
+    } catch (e) { }
     this._name = aJson._name;
     this._description = aJson.description;
     if (aJson._hasPreferredIcon == undefined)
@@ -2413,8 +2428,19 @@ Engine.prototype = {
         this.__installLocation = SEARCH_APP_DIR;
       else if (this._file.parent.equals(getDir(NS_APP_USER_SEARCH_DIR)))
         this.__installLocation = SEARCH_PROFILE_DIR;
-      else
-        this.__installLocation = SEARCH_IN_EXTENSION;
+      else {
+        let loadDirs = [];
+        let locations = getDir(NS_APP_SEARCH_DIR_LIST, Ci.nsISimpleEnumerator);
+        while (locations.hasMoreElements()) {
+          let dir = locations.getNext().QueryInterface(Ci.nsIFile);
+          loadDirs.push(dir);
+        }
+        let parent = this._file.parent;
+        if (loadDirs.some(function (element) !element.equals(parent)))
+          this.__installLocation = SEARCH_APP_DIR;
+        else
+          this.__installLocation = SEARCH_IN_EXTENSION;
+      }
     }
 
     return this.__installLocation;
@@ -2574,6 +2600,8 @@ function SearchService() {
     LOG = DO_LOG;
 
   this._initObservers = Promise.defer();
+  if (gForceCacheInvalidation)
+    this._batchCacheInvalidation();
 }
 
 SearchService.prototype = {
