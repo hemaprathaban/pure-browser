@@ -535,7 +535,6 @@ nsDOMStorage::nsDOMStorage()
   , mLocalStorage(PR_FALSE)
   , mItemsCached(PR_FALSE)
 {
-  mSecurityChecker = this;
   mItems.Init(8);
   if (nsDOMStorageManager::gStorageManager)
     nsDOMStorageManager::gStorageManager->AddToStoragesHash(this);
@@ -550,8 +549,8 @@ nsDOMStorage::nsDOMStorage(nsDOMStorage& aThat)
 #ifdef MOZ_STORAGE
   , mScopeDBKey(aThat.mScopeDBKey)
 #endif
+  , mPrincipal(aThat.mPrincipal)
 {
-  mSecurityChecker = this;
   mItems.Init(8);
 
   if (nsDOMStorageManager::gStorageManager)
@@ -600,6 +599,8 @@ nsDOMStorage::InitAsSessionStorage(nsIPrincipal *aPrincipal)
   nsresult rv = GetDomainURI(aPrincipal, PR_TRUE, getter_AddRefs(domainURI));
   NS_ENSURE_SUCCESS(rv, rv);
 
+  mPrincipal = aPrincipal;
+
   // No need to check for a return value. If this would fail we would not get
   // here as we call GetPrincipalURIAndHost (nsDOMStorage.cpp:88) from
   // nsDOMStorage::CanUseStorage before we query the storage manager for a new
@@ -621,6 +622,8 @@ nsDOMStorage::InitAsLocalStorage(nsIPrincipal *aPrincipal)
   nsCOMPtr<nsIURI> domainURI;
   nsresult rv = GetDomainURI(aPrincipal, PR_FALSE, getter_AddRefs(domainURI));
   NS_ENSURE_SUCCESS(rv, rv);
+
+  mPrincipal = aPrincipal;
 
   // No need to check for a return value. If this would fail we would not get
   // here as we call GetPrincipalURIAndHost (nsDOMStorage.cpp:88) from
@@ -763,8 +766,7 @@ nsDOMStorage::CacheStoragePermissions()
   nsCOMPtr<nsIPrincipal> subjectPrincipal;
   ssm->GetSubjectPrincipal(getter_AddRefs(subjectPrincipal));
 
-  NS_ASSERTION(mSecurityChecker, "Has non-null mSecurityChecker");
-  return mSecurityChecker->CanAccess(subjectPrincipal);
+  return CanAccess(subjectPrincipal);
 }
 
 
@@ -1359,17 +1361,31 @@ nsDOMStorage::CanAccessSystem(nsIPrincipal *aPrincipal)
 PRBool
 nsDOMStorage::CanAccess(nsIPrincipal *aPrincipal)
 {
-  // Allow C++/system callers to access the storage
-  if (CanAccessSystem(aPrincipal))
-    return PR_TRUE;
+  if (mLocalStorage) {
+    // Allow C++ callers to access the storage
+    if (!aPrincipal)
+      return PR_TRUE;
 
-  nsCAutoString domain;
-  nsCOMPtr<nsIURI> unused;
-  nsresult rv = GetPrincipalURIAndHost(aPrincipal,
-                                       getter_AddRefs(unused), domain);
-  NS_ENSURE_SUCCESS(rv, PR_FALSE);
+    // Allow more powerful principals (e.g. system) to access the storage
+    PRBool subsumes;
+    nsresult rv = aPrincipal->Subsumes(mPrincipal, &subsumes);
+    if (NS_FAILED(rv))
+      return PR_FALSE;
 
-  return domain.Equals(mDomain);
+    return subsumes;
+  } else {
+    // Allow C++/system callers to access the storage
+    if (CanAccessSystem(aPrincipal))
+      return PR_TRUE;
+
+    nsCAutoString domain;
+    nsCOMPtr<nsIURI> unused;
+    nsresult rv = GetPrincipalURIAndHost(aPrincipal,
+                                         getter_AddRefs(unused), domain);
+    NS_ENSURE_SUCCESS(rv, PR_FALSE);
+
+    return domain.Equals(mDomain);
+  }
 }
 
 void
@@ -1418,7 +1434,6 @@ nsDOMStorage2::nsDOMStorage2()
 nsDOMStorage2::nsDOMStorage2(nsDOMStorage2& aThat)
 {
   mStorage = new nsDOMStorage(*aThat.mStorage.get());
-  mStorage->mSecurityChecker = mStorage;
   mPrincipal = aThat.mPrincipal;
 }
 
@@ -1429,8 +1444,6 @@ nsDOMStorage2::InitAsSessionStorage(nsIPrincipal *aPrincipal)
   if (!mStorage)
     return NS_ERROR_OUT_OF_MEMORY;
 
-  // Leave security checks only for domain (nsDOMStorage implementation)
-  mStorage->mSecurityChecker = mStorage;
   mPrincipal = aPrincipal;
   return mStorage->InitAsSessionStorage(aPrincipal);
 }
@@ -1442,7 +1455,6 @@ nsDOMStorage2::InitAsLocalStorage(nsIPrincipal *aPrincipal)
   if (!mStorage)
     return NS_ERROR_OUT_OF_MEMORY;
 
-  mStorage->mSecurityChecker = this;
   mPrincipal = aPrincipal;
   return mStorage->InitAsLocalStorage(aPrincipal);
 }
@@ -1482,20 +1494,7 @@ nsDOMStorage2::Principal()
 PRBool
 nsDOMStorage2::CanAccess(nsIPrincipal *aPrincipal)
 {
-  if (mStorage->mSecurityChecker != this)
-    return mStorage->mSecurityChecker->CanAccess(aPrincipal);
-
-  // Allow C++ callers to access the storage
-  if (!aPrincipal)
-    return PR_TRUE;
-
-  // Allow more powerful principals (e.g. system) to access the storage
-  PRBool subsumes;
-  nsresult rv = aPrincipal->Subsumes(mPrincipal, &subsumes);
-  if (NS_FAILED(rv))
-    return PR_FALSE;
-
-  return subsumes;
+  return mStorage->CanAccess(aPrincipal);
 }
 
 NS_IMETHODIMP

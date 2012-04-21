@@ -46,9 +46,14 @@
  *       http://www.cis.ohio-state.edu/htbin/rfc/rfc1843.html
  *       and RFC1842 available at http://www.cis.ohio-state.edu/htbin/rfc/rfc1842.html.
  *        
- *       In an effort to match the similar extended capability of Microsoft Internet Explorer
- *       5.0. We also accept the 8-bit GB encoded chars mixed in a HZ string.
- *       But this should not be a recommendedd practice for HTML authors.
+ *       Earlier versions of the converter said:
+ *        "In an effort to match the similar extended capability of Microsoft 
+ *         Internet Explorer 5.0. We also accept the 8-bit GB encoded chars
+ *         mixed in a HZ string. 
+ *         But this should not be a recommendedd practice for HTML authors."
+ *       However, testing in current versions of IE shows that it only accepts
+ *       8-bit characters when the converter is in GB state, and when in ASCII
+ *       state each single 8-bit character is converted to U+FFFD
  *
  *       The priority of converting are as follows: first convert 8-bit GB code; then,
  *       consume HZ ESC sequences such as '~{', '~}', '~~'; then, depending on the current
@@ -68,19 +73,22 @@
 //----------------------------------------------------------------------
 // Subclassing of nsTablesDecoderSupport class [implementation]
 
-#define HZ_STATE_GB		1
-#define HZ_STATE_ASCII	2
-#define HZ_STATE_TILD	3
+#define HZ_STATE_GB     1
+#define HZ_STATE_ASCII  2
+#define HZ_STATE_ODD_BYTE_FLAG 0x80
 #define HZLEAD1 '~'
 #define HZLEAD2 '{'
 #define HZLEAD3 '}'
-#define HZLEAD4 '\n'
+#define HZ_ODD_BYTE_STATE (mHZState & (HZ_STATE_ODD_BYTE_FLAG))
+#define HZ_ENCODING_STATE (mHZState & ~(HZ_STATE_ODD_BYTE_FLAG))
 
 nsHZToUnicode::nsHZToUnicode() : nsBufferDecoderSupport(1)
 {
-  mHZState = HZ_STATE_ASCII;	// per HZ spec, default to ASCII state 
+  mHZState = HZ_STATE_ASCII;    // per HZ spec, default to ASCII state 
   mRunLength = 0;
+  mOddByte = 0;
 }
+
 //Overwriting the ConvertNoBuff() in nsUCvCnSupport.cpp.
 NS_IMETHODIMP nsHZToUnicode::ConvertNoBuff(
   const char* aSrc, 
@@ -91,114 +99,106 @@ NS_IMETHODIMP nsHZToUnicode::ConvertNoBuff(
   PRInt32 i=0;
   PRInt32 iSrcLength = *aSrcLength;
   PRInt32 iDestlen = 0;
-  PRUint8 ch1, ch2;
-  nsresult res = NS_OK;
   *aSrcLength=0;
-  for (i=0;i<iSrcLength;i++)
-  {
-    if ( iDestlen >= (*aDestLength) )
-    {
+  nsresult res = NS_OK;
+  char oddByte = mOddByte;
+
+  for (i=0; i<iSrcLength; i++) {
+    if (iDestlen >= (*aDestLength)) {
       res = NS_OK_UDEC_MOREOUTPUT;
       break;
     }
-    if ( *aSrc & 0x80 ) // if it is a 8-bit byte
-    {
-      if (UINT8_IN_RANGE(0x81, aSrc[0], 0xFE) &&
-          UINT8_IN_RANGE(0x40, aSrc[1], 0xFE)) {
-        // The source is a 8-bit GBCode
-        *aDest = mUtil.GBKCharToUnicode(aSrc[0], aSrc[1]);
+
+    char srcByte = *aSrc++;
+    (*aSrcLength)++;
+    
+    if (!HZ_ODD_BYTE_STATE) {
+      if (srcByte == HZLEAD1 || 
+          (HZ_ENCODING_STATE == HZ_STATE_GB && 
+           (UINT8_IN_RANGE(0x21, srcByte, 0x7E) ||
+            UINT8_IN_RANGE(0x81, srcByte, 0xFE)))) {
+        oddByte = srcByte;
+        mHZState |= HZ_STATE_ODD_BYTE_FLAG;
       } else {
-        *aDest = UCS2_NO_MAPPING;
+        *aDest++ = (srcByte & 0x80) ? UCS2_NO_MAPPING :
+                                      CAST_CHAR_TO_UNICHAR(srcByte);
+        iDestlen++;
       }
-      aSrc += 2;
-      i++;
-      iDestlen++;
-      aDest++;
-      *aSrcLength = i+1;
-      continue;
-    }
-    // otherwise, it is a 7-bit byte 
-    // The source will be an ASCII or a 7-bit HZ code depending on ch1
-    ch1 = *aSrc;
-    ch2	= *(aSrc+1);
-    if (ch1 == HZLEAD1 )  // if it is lead by '~'
-    {
-      switch (ch2)
-      {
-        case HZLEAD2: 
-          // we got a '~{'
-          // we are switching to HZ state
-          mHZState = HZ_STATE_GB;
-          mRunLength = 0;
-          aSrc += 2;
-          i++;
-          break;
-        case HZLEAD3: 
-          // we got a '~}'
-          // we are switching to ASCII state
-          mHZState = HZ_STATE_ASCII;
-          aSrc += 2;
-          i++;
-          if (mRunLength == 0) {
-            *aDest = UCS2_NO_MAPPING;
-            iDestlen++;
-            aDest++;
-          }
-          mRunLength = 0;
-          break;
-        case HZLEAD1: 
-          // we got a '~~', process like an ASCII, but no state change
-          aSrc++;
-          *aDest = CAST_CHAR_TO_UNICHAR(*aSrc);
-          aSrc++;
-          i++;
-          iDestlen++;
-          aDest++;
-          mRunLength++;
-          break;
-        case HZLEAD4:	
-          // we got a "~\n", it means maintain double byte mode cross lines, ignore the '~' itself
-          //  mHZState = HZ_STATE_GB; 
-          // I find that "~\n" should interpreted as line continuation without mode change
-          // It should not be interpreted as line continuation with double byte mode on
-          aSrc++;
-          break;
-        default:
-          // undefined ESC sequence '~X' are ignored since this is a illegal combination 
-          aSrc += 2;
-          *aDest = UCS2_NO_MAPPING;
-          iDestlen++;
-          aDest++;
-          break;
-      };
-      continue;// go for next loop
-    }
-    // ch1 != '~'
-    switch (mHZState)
-    {
-      case HZ_STATE_GB:
-        // the following chars are HZ
-        *aDest = mUtil.GBKCharToUnicode(aSrc[0]|0x80, aSrc[1]|0x80);
-        aSrc += 2;
-        i++;
-        iDestlen++;
-        aDest++;
+    } else {
+      if (oddByte & 0x80) {
+        // Accept legal 8-bit GB 2312-80 sequences in GB mode only
+        NS_ASSERTION(HZ_ENCODING_STATE == HZ_STATE_GB,
+                     "Invalid lead byte in ASCII mode");                    
+        *aDest++ = (UINT8_IN_RANGE(0x81, oddByte, 0xFE) &&
+                    UINT8_IN_RANGE(0x40, srcByte, 0xFE)) ?
+                     mUtil.GBKCharToUnicode(oddByte, srcByte) : UCS2_NO_MAPPING;
         mRunLength++;
-        break;
-      case HZ_STATE_ASCII:
-      default:
-        // default behavior also like an ASCII
-        // when the source is an ASCII
-        *aDest = CAST_CHAR_TO_UNICHAR(*aSrc);
-        aSrc++;
         iDestlen++;
-        aDest++;
-        break;
+      // otherwise, it is a 7-bit byte 
+      // The source will be an ASCII or a 7-bit HZ code depending on oddByte
+      } else if (oddByte == HZLEAD1) { // if it is lead by '~'
+        switch (srcByte) {
+          case HZLEAD2: 
+            // we got a '~{'
+            // we are switching to HZ state
+            mHZState = HZ_STATE_GB;
+            mRunLength = 0;
+            break;
+
+          case HZLEAD3: 
+            // we got a '~}'
+            // we are switching to ASCII state
+            mHZState = HZ_STATE_ASCII;
+            if (mRunLength == 0) {
+              *aDest++ = UCS2_NO_MAPPING;
+              iDestlen++;
+            }
+            mRunLength = 0;
+            break;
+
+          case HZLEAD1: 
+            // we got a '~~', process like an ASCII, but no state change
+            *aDest++ = CAST_CHAR_TO_UNICHAR(srcByte);
+            iDestlen++;
+            mRunLength++;
+            break;
+
+          default:
+            // Undefined ESC sequence '~X': treat as an error if X is a
+            // printable character or we are in ASCII mode, and resynchronize
+            // on the second character.
+            // 
+            // N.B. For compatibility with other implementations, we treat '~\n'
+            // as an illegal sequence even though RFC1843 permits it, and for
+            // the same reason we pass through control characters including '\n'
+            // and ' ' even in GB mode.
+            if (srcByte > 0x20 || HZ_ENCODING_STATE == HZ_STATE_ASCII) {
+              *aDest++ = UCS2_NO_MAPPING;
+            }
+            aSrc--;
+            (*aSrcLength)--;
+            iDestlen++;
+            break;
+        }
+      } else if (HZ_ENCODING_STATE == HZ_STATE_GB) {
+        *aDest++ = (UINT8_IN_RANGE(0x21, oddByte, 0x7E) &&
+                    UINT8_IN_RANGE(0x21, srcByte, 0x7E)) ?
+                     mUtil.GBKCharToUnicode(oddByte|0x80, srcByte|0x80) :
+                     UCS2_NO_MAPPING;
+        mRunLength++;
+        iDestlen++;
+      } else {
+        NS_NOTREACHED("2-byte sequence that we don't know how to handle");
+        *aDest++ = UCS2_NO_MAPPING;
+        iDestlen++;
+      }
+      oddByte = 0;
+      mHZState &= ~HZ_STATE_ODD_BYTE_FLAG;
     }
-    *aSrcLength = i+1;
-  }// for loop
+  } // for loop
+  mOddByte = HZ_ODD_BYTE_STATE ? oddByte : 0;
   *aDestLength = iDestlen;
-  return NS_OK;
+  return res;
 }
 
 
