@@ -21,9 +21,11 @@ class Iso639(sax.handler.ContentHandler, dict):
 
 class Iso639_3(sax.handler.ContentHandler, dict):
   def startElement(self, name, attrs):
+    if 'id' in attrs:
+      self[attrs['id']] = attrs['name']
     if 'part1_code' in attrs:
       self[attrs['part1_code']] = attrs['name']
-    if 'part2_code' in attrs:
+    if 'part2_code' in attrs and not attrs['part2_code'] in self:
       self[attrs['part2_code']] = attrs['name']
 
 parser = sax.make_parser()
