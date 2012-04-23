@@ -29,7 +29,7 @@ SHARE_DIR := /usr/share/iceweasel
 
 MAIN_LDFLAGS := -Wl,--as-needed
 # Temporary hack
-CFLAGS := -DMOZ_PHOENIX
+CFLAGS += -DMOZ_PHOENIX
 
 AUTOCONF_DIRS := build/autoconf js/src/build/autoconf
 
