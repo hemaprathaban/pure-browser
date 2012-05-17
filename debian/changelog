@@ -1,3 +1,32 @@
+iceweasel (10.0.4esr-3) unstable; urgency=low
+
+  * debian/xulrunner-GRE_VERSION.1.in:  Fix xulrunner-x.y manual page to say
+    XULRunner instead of Iceweasel.
+  * debian/rules: Also set LDFLAGS from dpkg-buildflags (although in practice
+    it changes nothing because relro is disabled)
+  * debian/control*:
+    - Force build and runtime dependency on libsqlite3-0 >= 3.7.12-1~ for a
+      right value of SQLITE_MAX_SCHEMA_RETRY and SQLITE_MAX_DEFAULT_PAGE_SIZE.
+    - Suggest fonts-lyx. Closes: #673222.
+    - Make xulrunner-dbg depend on nspr and nss debug packages.
+  * debian/xulrunner-GRE_VERSION.links.in,
+    debian/xulrunner-GRE_VERSION.install.in: Move omni.ja to
+    /usr/lib/xulrunner-x.0 because it contains arch-depend data.
+
+  * ipc/chromium/src/base/file_util_linux.cc,
+    ipc/chromium/src/base/message_pump_libevent.cc,
+    ipc/chromium/src/base/time_posix.cc: gcc 4.7 build failures (missing
+    headers). bz#725655.
+  * layout/base/tests/TestPoisonArea.cpp: fix build failures with Clang and
+    GCC 4.7 in TestPoisonArea.cpp. bz#734490.
+  * ipc/chromium/src/base/file_util.cc: Fix for error: ‘ftruncate’ was not
+    declared in this scope. bz#706724.
+  * widget/src/gtk2/nsGtkCursors.h, widget/src/gtk2/nsWindow.cpp:
+    Try creating a named cursor before a bitmap cursor. bz#709259.
+    Closes: #671565.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 17 May 2012 12:24:47 +0200
+
 iceweasel (10.0.4esr-2) unstable; urgency=low
 
   * xptcall/src/md/unix/xptcinvoke_linux_s390x.cpp: Fix s390x XPTCinvoke.
