@@ -62,7 +62,7 @@ Depends: ${shlibs:Depends},
          debianutils (>= 1.16),
          xulrunner-10.0 (>= ${binary:Version}),
          libsqlite3-0 (>= 3.7.12-1~)
-Suggests: ttf-lyx | latex-xft-fonts,
+Suggests: fonts-lyx | ttf-lyx | latex-xft-fonts,
           xfonts-mathml,
           ttf-mathematica4.1,
           mozplugger,
@@ -913,11 +913,11 @@ Architecture: all
 Section: localization
 Depends: ${misc:Depends},
          iceweasel (>= ${source:Version}), iceweasel (<< ${source:Version}.1~)
-Description: Oriya macrolanguage with constituent members Oriya [ory] and Sambalpuri [spv] language package for Iceweasel
+Description: Oriya macrolanguage language package for Iceweasel
  Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
  with support for modern web application technologies.
  .
- This package contains the localization of Iceweasel in Oriya macrolanguage with constituent members Oriya [ory] and Sambalpuri [spv].
+ This package contains the localization of Iceweasel in Oriya macrolanguage.
 
 Package: iceweasel-l10n-pa-in
 Architecture: all
