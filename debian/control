@@ -212,6 +212,8 @@ Priority: extra
 Architecture: any
 Depends: xulrunner-10.0 (= ${binary:Version}),
          libmozjs10d-dbg (= ${binary:Version}),
+         libnss3-dbg | libnss3-1d-dbg,
+         libnspr4-dbg | libnspr4-0d-dbg,
          ${misc:Depends}
 Description: Debugging symbols for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
