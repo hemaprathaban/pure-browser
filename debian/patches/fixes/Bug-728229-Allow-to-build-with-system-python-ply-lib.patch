@@ -10,10 +10,10 @@ Subject: Bug 728229 - Allow to build with system python ply library
  4 files changed, 16 insertions(+)
 
 diff --git a/config/autoconf.mk.in b/config/autoconf.mk.in
-index a168406..c3ced04 100644
+index fccb1a9..e13dce4 100644
 --- a/config/autoconf.mk.in
 +++ b/config/autoconf.mk.in
-@@ -684,6 +684,8 @@ JS_SHARED_LIBRARY = @JS_SHARED_LIBRARY@
+@@ -685,6 +685,8 @@ JS_SHARED_LIBRARY = @JS_SHARED_LIBRARY@
  
  MOZ_INSTRUMENT_EVENT_LOOP = @MOZ_INSTRUMENT_EVENT_LOOP@
  
@@ -23,7 +23,7 @@ index a168406..c3ced04 100644
  ifeq ($(HOST_OS_ARCH),WINNT)
  # Ensure invariants between GNU Make and pymake
 diff --git a/configure.in b/configure.in
-index ee1bb50..48327b8 100644
+index d83926e..3c32ae8 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -1021,6 +1021,16 @@ if test -z "$PYTHON"; then

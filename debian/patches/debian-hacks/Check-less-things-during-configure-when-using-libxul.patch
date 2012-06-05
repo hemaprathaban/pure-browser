@@ -9,7 +9,7 @@ we won't be building most of the toolkit.
  1 file changed, 25 insertions(+), 5 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index 48327b8..3026be7 100644
+index 3c32ae8..07d65d4 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -4200,6 +4200,7 @@ AC_SUBST(LIBXUL_SDK)
@@ -129,7 +129,7 @@ index 48327b8..3026be7 100644
  if test -z "${GLIB_CFLAGS}" -o -z "${GLIB_LIBS}" ; then
      if test "$MOZ_ENABLE_GTK2" -o "$USE_ELF_DYNSTR_GC" ; then
          PKG_CHECK_MODULES(GLIB, glib-2.0 >= 1.3.7 gobject-2.0)
-@@ -8605,7 +8625,7 @@ else
+@@ -8620,7 +8640,7 @@ else
  fi
  
  dnl Check for missing components
@@ -138,7 +138,7 @@ index 48327b8..3026be7 100644
  if test "$MOZ_X11"; then
      dnl ====================================================
      dnl = Check if X headers exist
-@@ -8644,7 +8664,7 @@ if test -n "$MOZ_WEBGL_GLX"; then
+@@ -8659,7 +8679,7 @@ if test -n "$MOZ_WEBGL_GLX"; then
  fi # MOZ_WEBGL_GLX
  fi # COMPILE_ENVIRONMENT
  
