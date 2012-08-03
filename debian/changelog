@@ -1,3 +1,13 @@
+iceweasel (10.0.6esr-2) unstable; urgency=low
+
+  * accessible/src/atk/Makefile.in,
+    accessible/src/atk/nsApplicationAccessibleWrap.cpp,
+    accessible/src/base/nsAccessibilityService.h,
+    widget/src/gtk2/nsWindow.cpp, widget/src/gtk2/nsWindow.h: Better detect
+    a11y in GNOME 3. bz#693343. Closes: #682914.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 03 Aug 2012 09:15:33 +0200
+
 iceweasel (10.0.6esr-1) unstable; urgency=high
 
   * New upstream release.
