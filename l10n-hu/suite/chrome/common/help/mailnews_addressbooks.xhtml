@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,97 +12,70 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Using Address Books</title>
+<title>Címjegyzék használata</title>
 <link rel="stylesheet" href="helpFileLayout.css" type="text/css"/>
 <link rel="stylesheet" href="chrome://communicator/skin/smileys.css"
       type="text/css"/>
 </head>
 <body>
-<h1 id="using_address_books">Using Address Books</h1>
+<h1 id="using_address_books">Címjegyzék használata</h1>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#about_address_books">About Address Books</a></li>
-    <li><a href="#adding_entries_to_your_address_books">Adding Entries to Your
-      Address Books</a></li>
-    <li><a href="#creating_a_new_address_book">Creating a New Address
-      Book</a></li>
-    <li><a href="#creating_a_new_address_book_card">Creating a New Address Book
-      Card</a></li>
-    <li><a href="#creating_a_mailing_list">Creating a Mailing List</a></li>
-    <li><a href="#editing_a_mailing_list">Editing a Mailing List</a></li>
-    <li><a href="#searching_address_books_and_directories">Searching Address
-      Books and Directories</a></li>
-    <li><a href="#importing_address_books">Importing Address Books</a></li>
-    <li><a href="#exporting_address_books">Exporting Address Books</a></li>
-    <li><a href="#adding_and_removing_ldap_directories">Adding and Removing
-      LDAP Directories</a></li>
+    <li><a href="#about_address_books">Címjegyzékek – áttekintés</a></li>
+    <li><a href="#adding_entries_to_your_address_books">Bejegyzések felvétele saját címjegyzékbe</a></li>
+    <li><a href="#creating_a_new_address_book">Új címjegyzék létrehozása</a></li>
+    <li><a href="#creating_a_new_address_book_card">Új névjegykártya létrehozása</a></li>
+    <li><a href="#creating_a_mailing_list">Levelezőlista létrehozása</a></li>
+    <li><a href="#editing_a_mailing_list">Levelezőlista szerkesztése</a></li>
+    <li><a href="#searching_address_books_and_directories">Keresés címjegyzékben és címtárban</a></li>
+    <li><a href="#importing_address_books">Címjegyzék importálása</a></li>
+    <li><a href="#exporting_address_books">Címjegyzék exportálása</a></li>
+    <li><a href="#adding_and_removing_ldap_directories">LDAP-címtár felvétele és eltávolítása</a></li>
   </ul>
 </div>
 
-<h2 id="about_address_books">About Address Books</h2>
+<h2 id="about_address_books">Címjegyzékek – áttekintés</h2>
 
-<p>Address books store email addresses and contact information for people you
-  typically send mail to, such as colleagues, friends, and family.
-  &brandShortName; Mail &amp; Newsgroups provides you with two address books:
-  the Personal Address Book and the Collected Addresses&mdash;and you can
-  create additional address books as well. You can also import address books
-  from other mail programs and previous versions of &brandShortName;. The
-  contents of these address books are stored locally on your hard disk.</p>
+<p>A címjegyzékekben olyan személyek e-mail címét és egyéb adatait tárolhatjuk, akiknek gyakran küldünk levelet, ilyenek a munkatársak, a barátok és a családtagok.
+  A &brandShortName; Levelező és hírolvasó két címjegyzéket biztosít: ez a Személyes címjegyzék és az Összegyűjtött címek jegyzéke, de emellett további címjegyzékeket is létrehozhatunk. Más levelezőprogramokból és a &brandShortName; régebbi verzióiból is importálhatunk címjegyzékeket. Ezeket a címjegyzékeket a helyi merevlemez tárolja.</p>
 
-<p>Your address book may also list email addresses from an LDAP directory,
-  which is located on an LDAP directory server. The directory server stores
-  email addresses of people that are not included in your locally-stored
-  address books. The Lightweight Directory Access Protocol (LDAP) is an
-  industry-standard method for accessing Internet or intranet directory
-  services such as corporate address books.</p>
+<p>Használhatunk LDAP-címtárból származó e-mail címeket is, az ilyen címjegyzékek LDAP-címtárkiszolgálókon tárolódnak. A címtárkiszolgálón jellemzően olyan személyek e-mail címeit tartalmazzák, akik nem szerepelnek a helyileg tárolt címjegyzékekben. Az LDAP (Lightweight Directory Access Protocol) protokoll az internetes vagy intranetes címtárszolgáltatások (például vállalati címjegyzékek) elérésére szolgáló ipari szabvány.</p>
 
-<h4>Personal Address Book</h4>
+<h4>Személyes címjegyzék</h4>
 
-<p>Use the Personal Address Book to add specific names of your choice. You can
-  create mailing lists and edit individual address entries.</p>
+<p>A Személyes címjegyzékbe tetszőleges nevet felvehetünk. Létrehozhatunk levelezőlistákat, és szerkeszthetjük az egyes címbejegyzéseket.</p>
 
-<h4>Collected Addresses</h4>
+<h4>Összegyűjtött címek</h4>
 
-<p>By default, the Collected Addresses automatically collects the email
-  addresses contained in outgoing mail messages. Addresses from outgoing
-  messages are stored in the Collected Addresses as soon as you click Send.</p>
+<p>Alapértelmezés szerint az Összegyűjtött címek közé automatikusan bekerülnek az általunk küldött levelekben szereplő e-mail címek. Az elküldött levelek címzettjei akkor kerülnek be az Összegyűjött címek közé, amikor a Küldés gombra kattintunk.</p>
 
-<h4>LDAP Directory (if available)</h4>
+<h4>LDAP-címtár (ha rendelkezésre áll)</h4>
 
-<p>An LDAP directory (also known as an address lookup service) stores email
-  addresses of recipients who are not in your locally-stored address books.
-  LDAP directories offer you access to large, centrally maintained databases
-  of email addresses, which is especially useful with
-  <a href="mailnews_preferences.xhtml#address_autocompletion">address
-  autocompletion</a>.</p>
+<p>Az LDAP-címtárak (szokásos elnevezésük még címkereső szolgáltatás) rendszerint olyan címzettek e-mail címeit tartalmazzák, akik nem találhatók meg a helyileg tárolt címjegyzékekben.
+  Az LDAP-címtárak az e-mail címek nagyméretű, központilag karbantartott adatbázisát kínálják, amely különösen hasznos lehet az <a href="#address_autocompletion">automatikus címkiegészítésénél</a>.</p>
 
-<p>Automatic address collection is enabled by default. To change automatic
-  address collection settings, begin in the Mail window:</p>
+<p>Az automatikus címgyűjtés alapértelmezés szerint engedélyezett. A beállítás megváltoztatását kezdjük a Levelező ablakban:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Mail &amp; Newsgroups category, click Addressing. (If no
-    subcategories are visible, double-click Mail &amp; Newsgroups to expand the
-    list.)</li>
-  <li>Under Email Address Collection, select <q>Add email addresses to my</q>
-    and choose whether you want:
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Levelező és hírolvasó kategória alatt kattintsunk a Címjegyzék elemre. (Ha nem láthatók az alkategóriák, a kibontásukhoz kattintsunk duplán a Levelező és hírolvasó kategóriára.)</li>
+  <li>Az E-mail címek gyűjtése csoportban az <q>E-mail címek hozzáadása</q> mezőben válasszuk ki a kívánt lehetőséget:
     <ul>
-      <li>Personal Address Book.</li>
-      <li>Collected Addresses.</li>
+      <li>Személyes címjegyzék</li>
+      <li>Összegyűjtött címek</li>
     </ul>
   </li>
-  <li>Click OK.</li>
+  <li>Kattintsunk az OK gombra.</li>
 </ol>
 
-<h4>Opening the Address Book Window</h4>
+<h4>A Címjegyzék megnyitása</h4>
 
-<p>To open the Address Book window:</p>
+<p>A Címjegyzék ablak megnyitása:</p>
 
 <ul>
-  <li>Open the Window menu and choose Address Book, or click the Address Book
-    icon in the lower-left corner of any &brandShortName; window.
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát, vagy kattintsunk a bármelyik &brandShortName;-ablak bal alsó sarkában megtalálható Címjegyzék ikonra.
 
     <table>
       <tr>
@@ -106,65 +83,51 @@
       </tr>
       <tr>
         <td style="width: 80px;"></td>
-        <td><strong>Address Book icon</strong></td>
+        <td><strong>Címjegyzék ikon</strong></td>
       </tr>
     </table>
   </li>
 </ul>
 
-<h4>Changing the Address Book Window Display</h4>
+<h4>A Címjegyzék ablak beállítása</h4>
 
-<p>To customize how the Address Book window and the cards are displayed:</p>
+<p>A Címjegyzék ablakban az adatok megjelenítési módjának megadása:</p>
 
 <ol>
-  <li>Open the Window menu and choose Address Book. You see the Address Book
-    window.</li>
-  <li>In the Address Book window, open the View menu and choose from the
-    following display options:
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát. Megjelenik a Címjegyzék ablaka.</li>
+  <li>Válasszuk ebben a Nézet menü megfelelő parancsát a beállítások megadásához:
     <ul>
-      <li>Choose Show/Hide, and then select the item you wish to uncheck (hide)
-        or check (show).</li>
-      <li>Choose Show Name As, and then select how you want card names
-        displayed (first/last, last/first, or Display Name).</li>
-      <li>Choose Sort by, and then select a sort option.</li>
+      <li><b>Eszköztárak:</b> itt kiválaszthatjuk a megjeleníteni, illetve elrejteni kívánt elemeket.</li>
+      <li><b>Nevek megjelenítése:</b> adjuk meg a nevek megjelenítési módját (utónév/vezetéknév, vezetéknév/utónév vagy megjelenítendő név).</li>
+      <li><b>Rendezés:</b> adjuk meg, hogy mi szerint kívánunk rendezni.</li>
     </ul>
   </li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="adding_entries_to_your_address_books">Adding Entries to Your Address
-  Books</h2>
+<h2 id="adding_entries_to_your_address_books">Bejegyzések felvétele saját címjegyzékbe</h2>
 
-<p>You can use any of the following ways to add entries to your address
-  books:</p>
+<p>Saját címjegyzékbe a következő módon vehetünk fel bejegyzéseket:</p>
 
 <ul>
-  <li>Click a name in the From or recipient fields (for example, To or Cc) in a
-    message you&apos;ve received, and then select <q>Add to Address Book</q>
-    from the drop-down list.</li>
-  <li>In the Address Book window, click New Card to create a new address book
-    card.</li>
-  <li>Send a message, which automatically adds the recipient&apos;s address
-    to your address book (if enabled).</li>
-  <li>In the Address Book window, copy entries to another address book by
-    selecting the entries and dragging them over the name of the address book
-    you want to copy them to.</li>
+  <li>Beérkezett üzenetnél kattintsunk az egér jobb oldali gombjával a Feladó vagy egy címzett (például Másolat) mezőre, és válasszuk a helyi menü <q>Felvétel a címjegyzékbe</q> parancsát.</li>
+  <li>A Címjegyzék ablakban kattintsunk az Új névjegy gombra.</li>
+  <li>Nyissunk meg egy üzenetet, így a feladó címe automatikusan bekerül az Összegyűjtött címek jegyzékébe (ha a műveletet engedélyeztük).</li>
+  <li>A Címjegyzék ablakban úgy másolhatunk át egy bejegyzést egyik címjegyzékből a másikba, hogy kijelöljük a bejegyzést, és áthúzzuk annak a címjegyzéknek a neve fölé, amelybe át szeretnénk másolni.</li>
 </ul>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="creating_a_new_address_book">Creating a New Address Book</h2>
+<h2 id="creating_a_new_address_book">Új címjegyzék létrehozása</h2>
 
-<p>&brandShortName; Mail &amp; Newsgroups provides a default personal address
-  book, but you can create additional address books.</p>
+<p>A &brandShortName; Levelező és hírolvasó biztosít egy alapértelmezett személyes címjegyzéket, de továbbiakat is létrehozhatunk.</p>
 
-<p>To create a new address book:</p>
+<p>Új címjegyzék létrehozása:</p>
 
 <ol>
-  <li>Click the Address Book icon in the lower-left corner of any
-    &brandShortName; window, or open the Window menu and choose Address Book.
-    You see the Address Book window.
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát, vagy kattintsunk a bármelyik &brandShortName;-ablak bal alsó sarkában megtalálható Címjegyzék ikonra.
+    Megjelenik a Címjegyzék ablaka.
 
     <table>
       <tr>
@@ -172,397 +135,263 @@
       </tr>
       <tr>
         <td style="width: 80px;"></td>
-        <td><strong>Address Book icon</strong></td>
+        <td><strong>Címjegyzék ikon</strong></td>
       </tr>
     </table>
   </li>
-  <li>In the Address Book window, open the File menu, choose New, and choose
-    Address Book. You see the New Address Book dialog box.</li>
-  <li>Type the name of the new address book, and click OK.</li>
+  <li>A Címjegyzék ablakban válasszuk a Fájl menüből az Új, majd a Címjegyzék parancsot. Az Új címjegyzék párbeszédpanel jelenik meg.</li>
+  <li>Írjuk be az új címjegyzék nevét, majd kattintsunk az OK gombra.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="creating_a_new_address_book_card">Creating a New Address Book Card</h2>
+<h2 id="creating_a_new_address_book_card">Új névjegykártya létrehozása</h2>
 
-<p>Address book cards can be used to store names, postal addresses, email
-  addresses, phone numbers, and information such as whether the addressee
-  prefers to receive plain-text or HTML-formatted messages.</p>
+<p>A névjegykártya nevek, e-mail címek, telefonszámok és más adatokat tárolására szolgál (ilyen például az, hogy az adott címzett egyszerű szöveges vagy formázott üzeneteket fogad-e).</p>
 
-<p>To create an address book card for an individual:</p>
+<p>Névjegykártya létrehozása adott személyhez:</p>
 
 <ol>
-  <li>Click the Address Book icon on the status bar or open the Window menu and
-    choose Address Book.</li>
-  <li>Click New Card. (If you have multiple address books, select the one to
-    which you want to add a card.)</li>
-  <li>Each New Card dialog box has three tabs:
+  <li>Kattintsunk az állapotsoron a Címjegyzék ikonra, vagy válasszuk az Ablak menü Címjegyzék parancsát.</li>
+  <li>Kattintsunk az Új névjegy gombra. (Ha több címjegyzékkel rendelkezünk, jelöljük ki, hogy melyikbe vesszük fel a névjegyet.)</li>
+  <li>Az Új névjegy párbeszédpanel a következő három lapból áll:
     <ul>
-      <li><strong>Contact</strong>: Enter the following information:
+      <li><strong>Név</strong>: ezen a panellapon a következő adatok adhatók meg:
         <ul>
-          <li>First and Last (first and last name of person as you want it to
-            appear in the address book).</li>
-          <li>Display name (the name that appears in the <q>To</q> field of the
-            Compose window).</li>
-          <li>Nickname (a shortcut or alias for the real name).</li>
-          <li>Email address (primary and additional address).</li>
-          <li>Prefers to receive messages formatted as: If you know this
-            recipient can read HTML-formatted messages (such as messages that
-            include links, images, or tables), choose HTML. If this recipient
-            can only read messages sent as plain text (no formatting), then
-            choose Plain Text. If you don&apos;t know or are not sure, choose
-            Unknown. If you choose Unknown, &brandShortName; Mail &amp;
-            Newsgroups determines the sending format based on the Mail &amp;
-            Newsgroups Send Format settings in the Preferences dialog box. If
-            Mail &amp; Newsgroups still can&apos;t determine the correct
-            format, Mail &amp; Newsgroups will prompt you to choose a sending
-            format when you send the message.</li>
-          <li>Allow remote images in HTML mail: If you want to allow this
-            sender to have remote content they send you displayed in your
-            message window.</li>
-          <li>Screen name (the AIM contact name).</li>
-          <li>Phones (enter phone numbers for this person)</li>
+          <li>Vezetéknév és utónév (ahogy a címjegyzékben szeretnénk látni).</li>
+          <li>Megjelenítendő név (az Új üzenet ablak <q>Címzett</q> mezőjébe kerülő név).</li>
+          <li>Becenév (a használni kívánt rövid név).</li>
+          <li>E-mail cím (elsődleges vagy kiegészítő cím).</li>
+          <li>Az üzeneteket a következő formátumban szereti megkapni: ha tudjuk, hogy ez a címzett fogadni tudja a formázott üzeneteket (azaz ezekben hivatkozások, képek vagy táblázatok is szerepelhetnek), válasszuk a HTML beállítást. Ha ez a címzett csak egyszerű szöveges (formázás nélküli) üzeneteket fogadhat, a Sima szöveg elemet válasszuk. Ha nem vagyunk ebben biztosak, válasszuk az Ismeretlen elemet. Ekkor a &brandShortName; Levelező és hírolvasó a küldési formátumot a Beállítások párbeszédpanel Küldés formátuma beállítása alapján határozza meg. Ha még ebből sem állapítható meg a megfelelő formátum, a Levelező és hírolvasó megkérdezi ezt az üzenet elküldésekor.</li>
+          <li>Felhasználói név (az AIM becenév).</li>
+          <li>Telefon (a telefonszámok kerülnek ide).</li>
         </ul>
       </li>
-      <li><strong>Address</strong>: Type additional information such as street
-        address, phone number, and URL.
+      <li><strong>Cím</strong>: ezen a panellapon az illető lakásának és munkahelyének postai levelezési címe és a weboldalának címe adható meg.
 
-        <p><strong>Tip</strong>: If you enter address information,
-          &brandShortName; displays a Get Map button next to the address when
-          you view this entry&apos;s address book card in your address book.
-          Clicking the Get Map button displays a web page that contains a map
-          to the address.</p>
+        <p><strong>Tipp</strong>: ha megadjuk a címet, a &brandShortName; egy Térkép gombot jelenít meg, amikor ezt a névjegyet a címjegyzékben tekintjük meg. Erre kattintva térképet tartalmazó weboldal jeleníthető meg.</p>
       </li>
-      <li><strong>Other</strong>: Store any additional information you
-        want.</li>
+      <li><strong>Egyéb</strong>: ezen a panellapon további adatok adhatók meg.</li>
     </ul>
   </li>
 </ol>
 
-<p><strong>Tip</strong>: To quickly add entries to your address book, click any
-  email address in messages you receive and select Add to Address Book from the
-  drop-down list. The New Card dialog box appears where you can complete the
-  information.</p>
+<p><strong>Tipp</strong>: a bejegyzések címjegyzékbe történő gyors felvételéhez kattintsunk egy beérkezett üzenet tetszőleges címére, és válasszuk a helyi menü Felvétel a címjegyzékbe parancsát. Az Új névjegy párbeszédpanel jelenik meg, ahol beírhatjuk a további kívánt adatokat.</p>
 
-<h3 id="viewing_or_editing_card_properties">Viewing or Editing Card
-  Properties</h3>
+<h3 id="viewing_or_editing_card_properties">Névjegy tulajdonságainak megtekintése és szerkesztése</h3>
 
-<p>To view or edit the properties for an individual card:</p>
+<p>Adott névjegy tulajdonságainak megtekintése és szerkesztése:</p>
 
 <ol>
-  <li>Select the card from the list of entries in the Address Book window.</li>
-  <li>Click Properties.</li>
+  <li>Válasszuk ki a kártyát a listából a Címjegyzék ablakban.</li>
+  <li>Kattintsunk a Tulajdonságok gombra.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="creating_a_mailing_list">Creating a Mailing List</h2>
+<h2 id="creating_a_mailing_list">Levelezőlista létrehozása</h2>
 
-<p>If you regularly send messages to a group of recipients, you can quickly
-  address a message by using a mailing list that contains the names you
-  want.</p>
+<p>Ha gyakran küldünk üzeneteket címzettek adott csoportjának, egyszerűbbé és gyorsabbá tehető a címzés a kívánt neveket tartalmazó levelezőlista használatával.</p>
 
-<p>To create a mailing list and add it to your address book:</p>
+<p>Levelezőlista létrehozása és felvétele címjegyzékbe:</p>
 
 <ol>
-  <li>In the Address Book window, click New List.</li>
-  <li>Enter the following information in the Mailing List dialog box:
+  <li>A Címjegyzék ablakban kattintsunk az Új lista gombra.</li>
+  <li>A Levelezőlista párbeszédpanelen adjuk meg a következő adatokat:
     <ul>
-      <li>Click the drop-down list at <q>Add to</q> to choose an address book
-        in which to store the list.</li>
-      <li>List name: When you enter the list name in the <q>To</q> field of a
-        message, everyone on the list receives your message.</li>
-      <li>List nickname: Alias (or shortcut) for the list name.</li>
-      <li>Description: Appears after the list name in the address line of
-        the Compose window.</li>
+      <li>A <q>Hozzáadás</q> lenyitható listán jelöljük ki, hogy melyik címjegyzékbe kerül a levelezőlista.</li>
+      <li><strong>Lista neve</strong>: ha a lista nevét beírjuk az üzenet <q>Címzett</q> mezőjébe, a listán szereplők valamennyien megkapják az üzenetet.</li>
+      <li><strong>Lista beceneve</strong>: a listanév rövid változata.</li>
+      <li><strong>Leírás</strong>: ez az Új üzenet ablakban a listanév után jelenik meg.</li>
     </ul>
   </li>
-  <li>Type email addresses to add them to the mailing list.</li>
-  <li>Click OK.</li>
+  <li>Írjuk be a levelezőlistához adandó e-mail címeket.</li>
+  <li>Kattintsunk az OK gombra.</li>
 </ol>
 
-<p>In the left side of the Address Book window, the mailing list appears
-  underneath the address book you added it to.</p>
+<p>A Címjegyzék ablak bal oldalán a levelezőlista az alatt a címjegyzék alatt jelenik meg, amelyhez hozzáadtuk.</p>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="editing_a_mailing_list">Editing a Mailing List</h2>
+<h2 id="editing_a_mailing_list">Levelezőlista szerkesztése</h2>
 
-<p>Mailing lists are stored in the address book in which you created them.</p>
+<p>A levelezőlisták abban a címjegyzékben tárolódnak, amelyben létrehoztuk.</p>
 
-<p>To remove a member from the list, begin from the Mail window:</p>
+<p>A lista valamelyik tagjának eltávolításához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Open the Window menu and choose Address Book.</li>
-  <li>Expand the address book containing your mailing list by clicking the
-    small triangle beside the address book title.</li>
-  <li>Highlight the mailing list by clicking its name. The list members appear
-    to the right of the mailing list name.</li>
-  <li>Click the entry you wish to delete.</li>
-  <li>Click the Delete button.</li>
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát.</li>
+  <li>Nyissuk le a kívánt levelezőlistát tartalmazó címjegyzéket a címjegyzék melletti háromszögre kattintással.</li>
+  <li>Nevére kattintva jelöljük ki a levelezőlistát. A lista neve mellett az ebben szereplő tagok listája jelenik meg.</li>
+  <li>Kattintsunk a törölni kívánt bejegyzésre.</li>
+  <li>Kattintsunk a Törlés gombra.</li>
 </ol>
 
-<p>To add members to a mailing list:</p>
+<p>Tagok felvétele levelezőlistára:</p>
 
 <ol>
-  <li>Open Window menu and choose Address Book.</li>
-  <li>Expand the address book containing your mailing list by clicking the
-    small triangle beside the address book title.</li>
-  <li>Highlight the mailing list by clicking its name.</li>
-  <li>Click Properties.</li>
-  <li>Add or remove entries as necessary.</li>
-  <li>Click OK when you are done.</li>
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát.</li>
+  <li>Nyissuk le a kívánt levelezőlistát tartalmazó címjegyzéket a címjegyzék melletti háromszögre kattintással.</li>
+  <li>Nevére kattintva jelöljük ki a levelezőlistát.</li>
+  <li>Kattintsunk a Tulajdonságok gombra.</li>
+  <li>Vegyük fel újabb bejegyzéseket, illetve neveket törölhetünk is a listáról.</li>
+  <li>Ha befejeztük a műveletet, kattintsunk az OK gombra.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="searching_address_books_and_directories">Searching Address Books and
-  Directories</h2>
+<h2 id="searching_address_books_and_directories">Keresés címjegyzékben és címtárban</h2>
 
-<p>&brandShortName; Mail &amp; Newsgroups lets you quickly search an address
-  book or directory by name or email address, or use a combination of criteria
-  to perform a more specific search through an address book or directory.</p>
+<p>A &brandShortName; Levelező és hírolvasó gyors keresést biztosít a címjegyzékekben vagy egy címtárban: kereshetünk név vagy e-mail cím alapján, de a keresési feltételek kombinációját is alkalmazhatjuk a pontosabb kereséshez.</p>
 
-<p>To quickly search an address book or directory for a name or email address,
-  begin from the Address Book window:</p>
+<p>A név vagy e-mail cím szerinti gyors kereséshez induljunk ki a Címjegyzék ablakból:</p>
 
 <ol>
-  <li>In the Address Book window, in the list of address books, select the
-    address book or directory that you want to search.</li>
-  <li>In the <q>Name or Email contains</q> field, type the name or email
-    address that you want to find. You can type only part of the name or email
-    address, or you can type the exact text that you want to find.
+  <li>A címjegyzékek listáján jelöljük ki azt a címjegyzéket vagy címtárat, amelyben keresni szeretnénk.</li>
+  <li>A<q>Név vagy e-mail cím tartalmazza</q> mezőbe írjuk be a keresett nevet vagy e-mail címet. Megadhatjuk a név vagy az e-mail cím egy részét, de beírhatjuk pontosan a keresett szöveget is.
 
-    <p>As soon as you stop typing, &brandShortName; Mail &amp; Newsgroups
-      displays only those entries where the name or email address contains the
-      search text you entered.</p>
+    <p>Amint befejeztük a beírást, a &brandShortName; Levelező és hírolvasó csak azokat a bejegyzéseket jeleníti meg, amelyben a név vagy az e-mail cím tartalmazza a keresett szöveget.</p>
   </li>
-  <li>Click Clear to erase the search text and show all entries.</li>
+  <li>A keresett szöveg törléséhez és újból az összes bejegyzés megjelenítéséhez kattintsunk a Törlés gombra.</li>
 </ol>
 
-<h3 id="searching_for_specific_entries">Searching for Specific Entries</h3>
+<h3 id="searching_for_specific_entries">Adott bejegyzések keresése</h3>
 
-<p>You can search address books or directories for specific entries. If you are
-  not already viewing the Advanced Address Book Search dialog box, begin from
-  the Address Book window:</p>
+<p>A címjegyzékekben vagy egy címtárban adott bejegyzéseket is megkereshetünk. Az Összetett keresés a címjegyzékben párbeszédpanel megjelenítéséhez induljunk ki a Címjegyzék ablakból:</p>
 
 <ol>
-  <li>Open the Tools menu and choose Search Addresses. You see the Advanced
-    Address Book Search dialog box.</li>
-  <li>Next to <q>Search in</q>, choose the address book or directory through
-    which you want to search.</li>
-  <li>Select the matching option Mail &amp; Newsgroups uses to search for
-    entries either that match all or at least one of the conditions (criteria)
-    that you choose.</li>
-  <li>Click More to add criteria and Fewer to remove them.</li>
-  <li>Click Search to begin, or click Clear to reset your entries. The search
-    results appear in lower part of the dialog box.</li>
-  <li>To sort the entries in a different order, click the column that you want
-    to sort by.</li>
-  <li>To view the card for an entry, select the entry and click
-    Properties.</li>
-  <li>To compose a message to selected recipients, select one or more entries
-    and click Compose.</li>
+  <li>Válasszuk a Feladatok menü Címek keresése parancsát. Az Összetett keresés a címjegyzékben párbeszédpanel jelenik meg.</li>
+  <li>A <q>Keresési hely</q>mezőben jelöljük ki azt a címjegyzéket vagy címtárat, amelyben keresni szeretnénk.</li>
+  <li>Adjuk meg, hogy a Mozilla Levelező és hírolvasó a bejegyzések keresésénél az összes megadott feltételt figyelembe vegye-e, vagy találatnak számítson a legalább egy feltételnek eleget tevő bejegyzés.</li>
+  <li>A Több gombbal további feltételeket vehetünk fel, a Kevesebb gombbal eltávolíthatunk feltételeket.</li>
+  <li>A keresés indításához kattintsunk a Keresés gombra, az Alaphelyzet gombbal a kiindulási helyzetbe térhetünk vissza. A keresés eredménye a párbeszédpanel alsó részén jelenik meg.</li>
+  <li>A bejegyzések a kívánt oszlop szerint rendezhetők.</li>
+  <li>Adott bejegyzéshez tartozó névjegy megtekintéséhez kattintsunk a bejegyzésre, majd a Tulajdonságok gombra.</li>
+  <li>Levelet is írhatunk, ha kijelöljük a kívánt címzetteket, és az Új üzenet gombra kattintunk.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="importing_address_books">Importing Address Books</h2>
+<h2 id="importing_address_books">Címjegyzék importálása</h2>
 
-<p>If you have a &brandShortName; address book from another user profile or
-  computer, or if you have an address book from another mail program, you can
-  import its entries into the Address Book window as a new address book. Keep
-  in mind that when you upgrade a user profile from an earlier version of
-  &brandShortName;, your address books are automatically included, so
-  there&apos;s no need to import them.</p>
+<p>Ha másik felhasználói profilból, számítógépről vagy a &brandShortName; korábbi verziójából származó &brandShortName;-címjegyzékünk, illetve más levelezőprogramban készült címjegyünk van, ennek bejegyzéseit új címjegyzékként a Címjegyzék ablakba importálhatjuk. Amikor a &brandShortName; korábbi verziójából származó felhasználói profilt frissítjük, a címjegyzék is automatikusan átkerül a frissített profilba, nem szükséges kézzel importálni.</p>
 
-<p>You can import address books from Netscape 6, Netscape 7, Eudora, Outlook,
-  Outlook Express, or text files (LDIF, tab-delimited (.tab), comma-separated
-  (.csv), or text (.txt) formats). When you import an address book, Mail &amp;
-  Newsgroups creates a new address book with the imported entries.</p>
+<p>A következő programokból, illetve formátumokból lehetséges címjegyzéket átvenni: Netscape Communicator, Netscape 6, korábbi Mozilla, Eudora, Outlook, Outlook Express, LDIF-fájl, tabulátorral elválasztott szöveg (.tab), vesszővel elválasztott szöveg (.csv) vagy szöveg (.txt). Címjegyzék importálásakor a Mozilla Levelező és hírolvasó új címjegyzéket hoz létre a beolvasott bejegyzésekből.</p>
 
-<p>You can also
-  <a href="mailnews_getting_started.xhtml#importing_mail_from_other_programs">import
-  mail messages and settings</a> from Communicator, Eudora, Outlook, and
-  Outlook Express.</p>
+<p>A Mozilla Communicator, az Eudora, az Outlook és az Outlook Express programból <a href="#importing_mail_from_other_programs">üzeneteket és beállításokat</a> is importálhatunk.</p>
 
-<p>To import an address book, begin from the Mail window:</p>
+<p>Címjegyzék importálását kezdjük a Levelező ablakban:</p>
 
 <ol>
-  <li>Open the Tools menu, and choose Import. You see the Mail Import
-    Wizard.</li>
-  <li>Follow the instructions to import address books.</li>
+  <li>Válasszuk a Feladatok menü Importálás parancsát. A Levelező Importálás varázslója jelenik meg.</li>
+  <li>Az importálás végrehajtásához kövessük a varázsló utasításait.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="exporting_address_books">Exporting Address Books</h2>
+<h2 id="exporting_address_books">Címjegyzék exportálása</h2>
 
-<p>You can export a &brandShortName; address book if you later want to import
-  it into another user profile, move it to another computer, or use it with
-  another program that can import address books. You can export an address
-  book to one of these file formats: &brandShortName; (.ldif), tab-delimited
-  (.tab), comma-separated (.csv), or text (.txt) formats.</p>
+<p>Az exportált Mozilla-címjegyzéket másik felhasználói profilba is betölthetjük, átvihetjük másik számítógépre, vagy más, címjegyzéket beolvasni képes programban használhatjuk. Címjegyzéket a következő fájlformátumokba exportálhatunk: &brandShortName; (.ldif), tabulátorral elválasztott (.tab), vesszővel elválasztott (.csv) vagy szöveg (.txt).</p>
 
-<p>To export an address book, begin from the Address Book window:</p>
+<p>Címjegyzék exportálásához induljunk ki a Címjegyzék ablakból:</p>
 
 <ol>
-  <li>Select the address book that you want to export.</li>
-  <li>Open the Tools menu, and choose Export.</li>
-  <li>In the Export Address Book dialog box, browse to the location where you
-    want to save the address book file.</li>
-  <li>Choose the file format for the exported address book (.ldif,
-    comma-separated, or tab-delimited).</li>
-  <li>Enter a name for the address book file. Be sure to include the
-    appropriate file extension (.ldif, .csv, .tab, or .txt).</li>
-  <li>Click Save.</li>
+  <li>Jelöljük ki az exportálni kívánt címjegyzéket.</li>
+  <li>Válasszuk a Feladatok menü Exportálás parancsát.</li>
+  <li>A Címjegyzék exportálása párbeszédpanelen adjuk meg a címjegyzékfájl mentési helyét.</li>
+  <li>Válasszunk fájlformátumot (.ldif, vesszővel elválasztott vagy tabulátorral tagolt).</li>
+  <li>Adjuk meg a címjegyzékfájl nevét. Ebben a megfelelő kiterjesztés (.ldif, .csv, .tab vagy .txt) is szerepeljen.</li>
+  <li>Kattintsunk a Mentés gombra.</li>
 </ol>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="adding_and_removing_ldap_directories">Adding and Removing LDAP
-  Directories</h2>
+<h2 id="adding_and_removing_ldap_directories">LDAP-címtár felvétele és eltávolítása</h2>
 
-<p>Adding an LDAP directory to your address book allows you to search the
-  directory for email addresses and other contact information. You can also use
-  the directory for address autocompletion when addressing mail messages.</p>
+<p>Ha felveszünk egy LDAP-címtárat a címjegyzékbe, akkor kereshetünk a címtárban e-mail címekre és adatokra. A címtár felhasználható az elekronikus levelek címzésénél a cím automatikus kiegészítésére is.</p>
 
-<p>You typically add or remove LDAP directories using instructions provided by
-  your system administrator. Check with your system administrator for the
-  information you will need in order to add a new directory to your address
-  book.</p>
+<p>Az LDAP-címtár felvételénél vagy eltávolításánál általában a rendszergazda utasításait kell követni. A művelethez szükséges tudnivalókat tehát kérdezzük meg a rendszergazdától.</p>
 
-<p>To add a new directory, begin from the Address Book window:</p>
+<p>Új címtár hozzáadását kezdjük a Címjegyzék ablakban:</p>
 
 <ol>
-  <li>Open the File menu, and choose New, and then choose LDAP Directory. You
-    see the Directory Server Properties dialog box.</li>
-  <li>Type the following information in the Directory Server Properties dialog
-    box General tab:
+  <li>Válasszuk a Fájl menüből az Új, majd az LDAP-címtár parancsot. A Címtárkiszolgáló tulajdonságai párbeszédpanel jelenik meg.</li>
+  <li>A Címtárkiszolgáló tulajdonságai párbeszédpanel Általános lapján adjuk meg a következő adatokat:
     <ul>
-      <li><strong>Name</strong>: Enter the name of the directory service (for
-        example, InfoSpace Directory).</li>
-      <li><strong>Host Name</strong>: Enter the name of the host name server,
-        such as ldap.infospace.com.</li>
-      <li><strong>Base DN</strong>: This setting is used to set the Base
-        distinguished name. Enter codes to restrict searching to a specific
-        country or organization. For example, c=JP restricts the search to
-        Japan only. Base DN also specifies the organization to search on
-        within the directory (for instance, o=Netscape Communications
-        Corporation, c=US).</li>
-      <li><strong>Port Number</strong>: Enter the port number for the LDAP
-        server. The default is 389.</li>
-      <li><strong>Bind DN</strong>: The distinguished name that is used to
-        authenticate (log in) to the LDAP server. If left blank, the LDAP
-        server binds anonymously.</li>
-      <li><strong>Use secure connection (SSL)</strong>: Choose this setting
-        if your LDAP server supports secure (encrypted) connections. If you are
-        unsure, contact your system administrator.</li>
+      <li><strong>Név</strong>: adjuk meg a címszolgáltató nevét (például InfoSpace címtár).</li>
+      <li><strong>Gépnév</strong>: adjuk meg a kiszolgáló nevét, például ldap.infospace.com.</li>
+      <li><strong>Alap DN</strong>: ez az alap megkülönböztető név beállítására szolgál. Adjuk meg a keresést adott országra vagy szervezetre korlátozó kódot. Például a c=JP a keresést Japánra korlátozza. Az Alap DN emellett a címtáron belüli keresést végző szervezetet is megadja (például o=Netscape Communications Corporation, c=US).</li>
+      <li><strong>Port száma</strong>: itt az LDAP-kiszolgáló portszáma adható meg. Az alapérték 389.</li>
+      <li><strong>Bejelentkezési DN</strong>: a hitelesítéshez (bejelentkezéshez az LDAP-kiszolgálóra) használt megkülönböztető név. Ha nem adjuk meg, akkor névtelenül fogunk bejelentkezni be az LDAP-kiszolgálóra.</li>
+      <li><strong>Biztonságos kapcsolat (SSL) használata</strong>: jelöljük be, ha az LDAP-kiszolgáló támogatja a biztonságos (titkosított) kapcsolatokat. Ha nem vagyunk biztosak benne, kérdezzük meg a rendszergazdát.</li>
     </ul>
   </li>
-  <li>Click the Advanced tab to configure LDAP directory server settings.</li>
-  <li>Type the following information:
+  <li>Az LDAP-címtárkiszolgáló beállításainak megadásához váltsunk át a Haladó panellapra.</li>
+  <li>Ezen a következő adatok adhatók meg:
     <ul>
-      <li><strong>Don&apos;t return more than _ results</strong>: This setting
-        lets you limit the number of autocompletion matches returned by the
-        directory server. Enter the maximum number of email address matches
-        to display for autocompletion.</li>
-      <li><strong>Scope</strong>: Defines the limits of the search. Choose one
-        of the following:
+      <li><strong>Ne küldjön vissza többet, mint [_] találat</strong>: ezzel a beállítással a címtárkiszolgálóval visszaadott találatok számát korlátozhatjuk. Adjuk meg az automatikus címkiegészítéshez felkínált e-mail címek maximális számát.</li>
+      <li><strong>Körzet</strong>: a keresés hatókörét adja meg. A következő beállítások választhatók:
         <ul>
-          <li><strong>One Level</strong>: Retrieves matching entries by
-            searching the base DN and one level below the base DN.</li>
-          <li><strong>Subtree</strong>: Retrieves matching entries by searching
-            the base DN in addition to all levels below the base DN. This is
-            the least restrictive search.</li>
+          <li><strong>Egy szint</strong>: az alap DN és az eggyel ez alatti szinten történik a keresés, és az itteni találatokat kapjuk vissza.</li>
+          <li><strong>Részfa</strong>: az alap DN és az eggyel ez alatti összes szinten történik a keresés, és az itteni találatokat kapjuk vissza. Ez a legkiterjedtebb keresés.</li>
         </ul>
       </li>
-      <li><strong>Search filter</strong>: Enter the search filter to apply to
-        matching results that are within the specified scope of the
-        search.</li>
+      <li><strong>Keresési szűrő</strong>: adjuk meg a keresés hatókörén belül kapott eredményekre alkalmazni kívánt szűrőt.</li>
     </ul>
   </li>
-  <li>Click OK to close the Directory Server Properties dialog box.</li>
+  <li>A Címtárkiszolgáló tulajdonságai párbeszédpanel bezárásához kattintsunk az OK gombra.</li>
 </ol>
 
-<p>The directory you added appears in the list of address books in the Address
-  Book window.</p>
+<p>Az éppen hozzáadott címtár megjelenik a címjegyzékek között a Címjegyzék ablakban.</p>
 
-<p>To delete a directory:</p>
+<p>Címtár törlése:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences. You see the
-    Preferences dialog box.</li>
-  <li>Under the Mail &amp; Newsgroups category, select Addressing. (If no
-    subcategories are visible, double-click Mail &amp; Newsgroups to expand
-    the list.)</li>
-  <li>Under Address Autocompletion on the right side of the dialog box, click
-    Edit Directories.</li>
-  <li>In the LDAP Directory Servers dialog box, select the directory that you
-    want to delete and click Delete.</li>
-  <li>Click OK, then click OK again to close the Preferences dialog box.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot. A Beállítások párbeszédpanel jelenik meg.</li>
+  <li>A Levelező és hírolvasó kategória alatt kattintsunk a Címjegyzék elemre. (Ha nem láthatók az alkategóriák, a kibontásukhoz kattintsunk duplán a Levelező és hírolvasó kategóriára.)</li>
+  <li>Az Automatikus címkiegészítés csoport alatt a párbeszédpanel jobb oldalán kattintsunk a Címtár szerkesztése gombra.</li>
+  <li>Az LDAP címtárkiszolgálók párbeszédpanelen jelöljük ki a törölni kívánt címtárat, és kattintsunk a Törlés gombra.</li>
+  <li>A párbeszédpanelek bezárásához kattintsunk kétszer az OK gombra.</li>
 </ol>
 
-<p>For information on downloading or synchronizing a directory for offline use
-  so that you can search it or use it for address book autocompletion while
-  working offline, see
-  <a href="mailnews_offline.xhtml#downloading_directory_entries_for_offline_use">Downloading
-  Directory Entries for Offline Use</a>.</p>
+<p>További tudnivalók a címtárak letöltéséről, illetve szinkronizálásáról a kapcsolat nélküli munkához, hogy lehessen keresni benne, és működjön az automatikus címkiegészítés kapcsolat nélküli módban is: <a href="#downloading_directory_entries_for_offline_use">Címtárbejegyzések letöltése kapcsolat nélküli használatra</a>.</p>
 
-<h3 id="directory_server_settings">Directory Server Settings</h3>
+<h3 id="directory_server_settings">Címtárkiszolgáló beállításai</h3>
 
-<p>If you are not already viewing the Directory Server Settings dialog box,
-  begin from the Mail window:</p>
+<p>A Címtárkiszolgáló tulajdonságai párbeszédpanel a Levelező ablakból a következő lépésekkel jeleníthető meg:</p>
 
 <ol>
-  <li>Open the Window menu, and choose Address Book.</li>
-  <li>In the list of address books, select a directory.</li>
-  <li>Click Properties.</li>
+  <li>Válasszuk az Ablak menü Címjegyzék parancsát.</li>
+  <li>A címjegyzékek listáján jelöljük ki a kívánt címtárat.</li>
+  <li>Kattintsunk a Tulajdonságok gombra.</li>
 </ol>
 
-<p><strong>General Tab</strong></p>
+<p><strong>Általános panellap</strong></p>
 
 <ul>
-  <li><strong>Name</strong>: The name of the directory service (for example,
-    InfoSpace Directory).</li>
-  <li><strong>Host Name</strong>: The name of the host name server, such as
-    ldap.infospace.com.</li>
-  <li><strong>Base DN</strong>: The Base Distinguished Name. Codes entered here
-    restrict searching to a specific country or organization. For example, c=JP
-    restricts the search to Japan only. Base DN also specifies the organization
-    to search on within the directory (for instance, o=Netscape Communications
-    Corporation, c=US).</li>
-  <li><strong>Port Number</strong>: Enter the port number for the LDAP server.
-    The default is 389.</li>
-  <li><strong>Bind DN</strong>: The distinguished name that is used to
-    authenticate (log in) to the LDAP server. If left blank, the LDAP server
-    binds anonymously.</li>
-  <li><strong>Use secure connection (SSL)</strong>: Choose this setting if your
-    LDAP server supports secure (encrypted) connections. If you are unsure,
-    contact your system administrator.</li>
+  <li><strong>Név</strong>: a címszolgáltató neve (például InfoSpace címtár).</li>
+  <li><strong>Gépnév</strong>: a kiszolgáló neve, például ldap.infospace.com.</li>
+  <li><strong>Alap DN</strong>: az alap megkülönböztető név. Az itt megadott kódok adott országra vagy szervezetre korlátozzák a keresést. Például a c=JP a keresést Japánra korlátozza. Az Alap DN emellett a címtáron belüli keresést végző szervezetet is megadja (például o=Netscape Communications Corporation, c=US).</li>
+  <li><strong>Port száma</strong>: itt az LDAP-kiszolgáló portszáma adható meg.
+    Az alapérték 389.</li>
+  <li><strong>Bejelentkezési DN</strong>: a hitelesítéshez (bejelentkezéshez az LDAP-kiszolgálóra) használt megkülönböztető név. Ha nem adjuk meg, akkor névtelenül fogunk bejelentkezni be az LDAP-kiszolgálóra.</li>
+  <li><strong>Biztonságos kapcsolat (SSL) használata</strong>: jelöljük be, ha az LDAP-kiszolgáló támogatja a biztonságos (titkosított) kapcsolatokat. Ha nem vagyunk biztosak benne, kérdezzük meg a rendszergazdát.</li>
 </ul>
 
-<p><strong>Advanced Tab</strong></p>
+<p><strong>Haladó panellap</strong></p>
 
 <ul>
-  <li><strong>Don&apos;t return more than _ results</strong>: This setting lets
-    you limit the number of autocompletion matches returned by the directory
-    server. Specify the maximum number of email address matches to display for
-    autocompletion.</li>
-  <li><strong>Scope</strong>: Defines the limits of the search:
+  <li><strong>Ne küldjön vissza többet, mint [_] találat:</strong> ezzel a beállítással a címtárkiszolgálóval visszaadott találatok számát korlátozhatjuk. Adjuk meg az automatikus címkiegészítéshez felkínált e-mail címek maximális számát.</li>
+  <li><strong>Körzet</strong>: a keresés hatókörét adja meg.
     <ul>
-      <li><strong>One Level</strong>: Retrieves matching entries by searching
-        the base DN and one level below the base DN.</li>
-      <li><strong>Subtree</strong>: Retrieves matching entries by searching the
-        base DN in addition to all levels below the base DN. This is the least
-        restrictive search.</li>
+      <li><strong>Egy szint</strong>: az alap DN és az eggyel ez alatti szinten történik a keresés, és az itteni találatokat kapjuk vissza.</li>
+      <li><strong>Részfa</strong>: az alap DN és az eggyel ez alatti összes szinten történik a keresés, és az itteni találatokat kapjuk vissza. Ez a legkiterjedtebb keresés.</li>
     </ul>
   </li>
-  <li><strong>Search filter</strong>: Specifies the search filter to apply to
-    matching results that are within the specified scope of the search.</li>
+  <li><strong>Keresési szűrő</strong>: a keresés hatókörén belül kapott eredményekre alkalmazni kívánt szűrőt. adja meg.</li>
 </ul>
 
-<p>[<a href="#using_address_books">Return to beginning of section</a>]</p>
+<p>[ <a href="#using_address_books">Vissza a fejezet elejére</a> ]</p>
 </body>
 </html>

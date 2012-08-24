@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!ENTITY  splash_settingup "Teelto &brandShortName; maa">
 <!ENTITY  splash_bookmarks_history "Min ngoni ko e hesɗitinde maantore e aslol maa, ena waawi ɓamde hojom walla ɓura.">
@@ -43,8 +47,16 @@
 
 <!ENTITY reload "Hesɗitin">
 <!ENTITY forward "Yeeso">
+<!ENTITY menu "Dosol">
+<!ENTITY back "Caggal">
+<!ENTITY stop "Dartin">
+<!ENTITY site_security "Kisal Lowre">
 
+<!ENTITY close_tab "Uddu Tabbere">
 <!ENTITY new_tab "Tabbere Hesere">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "tabbe &#037;">
 <!ENTITY new_tab_opened "Tabbere hesere udditaama">
 
 <!ENTITY settings "Teelte">
@@ -52,6 +64,7 @@
 <!ENTITY pref_category_general "Kuuɓal">
 <!ENTITY pref_category_privacy "Suturo &amp; Kisal">
 <!ENTITY pref_category_content "Loowdi">
+<!ENTITY pref_category_importexport "Jiggo &amp; Jiggito">
 <!ENTITY pref_about_firefox "Baɗte &brandShortName;">
 <!ENTITY pref_do_not_track "Haalan lowe mi yiɗaa rewindeede">
 <!ENTITY pref_telemetry "Neldu keɓe moƴƴugol">
@@ -60,10 +73,7 @@
 <!ENTITY pref_char_encoding "Dokkitannde alkule">
 <!ENTITY pref_char_encoding_on "Hollu dosol">
 <!ENTITY pref_char_encoding_off "Hoto hollu dosol">
-<!ENTITY pref_clear_history "Momtu aslol">
-<!ENTITY pref_clear_history_confirm "Aslol banngagol maa momte">
 <!ENTITY pref_clear_private_data "Momtu keɓe sirluuje">
-<!ENTITY pref_clear_private_data_confirm "Teelte banngagol, yantude e finndeeji e kukiije, maa momte">
 <!ENTITY pref_plugins "Ceŋe">
 <!ENTITY pref_plugins_enabled "Daaƴtaaɗo">
 <!ENTITY pref_plugins_tap_to_play "Fiy ngam tarde">
@@ -76,6 +86,15 @@
 <!ENTITY pref_font_size_xlarge "Ɓurnde Mawnude">
 <!ENTITY pref_use_master_password "Huutoro finnde baabaare">
 <!ENTITY pref_sync "Sanngoɗin">
+<!ENTITY pref_import_android "Jiggo iwde e Android">
+<!ENTITY pref_private_data_history "Peeragol &amp; aslol gaawte">
+<!ENTITY pref_private_data_formdata "Formere &amp; aslol njiilaw">
+<!ENTITY pref_private_data_cookies "Kukiije">
+<!ENTITY pref_private_data_cache "Kaasol">
+<!ENTITY pref_private_data_sessions "Ceŋanɗe caasɗe">
+<!ENTITY pref_private_data_offlineApps "Keɓe lowe ceŋtol">
+<!ENTITY pref_private_data_siteSettings "Cuɓoraaɗe lowre">
+<!ENTITY pref_search_suggestions "Show search suggestions">
 
 <!ENTITY quit "Yaltu">
 
@@ -86,12 +105,29 @@
 <!ENTITY share "Simmin">
 <!ENTITY share_title "Simmin fayde">
 <!ENTITY save_as_pdf "Danndu e PDF">
+<!ENTITY find_in_page "Yiylo e Hello">
+<!ENTITY desktop_mode "Ɗaɓɓit Lowre Biro">
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+
+<!ENTITY find_text "Yiytu e Hello">
+<!ENTITY find_prev "Ɓennuɗo">
+<!ENTITY find_next "Payɗo">
+<!ENTITY find_close "Uddu">
 
 <!ENTITY contextmenu_open_new_tab "Uddit e Tabbere Hesere">
+<!ENTITY contextmenu_remove_history "Momtu">
 <!ENTITY contextmenu_remove_bookmark "Momtu">
 <!ENTITY contextmenu_add_to_launcher "Ɓeydu to Hello Jaɓɓorgo">
 <!ENTITY contextmenu_share "Simmin">
+<!ENTITY contextmenu_pasteandgo "Ɗakku &amp; Yah">
+<!ENTITY contextmenu_paste "Ɗakku">
+<!ENTITY contextmenu_copyurl "Natto Ñiiɓirde">
 <!ENTITY contextmenu_edit_bookmark "Taƴto">
+<!-- Localization note (history_removed) : Shown in a toast notificaion
+	 after a page is removed from browser history. -->
+
+<!ENTITY history_removed "Hello momtaama">
 
 <!ENTITY bookmark_edit_title "Taƴto Maantorol">
 <!ENTITY bookmark_edit_name "Innde">
@@ -103,6 +139,11 @@
 <!ENTITY site_settings_clear        "Momtu">
 <!ENTITY site_settings_no_settings  "Teelte ngalaa saka momtee.">
 
+<!ENTITY add_to_reading_list "Ɓeydu e Doggol Taro">
+<!ENTITY reading_list_added "Hello ɓeydaama e Doggol Taro maa">
+<!ENTITY reading_list_removed "Hello momtaama e Doggol Taro maa">
+<!ENTITY reader_mode "Mbayka Taro">
+
 <!ENTITY masterpassword_create_title "Sos Finnde Baabaare">
 <!ENTITY masterpassword_remove_title "Momtu Finnde Baabaare">
 <!ENTITY masterpassword_password "Finnde">
@@ -110,13 +151,14 @@
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Haaytu">
+<!ENTITY button_clear_data "Momtu keɓe">
 
 <!ENTITY abouthome_addons_title "Ɓeyditte &brandShortName; maa">
 <!ENTITY abouthome_addons_browse "Yiylo ɓeyditte &brandShortName; fof">
 <!ENTITY abouthome_last_tabs_title "Tabbe maa laawol ɓennungol">
 <!ENTITY abouthome_last_tabs_open "Uddit tabbe cakkitiiɗe fof">
 <!ENTITY abouthome_top_sites_title "Lowe dowrowe">
-<!ENTITY abouthome_top_sites_browse "Feeroe lowe dowrowe maa fof">
+<!ENTITY abouthome_top_sites_browse "Feero e lowe dowrowe maa fof">
 <!ENTITY abouthome_no_top_sites "A alaa lowe dowrowe tawo. Tappu e palal tiitooɗe ngal ngam fuɗɗaade peeragol.">
 <!ENTITY abouthome_about_sync "Teelto Firefox Sync ngam naatde e maantore, aslol e tabbe ummoraade e kaɓirɗi goɗɗei">
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
@@ -125,3 +167,30 @@
 <!ENTITY filepicker_audio_title "Labo walla nanngito ojoo">
 <!ENTITY filepicker_image_title "Labo walla ɓam natal">
 <!ENTITY filepicker_video_title "Labo walla fiil widewoo">
+<!-- Site identity popup -->
+
+<!ENTITY identity_connected_to "Ceŋi-ɗaa ko e">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "yuɓɓini ɗum ko">
+
+<!ENTITY bookmarkhistory_button_import "Jiggo">
+<!ENTITY bookmarkhistory_import_both "Nana jiggoo maantore e aslol 
+iwde e Androis">
+<!ENTITY bookmarkhistory_import_bookmarks "Nana jiggoo maantore 
+iwde e Android">
+<!ENTITY bookmarkhistory_import_history "Nana jiggoo aslol 
+iwde e Android">
+<!ENTITY bookmarkhistory_import_wait "Tiiɗno sabbo...">
+
+<!ENTITY private_data_success "Keɓe curaaɗe momtaama">
+<!ENTITY private_data_fail "Won e keɓe cuuriiɗe ɗe keɓaani momteede">

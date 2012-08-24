@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,153 +12,151 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>&brandShortName; Browser Preferences Help</title>
+<title>&brandShortName; Böngésző beállításai Súgó</title>
 <link rel="stylesheet" href="helpFileLayout.css"
   type="text/css"/>
 </head>
 <body>
 
-<h1 id="navigator_preferences">Browser Preferences</h1>
+<h1 id="navigator_preferences">A Böngésző beállításai</h1>
 
-<p>This section describes how to use the Browser preference panel. If
-  you&apos;re not already viewing the panel, follow these steps:</p>
+<p>Ez a fejezet a Böngésző beállításainak megadására szolgáló párbeszédpanelt ismerteti. A párbeszédpanel a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Choose Browser.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Böngésző kiválasztása.</li>
 </ol>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#navigator">Browser</a></li>
-    <li><a href="#history">History</a></li>
-    <li><a href="#languages">Languages</a></li>
-    <li><a href="#helper_applications">Helper Applications</a></li>
+    <li><a href="#navigator">Böngésző</a></li>
+    <li><a href="#history">Előzmények</a></li>
+    <li><a href="#languages">Nyelvek</a></li>
+    <li><a href="#helper_applications">Segédalkalmazások</a></li>
     <li><a href="#location_bar">Location Bar</a></li>
-    <li><a href="#internet_search">Internet Search</a></li>
+    <li><a href="#smart_browsing">Intelligens böngészés</a></li>
+    <li><a href="#internet_search">Internetes keresés</a></li>
     <li><a href="#tabbed_browsing">Tabbed Browsing</a></li>
-    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#tabbed_browsing">Böngészőlapok</a></li>
+    <li><a href="#downloads">Letöltések</a></li>
   </ul>
 </div>
 
-<h2 id="navigator">Browser Preferences - Browser</h2>
+<h2 id="navigator">Böngésző beállításai – Böngésző</h2>
 
-<p>This section describes how to use the main browser preferences panel. If
-  you&apos;re not already viewing it, follow these steps:</p>
+<p>Ez a témakör a Böngésző párbeszédpanel beállításait ismerteti. A párbeszédpanel a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Click the Browser category.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Kattintsunk a Böngésző kategóriára.</li>
 </ol>
 
-<p>The Browser preferences panel allows you to customize certain aspects of
+<p>The Navigator preferences panel allows you to customize certain aspects of
   the browser.</p>
 
 <ul>
-  <li><strong>Display on</strong>: Use the drop-down list in combination with
+  <li><strong>Megjelenítés</strong>: Use the drop-down list in combination with
     the checkboxes to control what will be displayed at startup or when you
     open a new window or tab:
     <ol>
       <li>
         <ul>
-          <li>Select <strong>Browser Startup</strong> to set what the browser
+          <li>Select <strong>Navigator Startup</strong> to set what Navigator
             will display at startup.</li>
           <li>Select <strong>New Window</strong> to set what will be displayed
-            when opening a new browser window.</li>
+            when opening a new Navigator window.</li>
           <li>Select <strong>New Tab</strong> to set what will be displayed
             when opening a new tab.</li>
         </ul>
       </li>
-      <li>Select one of the following checkboxes:
+      <li>Ezen a párbeszédpanelen a böngésző három jellemzője állítható be:
         <ul>
-          <li><strong>Blank page</strong>: Causes the browser to display a blank
-            page.</li>
-          <li><strong>Home page</strong>: Causes the browser to load your home
-            page (specified below).</li>
-          <li><strong>Last page visited</strong>: Causes the browser to load the
-            page you were viewing right before you last exited
-            &brandShortName;.</li>
+          <li><strong>Üres oldal</strong>: indításkor nem tölt be automatikusan weboldalt.</li>
+          <li><strong>Kezdőlap</strong>: indításkor az alább megadott saját kezdőlap jelenik meg.</li>
+          <li><strong>Az utoljára látogatott oldal</strong>: indításkor a &brandShortName; a program előző bezárásakor megjelenített oldalt nyitja meg
+            .</li>
+          <li><strong>Restore Previous Session</strong>: Causes the browser to
+            restore the windows and tabs you were viewing right before you last
+            exited &brandShortName;, including form data and browsing
+            history. This option is only available in connection with
+            <strong>Display on Browser Startup</strong>.</li>
         </ul>
       </li>
     </ol>
   </li>
-  <li class="win"><strong>Default Browser</strong>: Allows you to set
-    &brandShortName; as the default browser or shows you that it is.
+  <li class="win"><strong>Alapértelmezett böngésző</strong>: itt beállítható a &brandShortName; alapértelmezett böngészőként, illetve ha már az, akkor az itt megjelenik.
     <ul>
-      <li><strong>Set Default Browser</strong>: Unless it is greyed out, click
-        this to set &brandShortName; as your default browser.</li>
+      <li><strong>Beállítás alapértelmezett böngészőként</strong>: ha a gomb nem szürke (inaktív), erre kattintva a &brandShortName; alapértelmezett böngészőként állítható be.</li>
     </ul>
   </li>
-  <li><strong>Home Page</strong>: In the field, type the web page you want as
-    your home page or do one of the following:
+  <li><strong>When restoring sessions and windows</strong>: Choose how many
+    (if any) browser tabs should be restored at a time upon startup.
     <ul>
-      <li><strong>Use Current Page</strong>: Click this to use the web page
-        currently displayed in the browser as your home page.</li>
-      <li><strong>Use Current Group</strong>: If you have two or more browser
-        tabs open, click this to set them as your Home Page Group (a group of
-        tabs that are opened as your home page). After clicking this button,
-        the message <q>Home Page Group is Set</q> appears in the location
-        field.
+      <li><strong>Restore all tabs immediately</strong>: All the tabs you had
+        open the last time will be restored and loaded at once. This can affect
+        startup performance negatively if a large amount of tabs needs to be
+        restored in parallel.</li>
+      <li><strong>Restore [__] tab(s) at a time</strong>: If you choose this,
+        only the specified amount of tabs will be restored at a time. If you
+        had more tabs open than specified here, any extra tabs will only be
+        loaded once the loading of one of the other tabs has finished.</li>
+      <li><strong>Only restore tabs when I need them</strong>: This disables
+        automatic restoring of tabs, i.e. tabs will only be loaded if you
+        switch to or reload them.</li>
+    </ul>
+  </li>
+  <li><strong>Kezdőlap</strong>: Írjuk be a mezőbe a kezdőlapnak szánt weboldal címét, vagy válasszunk a következő lehetőségek közül:
+    <ul>
+      <li><strong>Aktuális oldal használata</strong>: ha ezt választjuk, a böngészőben jelenleg megjelenített oldal lesz a kezdőlap.</li>
+      <li><strong>Aktuális csoport használata</strong>: ha egynél több böngészőlap van nyitva, ezzel a gombbal beállíthatjuk ezeket kezdőlapcsoportként (ez a lapcsoport nyílik meg kezdőlapként). A gomb megnyomása után a <q>Kezdőlapcsoport van beállítva</q> üzenet jelenik meg a hely mezőben.
         
-        <p><strong>Caution</strong>: If you edit the field after clicking Use
-          Current Group, your Home Page Group will be lost.</p>
+        <p><strong>Vigyázat</strong>: ha az Aktuális csoport használata gomb megnyomása után szerkesztjük a mezőt, a kezdőlapcsoport elveszik.</p>
       
       </li>
-      <li><strong>Restore Default</strong>: Click this to revert to the
+      <li><strong>Alaphelyzet</strong>: Click this to revert to the
         the default home page.</li>
-      <li><strong>Choose File</strong>: Click this to locate a file on disk
-        that you want to load as your home page.</li>
+      <li><strong>Tallózás</strong>: a gomb segítségével megkereshetjük a kezdőlapként beállítani kívánt oldalt a merevlemezen.</li>
     </ul>
   </li>
-  <li><strong>Select the buttons you want to see in the toolbars</strong>:
-    Select any of the available checkboxes to see them on your
-    toolbars.
-
-    <p>The Go, Search, and Print buttons appear in the Navigation Toolbar near
-      the upper-right corner of the browser window. All other buttons appear
-      in the Personal Toolbar. For information about adding your own bookmarks
-      to this toolbar, see
-      <a href="customize_help.xhtml#personal_toolbar">Personal
-      Toolbar</a>.</p>
+  <li><strong>Válassza ki azokat a gombokat, amelyeket az eszköztáron szeretne látni</strong>:
+    a megfelelő négyzetek bejelölésével megadhatjuk a kívánt gombokat.
+    
+    <p>Az Ugrás, a Keresés és a Nyomtatás gomb a Böngésző eszköztár jobb felső sarkában, az összes többi a Személyes eszköztáron jelenik meg. Saját könyvjelzők felvételéről lásd: 
+      <a href="customize_help.xhtml#personal_toolbar">Személyes eszköztár</a>.</p>
 
   </li>
 </ul>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="history">Browser Preferences - History</h2>
+<h2 id="history">Böngésző beállításai – Előzmények</h2>
 
-<p>This section describes how to use the History preferences panel. If
-  you&apos;re not already viewing it, follow these steps:</p>
+<p>Ez a témakör az Előzmények panellapot ismerteti. A párbeszédpanel a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span>menu and choose Preferences.</li>
-  <li>Under the Browser category, click History. (If no subcategories are
-    visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span>menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk az Előzmények elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
-<p>The History preferences panel allows you to configure three history settings
-  for the browser.</p>
+<p>Ezen a párbeszédpanelen a böngésző három, előzményekkel kapcsolatos jellemzője állítható be.</p>
 
 <ul>
-  <li><strong>Browsing History</strong>:
+  <li><strong>A böngészés előzményei</strong>:
     <ul>
-      <li><strong>Remember visited pages for the last [__] days</strong>: Type
+      <li><strong>Az előzmények [__] napig őrződnek meg</strong>: Type
         the number of days you want &brandShortName; to keep track of the web
         pages you have previously visited. For example, if you set this number
         to 10 days, pages 10 days old or less will be kept in the history
         list.</li>
     </ul>
   </li>
-  <li><strong>Clear History</strong>: Click this to delete the list of sites
-    visited.</li>
-  <li><strong>Location Bar History</strong>:
+  <li><strong>Előzmények törlése</strong>: a gombra kattintva a meglátogatott helyek listája törölhető.</li>
+  <li><strong>A címmező előzményei</strong>:
     <ul>
-      <li><strong>Clear Location Bar</strong>: Click this to clear the list of
-        sites in the Location bar menu.</li>
+      <li><strong>Előzmények törlése</strong>: a gombra kattintva a Címmező előzménylistája törölhető.</li>
     </ul>
   </li>
 </ul>
@@ -162,18 +164,17 @@
 <p>For more information about history in &brandShortName;, see
   <a href="nav_help.xhtml#retracing_your_steps">Retracing Your Steps</a>.</p>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="languages">Browser Preferences - Languages</h2>
+<h2 id="languages">Böngésző beállításai – Nyelvek</h2>
 
-<p>This section describes how to use the Languages preferences panel. If
+<p>Ez a témakör a Nyelvek panellap beállításait ismerteti. If
   you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Languages. (If no subcategories are
-    visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk a Nyelvek elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
 <p>The Languages preferences panel allows you to choose the languages and
@@ -181,25 +182,25 @@
   is spell checked:</p>
 
 <ul>
-  <li><strong>Languages for Web Pages</strong>:
+  <li><strong>A weboldalak nyelve</strong>:
     <ul>
-      <li><strong>Move Up / Move Down</strong>: Click one of these buttons to
+      <li><strong>Mozgatás fel/le</strong>: Click one of these buttons to
         move a selected language up or down, which sets the order of preference
         for the listed languages.</li>
-      <li><strong>Add</strong>: Click this to add additional languages for
+      <li><strong>Hozzáadás</strong>: Click this to add additional languages for
         displaying web pages.</li>
-      <li><strong>Remove</strong>: Click this to remove a selected
+      <li><strong>Eltávolítás</strong>: Click this to remove a selected
         language.</li>
     </ul>
   </li>
-  <li><strong>Character Encoding</strong>:
+  <li><strong>Karakterkódolás</strong>:
     <ul>
-      <li><strong>Default Character Encoding</strong>: Use the drop-down list
+      <li><strong>Alapértelmezett karakterkódolás</strong>: Use the drop-down list
         to select the character encoding you want for displaying web
         pages.</li>
     </ul>
   </li>
-  <li><strong>Spelling</strong>:
+  <li><strong>Helyesírás-ellenőrző</strong>:
     <ul>
       <li><strong>When typing check my spelling</strong>: Use the drop-down
         list to select if and how your typing is spell checked.</li>
@@ -207,163 +208,167 @@
   </li>
 </ul>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="helper_applications">Browser Preferences - Helper Applications</h2>
+<h2 id="helper_applications">Böngésző beállításai – Segédalkalmazások</h2>
 
-<p>This section describes how to use the Helper Applications preferences panel.
+<p>Ez a témakör a Segédalkalmazások panellap beállításait ismerteti.
   If you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Helper Applications. (If no
-    subcategories are visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk a Segédalkalmazások elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
-<p>The Helper Applications preferences panel lets you choose applications and
-  other handlers to handle different types of content (e.g. PDF documents).
-  It shows you a list of content types and lets you select a handler for each
-  type. To filter the list, use the search field. Text entered in there will
-  narrow the list to entries containing that text either in the type description
-  or the currently selected action.</p>
-<p>You can choose a local application to handle any type. For some types, you
-  can also choose a web application to handle the type, choose
-  <!-- a feature (like <a href="glossary.xhtml#live_bookmark">Live Bookmarks</a> for
-  feeds) or --> a <a href="glossary.xhtml#plugin">plugin</a> in &brandShortName; to
-  handle the type, or save the type on your computer.</p>
-<p>To choose a handler for a type, select the type from the list. The current
-  handler for the type will turn into a menu. Open the menu and select the
-  handler you want to handle the type. Depending on the actual type, you can:</p>
+<p>The Helper Applications preferences panel allows you to control how
+  different file types are opened by other applications in
+  &brandShortName;:</p>
 
 <ul>
-  <li>Choose an application by selecting it from the menu. If you want a local
-    application that is not in the menu to handle the type, select
-    <strong>Use other…</strong> from the menu and navigate to its location.</li>
-  <li>Choose a <!-- feature or --> plugin by selecting it from the menu.</li>
-  <li>Save files of this type on your computer by selecting
-    <strong>Save File</strong> from the menu. If you have selected the
-    <strong>Automatically download files to specified download folder</strong>
-    preference in the <strong>Downloads</strong> panel, &brandShortName; will
-    save content of this type on your computer automatically. Otherwise, when
-    you encounter this type, &brandShortName; will prompt you for a location on
-    your computer to save it to.</li>
-  <li>Tell &brandShortName; to <strong>always ask</strong> what to do when
-    encountering this type. When you choose this option, a dialog will always be
-    shown when files of this type are accessed, and you can choose how to handle
-    that specific file from there.</li>
+  <li><strong>Specify how to handle files of each type</strong>:
+    <ul>
+      <li><strong>Fájltípusok</strong>: Displays the file types that
+        &brandShortName; uses. Select one of them to show the following
+        information:
+        <ul>
+          <li><strong>Leírás</strong>: Displays a description of the
+            selected file type.</li>
+          <li><strong>Kiterjesztés</strong>: Displays the file extension(s) of
+            the selected file type.</li>
+          <li><strong>When encountered</strong>: Displays what kind of action
+            that will be taken when &brandShortName; encounters the selected
+            file type.</li>
+        </ul>
+      </li>
+      <li><strong>Új típus</strong>: Click this to add a new file type. You see
+        a dialog box:
+        <ul>
+          <li><strong>MIME-típus</strong>: Type the Mime type of the file type
+            you want to add.</li>
+          <li><strong>Leírás</strong>: Type a Descrition of the file
+            type you want to add.</li>
+          <li><strong>Kiterjesztés</strong>: Type the file extension of the file
+            type you want to add.</li>
+          <li><strong>When a file of this type is encountered</strong>:
+            Select one option from the checkboxes:
+            <ul>
+              <li><strong>Alapértelmezett rendszerbeállítás használatata</strong>:
+                Causes the the file to be opened by the default program in
+                your systems settings.</li>
+              <li><strong>Megnyitás ezzel</strong>: Causes the file to be
+                opened by a program you specify. Use the Choose File button
+                to locate the program on your disk</li>
+              <li><strong>Mentés lemezre</strong>: The file will be saved
+                to disk.</li>
+            </ul>
+          </li>
+          <li><strong>Kérdezzen, mielőtt megnyitna ilyen típusú fájlokat</strong>: Select this to make the Download Dialog box always
+            appear when files of this type are encountered.</li>
+        </ul>
+      </li>
+      <li><strong>Szerkesztés</strong>: a gombra kattintva a fájlkezelési adatok módosíthatók.</li>
+      <li><strong>Eltávolítás</strong>: Click this to remove a selected file
+        type.</li>
+    </ul>
+  </li>
+  <li><strong>Plug-in Finder Service</strong>:
+    <ul>
+      <li><strong>Always use the Netscape Plug-in Finder Service (PFS) to get
+        plug-ins</strong>: Select this to always use the Plugin Finder Service
+        (PFS) whenever &brandShortName; needs a new plug-in. Ha üresen hagyjuk, a szolgáltatást csak akkor használja, ha a bővítményt igénylő weboldal nem adja meg a bővítmény helyét.</li>
+    </ul>
+  </li>
 </ul>
 
-<p><strong>Note:</strong> When a plugin is available to handle a type, and you
-  choose another handler for that type, &brandShortName; will only use your
-  chosen handler when you access the type directly. When the type is embedded
-  inside a web page, &brandShortName; will continue to use the plugin to handle
-  it. See also
-  <a href="nav_help.xhtml#plugins_and_downloads">Plugins and Downloads</a>.
+<p>To learn more about how to handle different file types with
+  &brandShortName;, see
+  <a href="nav_help.xhtml#plugins_and_downloads">Plug-ins and Downloads</a>.
 </p>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="location_bar">Browser Preferences - Location Bar</h2>
+<h2 id="smart_browsing">Böngésző beállításai – Intelligens böngészés</h2>
 
-<p>This section describes how to use the Location Bar preferences panel. If
+<p>Ez a témakör az Intelligens böngésző panellap beállításait ismerteti. If
   you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Location Bar. (If no subcategories
-    are visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Under the Navigator category, click Smart Browsing. (If no subcategories
+    are visible, double-click Navigator to expand the list.)</li>
 </ol>
 
-<p>The Location Bar Preferences panel lets you fine-tune the behavior of the
-  Location Bar.</p>
+<p>The Smart Browsing preferences panel allows you to better browse web pages
+  using Internet Keywords, Location Bar Autocomplete and Domain Guessing.</p>
 
 <ul>
-  <li id="location_bar_autocomplete"><strong>Autocomplete</strong>:
+  <li><strong>Internetes kulcsszavak</strong>:
     <ul>
-      <li><strong>Autocomplete from your browsing history as you type</strong>:
-        Select this to let &brandShortName; automatically show suggestions from
-        your browsing history when you type in the Location Bar.
+      <li><strong>Internetes kulcsszavak engedélyezése</strong>: Select this to enable fast
+        access to services such as stock quotes, search, and other information
+        from the Location bar.</li>
+      <li><strong>More Information</strong>: Click this to learn more about
+        using Internet Keywords.</li>
+    </ul>
+  </li>
+  <li id="location_bar_autocomplete"><strong>Automatikus címkiegészítés</strong>:
+    <ul>
+      <li><strong>Automatically complete text typed into Location bar</strong>:
+        Select this to automatically complete text you previously entered into
+        the Location bar.</li>
+      <li><strong>Haladó</strong>: a gombra kattintva megadhatjuk a következő beállításokat is:
         <ul>
-          <li><strong>Match only website&apos;s you&apos;ve typed
-            previously</strong>: Shows only websites that you&apos;ve typed in
-            the Location Bar and not sites that were opened in other ways, such
-            as clicking a link on a web page.</li>
-          <li><strong>Automatically prefill the best match</strong>: As you
+          <li><strong>Atomatikus kiegészítés beírás közben</strong>: As you
             type in the Location Bar, &brandShortName; will automatically
             complete your web address using the visited website it most closely
-            matches. <span class="unix"><strong>Note</strong>: Having this
-            option on will prefill local addresses (like paths to files on your
-            hard drive) even if you have turned off <q>Autocomplete from your
-            browsing history as you type</q>.</span></li>
-          <li><strong>Show list of matching results</strong>: As you type in
+            matches.</li>
+          <li><strong>Lehetséges címek megjelenítése</strong>: As you type in
             the Location Bar, &brandShortName; will show a drop-down list of
-            matching visited web addresses.
-            <span class="unix"><strong>Note</strong>: If you have turned off
-            <q>Autocomplete from your browsing history as you type</q>
-            matching results from locations on your hard drive will still be
-            shown in the drop-down list.</span></li>
-        </ul></li>
+            matching visited web addresses.</li>
+          <li><strong>Internetes keresőszolgáltatás megjelenítése</strong>: Shows a drop-down
+            list item allowing you to search the default search engine for
+            words you enter.</li>
+          <li><strong>Csak a már korábban beírt webhelyekre illeszkedik</strong>:
+            Shows only websites that you&apos;ve typed in the Location Bar and
+            not sites that were opened in other ways, such as clicking a link
+            on a web page.</li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li><strong>Internet Search Engine</strong>:
-    <ul>
-      <li><strong>Show default search engine</strong>: Shows a drop-down list item,
-        allowing you to search with the default search engine for words you
-        enter.</li>
-    </ul>
-  </li>
-  <li><strong>Unknown Locations</strong>
-    <ul>
-      <li><strong>Add <q>www.</q> and <q>.com</q> to the location if a web page
-        is not found</strong>: Select this if you want &brandShortName; to
-        automatically add <tt>www.</tt> to the beginning and <tt>.com</tt> to
-        the end of a web page location that can&apos;t be found. For more
-        detailed information about this feature, see the online document
-        <a href="http://www.mozilla.org/docs/end-user/domain-guessing.html">
-        Domain Guessing</a>.</li>
-      <li><strong>Perform a web search when entered text is not a web
-        location</strong>: Select this to let &brandShortName; automatically
-        search the web for text entered in the Location Bar. If the text
-        you&apos;ve typed is not a web location, &brandShortName; will do a web
-        search when you press <kbd class="noMac">Enter</kbd>
-        <kbd class="mac">Return</kbd> in the Location Bar. See the online
-        document
-        <a href="http://www.mozilla.org/docs/end-user/internet-keywords.html">
-        Internet Keywords</a> for a more technical description about this
-        feature. <strong>Note</strong>: The search engine used can not be
-        changed by the <a href="#internet_search">Internet Search
-        Preferences</a>.</li>
-    </ul>
-  </li>
+  <li><strong>Domain Guessing</strong>: Select this if you want
+    &brandShortName; to automatically add <tt>www.</tt> and <tt>.com</tt> to a
+    web page location that can&apos;t be found. For more detailed information
+    about the Domain Guessing feature, see the online document
+    <a href="http://www.mozilla.org/docs/end-user/domain-guessing.html">Domain
+    Guessing</a>.</li>
 </ul>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="internet_search">Browser Preferences - Internet Search</h2>
+<h2 id="internet_search">Böngésző beállításai – Internetes keresés</h2>
 
-<p>This section describes how to use the Internet Search preferences panel. If
+<p>Ez a témakör az Internetes keresés panellap beállításait ismerteti. If
   you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Internet Search. (If no subcategories
-    are visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk az Internetes keresés elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
 <p>The Internet Search preferences panel allows you to configure how you search
   using &brandShortName;:</p>
 
 <ul>
-  <li><strong>Default Search Engine</strong>:
+  <li><strong>Alapértelmezett keresőszolgáltatás</strong>:
     <ul>
-      <li><strong>Search using</strong>: Use the drop-down list to select the
-        search engine you want use for web searching.</li>
+      <li><strong>Keresés ezzel</strong>: a lenyitható listán jelöljük ki a kereséshez használni kívánt szolgáltatást.</li>
     </ul>
   </li>
-  <li><strong>Search Results</strong>:
+  <li><strong>Találatok</strong>:
     <ul>
       <li><strong>Open the Search tab in the Sidebar when search results are
         available</strong>: Select this to have &brandShortName; open the
@@ -374,60 +379,65 @@
         selected words in a web page.</li>
     </ul>
   </li>
-  <li><strong>Sidebar Search Tab Preference</strong>:
+  <li><strong>Az Oldalsáv Keresés panellapjának tulajdonságai</strong>:
     <ul>
-      <li><strong>Basic</strong>: Choose this to use one search engine when
+      <li><strong>Egyszerű</strong>: Choose this to use one search engine when
         searching in &brandShortName;.</li>
-      <li><strong>Advanced</strong>: <strong></strong>Choose this to select one
+      <li><strong>Haladó</strong>: <strong></strong>Choose this to select one
         or more search engines from a list when searching in
         &brandShortName;.</li>
     </ul>
   </li>
 </ul>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="tabbed_browsing">Browser Preferences - Tabbed Browsing</h2>
+<h2 id="tabbed_browsing">Böngésző beállításai – Böngészőlapok</h2>
 
-<p>This section describes how to use the Tabbed Browsing preferences panel. If
+<p>Ez a témakör a Böngészőlapok panellap beállításait ismerteti. If
   you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Tabbed Browsing. (If no subcategories
-    are visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk a Böngészőlapok elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
-<p>The Tabbed Browsing preferences panel allows you to set up Tabbed
-  Browsing:</p>
+<p>Ezen a panellapon a Böngészőlapok beállításai adhatók meg:</p>
 
 <ul>
-  <li><strong>Tab Display</strong>:
+  <li><strong>Fülek megjelenítése</strong>:
     <ul>
-      <li><strong>Hide the tab bar when only one tab is open</strong>: Select
+      <li><strong>A fül elrejtése, ha csak egy ablak látható</strong>: Select
         this to display the Tabbed Browsing bar only when more then one
-        browser tab is open.</li>
-      <li><strong>Switch to new tabs opened from links</strong>: Select this to
+        Navigator tab is open.</li>
+      <li><strong>Új lap aktiválása a hivatkozás megnyitásakor</strong>: Select this to
         make &brandShortName; switch to the new tab when using <q>Open in a
         New Tab</q> to open a link.</li>
+      <li><strong>Warn me when closing a window with multiple tabs</strong>:
+        Select this to make &brandShortName; warn you when you try to close a
+        browser window which has multiple tabs open in it.</li>
+      <li><strong>Open related tabs after current tab</strong>:
+        Select this to make new tabs open next to the tab from which they have
+        been opened. When unchecked, new tabs open after the last tab on the
+        tab bar.</li>
     </ul>
   </li>
-  <li><strong>When opening a bookmark group</strong>:
+  <li><strong>Könyvjelzőcsoport megnyitásakor</strong>:
     <ul>
-      <li><strong>Add tabs</strong>: Select this if you want a bookmark group
+      <li><strong>Új lapok hozzáadása</strong>: Select this if you want a bookmark group
         to be opened in new tabs.</li>
-      <li><strong>Replace existing tabs</strong>: Select this if you want a
+      <li><strong>Meglévő lapok lecserélése</strong>: Select this if you want a
         bookmark group to replace your existing tabs.</li>
     </ul>
   </li>
-  <li><strong>Open tabs instead of windows for</strong>:
+  <li><strong>Megnyitás új ablak helyett, ha a felhasználó</strong>:
     <ul>
       <li><strong><span class="mac"><kbd>Cmd</kbd>+click or
         <kbd>Cmd</kbd>+<kbd>Return</kbd></span>
-        <span class="noMac">Middle-click, <kbd>Ctrl</kbd>+click or
-        <kbd>Ctrl</kbd>+<kbd>Enter</kbd> on links in a Web
-        page</span></strong>: Select this to open Web page links in a new tab
+        <span class="noMac">középső gombbal, <kbd>Ctrl</kbd>+kattintás vagy
+        <kbd>Ctrl</kbd>+<kbd>Enter</kbd> a weboldal hivatkozásain
+        </span></strong>: Select this to open Web page links in a new tab
         when clicking a link <span class="mac">and holding down the
         <kbd>Command</kbd> key or holding down the <kbd>Command</kbd> key and
         pressing <kbd>Return</kbd> on links</span> <span class="noMac">with the
@@ -440,43 +450,42 @@
 
       <li><strong>
         <kbd class="mac">Cmd</kbd><kbd class="noMac">Ctrl</kbd>+<kbd
-        class="mac">Return</kbd><kbd class="noMac">Enter</kbd> in the Location
-        bar</strong>: Select this to open a Web page in a new tab when you type
+        class="mac">Return</kbd><kbd class="noMac">Enter</kbd> a címmezőben</strong>: Select this to open a Web page in a new tab when you type
         the URL of the page in the Location Bar and press
         <kbd class="mac">Cmd</kbd><kbd class="noMac">Ctrl</kbd>+<kbd
         class="mac">Return</kbd><kbd class="noMac">Enter</kbd>.</li>
     </ul>
   </li>
-  <li><strong>Link open behavior</strong>: If a webpage is designed so that
+  <li><strong>Hivatkozás megnyitása</strong>: If a webpage is designed so that
     certain links open in a new window by default (either through the target
     attribute in HTML or through embedded JavaScript), you may want to
     override this:
     <ul>
-      <li><strong>The current tab/window</strong>: Open the linked page in the
+      <li><strong>Az aktuális lapon/ablakban</strong>: Open the linked page in the
         current tab of the active window.</li>
-      <li><strong>A new tab in the current window</strong>: Open the linked
+      <li><strong>Új lapon az aktuális ablakban</strong>: Open the linked
         page in a new tab instead of a new window.</li>
-      <li><strong>A new window</strong>: Open the linked page in a new window.
+      <li><strong>Új ablakban</strong>: Open the linked page in a new window.
         (This is the default and does not override the webpage design).</li>
     </ul>
   </li>
-  <li><strong>Links from other applications</strong>: If &brandShortName; is
+  <li><strong>Más alkalmazásokból megnyitott hivatkozások</strong>: If &brandShortName; is
     called from another application with a webpage address as an argument (like
     a click on a link in an external email program), you can control where the
     page will be loaded:
     <ul>
-      <li><strong>The current tab/window</strong>: Open the linked page in the
+      <li><strong>Az aktuális lapon/ablakban</strong>: Open the linked page in the
         current tab of the active window.</li>
-      <li><strong>A new tab in the current window</strong>: Open the linked
+      <li><strong>Új lapon az aktuális ablakban</strong>: Open the linked
         page in a new tab instead of a new window.</li>
-      <li><strong>A new window</strong>: Open the linked page in a new window.
+      <li><strong>Új ablakban</strong>: Open the linked page in a new window.
         (This is the default).</li>
     </ul>
   </li>
 </ul>
 
 <div class="win">
-  <p>To ensure that &brandShortName; opens a new window, select the Browser
+  <p>To ensure that &brandShortName; opens a new window, select the Navigator
     option in <a href= "cs_nav_prefs_appearance.xhtml#appearance">Appearance
     Preferences - Appearance</a>.</p>
 
@@ -494,35 +503,30 @@
   </ul>
 </div>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="downloads">Browser Preferences - Downloads</h2>
+<h2 id="downloads">Böngésző beállításai – Letöltések</h2>
 
-<p>This section describes how to use the Downloads preferences panel. If
+<p>Ez a témakör a Letöltések panellap beállításait ismerteti. If
   you&apos;re not already viewing it, follow these steps:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Browser category, click Downloads. (If no subcategories are
-    visible, double-click Browser to expand the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Böngésző kategóriában kattintsunk a Letöltések elemre. (Ha nem láthatóak a kategória beállításai, a lista kibontásához kattintsunk duplán a Böngésző kategóriára.)</li>
 </ol>
 
 <p>The Downloads preferences panel allows you to set up how &brandShortName;
   handles files you download from web pages:</p>
 
 <ul>
-  <li><strong>When starting a download</strong>:
+  <li><strong>A letöltés kezdetekor</strong>:
     <ul>
-      <li><strong>Open the download manager</strong>: Select this to display
-        the Download Manager, which displays the status for current and
-        previous downloads. The status of all downloads is kept in a single
-        window.</li>
-      <li><strong>Open a progress dialog</strong>: Select this to display a
+      <li><strong>Letöltéskezelő megnyitása</strong>: választásakor megnyílik a Letöltéskezelő, amely az aktuális és a korábbi letöltések állapotát jeleníti meg. Az összes letöltés egyetlen ablakban kezelhető.</li>
+      <li><strong>Folyamatkijelző ablak megnyitása</strong>: Select this to display a
         progress dialog box, which display the status for your current
-        download. The status of each download is kept in a separate
-        window.</li>
-      <li><strong>Don&apos;t open anything</strong>: Select this if you want to
+        download. Az egyes letöltésekhez külön párbeszédpanel tartozik.</li>
+      <li><strong>Ne nyisson meg semmit</strong>: Select this if you want to
         download files invisibly. No status is given for all your
         downloads.</li>
     </ul>
@@ -530,21 +534,20 @@
 </ul>
 
 <ul>
-  <li><strong>When saving a file</strong>:
+  <li><strong>Fájl mentésekor</strong>:
     <ul>
-      <li><strong>Prompt for download location and default to</strong>: Select
+      <li><strong>Letöltési hely megkérdezése és alapértelmezett hely</strong>: Select
         this if you always want to be able to choose a folder for the file to
         be saved. Choose one of the following folders to be the default
         location for the file:
         <ul>
-          <li><strong>Last download folder</strong>: The default location will
+          <li><strong>Utoljára használt mappa</strong>: The default location will
             be the folder you last downloaded a file to.</li>
-          <li><strong>Specified download folder</strong>: The default location
+          <li><strong>Megadott letöltési mappa</strong>: The default location
             will be your Current Download Folder.</li>
         </ul>
       </li>
-      <li><strong>Automatically download files to specified download
-        folder</strong>: Select this if you want files to be saved to your
+      <li><strong>Fájlok automatikus letöltése a megadott letöltési mappába</strong>: Select this if you want files to be saved to your
         Current Download Folder without &brandShortName; prompting you for
         the download location.</li>
     </ul>
@@ -552,19 +555,19 @@
 </ul>
     
 <ul>
-  <li><strong>Current Download Folder</strong>: Use the button to navigate
+  <li><strong>Aktuális letöltési mappa</strong>: Use the button to navigate
     to a folder that you want to use as your specified download folder.</li>
 </ul>
     
 <ul>
-  <li><strong>When a download completes</strong>:
+  <li><strong>Letöltés befejezésekor</strong>:
     <ul>
-      <li><strong>Play a sound</strong>: Select this if you want
+      <li><strong>Hangjelzés</strong>: Select this if you want
         &brandShortName; to play a custom sound (typically in WAV format) when
         a download is completed. Use the Browse button to select the sound file
         in the file locator. To listen to the sound you&apos;ve chosen, click
         Preview.</li>
-      <li><strong>Show an alert</strong>: Select this if you want
+      <li><strong>Figyelmeztető ablak</strong>: Select this if you want
         &brandShortName; to show an alert on the screen when a download is
         completed.</li>
     </ul>
@@ -572,11 +575,10 @@
 </ul>
 
 <p>For more information about downloading files from web pages, see
-  <a href= "nav_help.xhtml#plugins_and_downloads">Plugins and
+  <a href= "nav_help.xhtml#plugins_and_downloads">Plug-ins and
   Downloads</a>.</p>
 
-<p>[<a href="#navigator_preferences">Return to beginning of section</a>]</p>
-
+<p>[<a href="#navigator_preferences">Vissza a fejezet elejére</a>]</p>
 
 </body>
 </html>

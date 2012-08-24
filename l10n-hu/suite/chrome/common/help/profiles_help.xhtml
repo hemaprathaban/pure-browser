@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" [
@@ -8,216 +12,142 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Managing Profiles</title>
+<title>Profilok kezelése</title>
 <link rel="stylesheet" href="helpFileLayout.css"
   type="text/css"/>
 </head>
 <body>
 
-<h1 id="managing_profiles">Managing Profiles</h1>
+<h1 id="managing_profiles">Profilok kezelése</h1>
 
-<p>If you use the Internet at home and at work, you may want to have access to
-  a different set of bookmarks, preferences, address books, email accounts,
-  Sidebar setup, and so on. Similarly, family members may want to share a copy
-  of the same browser software but keep their Internet identities separate.</p>
+<p>Ha az internetet otthon és a munkahelyen is használjuk, bizonyára különböző könyvjelzőkre, beállításokra, címjegyzékekre, postafiókra, Oldalsáv-beállításokra stb. lesz szükségünk. Ugyanez a helyzet a családtagok között is: bár mindenki ugyanazt a böngészőt használja, de az interneten különböző felhasználónak számítanak.</p>
 
-<p>The Profile Manager lets you create different profiles, each with its own
-  bookmarks, preferences, email settings, and so on. You automatically create a
-  default profile when you first install your browser software. After you
-  create one or more additional profiles, you will be asked which you want to
-  use each time you launch the browser.</p>
+<p>A Profilkezelő segítségével saját könyvjelzőkkel, beállításokkal, levelezési adatokkal stb. rendelkező profilokat hozhatunk létre. A böngésző első telepítésekor automatikusan létrehozunk egy alapértelmezett profilt. További profilok létrehozása után a böngésző indításakor meg kell adnunk, hogy melyik profilt szeretnénk használni.</p>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
  <ul>
-    <li><a href="#creating_a_new_profile">Creating a New Profile</a></li>
-    <li><a href="#deleting_or_renaming_a_profile">Deleting or Renaming a
-      Profile</a></li>
-    <li><a href="#roaming_profiles">Roaming Profiles</a></li>
-    <li><a href="#roaming_prefs">Roaming User Preferences</a></li>
-    <li><a href="#roaming_item_selection">Roaming User Preferences - Item
-      selection</a></li>
+    <li><a href="#creating_a_new_profile">Új profil létrehozása</a></li>
+    <li><a href="#deleting_or_renaming_a_profile">Profil törlése vagy átnevezése</a></li>
+    <li><a href="#roaming_profiles">Vándorló profilok</a></li>
+    <li><a href="#roaming_prefs">Vándorló profilok beállításai</a></li>
+    <li><a href="#roaming_item_selection">Vándorló profilok tulajdonságai - Elemek kiválasztása</a></li>
   </ul>
 </div>
 
-<h2 id="creating_a_new_profile">Creating a New Profile</h2>
+<h2 id="creating_a_new_profile">Új profil létrehozása</h2>
 
-<p>To create a profile:</p>
+<p>Új profil létrehozása:</p>
 
 <ol>
-  <li>Open the Profile Manager:
+  <li>Nyissuk meg a Profilkezelőt:
     <ul>
-      <li><strong>If &brandShortName; is running</strong>: Open the Tools menu
-        and select Switch Profile.</li>
-      <li><strong>If &brandShortName; is closed</strong>:<span class="win">
-        Open the Start menu and choose Programs, then &brandShortName;, then
-        Profile Manager.</span><span class="mac"> Hold down the
-        <kbd>Option</kbd> key while you&apos;re starting &brandShortName; from
-        the Finder or the Dock.</span><span class="unix"> Type the following at
-        the command line: <kbd>./mozilla -profilemanager</kbd></span></li>
+      <li><strong>Amennyiben a &brandShortName; jelnleg fut</strong>: Nyissuk meg az Eszközök menüt és válasszuk ki a Profilváltás... menüelemet.</li>
+      <li><strong>Ha a &brandShortName; nincsen elindítva</strong>:<span class="win"> Nyissuk meg a Start menüt és a Programok menüelemet, majd a &brandShortName; almenüből válasszuk ki a Profilkezelő programot.</span><span class="mac"> Tartsuk lenyomva az
+        <kbd>Option</kbd> billentyűt miközben elindítjuk a &brandShortName; programot a Finder ablakból vagy a Dock indítósávról.</span><span class="unix"> Írjuk be a következő parancsot a terminálba: <kbd>./mozilla -profilemanager</kbd></span></li>
     </ul>
   </li>
-  <li>Click Create Profile, read the Profile description, and then click
-    Next.</li>
-  <li>Enter a profile name. This can be anything you like, such as your real
-    name or a name that&apos;s related to what you use the profile for, such as
-    <q>School</q>.</li>
-  <li>Accept the default location for the new profile, or click the Choose
-    Folder button and navigate to the location you want.</li>
-  <li>If you have additional Language Packs installed, click
-    Select Language and choose the language you want.</li>
-  <li>Click Finish.</li>
+  <li>Kattintsunk a Profil létrehozása gombra, olvassuk el a leírást, majd kattintsunk a Tovább gombra.</li>
+  <li>Írjuk be a profil nevét. Ez tetszőleges lehet, akár a valódi név, akár a profil felhasználási területe, például <q>Otthon</q>.</li>
+  <li>Fogadjuk el az új profil alapértelmezett helyét, vagy a Mappa választása gombra kattintva adjuk meg a kívánt helyet.</li>
+  <li>Ha telepítettük a Nyelvi és tartalomcsomagokat, kattintsunk a Terület választása gombra, és jelöljük ki a kívánt Nyelv/terület beállítást.</li>
+  <li>Kattintsunk a Befejezés gombra.</li>
 </ol>
 
-<p>[<a href="#managing_profiles">Return to beginning of section</a>]</p>
+<p>[<a href="#managing_profiles">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="deleting_or_renaming_a_profile">Deleting or Renaming a Profile</h2>
+<h2 id="deleting_or_renaming_a_profile">Profil törlése vagy átnevezése</h2>
 
-<p>You may want to delete profiles that you don&apos;t normally use. To delete
-  or rename an existing profile:</p>
+<p>A felesleges profilokat törölhetjük. Meglévő profil törlése vagy átnevezése:</p>
 
 <ol>
-  <li>Open the Profile Manager:
+  <li>Nyissuk meg a Profilkezelőt:
     <ul>
-      <li><strong>If &brandShortName; is running</strong>: Open the Tools menu
-        and select Switch Profile. <strong>Note</strong>: You can&apos;t delete
-        the profile that is in use.</li>
-      <li><strong>If &brandShortName; is closed</strong>:
-        <span class="win"> Open the Start menu and choose Programs, then
-        &brandShortName;, then Profile Manager.</span><span class="mac"> Hold
-        down the <kbd>Option</kbd> key while you&apos;re starting
-        &brandShortName; from the Finder or the Dock.</span><span class="unix">
-        Type the following at the command line:
-        <kbd>./mozilla -profilemanager</kbd></span></li>
+      <li><strong>Amennyiben a &brandShortName; jelnleg fut</strong>: Nyissuk meg az Eszközök menüt és válasszuk ki a Profilváltás menüelemet. <strong>Megjegyzés</strong>: Az éppen használatban lévő profilt nem lehet letörölni.</li>
+      <li><strong>Ha a &brandShortName; nincsen elindítva</strong>:
+        <span class="win"> Nyissuk meg a Start menüt és a Programok menüelemet, majd a &brandShortName; almenüből válasszuk ki a Profilkezelő programot.</span><span class="mac"> Tartsuk lenyomva az<kbd>Option</kbd> billentyűt miközben elindítjuk a &brandShortName; programot a Finder ablakból vagy a Dock indítósávról.</span><span class="unix"> Írjuk be a következő parancsot a terminálba: <kbd>./mozilla -profilemanager</kbd></span></li>
     </ul>
   </li>
-  <li>To delete a profile, select its name and click Delete Profile. In the
-    confirmation box, choose one of the following options:
+  <li>Profil törléséhez jelöljük ki nevét, és kattintsunk a Profil törlése gombra. A jóváhagyó ablakban az alábbi lehetőségek közül válaszhatunk:
     <ul>
-      <li><strong>Delete files</strong>: Deletes the whole profile folder
-        with its stored data (bookmarks, preferences, email
-        accounts, and so on). <em>Make sure that you won&apos;t need anything
-        from the profile in the future before you choose this option.</em></li>
-      <li><strong>Don&apos;t delete files</strong>: Removes the profile from
-        the list of available profiles, but keeps the profile folder. By
-        choosing this option none of your profile&apos;s stored data will be
-        deleted.</li>
+      <li><strong>Fájlok törlése</strong>: Letörli a teljes profilmappát és a benne tárolt adatokat (könyvjelzők, beállítások, postafiókok beállításai, és így tovább). <em>Bizonyosodjunk meg arról, hogy semmire sincs szükségünk a profilból mielőtt ezt a lehetőséget választjuk.</em></li>
+      <li><strong>Fájlok megtarása</strong>: Eltávolítja a profilt a az elérhető profilok listájáról, de megtarja a profilmappát. Ezt a lehetőséget választva semmilyen adat nem kerül eltávolításra a profilból.</li>
     </ul>
   </li>
-  <li>To rename a profile, select its name, click Rename Profile, and follow the
-    instructions.</li>
+  <li>Profil törléséhez jelöljük ki nevét, kattintsunk a Profil átnevezése gombra, és kövessük az utasításokat.</li>
 </ol>
 
-<p>[<a href="#managing_profiles">Return to beginning of section</a>]</p>
+<p>[<a href="#managing_profiles">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="roaming_profiles">Roaming Profiles</h2>
+<h2 id="roaming_profiles">Vándorló felhasználó</h2>
 
-<p>Roaming profiles allow you to store your profile and associated settings on
-  a central server or file share. The advantage of this is that your settings
-  can follow you from one machine to another. For example, you may wish to use
-  &brandShortName; both at work and at home keeping your bookmarks, address
-  book, and other settings in sync, or a company may want to allow its
-  employees to use their &brandShortName; profile on any computer.</p>
+<p>Vándorló felhasználó opció bekapcsolásával lehetőség van a felhasználói profil és a hozzá társított beállítások központi kiszolgálón vagy fájlmegosztáson történő tárolására. Ennek a beállításnak az előnye, hogy azonos beállítások lesznek elérhetőek minden gépen. Például: Ha használni kívánjuk a &brandShortName; programot mind a munkahelyi, mind az otthoni gépén úgy, hogy a könyvjelzők és egyéb beállítások szonkronban legyenek vagy egy vállalat esetén is hasznos, ahol a dolgozók használhatják a saját &brandShortName; profiljukat valamennyi számítógépen.</p>
 
-<p>Roaming profiles can be stored on a HTTP or FTP server. You will need a
-  user name and password on that server, so that you can have write access
-  to the appropriate directory for storing and retrieving your profile.
-  Alternatively, for computers that use a common file share, you can store
-  the profile in a local directory using the Copy method.</p>
+<p>A vándorló felhasználó profilja tárolható HTTP és FTP kiszolgálókon. A kiszolgáló eléréséhez megfelelő jogosultságokra, felhasználónévre és jelszóra van szükség, azaz írási jogosultság elengedhetetlenül fontos a megfelelő mappák eléréséhez, hogy a profil mentése és betöltése biztosítható legyen. Alternatívaként, a hagyományos fájlmegosztást használó számítógépek esetén, a profil tárolható a helyi gépen a fájlmásolási eljárás használatával.</p>
 
-<p>Whenever you start &brandShortName;, your profile is downloaded and whenever
-  you shutdown &brandShortName;, your profile is uploaded.</p>
+<p>Amikor elindítjuk a &brandShortName; programot, a profilunk letöltésre kerül, a program bezárása előtt a &brandShortName; a profilt feltölti a megadott helyre.</p>
 
-<p>[<a href="#managing_profiles">Return to beginning of section</a>]</p>
+<p>[<a href="#managing_profiles">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="roaming_prefs">Roaming User Preferences</h2>
+<h2 id="roaming_prefs">Vándorló felhasználó beállítások</h2>
 
-<p>This section describes how to use the main Roaming User preferences panel.
-  If you&apos;re not already viewing it, follow these steps:</p>
+<p>Ez a fejezet bemutatja, hogy hogyan állítsuk be a Vándorló felhasználó párbeszédablak beállításait. A panellap a következő lépésekkel jeleníthető meg:</p>
 
 <ol>
-  <li>Open the
-    <span class="mac">&brandShortName;</span> <span class="noMac">Edit</span>
-    menu and choose Preferences.</li>
-  <li>Click on the Roaming User category.</li>
-  <li>Select <strong>Enable remote profile storage</strong> to activate roaming
-    for the current profile.</li>
-  <li>Select one of the following:
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Válasszuk ki a Vándorló felhasználó kategóriát.</li>
+  <li>Jelöljük be a <strong>Távoli profiltárolás engedélyezése</strong> jelőlőnégyzetet a vándorló felhasználó profilhasználathoz.</li>
+  <li>Hajtsuk végre a megfelelő lépést:
     <ul>
-      <li><strong>HTTP / FTP</strong>: Choose this if you wish to have the
-        profile information copied to a FTP or HTTP server.
+      <li><strong>HTTP / FTP</strong>: Válasszuk ezt a lehetőséget, ha a profil FTP vagy HTTP kiszolgálóra kerül elhelyezésre.
         <ul>
-          <li><strong>Base URL</strong>: Type the URL of the directory where
-            the roaming profile will be stored. This can be an FTP, HTTP or
-            HTTPS URL. FTP is probably easiest to set up on a home network.
-            In other cases, especially when transmitting over the Internet,
-            it is strongly recommended to use HTTPS, because otherwise, all
-            your saved passwords and bookmarks (depending on your Item 
-            Selection) might be read by other people on the same network.
+          <li><strong>Alap URL</strong>: Adjuk meg a vándorló felhasználó profilmappájának URL címét ebbe a mezőbe. Az alábbi URL címek támogatottak: FTP, HTTP vagy
+            HTTPS. Az FTP hozzáférés a legegyszerűbben beállítható az otthoni hálózatban.
+            Egyéb esetekben, különösen, ha az adatok az Interneten keresztül kerülnek átvitelre, erősen ajánlott a biztonságos HTTPS eljárás alkalmazása, mert ellenkező esetben, minden mentett jelszó és könyvjelző (attól függően, hogy melyik elemeket jelöltünk ki szinkronizálásra) olvasható lesz az azonos hálózaton tartozkodó esetleg kémkedő fél számára.
 
-            <p><strong>Examples</strong>:<br/>
-              <kbd>&lt;https://user@http-server/dir/&gt;</kbd><br/>
-              <kbd>&lt;ftp://user@ftp-server//home/user/dir/&gt;</kbd><br/> 
-              <kbd>&lt;ftp://user@ftp-server/dir/&gt;</kbd></p>
+            <p><strong>Például</strong>:<br/>
+              <kbd>&lt;https://felhasznalo@http-kiszolgalo/mappa/&gt;</kbd><br/>
+              <kbd>&lt;ftp://felhasznalo@ftp-kiszolgalo//home/felhasznalo/mappa/&gt;</kbd><br/> 
+              <kbd>&lt;ftp://felhasznalo@ftp-kiszolgalo/mappa/&gt;</kbd></p>
 
           </li>
-          <li><strong>Username</strong>: Type the user name that will be
-            used to access the FTP or HTTP server.</li>
-          <li><strong>Save password</strong>: Enable this option to save the
-            password for the user name that you have supplied.</li>
-          <li><strong>Password</strong>: Type the password for the user name
-            that you supplied.</li>
+          <li><strong>Felhasználónév</strong>: Adjuk meg a felhasználónevet, amelyet az FTP vagy HTTP kiszolgáló eléréséhez használ.</li>
+          <li><strong>Jelszó mentése</strong>: Engedélyezzük ezt a lehetőséget, ha azt szeretnénk, hogy a megadott jelszó mentésre kerüljön.</li>
+          <li><strong>Jelszó</strong>: Adjuk meg a felhasználónévhez tartozó jelszót.</li>
         </ul>
       </li>
-      <li><strong>File Copy</strong>: Choose this if you wish to have the
-        profile information copied to a local directory.
+      <li><strong>Fájlmásolás</strong>: Válasszuk ki ezt a lehetőséget, ha azt szeretnénk, hogy profil a helyi mappában kerüljön tárolásra.
         <ul>
-          <li>Click <strong>Browse</strong> and select the directory where you
-            wish the profile information to be copied to and retrieved
-            from.</li>
+          <li>Kattintsunk a <strong>Tallozás</strong> gombra, majd tallózzuk ki azt a mappát amelybe a profil adatait tárolni szeretnénk.</li>
         </ul>
       </li>
     </ul>
   </li>
 </ol>
 
-<p>[<a href="#managing_profiles">Return to beginning of section</a>]</p>
+<p>[<a href="#managing_profiles">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="roaming_item_selection">Roaming User Preferences - Item selection</h2>
+<h2 id="roaming_item_selection">Vándorló profilok tulajdonságai - Elemek kijelölése</h2>
 
-<p>By default, only bookmarks, cookies, and the personal addressbook are stored
-  on the roaming server. If all items are greyed out, make sure to have Roaming
-  enabled.To enable or disable roaming of other profile informations, follow
-  these steps:</p>
+<p>Alapértelmezés szerint, csak a könyvjelzők a sütik és a személyes címjegyzék kerül a Vándorló felhasználók megosztott profiljába. Ha egyetlen elemet sem lehet kijelölni, bizonyosodjunk meg róla, hogy a vándorló felhasználó Távoli profiltárolása engedélyezésre került. Egyéb információk vándorló felhasználó profiljába történő elhelyezéséhez hajtsuk végre a következő lépéseket:</p>
 
 <ol>
-  <li>Open the
-    <span class="mac">&brandShortName;</span> <span class="noMac">Edit</span>
-    menu and choose Preferences.</li>
-  <li>Under the Roaming User category, click Item Selection. (If no
-    subcategories are visible, double-click Roaming User to expand the
-    list.)</li>
-  <li>Select the items that you wish to be included in the roaming profile
-    synchronization.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>A Vándorló felhasználó ketegória alatt kattintsunk az Elemek kijelölése elemre. (Amennyiben nem jelenik meg az Elemek kijelölése alkategória, kattintsunk duplán a Vándorló felhasználó elemre a lista kibontásához.)</li>
+  <li>Válasszuk ki a szinkronizálni kívánt elemeket, amelyek bele fognak kerülni a vándorló felhasználó profiljába.</li>
 </ol>
 
-<p>You cannot roam your local email, partly because that would take too long.
-  Use IMAP for this purpose.</p>
+<p>A helyben tárolt levelek nem rakható bele a vándorló felhasználó profiljába, mert a szinkronizálás túl sok időt venne igénybe. Használjunk inkább IMAP levélkezelést ilyen célra.</p>
 
-<p><strong>Note</strong>: If you are using a slow connection, be aware that 
-  some files can be quite large, so this will impact your startup time.
-  &brandShortName; will have to download locally all of the files you
-  selected from the list before being fully functional, and save them back
-  to the remote server when you exit &brandShortName;.</p>
+<p><strong>Megjegyzés</strong>: Amennyiben a lassú kapcsolatot használunk, legyünk tekintettel arra, hogy néhány fájl mérete igen nagy is lehet, amelynek komoly kihatása lehet a program indulási idejére is. A &brandShortName; letölti a helyi gépre az összes vándorló felhasználó profiljában tárolt adatot a program indulása előtt és a teljes profil információ feltöltésre kerül a kiszolgálóra, amikor kilépünk a &brandShortName; programból.</p>
 
-<p>For further information about setting up Roaming Access on a server, see
-  the online document
-  <a href="http://www.klomp.org/mod_roaming/">mod_roaming - Roaming Access
-  module for Apache</a> or
-  <a href="http://web.archive.org/web/20020207131101/http://help.netscape.com/products/client/communicator/manual_roaming2.html">Manually
-  Implementing Roaming Access</a>.</p>
+<p>A Vándorló felhasználók szerveroldali beállításaival kapcsolatos további információkat a következő on-line dokumentumokban találunk: <a href="http://www.klomp.org/mod_roaming/">mod_roaming - Vándorló felhasználók hozzáférése modul Apache webkiszolgálón (mod_roaming - Roaming Access
+  module for Apache)</a>,
+  <a href="http://web.archive.org/web/20020207131101/http://help.netscape.com/products/client/communicator/manual_roaming2.html">A vándorló felhasználó hozzáférés kézi megvalósítása (Manually
+  Implementing Roaming Access)</a>.</p>
 
-<p>[<a href="#managing_profiles">Return to beginning of section</a>]</p>
-
+<p>[<a href="#managing_profiles">Vissza a fejezet elejére</a>]</p>
 
 </body>
 </html>

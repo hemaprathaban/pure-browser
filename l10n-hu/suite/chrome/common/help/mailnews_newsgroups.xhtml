@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,192 +12,142 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Getting Started With Newsgroups</title>
+<title>Hírcsoportok kezelése</title>
 <link rel="stylesheet" href="helpFileLayout.css" type="text/css"/>
 <link rel="stylesheet" href="chrome://communicator/skin/smileys.css"
       type="text/css"/>
 </head>
 <body>
-<h1 id="getting_started_with_newsgroups">Getting Started With Newsgroups</h1>
+<h1 id="getting_started_with_newsgroups">Hírcsoportok kezelése</h1>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#subscribing_to_newsgroups">Subscribing to Newsgroups</a></li>
-    <li><a href="#reading_newsgroup_messages">Reading Newsgroup
-      Messages</a></li>
-    <li><a href="#posting_newsgroup_messages">Posting Newsgroup
-      Messages</a></li>
-    <li><a href="#contributing_to_ongoing_discussions">Contributing to Ongoing
-      Discussions</a></li>
-    <li><a href="#monitoring_threads">Monitoring Threads</a></li>
-    <li><a href="#removing_a_newsgroup">Removing a Newsgroup</a></li>
-    <li><a href="#adding_a_newsgroup_server">Adding a Newsgroup Server</a></li>
+    <li><a href="#subscribing_to_newsgroups">Feliratkozás hírcsoportra</a></li>
+    <li><a href="#reading_newsgroup_messages">Hírcsoportüzenetek olvasása</a></li>
+    <li><a href="#posting_newsgroup_messages">Hírcsoportüzenetek elküldése</a></li>
+    <li><a href="#contributing_to_ongoing_discussions">Hozzászólás folyamatban lévő eszmecseréhez</a></li>
+    <li><a href="#monitoring_threads">Témacsoportok figyelése</a></li>
+    <li><a href="#removing_a_newsgroup">Hírcsoport eltávolítása</a></li>
+    <li><a href="#adding_a_newsgroup_server">Hírcsoport-kiszolgáló felvétele</a></li>
   </ul>
 </div>
 
-<h2 id="subscribing_to_newsgroups">Subscribing to Newsgroups</h2>
+<h2 id="subscribing_to_newsgroups">Feliratkozás hírcsoportra</h2>
 
-<p>If you have set up an <a href="#adding_a_newsgroup_server">account</a> on a
-  newsgroup server, you can join (subscribe) to newsgroups (also called
-  discussion groups).</p>
+<p>Ha készítettünk magunknak <a href="#adding_a_newsgroup_server">postafiókot</a> egy hírcsoport-kiszolgáló eléréséhez, akkor csatlakozhatunk a hírcsoportokhoz (feliratkozhatunk ezekre).</p>
 
-<p>To subscribe to a newsgroup, begin from the Mail window:</p>
+<p>A feliratkozáshoz induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Open the File menu and choose Subscribe. You see the Subscribe dialog
-    box.</li>
-  <li>If necessary, click the Account drop-down list to choose another
-    newsgroup account.</li>
-  <li>Select a newsgroup. To select more than one newsgroup,
-    <kbd class="mac">Cmd</kbd><kbd class="noMac">Ctrl</kbd>-click additional
-    newsgroup.</li>
-  <li>Click Subscribe or click in the Subscribe column next to the newsgroup.
-    You see a checkmark next to each newsgroup to which you subscribe. Click
-    Unsubscribe to cancel a selection.</li>
-  <li>Click OK. The list of your subscribed newsgroups appears in the Mail
-    window.</li>
+  <li>Válasszuk a Fájl menü Feliratkozás parancsát. A Feliratkozás párbeszédpanel jelenik meg.</li>
+  <li>Ha szükséges, a Postafiók lenyitható listán válasszunk másik hírcsoportfiókot.</li>
+  <li>Jelöljük ki a hírcsoportot. Egynél több hírcsoport kijelöléséhez használjuk a <kbd class="mac">Cmd</kbd><kbd class="noMac">Ctrl</kbd>-kattintás kombinációt minden egyes további hírcsoporthoz.</li>
+  <li>Kattintsunk a Feliratkozás gombra vagy a hírcsoport mellett a Feliratkozás oszlopba.
+    Minden olyan hírcsoport mellett, amelyre feliratkoztunk, pipa jelenik meg. A jelentkezés törléséhez kattintsunk a Leiratkozás gombra.</li>
+  <li>Kattintsunk az OK gombra. Az kiválasztott hírcsoportok listája megjelenik a Levelező ablakban.</li>
 </ol>
 
-<p>If you are an IMAP mail user, you can also subscribe to message folders
-  located on an IMAP server. (Your Inbox is a type of message folder.) Follow
-  the instructions above for subscribing, but select an IMAP account from the
-  Account drop-down list. For more information on sharing folders and
-  subscribing to folders, see
-  <a href="mailnews_organizing.xhtml#sharing_folders_with_other_users">Sharing
-  Folders With Other Users (IMAP Only)</a>.</p>
+<p>Ha IMAP levelezőkiszolgálóval rendelkezünk, az ezen található üzenetmappákra is feliratkozhatunk. (A Beérkezett üzenetek is egyfajta üzenetmappa.) Kövessük a feliratkozás fenti utasításait, de a postafiókot jelöljük ki a Postafiók lenyitható listán. További tudnivalók a mappák megosztásáról és a mappákra történő feliratkozásról:<a href="#sharing_folders_with_other_users">Mappák megosztása más felhasználókkal (csak IMAP)</a>.</p>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="reading_newsgroup_messages">Reading Newsgroup Messages</h2>
+<h2 id="reading_newsgroup_messages">Hírcsoportüzenetek olvasása</h2>
 
-<p>When you open your newsgroup server, you see the list of newsgroups to which
-  you subscribe. The server downloads the <em>headers</em> of new messages in
-  each newsgroup.</p>
+<p>Amikor megnyitjuk a hírcsoport-kiszolgálót, azon hírcsoportok listája jelenik meg, amelyekre feliratkoztunk. A kiszolgáló az egyes hírcsoportok új üzeneteinek <em>fejléceit</em> tölti le.</p>
 
-<p>To read newsgroup messages, begin from the Mail window:</p>
+<p>A hírcsoportüzenetek olvasásához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Double-click a newsgroup server icon to see its newsgroups. (If there are
-    no newsgroups, you may need to subscribe to one.)</li>
-  <li>Click a newsgroup name to see its messages.</li>
-  <li>Click a message to read it. Click the thread button to display all the
-    responses below the original message. You can click any header to display
-    its message. You can <a href="#posting_newsgroup_messages">start a new
-    thread</a> or <a href="#contributing_to_ongoing_discussions">post a
-    message</a> in response.</li>
+  <li>Hírcsoportjainak megjelenítéséhez kattintsunk duplán egy hírcsoportkiszolgáló ikonjára. (Ha nem jelennek meg hírcsoportok, fel kell iratkoznunk valamelyikre.)</li>
+  <li>Üzeneteinek megjelenítéséhez kattintsunk egy hírcsoportra.</li>
+  <li>Elolvasásához kattintsunk egy üzenetre. Az eredeti üzenet alatt az összes válasz megjelenítéséhez kattintsunk a Témacsoport gombra. Fejlécére kattintva bármelyik üzenetet elolvashatjuk. Ekkor <a href="#posting_newsgroup_messages">új témacsoportot indíthatunk</a>, vagy <a href="#contributing_to_ongoing_discussions">válaszüzenetet küldhetünk</a>.</li>
 </ol>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="posting_newsgroup_messages">Posting Newsgroup Messages</h2>
+<h2 id="posting_newsgroup_messages">Hírcsoportüzenetek elküldése</h2>
 
-<p>To start new threads (discussions):</p>
+<p>Új témacsoport indítása:</p>
 
 <ol>
-  <li>From the list of your subscribed newsgroups in the Mail window, select a
-    newsgroup.</li>
-  <li>Click Compose.</li>
-  <li><a href="mailnews_using_mail.xhtml#composing_mail_and_newsgroup_messages">Compose</a>
-    your message, and click Send to post it.</li>
-  <li>Click Get Msgs to see your posting on the newsgroup.</li>
+  <li>A Levelező ablakban az előfizetett hírcsoportok listáján jelöljünk ki egy hírcsoportot.</li>
+  <li>Kattintsunk az Új üzenet gombra.</li>
+  <li><a href="#composing_mail_and_newsgroup_messages">Állítsuk össze</a> az üzenetet, majd kattintsunk a Küldés gombra.</li>
+  <li>A Letöltés gombra kattintva megtekinthetjük az elküldött üzenetet a hírcsoportban.</li>
 </ol>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="contributing_to_ongoing_discussions">Contributing to Ongoing
-  Discussions</h2>
+<h2 id="contributing_to_ongoing_discussions">Hozzászólás folyamatban lévő eszmecseréhez</h2>
 
-<p>To post a response to the newsgroup:</p>
+<p>Válaszüzenet elküldése hírcsoportba:</p>
 
 <ol>
-  <li>In the message list, select a message to reply to.</li>
-  <li>Click Reply.</li>
-  <li><a href="mailnews_using_mail.xhtml#composing_mail_and_newsgroup_messages">Compose</a>
-    your message, and click Send to post it.</li>
+  <li>Az üzenetlistán jelöljük ki a megválaszolni kívánt üzenetet:</li>
+  <li>Kattintsunk a Válasz gombra.</li>
+  <li><a href="#composing_mail_and_newsgroup_messages">Állítsuk össze</a> az üzenetet, majd kattintsunk a Küldés gombra.</li>
 </ol>
 
-<p>To reply to an individual as well as post a response to the group:</p>
+<p>Válasz adott személynek és az üzenet elküldése a csoportba is:</p>
 
 <ol>
-  <li>In the message list, select a message to reply to.</li>
-  <li>Click Reply All.</li>
-  <li>Compose your message, and click Send to post it.</li>
+  <li>Az üzenetlistán jelöljük ki a megválaszolni kívánt üzenetet:</li>
+  <li>Kattintsunk a Válasz mindenkinek gombra.</li>
+  <li>Állítsuk össze az üzenetet, majd kattintsunk a Küldés gombra.</li>
 </ol>
 
-<p>To redirect a posting to another newsgroup:</p>
+<p>Üzenet átirányítása másik hírcsoportba:</p>
 
 <ul>
-  <li>Click Reply and choose <q>Followup-To</q> from the <q>Newsgroup</q>
-    drop-down list. Subsequent responses will be posted to the newsgroup you
-    enter.</li>
+  <li>Kattintsunk a <q>Válasz</q> gombra, és a címzett típusát meghatározó lenyitható listán válasszuk a <q>Hírcsop. vál.</q> elemet. Az ezt követő válaszok az itt megadott hírcsoportba kerülnek.</li>
 </ul>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="monitoring_threads">Monitoring Threads</h2>
+<h2 id="monitoring_threads">Témacsoportok figyelése</h2>
 
-<p>To monitor unread messages in threads that are of interest to you:</p>
+<p>Adott témacsoportban a nem olvasott, de érdeklődésünkre számot tartó üzenetek figyelése:</p>
 
 <ol>
-  <li>Select a message in a thread.</li>
-  <li>Open the Message menu, and choose Watch Thread.</li>
-  <li>If you want to monitor additional threads, repeat steps 1 and 2 for
-    messages in additional threads.</li>
-  <li>When you&apos;re ready to monitor messages in these threads, open the
-    View menu, choose Messages, and then choose Watched Threads with Unread.
-    &brandShortName; Mail &amp; Newsgroups only displays the watched threads
-    that contain unread messages.</li>
-  <li>Open the View menu, choose Messages, and then choose All to return to
-    viewing all messages in the newsgroup.</li>
+  <li>Jelöljünk ki egy üzenetet a kívánt témacsoportban.</li>
+  <li>Válasszuk az Üzenet menü Témacsoport figyelése parancsát.</li>
+  <li>Ha további témacsoportokat is figyelni szeretnénk, ismételjük meg a fenti lépéseket más témacsoportok üzeneteire.</li>
+  <li>Ha készen állunk ezeknek a témacsoportoknak a figyelésére, válasszuk a Nézet menüből az Üzenetek, majd a Figyelt témacsoport olvasatlan üzenettel parancsot. A &brandShortName; Levelező és hírolvasó csak az olvasatlan üzenetet tartalmazó figyelt témacsoportokat jeleníti meg.</li>
+  <li>A hírcsoport összes üzenetének megtekintéséhez válasszuk a Nézet menüből az Üzenetek, majd a Mind parancsot.</li>
 </ol>
 
-<p>To ignore a message thread:</p>
+<p>Témacsoport figyelmen kívül hagyása:</p>
 
 <ol>
-  <li>Select a message in the thread.</li>
-  <li>Open the Message menu, and choose Ignore Thread. &brandShortName; Mail
-    &amp; Newsgroups marks all messages in the thread as read, and new replies
-    posted to the thread will appear as read.</li>
-  <li>To view ignored threads, open the View menu, choose Messages, and then
-    choose Ignored Threads.</li>
+  <li>Jelöljünk ki egy üzenetet a kívánt témacsoportban.</li>
+  <li>Válasszuk az Üzenet menü Figyelmen kívül hagyott témacsoport parancsát. A &brandShortName; Levelező és hírolvasó a témacsoport összes üzenetét olvasottnak jelöli, és a témacsoportba küldött új válaszok vörös színnel jelennek meg.</li>
+  <li>A figyelmen hagyott témacsoportok megtekintéséhez válasszuk a Nézet menüből az Üzenetek, majd a Figyelmen kívül hagyott témacsoportok parancsot.</li>
 </ol>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="removing_a_newsgroup">Removing a Newsgroup</h2>
+<h2 id="removing_a_newsgroup">Hírcsoport eltávolítása</h2>
 
-<p>To remove a newsgroup from your list:</p>
-
-<ul>
-  <li>Select the newsgroup icon and press Delete.</li>
-</ul>
-
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
-
-<h2 id="adding_a_newsgroup_server">Adding a Newsgroup Server</h2>
-
-<p>If the newsgroup you want to subscribe to is on a different server, you must
-  first set up access to that server.</p>
-
-<p>To set up an additional newsgroup server, open the File menu in the Mail
-  window and choose New, then Account.</p>
+<p>Hírcsoport eltávolítása a listáról:</p>
 
 <ul>
-  <li>Using the Account Wizard, indicate that the new account you want to set
-    up is a newsgroup account.</li>
+  <li>Jelöljük ki a hírcsoport ikonját, és kattintsunk a Törlés gombra.</li>
 </ul>
 
-<p>Once you&apos;ve set up access to the new server, you can
-  <a href="#subscribing_to_newsgroups">subscribe</a> to newsgroups on that
-  server. In the Mail window, open the File menu, and choose Subscribe.</p>
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 
-<p>[<a href="#getting_started_with_newsgroups">Return to beginning of
-  section</a>]</p>
+<h2 id="adding_a_newsgroup_server">Hírcsoport-kiszolgáló felvétele</h2>
+
+<p>Ha az elérni kívánt hírcsoport másik kiszolgálón van, akkor előbb a kiszolgáló elérését kell beállítani.</p>
+
+<p>További hírcsoport-kiszolgáló beállításához válasszuk a Levelező ablakban a Fájl menüből az Új, majd a Postafiók parancsot.</p>
+
+<ul>
+  <li>A Postafiók varázslóban adjuk meg, hogy a beállítani kívánt új postafiók hírcsoportfiók.</li>
+</ul>
+
+<p>Ha beállítottuk az új kiszolgálót, <a href="#subscribing_to_newsgroups">feliratkozhatunk</a> az ezen található hírcsoportokra: ehhez a Levelező ablakban válasszuk a Fájl menü Feliratkozás parancsát.</p>
+
+<p>[ <a href="#getting_started_with_newsgroups">Vissza a fejezet elejére</a> ]</p>
 </body>
 </html>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,332 +12,240 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Organizing Your Messages and Controlling Junk</title>
+<title>Üzenetek rendszerezése és a levélszemét kezelése</title>
 <link rel="stylesheet" href="helpFileLayout.css" type="text/css"/>
 <link rel="stylesheet" href="chrome://communicator/skin/smileys.css"
       type="text/css"/>
 </head>
 <body>
-<h1 id="organizing_your_messages">Organizing Your Messages</h1>
+<h1 id="organizing_your_messages">Üzenetek rendszerezése</h1>
 
 <div class="contentsBox">
   <ul>
-    <li><a href="#creating_a_folder">Creating a Folder</a></li>
-    <li><a href="#renaming_a_folder">Renaming a Folder</a></li>
-    <li><a href="#moving_or_copying_a_folder">Moving or Copying a
-      Folder</a></li>
-    <li><a href="#filing_messages_in_folders">Filing Messages in
-      Folders</a></li>
-    <li><a href="#sharing_folders_with_other_users">Sharing Folders With Other
-      Users (IMAP Only)</a></li>
-    <li><a href="#tagging_messages">Tagging Messages</a></li>
-    <li><a href="#marking_or_flagging_messages">Marking or Flagging
-      Messages</a></li>
-    <li><a href="#using_message_views">Using Message Views</a></li>
-    <li><a href="#creating_message_filters">Creating Message Filters</a></li>
-    <li><a href="#searching_through_messages">Searching Through
-      Messages</a></li>
+    <li><a href="#creating_a_folder">Mappa létrehozása</a></li>
+    <li><a href="#renaming_a_folder">Mappa átnevezése</a></li>
+    <li><a href="#moving_or_copying_a_folder">Mappa áthelyezése vagy másolása</a></li>
+    <li><a href="#filing_messages_in_folders">Üzenetek mappákba rendezése</a></li>
+    <li><a href="#sharing_folders_with_other_users">Mappák megosztása más felhasználókkal (csak IMAP)</a></li>
+    <li><a href="#tagging_messages">Üzenetek címkézése</a></li>
+    <li><a href="#marking_or_flagging_messages">Üzenetek megjelölése</a></li>
+    <li><a href="#using_message_views">Üzenetnézetek használata</a></li>
+    <li><a href="#creating_message_filters">Levelezőszűrők létrehozása</a></li>
+    <li><a href="#searching_through_messages">Keresés az üzenetekben</a></li>
   </ul>
 </div>
 
-<h2 id="creating_a_folder">Creating a Folder</h2>
+<h2 id="creating_a_folder">Mappa létrehozása</h2>
 
-<p>To create a message folder, begin from the Mail window:</p>
+<p>Üzenetmappa létrehozásához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Open the File menu, choose New, and then Folder. You see the New Folder
-    dialog box.</li>
-  <li>Type the name of the folder.</li>
-  <li>Click the drop-down list and choose a folder location and click OK. Your
-    new folder appears in your Mail Folders list.</li>
+  <li>Válasszuk a Fájl menüből az Új, majd a Mappa parancsot. Az Új mappa párbeszédpanel jelenik meg.</li>
+  <li>Írjuk be a mappa nevét.</li>
+  <li>A lenyitható listán adjuk meg a mappa helyét, majd kattintsunk az OK gombra. Az új mappa megjelenik a Levelező mappalistáján.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="renaming_a_folder">Renaming a Folder</h2>
+<h2 id="renaming_a_folder">Mappa átnevezése</h2>
 
-<p>To rename an existing folder, begin from the Mail window:</p>
+<p>Üzenetmappa átnevezéséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select the folder you want to rename.</li>
-  <li>Open the File menu and choose Rename Folder. You see the Rename Folder
-    dialog box.</li>
-  <li>Type the new name and click OK.</li>
+  <li>Jelöljük ki az átnevezni kívánt mappát.</li>
+  <li>Válasszuk a Fájl menü Mappa átnevezése parancsát. A Mappa átnevezése párbeszédpanel jelenik meg.</li>
+  <li>Írjuk be az új nevet, majd kattintsunk az OK gombra.</li>
 </ol>
 
-<p><strong>Note</strong>: If you rename a folder that you&apos;ve been using to
-  store <a href="#creating_message_filters">filtered messages</a>, the filter
-  will automatically update to use the renamed folder.</p>
+<p><strong>Megjegyzés</strong>: ha <a href="#creating_message_filters">szűrt üzenetek</a> tárolására használt mappát nevezünk át, a szűrő automatikusan az átnevezett mappa használatára frissül.</p>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="moving_or_copying_a_folder">Moving or Copying a Folder</h2>
+<h2 id="moving_or_copying_a_folder">Mappa áthelyezése vagy másolása</h2>
 
-<p>You can copy a folder and its contents to another mail account, or move a
-  folder within the same mail account.</p>
+<p>Egy mappát és tartalmát másik postafiókba másolhatunk, illetve ugyanazon a postafiókon belül át is helyezhetünk.</p>
 
-<p>To move or copy a folder, begin from the Mail window:</p>
+<p>Mappa áthelyezéséhez vagy másolásához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select the folder you want to move or copy.</li>
-  <li>Do one of the following:
+  <li>Jelöljük ki az áthelyezni vagy másolni kívánt mappát.</li>
+  <li>Hajtsuk végre a megfelelő műveletet:
     <ul>
-      <li>To move the folder under another folder within the same account, drag
-        the folder over the name of the other folder. The folder you moved
-        becomes a subfolder of the other folder.</li>
-      <li>To copy the folder to another account, drag the folder over the name
-        of another account.</li>
-      <li>To copy the folder under another folder in another account, drag the
-        folder over the name of another folder in another account. The folder
-        you copied becomes a subfolder of the other folder.</li>
+      <li>A postafiókon belül a mappa áthelyezéséhez húzzuk a mappát a kívánt mappa nevére. Az áthelyezett mappa ennek a mappának az almappája lesz.</li>
+      <li>A mappa másik postafiókba másolásához húzzuk a mappát a postafiók nevére.</li>
+      <li>A mappa másik postafiók másik mappájába másolásához húzzuk a mappát a másik postafiók másik mappájának nevére. A másolt mappa a másik mappa almappája lesz.</li>
     </ul>
   </li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="filing_messages_in_folders">Filing Messages in Folders</h2>
+<h2 id="filing_messages_in_folders">Üzenetek mappákba rendezése</h2>
 
-<p>You can move messages from one folder to another by using either of these
-  methods:</p>
+<p>A következő módszerekkel az üzeneteket az egyik mappából másikba helyezhetjük át.</p>
 
 <ul>
-  <li>Select the message, click the File button on the toolbar, and choose the
-    destination folder.</li>
-  <li>Drag and drop messages into the desired folder.
+  <li>Jelöljük ki az üzenetet, kattintsunk az eszköztáron az Áthelyezés gombra, és a lenyitható listán adjuk meg a kívánt postafiókot és célmappát.</li>
+  <li>Húzzuk át az üzeneteket a kívánt mappába.
 
-    <p><strong>Note</strong>: If you drag and drop a message from an IMAP or
-      POP mail server folder to a local folder on your hard drive, the message
-      is moved to the local folder and removed from the server folder.</p>
+    <p><strong>Megjegyzés</strong>: ha IMAP vagy POP levelezőkiszolgáló mappájából üzenetet húzunk át a merevlemez helyi mappájába, az üzenet a helyi mappába kerül, és a kiszolgáló mappájából törlődik.</p>
   </li>
 </ul>
 
-<p>To copy a message from one folder to another:</p>
+<p>Üzenet másolása egyik mappából egy másikba:</p>
 
 <ol>
-  <li>Select the message and right-click to display the pop-up menu.</li>
-  <li>Select <q>Copy To</q> and then select the destination account and folder
-    from the drop-down list.</li>
+  <li>Jelöljük ki az üzenetet, és kattintsunk rá az egér jobb oldali gombjával.</li>
+  <li>Válasszuk a helyi menü <q>Átmásolás</q> parancsát, és a lenyitható listán adjuk meg a kívánt postafiókot és célmappát.</li>
 </ol>
 
-<p><strong>Tip</strong>: Alternatively, you can copy a message between folders
-  by holding down the Shift key while dragging the message from the message
-  list over another folder.</p>
+<p><strong>Tipp</strong>: úgy is átmásolhatjuk az üzenetet egyik mappából a másikba, hogy lenyomva tartjuk a Shift billentyűt miközben az üzenetet az üzenetlistából egy másik mappa fölé húzzuk.</p>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="sharing_folders_with_other_users">Sharing Folders With Other Users
-  (IMAP Only)</h2>
+<h2 id="sharing_folders_with_other_users">Mappák megosztása más felhasználókkal (csak IMAP)</h2>
 
-<p>Users with IMAP mail accounts can share mail folders with other users on the
-  same network. Sharing folders allows several users to see and work with the
-  same messages, similar to a newsgroup. To use shared folders, your IMAP mail
-  server must support Access Control List (ACL) management. Check with your
-  system administrator or help desk if you are not sure that shared folders
-  are supported by your IMAP mail server.</p>
+<p>Az IMAP-postafiókok felhasználói megoszthatják a mappáikat a hálózat többi felhasználójával. A megosztott mappák segítségével a hírcsoportokhoz hasonlóan több felhasználó láthatja ugyanazokat az üzeneteket. A megosztott mappák csak olyan IMAP-kiszolgálóval használhatóak, amely támogatja a hozzáférési listák (ACL) kezelését. Ha nem vagyunk biztosak benne, hogy az IMAP-kiszolgálónk támogatja-e a megosztott mappákat, kérdezzük meg a rendszergazdát.</p>
 
-<p>To share a mail folder with other users on your network, or to view sharing
-  information for a folder, begin from the Mail window:</p>
+<p>Egy mappa többi felhasználóval történő megosztásához a vagy egy mappa megosztási adatainak megtekintéséhez induljunk ki a Levelező ablakból.</p>
 
 <ol>
-  <li>Within an IMAP account, select a folder that you want to share, or select
-    a folder whose sharing privileges you want to view.
+  <li>Az IMAP-postafiókon belül válasszuk ki a mappát, amelyet meg szeretnénk osztani, vagy válasszuk ki a mappát, amely megosztási adataira kíváncsiak vagyunk.
 
-    <p>Folders listed under Local Folders, or folders listed under a POP mail
-      account cannot be shared.</p>
+    <p>A Helyi mappák alatt lévő mappákat és a POP-postafiókok mappáit nem lehet megosztani.</p>
   </li>
-  <li>Open the Edit menu, and choose Folder Properties.</li>
-  <li>Click the Sharing tab.</li>
-  <li>Click Privileges. You may be prompted to enter your network user name and
-    password.
+  <li>Válasszuk a Szerkesztés menü Mappatulajdonságok parancsát.</li>
+  <li>Kattintsunk a Megosztás fülre.</li>
+  <li>Kattintsunk a Jogosultságok gombra. A program elkérheti a hálózati felhasználói nevünket és jelszavunkat.
 
-    <p>The Privileges button is only available if the IMAP mail server allows
-      you to set folder sharing privileges. If this button is not available,
-      you can view the folder sharing privileges for this folder but cannot
-      change them.</p>
+    <p>A Jogosultságok gomb csak akkor működik, ha az IMAP-kiszolgáló engedélyezi a mappák megosztási jogosultságainak beállítását. Ha ez a gomb nem érhető el, akkor csak megnézni tudjuk a mappa megosztási jogosultságait, de megváltoztatni nem.</p>
   </li>
-  <li>Follow the instructions on the screen to add users and to set their
-    folder access privileges.
+  <li>Kövessük a képernyőn megjelenő utasításokat a felhasználók és a mappahozzáférési jogusultságaik beállításához.
     <ul>
-      <li><strong>Read privileges</strong>: Users can read messages and copy
-        their contents, but they cannot modify or delete messages, or copy
-        messages into the folder. Users can flag messages as read or unread.
-        See <a href="#marking_or_flagging_messages">Marking or Flagging
-        Messages</a> for instructions on flagging messages.</li>
-      <li><strong>Read and Write privileges</strong>: In addition to Read
-        privileges, users can modify and delete messages. Users can also copy
-        or move messages into the folder.</li>
-      <li><strong>Manage privileges</strong>: In addition to Read and Write
-        privileges, users can add and remove users and change their folder
-        permissions.</li>
+      <li><strong>Olvasási jog</strong>: a felhasználó elolvashatja az üzeneteket és kimásolhatja a tartalmukat, de nem módosíthatja vagy törölheti őket, és nem másolhat üzeneteket a mappába. A felhasználó megjelölheti az üzeneteket olvasottként vagy olvasatlanként. További tudnivalók: <a href="#marking_or_flagging_messages">Üzenetek megjelölése</a>.</li>
+      <li><strong>Olvasási és írási jog</strong>: az olvasási jogon felül a felhasználó módosíthatja és törölheti az üzeneteket. A felhasználó üzeneteket is másolhat vagy helyezhet át a mappába.</li>
+      <li><strong>Rendszergazda jog</strong>: az olvasási és írási jogon felül a felhasználó felhasználókat tud hozzáadni és eltávolítani, és meg tudja változtatni a mappák jogosultságait.</li>
     </ul>
   </li>
-  <li>Click OK to confirm your changes.</li>
-  <li>Click OK to close the Folder Properties dialog box.</li>
+  <li>A változtatások érvényesítéséhez kattintsunk az OK gombra.</li>
+  <li>A Tulajdonságok párbeszédpanel bezárásához kattintsunk az OK gombra.</li>
 </ol>
 
-<p>In the list of folders for your mail account, a shared folder displays a
-  distinctive folder icon to indicate that it is shared.</p>
+<p>A postafiók mappalistájában a megosztott mappák ikonja jelzi a mappa megosztott állapotát.</p>
 
-<p>To send a message that tells others how they can subscribe to your shared
-  folder, begin from the Mail window:</p>
+<p>A többi felhasználónak üzenetet küldhetünk, hogy feliratkozhatnak a megosztott mappánkra. Ehhez induljunk a Levelező ablakból.</p>
 
 <ol>
-  <li>Select the shared folder.</li>
-  <li>Right-click to display a pop-up menu, and choose Copy Folder
-    Location.</li>
-  <li>Click Compose to display a Mail compose window.</li>
-  <li>Click in the message body, open the Edit menu, and choose Paste.</li>
-  <li>Address the message, type a subject, and type the message text. Tell
-    message recipients that they can subscribe to the shared folder by clicking
-    the link you pasted into the message.
+  <li>Válasszuk ki a megosztott mappát.</li>
+  <li>Kattintsunk az egér jobb gombjábal, és a helyi menüből válasszuk A mappa helyének másolása parancsot.</li>
+  <li>Kattintsunk az Új üzenet gombra. Megjelenik az Új üzenet ablak.</li>
+  <li>Kattintsunk az üzenet törzsére, majd a Szerkesztés menüből válasszuk a Beillesztés parancsot.</li>
+  <li>Címezzük meg az üzenetet, írjuk be a tárgyat és az üzenet szövegét. Írjuk meg a címzettnek, hogy úgy iratkozhat fel a megosztott mappánkra, hogy az üzenetbe másolt hivatkozásra kattint.
 
-    <p>Only message recipients who share the same network will be able to
-      subscribe to your shared folder.</p>
+    <p>Csak a velünk azonos hálózatban dolgozó felhasználók tudnak feliratkozni a megosztott mappára.</p>
   </li>
-  <li>Click Send.</li>
+  <li>Kattintsunk a Küldés gombra.</li>
 </ol>
 
-<h3 id="subscribing_to_a_shared_folder">Subscribing to a Shared Folder</h3>
+<h3 id="subscribing_to_a_shared_folder">Feliratkozás egy megosztott mappára</h3>
 
-<p>Subscribing to a shared folder is similar to subscribing to a newsgroup. To
-  subscribe to a shared folder, begin from the Mail window:</p>
+<p>A megosztott mappára történő feliratkozás hasonló egy hírcsoportra történő feliratkozáshoz. A feliratkozást kezdjük a Levelező ablakban:</p>
 
 <ol>
-  <li>Open the File menu and choose Subscribe. You see the Subscribe dialog
-    box.</li>
-  <li>If necessary, click the Account drop-down list to choose another IMAP
-    mail account.</li>
-  <li>Select the folder that you want to subscribe to.</li>
-  <li>Click Subscribe or click in the Subscribe column next to the folder. You
-    see a checkmark next to each folder to which you subscribe. Click
-    Unsubscribe to cancel a selection.</li>
-  <li>Click OK. The list of your subscribed folders appears in the Mail
-    window.</li>
+  <li>Válasszuk a Fájl menü Feliratkozás parancsát. A Feliratkozás párbeszédpanel jelenik meg.</li>
+  <li>Ha szükséges, a Postafiók lenyitható listán válasszunk másik IMAP-postafiókot.</li>
+  <li>Jelöljük ki a mappát, amelyre fel kívánunk iratkozni.</li>
+  <li>Kattintsunk a Feliratkozás gombra vagy a mappa mellett a Feliratkozás oszlopba. Minden olyan mappa mellett, amelyre feliratkoztunk, pipa jelenik meg. A jelentkezés törléséhez kattintsunk a Leiratkozás gombra.</li>
+  <li>Kattintsunk az OK gombra. Az kiválasztott mappák listája megjelenik a Levelező ablakban.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="tagging_messages">Tagging Messages</h2>
+<h2 id="labeling_messages">Üzenetek címkézése</h2>
 
-<p>You can apply tags to messages to help you organize and prioritize them.
-  You can apply a standard color and tag text to messages, or you can create
-  your own color and tag text to suit your needs.</p>
+<p>Az üzeneteket címkékkel láthatjuk el, ami megkönnyíti rendszerezésüket.
+  Alkalmazhatjuk a szabványos színt és címkeszöveget, de saját igények szerinti színeket és címkeszöveget is megadhatunk.</p>
 
-<p>One powerful way to use tags is to set up a message filter to
-  automatically tag incoming messages from a specific sender. For example,
-  you can set up a message filter so that incoming messages from your boss are
-  tagged <q>Important</q> and appear in red. See
-  <a href="#creating_message_filters">Creating Message Filters</a> for more
-  information.</p>
+<p>A címkézés leghatékonyabb módja az üzenetszűrő használata, amellyel automatikusan megvalósítható az üzenetek címkézése. Megadhatunk például egy olyan szűrőt, amely a főnökünktől érkező üzeneteket a <q>Fontos</q>feliratú címkével látja el, és vörös színnel jeleníti meg. További tudnivalók: <a href="#creating_message_filters">Levelezőszűrők létrehozása</a>.</p>
 
-<h3 id="applying_a_tag">Applying a Tag</h3>
+<h3 id="applying_a_label">Címke alkalmazása</h3>
 
-<p>To apply a tag to a message, begin from the Mail window:</p>
+<p>Üzenet címkével jelöléséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select the message you want to tag.</li>
-  <li>Open the Message menu, and choose Tag.</li>
-  <li>Choose the tag you want to apply from the list.</li>
+  <li>Jelöljük ki a címkézni kívánt üzenetet.</li>
+  <li>Válasszuk az Üzenet menü Címke parancsát.</li>
+  <li>A listán jelöljük ki a használni kívánt címkét.</li>
 </ol>
 
-<p>The message summary row changes to the color of the tag with the topmost
-  priority. To see the tag text, you must display the Tags column in the Mail
-  window.</p>
+<p>Az üzenet fejléce a választott címkeszínre változik. A címke szövege csak akkor látható, ha a Levelező ablakban megjelenítjük a Címke oszlopot.</p>
 
-<p><strong>Tip</strong>: To quickly tag messages or remove a tag, select
-  one or more messages and press one of the number keys 1-9 on your keyboard.
-  Press 0 to remove all tags.</p>
+<p><strong>Tipp</strong>: az üzenetek gyors címkézéséhez, illetve a címke eltávolításához jelöljünk ki egy vagy több üzenetet, és nyomjuk meg a billentyűzeten az 1, 2, 3, 4 vagy 5 billentyűt. A 0 billentyű törli a címkét.</p>
 
-<p>To display the Tags column, begin from the Mail window:</p>
+<p>A Címke oszlop megjelenítéséhez induljunk ki a Levelező ablakból:</p>
 
 <ul>
-  <li>Click the Show/Hide Columns icon <img src="images/columns.png" alt=""/>
-    and select Tags from the list.</li>
+  <li>Kattintsunk az oszlopok megjelenítésére, illetve elrejtésére szolgáló <img src="images/columns.png" alt=""/> gombra, és jelöljük ki a Címke oszlopot a listán.</li>
 </ul>
 
-<p><strong>Note</strong>: Message tags apply on a per-account basis. For
-  example, if you move or copy a tagged message to another mail account, the
-  tags are not preserved. Similarly, if you forward a tagged message to
-  another recipient, the tags are not preserved. For IMAP mail accounts, if
-  your IMAP server supports user-defined keywords, message tags will persist
-  when you log in to your mail account from a different location.</p>
+<p><strong>Megjegyzés</strong>: az üzenetcímkék adott fiókon belül működnek. Ha például másik postafiókba helyezünk át vagy másolunk egy címkével ellátott üzenetet, a címke nem marad meg. Ugyanígy eltűnik a címke, ha ilyen üzenetet másik címzettnek továbbítunk. Ha IMAP postafióknál az IMAP-kiszolgáló támogatja a felhasználói kulcsszavakat, az üzenetcímkék megmaradnak, ha másik helyről jelentkezünk be a postafiókba.</p>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h3 id="customizing_tags">Customizing Tags</h3>
+<h3 id="customizing_labels">Címkék testreszabása</h3>
 
-<p>You can customize tag colors and text and their order to suit your needs.</p>
+<p>A címkék színe és szövege saját igényekhez igazítható.</p>
 
-<p>To customize tags, begin from the Mail window:</p>
+<p>A címkék testreszabásához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences. You see the
-    Preferences dialog box.</li>
-  <li>Under the Mail &amp; Newsgroups category, click Tags. (If no
-    subcategories are visible, double-click Mail &amp; Newsgroups to expand the
-    list.)</li>
-  <li>Edit the tag text, or replace it with your own tag text. The tag
-    can be up to 32 characters long.</li>
-  <li>To change the tag color, click the color block next to that tag and
-    select a new color.</li>
-  <li>Click the Move Up and Move Down buttons to reorder the tags. Tags at
-    the top will have higher priority when coloring messages.</li>
-  <li>Click OK.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot. A Beállítások párbeszédpanel jelenik meg.</li>
+  <li>A Levelező és hírolvasó kategória alatt kattintsunk a Címkék elemre. (Ha nem láthatók az alkategóriák, a kibontásukhoz kattintsunk duplán a Levelező és hírolvasó kategóriára.)</li>
+  <li>Szerkesszük a címke szövegét, vagy írjunk be másikat. A címke szövege legfeljebb 32 karakterből állhat.</li>
+  <li>A címke színének módosításához kattintsunk a címke melletti színválasztóra, és adjunk meg másik színt.</li>
+  <li>Kattintsunk az OK gombra.</li>
 </ol>
 
-<p>Your changes are immediately applied to all tagged messages in all your
-  mail accounts.</p>
+<p>A módosítások azonnal érvénybe lépnek.</p>
 
-<p><strong>Tip</strong>: To undo all customizations and restore just the
-  default tags' text and colors, follow the steps above to display the tag
-  settings, and click Restore Defaults.</p>
+<p><strong>Tipp</strong>: az alapértelmezett címkeszöveg és szín visszaállításához a fenti lépésekkel jelenítsük meg a címkék beállításait, és kattintsunk az Alapértelmezett értékek visszaállítása gombra.</p>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h3 id="sorting_messages_by_tags">Sorting Messages by Tags</h3>
+<h3 id="sorting_messages_by_label">Üzenetek rendezése címkék szerint</h3>
 
-<p>To sort messages by tags, begin from the Mail window:</p>
+<p>Az üzenetek rendezéséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>To display the Tags column if it is hidden, click the Show/Hide Columns
-    icon <img src="images/columns.png" alt=""/> and select Tags from the
-    list.</li>
-  <li>Click the Tags column to sort messages by tags, and within each tag
-    type, to sort messages by date.</li>
+  <li>Ha a Címke oszlop nem látható, megjelenítéséhez kattintsunk az oszlopok megjelenítésére, illetve elrejtésére szolgáló <img src="images/columns.png" alt=""/> gombra, és jelöljük ki a Címke oszlopot a listán.</li>
+  <li>Kattintsunk a Címke oszlopra, ekkor az üzenetek a címkék szerint rendezve jelennek meg, az egyes címkéken belül pedig a dátum alapján növekvő sorrendben.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h3 id="removing_tags">Removing Tags</h3>
+<h3 id="removing_labels">Címkék eltávolítása</h3>
 
-<p>To remove a message tag, begin from the Mail window:</p>
+<p>Üzenetcímke eltávolításához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select one or more tagged messages.</li>
-  <li>Open the Message menu, and choose Tag.</li>
-  <li>Choose the tag you want to remove or <q>None</q> to remove all tags
-    from this message.</li>
+  <li>Jelöljünk ki egy vagy több címkével jelölt üzenetet.</li>
+  <li>Válasszuk az Üzenet menü Címke parancsát.</li>
+  <li>Az üzenetcímke szövegénél válasszuk a <q>Nincs</q> elemet.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="marking_or_flagging_messages">Marking or Flagging Messages</h2>
+<h2 id="marking_or_flagging_messages">Üzenetek megjelölése</h2>
 
-<p>You might want to mark a message you&apos;ve read as unread if you later
-  want to re-read the message or respond to it.</p>
+<p>Az elolvasott üzeneteket időnként olvasatlanra szeretnénk visszaállítani, hogy így később újra elolvassuk és válaszoljunk rá.</p>
 
-<p>To mark a message as unread, begin from the Mail window:</p>
+<p>Üzenet olvasatlanra állításhoz induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select a Mail or Newsgroup folder to display its messages.</li>
-  <li>Click in the Read column of each message you want to mark as unread.
-    Messages marked as unread display a <img src="images/mail_unread.png"
-    alt=""/> symbol in the Read column. Messages marked as read display a
-    <img src="images/mail_read.png" alt=""/> symbol in the Read column. If the
-    Read column is not visible, click the Show/Hide Columns icon
-    <img src="images/columns.png" alt=""/> and select Read from the list.</li>
+  <li>Üzeneteinek megjelenítéséhez jelöljünk ki egy levelező vagy hírcsoportmappát.</li>
+  <li>Az olvasatlanra állítani kívánt üzeneteknél kattintsunk az Olvasás oszlopra. Az olvasatlanként megjelölt üzeneteknél a <img src="images/mail_unread.png"
+    alt=""/> szimbólum jelenik meg az Olvasás oszlopban. Az olvasottként megjelölt üzeneteknél a <img src="images/mail_read.png" alt=""/> szimbólum jelenik meg az Olvasás oszlopban. Ha az Olvasás oszlop nem látható, megjelenítéséhez kattintsunk az Oszlopok megjelenítésére, illetve elrejtésére szolgáló <img src="images/columns.png" alt=""/> gombra, és jelöljük ki az Olvasás oszlopot a listán.</li>
 </ol>
 
 <table>
@@ -341,23 +253,18 @@
     <td colspan="2"><img src="images/mail_read_column.png" alt=""/></td>
   </tr>
   <tr>
-    <td><strong>Read column</strong></td>
+    <td><strong>Olvasás oszlop</strong></td>
   </tr>
 </table>
 
-<p>You can flag messages that you later want to download for
-  <a href="mailnews_offline.xhtml#downloading_selected_or_flagged_messages_for_offline_use">offline
-  use</a>.</p>
+<p>A később letölteni kívánt üzeneteket megjelölhetjük <a href="#downloading_selected_or_flagged_messages_for_offline_use">kapcsolat nélküli használatra</a>.</p>
 
-<p>To flag messages, begin from the Mail window:</p>
+<p>Az üzenetek megjelöléséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select a Mail or Newsgroup folder to display its messages.</li>
-  <li>Click in the Flag column of each message you want to download. A flag
-    <img src="images/mail_flag.png" alt=""/> appears where you clicked to
-    indicate that the message has been flagged. If the Flag column is not
-    visible, click the Show/Hide Columns icon <img src="images/columns.png"
-    alt=""/> and select Flag from the list.</li>
+  <li>Üzeneteinek megjelenítéséhez jelöljünk ki egy levelező vagy hírcsoportmappát.</li>
+  <li>A letölteni kívánt üzeneteknél kattintsunk a Jelölés oszlopra. Az ilyen üzeneteknél a <img src="images/mail_flag.png" alt=""/> szimbólum jelenik meg.  Ha a Jelölés oszlop nem látható, megjelenítéséhez kattintsunk az oszlopok megjelenítésére, illetve elrejtésére szolgáló <img src="images/columns.png"
+    alt=""/> gombra, és jelöljük ki a Jelölés oszlopot a listán.</li>
 </ol>
 
 <table>
@@ -365,36 +272,27 @@
     <td colspan="2"><img src="images/mail_flag_column.png" alt=""/></td>
   </tr>
   <tr>
-    <td><strong>Flag column</strong></td>
+    <td><strong>Jelölés oszlop</strong></td>
   </tr>
 </table>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="using_message_views">Using Message Views</h2>
+<h2 id="using_message_views">Üzenetnézetek használata</h2>
 
-<p>You can apply preset or custom message views to help you manage messages by
-  filtering displayed messages.</p>
+<p>Alkalmazhatunk előre beállított vagy egyedi üzenetnézeteket, hogy a megjelenített üzenetek szűrésével megkönnyítsük az üzenetek kezelését.</p>
 
-<p>To use a message view, open the View menu and choose Messages. Choose an
-  option from the submenu.</p>
+<p>Egy üzenetnézet használatához nyissuk meg a Nézet menüt, és válasszuk az Üzenetek  menüpontot. Válasszunk egy parancsot az almenüből.</p>
 
 <ul>
-  <li><strong>All</strong>: Choose this option to view all messages.</li>
-  <li><strong>Unread</strong>: Choose this option to view only unread
-    messages.</li>
-  <li><strong>Tags</strong>: Choose a <a href="#tagging_messages">tag</a>
-    to view tagged messages.</li>
-  <li><strong>Custom views</strong>: Choose a custom view. By default you have
-    four preset views: <q>People I Know</q>, <q>Recent Mail</q>, <q>Last 5
-    Days</q>, and <q>Not Junk</q>.</li>
-  <li><strong>Customize</strong>: Choose this option to view or modify
-    settings for custom views.</li>
+  <li><strong>Mind</strong>: Az összes üzenet megtekintéséhez válasszuk ezt a parancsot.</li>
+  <li><strong>Olvasatlan</strong>: Az olvasatlan üzenetek megtekintéséhez válasszuk ezt a parancsot.</li>
+  <li><strong>Címkék</strong>: Válasszunk egy <a href="#labeling_messages">címkét</a> a címkézett üzenetek megtekintéséhez.</li>
+  <li><strong>Egyedi üzenetnézetek</strong>:  Válasszunk egy egyedi üzenetnézetet. Alapértelmezésben négy előre definiált üzenetnézet áll rendelkezésünkre: <q>Ismerőstől</q>, <q>Nemrég érkezett</q>, <q>Elmúlt 5 nap</q> és <q>Nem szemét</q>.</li>
+  <li><strong>Testreszabás...</strong>: Az üzenetnézetek megtekintéséhez és módosításához válasszuk ezt a parancsot.</li>
 </ul>
 
-<p><strong>Tip</strong>: You can quickly change message view from the View box
-  in the Search Bar. If you do not see the Search Bar, open the View menu,
-  choose Show/Hide, and then choose Search Bar.</p>
+<p><strong>Tipp</strong>: Gyorsan válthatunk üzenetnézetet a Keresősáv Nézet mezőjéből. Ha a Keresősáv nem látható, nyissuk meg a Nézet menüt, majd a Megjelenítés/Elrejtés elemet, majd a Keresősáv elemet.</p>
 
 <table>
   <tr>
@@ -402,388 +300,229 @@
   </tr>
   <tr>
     <td style="width: 80px;"></td>
-    <td><strong>Quick mail search bar</strong></td>
+    <td><strong>Keresősáv</strong></td>
   </tr>
 </table>
 
-<h3 id="creating_a_custom_view">Creating a Custom View</h3>
+<h3 id="creating_a_custom_view">Egyéni nézet létrehozása</h3>
 
-<p>You can create custom message views to only display messages matching
-  certain criteria.</p>
+<p>Csak bizonyos kritériumnak megfelelő üzenetek megjelenítéséhez készíthetünk egyedi üzenetnézeteket.</p>
 
-<p>To change or create a custom message view:</p>
+<p>Üzenetnézet létrehozása vagy módosítása:</p>
 
 <ol>
-  <li>Open the View menu, choose Messages, and then choose Customize.</li>
-  <li>To create a new view, click New. To modify a view, select a view and
-    click Edit.</li>
-  <li>Type a name for the message view.</li>
-  <li>Select the matching option you want Mail to use: <q><em>all</em> of the
-    following</q> conditions (criteria) you choose, or <q><em>any</em> of the
-    following</q>.</li>
-  <li>Use the drop-down lists to choose the search criteria (for example,
-    <q>Subject</q>, <q>Sender</q>, <q>contains</q>, <q>doesn&apos;t
-    contain</q>) and then type the text or phrase you want to match.
+  <li>Nyissuk meg a Nézet menüt, és válasszuk az Üzenetek, majd a Testreszabás... menüpontot.</li>
+  <li>Új nézet létrehozásához kattintsunk az Új gombra. Üzenetnézet módosításához kattintsunk a módosítandó nézet nevére, majd kattintsunk a Szerkesztés gombra.</li>
+  <li>Adjuk meg az üzenetnézet nevét.</li>
+  <li>Adjuk meg, hogy a műveletet a Levelező a feltételek milyen típusú teljesülésekor hajtsa végre: <q>a következők <em>mind</em></q> illeszkedjenek vagy <q>a következők <em>bármelyike</em></q> illeszkedjen.</li>
+  <li>Használjuk a legördülő listát a szűrési feltétel megadásához (például: <q>Tárgy</q>, <q>Feladó</q>, <q>tartalmazza</q>, <q>nem tartalmazza</q>) és adjuk meg az illesztendő szöveget vagy mondatot.
 
-    <p><strong>Tip</strong>: To search for messages that contain a header not
-      listed in the first drop-down menu (for example, if you want to search
-      for messages that include the header Resent-From), choose Customize and
-      type the header you want to search for. &brandShortName; Mail &amp;
-      Newsgroups adds your custom header to the drop-down list, so you can then
-      choose it to search for matching entries. Make sure you enter the custom
-      header correctly, since Mail will only find entries that exactly match
-      what you type.</p>
+    <p><strong>Tipp</strong>: ha az első lenyitható listán nem szereplő (például a Resent-From) fejlécelemet tartalmazó üzeneteket szeretnénk keresni, kattintsunk a legördülő lista Testreszabás elemére, és írjuk be a keresni kívánt fejlécelemet. A &brandShortName; Levelező és hírolvasó felveszi ezt a lenyitható listára, így ezután ezt is választhatjuk keresési feltételként. Az egyéni fejlécelemet pontosan kell beírni, mert a Levelező csak a beírt kifejezéssel tökéletesen megegyező elemeket fogja megtalálni.</p>
   </li>
-  <li>Click More to add criteria and Fewer to remove them.</li>
-  <li>Click OK to confirm your settings.</li>
-  <li>Click OK in the Customize Message Views dialog box. The selected view 
-    setting applies automatically.</li>
+  <li>A Több gombbal további feltételeket vehetünk fel, a Kevesebb gombbal eltávolíthatunk feltételeket.</li>
+  <li>A beállítások elfogadásához kattintsunk az OK gombra.</li>
+  <li>Kattintsunk az OK gombra az Üzenetnézetek testreszabása párbeszédpanelben. A kiválasztott nézet automatikusan aktívvá válik.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="creating_message_filters">Creating Message Filters</h2>
+<h2 id="creating_message_filters">Levelezőszűrők létrehozása</h2>
 
-<p>Message filters allow you to manage and organize your messages. You can
-  create message filters that &brandShortName; Mail &amp; Newsgroups uses to
-  automatically perform certain actions on incoming messages based on criteria
-  you specify. For example, you can create a message filter that automatically
-  moves incoming messages to a particular folder. Message filters operate on a
-  per-account basis.</p>
+<p>A levelezőszűrők az üzenetek kezelésében és rendszerezésében segítenek. Ha létrehozunk ilyen szűrőket, a &brandShortName; Levelező és hírolvasó a megadott feltételek alapján automatikusan végrehajt bizonyos műveleteket a beérkező üzeneteken. Például készíthetünk olyan szűrőt, amely a beérkezett üzeneteket automatikusan adott mappába helyezi. A levelezőszűrők adott fiókon belül működnek.</p>
 
-<p>If you are not already viewing the Message Filters dialog box, begin from
-  the Mail window:</p>
+<p>A Levelezőszűrők párbeszédpanel a Levelező ablakból a következő lépésekkel jeleníthető meg:</p>
 
 <ol>
-  <li>Open the Tools menu and choose Message Filters. You see the Message
-    Filters dialog box.</li>
-  <li>If you have multiple mail accounts, choose the one to which you want to
-    apply the filter.</li>
-  <li>Click New. You use the Filter Rules dialog box to specify the types of
-    messages to act on, and the actions you want the filter to perform.</li>
-  <li>Type a name for the filter.</li>
-  <li>Select when you want the filter to be applied. This setting enables you
-    to define some filters to be applied in an automatic way (when checking
-    mail), on demand (manually run), or both. <q>After classification</q> means
-    that junk and phishing controls will be run before applying the
-    filter.</li>
-  <li>Select the matching option you want Mail to use: <q><em>all</em> of the
-    following</q> conditions (criteria) you choose, <q><em>any</em> of the
-    following</q> conditions you choose, or <q><em>all messages</em></q>.</li>
-  <li>Use the drop-down lists to choose the search criteria (for example,
-    <q>Subject</q>, <q>Sender</q>, <q>contains</q>, <q>doesn&apos;t
-    contain</q>) and then type the text or phrase you want to match.
+  <li>Válasszuk a Feladatok menü Levelezőszűrők parancsát. A Levelezőszűrők párbeszédpanel jelenik meg.</li>
+  <li>Ha több levelező-postafiókkal rendelkezünk, jelöljük ki azt, amelyben a szűrőt használni szeretnénk.</li>
+  <li>Kattintsunk az Új gombra. A Szűrés szabályai párbeszédpanelen megadhatjuk, hogy milyen típusú üzeneteken alkalmazzuk a szűrőt, és milyen műveletet kívánunk végrehajtani.</li>
+  <li>Írjuk be a szűrő nevét.</li>
+  <li>Adjuk meg, hogy a műveletet a Levelező a feltételek milyen típusú teljesülésekor hajtsa végre: <q><em>a következők</em> mind</q> illeszkedjenek vagy <q><em>a következők</em> bármelyike</q>.</li>
+  <li>A lenyitható listákon válasszuk ki a keresési feltételt (például: <q>Tárgy</q>, <q>Feladó</q>, <q>tartalmazza</q>, <q>nem tartalmazza</q>) majd írjuk be a keresett szót vagy kifejezést.
 
-    <p><strong>Tip</strong>: To search for messages that contain a header not
-      listed in the first drop-down menu (for example, if you want to search
-      for messages that include the header Resent-From), choose Customize and
-      type the header you want to search for. &brandShortName; Mail &amp;
-      Newsgroups adds your custom header to the drop-down list, so you can then
-      choose it to search for matching entries. Make sure you enter the custom
-      header correctly, since Mail will only find entries that exactly match
-      what you type.</p>
+    <p><strong>Tipp</strong>: ha az első lenyitható listán nem szereplő (például a Resent-From) fejlécelemet tartalmazó üzeneteket szeretnénk keresni, kattintsunk a legördülő lista Testreszabás elemére, és írjuk be a keresni kívánt fejlécelemet. A &brandShortName; Levelező és hírolvasó felveszi ezt a lenyitható listára, így ezután ezt is választhatjuk keresési feltételként. Az egyéni fejlécelemet pontosan kell beírni, mert a Levelező csak a beírt kifejezéssel tökéletesen megegyező elemeket fogja megtalálni.</p>
   </li>
-  <li>Click <q>+</q> to add criteria and <q>-</q> to remove them.</li>
-  <li>Use the list to choose the action you want the filter to perform on the
-    messages (for example, Move Message To). Use <q>+</q> and <q>-</q> to add
-    or remove additional actions.
+  <li>A <q>Több</q> gombbal további feltételeket vehetünk fel, a <q>Kevesebb</q> gombbal eltávolíthatunk feltételeket.</li>
+  <li>A lenyitható listán válasszuk ki a feltételeknek megfelelő üzeneteken végrehajtani kívánt műveletet (például Áthelyezés).
 
-    <p><strong>Tip</strong>: To automatically tag incoming messages, choose
-      <q>Tag Message</q> from the drop-down list.</p>
-
-    <p><strong>Tip</strong>: Message filters are applied one after another. It
-      could be that you don&apos;t want all filters to be run if one or more
-      messages match some conditions. For instance, you may want to tag all
-      messages from your boss&apos;s email address as <q>Important</q>, and
-      you may want all messages containing the word <q>Memorandum</q> in their
-      subject to be moved to a folder named <q>Pending Reads</q>, but you
-      don&apos;t want any message from your boss to be moved to another folder,
-      even if it contains <q>Memorandum</q> in the subject. So the first
-      message filter you define should match your boss&apos;s email address,
-      and would contain two actions: <q>Tag Message</q> as <q>Important</q> and
-      <q>Stop Filter Execution</q>.</p>
+    <p><strong>Tipp</strong>: a beérkezett üzenetek automatikus címkézéséhez válasszuk az <q>Üzenet címkézése</q> műveletet.</p>
   </li>
-  <li>If you have chosen <q>Move</q> or <q>Copy</q> message to a folder, then
-    select a destination folder in which to store the messages, or create a
-    new folder.</li>
-  <li>Click OK to confirm your settings.</li>
-  <li>To run filters on existing messages in a folder, select the folder
-    in the bottom dropdown list and click the <q>Run Now</q> button.</li>
-  <li>Click OK in the Message Filters dialog box. The filter begins filtering
-    incoming messages as soon as you click OK.</li>
+  <li>Adjuk meg az üzenetek tárolására szolgáló célmappát, vagy hozzunk létre új mappát.</li>
+  <li>A beállítások elfogadásához kattintsunk az OK gombra.</li>
+  <li>A Levelezőszűrők párbeszédpanelen kattintsunk az OK gombra. A szűrő azonnal érvénybe lép, és vizsgálja az ezután beérkező üzeneteket.</li>
 </ol>
 
-<p><strong>Note</strong>: You can also run message filters manually at any
-  time. In the Mail window, choose Tools, and then select Run Filters on Folder
-  to apply filters to the current folder, or Run Filters on Message to apply
-  filters to the selected message (if any).</p>
-
-<p>To manage your filters, begin from the Mail window:</p>
+<p>A szűrők kezeléséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Open the Tools menu and choose Message Filters. You see the Message
-    Filters dialog box.</li>
-  <li>If you have multiple mail accounts, choose the one to which you want to
-    apply the filter.</li>
-  <li>Choose from the following:
+  <li>Válasszuk a Feladatok menü Levelezőszűrők parancsát. A Levelezőszűrők párbeszédpanel jelenik meg.</li>
+  <li>Ha több levelező-postafiókkal rendelkezünk, jelöljük ki azt, amelyben a szűrőt használni szeretnénk.</li>
+  <li>Válasszunk a következő lehetőségek közül:
     <ul>
-      <li><strong>To turn a filter on or off</strong>: Click the checkbox to
-        the right of the filter name to enable it, or click it again to turn it
-        off.</li>
-      <li><strong>To edit a filter</strong>: Select the filter name and click
-        Edit (or double-click the filter name). Use the Filter Rules dialog box
-        to make your changes.</li>
-      <li><strong>To delete a filter</strong>: Select the filter name and click
-        Delete.</li>
-      <li><strong>To change the order in which filters are applied</strong>: In
-        the filter list, click a filter&apos;s name, and click <q>Move Up</q>
-        or <q>Move Down</q> to move it.
+      <li><strong>Szűrő be- és kikapcsolása</strong>: a szűrő neve melletti négyzetre kattintva engedélyezhetjük vagy tilthatjuk működését.</li>
+      <li><strong>Szűrő szerkesztése</strong>: jelöljük ki a kívánt szűrőt, és kattintsunk a Szerkesztés gombra (vagy kattintsunk duplán a szűrő nevére). A Szűrés szabályai párbeszédpanelen hajtsuk végre a megfelelő módosításokat.</li>
+      <li><strong>Szűrő törlése</strong>: jelöljük ki a szűrőt, és kattintsunk a Törlés gombra.</li>
+      <li><strong>A szűrők alkalmazási sorrendjének megváltoztatása</strong>: a szűrőlistán kattintsunk a kívánt névre, majd áthelyezéséhez a <q>Feljebb mozgatás</q> vagy a <q>Lejjebb mozgatás</q> gombra.
 
-        <p><strong>Note</strong>: Filters are applied to each incoming message
-          in the order you choose, until a filter action results in the message
-          being deleted or moved from the Inbox folder.</p>
+        <p><strong>Megjegyzés</strong>:  a program a megadott sorrendben alkalmazza a szűrőket a beérkezett üzenetekre mindaddig, míg egy szűrési művelet azt nem törli, vagy a Beérkezett üzenetek mappába nem helyezi.</p>
       </li>
     </ul>
   </li>
-  <li>Click OK when you are done managing your filters. If you created a new
-    filter, it begins filtering incoming messages as soon as you click OK.</li>
+  <li>Ha befejeztük a szűrők kezelését, kattintsunk az OK gombra. Ha új szűrőt hoztunk létre, az azonnal érvénybe lép, és vizsgálja az ezután beérkező üzeneteket.</li>
 </ol>
 
-<p><strong>Note</strong>: If you delete a folder that you&apos;ve been using to
-  store filtered messages, the filter will no longer work. Incoming messages
-  that match the filter criteria will appear in your Inbox. If you rename or
-  move the folder, the filter will automatically update to use the renamed or
-  moved folder.</p>
+<p><strong>Megjegyzés</strong>: ha szűrt üzenetek tárolására szolgáló mappát törlünk, a szűrő ezután nem fog működni. A törölt mappához tartozó szűrési feltételeknek eleget tevő üzenetek a Beérkezett üzenetek mappába kerülnek. Ha átnevezünk vagy áthelyezünk egy ilyen mappát, a szűrő automatikusan az új mappa használatára frissül.</p>
 
-<p><strong>Tip</strong>: If you have existing messages that you want to move to
-  another folder, use the Run Filters on Messages option in the Tools menu.</p>
+<p><strong>Tipp</strong>:  a szűrők a meglévő üzenetekre nincsenek hatással. Ha meglévő üzeneteket szeretnénk áthelyezni másik mappába, az Eszközök menüből válasszuk ki a <q>Szűrők futtatása a mappán</q> parancsot vagy <a href="#searching_through_messages">keressük meg</a> ezeket az üzeneteket, és rendezzük másik mappába.</p>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h3 id="filtering_messages_from_a_specific_sender">Filtering Messages From a
-  Specific Sender</h3>
+<h3 id="filtering_messages_from_a_specific_sender">Adott feladó üzeneteinek szűrése</h3>
 
-<p>You can quickly create a filter for messages from a particular sender. For
-  example, if you want to automatically move all incoming messages from your
-  child&apos;s teacher into a folder called <q>School</q>, you can quickly set
-  up a filter to do this.</p>
+<p>A Mozilla gyors módszert biztosít az adott feladótól érkező üzenetek szűrőjének létrehozásához.Ha például a gyermekünk tanárától érkező üzeneteket automatikusan az Iskola nevű mappába szeretnénk helyezni, az ezt végrehajtó szűrőt egyszerűen beállíthatjuk.</p>
 
-<p>To create a filter for messages from a specific sender, begin from the Mail
-  window:</p>
+<p>Az adott feladótól érkező üzenetek szűrőjének létrehozásához induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select a message from a specific sender.</li>
-  <li>Open the Message menu and choose Create Filter From Message. Or, in the
-    message header pane, right click the sender name and choose Create Filter
-    From.</li>
-  <li>You see the Filter Rules dialog box. Using the sender&apos;s email
-    address, &brandShortName; prefills the filter matching criteria and the
-    filter action (Move Message to). You can change or add new rules to the
-    matching criteria.</li>
-  <li>Choose a destination folder in which to store the incoming messages from
-    the specified sender, or create a new folder. You can also choose other
-    actions for this filter, or change the default one.</li>
-  <li>Note that, if you leave the filter name empty, &brandShortName; will
-    provide a name for it based on the first criterion.</li>
-  <li>Click OK to confirm your settings. You see the
-    <a href="#creating_message_filters">Message Filters</a> dialog box, where
-    you can create, delete, or edit message filters.</li>
-  <li>Click OK. The filter begins filtering incoming messages from the
-    specified sender as soon as you click OK.</li>
+  <li>Jelöljük ki a kívánt feladó egyik üzenetét.</li>
+  <li>Válasszuk az Üzenet menü Szűrő létrehozása parancsát. A Szűrés szabályai párbeszédpanel jelenik meg. A feladó e-mail címe alapján a &brandShortName; előre kitölti a szűrő neve, a szűrő feltétele és a szűrő művelete (Áthelyezés) mezőt.</li>
+  <li>Adjuk meg az adott feladótól érkező üzenetek tárolására szolgáló célmappát, vagy hozzunk létre új mappát.</li>
+  <li>A beállítások elfogadásához kattintsunk az OK gombra. A <a href="#creating_message_filters">Levelezőszűrők</a> párbeszédpanel jelenik meg, ahol szűrőket hozhatunk létre, törölhetünk vagy szerkeszthetünk.</li>
+  <li>Kattintsunk az OK gombra. A szűrő azonnal érvénybe lép, és vizsgálja az adott feladótól ezután beérkező üzeneteket.</li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="searching_through_messages">Searching Through Messages</h2>
+<h2 id="searching_through_messages">Keresés az üzenetekben</h2>
 
-<p>&brandShortName; Mail &amp; Newsgroups lets you quickly find text in a
-  single message, search messages by subject or sender, or use a combination of
-  criteria to perform a thorough search through all messages in a specific mail
-  folder, newsgroup, or account.</p>
+<p>A &brandShortName; Levelező és hírolvasó gyors módszert biztosít szöveg kereséséhez adott üzenetben, üzenetek kereséséhez tárgy vagy feladó alapján, de a feltételek kombinációját is használhatjuk adott mappa, hírcsoport vagy postafiók üzeneteiben a kereséshez.</p>
 
-<p>To locate text in a single message, begin from the Mail window:</p>
+<p>Adott üzenet szöveg kereséséhez induljunk ki a Levelező ablakból:</p>
 
 <ol>
-  <li>Select the message, open the Edit menu, and choose Find in This
-    Message.</li>
-  <li>Type the text that you want to locate in the dialog box.</li>
-  <li>Click Find to locate the first occurrence of the text.</li>
-  <li>Continue clicking Find to locate additional occurrences, or click Cancel
-    when you are done.</li>
-  <li>Choose Find Again from the Edit menu to continue searching for the text
-    throughout the rest of the message.</li>
+  <li>Jelöljük ki az üzenetet, és válasszuk a Szerkesztés menü Keresés ebben az üzenetben parancsát.</li>
+  <li>A párbeszédpanelbe írjuk be a keresett szöveget.</li>
+  <li>A szöveg első előfordulásának kijelöléséhez kattintsunk a Keresés gombra.</li>
+  <li>A további előfordulásokhoz kattintsunk ismét a Keresés gombra, majd ha befejeztük a műveletet, a Mégse gombra.</li>
+  <li>A Szerkesztés menü Következő találat parancsával a megadott szöveg keresését indíthatjuk újra.</li>
 </ol>
 
-<p>To quickly search for messages in a selected folder by subject or sender,
-  begin from the Mail window:</p>
+<p>A kijelölt mappa üzenetei között a tárgy vagy feladó alapján történő gyors keresést kezdjük a Levelező ablakban:</p>
 
 <ol>
-  <li>To the right of <q>Subject or Sender contains:</q>, type the subject text
-    or sender name that you want to find. You can type only part of the subject
-    or sender, or you can type the exact word or name that you want to find.
+  <li>A <q>Tárgy vagy feladó tartalmazza</q>, mezőbe írjuk be a tárgy szövegében vagy a feladó nevében keresett szöveget. Megadhatjuk a tárgy vagy a név egy részét, de beírhatunk teljes szót vagy nevet is.
 
-    <p>As soon as you stop typing, &brandShortName; Mail &amp; Newsgroups
-      displays only those messages in the selected folder where the subject or
-      sender contains the search text you entered.</p>
+    <p>Amint befejeztük a beírást, a &brandShortName; Levelező és hírolvasó csak azokat az üzeneteket jeleníti meg a kijelölt mappából, amelyek tárgya vagy feladója tartalmazza a keresett szöveget.</p>
   </li>
-  <li>Click Clear to erase the search text and show all messages in the
-    selected folder.</li>
+  <li>A keresett szöveg törléséhez és a kijelölt mappa összes üzenetének megjelenítéséhez kattintsunk a Törlés gombra.</li>
 </ol>
 
-<h3 id="searching_for_specific_messages">Searching for Specific Messages</h3>
+<h3 id="searching_for_specific_messages">Adott üzenetek keresése</h3>
 
-<p>You can search mail folders or newsgroups for specific messages. If you are
-  not already viewing the Search Messages dialog box, begin from the Mail
-  window:</p>
+<p>A levelezési mappákban vagy a hírcsoportokban megkereshetjük a kívánt üzeneteket. Az Üzenetek keresése párbeszédpanel a Levelező ablakból a következő lépésekkel jeleníthető meg:</p>
 
 <ol>
-  <li>Open the Tools menu and choose Search Messages. You see the Search
-    Messages dialog box.</li>
-  <li>Next to <q>Search for messages in</q>, choose the account, newsgroup, or
-    folder through which you want to search.</li>
-  <li>Select <q>Search subfolders</q> to include all subfolders in the
-    search.</li>
-  <li>Select <q>Search local system</q> to search only messages from newsgroups
-    or IMAP accounts that have been saved locally.
+  <li>Válasszuk a Feladatok menü Üzenetek keresése parancsát. Az Üzenetek keresése párbeszédpanel jelenik meg.</li>
+  <li>A <q>Keresés helye</q>mezőben jelöljük ki azt a postafiókot, hírcsoportot vagy mappát, amelyben keresni szeretnénk.</li>
+  <li>A <q>Keresés az almappákban is</q> négyzet bejelölésével a keresést kiterjeszthetjük az almappákra is.</li>
+  <li>A <q>Keresés a helyi rendszerben</q> négyzet bejelölésével csak a helyileg lementett hírcsoportok és IMAP postafiókok üzeneteikre korlátozhatjuk a keresést.
 
-    <p><strong>Note</strong>: The checkbox will be disabled if it&apos;s not
-      possible to search remotely stored messages.</p>
+    <p><strong>Megjegyzés</strong>: A jelölőnégyzet le van tiltva, ha nincs lehetőség a távoli üzenetek közötti keresésre.</p>
   </li>
-  <li>Select which matching option Mail &amp; Newsgroups will use to search for
-    messages that match all or at least one of the conditions (criteria) that
-    you choose.</li>
-  <li>Use the drop-down lists to indicate the search criteria (for example,
-    <q>Subject</q> and <q>contains</q>) and then type the text or phrase that
-    you want to match.
+  <li>Adjuk meg, hogy a Mozilla Levelező és hírolvasó az üzenetek keresésénél az összes megadott feltételt figyelembe vegye-e, vagy találatnak számítson a legalább egy feltételnek eleget tevő bejegyzés is.</li>
+  <li>A lenyitható listákon válasszuk ki a keresési feltételt (például: <q>Tárgy</q>, <q>Feladó</q>, <q>tartalmazza</q> és <q>nem tartalmazza</q>), majd írjuk be a keresett szót vagy kifejezést.
 
-    <p><strong>Tip</strong>: To search for messages that contain a header not
-      listed in the first drop-down menu (for example, if you want to search
-      for messages that include the header Resent-From), choose Customize and
-      type the header you want to search for. &brandShortName; Mail &amp;
-      Newsgroups adds your custom header to the drop-down list, so you can then
-      choose it to search for matching entries. Make sure you enter the custom
-      header correctly, since Mail will only find entries that exactly match
-      what you type.</p>
+    <p><strong>Tipp</strong>: ha az első lenyitható listán nem szereplő (például a Resent-From) fejlécelemet tartalmazó üzeneteket szeretnénk keresni, kattintsunk a legördülő lista Testreszabás elemére, és írjuk be a keresni kívánt fejlécelemet. A &brandShortName; Levelező és hírolvasó felveszi ezt a lenyitható listára, így ezután ezt is választhatjuk keresési feltételként. Az egyéni fejlécelemet pontosan kell beírni, mert a Levelező csak a beírt kifejezéssel tökéletesen megegyező elemeket fogja megtalálni.</p>
   </li>
-  <li>Click More to add criteria and Fewer to remove them.</li>
-  <li>Click Search to begin, or click Clear to reset your entries. The search
-    results appear in lower part of the Search Messages dialog box.
+  <li>A Több gombbal további feltételeket vehetünk fel, a Kevesebb gombbal eltávolíthatunk feltételeket.</li>
+  <li>A keresés indításához kattintsunk a Keresés gombra, az Alaphelyzet gombbal a kiindulási helyzetbe térhetünk vissza. A keresés eredménye a párbeszédpanel alsó részén jelenik meg.
     <ul>
-      <li>To open a message so you can read it, select the message and click
-        Open, or double-click the message.</li>
-      <li>To sort the messages in a different order, click the column that you
-        want to sort by.</li>
-      <li>To move or copy a message in the Results area to another folder,
-        select the message and then choose the destination folder from the File
-        drop-down list. If the destination folder is within the same account,
-        the message is moved to that folder. If the destination folder is
-        within a different account, the message is copied to that folder.</li>
-      <li>To delete a message in the Results area, select the message and then
-        click Delete.</li>
-      <li>To open the folder where the message is stored, select the message
-        and click Open Message Folder.</li>
+      <li>Valamelyik üzenet megnyitásához és elolvasásához jelöljük ki az üzenetet, és kattintsunk a Megnyitás gombra, vagy kattintsunk duplán a kívánt üzenetre.</li>
+      <li>Az üzenetek a fejlécre kattintva a kívánt oszlop szerint rendezhetők.</li>
+      <li>Az Eredmények mezőben megjelenő üzeneteket másik mappába másolhatjuk vagy helyezhetjük át: ehhez jelöljük ki a kívánt üzenetet, és az Iktatás lenyitható listán adjuk meg a célmappát. Ha a célmappa ugyanezen a postafiókon belül található, az üzenetet áthelyezi a program. Ha a célmappa másik postafiókban található, az üzenetet átmásolja a program.</li>
+      <li>Az Eredmények mezőben megjelenő valamelyik üzenet törléséhez jelöljük azt ki, és kattintsunk a Törlés gombra.</li>
+      <li>Az üzenet tárolási mappáját is megnyithatjuk: jelöljük ki az üzenetet, és kattintsunk az Üzenetmappa megnyitása gombra.</li>
     </ul>
   </li>
 </ol>
 
-<p>[<a href="#organizing_your_messages">Return to beginning of section</a>]</p>
+<p>[ <a href="#organizing_your_messages">Vissza a fejezet elejére</a> ]</p>
 
-<h1 id="controlling_junk_mail">Controlling Junk Mail</h1>
+<h1 id="controlling_junk_mail">Levélszemét kezelése</h1>
 
-<p>This section describes how to use &brandShortName;&apos;s Junk Mail Controls
-to filter unwanted mail, and how phishing detection works.</p>
+<p>Ez a szakasz leírja hogy hogyan használható a &brandShortName; levélszemét-kezelő funkciója a kéretlen levelek kiszűrésére.</p>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#using_junk_mail_controls">Using Junk Mail Controls</a></li>
-    <li><a href="#junk_controls_options">Junk Mail Controls Options</a></li>
-    <li><a href="#junk_controls_and_filters">Junk Mail Controls and
-      Filters</a></li>
-    <li><a href="#phishing_detection">Phishing Detection</a></li>
+    <li><a href="#using_junk_mail_controls">A Levélszemét-kezelő használata</a></li>
+    <li><a href="#junk_controls_options">Levélszemét-kezelő használata</a></li>
+    <li><a href="#junk_controls_and_filters">Levélszemét kezelése és Levélszűrők</a></li>
   </ul>
 </div>
 
 
-<h2 id="using_junk_mail_controls">Using Junk Mail Controls</h2>
+<h2 id="using_junk_mail_controls">A Levélszemét-kezelő használata</h2>
 
-<p>&brandShortName;&apos;s Junk Mail Controls feature can evaluate your
-  incoming messages and identify possible junk (or unsolicited) messages. The
-  feature uses the Bayesian classification method. You first train
-  &brandShortName; by showing it a bunch of mail that is junk, and a bunch of
-  mail that is not. Then, you let it auto-classify new mail for you. If
-  &brandShortName; makes any mistakes, you can correct them.</p>
+<p>&brandShortName; levélszemét-kezelő funkciója segítségével kiértékelhetők a beérkező levelek és azonosíthatók a szemét (vagy kéretlen) üzenetek. A funkció a Bayes-féle osztályozási módszert használja. Először &brandShortName; megtanulja, mi a szemét, és mi nem. Mutatunk neki néhány szemét és néhány nem szemét levelet. Azután hagyjuk automatikusan azonosíttatni a beérkező üzeneteket. Ha &brandShortName; hibát vét, akkor ki tudjuk javítani.</p>
 
-<p>To use Junk Mail Controls:</p>
+<p>A levélszemét-kezelő használata:</p>
 
 <ol>
-  <li>First, train &brandShortName; to recognize Junk messages and Non-Junk
-    messages. There are three ways to toggle junk status of the selected
-    message(s):
+  <li>Először &brandShortName; megtanulja azonosítani a szemét és a nem szemét üzeneteket. A kiválasztott üzenet(ek)hez háromféle módon kapcsolhatjuk a szemét- illetve nem szemét státuszt:
     <ul>
-      <li>Open the Message menu, select <q>Mark</q> and choose <q>As Junk</q>
-        or <q>As Not Junk</q>.</li>
-      <li>Click on the Junk toolbar button.</li>
+      <li>Válasszuk az Üzenet menü <q>Megjelölés</q> menüpontját, majd a <q>Szemétként</q>
+        vagy a <q>Nem szemétként</q> parancsot.</li>
+      <li>Kattintsunk a Szemét ikonra a Levelező eszköztáron.</li>
       <li><img src="images/mail_junk_column.png" style="float:right" alt=""/>
 
-        <p>Click to toggle the Junk Status column in the message list. (If you
-          do not see it, click the right-most button (
-          <img src="images/columns.png" alt=""/>) in the list header bar and
-          select Junk Status from the pop-up menu.)</p>
+        <p>Az üzenetlistában kattintsunk a Szemét-e oszlopra. (Ha nem látjuk, akkor kattintsunk a jobbszélső gombra (<img src="images/columns.png" alt=""/>) az üzenetlista fejlécében és válasszuk a Szemét-e elemet a listából.)</p>
       </li>
     </ul>
 
-    <p>When you toggle junk status, a trash-can icon will appear or disappear
-      in the Junk status column to indicate the junk status of the selected
-      message.</p>
+    <p>Ha kapcsolgatjuk a Szemét-e státuszt, akkor egy kuka ikon megjelenik vagy eltűnik a Szemét-e állapotoszlopában, így jelezve a kiválasztott üzenet státuszát.</p>
   </li>
-  
-  <li>Open the Edit menu, and choose Mail &amp; Newsgroups Account Settings.
-    You see the Mail &amp; Newsgroups Account Settings dialog box.</li>
-  <li>Click the Junk Settings category for your mail account.</li>
-  <li>Enable the feature and &brandShortName; will automatically classify
-    incoming messages. (See
-    <a href="#junk_controls_options">Junk Mail Controls Options</a>.
-    Details on the other settings there can be found in the 
-    <a href="mailnews_account_settings.xhtml#junk_settings">Junk Settings</a>
-    preference panel description.)
-  </li>
-  <li>If you have trained it on virus mail, consider disabling the white
-    listing (many mail viruses send bulk messages to people in the address book
-    of the infected computer).</li>
-  <li>Make sure to correct the Junk Mail Controls when it incorrectly labels
-    messages either as junk or not junk.</li>
-  <li>To analyze existing messages, select messages, open the Tools menu
-    and choose <q>Run Junk Mail Controls</q>.</li>
+  <li>Válasszuk a Feladatok menü <q>Levélszemét kezelése...</q> parancsát. Engedélyezzük a postafiókra a levélszemét kezelését, és a &brandShortName; a beérkező üzeneteket automatikusan osztályozni fogja. (További tudnivalók: <a href="#junk_controls_options">Levélszemét-kezelő használata</a>.)</li>
+  <li>Ha vírusos leveleket is fel szeretnénk ismertetni, akkor vegyük fontolóra az ismerősöktől jövő levelek automatikus átengedésének megtiltását (sok vírus tömegével küld üzeneteket a fertőzött számítógép címjegyzékében található címekre).</li>
+  <li>Ha a Levélszemét-kezelő rosszul ismer fel egy üzenetet, akkor mindenképpen javítsuk, akár szemét, akár nem szemét üzenetről van szó.</li>
+  <li>Már beérkezett üzenetek elemzéséhez jelöljük ki az üzeneteket, és válasszuk a Feladatok menü <q>Levélszemétgyűjtő futattása a mappán</q> parancsát.</li>
 </ol>
 
-<p><strong>Note</strong>: &brandShortName; will only run Junk Mail Controls
-  when the training database has information on non-Junk messages. If Junk Mail
-  Controls do not work, select some messages and explicitly mark them as Not
-  Junk.</p>
+<p><strong>Megjegyzés</strong>: A &brandShortName; csak akkor fogja futtatni a Levélszemét-kezelőt, ha az azonosító adatbázisban vannak információk a nem szemét üzenetekről. Ha a Levélszemét-kezelő nem működik, akkor válasszunk ki néhány üzenetet, és jelöljük meg őket nem szemétként.</p>
 
-<p>[<a href="#controlling_junk_mail">Return to beginning of section</a>]</p>
+<p>[ <a href="#controlling_junk_mail">Vissza a fejezet elejére</a> ]</p>
 
-<h2 id="junk_controls_options">Junk Mail Controls Options</h2>
+<h2 id="#controlling_junk_mail">Levélszemét-kezelő használata</h2>
 
-<p>To fine-tune how Junk Mail Controls work, use the 
-  <a href="mailnews_preferences.xhtml#junk_and_suspect_preferences">Junk &amp;
-  Suspect Mail preference panel</a> for account-independent settings and the
-  account manager's <a href="mailnews_account_settings.xhtml#junk_settings">Junk
-  Settings</a> for settings of a specific mail account.</p>
+<p>A Levélszemét-kezelő működésének pontos áttekintéséhez válasszuk a Feladatok menü <q>Levélszemét kezelése...</q> parancsát:</p>
 
-<p>[<a href="#controlling_junk_mail">Return to beginning of section</a>]</p>
+<ul>
+  <li><strong>Postafiók</strong>: Válasszunk egy postafiókot a Levélszemét-kezelő beállításainak megváltoztatásához az adott postafiókon. (Megjegyzés: minden postafiók ugyanazt az azonosító adatbázist használja.)</li>
+  <li><strong>Levélszemétnapló</strong>: Kattintsunk a gombra a levélszemét-felismerések listáját tartalmazó párbeszédpanel megnyitásához. A párbeszédpanelen letilthatjuk a Levélszemétnapló vezetését.</li>
+  <li><strong>Levélszemét kezelésének engedélyezése</strong>: Jelöljük be, ha kérjük a levélszemét felismertetését.</li>
+  <li><strong>Ne jelölje meg levélszemétként az üzenetet, ha a feladója benne van a címjegyzékben</strong>: Jelöljük be ha ki akarjuk védeni, hogy véletlenül levélszemétté váljanak az ismerős emberek üzenetei.</li>
+  <li><strong>A levélszemétként azonosított bejövő üzenetek áthelyezése</strong>: Jelöljük be, ha szeretnénk, hogy a levélszemét automatikusan egy megadott mappába kerüljön.
+    <ul>
+      <li><strong><q>Szemét</q> mappa [postafiók]</strong>: az alapértelmezett levélszemétmappa használatához válasszuk ezt.</li>
+      <li><strong>Egyéb: [postafiók]</strong>: egyedi levélszemét mappa beállításához válasszuk ezt.</li>
+      <li><strong>A levélszemétként megjelölt üzenetek törlése [__] nap elteltével ebből a mappából</strong>: Ha biztosak vagyunk benne, hogy a levélszemétként azonosított üzenetek valóban szemetek, akkor jelöljük be, hogy a bizonyos időnél régebben érkezett levélszemét automatikusan törlődjön.</li>
+    </ul>
+  </li>
+  <li><strong>A szemétként megjelölt levelek megjelölése olvasottként</strong>: Válasszuk ki ezt a beállítást, ha el akarjuk kerülni, hogy a levélszemétnek jelölt üzenet új üzenetként jelenjen meg.</li>
+  <li><strong>Ha kézzel jelölöm meg az üzeneteket szemétként</strong>: Válasszuk ezt annak beállításához, hogy a &brandShortName; mit csináljon a kézzel megjelölt levélszeméttel.
+    <ul>
+      <li><strong>Áthelyezés<q>Szemét</q> mappába</strong>: Válasszuk ezt, ha a kézzel szemétként megjelölt üzeneteket a levélszemét mappába szeretnénk áthelyezni.</li>
+      <li><strong>Törlés</strong>: Válasszuk ezt, ha a kézzel szemétként megjelölt üzeneteket a kukába szeretnénk áthelyezni.</li>
+    </ul>
+  </li>
+</ul>
 
-<h2 id="junk_controls_and_filters">Junk Mail Controls and Filters</h2>
+<p>[ <a href="#controlling_junk_mail">Vissza a fejezet elejére</a> ]</p>
 
-<p>Junk Mail Controls run after mail filters (unless you set the filter to run
-  after classification, where <q>classification</q> includes junk and phishing
-  scanning) and apply only to the Inbox folder and its sub-folders. Use this to
-  your advantage, for example, you can filter mail you are sure not to be Junk
-  to a special folder outside of Inbox so that the messages will not be
-  classified as Junk (especially useful if you subscribe to newsletters or if
-  you are on a moderated mailing list).</p>
+<h2 id="junk_controls_and_filters">Levélszemét kezelése és Levélszűrők</h2>
 
-<p>[<a href="#controlling_junk_mail">Return to beginning of section</a>]</p>
+<p>A levélszemét azonosítása a levélszűrők végrehajtása után történik és csak a Beérkezett üzenetek mappán és annak almappáin fut végig. Használjuk ki ennek előnyeit! Például azt az üzenetet, melyről biztosan tudjuk, hogy nem levélszemét szűrhetjük a Beérkezett üzenetek mappán kívülre, így az biztosan nem lesz levélszemétként azonosítva (ez különösen hasznos, ha hírlevelekre vagyunk feliratkozva vagy moderált levelezőlista tagjai vagyunk).</p>
+
+<p>[ <a href="#controlling_junk_mail">Vissza a fejezet elejére</a> ]</p>
 
 <h2 id="phishing_detection">Phishing Detection</h2>
 
@@ -829,6 +568,6 @@ to filter unwanted mail, and how phishing detection works.</p>
   <a href="http://www.honeynet.org/papers/phishing/">Know your Enemy:
   Phishing</a>.</p>
 
-<p>[<a href="#controlling_junk_mail">Return to beginning of section</a>]</p>
+<p>[ <a href="#controlling_junk_mail">Vissza a fejezet elejére</a> ]</p>
 </body>
 </html>

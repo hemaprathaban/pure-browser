@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,448 +12,284 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Signing &amp; Encrypting Messages</title>
+<title>Üzenetek aláírása és titkosítása</title>
 <link rel="stylesheet" href="helpFileLayout.css"
   type="text/css"/>
 </head>
 <body>
 
-<h1 id="signing_and_encrypting_messages">Signing &amp; Encrypting Messages</h1>
+<h1 id="signing_and_encrypting_messages">Üzenetek aláírása és titkosítása</h1>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#about_digital_signatures_and_encryption">About Digital
-      Signatures &amp; Encryption</a></li>
-    <li><a href="#getting_other_peoples_certificates">Getting Other
-      People&apos;s Certificates</a></li>
-    <li><a href="#configuring_security_settings">Configuring Security
-      Settings</a></li>
-    <li><a href="#signing_and_encrypting_a_new_message">Signing &amp;
-      Encrypting a New Message</a></li>
-    <li><a href="#reading_signed_and_encrypted_messages">Reading Signed &amp;
-      Encrypted Messages</a></li>
-    <li><a href="#message_security_compose_window">Message Security -
-      Compose Window</a></li>
-    <li><a href="#message_security_received_message">Message Security -
-      Received Message</a></li>
+    <li><a href="#about_digital_signatures_and_encryption">Digitális aláírások és titkosítás – Áttekintés</a></li>
+    <li><a href="#getting_other_peoples_certificates">Mások tanúsítványának beszerzése</a></li>
+    <li><a href="#configuring_security_settings">Biztonsági beállítások megadása</a></li>
+    <li><a href="#signing_and_encrypting_a_new_message">Új üzenet aláírása és titkosítása</a></li>
+    <li><a href="#reading_signed_and_encrypted_messages">Aláírt és titkosított üzenetek olvasása</a></li>
+    <li><a href="#message_security_compose_window">Üzenetek biztonsága – Új üzenet ablak</a></li>
+    <li><a href="#message_security_recieved_message">Üzenetek biztonsága – Beérkezett üzenetek</a></li>
   </ul>
 </div>
 
-<h2 id="about_digital_signatures_and_encryption">About Digital Signatures &amp;
-  Encryption </h2>
+<h2 id="about_digital_signatures_and_encryption">Digitális aláírások és titkosítás – áttekintés </h2>
 
-<p>When you compose a mail message, you can choose to attach your digital
-  signature to it. A <a href="glossary.xhtml#digital_signature">digital
-  signature</a> allows recipients of the message to verify that the message
-  really comes from you and hasn&apos;t been tampered with since you sent
-  it.</p>
+<p>Levél írásakor eldönthetjük, hogy kívánunk-e digitális aláírást mellékelni. A <a href="glossary.xhtml#digital_signature">digitális aláírás</a> segítségével a címzettek ellenőrizhetik, hogy a levél valóban tőlünk érkezett-e, és elküldése óta nem változtatták-e meg.</p>
 
-<p>When you compose a mail message, you can also choose to encrypt it.
-  <a href="glossary.xhtml#encryption">Encryption</a> makes it very difficult
-  for anyone other than the intended recipient to read the message while it is
-  in transit over the Internet.</p>
+<p>Emellett a levél titkosítását is választhatjuk.
+  <a href="glossary.xhtml#encryption">titkosítás</a> szinte lehetetlenné teszi, hogy a címzetteken kívül más is elolvassa az üzenetet, amíg áthalad az interneten.</p>
 
-<p>Signing and encryption are not available for newsgroup messages.</p>
+<p>Az aláírás és a titkosítás a hírcsoportüzeneteknél nem áll rendelkezésre.</p>
 
-<p>Before you can sign or encrypt a message, you must take these preliminary
-  steps:</p>
+<p>A levél aláírása és titkosítása előtt a következő lépéseket kell végrehajtani:</p>
 
 <ol>
-  <li>Obtain one or more <a href="glossary.xhtml#certificate">certificates</a>
-    (the digital equivalents of ID cards). For details, see
-    <a href="using_certs_help.xhtml#getting_your_own_certificate">Getting Your
-    Own Certificate</a>.</li>
-  <li>Configure the security settings for your email account. For details, see
-    <a href="mailnews_account_settings.xhtml#security">Configuring Your
-    Security Settings</a>.
+  <li>Be kell szerezni egy vagy több <a href="glossary.xhtml#certificate">tanúsítványt</a>
+    (ez a személyazonosító igazolvány digitális megfelelője). További tudnivalók:
+    <a href="using_certs_help.xhtml#getting_your_own_certificate">Saját tanúsítvány beszerzése</a>.</li>
+  <li>Meg kell adni a levelezési postafiók biztonsági beállításait. További tudnivalók
+    <a href="mail_help.xhtml#security">Biztonsági beállítások megadása</a>.
   </li>
 </ol>
 
-<p>Once you have completed these steps, you can complete the instructions in
-  <a href="#signing_and_encrypting_a_new_message">Signing &amp; Encrypting a 
-  New Message</a>.</p>
+<p>A fenti lépések teljesítése után következhet az
+  <a href="#signing_and_encrypting_a_new_message">Új üzenet aláírása és titkosítása</a> témakör utasításainak végrehajtása.</p>
 
-<p>The sections that follow provide a brief overview of how digital signatures
-  and encryption work. For more technical details on this subject, see the
-  online document
-  <a href="http://developer.mozilla.org/en/Introduction_to_Public-Key_Cryptography">Introduction
+<p>Az itt következő részek rövid áttekintést nyújtanak a digitális aláírás és a titkosítás működéséről. A témakör részletes műszaki ismertetése a következő online dokumentumban olvasható
+  <a href="http://developer.mozilla.org/en/docs/Introduction_to_Public-Key_Cryptography">Introduction
   to Public-Key Cryptography</a>.</p>
 
-<h3 id="how_digital_signatures_work">How Digital Signatures Work</h3>
+<h3 id="how_digital_signatures_work">A digitális aláírás működése</h3>
 
-<p>A digital signature is a special code, unique to each message, created by
-  means of <a href="glossary.xhtml#public-key_cryptography">public-key
-  cryptography</a>.</p>
+<p>A digitális aláírás minden üzenetnél egyedi, a <a href="glossary.xhtml#public-key_cryptography">nyilvános kulcsú titkosítással</a> előállított különleges kód.</p>
 
-<p>A digital signature is completely different from a handwritten signature,
-  although it can sometimes be used for similar legal purposes, such as signing
-  a contract.</p>
+<p>Habár a digitális aláírásnak semmi köze nincs a hagyományos kézi aláíráshoz, jogi értelemben sokszor hasonlónak tekintendő.</p>
 
-<p>To create a digital signature for an email message that you are sending, you
-  need two things:</p>
+<p>Elküldendő elektronikus levélüzenet digitális aláírásának létrehozásához két dolog szükséges:</p>
 
 <ul>
-  <li>A <a href="glossary.xhtml#signing_certificate">signing certificate</a>
-    that identifies you for this purpose. Every time you sign a message, your
-    signing certificate is included with the message. The certificate includes
-    a <a href="glossary.xhtml#public_key">public key</a>. The presence of the
-    certificate in the message permits the recipient to verify your digital
-    signature.
+  <li>Egy <a href="glossary.xhtml#signing_certificate">aláíró tanúsítvány</a>
+    amely az erre a célra szolgáló azonosítást hajtja végre. Valahányszor aláírunk egy üzenetet, ez az aláíró tanúsítvány is bekerül a levélbe. A tanúsítvány egy <a href="glossary.xhtml#public_key">nyilvános kulcsot</a> tartalmaz. Az üzenetben lévő tanúsítvány segítségével tudja ellenőrizni a címzett digitális aláírásunkat.
 
-    <p>Your certificate is a bit like your name and phone number in the
-      phonebook&mdash;it is public information that helps other people
-      communicate with you.</p>
+    <p>A tanúsítvány a telefonkönyvben megjelenő névhez és telefonszámhoz hasonlítható: ezek olyan nyilvános adatok, amelyek segítségével mások kapcsolatba léphetnek velünk.</p>
   </li>
-  <li>A <a href="glossary.xhtml#private_key">private key</a>, which is created
-    and stored on your computer when you first obtain a certificate.
+  <li>Egy <a href="glossary.xhtml#private_key">személyes kulcs</a>, amely a tanúsítvány első beszerzésekor készül, és a saját számítógépen tárolódik.
 
-    <p>Your private key for a signing certificate is protected by your
-      <a href="glossary.xhtml#master_password">Master Password</a>, and the
-      &brandShortName; program does not disclose it to anyone else. The Mail
-      &amp; Newsgroup software uses your private key to create a unique,
-      verifiable digital signature for every message you choose to sign.</p>
+    <p>Az aláíró tanúsítványhoz tartozó személyes kulcsot a saját
+      <a href="glossary.xhtml#master_password">mesterjelszó</a>, védi, és a
+      &brandShortName; program senki másnak sem fedi fel. A Levelező és hírolvasó szoftver ezt a személyes kulcsot használja egyedi, ellenőrizhető digitális aláírás létrehozásához az egyes aláírni kívánt üzenetekhez.</p>
   </li>
 </ul>
 
-<h3 id="how_encryption_works">How Encryption Works</h3>
+<h3 id="how_encryption_works">A titkosítás működése</h3>
 
-<p>To encrypt an email message, you must have an
-  <a href="glossary.xhtml#encryption_certificate">encryption certificate</a>
-  for each of the message&apos;s recipients. The public key in each certificate
-  is used to encrypt the message for that recipient.</p>
+<p>Elektronikus levélüzenet titkosításához az összes címzetthez
+  <a href="glossary.xhtml#encryption_certificate">titkosító tanúsítvány</a>
+  szükséges. Az egyes tanúsítványok nyilvános kulcsát használja a rendszer az üzenet titkosításához az adott címzett számára.</p>
 
-<p>If you don&apos;t have a certificate for even a single recipient, the
-  message cannot be encrypted.</p>
+<p>Ha akár csak egy címzett tanúsítványa is hiányzik, az üzenet nem titkosítható.</p>
 
-<p>The recipient&apos;s software uses the recipient&apos;s private key, which
-  remains on that person&apos;s computer, to decrypt the message.</p>
+<p>Az üzenet visszafejtéséhez a címzett szoftvere az adott számítógépen található személyes kulcsot használja.</p>
   
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="getting_other_peoples_certificates">Getting Other People&apos;s
-  Certificates</h2>
+<h2 id="getting_other_peoples_certificates">Mások tanúsítványának beszerzése</h2>
 
-<p>Every time you send a digitally signed message, your encryption certificate
-  is automatically included with the message. Therefore, one of the easiest
-  ways to obtain someone else&apos;s certificate is for that person to send you
-  a digitally signed message.</p>
+<p>Valahányszor digitálisan aláírt üzenetet küldünk, saját titkosító tanúsítványunk automatikusan bekerül az üzenetbe. Ezért mások tanúsítványa az egyik legegyszerűbb módon úgy szerezhető be, hogy megkérjük egy digitálisan aláírt üzenet küldésére.</p>
 
-<p>When you receive such a message, the person&apos;s certificate is
-  automatically stored by the <a href="certs_help.xhtml">Certificate
-  Manager</a>, which is the part of the browser that keeps track of
-  certificates. This is useful because you need to have a certificate for each
-  recipient of any email message that you want to send in encrypted form.</p>
+<p>Amikor ilyen üzenetet kapunk, a böngésző részét képező és a tanúsítványok nyomon követésével foglalkozó <a href="certs_help.xhtml">Tanúsítványkezelő</a> automatikusan tárolja az adott személy tanúsítványát. Ez hasznos, hiszen a titkosított formában elküldeni kívánt levelek valamennyi címzettjének tanúsítványa szükséges a művelethez.</p>
 
-<p>Another way to obtain certificates is to look them up in a public directory,
-  such as the <q>phonebook</q> directories maintained by many companies.</p>
+<p>A tanúsítványok beszerzésének másik módja, hogy megkeressük ezeket egy nyilvános címtárban – számos vállalat fenntart ilyen  <q>„telefonkönyvet”</q>.</p>
 
-<p>It&apos;s also possible to look up certificates automatically.  This feature
-  is controlled by
-  <a href="mailnews_preferences.xhtml#addressing_preferences">Mail &amp;
-  Newsgroups Preferences - Addressing</a> or
-  <a href="mailnews_account_settings.xhtml#addressing">Mail &amp; Newsgroups
-  Account Settings - Addressing</a>, which can be configured to look up
-  recipients&apos; email addresses in a directory.</p>
+<p>A tanúsítványok automatikusan is lekérhetők.  Ezt a szolgáltatást a
+  is controlled by <a href="mail_help.xhtml#addressing_preferences">Levelező és hírolvasó beállításai - Címjegyzék</a> vagy a 
+  <a href="mail_help.xhtml#addressing">Postafiók beállításai -
+  Címzés</a>, kezeli, amely beállítható a címzettek címtárakban lévő e-mail címeinek automatikus kikeresésére.</p>
 
-<p>When you are using any account that is configured to look up addresses in a
-  directory, the same directory will be searched for matching certificates when
-  you attempt to send an encrypted message to one or more recipients for whom
-  you don&apos;t have certificates on file.</p>
+<p>Ha a címek kikeresésére beállított postafiókot használunk, ugyanabban a címtárban fogja keresni a rendszer a megfelelő tanúsítványokat, ha titkosított üzenet küldésénél egy vagy több címzett tanúsítványa nem áll rendelkezésre.</p>
 
-<p>The directory will also be searched for missing certificates when you open
-  the drop-down menu below the Security icon in the Compose window and choose
-  View Security Info.</p>
+<p>Ugyancsak ebben keresi a rendszer a hiányzó tanúsítványokat, ha az Új üzenet ablakban lenyitjuk a Biztonság ikon menüjét, és a Biztonsági adatok megtekintése parancsot választjuk.</p>
 
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="configuring_security_settings">Configuring Security Settings</h2>
+<h2 id="configuring_security_settings">Biztonsági beállítások megadása</h2>
 
-<p>Once you have obtained an email certificate (or certificates), you must
-  specify the certificates you want to use for signing and encrypting
-  messages.</p> 
+<p>OnAz e-mail tanúsítvány (vagy tanúsítványok) beszerzése után meg kell adni az üzenetek aláírásához és titkosításához használni kívánt tanúsítványokat.</p> 
 
-<p>For information about obtaining email certificates, see
-  <a href="using_certs_help.xhtml#getting_your_own_certificate">Getting Your
-  Own Certificate</a>.</p>
+<p>Az e-mail tanúsítványok eléréséről lásd
+  <a href="using_certs_help.xhtml#getting_your_own_certificate">Saját tanúsítvány beszerzése</a>.</p>
 
-<p>To specify which signing and encryption certificates to use with a
-  particular account, begin from the Mail window:</p>
+<p>Az adott fióknál használni kívánt aláíró és titkosító tanúsítvány megadásához induljunk ki a Levelező ablakából:</p>
 
 <ol>
-  <li>Open the Edit menu and choose Mail &amp; Newsgroups Account Settings.</li>
-  <li>Click Security under the name of the mail account whose security settings
-    you want to configure.</li>
-  <li>Under Digital Signing, click Select. (You may be asked to provide your
-    <a href="glossary.xhtml#master_password">Master Password</a> before you can
-    proceed further.)
+  <li>Válasszuk a Szerkesztés menü Postafiókok beállításai parancsát.</li>
+  <li>Kattintsunk a Biztonság kategóriára annak a postafióknak a neve alatt, amelynek biztonsági beállításait meg szeretnénk adni.</li>
+  <li>Digitális aláírás csoportban kattintsunk a Kiválasztás gombra. (A továbblépéshez szükség lehet a
+    <a href="glossary.xhtml#master_password">mesterjelszó</a> megadására.)
 
-    <p>A dialog box appears that allows you to select from among your available
-      signing certificates.</p>
+    <p>A megjelenő párbeszédpanelen választhatunk a rendelkezésre álló aláíró tanúsítványok közül.</p>
   </li>
-  <li>Choose the signing certificate you want to use, then click OK.</li>
-  <li>Follow the same steps under Encryption: click the Select button, select
-    the encryption certificate you want to use, and click OK.</li>
+  <li>Jelöljük ki a használni kívánt tanúsítványt, majd kattintsunk az OK gombra.</li>
+  <li>Hajtsuk végre ugyanezeket a lépéseket a Titkosítás csoportban: kattintsunk a Kiválasztás gombra, jelöljük ki a kívánt titkosító tanúsítványt, és kattintsunk az OK gombra.</li>
 
-  <p>In some cases you may be able to specify the same certificate under
-    Encryption that you specified under Digital Signing; check with your system
-    administrator to find out for sure.</p>
+  <p>Bizonyos esetekben ugyanaz a tanúsítvány adható meg a titkosításhoz és a digitális aláíráshoz, erről a lehetőségről a rendszergazdát kell megkérdezni.</p>
 </ol>
 
-<p>Optionally, you can also indicate that you normally want to sign or encrypt
-  all messages sent from a particular account. These account-specific settings
-  are for convenience only; you can override the default settings for
-  individual messages.</p>
+<p>Azt is megadható, hogy az adott postafiókról az összes üzenetet digitális aláírással és titkosítással szeretnénk-e elküldeni. Ezek a postafiókra vonatkozó beállítások csak a kényelmet szolgálják, az alapértelmezett beállítások az egyes üzeneteknél felülbírálhatók.</p>
 
-<p>To configure your default signing and encryption settings, start from the
-  Security panel for the account (described above) and select your settings as
-  follows:</p>
+<p>Az alapértelmezett aláírási és titkosítási beállítások a postafiók fent említett Biztonság párbeszédpanelén adhatók meg:</p>
 
 <ul>
-  <li>Under Digital Signing:
+  <li>Digitális aláírás csoport:
     <ul>
-      <li><strong>Digitally sign messages</strong>: When this checkbox is
-        selected, all the messages you send from this account will be digitally
-        signed unless you indicate otherwise before you send the message. To
-        turn off this default setting, deselect the checkbox.</li>
+      <li><strong>Üzenetek digitális aláírása</strong>: ha bejelöljük a négyzetet, az erről a postafiókról küldött valamennyi üzenetre digitális aláírás kerül, de ez az üzenet elküldése előtt megváltoztatható. Az alapértelmezett beállítás kikapcsolásához töröljük a négyzet jelölését.</li>
     </ul>
   </li>
-  <li>Under Encryption (choose one):
+  <li>Titkosítás csoport (egy beállítás választható):
     <ul>
-      <li><strong>Never</strong>: When this option is selected, messages you
-        send from this account will be not be encrypted unless you indicate
-        otherwise before you send them.</li>
-      <li><strong>Required</strong>: When this option is selected, all the
-        messages you send from this account will be encrypted&mdash;but only if
-        you have valid certificates for each of the message&apos;s recipients.
-        If you don&apos;t have all the necessary certificates, the message
-        can&apos;t be sent unless you turn off encryption for that message.</li>
+      <li><strong>Soha</strong>: a beállítás választásakor az erről a postafiókról küldött üzenetek nem lesznek titkosítva, de ez az üzenet elküldése előtt megváltoztatható.</li>
+      <li><strong>Mindig</strong>: a beállítás választásakor az erről a postafiókról küldött valamennyi üzenet titkosítva lesz, de csak akkor, ha rendelkezünk az üzenet összes címzettjének érvényes tanúsítványával. Ha ez nem áll fenn, az üzenetet mindaddig nem tudjuk elküldeni, míg ki nem kapcsoljuk a titkosítást az adott üzenetnél.</li>
     </ul>
   </li>
 </ul>
 
-<p>When you have finished configuring your mail security settings, click OK to
-  confirm them.</p>
+<p>A biztonsági beállítások megadása után érvénybe léptetésükhöz kattintsunk az OK gombra.</p>
  
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="signing_and_encrypting_a_new_message">Signing &amp; Encrypting a New
-  Message</h2>
+<h2 id="signing_and_encrypting_a_new_message">Új üzenet aláírása és titkosítása</h2>
 
-<p>Before you can digitally sign or encrypt any message, you must obtain at
-  least one email certificate and configure your mail security settings
-  correctly. For background information on these tasks, see
-  <a href="#about_digital_signatures_and_encryption">About Digital Signatures
-  &amp; Encryption</a>.</p>
+<p>Az üzenetek digitális aláírása és titkosítása csak akkor hajtható végre, ha beszereztünk legalább egy e-mail tanúsítványt, és megfelelően megadtuk a levelezés biztonsági beállításait. A feladatok ismertetését lásd
+  <a href="#about_digital_signatures_and_encryption">Digitális aláírások és titkosítás
+  - áttekintés</a>.</p>
 
-<p>The settings specified in
-  <a href="mailnews_account_settings.xhtml#security">Mail &amp; Newsgroups
-  Account Settings - Security</a> determine the default settings for each new
-  Compose window you open when you set out to write an email.</p>
+<p>A <a href="mail_help.xhtml#security">Postafiókok beállításai - Biztonság</a> lapon megadott beállítások lesznek érvényesek minden újonnan megnyitott Új üzenet ablakban, amikor elektronikus levelet írunk.</p>
 
-<p>To open a Compose window, start from the Mail window and click Compose. You
-  can immediately identify the default security settings from the presence or
-  absence of these icons near the lower-right corner of the window:</p>
+<p>Az Új üzenet ablak megnyitásához a Levelező ablakban kattintsunk az Új üzenet gombra. Az ablak jobb alsó sarkában a következő ikonok megléte vagy hiánya azonnal jelzi a biztonsági alapbeállításokat:</p>
 
 <table>
   <tr>
     <td><img src="chrome://messenger/skin/smime/icons/hdrSignOk.gif"
-      alt="digital signature icon"/></td><td>The message will be digitally
-      signed (assuming you have a valid email certificate that
-      identifies you).</td>
+      alt="digital signature icon"/></td><td>Az üzenetre digitális aláírás kerül (feltéve, hogy rendelkezünk az azonosításunkra szolgáló érvényes e-mail tanúsítvánnyal).</td>
   </tr>
   <tr>
     <td><img src="chrome://messenger/skin/smime/icons/hdrCryptoOk.gif"
-      alt="encryption icon"/></td><td>The message will be encrypted
-      (assuming you have valid certificates for all recipients).</td>
+      alt="encryption icon"/></td><td>Az üzenet titkosítva lesz (feltéve, hogy rendelkezünk az összes címzetthez tartozó érvényes tanúsítvánnyal).</td>
   </tr>
 </table>
 
-<p>To turn these settings off or on, click the arrow just below the Security
-  icon in the Mail toolbar near the top of the window. Then select the item you
-  want from the drop-down list:</p>
+<p>Ezek a beállítások ki- vagy bekapcsolhatók: ehhez kattintsunk a Levelező eszköztáron a Biztonság ikon alatti nyílra, majd a lenyíló listán válasszuk ki a kívánt beállítást:</p>
 
 <ul>
-  <li><strong>Do Not Encrypt This Message</strong>: Choose this to turn off
-    encryption for this message. The message will not be encrypted when it is
-    sent over the Internet.</li>
-  <li><strong>Encrypt This Message</strong>: Choose this to turn on encryption
-    for this message. The message will be sent in encrypted form. However, it
-    can&apos;t be sent unless you have valid certificates for all
-    recipients.</li>
-  <li><strong>Digitally Sign This Message</strong>: Choose this to turn digital
-    signing on or off for this message. A checkmark indicates the message will
-    be signed.</li> 
-  <li><strong>View Security Info</strong>: Choose this to view detailed
-    information about the security status of this message&mdash;to help you
-    determine, for example, whether you need to obtain a certificate for one of
-    the recipients.</li>
+  <li><strong>Ne titkosítsa ezt az üzenetet</strong>: választásával kikapcsoljuk az üzenet titkosítását. Az üzenet titkosítása elmarad, amikor elküldjük az interneten.</li>
+  <li><strong>Titkosítás megkövetelése</strong>: választásával bekapcsoljuk az üzenet titkosítását, azaz az üzenet titkosított formában kerül elküldésre. Ez azonban csak akkor történhet meg, ha rendelkezünk az összes címzett érvényes tanúsítványával.</li>
+  <li><strong>Üzenet digitális aláírása</strong>: a beállítással az üzenet digitális aláírása kapcsolható be vagy ki. A pipa a digitális aláírás bekapcsolását jelzi.</li> 
+  <li><strong>Biztonsági adatok megtekintése</strong>: akkor jelöljük be, ha részletes adatokat szeretnénk látni az üzenet biztonsági állapotáról &mdash; ez segít például annak eldöntésében, hogy be kell-e szerezni tanúsítványt valamelyik címzetthez.</li>
 </ul>
 
-<p>To view detailed information about the message&apos;s security status, you
-  can also click the key or lock icon as described in
-  <a href="#message_security_compose_window">Message Security - Compose
-  Window</a>.</p>
+<p>Az üzenet biztonsági állapotáról az adatok a kulcs vagy a lakat ikonra kattintással is megjeleníthetők, erről lásd
+  <a href="#message_security_compose_window">Üzenetek biztonsága - Új üzenet ablak</a>.</p>
 
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="reading_signed_and_encrypted_messages">Reading Signed &amp; Encrypted
-  Messages</h2>
+<h2 id="reading_signed_and_encrypted_messages">Aláírt és titkosított üzenetek olvasása</h2>
 
-<p>When you view a signed or encrypted message in the Mail window, these icons
-  near the upper-right corner of the message header indicate the security
-  status of the message:</p>
+<p>Amikor digitálisan aláírt vagy titkosított üzenetet tekintünk meg a Levelező ablakban, az üzenet fejlécének jobb felső sarkában az alábbi ikonok az üzenet biztonsági állapotáról tájékoztatnak:</p>
   
 <table>
   <tr>
     <td><img src="chrome://messenger/skin/smime/icons/hdrSignOk.gif"
-      alt="digital signature icon"/></td><td>The message is digitally
-      signed and has been validated. If there is a problem with the signature,
-      the pen is broken.</td>
+      alt="digital signature icon"/></td><td>Az üzenet digitálisan aláírt és érvényesített. Ha probléma merült fel az aláírással kapcsolatban, megtört toll jelenik meg.</td>
   </tr>
   <tr>
     <td><img src="chrome://messenger/skin/smime/icons/hdrSignUnknown.gif"
-      alt="unknown icon"/></td><td>The message is signed, but it has a
-      large attachment that has not yet been downloaded from the IMAP server.
-      As a result, the signature cannot be validated. Click the icon to
-      download the attachment and validate the signature.</td>
+      alt="unknown icon"/></td><td>Az üzenet digitálisan aláírt, de nagyméretű melléklettel rendelkezik, amely még nincs letöltve az IMAP kiszolgálóról, így az aláírás nem érvényesíthető. A melléklet letöltéséhez és az álírás érvényesítéséhez kattintsunk az ikonra.</td>
   </tr>
   <tr>
     <td><img src="chrome://messenger/skin/smime/icons/hdrCryptoOk.gif"
-      alt="encryption icon"/></td><td>The message is encrypted. If there
-      is a problem with the encryption, the key is broken.</td>
+      alt="encryption icon"/></td><td>Az üzenet titkosítva van. Ha probléma merült fel a titkosítással kapcsolatban, megtört kulcs jelenik meg.</td>
   </tr>
 </table>
 
-<p>For information about certificate validation, see
-  <a href="using_certs_help.xhtml#controlling_validation">Controlling
-  Validation</a>.</p>
+<p>A tanúsítvány érvényesítéséről lásd
+  <a href="using_certs_help.xhtml#controlling_validation">Az érvényesség ellenőrzése</a>.</p>
 
-<p>To see more detailed information about the message&apos;s security, click
-  the key or lock icon, or follow the instructions in
-  <a href="#message_security_received_message">Message Security - Received
-  Message</a>.</p>
+<p>Az üzenetek biztonságával kapcsolatos további tudnivalók jeleníthetők meg, ha a kulcs vagy a lakat ikonra kattintunk, vagy követjük a következő útmutatót
+  <a href="#message_security_recieved_message">Üzenetek biztonsága - Beérkezett üzenetek</a>.</p>
 
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="message_security_compose_window">Message Security - Compose Window</h2>
+<h2 id="message_security_compose_window">Üzenetek biztonsága - Új üzenet ablak</h2>
 
-<p>This section describes the Message Security window that you can open for any
-  message you are composing. If you&apos;re not already viewing Message
-  Security, click the Security icon in the toolbar of the Compose window.</p>
+<p>Ez a fejezet az Üzenet biztonsága ablakot ismerteti, amelyet minden készülő üzenetnél megnyithatunk. Ha még nem látható az Üzenet biztonsága ablak, kattintsunk az Új üzenet ablak eszköztárán a Biztonság ikonra.</p>
 
-<p>The Message Security window describes how your message will be sent:</p>
+<p>Az Üzenet biztonsága ablak az üzenet elküldési módjáról tájékoztat:</p>
 
 <ul>
-  <li><strong>Digitally Signed</strong>: This line describes whether your
-    message will be signed. There are three possibilities:
+  <li><strong>Digitálisan aláírt</strong>: ez a sor az üzenet digitális aláírásának állapotát írja le. A három lehetőség a következő:
     <ul>
-      <li><strong>Yes</strong>: Digital signing has been enabled for this
-        message, you have a valid certificate identifying you, and the message
-        can be signed.</li>
-      <li><strong>No</strong>: Digital signing has been disabled for this
-        message.</li>
-      <li><strong>Not possible</strong>: Digital signing has been enabled for
-        this message. However, a valid
-        <a href="glossary.xhtml#certificate">certificate</a> identifying you
-        for this purpose is not available, or there is some other problem that
-        makes signing impossible.</li>
+      <li><strong>Igen</strong>: a digitális aláírás engedélyezve van az üzenetnél, az azonosításhoz rendelkezünk érvényes tanúsítvánnyal, így az üzenet aláírható.</li>
+      <li><strong>Nem</strong>: a digitális aláírás tiltva van az üzenetnél.</li>
+      <li><strong>Nem lehetséges</strong>: a digitális aláírás engedélyezve van az üzenetnél, azonban az erre a célra szolgáló azonosításunkhoz szükséges érvényes
+        <a href="glossary.xhtml#certificate">tanúsítvány</a> nem áll rendelkezésre, vagy más probléma miatt a digitális aláírás nem hajtható végre.</li>
     </ul>
   </li>
-  <li><strong>Encrypted</strong>: This line describes whether your message will
-    be encrypted. There are three possibilities:
+  <li><strong>Titkosított</strong>: ez a sor az üzenet titkosításának állapotát írja le. A három lehetőség a következő:
     <ul>
-      <li><strong>Yes</strong>: Encryption has been enabled for this message,
+      <li><strong>Igen</strong>: Encryption has been enabled for this message,
         valid certificates for all listed recipients are available, and the
         message can be encrypted.</li>
-      <li><strong>No</strong>: Encryption has been disabled or is not possible
-        for this message.</li>
-      <li><strong>Not possible</strong>: Encryption has been enabled for this
-        message. However, a valid certificate for at least one of the listed
-        recipients is not available, or no recipients are listed, or there is
-        some other problem that makes encryption impossible.</li>
+      <li><strong>Nem</strong>: a titkosítás tiltva van, vagy nem hajtható végre az üzenetnél.</li>
+      <li><strong>Nem lehetséges</strong>: a titkosítás engedélyezve van az üzenetnél, azonban a felsorolt címzettek legalább egyikénél hiányzik az érvényes tanúsítvány, vagy nincsenek megadva a címzettek, illetve más probléma miatt a titkosítás nem hajtható végre.</li>
     </ul>
   </li>
 </ul>
 
-<p>The Message Security window also lists the certificates available for the
-  recipients of your message:</p>
+<p>Az Üzenet biztonsága ablak felsorolja az üzenet címzettjeinek rendelkezésre álló tanúsítványait is:</p>
 
 <ul>
-  <li><strong>View</strong>: To view the details for any certificate in the
-    list, select its name, then click View.</li>
+  <li><strong>Megjelenítés</strong>: a listán szereplő tanúsítványok részletes adatainak megtekintéséhez jelöljük ki a nevet, és kattintsunk a Megjelenítés gombra.</li>
 </ul>
 
-<p>For more information about obtaining certificates and configuring message
-  security settings, see <a href="#signing_and_encrypting_messages">Signing
-  &amp; Encrypting Messages</a>.</p>
+<p>A tanúsítványok beszerzéséről és az üzenetek biztonsági beállításairól lásd <a href="#signing_and_encrypting_messages">Üzenetek aláírása és titkosítása</a>.</p>
 
-<p>To indicate your signing or encryption choices for an individual message,
-  click the arrow beside the Security button in the Compose window, then select
-  the options you want.</p>
+<p>Adott üzenet digitális aláírási és titkosítási beállításainak megadásához kattintsunk az Új üzenet ablakban a Biztonság gomb melletti nyílra, és válasszuk a kívánt beállításokat.</p>
 
-<p>To indicate your default signing and encryption preferences for all
-  messages, see <a href="mailnews_account_settings.xhtml#security">Mail &amp;
-  Newsgroups Account Settings - Security</a></p>
+<p>Az összes üzenetre vonatkozó digitális aláírási és titkosítási alapbeállításokról lásd <a href="mail_help.xhtml#security">Postafiókok beállításai - Biztonság</a></p>
 
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
 
-<h2 id="message_security_received_message">Message Security - Received
-  Message</h2>
+<h2 id="message_security_recieved_message">Üzenetek biztonsága - Beérkezett üzenetek</h2>
 
-<p>This section describes the Message Security window that you can open for any
-  message you have received. If you&apos;re not already viewing Message
-  Security for a received message, follow these steps:</p>
+<p>Ez a rész az Üzenet biztonsága ablakot ismerteti, amelyet minden beérkezett üzenetnél megnyithatunk. Ha a beérkezett üzenetnél még nem látható az Üzenet biztonsága ablak, hajtsuk végre a következő lépéseket:</p>
 
 <ol>
-  <li>In the Mail window, select the message for which you want to view
-    security information.</li>
-  <li>Open the View menu and choose Message Security Info.</li>
+  <li>A Levelező ablakban jelöljük ki azt az üzenetet, amelynek biztonsági adatait látni szeretnénk.</li>
+  <li>Válasszuk a Nézet menü Üzenet biztonsági adatai parancsát.</li>
 </ol>
 
-<p>The Message Security window displays the following information:</p>
+<p>Az Üzenet biztonsága ablak a következő adatokat jeleníti meg:</p>
 
 <ul>
-  <li><strong>Digital Signature</strong>: The top section describes whether the
-    message is digitally signed and if so, whether the signature is valid.</li>
+  <li><strong>Digitális aláírás</strong>: A felső rész az üzenet digitális aláírásáról, és ha van ilyen, ennek érvényességéről tájékoztat.</li>
   
-  <p>If validation failed while OCSP was enabled, check the OCSP settings in
-    <a href="validation_help.xhtml#privacy_and_security_preferences_validation">Privacy
-    &amp; Security Preferences - Validation</a>. If you are not familiar with
-    OCSP, confirm the settings with your system administrator. If your settings
-    are correct, there may be a problem with the OCSP service or the
-    certificate used to create the signature is no longer valid.</p>
+  <p>Ha az érvényesítés az OCSP engedélyezése mellett is sikertelen volt, ellenőrizzük az OCSP beállításait az
+    <a href="validation_help.xhtml#privacy_and_security_preferences_validation">Adatvédelmi és biztonsági beállítások – Érvényesítés</a>. Ha nem vagyunk jártasak az OCSP beállításaiban, kérjük a rendszergazda segítségét. Ha a beállítások megfelelőek, valószínűleg az OCSP szolgáltatással lehet probléma, vagy az aláírás létrehozásához használt tanúsítvány vált időközben érvénytelenné.</p>
   
-  <p>If the signature is invalid because of a problem with a certificate&apos;s
-    trust settings, you can use the <a href="certs_help.xhtml">Certificate
-    Manager</a> to view or edit those settings.</p>
+  <p>Ha az aláírás a tanúsítvány megbízhatósági beállításai miatt érvénytelen, a <a href="certs_help.xhtml">Tanúsítványkezelő</a> segítségével megtekinthetők és módosíthatók ezek a beállítások.</p>
 
-  <li><strong>View Signature Certificate</strong>: If the message is signed,
-    click this button to view the certificate that was used to sign it.</li>
-  <li><strong>Encryption</strong>: The bottom section reports whether the
-    message is encrypted and any decrypting problems.
+  <li><strong>Aláírás tanúsítványának megtekintése</strong>: Ha az üzenet digitálisan alá van írva, erre a gombra kattintva megtekinthető az aláíráshoz használt tanúsítvány.</li>
+  <li><strong>Titkosítás</strong>: Az alsó részen az üzenet titkosításáról és az ezzel kapcsolatos problémákról olvashatunk.
     <ul>
-      <li>If the message&apos;s contents have been altered during transit, you
-        should ask the sender to resend it. The changes may have been caused by
-        network problems.</li>
-      <li>If a copy of your own certificate (used by the sender to encrypt the
-        message) is not available on your computer, the private key required to
-        decrypt the message cannot be retrieved. The only solution is to import
-        a backup copy of your certificate and its private key (see
-        <a href="certs_help.xhtml#your_certificates">Your Certificates</a> for
-        details.) If you don&apos;t have access to a backup certificate, you
-        will not be able to decrypt the message.</li>
+      <li>Ha az üzenet tartalma megváltozott az átvitel során, meg kell kérni a feladót, hogy küldje el újból. A módosításokat hálózati problémák is okozhatják.</li>
+      <li>Ha a saját tanúsítvány másolata (amelyet a feladó az üzenet titkosításhoz használt) nem áll rendelkezésre a számítógépünkön, az üzenet visszafejtéséhez szükséges személyes kulcs nem kérhető le. Ekkor az egyetlen megoldás a saját tanúsítvány és az ehhez tartozó személyes kulcs importálása egy biztonsági mentésből (további tudnivalók
+        <a href="certs_help.xhtml#your_certificates">Saját tanúsítványok</a>). Ha nem férünk hozzá a tanúsítvány biztonsági másolatához, nem tudjuk visszafejteni az üzenetet.</li>
     </ul>
   </li>
 </ul>
 
-<p>[<a href="#signing_and_encrypting_messages">Return to beginning of
-  section</a>]</p>
+<p>[<a href="#signing_and_encrypting_messages">Vissza a fejezet elejére</a>]</p>
+
 
 </body>
 </html>

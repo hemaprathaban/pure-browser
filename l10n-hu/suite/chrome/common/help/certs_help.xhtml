@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,405 +12,228 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Certificate Manager</title>
+<title>Tanúsítványkezelő</title>
 <link rel="stylesheet" href="helpFileLayout.css"
   type="text/css"/>
 </head>
 <body>
 
-<div class="boilerPlate">This document is provided for your information only.
-  It may help you take certain steps to protect the privacy and security of
-  your personal information on the Internet. This document does not, however,
-  address all online privacy and security issues, nor does it represent a
-  recommendation about what constitutes adequate privacy and security
-  protection on the Internet.</div>
+<div class="boilerPlate">Ez a dokumentum csak a tájékoztatás célját szolgálja.
+  Segíthet abban, hogy a személyes adatainkat megvédjük az interneten,  de nem érinti az összes adatvédelmi és biztonsági kérdést, és nem tekinthető a Netscape hivatalos ajánlatának a megfelelő adatvédelmi és biztonsági rendszabályokat illetően.</div>
 
-<h1 id="certificate_manager">Certificate Manager</h1>
+<h1 id="certificate_manager">Tanúsítványkezelő</h1>
 
-<p>This section describes how to use the Certificate Manager. For more
-  information on using certificates, see <a href="using_certs_help.xhtml">Using
-  Certificates</a>.</p>
+<p>Ez a fejezet leírja, hogy hogyan használható az Tanúsítványkezelő. A tanúsítványok használatáról bővebben a <a href="using_certs_help.xhtml">Tanúsítványok használata</a> fejezetben olvashatunk.</p>
 
-<p>If you are not currently viewing the Certificate Manager window, follow
-  these steps:</p>
+<p>A Tanúsítványkezelő a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Privacy &amp; Security category, click Certificates. (If no
-    subcategories are visible, double-click Privacy &amp; Security to expand
-    the list.)</li>
-  <li>Click Manage Certificates.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Az Adatvédelem és biztonság kategóriában kattintsunk a Tanúsítványok elemre. (Ha nem láthatóak az alkategóriák, az alkategóriák kibontásához kattintsunk duplán az Adatvédelem és biztonság kategóriára.)</li>
+  <li>Kattintsunk a Tanúsítványok kezelése gombra.</li>
 </ol>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#your_certificates">Your Certificates</a></li>
-    <li><a href="#other_peoples_certificates">Other People&apos;s
-      Certificates</a></li>
-    <li><a href="#web_site_certificates">Website Certificates</a></li>
-    <li><a href="#authorities">Authorities</a></li>
+    <li><a href="#your_certificates">Saját tanúsítványok</a></li>
+    <li><a href="#other_peoples_certificates">Mások tanúsítványai</a></li>
+    <li><a href="#web_site_certificates">Webhelyek tanúsítványai</a></li>
+    <li><a href="#authorities">Hitelesítésszolgáltatók</a></li>
+    <li><a href="#others">Egyebek</a></li>
   </ul>
 </div>
 
-<h2 id="your_certificates">Your Certificates</h2>
+<h2 id="your_certificates">Saját tanúsítványok</h2>
 
-<p>The Your Certificates tab in the <a href="#certificate_manager">Certificate
-  Manager</a> displays the certificates on file that identify you. Your
-  certificates are listed under the names of the organizations that issued
-  them:</p>
+<p>A <a href="#certificate_manager">Tanúsítványkezelő</a> Saját tanúsítványok panellapja a minket azonosító tanúsítványokat jeleníti meg. A saját tanúsítványok az azokat kiadó szervezetek neve alatt jelennek meg:</p>
 
 <ul>
-  <li>If you can&apos;t see certificate names under an organization&apos;s
-    name, double-click the name.</li>
-  <li>To select a certificate, click its name.</li>
-  <li>To select more than one certificate, hold down the Control key and click
-    their names.</li>
+  <li>Ha nem jelennek meg a tanúsítványok nevei a szervezetek neve alatt, kattintsunk duplán a névre.</li>
+  <li>A tanúsítvány kiválasztásához kattintsunk a nevére.</li>
+  <li>Egynél több tanúsítvány kiválasztásához tartsunk nyomva a Control billentyűt, és kattintsunk a neveikre.</li>
 </ul>
 
-<p>To perform the following actions, select one or more certificates and click
-  one of the following buttons:</p>
+<p>Válasszunk ki egy vagy több tanúsítványt és kattintsunk a következő gombok egyikére:</p>
 
 <ul>
-  <li><strong>View</strong>: Display detailed information about the selected
-    certificates.</li>
-  <li><strong>Backup</strong>: Initiate the process of saving the selected
-    certificates. A window appears that allows you to choose a password to
-    protect the backup. You can then save the backup in a directory of your
-    choice.</li>
-  <li><strong>Delete</strong>: Delete the selected certificates.</li>
+  <li><strong>Megtekintés</strong>: részletes információk megjelenítése a kijelölt tanúsítványokról.</li>
+  <li><strong>Biztonsági mentés</strong>: a kijelölt tanúsítványokról biztonsági mentés készítése. Megjelenik egy párbeszédpanel, amelyben megadhatjuk a biztonsági mentést védő jelszót. A biztonsági mentés ezek után tetszőleges könyvtárba elhelyezhető.</li>
+  <li><strong>Összes mentése</strong>: minden tanúsítványról biztonsági másolatot készít, amely a <a href="glossary.xhtml#software_security_device">szoftveres adatvédelmi eszközben</a> tárolódik.
+  <li><strong>Törlés</strong>: a kijelölt tanúsítványok törlése.</li>
+
+    <p><strong>Megjegyzés: az intelligens kártyákon tárolt tanúsítványokról nem készíthető biztonsági mentés.</strong>
+      Akár a néhány kiválasztott tanúsítványra a Biztonsági mentés, akár a Biztonsági mentés mindenről gombot használjuk is, a biztonsági mentés nem fogja az intelligens kártyákon és egyéb külső adatvédelmi eszközökön tárol tanúsítványokat tárolni.  Csak a beépített szoftveres adatvédelmi eszközön tárolt tanúsítványokról készíthető biztonsági mentés.</p>
+<p>A következő műveletekhez nem kell kijelölni egy tanúsítványt sem:</p>
+</li>
+  <li><strong>Importálás:</strong> egy vagy több tanúsítvány importálása a biztonsági mentést tartalmazó állományból. Miután az Importálás gombot megnyomtuk, a Tanúsítványkezelő bekéri a biztonsági mentést tartalmazó állomány nevét. A tanúsítványokról készült biztonsági mentéseknek általában <tt>.p12</tt> a kiterjesztése, például <tt>MyCert.p12</tt> . Miután kiválasztottunk az importálandó fájlt, a Tanúsítványkezelő bekéri a biztonsági mentés elkészítésekor megadott jelszót.</li>
 </ul>
 
-<p>These actions do not require a certificate to be selected:</p>
+<h3 id="choose_a_certificate_backup_password">Tanúsítványok biztonsági mentésének jelszava</h3>
+
+<p>A tanúsítványok biztonsági mentésének jelszava védi az egy vagy több tanúsítványt, amelyet a Tanúsítványkezelő <a href="#your_certificates">Saját tanúsítványok</a> panellapjáról választottunk ki mentésre.</p>
+
+<p>Ez a tanúsítvány biztonsági másolatának készítése során a Tanúsítványkezelő számára megadott jelszó. A tanúsítvány későbbi visszaállítása csak e jelszó birtokában lehetséges.</p>
 
 <ul>
-  <li><strong>Import</strong>: Import a file containing one or more
-    certificates that were previously backed up. When you click Import,
-    Certificate Manager first asks you to locate the file that contains the
-    backup. The names of certificate backup files typically end in
-    <tt>.p12</tt>; for example, <tt>MyCert.p12</tt>. After you select the file
-    to be imported, Certificate Manager asks you to enter the password that you
-    set when you backed up the certificate.</li>
-  <li><strong>Backup All</strong>: Initiate the process of saving all the
-    certificates stored in the
-    <a href="glossary.xhtml#software_security_device">Software Security
-    Device</a>.
-
-    <p><strong>Note</strong>: Certificates on smart cards cannot be backed up.
-      Whether you select some of your certificates and click Backup, or click
-      Backup All, the resulting backup file will not include any certificates
-      stored on smart cards or other external security devices. You can only
-      back up certificates that are stored on the built-in Software Security
-      Device.</p>
-  </li>
+  <li><strong>Jelszó</strong>: írjuk be a biztonsági mentés jelszavát ebbe a mezőbe.</li>
+  <li><strong>Jelszó (ismét)</strong>: írjuk be ismét a biztonsági mentés jelszavát. Ha nem pontosan ugyanazt írjuk ide, mint az előbb, akkor az OK gomb inaktív marad. Ebben az esetben próbáljuk újra beírni az új jelszót.</li>
 </ul>
 
-<h3 id="choose_a_certificate_backup_password">Choose a Certificate Backup
-  Password</h3>
+<p>Ha valaki megszerzi a tanúsítványok biztonsági másolatát tartalmazó fájlt, és sikeresen importálja a tanúsítványokat, akkor a mi nevünkben küldhet üzeneteket és érhet el webhelyeket.  Ez akkor okozhat problémát, ha például digitálisan aláírjuk a fontos elektronikus leveleinket, vagy a bankszámlánkat és a befektetéseinket az interneten keresztül kezeljük.</p>
 
-<p>A certificate backup password protects one or more certificates that you are
-  backing up from the <a href="#your_certificates">Your Certificates</a> tab in
-  the Certificate Manager.</p>
+<p>A <strong>jelszóminőség fokmérője</strong> nagyjából kijelzi, hogy milyen nehéz kitalálni a jelszavunkat. A figyelembe vett tényezők a jelszó hosszúsága, a kis- és nagybetűk váltogatott használata, valamint a számok és egyéb jelek használata. Mindazonáltal ez nem garantálja, hogy a jelszavunkat nem lehet kitalálni.</p>
 
-<p>The Certificate Manager asks you to set this password when you back up
-  certificates, and requests it when you attempt to import certificates that
-  have previously been backed up.</p>
+<p>A jó jelszó kiválasztásához további útmutatást találunk a <a href="passwords_help.xhtml#choosing_a_good_password">Hogyan válasszunk jó jelszót (Choosing a Good Password)</a> című online dokumentumban.</p>
+
+<p>Az is fontos, hogy a jelszót biztonságos helyen tároljuk, és ne olyan helyen, ahol bárki könnyen hozzáférhet. Ha elfelejtjük ezt a jelszót, nem fogjuk tudni a tanúsítványokat visszaállítani a biztonsági mentésből.</p>
+
+<h3 id="delete_your_certificates">Tanúsítványok törlése</h3>
+
+<p>Mielőtt törölnénk egy lejárt saját tanúsítványt a Tanúsítványkezelő
+  <a href="#your_certificates">Saját tanúsítványok</a> panellapján, győződjünk meg arról, hogy soha többé nem lesz rá szükségünk, például egy régi elektronikus levél elolvasásához, amelyet az ennek a tanúsítványnak megfelelő személyes kulcs segítségével titkosítottak.</p>
+
+<h2 id="other_peoples_certificates">Mások tanúsítványai</h2>
+
+<p>A <a href="#certificate_manager">Tanúsítványkezelő</a> Mások tanúsítványai panellapja a birtokunkban lévő másokat azonosító tanúsítványokat jeleníti meg.</p>
+
+<p>Ha digitálisan aláírt elektronikus levelet kapunk valakitől, a Tanúsítványkezelő automatikusan importálja a tanúsítványukat. Ezeket a tanúsítványokat arra használhatjuk, hogy titkosított üzeneteket küldjünk ezeknek az embereknek.</p>
+
+<p>A mások tanúsítványai az azokat kiadó szervezetek neve alatt jelennek meg:</p>
 
 <ul>
-  <li><strong>Certificate backup password</strong>: Type your backup password
-    into this field.</li>
-  <li><strong>Certificate backup password (again)</strong>: Type your backup
-    password again. If you don&apos;t type it the second time exactly as you
-    did the first time, the OK button remains inactive. If this happens, try
-    typing the new password again.</li>
+  <li>Ha nem jelennek meg a tanúsítványok nevei a szervezetek neve alatt, kattintsunk duplán a névre.</li>
+  <li>A tanúsítvány kiválasztásához kattintsunk a nevére.</li>
+  <li>Egynél több tanúsítvány kiválasztásához tartsunk nyomva a Control billentyűt, és kattintsunk a neveikre.</li>
 </ul>
 
-<p>If someone obtains the file containing a certificate that you have backed up
-  and successfully imports the certificate, that person can send messages or
-  access websites while pretending to be you. This can be a problem, for
-  example, if you digitally sign important email messages or manage your bank
-  or investment accounts over the Internet.</p>
-
-<p>Therefore, it&apos;s important to select a certificate backup password that
-  is difficult to guess. The <strong>password quality meter</strong> gives you
-  a rough idea of the quality of your password as you type it based on factors
-  such as length and the use of uppercase letters, lowercase letters, numbers,
-  and symbols. It does not guarantee that your password cannot be guessed,
-  however.</p>
-
-<p>For further guidelines, see
-  <a href="passwords_help.xhtml#choosing_a_good_password">Choosing a Good
-  Password</a>.</p>
-
-<p>It&apos;s also important to record the password in a safe place&mdash;and
-  not anywhere that&apos;s easily accessible to someone else. If you forget
-  this password, you can&apos;t import the backup of your certificate.</p>
-
-<h3 id="delete_your_certificates">Delete Your Certificates</h3>
-
-<p>Before deleting one of your own expired certificates from the
-  <a href="#your_certificates">Your Certificates</a> tab in the Certificate
-  Manager, make sure you won&apos;t need it again some day for reading old
-  email messages that you may have encrypted with the corresponding private
-  key.</p>
-
-<h2 id="other_peoples_certificates">Other People&apos;s Certificates</h2>
-
-<p>The Other People&apos;s tab in the <a href="#certificate_manager">Certificate
-  Manager</a> displays email certificates you have on file that identify other
-  people.</p>
-
-<p>When people send you digitally signed email messages, Certificate Manager
-  imports their certificates automatically. You can use these certificates to
-  send encrypted messages to those people.</p>
-
-<p>Other people&apos;s certificates are listed under the names of the
-  organizations that issued them:</p>
+<p>Válasszunk ki egy vagy több tanúsítványt és kattintsunk a következő gombok egyikére:</p>
 
 <ul>
-  <li>If you can&apos;t see certificate names under an organization&apos;s
-    name, double-click the name.</li>
-  <li>To select a certificate, click its name.</li>
-  <li>To select more than one certificate, hold down the Control key and click
-    their names.</li>
+  <li><strong>Megtekintés:</strong> részletes információk megjelenítése a kijelölt tanúsítványokról.</li>
+  <li><strong>Törlés:</strong> a kijelölt tanúsítványok törlése.</li>
 </ul>
 
-<p>To perform the following actions, select one or more certificates and click
-  one of the following buttons:</p>
+<h3 id="delete_email_certificates">E-mail tanúsítványok törlése</h3>
+
+<p>Mielőtt törölnénk valaki más tanúsítványát a Tanúsítványkezelő Mások tanúsítványai panellapján, győződjünk meg róla, hogy soha többé nem akarunk titkosított levelet küldeni annak a személynek, illetve hogy nem akarjuk többé ellenőrizni az általa küldött üzenetek digitális aláírását.</p>
+
+<h2 id="web_site_certificates">Webhelyek tanúsítványai</h2>
+
+<p>A Tanúsítványkezelő Webhelyek panellapja a birtokunkban lévő webhelyeket azonosító tanúsítványokat jeleníti meg.</p>
+
+<p>A webhelyek tanúsítványai az azokat kiadó szervezetek neve alatt jelennek meg:</p>
 
 <ul>
-  <li><strong>View</strong>: Display detailed information about the selected
-    certificates.</li>
-  <li><strong>Delete</strong>: Delete the selected certificates.</li>
+  <li>Ha nem jelennek meg a tanúsítványok nevei a szervezetek neve alatt, kattintsunk duplán a névre.</li>
+  <li>A tanúsítvány kiválasztásához kattintsunk a nevére.</li>
+  <li>Egynél több tanúsítvány kiválasztásához tartsunk nyomva a Control billentyűt, és kattintsunk a neveikre.</li>
 </ul>
 
-<h3 id="delete_email_certificates">Delete Email Certificates</h3>
-
-<p>Before deleting someone else&apos;s certificate from the
-  <a href="#other_peoples_certificates">Other People&apos;s</a> tab in the
-  Certificate Manager, make sure you won&apos;t need it again some day to send
-  encrypted email to that person or to verify digital signatures on messages
-  from that person.</p>
-
-<h2 id="web_site_certificates">Website Certificates</h2>
-
-<p>The Websites tab in the Certificate Manager displays certificates you have
-  on file that identify websites.</p>
-
-<p>Website certificates are grouped under the names of the organizations that
-  issued them:</p>
+<p>Válasszunk ki egy vagy több tanúsítványt és kattintsunk a következő gombok egyikére:</p>
 
 <ul>
-  <li>If you can&apos;t see certificate names under an organization&apos;s
-    name, double-click the name.</li>
-  <li>To select a certificate, click its name.</li>
-  <li>To select more than one certificate, hold down the Control key and click
-    their names.</li>
+  <li><strong>Megtekintés:</strong> részletes információk megjelenítése a kijelölt tanúsítványokról.</li>
+  <li><strong>Szerkesztés:</strong> a kijelölt tanúsítványok bizalmi beállításainak megtekintése, illetve szerkesztése. A beállításokat arra használhatjuk, hogy egy webhely tanúsítványát megjelöljük úgy, hogy nem bízunk benne, vagy nem bízunk benne azonosítási célból.</li>
+  <li><strong>Törlés:</strong> a kijelölt tanúsítványok törlése.</li>
 </ul>
 
-<p>To perform the following actions, select one or more certificates and click
-  one of the following buttons:</p>
+<h3 id="edit_web_site_certificate_trust_settings">Webhely tanúsítványának megbízhatóságának beállítása</h3>
+
+<p>Miután a Tanúsítványkezelő <a href="#web_site_certificates">Webhelyek</a> panellapján kijelöltük egy webhely tanúsítványát, és megnyomtuk a Szerkesztés gombot, megjelenik a &bdquo;Webhely tanúsítványának megbízhatóságának beállítása&rdquo; párbeszédpanel. Itt megadhatjuk, hogy megbízunk-e a kijelölt tanúsítványban a webhely azonosításának és a titkosított kapcsolat létrehozásának tekintetében.</p>
+
+<p>A párbeszédpanel a következő elemekből áll:</p>
 
 <ul>
-  <li><strong>View</strong>: Display detailed information about the selected
-    certificates.</li>
-  <li><strong>Edit</strong>: View or change the trust settings that Certificate
-    Manager associates with the selected certificates. You can use these
-    settings to designate a website certificate as one that you trust or
-    don&apos;t trust for identification purposes.</li>
-  <li><strong>Delete</strong>: Delete the selected certificates.</li>
-</ul>
-
-<h3 id="edit_web_site_certificate_trust_settings">Edit Website Certificate
-  Trust Settings</h3>
-
-<p>When you select a website certificate from the
-  <a href="#web_site_certificates">Websites</a> tab in the Certificate Manager
-  and click Edit, you see a window entitled <q>Edit website certificate trust
-  settings</q>. Here you specify whether you want to trust the selected
-  certificate for identifying the website and setting up an encrypted
-  connection.</p>
-
-<p>The dialog box contains these elements:</p>
-
-<ul>
-  <li><strong>The certificate <q><em>name of certificate</em></q> was
-    issued by</strong>: Provides information about the
-    <a href="glossary.xhtml#certificate_authority">certificate authority</a>
-    that issued this certificate.</li>
-  <li><strong>Edit certificate trust settings</strong>:
+  <li><strong>A <q><em>név</em></q> tanúsítványt kiadta</strong>: a tanúsítványt kibocsátó <a href="glossary.xhtml#certificate_authority">hitelesítésszolgáltató</a> adatait tartalmazza.</li>
+  <li><strong>Tanúsítvány-bizalom szerkesztése</strong>:
     <ul>
-      <li><strong>Trust the authenticity of this certificate</strong>: If you
-        select this option, Certificate Manager will henceforth trust this
-        certificate for the purposes of identifying this website or setting up
-        an encrypted connection. If you select this option and then attempt to
-        visit the website, your browser will access the site with few, if any,
-        warnings.</li>
-      <li><strong>Do not trust the authenticity of this certificate</strong>:
-        If you select this option, Certificate Manager will no longer trust
-        this certificate for the purposes of identifying this website or
-        setting up an encrypted connection. If you select this option and
-        then attempt to visit the website, you will see one or more warning
-        messages before you can access the site.</li>
+      <li><strong>Tanúsítvány megbízhatóságának kinyilvánítása</strong>: ha ezt a lehetőséget választjuk, a Tanúsítványkezelő ezentúl megbízik ebben a tanúsítványban a webhely azonosítása és a titkosított kapcsolat létrehozása céljából. Ha ezt a lehetőséget választjuk, akkor a webhely meglátogatásakor a böngésző a lehető legkevesebb (vagy semmi) figyelmeztető üzenetet kíséretében jeleníti meg a webhelyet.</li>
+      <li><strong>Tanúsítvány megbízhatatlanságának kinyilvánítása</strong>:
+        ha ezt a lehetőséget választjuk, a Tanúsítványkezelő ezentúl nem bízik meg ebben a tanúsítványban a webhely azonosítása és a titkosított kapcsolat létrehozása céljából. Ha azt a lehetőséget választjuk, a webhely meglátogatásakor a böngésző egy vagy több figyelmeztető üzenetet jelenít meg, mielőtt a webhely megjelenik.</li>
     </ul>
   </li>
-  <li><strong>Edit CA Trust</strong>: Click this button to specify trust
-    settings for the certificate authority (CA) that issued the website
-    certificate. These settings allow you to trust or not to trust different
-    kinds of certificates issued by that certificate authority. For example,
-    you can choose to trust all website certificates issued by the
-    authority.</li>
+  <li><strong>Hitelesítésszolgáltató megbízhatóságának megadása</strong>: kattintsunk erre a gombra a webhely tanúsítványát kiadó hitelesítésszolgáltató megbízhatóságának megadásához. Ezek a beállítások lehetővé teszik, hogy megbízzunk vagy ne bízzunk meg egy adott hitelesítésszolgáltató által kiadott különféle tanúsítványokban. Például megadhatjuk, hogy az adott hitelesítésszolgáltató által kiadott minden webhelytanúsítványban megbízunk.</li>
 </ul>
 
-<p>Click OK to confirm your choice.</p>
+<p>A változtatások érvényesítéséhez kattintsunk az OK gombra.</p>
 
-<h3 id="delete_web_site_certificates">Delete Website Certificates</h3>
+<h3 id="delete_web_site_certificates">Webhely tanúsítványainak törlése</h3>
 
-<p>Before deleting a website certificate from the
-  <a href="#web_site_certificates">Websites</a> tab in the Certificate
-  Manager, make sure that you won&apos;t need it again for the purposes of
-  identifying a website and setting up an encrypted connection.</p>
+<p>Mielőtt törölnénk egy webhely tanúsítványát a Tanúsítványkezelő <a href="#web_site_certificates">Webhelyek</a>  panellapján, győződjünk meg róla, hogy soha többé nincs szükségünk rá a webhely azonosításához vagy a titkosított kapcsolat létrehozásához.</p>
 
-<h2 id="authorities">Authorities</h2>
+<h2 id="authorities">Hitelesítésszolgáltatók</h2>
 
-<p>The Authorities tab in the <a href="#certificate_manager">Certificate
-  Manager</a> displays the certificates you have on file that identify
-  <a href="glossary.xhtml#certificate_authority">certificate authorities
-  (CAs)</a>.</p>
+<p>A <a href="#certificate_manager">Tanúsítványkezelő</a> Hitelesítésszolgáltatók panellapja a birtokunkban lévő <a href="glossary.xhtml#certificate_authority">hitelesítésszolgáltatókat</a> azonosító tanúsítványokat jeleníti meg.</p>
 
-<p>CA certificates are grouped under the names of the organizations that issued
-  them:</p>
+<p>A hitelesítésszolgáltatók tanúsítványai az azokat kiadó szervezetek neve alatt jelennek meg:</p>
 
 <ul>
-  <li>If you can&apos;t see CA certificate names under an organization&apos;s
-    name, double-click the name.</li>
-  <li>To select a CA certificate, click its name.</li>
-  <li>To select more than one CA certificate, hold down the Control key and
-    click their names.</li>
+  <li>Ha nem jelennek meg a tanúsítványok nevei a szervezetek neve alatt, kattintsunk duplán a névre.</li>
+  <li>A tanúsítvány kiválasztásához kattintsunk a nevére.</li>
+  <li>Egynél több tanúsítvány kiválasztásához tartsunk nyomva a Control billentyűt, és kattintsunk a neveikre.</li>
 </ul>
 
-<p>To perform these actions, select the certificates on which you want to act
-  and click one of these buttons:</p>
+<p>Válasszunk ki egy vagy több tanúsítványt és kattintsunk a következő gombok egyikére:</p>
 
 <ul>
-  <li><strong>View</strong>: Display detailed information about the selected
-    certificates.</li>
-  <li><strong>Edit</strong>: View or change the settings that Certificate
-    Manager associates with the selected certificates. You can use these
-    settings to designate what kinds of certificates, if any, you trust that
-    are issued by the corresponding CAs.</li>
-  <li><strong>Delete</strong>: Delete the selected certificates.</li>
+  <li><strong>Megjelenítés:</strong> részletes információk megjelenítése a kijelölt tanúsítványokról.</li>
+  <li><strong>Szerkesztés:</strong> a kijelölt tanúsítványok beállításainak megtekintése, illetve szerkesztése. Ezeket a beállításokat annak megadására használhatjuk, hogy milyen típusú tanúsítványokban bízunk meg az adott hitelesítésszolgáltató által kiadottak közül.</li>
+  <li><strong>Törlés:</strong> a kijelölt tanúsítványok törlése.</li>
 </ul>
 
-<p>To ensure that an entire
-  <a href="glossary.xhtml#certificate_chain">certificate chain</a> of CAs are
-  all trusted, you need to edit the root CA certifiate only.</p>
+<p>Ha az egész <a href="glossary.xhtml#certificate_chain">tanúsítványláncban</a> megbízunk, elég csak a legfelső szintű hitelesítésszolgáltató beállításait módosítani.</p>
 
-<p>To import the chain, you click a link on a web page provided by the CA. You
-  can then use the authorities tab to locate the root certificate and edit its
-  trust settings.</p>
+<p>A lánc importálásához kattintsunk a hitelesítésszolgáltató által megadott weboldalon található hivatkozásra. Ezután a Hitelesítésszolgáltatók panellapon keressük meg a legfelső szintű hitelesítésszolgáltatót, és módosítsuk a beállításait.</p>
 
-<p>The root and intermediate CAs all appear under the same organization. The
-  root certificate is the one that lists itself as the the issuer.</p>
+<p>A legfelső szintű és a közbülső hitelesítésszolgáltatók ugyanazon szervezet alatt jelennek meg. A legfelső szintű tanúsítvány az, amelyik saját magát adja meg kibocsátóként.</p>
 
-<p><strong>If you download an intermediate CA</strong>: If you download an
-  intermediate CA certificate that chains to a root certificate already marked
-  as trusted in your browser, you don&apos;t have to indicate what purposes you
-  trust it for. Intermediate certificates automatically inherit the trust
-  settings of their roots.</p>
+<p><strong>Közbülső hitelesítésszolgáltató letöltése esetén</strong>: ha egy olyan közbülső hitelesítésszolgáltató-tanúsítványt töltünk le, amelynek a legfelső szintű tanúsítványa már megbízhatónak van jelölve, nem kell megadni, hogy milyen szerepekben bízunk meg benne. A közbülső tanúsítványok automatikusan öröklik a felsőbb szintűek bizalmi beállításait.</p>
 
-<h3 id="edit_ca_certificate_trust_settings">Edit CA Certificate Trust
-  Settings</h3>
+<h3 id="edit_ca_certificate_trust_settings">Hitelesítésszolgáltató tanúsítványának megbízhatóságának beállítása</h3>
 
-<p>When you select a CA certificate from the
-  <a href="#authorities">Authorities</a> tab in the Certificate Manager and
-  click Edit, you see a window entitled <q>Edit CA certificate trust
-  settings</q>. Here you specify the kinds of certificates you trust this CA
-  to certify. If you deselect all the checkboxes, Certificate Manager will not
-  trust any certificates issued by this CA.</p>
+<p>Miután a Tanúsítványkezelő <a href="#authorities">Hitelesítésszolgáltatók</a> panellapján kijelöltük egy hitelesítésszolgáltató tanúsítványát, és megnyomtuk a Szerkesztés gombot, megjelenik a &bdquo;Hitelesítésszolgáltató tanúsítványának megbízhatóságának beállítása&rdquo; párbeszédpanel. Itt megadhatjuk azokat a hitelesítésszolgáltató által kiadott tanúsítványtípusokat, amelyekben megbízunk. Ha az összes jelölőnégyzetről eltávolítjuk a kijelölést, a Tanúsítványkezelő az adott hitelesítésszolgáltató által kiadott semelyik tanúsítványban sem fog megbízni.</p>
 
-<p>The settings have these effects:</p>
+<p>A beállítások hatása:</p>
 
 <ul>
-  <li><strong>This certificate can identify websites</strong>: Certificate
-    Manager will trust certificates issued by this CA for the purpose of
-    identifying websites and encrypting website connections. If you deselect
-    this checkbox, Certificate Manager will not trust website certificates
-    issued by this CA.</li>
-  <li><strong>This certificate can identify mail users</strong>: Certificate
-    Manager will trust certificates issued by this CA for the purpose of
-    signing or encrypting email. If you deselect this checkbox, Certificate
-    Manager will not trust email certificates issued by this CA.</li>
-  <li><strong>This certificate can identify software makers</strong>:
-    Certificate Manager will trust certificates issued by this CA for the
-    purpose of identifying software makers. If you deselect this checkbox,
-    Certificate Manager will not trust such certificates issued by this
-    CA.</li>
+  <li><strong>Ez a tanúsítvány használható webhelyek azonosítására</strong>: a Tanúsítványkezelő meg fog bízni az adott hitelesítésszolgáltató által kiadott tanúsítványokban a webhelyek azonosításának és a kapcsolat titkosításának tekintetében. Ha erről a jelölőnégyzetről eltávolítjuk a kijelölést, a Tanúsítványkezelő az adott hitelesítésszolgáltató által kiadott webhelytanúsítványokban nem fog megbízni.</li>
+  <li><strong>Ez a tanúsítvány használható webhelyek azonosítására:</strong> a Tanúsítványkezelő meg fog bízni az adott hitelesítésszolgáltató által kiadott tanúsítványokban az elektronikus levelek aláírásának és titkosításának tekintetében. Ha erről a jelölőnégyzetről eltávolítjuk a kijelölést, a Tanúsítványkezelő az adott hitelesítésszolgáltató által kiadott e-mail tanúsítványokban nem fog megbízni.</li>
+  <li><strong>Ez a tanúsítvány használható szoftverkészítők azonosítására:</strong> a Tanúsítványkezelő meg fog bízni az adott hitelesítésszolgáltató által kiadott tanúsítványokban a szoftverkészítők azonosításának tekintetében. Ha erről a jelölőnégyzetről eltávolítjuk a kijelölést, a Tanúsítványkezelő az adott hitelesítésszolgáltató által kiadott ilyen tanúsítványokban nem fog megbízni.</li>
 </ul>
 
-<p>Click OK to confirm the settings you have selected.</p>
+<p>A beállítások érvényesítéséhez kattintsunk az OK gombra.</p>
 
-<h3 id="delete_ca_certificates">Delete CA Certificates</h3>
+<h3 id="delete_ca_certificates">Hitelesítésszolgáltatók tanúsítványainak törlése</h3>
 
-<p>Before deleting a CA certificate from the
-  <a href="#authorities">Authorities</a> tab in the Certificate Manager,
-  make sure that you won&apos;t need it again to validate certificates issued
-  by that CA. If you delete the only valid certificate you have for a CA,
-  Certificate Manager will no longer trust any certificates issued by that
-  CA.</p>
+<p>Mielőtt törölnénk egy hitelesítésszolgáltató tanúsítványát a Tanúsítványkezelő <a href="#authorities">Hitelesítésszolgáltatók</a>  panellapján, győződjünk meg róla, hogy soha többé nincs szükségünk ezen hitelesítésszolgáltató által kiadott tanúsítványok érvényesítésére. Ha töröljük egy hitelesítésszolgáltató egyetlen érvényes tanúsítványát, a Tanúsítványkezelő nem fog megbízni az általa kiadott tanúsítványokban.</p>
 
-<h2 id="device_manager">Device Manager</h2>
+<h2 id="device_manager">Eszközkezelő</h2>
 
-<p>This section describes the options available in the Device Manager window.
-  For background information and step-by-step instructions on the use of the
-  Device Manager, see
-  <a href="using_certs_help.xhtml#managing_smart_cards_and_other_security_devices">Managing
-  Smart Cards and Other Security Devices</a>.</p>
+<p>Ez a fejezet az Eszközkezelő párbeszédpanelt írja le.
+  Az Eszközkezelő használatáról az <a href="using_certs_help.xhtml#managing_smart_cards_and_other_security_devices">Intelligens kártyák és egyéb adatvédelmi eszközök fejezetben olvashatunk többet</a>.</p>
 
-<p>If you are not currently viewing the Device Manager window, follow these
-  steps:</p>
+<p>Az Eszközkezelő a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Privacy &amp; Security category, click Certificates. (If no
-    subcategories are visible, double-click Privacy &amp; Security to expand
-    the list.)</li>
-  <li>In the Certificates panel, click Manage Security Devices.</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Az Adatvédelem és biztonság kategóriában kattintsunk a Tanúsítványok elemre. (Ha nem láthatóak az alkategóriák, az alkategóriák kibontásához kattintsunk duplán az Adatvédelem és biztonság kategóriára.</li>
+  <li>A Tanúsítványok panelen kattintsunk az Adatvédelmi eszközök kezelése gombra.</li>
 </ol>
 
-<p>The Device Manager lists each available PKCS #11 module, and the security
-  devices managed by each module below the module&apos;s name.</p>
+<p>Az Eszközkezelő  megjeleníti az összes elérhető PKCS #11 modult, és a modul neve alatt az adott modul által kezelt adatvédelmi eszközt.</p>
 
-<p>When you select a module or device, information about the selected item
-  appears in the middle of the window, and some of the buttons on the right
-  side of the window become available. In general, you perform an action on
-  a module or device by selecting its name and clicking the appropriate
-  button:</p>
+<p>Egy modul vagy eszköz kiválasztása esetén a párbeszédpanel közepén megjelennek a hozzá tartozó információk, és a jobboldalon bizonyos gombok aktívak lesznek. Általában úgy lehet műveleteket végezni a modullal vagy az eszközzel, hogy kijelöljük a nevét, és a megfelelő gombra kattintunk:</p>
 
 <ul>
-  <li><strong>Log In</strong>: Log into the selected security device. After you
-    have logged in to the device, the frequency with which you will be asked to
-    enter the master password for the device depends on the
-    <a href="passwords_help.xhtml#master_password_timeout">Master Password
-    Timeout</a> settings.</li>
-  <li><strong>Log Out</strong>: Log out of the selected security device. After
-    you have logged out of the device, the device and the certificates it
-    contains will not be available until you log in again.</li>
-  <li><strong>Change Password</strong>: Change the master password for the
-    selected security device.</li>
-  <li><strong>Load</strong>: Displays a dialog box that allows you to specify
-    the name and location of a new PKCS #11 module. Before adding a new module,
-    you should first install the module software on your computer and if
-    necessary connect any associated hardware device. Follow the instructions
-    provided by the vendor.</li>
-  <li><strong>Unload</strong>: Unload the selected module. If you unload a
-    module, both the module and its security devices are no longer available
-    for use by the browser.</li>
-  <li><strong>Enable FIPS</strong>: Turns the FIPS mode on and off. For more
-    information, see
-    <a href="using_certs_help.xhtml#enable_fips_mode">Enable FIPS
-    Mode</a>.</li>
+  <li><strong>Bejelentkezés:</strong> bejelentkezés a kijelölt adatvédelmi eszközbe. Miután bejelentkeztünk az eszközbe, a mesterjelszó megkérdezésének gyakorisága függ az eszközhöz beállított
+    <a href="passwords_help.xhtml#master_password_timeout">Mesterjelszó lejárata</a> értéktől.</li>
+  <li><strong>Kijelentkezés:</strong> kijelentkezés a kijelölt adatvédelmi eszközből. Miután kijelentkeztünk az eszközből, az eszköz és a benne tárolt tanúsítványok nem lesznek elérhetőek a legközelebbi bejelentkezésig.</li>
+  <li><strong>Jelszó megváltoztatása</strong>: a kijelölt adatvédelmi eszköz mesterjelszavának megváltoztatása.</li>
+  <li><strong>Betöltés:</strong> megjelenik egy párbeszédpanel, amelyben megadható az új PKCS #11 modul neve és elérhetősége. Az új modul hozzáadása előtt telepítenünk kell a számítógépünkre a modul szoftverét, és ha szükséges, csatlakoztatnunk kell a megfelelő hardvereszközt. Kövessük a gyártó utasításait.</li>
+  <li><strong>Eltávolítás:</strong> a kijelölt modul eltávolítása. Ha eltávolítunk egy modult, a modul és a hozzá tartozó adatvédelmi eszköz nem lesz többé elérhető a böngésző számára.</li>
+  <li><strong>FIPS engedélyezése:</strong> FIPS üzemmódot kapcsolja be vagy ki. További információk találhatóak erről a <a href="using_certs_help.xhtml#enable_fips_mode">FIPS üzemmód engedélyezése</a> fejezetben.</li>
 </ul>
 
 </body>
