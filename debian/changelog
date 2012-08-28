@@ -1,8 +1,22 @@
-iceweasel (15.0-1) UNRELEASED; urgency=low
+iceweasel (15.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2012-{57-66,68-70,72}, also known as
+    CVE-2012-1971, CVE-2012-1970, CVE-2012-1972, CVE-2012-1973,
+    CVE-2012-1974, CVE-2012-1975, CVE-2012-1976, CVE-2012-3956,
+    CVE-2012-3957, CVE-2012-3958, CVE-2012-3959, CVE-2012-3960,
+    CVE-2012-3961, CVE-2012-3962, CVE-2012-3963, CVE-2012-3964,
+    CVE-2012-1956, CVE-2012-3965, CVE-2012-3966, CVE-2012-3968,
+    CVE-2012-3967, CVE-2012-3969, CVE-2012-3970, CVE-2012-3971,
+    CVE-2012-3972, CVE-2012-3973, CVE-2012-3975, CVE-2012-3976,
+    CVE-2012-3978, CVE-2012-3980.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 28 Aug 2012 20:17:51 +0200
+  * debian/iceweasel.mozconfig: Build iceweasel with system ply.
+  * debian/xulrunner-GRE_VERSION.install.in: Don't install xulrunner-bin, as
+    it's gone.
+  * debian/rules: Also use an epoch for iceweasel-l10n-all.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 29 Aug 2012 08:19:45 +0200
 
 iceweasel (14.0.1-2) experimental; urgency=low
 
