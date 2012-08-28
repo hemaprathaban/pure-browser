@@ -328,9 +328,6 @@ JSCompartment::wrap(JSContext *cx, Value *vp)
 
     vp->setObject(*wrapper);
 
-    if (wrapper->getProto() != proto && !SetProto(cx, wrapper, proto, false))
-        return false;
-
     if (!crossCompartmentWrappers.put(GetProxyPrivate(wrapper), *vp))
         return false;
 
