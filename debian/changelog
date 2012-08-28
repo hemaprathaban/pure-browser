@@ -1,8 +1,15 @@
-iceweasel (10.0.7esr-1) UNRELEASED; urgency=low
+iceweasel (10.0.7esr-1) unstable; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2012-{57-58,60-63,65,69-70,72}, also known as
+    CVE-2012-1970, CVE-2012-1972, CVE-2012-1973, CVE-2012-1974,
+    CVE-2012-1975, CVE-2012-1976, CVE-2012-3957, CVE-2012-3959,
+    CVE-2012-3960, CVE-2012-3962, CVE-2012-3966, CVE-2012-3967,
+    CVE-2012-3969, CVE-2012-3972, CVE-2012-3976, CVE-2012-3978,
+    CVE-2012-3980.
+  * debian/rules: Also use an epoch for iceweasel-l10n-all.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 28 Aug 2012 19:26:07 +0200
+ -- Mike Hommey <glandium@debian.org>  Wed, 29 Aug 2012 08:16:59 +0200
 
 iceweasel (10.0.6esr-2) unstable; urgency=low
 
