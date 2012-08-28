@@ -9,10 +9,10 @@ Subject: Fix some tests using CurProcD where GreD should be used
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/dom/plugins/test/unit/head_plugins.js b/dom/plugins/test/unit/head_plugins.js
-index ddb78f5..ca32106 100644
+index f1e00b3..bcc5c04 100644
 --- a/dom/plugins/test/unit/head_plugins.js
 +++ b/dom/plugins/test/unit/head_plugins.js
-@@ -38,7 +38,7 @@
+@@ -5,7 +5,7 @@
  
  // Finds the test plugin library
  function get_test_plugin() {
@@ -35,7 +35,7 @@ index 2d35b39..7d19ff9 100644
    bin.append("xpcshell");
    if (!bin.exists()) {
 diff --git a/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js b/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
-index 71e9ac1..0bde3e2 100644
+index 602713d..97ca0f3 100644
 --- a/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
 +++ b/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
 @@ -18,7 +18,7 @@ function run_test() {

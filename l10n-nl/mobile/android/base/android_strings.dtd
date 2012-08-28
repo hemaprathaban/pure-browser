@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!ENTITY  splash_settingup "Uw &brandShortName; instellen">
 <!ENTITY  splash_bookmarks_history "We werken uw bladwijzers en geschiedenis bij, wat enkele minuten kan duren.">
@@ -43,8 +47,16 @@
 
 <!ENTITY reload "Vernieuwen">
 <!ENTITY forward "Vooruit">
+<!ENTITY menu "Menu">
+<!ENTITY back "Terug">
+<!ENTITY stop "Stoppen">
+<!ENTITY site_security "Websitebeveiliging">
 
+<!ENTITY close_tab "Tabblad sluiten">
 <!ENTITY new_tab "Nieuw tabblad">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "&#037;d tabbladen">
 <!ENTITY new_tab_opened "Nieuw tabblad geopend">
 
 <!ENTITY settings "Instellingen">
@@ -52,6 +64,7 @@
 <!ENTITY pref_category_general "Algemeen">
 <!ENTITY pref_category_privacy "Privacy &amp; beveiliging">
 <!ENTITY pref_category_content "Inhoud">
+<!ENTITY pref_category_importexport "Importeren &amp; exporteren">
 <!ENTITY pref_about_firefox "Over &brandShortName;">
 <!ENTITY pref_do_not_track "Websites vertellen mij niet te volgen">
 <!ENTITY pref_telemetry "Prestatiegegevens verzenden">
@@ -60,13 +73,10 @@
 <!ENTITY pref_char_encoding "Tekenset">
 <!ENTITY pref_char_encoding_on "Menu tonen">
 <!ENTITY pref_char_encoding_off "Menu niet tonen">
-<!ENTITY pref_clear_history "Geschiedenis wissen">
-<!ENTITY pref_clear_history_confirm "Navigatiegeschiedenis zal worden verwijderd">
 <!ENTITY pref_clear_private_data "Privégegevens wissen">
-<!ENTITY pref_clear_private_data_confirm "Navigatie-instellingen, inclusief wachtwoorden en cookies, zullen worden verwijderd">
 <!ENTITY pref_plugins "Plug-ins">
 <!ENTITY pref_plugins_enabled "Ingeschakeld">
-<!ENTITY pref_plugins_tap_to_play "Tik om af te spelen">
+<!ENTITY pref_plugins_tap_to_play "Tikken voor afspelen">
 <!ENTITY pref_plugins_disabled "Uitgeschakeld">
 <!ENTITY pref_text_size "Tekstgrootte">
 <!ENTITY pref_font_size_tiny "Zeer klein">
@@ -76,6 +86,15 @@
 <!ENTITY pref_font_size_xlarge "Extra groot">
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_import_android "Importeren uit Android">
+<!ENTITY pref_private_data_history "Navigatie- &amp; downloadgeschiedenis">
+<!ENTITY pref_private_data_formdata "Formulier- &amp; zoekgeschiedenis">
+<!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_cache "Buffer">
+<!ENTITY pref_private_data_sessions "Actieve aanmeldingen">
+<!ENTITY pref_private_data_offlineApps "Offlinewebsitegegevens">
+<!ENTITY pref_private_data_siteSettings "Websitevoorkeuren">
+<!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 
 <!ENTITY quit "Afsluiten">
 
@@ -86,12 +105,29 @@
 <!ENTITY share "Delen">
 <!ENTITY share_title "Delen via">
 <!ENTITY save_as_pdf "Opslaan als PDF">
+<!ENTITY find_in_page "Zoeken op pagina">
+<!ENTITY desktop_mode "Desktopwebsite opvragen">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "Zoeken op pagina">
+<!ENTITY find_prev "Vorige">
+<!ENTITY find_next "Volgende">
+<!ENTITY find_close "Sluiten">
 
 <!ENTITY contextmenu_open_new_tab "Openen in nieuw tabblad">
+<!ENTITY contextmenu_remove_history "Verwijderen">
 <!ENTITY contextmenu_remove_bookmark "Verwijderen">
 <!ENTITY contextmenu_add_to_launcher "Toevoegen aan startpagina">
 <!ENTITY contextmenu_share "Delen">
+<!ENTITY contextmenu_pasteandgo "Plakken &amp; Gaan">
+<!ENTITY contextmenu_paste "Plakken">
+<!ENTITY contextmenu_copyurl "Adres kopiëren">
 <!ENTITY contextmenu_edit_bookmark "Bewerken">
+
+<!-- Localization note (history_removed) : Shown in a toast notificaion
+	 after a page is removed from browser history. -->
+<!ENTITY history_removed "Pagina verwijderd">
 
 <!ENTITY bookmark_edit_title "Bladwijzer bewerken">
 <!ENTITY bookmark_edit_name "Naam">
@@ -103,6 +139,11 @@
 <!ENTITY site_settings_clear        "Wissen">
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
+<!ENTITY add_to_reading_list "Toevoegen aan leeslijst">
+<!ENTITY reading_list_added "Pagina toegevoegd aan uw leeslijst">
+<!ENTITY reading_list_removed "Pagina verwijderd van uw leeslijst">
+<!ENTITY reader_mode "Leesmodus">
+
 <!ENTITY masterpassword_create_title "Hoofdwachtwoord aanmaken">
 <!ENTITY masterpassword_remove_title "Hoofdwachtwoord verwijderen">
 <!ENTITY masterpassword_password "Wachtwoord">
@@ -110,6 +151,7 @@
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Annuleren">
+<!ENTITY button_clear_data "Gegevens wissen">
 
 <!ENTITY abouthome_addons_title "Add-ons voor &brandShortName;">
 <!ENTITY abouthome_addons_browse "Door alle &brandShortName; add-ons bladeren">
@@ -125,3 +167,30 @@
 <!ENTITY filepicker_audio_title "Een geluid kiezen of opnemen">
 <!ENTITY filepicker_image_title "Een foto kiezen of maken">
 <!ENTITY filepicker_video_title "Een video kiezen of opnemen">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "U bent verbonden met">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "welke wordt beheerd door">
+
+<!ENTITY bookmarkhistory_button_import "Importeren">
+<!ENTITY bookmarkhistory_import_both "Bladwijzers en geschiedenis importeren
+                                      uit Android">
+<!ENTITY bookmarkhistory_import_bookmarks "Bladwijzers importeren
+                                           uit Android">
+<!ENTITY bookmarkhistory_import_history "Geschiedenis importeren
+                                         uit Android">
+<!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
+
+<!ENTITY private_data_success "Privégegevens gewist">
+<!ENTITY private_data_fail "Sommige provégegevens konden niet worden gewist">

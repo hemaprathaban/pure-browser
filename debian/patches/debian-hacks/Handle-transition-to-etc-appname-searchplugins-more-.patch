@@ -8,10 +8,10 @@ Closes: #666675.
  1 file changed, 30 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/components/search/nsSearchService.js b/toolkit/components/search/nsSearchService.js
-index 82663d9..0edfb2b 100644
+index 7b72898..1a1451e 100644
 --- a/toolkit/components/search/nsSearchService.js
 +++ b/toolkit/components/search/nsSearchService.js
-@@ -788,6 +788,7 @@ function getMozParamPref(prefName)
+@@ -734,6 +734,7 @@ function getMozParamPref(prefName)
   *
   * @see nsIBrowserSearchService.idl
   */
@@ -19,7 +19,7 @@ index 82663d9..0edfb2b 100644
  let gEnginesLoaded = false;
  function notifyAction(aEngine, aVerb) {
    if (gEnginesLoaded) {
-@@ -2096,6 +2097,20 @@ Engine.prototype = {
+@@ -2024,6 +2025,20 @@ Engine.prototype = {
     **/
    _initWithJSON: function SRCH_ENG__initWithJSON(aJson) {
      this.__id = aJson._id;
@@ -40,7 +40,7 @@ index 82663d9..0edfb2b 100644
      this._name = aJson._name;
      this._description = aJson.description;
      if (aJson._hasPreferredIcon == undefined)
-@@ -2390,8 +2405,19 @@ Engine.prototype = {
+@@ -2320,8 +2335,19 @@ Engine.prototype = {
          this.__installLocation = SEARCH_APP_DIR;
        else if (this._file.parent.equals(getDir(NS_APP_USER_SEARCH_DIR)))
          this.__installLocation = SEARCH_PROFILE_DIR;
@@ -62,7 +62,7 @@ index 82663d9..0edfb2b 100644
      }
  
      return this.__installLocation;
-@@ -2555,6 +2581,8 @@ function SearchService() {
+@@ -2479,6 +2505,8 @@ function SearchService() {
    }
    gEnginesLoaded = true;
    this._addObservers();

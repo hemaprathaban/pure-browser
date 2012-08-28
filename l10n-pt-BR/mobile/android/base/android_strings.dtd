@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!ENTITY  splash_settingup "Configurando seu &brandShortName;">
 <!ENTITY  splash_bookmarks_history "Estamos atualizando seus favoritos e histórico, o que pode levar alguns minutos.">
@@ -26,7 +30,7 @@
 
 <!ENTITY choose_file "Selecionar arquivo">
 
-<!ENTITY awesomebar_default_text "Forneça uma pesquisa ou um endereço">
+<!ENTITY awesomebar_default_text "Forneça um endereço ou pesquisa">
 
 <!ENTITY remote_tabs "Abas sincronizadas">
 <!ENTITY remote_tabs_show_all "Exibir todas as abas">
@@ -43,8 +47,16 @@
 
 <!ENTITY reload "Recarregar">
 <!ENTITY forward "Avançar">
+<!ENTITY menu "Menu">
+<!ENTITY back "Voltar">
+<!ENTITY stop "Parar">
+<!ENTITY site_security "Segurança do site">
 
+<!ENTITY close_tab "Fechar aba">
 <!ENTITY new_tab "Nova aba">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "&#037;d abas">
 <!ENTITY new_tab_opened "Aberta nova aba">
 
 <!ENTITY settings "Configurações">
@@ -52,6 +64,7 @@
 <!ENTITY pref_category_general "Geral">
 <!ENTITY pref_category_privacy "Privacidade e segurança">
 <!ENTITY pref_category_content "Conteúdo">
+<!ENTITY pref_category_importexport "Importar e exportar">
 <!ENTITY pref_about_firefox "Sobre o &brandShortName;">
 <!ENTITY pref_do_not_track "Pedir para não me rastrear">
 <!ENTITY pref_telemetry "Enviar dados desempenho">
@@ -60,10 +73,7 @@
 <!ENTITY pref_char_encoding "Codificação">
 <!ENTITY pref_char_encoding_on "Exibir menu">
 <!ENTITY pref_char_encoding_off "Não exibir menu">
-<!ENTITY pref_clear_history "Limpar histórico">
-<!ENTITY pref_clear_history_confirm "O histórico de navegação será excluído.">
 <!ENTITY pref_clear_private_data "Limpar dados pessoais">
-<!ENTITY pref_clear_private_data_confirm "Configurações de navegação, incluindo senhas e cookies, serão excluídas.">
 <!ENTITY pref_plugins "Plugins">
 <!ENTITY pref_plugins_enabled "Ativados">
 <!ENTITY pref_plugins_tap_to_play "Ativar ao tocar">
@@ -76,6 +86,15 @@
 <!ENTITY pref_font_size_xlarge "Gigante">
 <!ENTITY pref_use_master_password "Usar senha mestra">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_import_android "Importar do Android">
+<!ENTITY pref_private_data_history "Histórico e downloads efetuados">
+<!ENTITY pref_private_data_formdata "Campos memorizados de páginas e da pesquisa">
+<!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_cache "Cache">
+<!ENTITY pref_private_data_sessions "Logins ativos">
+<!ENTITY pref_private_data_offlineApps "Dados offline de sites">
+<!ENTITY pref_private_data_siteSettings "Preferências de sites">
+<!ENTITY pref_search_suggestions "Exibir sugestões de pesquisa">
 
 <!ENTITY quit "Sair">
 
@@ -86,12 +105,29 @@
 <!ENTITY share "Compartilhar">
 <!ENTITY share_title "Compartilhar via">
 <!ENTITY save_as_pdf "Salvar como PDF">
+<!ENTITY find_in_page "Localizar na página">
+<!ENTITY desktop_mode "Solicitar site do desktop">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "Localizar na página">
+<!ENTITY find_prev "Anterior">
+<!ENTITY find_next "Próxima">
+<!ENTITY find_close "Fechar">
 
 <!ENTITY contextmenu_open_new_tab "Abrir em nova aba">
+<!ENTITY contextmenu_remove_history "Excluir">
 <!ENTITY contextmenu_remove_bookmark "Excluir">
 <!ENTITY contextmenu_add_to_launcher "Adicionar à tela inicial">
 <!ENTITY contextmenu_share "Compartilhar">
+<!ENTITY contextmenu_pasteandgo "Colar e ir">
+<!ENTITY contextmenu_paste "Colar">
+<!ENTITY contextmenu_copyurl "Copiar endereço">
 <!ENTITY contextmenu_edit_bookmark "Editar">
+
+<!-- Localization note (history_removed) : Shown in a toast notificaion
+	 after a page is removed from browser history. -->
+<!ENTITY history_removed "Página excluída">
 
 <!ENTITY bookmark_edit_title "Editar favorito">
 <!ENTITY bookmark_edit_name "Nome">
@@ -103,6 +139,11 @@
 <!ENTITY site_settings_clear        "Limpar">
 <!ENTITY site_settings_no_settings  "Não há configurações para limpar.">
 
+<!ENTITY add_to_reading_list "Adicionar à lista de leitura">
+<!ENTITY reading_list_added "Página adicionada à lista de leitura">
+<!ENTITY reading_list_removed "Página excluída da lista de leitura">
+<!ENTITY reader_mode "Modo de leitura">
+
 <!ENTITY masterpassword_create_title "Criar senha mestra">
 <!ENTITY masterpassword_remove_title "Excluir a senha mestra">
 <!ENTITY masterpassword_password "Senha">
@@ -110,6 +151,7 @@
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Cancelar">
+<!ENTITY button_clear_data "Limpar dados">
 
 <!ENTITY abouthome_addons_title "Complementos para o seu &brandShortName;">
 <!ENTITY abouthome_addons_browse "Todos os complementos do &brandShortName;">
@@ -125,3 +167,27 @@
 <!ENTITY filepicker_audio_title "Selecione ou grave um som">
 <!ENTITY filepicker_image_title "Selecione ou tire uma foto">
 <!ENTITY filepicker_video_title "Selecione ou grave um vídeo">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "Conectado a">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "que é administrado por">
+
+<!ENTITY bookmarkhistory_button_import "Importar">
+<!ENTITY bookmarkhistory_import_both "Importando favoritos e histórico do Android">
+<!ENTITY bookmarkhistory_import_bookmarks "Importando favoritos do Android">
+<!ENTITY bookmarkhistory_import_history "Importando histórico do Android">
+<!ENTITY bookmarkhistory_import_wait "Por favor, aguarde…">
+
+<!ENTITY private_data_success "Dados pessoais limpos">
+<!ENTITY private_data_fail "Alguns dados pessoais podem não ter sido limpos">

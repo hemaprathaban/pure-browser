@@ -9,10 +9,10 @@ Subject: Bug 761082 - Only export TabMessageUtils.h in mozilla/dom. r=cjones
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/dom/ipc/Makefile.in b/dom/ipc/Makefile.in
-index de19867..5461453 100644
+index 82fb8fb..e88c78a 100644
 --- a/dom/ipc/Makefile.in
 +++ b/dom/ipc/Makefile.in
-@@ -51,7 +51,7 @@ ifneq (cocoa,$(MOZ_WIDGET_TOOLKIT))
+@@ -19,7 +19,7 @@ ifneq (cocoa,$(MOZ_WIDGET_TOOLKIT))
  TEST_DIRS += tests
  endif
  
@@ -22,12 +22,12 @@ index de19867..5461453 100644
  EXPORTS_NAMESPACES = mozilla/dom
  
 diff --git a/dom/ipc/PBrowser.ipdl b/dom/ipc/PBrowser.ipdl
-index 4074fd1..0b0716e 100644
+index f57f858..113c127 100644
 --- a/dom/ipc/PBrowser.ipdl
 +++ b/dom/ipc/PBrowser.ipdl
-@@ -44,7 +44,7 @@ include protocol PContentPermissionRequest;
- include protocol PRenderFrame;
+@@ -13,7 +13,7 @@ include protocol PRenderFrame;
  include protocol POfflineCacheUpdate;
+ include protocol PIndexedDB;
  
 -include "TabMessageUtils.h";
 +include "mozilla/dom/TabMessageUtils.h";
@@ -35,12 +35,12 @@ index 4074fd1..0b0716e 100644
  include "mozilla/net/NeckoMessageUtils.h";
  include "IPC/nsGUIEventIPC.h";
 diff --git a/dom/ipc/TabMessageUtils.cpp b/dom/ipc/TabMessageUtils.cpp
-index 201d7d4..44b7e44 100644
+index 7503130..c8c9b39 100644
 --- a/dom/ipc/TabMessageUtils.cpp
 +++ b/dom/ipc/TabMessageUtils.cpp
-@@ -36,7 +36,7 @@
-  *
-  * ***** END LICENSE BLOCK ***** */
+@@ -3,7 +3,7 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
 -#include "TabMessageUtils.h"
 +#include "mozilla/dom/TabMessageUtils.h"

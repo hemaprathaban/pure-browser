@@ -7,10 +7,10 @@ Subject: Don't install system profile
  1 file changed, 2 deletions(-)
 
 diff --git a/xulrunner/app/Makefile.in b/xulrunner/app/Makefile.in
-index 3ffd133..05f3710 100644
+index 9b11429..45b1a4e 100644
 --- a/xulrunner/app/Makefile.in
 +++ b/xulrunner/app/Makefile.in
-@@ -48,8 +48,6 @@ VPATH = @srcdir@
+@@ -10,8 +10,6 @@ VPATH = @srcdir@
  
  include $(DEPTH)/config/autoconf.mk
  

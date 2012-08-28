@@ -9,10 +9,10 @@ Subject: Avoid spurious "Run" items in application handlers configuration
  2 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/browser/components/preferences/applications.js b/browser/components/preferences/applications.js
-index 20ef5dc..0440b04 100644
+index 8f3b1d8..73c6519 100644
 --- a/browser/components/preferences/applications.js
 +++ b/browser/components/preferences/applications.js
-@@ -1328,6 +1328,7 @@ var gApplicationsPane = {
+@@ -1355,6 +1355,7 @@ var gApplicationsPane = {
      return aExecutable &&
             aExecutable.exists() &&
             aExecutable.isExecutable() &&
@@ -21,10 +21,10 @@ index 20ef5dc..0440b04 100644
  //          just don't know how to do that via script...
  // XXXmano TBD: can probably add this to nsIShellService
 diff --git a/uriloader/exthandler/nsHandlerService.js b/uriloader/exthandler/nsHandlerService.js
-index c4e62f6..589ba31 100644
+index d437b28..80f8bf4 100644
 --- a/uriloader/exthandler/nsHandlerService.js
 +++ b/uriloader/exthandler/nsHandlerService.js
-@@ -658,25 +658,24 @@ HandlerService.prototype = {
+@@ -624,25 +624,24 @@ HandlerService.prototype = {
  
      try {
        file.initWithPath(aPath);

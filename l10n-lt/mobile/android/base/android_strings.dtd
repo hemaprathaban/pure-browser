@@ -42,8 +42,16 @@
 
 <!ENTITY reload "Naujinti">
 <!ENTITY forward "Pirmyn">
+<!ENTITY menu "Meniu">
+<!ENTITY back "Atgal">
+<!ENTITY stop "Stabdyti">
+<!ENTITY site_security "Svetainės saugumas">
 
+<!ENTITY close_tab "Užverti kortelę">
 <!ENTITY new_tab "Nauja kortelė">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "&#037;d kortelės (-ių)">
 <!ENTITY new_tab_opened "Atverta nauja kortelė">
 
 <!ENTITY settings "Nuostatos">
@@ -85,12 +93,25 @@
 <!ENTITY share "Dalintis tinklalapiu">
 <!ENTITY share_title "Dalintis per">
 <!ENTITY save_as_pdf "Įrašyti PDF formatu">
+<!ENTITY find_in_page "Ieškoti tinklalapyje">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "Ieškoti tinklalapyje">
+<!ENTITY find_prev "Ankstenis">
+<!ENTITY find_next "Tolesnis">
+<!ENTITY find_close "Užverti">
 
 <!ENTITY contextmenu_open_new_tab "Atverti naujoje kortelėje">
+<!ENTITY contextmenu_remove_history "Pašalinti">
 <!ENTITY contextmenu_remove_bookmark "Pašalinti">
 <!ENTITY contextmenu_add_to_launcher "Įtraukti į pradžios ekraną">
 <!ENTITY contextmenu_share "Dalintis">
 <!ENTITY contextmenu_edit_bookmark "Taisyti">
+
+<!-- Localization note (history_removed) : Shown in a toast notificaion
+     after a page is removed from browser history. -->
+<!ENTITY history_removed "Tinklalapis pašalintas">
 
 <!ENTITY bookmark_edit_title "Adresyno įrašo savybės">
 <!ENTITY bookmark_edit_name "Pavadinimas">
@@ -101,6 +122,11 @@
 <!ENTITY site_settings_cancel       "Atsisakyti">
 <!ENTITY site_settings_clear        "Išvalyti">
 <!ENTITY site_settings_no_settings  "Valytinų nuostatų nėra.">
+
+<!ENTITY add_to_reading_list "Įtraukti į skaitinių sąrašą">
+<!ENTITY reading_list_added "Tinklalapis įtrauktas į skaitinių sąrašą">
+<!ENTITY reading_list_removed "Tinklalapis pašalintas iš skaitinių sąrašo">
+<!ENTITY reader_mode "Skaityklės veiksena">
 
 <!ENTITY masterpassword_create_title "Sukurti pagrindinį slaptažodį">
 <!ENTITY masterpassword_remove_title "Pašalinti pagrindinį slaptažodį">
@@ -124,3 +150,18 @@
 <!ENTITY filepicker_audio_title "Parinkite arba įrašykite garsą">
 <!ENTITY filepicker_image_title "Parinkite arba nufotografuokite paveikslą">
 <!ENTITY filepicker_video_title "Parinkite arba įrašykite vaizdo įrašą">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "Jūs prisijungėte prie svetainės">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "kurią valdo">

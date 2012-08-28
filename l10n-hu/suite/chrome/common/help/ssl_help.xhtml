@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"[
@@ -8,117 +12,79 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>SSL Settings</title>
+<title>SSL-beállítások</title>
 <link rel="stylesheet" href="helpFileLayout.css"
   type="text/css"/>
 </head>
 <body>
 
-<h1 id="ssl_settings">SSL Settings</h1>
+<h1 id="ssl_settings">SSL-beállítások</h1>
 
-<p>This section describes how to set your SSL preferences.</p>
+<p>Ez a fejezet az SSL és a kódolások beállításait ismerteti.</p>
 
-<div class="contentsBox">In this section:
+<div class="contentsBox">A fejezet témakörei:
   <ul>
-    <li><a href="#privacy_and_security_preferences_ssl">Privacy &amp; Security
-      Preferences - SSL</a></li>
+    <li><a href="#privacy_and_security_preferences_ssl">Adatvédelmi és biztonsági beállítások - SSL</a></li>
   </ul>
 </div>
 
-<h2 id="privacy_and_security_preferences_ssl">Privacy &amp; Security
-  Preferences - SSL</h2>
+<h2 id="privacy_and_security_preferences_ssl">Adatvédelmi és biztonsági beállítások - SSL</h2>
 
-<p>This section describes how to use the SSL preferences panel. If you are not
-  already viewing the panel, follow these steps:</p>
+<p>Ez a fejezet az SSL-beállítások párbeszédpanel használatát írja le. A párbeszédpanel a következő lépésekkel hívható elő:</p>
 
 <ol>
-  <li>Open the <span class="mac">&brandShortName;</span>
-    <span class="noMac">Edit</span> menu and choose Preferences.</li>
-  <li>Under the Privacy &amp; Security category, click SSL. (If no
-    subcategories are visible, double-click Privacy &amp; Security to expand
-    the list.)</li>
+  <li>Válasszuk a <span class="mac">&brandShortName;</span>
+    <span class="noMac">Szerkesztés</span> menüjéből a Beállítások parancsot.</li>
+  <li>Az Adatvédelem és biztonság kategóriában kattintsunk az SSL-re. (Ha nem láthatóak az alkategóriák, az alkategóriák kibontásához kattintsunk duplán az Adatvédelem és biztonság kategóriára).</li>
 </ol>
 
-<h3 id="ssl_protocol_versions">SSL Protocol Versions</h3>
+<h3 id="ssl_protocol_versions">Az SSL protokoll verziói</h3>
 
-<p>The Secure Sockets Layer (SSL) protocol defines rules governing mutual
-  authentication between a web site and browser software and the encryption of
-  information that flows between them. The Transport Layer Security (TLS)
-  protocol is an IETF standard based on SSL. TLS 1.0 can be thought of as SSL
-  3.1.</p>
+<p>Az SSL protokoll a kölcsönös hitelesítést és az adatok titkosított cseréjét teszi lehetővé a webkiszolgáló és a böngésző között. A TLS protokoll az IETF szabványa, és az SSL-re épül. A TLS 1.0 az SSL 3.1-es verziójának is tekinthető.</p>
 
-<p>You should normally leave these three checkboxes selected to ensure that
-  both older and newer web servers can work with the browser:</p>
+<p>Általában célszerű ezt a három jelölőnégyzetet bejelölve hagyni, így a régebbi és az újabb webkiszolgálók egyaránt képesek együttműködni a böngészővel:</p>
 
 <ul>
-  <li><strong>Enable SSL version 3</strong>: Allows newer web servers to work
-    with the browser.</li>
-  <li><strong>Enable TLS</strong>: Allows web servers that support TLS to take
-    advantage of it.</li>
+  <li><strong>SSL v3 engedélyezése</strong>: lehetővé teszi, hogy az újabb webkiszolgálók együttműködjenek a böngészővel.</li>
+  <li><strong>TLS engedélyezése</strong>: lehetővé teszi, hogy a TLS-t támogató webkiszolgálók kihasználják ezt a képességüket.</li>
 </ul>
 
-<p><strong>Important note regarding TLS</strong>: Some servers that do not
-  implement SSL correctly cannot negotiate the SSL handshake with client
-  software (such as the browser) that supports TLS. Such servers are known as
-  <q>TLS intolerant</q>.</p>
+<p><strong>Fontos megjegyzés a TLS-ről</strong>: bizonyos kiszolgálók nem valósítják meg helyesen az SSL-t, és nem tudják megtárgyalni az SSL-kézfogást az ügyfélprogrammal (például a böngészővel), ha az támogatja a TLS-t. Az ilyen kiszolgálókat
+  <q>TLS-intoleráns</q> kiszolgálóknak nevezik.</p>
 
-<p>When the Enable TLS option in the SSL preferences panel is selected, the
-  browser attempts to use the TLS protocol when making secure connections with
-  a server. If that connection fails because the server is TLS intolerant, the
-  browser will fall back to using SSL 3.0.</p>
+<p>Ha az SSL beállítópanelen a TLS engedélyezése jelölőnégyzet be van jelölve, akkor a böngésző megkísérli a TLS protokoll használatát, amikor biztonságos kapcsolatot kezdeményez egy kiszolgálóval. Ha a kapcsolat nem sikerül a kiszolgáló TLS-intoleranciája miatt, a böngésző visszatér az SSL 3.0 használatához.</p>
 
-<h3 id="ssl_warnings">SSL Warnings</h3>
+<h3 id="ssl_warnings">SSL-figyelmeztetések</h3>
 
-<p>It&apos;s easy to tell when the web site you are viewing is using an encrypted
-  connection. If the connection is encrypted, the lock icon in the lower-right
-  corner of the browser window is locked. If the connection is not encrypted,
-  the lock icon is unlocked.</p>
+<p>Könnyen megállapítható, hogy az éppen nézett webhely titkosított kapcsolatot használ-e. Ha a kapcsolat titkosított, a Böngésző ablakának jobb alsó sarkában egy zárt lakat ikon látható. Ha a kapcsolat nem titkosított, a lakat nyitva van.</p>
 
-<p>If you want additional warnings, you can select one or more of the warning
-  checkboxes in the SSL preferences panel. Some people find these warnings
-  annoying.</p>
+<p>Ha ezen kívül is szeretnénk figyelmeztetéseket kapni, az SSL beállítópanelén jelöljük be a kívánt jelölőnégyzeteket. Sok ember idegesítőnek tartja ezeket a figyelmeztetéseket.</p>
 
-<p>To activate any of these warnings, select the corresponding checkbox:</p>
+<p>A figyelmeztetések aktiválásához jelöljük be a megfelelő jelölőnégyzeteket:</p>
 
 <ul>
-  <li><strong>Loading a page that supports encryption</strong>: Select this
-    warning if you want to be reminded whenever you are loading a page that
-    supports encryption.</li>
-  <li><strong>Loading a page that uses low-grade encryption</strong>: Select
-    this warning if you want to be reminded whenever you are loading a page
-    that supports low-grade encryption. (Low-grade encryption is the weakest
-    encryption available, using 40-bit keys.)</li>
-  <li><strong>Leaving a page that supports encryption</strong>: Select this
-    warning if you want to be reminded whenever you are leaving a page that
-    supports encryption for one that does not.</li>
-  <li><strong>Sending form data from an unencrypted page to an unencrypted
-    page</strong>: Select this warning if you want to be reminded whenever you
-    are submitting data over an unencrypted connection. If you send unencrypted
-    information over the Internet, it can easily be intercepted by other
-    people.</li>
-  <li><strong>Viewing a page with an encrypted/unencrypted mix</strong>:
-    Select this warning if you want to be alerted whenever you are viewing a
-    page that includes any information that&apos;s not encrypted.</li>
+  <li><strong>Betöltene egy titkosított oldalt</strong>: jelöljük be, ha mindig figyelmeztetést szeretnénk kapni, ha egy titkosítást támogató oldalt töltünk be.</li>
+  <li><strong>Betöltene egy gyengén titkosított oldalt</strong>: jelöljük be, ha mindig figyelmeztetést szeretnénk kapni, ha egy gyenge titkosítást támogató oldalt töltünk be. (A gyenge titkosítás 40 bites kulcsokat használ.)</li>
+  <li><strong>Elhagyna egy titkosított oldalt</strong>: jelöljük be, ha mindig figyelmeztetést szeretnénk kapni, amikor egy titkosítást támogató oldalt elhagyunk.</li>
+  <li><strong>Űrlapadatot küldene egy titkosítatlan oldalról egy titkosítatlan oldalra</strong>: jelöljük be, ha mindig figyelmeztetést szeretnénk kapni, ha űrlapadatokat küldünk titkosítatlan kapcsolaton keresztül. A titkosítatlanul az interneten keresztül küldött adatokat könnyen megszerezhetik illetéktelen személyek is.</li>
+  <li><strong>Betöltene egy titkosított és nem titkosított elemeket vegyesen tartalmazó oldalt</strong>:
+    jelöljük be, ha mindig figyelmeztetést szeretnénk kapni, amikor egy olyan oldalt nézünk, amelyen vannak nem titkosított elemek is.</li>
 </ul>
 
-<p>For short definitions, click
-  <a href="glossary.xhtml#authentication">authentication</a>,
-  <a href="glossary.xhtml#encryption">encryption</a>, or
-  <a href="glossary.xhtml#certificate">certificate</a>.</p>
+<p>A hivatkozásokra kattintva a Fogalomtárból megtudhatja a 
+  <a href="glossary.xhtml#authentication">hitelesítés</a>,
+  a <a href="glossary.xhtml#encryption">titkosítás</a> valamint a 
+  <a href="glossary.xhtml#certificate">tanúsítvány</a> definícióját.</p>
 
-<p>For more information about ciphers and encryption, see the following online
-  documents:</p>
+<p>Ha többet szeretnénk tudni a kódolásokról és a titkosításról, olvassuk el a következő on-line dokumentumokat:</p>
 
 <ul>
   <li>
-    <a href="http://developer.mozilla.org/en/docs/Introduction_to_Public-Key_Cryptography">Introduction
-    to Public-Key Cryptography</a></li>
+    <a href="http://developer.mozilla.org/en/docs/Introduction_to_Public-Key_Cryptography">Introduction to Public-Key Cryptography (Bevezetés a nyilvános kulcsú titkosításba)</a></li>
   <li>
-    <a href="http://developer.mozilla.org/en/docs/Introduction_to_SSL">Introduction
-    to SSL</a></li>
+    <a href="http://developer.mozilla.org/en/docs/Introduction_to_SSL">Introduction to SSL (Bevezetés az SSL használatába)</a></li>
   <li>
-    <a href="http://www.mozilla.org/projects/security/pki/nss/nss-3.11/nss-3.11-algorithms.html">Encryption
-    Technologies Available in NSS 3.11</a>.</li>
+    <a href="http://www.mozilla.org/projects/security/pki/nss/nss-3.11/nss-3.11-algorithms.html">Encryption Technologies Available in NSS 3.11 (Az NSS 3.11-ben elérhető titkosítási technológiák)</a>.</li>
 </ul>
 
 </body>

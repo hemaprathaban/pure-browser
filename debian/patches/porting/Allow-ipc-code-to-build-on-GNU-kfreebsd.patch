@@ -9,10 +9,10 @@ Subject: Allow ipc code to build on GNU/kfreebsd
  3 files changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/ipc/chromium/src/base/platform_thread_posix.cc b/ipc/chromium/src/base/platform_thread_posix.cc
-index aa4f661..a021af2 100644
+index 1b2ecf7..3a7f01e 100644
 --- a/ipc/chromium/src/base/platform_thread_posix.cc
 +++ b/ipc/chromium/src/base/platform_thread_posix.cc
-@@ -37,7 +37,11 @@ PlatformThreadId PlatformThread::CurrentId() {
+@@ -42,7 +42,11 @@ PlatformThreadId PlatformThread::CurrentId() {
    // TODO(BSD): find a better thread ID
    return (intptr_t)(pthread_self());
  #elif defined(OS_LINUX)

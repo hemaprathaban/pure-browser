@@ -8,10 +8,10 @@ Subject: Use MOZ_APP_DISPLAYNAME to fill appstrings.properties
  2 files changed, 12 insertions(+), 10 deletions(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index c5a09d2..340bb5f 100644
+index 4b234d2..51409bc 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -69,6 +69,8 @@ SUBMAKEFILES += \
+@@ -37,6 +37,8 @@ SUBMAKEFILES += \
  	$(DEPTH)/$(MOZ_BRANDING_DIRECTORY)/locales/Makefile \
  	$(NULL)
  
@@ -21,11 +21,11 @@ index c5a09d2..340bb5f 100644
  # build non-default locales to non-default dist/ locations. Be aware!
  
 diff --git a/browser/locales/en-US/chrome/overrides/appstrings.properties b/browser/locales/en-US/chrome/overrides/appstrings.properties
-index 87e9538..ac979f9 100644
+index 1de0093..8c77825 100644
 --- a/browser/locales/en-US/chrome/overrides/appstrings.properties
 +++ b/browser/locales/en-US/chrome/overrides/appstrings.properties
-@@ -35,24 +35,24 @@
- # ***** END LICENSE BLOCK *****
+@@ -3,24 +3,24 @@
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
  malformedURI=The URL is not valid and cannot be loaded.
 -fileNotFound=Firefox can't find the file at %S.

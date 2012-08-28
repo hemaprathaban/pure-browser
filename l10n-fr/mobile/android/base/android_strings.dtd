@@ -40,10 +40,18 @@
 <!ENTITY history_week_section "Il y a 7 jours">
 <!ENTITY history_older_section "Il y a plus de 7 jours">
 
-<!ENTITY reload "Recharger">
+<!ENTITY reload "Actualiser">
 <!ENTITY forward "Page suivante">
+<!ENTITY menu "Menu">
+<!ENTITY back "Retour">
+<!ENTITY stop "Arrêter">
+<!ENTITY site_security "Sécurité du site">
 
+<!ENTITY close_tab "Fermer l\u0027onglet">
 <!ENTITY new_tab "Nouvel onglet">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one.
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "&#037;d onglets">
 <!ENTITY new_tab_opened "Nouvel onglet ouvert">
 
 <!ENTITY settings "Paramètres">
@@ -51,6 +59,7 @@
 <!ENTITY pref_category_general "Général">
 <!ENTITY pref_category_privacy "Vie privée et sécurité">
 <!ENTITY pref_category_content "Contenu">
+<!ENTITY pref_category_importexport "Importer et exporter">
 <!ENTITY pref_about_firefox "À propos de &brandShortName;">
 <!ENTITY pref_do_not_track "Dire de ne pas me pister">
 <!ENTITY pref_telemetry "Envoyer données de perf.">
@@ -59,10 +68,7 @@
 <!ENTITY pref_char_encoding "Encodage de caractères">
 <!ENTITY pref_char_encoding_on "Afficher le menu">
 <!ENTITY pref_char_encoding_off "Masquer le menu">
-<!ENTITY pref_clear_history "Supprimer l\u0027historique">
-<!ENTITY pref_clear_history_confirm "L\u0027historique de navigation sera supprimé">
 <!ENTITY pref_clear_private_data "Supprimer les données personnelles">
-<!ENTITY pref_clear_private_data_confirm "Les paramètres de navigation y compris les mots de passe et les cookies seront supprimés">
 <!ENTITY pref_plugins "Plugins">
 <!ENTITY pref_plugins_enabled "Activé">
 <!ENTITY pref_plugins_tap_to_play "Toucher pour lancer la lecture">
@@ -75,6 +81,16 @@
 <!ENTITY pref_font_size_xlarge "Très grande">
 <!ENTITY pref_use_master_password "Mot de passe principal">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_import_android "Importer depuis Android">
+<!ENTITY pref_private_data_history "Historique de navigation et des téléchargements">
+<!ENTITY pref_private_data_formdata "Historique des formulaires et des recherches">
+<!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_passwords "Mots de passe enregistrés">
+<!ENTITY pref_private_data_cache "Cache">
+<!ENTITY pref_private_data_sessions "Connexions actives">
+<!ENTITY pref_private_data_offlineApps "Données de site Web hors connexion">
+<!ENTITY pref_private_data_siteSettings "Préférences de site">
+<!ENTITY pref_search_suggestions "Afficher les suggestions de recherche">
 
 <!ENTITY quit "Quitter">
 
@@ -83,14 +99,31 @@
 <!ENTITY char_encoding "Encodage de caractères">
 
 <!ENTITY share "Partager">
-<!ENTITY save_as_pdf "Enregistrer en PDF">
 <!ENTITY share_title "Partager à l\u0027aide de">
+<!ENTITY save_as_pdf "Enregistrer en PDF">
+<!ENTITY find_in_page "Rechercher dans la page">
+<!ENTITY desktop_mode "Voir version ordinateur">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "Rechercher dans la page">
+<!ENTITY find_prev "Précédent">
+<!ENTITY find_next "Suivant">
+<!ENTITY find_close "Fermer">
 
 <!ENTITY contextmenu_open_new_tab "Ouvrir dans un nouvel onglet">
+<!ENTITY contextmenu_remove_history "Supprimer">
 <!ENTITY contextmenu_remove_bookmark "Supprimer">
 <!ENTITY contextmenu_add_to_launcher "Ajouter à l\u0027écran d\u0027accueil">
 <!ENTITY contextmenu_share "Partager">
+<!ENTITY contextmenu_pasteandgo "Coller et ouvrir">
+<!ENTITY contextmenu_paste "Coller">
+<!ENTITY contextmenu_copyurl "Copier l\u0027adresse">
 <!ENTITY contextmenu_edit_bookmark "Modifier">
+
+<!-- Localization note (history_removed) : Shown in a toast notification
+     after a page is removed from browser history. -->
+<!ENTITY history_removed "Page supprimée">
 
 <!ENTITY bookmark_edit_title "Modifier le marque-page">
 <!ENTITY bookmark_edit_name "Nom">
@@ -102,6 +135,11 @@
 <!ENTITY site_settings_clear        "Effacer">
 <!ENTITY site_settings_no_settings  "Il n\u0027y a pas de paramètre à effacer.">
 
+<!ENTITY add_to_reading_list "Ajouter à la liste de lecture">
+<!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
+<!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
+<!ENTITY reader_mode "Mode de lecture">
+
 <!ENTITY masterpassword_create_title "Créer un mot de passe principal">
 <!ENTITY masterpassword_remove_title "Effacer le mot de passe principal">
 <!ENTITY masterpassword_password "Mot de passe">
@@ -109,6 +147,7 @@
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Annuler">
+<!ENTITY button_clear_data "Effacer les données">
 
 <!ENTITY abouthome_addons_title "Modules pour votre &brandShortName;">
 <!ENTITY abouthome_addons_browse "Parcourir tous les modules pour &brandShortName;">
@@ -124,3 +163,27 @@
 <!ENTITY filepicker_audio_title "Choisir ou enregistrer un son">
 <!ENTITY filepicker_image_title "Choisir une image ou faire une copie d\u0027écran">
 <!ENTITY filepicker_video_title "Choisir ou enregistrer une vidéo">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "Vous vous trouvez sur">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "dont le détenteur est">
+
+<!ENTITY private_data_success "Données personnelles effacées">
+<!ENTITY private_data_fail "Certaines données personnelles ne peuvent pas être effacées">
+
+<!ENTITY bookmarkhistory_button_import "Importer">
+<!ENTITY bookmarkhistory_import_both "Importation des marque-pages et de l\u0027historique depuis Android">
+<!ENTITY bookmarkhistory_import_bookmarks "Importation des marque-pages depuis Android">
+<!ENTITY bookmarkhistory_import_history "Importation de l\u0027historique depuis Android">
+<!ENTITY bookmarkhistory_import_wait "Veuillez patienter…">

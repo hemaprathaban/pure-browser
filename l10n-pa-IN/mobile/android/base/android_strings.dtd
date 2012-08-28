@@ -1,6 +1,11 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY  splash_settingup "ਤੁਹਾਡਾ &brandShortName; ਸੈਟਅੱਪ">
-<!ENTITY  splash_bookmarks_history "ਅਸੀਂ ਤੁਹਾਡੇ ਬੁੱਕਮਾਰਕ ਅਤੇ ਅਤੀਤ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਰਹੇ ਹਾਂ, ਜਿਸ ਨੂੰ ਇੱਕ ਮਿੰਟ ਜਾਂ ਕੁਝ ਸਮਾਂ ਲੱਗ ਸਕਦਾ ਹੈ।">
+
+
+<!ENTITY  splash_settingup "ਤੁਹਾਡਾ &brandShortName; ਸੈਟਅੱਪ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ">
+<!ENTITY  splash_bookmarks_history "ਅਸੀਂ ਤੁਹਾਡੇ ਬੁੱਕਮਾਰਕ ਅਤੇ ਅਤੀਤ ਨੂੰ ਅੱਪਡੇਟ ਕਰ ਰਹੇ ਹਾਂ, ਜਿਸ ਲਈ ਮਿੰਟ ਕੁ ਵੀ ਲੱਗ ਸਕਦਾ ਹੈ।">
 <!ENTITY  no_space_to_start_error "&brandShortName; ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਘੱਟੋ-ਘੱਟ ਥਾਂ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ।">
 <!ENTITY  error_loading_file "&brandShortName; ਨੂੰ ਚਲਾਉਣ ਲਈ ਲੋੜੀਦੀਆਂ ਫਾਇਲਾਂ ਲੋਡ ਕਰਨ ਦੇ ਦੌਰਾਨ ਗਲਤੀ ਆਈ ਹੈ।">
 
@@ -24,7 +29,7 @@
 <!ENTITY  launcher_shortcuts_title "&brandShortName; ਵੈੱਬ ਐਪਸ">
 <!ENTITY  launcher_shortcuts_empty "ਕੋਈ ਵੈੱਬ ਐਪਸ ਨਹੀਂ ਲੱਭੀ">
 
-<!ENTITY choose_file "Choose File">
+<!ENTITY choose_file "ਫਾਇਲ ਚੁਣੋ">
 
 
 <!ENTITY remote_tabs "ਟੈਬਾਂ ਸਿੰਕ ਕਰੋ">
@@ -44,8 +49,18 @@
 
 <!ENTITY reload "ਮੁੜ-ਲੋਡ">
 <!ENTITY forward "ਅੱਗੇ">
+<!ENTITY menu "ਮੇਨੂ">
 
+<!ENTITY back "ਪਿੱਛੇ">
+<!ENTITY stop "ਰੋਕੋ">
+<!ENTITY site_security "ਸਾਇਟ ਸੁਰੱਖਿਆ">
+
+<!ENTITY close_tab "ਟੈਬ ਬੰਦ">
 <!ENTITY new_tab "ਨਵੀਂ ਟੈਬ">
+<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs "&#037;d ਟੈਬਾਂ">
+
 <!ENTITY new_tab_opened "ਨਵੀਂ ਟੈਬ ਖੋਲ੍ਹੀ ਗਈ">
 
 <!ENTITY settings "ਸੈਟਿੰਗ">
@@ -53,6 +68,7 @@
 <!ENTITY pref_category_general "ਆਮ">
 <!ENTITY pref_category_privacy "ਪਰਾਈਵੇਸੀ ਤੇ ਸੁਰੱਖਿਆ">
 <!ENTITY pref_category_content "ਸਮੱਗਰੀ">
+<!ENTITY pref_category_importexport "ਇੰਪੋਰਟ &amp; ਐਕਸਪੋਰਟ">
 <!ENTITY pref_about_firefox "&brandShortName; ਬਾਰੇ">
 <!ENTITY pref_do_not_track "ਸਾਈਟਾਂ ਨੂੰ ਦੱਸੋ ਕਿ ਮੈਂ ਟਰੈਕ ਨਹੀਂ ਹੋਣਾ ਚਾਹੁੰਦਾ">
 <!ENTITY pref_telemetry "ਕਾਰਗੁਜ਼ਾਰੀ ਡਾਟਾ ਭੇਜੋ">
@@ -61,10 +77,10 @@
 <!ENTITY pref_char_encoding "ਅੱਖਰ ਇੰਕੋਡਿੰਗ">
 <!ENTITY pref_char_encoding_on "ਮੇਨੂ ਵੇਖਾਓ">
 <!ENTITY pref_char_encoding_off "ਮੇਨੂ ਨਾ ਵੇਖਾਓ">
-<!ENTITY pref_clear_history "ਅਤੀਤ ਸਾਫ਼ ਕਰੋ">
-<!ENTITY pref_clear_history_confirm "ਬਰਾਊਜ਼ਿੰਗ ਅਤੀਤ ਨੂੰ ਹਟਾਇਆ ਜਾਵੇਗਾ।">
+
+
 <!ENTITY pref_clear_private_data "ਪ੍ਰਾਈਵੇਟ ਡਾਟਾ ਸਾਫ਼ ਕਰੋ">
-<!ENTITY pref_clear_private_data_confirm "ਬਰਾਊਜ਼ਿੰਗ ਸੈਟਿੰਗ, ਜਿਸ ਵਿੱਚ ਪਾਸਵਰਡ ਅਤੇ ਕੂਕੀਜ਼ ਹਨ, ਨੂੰ ਹਟਾਇਆ ਜਾਵੇਗਾ।">
+
 <!ENTITY pref_plugins "ਪਲੱਗਇਨ">
 <!ENTITY pref_plugins_enabled "ਚਾਲੂ ਹਨ">
 <!ENTITY pref_plugins_tap_to_play "ਚਲਾਉਣ ਲਈ ਛੂਹੋ">
@@ -77,6 +93,16 @@
 <!ENTITY pref_font_size_xlarge "ਬਹੁਤ ਵੱਡੇ">
 <!ENTITY pref_use_master_password "ਮਾਸਟਰ ਪਾਸਵਰਡ ਵਰਤੋਂ">
 <!ENTITY pref_sync "ਸਿੰਕ">
+<!ENTITY pref_import_android "ਐਡਰਾਇਡ ਤੋਂ ਇੰਪੋਰਟ ਕਰੋ">
+<!ENTITY pref_private_data_history "ਬਰਾਊਜ਼ ਕਰਨ &amp; ਡਾਊਨਲੋਡ ਅਤੀਤ">
+<!ENTITY pref_private_data_formdata "ਖੋਜ &amp; ਖੋਜ ਅਤੀਤ">
+<!ENTITY pref_private_data_cookies "ਕੂਕੀਜ਼">
+<!ENTITY pref_private_data_passwords "ਸੰਭਾਲੇ ਪਾਸਵਰਡ">
+<!ENTITY pref_private_data_cache "ਕੈਸ਼">
+<!ENTITY pref_private_data_sessions "ਸਰਗਰਮ ਲਾਗਇਨ">
+<!ENTITY pref_private_data_offlineApps "ਆਫਲਾਈਨ ਵੈਬਸਾਈਟ ਡਾਟਾ">
+<!ENTITY pref_private_data_siteSettings "ਸਾਈਟ ਪਸੰਦ">
+<!ENTITY pref_search_suggestions "ਖੋਜ ਸੁਝਾਅ ਵੇਖਾਓ">
 
 <!ENTITY quit "ਬੰਦ ਕਰੋ">
 
@@ -88,11 +114,30 @@
 <!ENTITY share_title "ਸਾਂਝਾ ਕਰੋ ਵਜੋਂ">
 <!ENTITY save_as_pdf "PDF ਵਜੋਂ ਸੰਭਾਲੋ">
 
+<!ENTITY find_in_page "ਪੇਜ਼ ਵਿੱਚ ਲੱਭੋ">
+<!ENTITY desktop_mode "ਡੈਸਕਟਾਪ ਸਾਈਟ ਦੀ ਮੰਗ">
+
+<!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "ਪੇਜ਼ ਵਿੱਚ ਲੱਭੋ">
+<!ENTITY find_prev "ਪਿੱਛੇ">
+<!ENTITY find_next "ਅੱਗੇ">
+<!ENTITY find_close "ਬੰਦ ਕਰੋ">
+
 <!ENTITY contextmenu_open_new_tab "ਨਵੀਂ ਟੈਬ ਵਿੱਚ ਖੋਲ੍ਹੋ">
+<!ENTITY contextmenu_remove_history "ਹਟਾਓ">
+
 <!ENTITY contextmenu_remove_bookmark "ਹਟਾਓ">
 <!ENTITY contextmenu_add_to_launcher "Home Screen ਵਿੱਚ ਜੋੜੋ">
 <!ENTITY contextmenu_share "ਸਾਂਝਾ ਕਰੋ">
+<!ENTITY contextmenu_pasteandgo "ਚੇਪੋ &amp; ਜਾਓ">
+<!ENTITY contextmenu_paste "ਚੇਪੋ">
+<!ENTITY contextmenu_copyurl "ਐਡਰੈਸ ਕਾਪੀ ਕਰੋ">
 <!ENTITY contextmenu_edit_bookmark "ਸੋਧ">
+
+<!-- Localization note (history_removed) : Shown in a toast notificaion
+	 after a page is removed from browser history. -->
+<!ENTITY history_removed "ਪੇਜ਼ ਹਟਾਇਆ">
 
 <!ENTITY bookmark_edit_title "ਬੁੱਕਮਾਰਕ ਸੋਧ">
 <!ENTITY bookmark_edit_name "ਨਾਂ">
@@ -104,20 +149,27 @@
 <!ENTITY site_settings_clear        "ਸਾਫ਼ ਕਰੋ">
 <!ENTITY site_settings_no_settings  "ਸਾਫ਼ ਕਰਨ ਲਈ ਕੋਈ ਵੀ ਸੈਟਿੰਗ ਨਹੀਂ ਹੈ।">
 
+<!ENTITY add_to_reading_list "ਪੜ੍ਹਨ ਸੂਚੀ ਵਿੱਚ ਸ਼ਾਮਲ">
+<!ENTITY reading_list_added "ਪੇਜ਼ ਨੂੰ ਤੁਹਾਡੀ ਪੜ੍ਹਨ ਸੂਚੀ ਵਿੱਚ ਜੋੜਿਆ ਗਿਆ ਹੈ">
+<!ENTITY reading_list_removed "ਪੇਜ਼ ਨੂੰ ਤੁਹਾਡੀ ਪੜ੍ਹਨ ਸੂਚੀ ਵਿੱਚੋਂ ਹਟਾਇਆ ਗਿਆ ਹੈ">
+<!ENTITY reader_mode "ਪੜ੍ਹਨ ਮੋਡ">
+
 <!ENTITY masterpassword_create_title "ਮਾਸਟਰ ਪਾਸਵਰਡ ਬਣਾਓ">
 <!ENTITY masterpassword_remove_title "ਮਾਸਟਰ ਪਾਸਵਰਡ ਹਟਾਓ">
 <!ENTITY masterpassword_password "ਪਾਸਵਰਡ">
 <!ENTITY masterpassword_confirm "ਪਾਸਵਰਡ ਪੁਸ਼ਟੀ">
 
 <!ENTITY button_ok "ਠੀਕ">
-<!ENTITY button_cancel "ਰੱਦ">
+<!ENTITY button_cancel "ਰੱਦ ਕਰੋ">
+<!ENTITY button_clear_data "ਡਾਟਾ ਸਾਫ਼ ਕਰੋ">
+
 
 <!ENTITY abouthome_addons_title "ਤੁਹਾਡੇ &brandShortName; ਲਈ ਐਡ-ਆਨ">
 <!ENTITY abouthome_addons_browse "ਸਭ &brandShortName; ਐਡ-ਆਨ ਵੇਖੋ">
 <!ENTITY abouthome_last_tabs_title "ਪਿਛਲੀ ਵਾਰ ਦੀਆਂ ਤੁਹਾਡੀਆਂ ਟੈਬਾਂ">
 <!ENTITY abouthome_last_tabs_open "ਪਿਛਲੇ ਵਾਰ ਦੀਆਂ ਸਭ ਸਾਈਟਾਂ ਖੋਲ੍ਹੋ">
 <!ENTITY abouthome_top_sites_title "ਚੋਟੀਆਂ ਦੀਆਂ ਸਾਈਟਾਂ">
-<!ENTITY abouthome_top_sites_browse "ਆਪਣੀ ਸਭ ਚੋਟੀ ਦੀਆਂ ਸਾਈਟਾਂ ਖੋਲ੍ਹੋ">
+<!ENTITY abouthome_top_sites_browse "ਆਪਣੀ ਸਭ ਚੋਟੀਆਂ ਦੀਆਂ ਸਾਈਟਾਂ ਖੋਲ੍ਹੋ">
 <!ENTITY abouthome_no_top_sites "ਤੁਹਾਡੇ ਕੋਲ ਹਾਲੇ ਕੋਈ ਵੀ ਚੋਟੀ ਦੀ ਸਾਈਟ ਨਹੀਂ ਹੈ। ਬਰਾਊਜ਼ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਟਾਈਟਲ ਪੱਟੀ ਨੂੰ ਛੂਹੋ।">
 <!ENTITY abouthome_about_sync "ਆਪਣੇ ਹੋਰ ਜੰਤਰਾਂ ਤੋਂ ਬੁੱਕਮਾਰਕ, ਅਤੀਤ ਅਤੇ ਟੈਬਾਂ ਨੂੰ ਵਰਤਣ ਲਈ ਫਾਇਰਫਾਕਸ ਸਿੰਕ ਸੈਟ ਅੱਪ ਕਰੋ">
 <!ENTITY abouthome_sync_bold_name "ਫਾਇਰਫਾਕਸ ਸਿੰਕ">
@@ -126,3 +178,29 @@
 <!ENTITY filepicker_audio_title "ਸਾਊਂਡ ਚੁਣੋ ਜਾਂ ਰਿਕਾਰਡ ਕਰੋ">
 <!ENTITY filepicker_image_title "ਤਸਵੀਰ ਚੁਣੋ ਜਾਂ  ਖਿੱਚੋ">
 <!ENTITY filepicker_video_title "ਵਿਡੀਓ ਚੁਣੋ ਜਾਂ ਰਿਕਾਰਡ ਕਰੋ">
+
+<!-- Site identity popup -->
+<!ENTITY identity_connected_to "ਤੁਸੀਂ ਕੁਨੈਕਟ ਹੋ">
+<!-- Localization note (identity_run_by) : This string appears between a
+domain name (above) and an organization name (below). E.g.
+
+example.com
+which is run by
+Example Enterprises, Inc.
+
+The layout of the identity dialog prevents combining this into a single string with
+substitution variables.  If it is difficult to translate the sense of the string
+with that structure, consider a translation which ignores the preceding domain and
+just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_run_by "ਜੋ ਕਿ ਚਲਾਈ ਜਾਂਦੀ ਹੈ, ਵਲੋਂ">
+
+<!ENTITY bookmarkhistory_button_import "ਇੰਪੋਰਟ ਕਰੋ">
+<!ENTITY bookmarkhistory_import_both "ਐਡਰਾਇਡ ਤੋਂ ਬੁੱਕਮਾਰਕ ਅਤੇ ਅਤੀਤ ਇੰਪੋਰਟ ਕਰੋ">
+<!ENTITY bookmarkhistory_import_bookmarks "Importing bookmarks
+                                           from Android">
+<!ENTITY bookmarkhistory_import_history "Importing history
+                                         from Android">
+<!ENTITY bookmarkhistory_import_wait "...ਉਡੀਕੋ ਜੀ">
+
+<!ENTITY private_data_success "ਪ੍ਰਾਈਵੇਟ ਡਾਟਾ ਸਾਫ਼ ਕੀਤਾ">
+<!ENTITY private_data_fail "ਕੁਝ ਪ੍ਰਾਈਵੇਟ ਡਾਟਾ ਸਾਫ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ">

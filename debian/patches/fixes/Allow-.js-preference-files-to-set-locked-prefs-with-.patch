@@ -10,10 +10,10 @@ Subject: Allow .js preference files to set locked prefs with lockPref()
  4 files changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index d1a45f9..fab2c79 100644
+index e9611e0..e6c6f53 100644
 --- a/modules/libpref/src/prefapi.cpp
 +++ b/modules/libpref/src/prefapi.cpp
-@@ -948,7 +948,10 @@ void PREF_ReaderCallback(void       *closure,
+@@ -916,7 +916,10 @@ void PREF_ReaderCallback(void       *closure,
                           const char *pref,
                           PrefValue   value,
                           PrefType    type,
@@ -26,10 +26,10 @@ index d1a45f9..fab2c79 100644
 +        PREF_LockPref(pref, true);
  }
 diff --git a/modules/libpref/src/prefapi.h b/modules/libpref/src/prefapi.h
-index 22a88d3..2b20c4e 100644
+index 5fd902f..bbf049c 100644
 --- a/modules/libpref/src/prefapi.h
 +++ b/modules/libpref/src/prefapi.h
-@@ -208,7 +208,8 @@ void PREF_ReaderCallback( void *closure,
+@@ -176,7 +176,8 @@ void PREF_ReaderCallback( void *closure,
                            const char *pref,
                            PrefValue   value,
                            PrefType    type,
@@ -40,10 +40,10 @@ index 22a88d3..2b20c4e 100644
  PR_END_EXTERN_C
  #endif
 diff --git a/modules/libpref/src/prefread.cpp b/modules/libpref/src/prefread.cpp
-index 893d256..d4ef51a 100644
+index f0423e8..444d08a 100644
 --- a/modules/libpref/src/prefread.cpp
 +++ b/modules/libpref/src/prefread.cpp
-@@ -75,6 +75,7 @@ enum {
+@@ -43,6 +43,7 @@ enum {
  #define BITS_PER_HEX_DIGIT      4
  
  static const char kUserPref[] = "user_pref";
@@ -51,7 +51,7 @@ index 893d256..d4ef51a 100644
  static const char kPref[] = "pref";
  static const char kTrue[] = "true";
  static const char kFalse[] = "false";
-@@ -161,7 +162,7 @@ pref_DoCallback(PrefParseState *ps)
+@@ -129,7 +130,7 @@ pref_DoCallback(PrefParseState *ps)
      default:
          break;
      }
@@ -60,7 +60,7 @@ index 893d256..d4ef51a 100644
      return true;
  }
  
-@@ -220,6 +221,7 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
+@@ -188,6 +189,7 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
                  ps->vb    = NULL;
                  ps->vtype = PREF_INVALID;
                  ps->fdefault = false;
@@ -68,7 +68,7 @@ index 893d256..d4ef51a 100644
              }
              switch (c) {
              case '/':       /* begin comment block or line? */
-@@ -230,7 +232,9 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
+@@ -198,7 +200,9 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
                  break;
              case 'u':       /* indicating user_pref */
              case 'p':       /* indicating pref */
@@ -79,7 +79,7 @@ index 893d256..d4ef51a 100644
                  ps->sindex = 1;
                  ps->nextstate = PREF_PARSE_UNTIL_OPEN_PAREN;
                  state = PREF_PARSE_MATCH_STRING;
-@@ -274,7 +278,8 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
+@@ -242,7 +246,8 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
          /* name parsing */
          case PREF_PARSE_UNTIL_NAME:
              if (c == '\"' || c == '\'') {
@@ -90,10 +90,10 @@ index 893d256..d4ef51a 100644
                  ps->nextstate = PREF_PARSE_UNTIL_COMMA; /* return here when done */
                  state = PREF_PARSE_QUOTED_STRING;
 diff --git a/modules/libpref/src/prefread.h b/modules/libpref/src/prefread.h
-index 50f4d54..93a1702 100644
+index fe9850d..7afdce5 100644
 --- a/modules/libpref/src/prefread.h
 +++ b/modules/libpref/src/prefread.h
-@@ -62,7 +62,8 @@ typedef void (*PrefReader)(void       *closure,
+@@ -30,7 +30,8 @@ typedef void (*PrefReader)(void       *closure,
                             const char *pref,
                             PrefValue   val,
                             PrefType    type,
@@ -103,7 +103,7 @@ index 50f4d54..93a1702 100644
  
  /* structure fields are private */
  typedef struct PrefParseState {
-@@ -82,7 +83,8 @@ typedef struct PrefParseState {
+@@ -50,7 +51,8 @@ typedef struct PrefParseState {
      char       *lbend;      /* line buffer end               */
      char       *vb;         /* value buffer (ptr into lb)    */
      PrefType    vtype;      /* PREF_STRING,INT,BOOL          */

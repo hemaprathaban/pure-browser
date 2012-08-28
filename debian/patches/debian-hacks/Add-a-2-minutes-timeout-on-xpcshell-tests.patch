@@ -7,19 +7,19 @@ Subject: Add a 2 minutes timeout on xpcshell tests
  1 file changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/testing/xpcshell/runxpcshelltests.py b/testing/xpcshell/runxpcshelltests.py
-index a207767..b79ee4d 100644
+index 0b26d3e..f984c89 100644
 --- a/testing/xpcshell/runxpcshelltests.py
 +++ b/testing/xpcshell/runxpcshelltests.py
-@@ -38,7 +38,7 @@
- #
- # ***** END LICENSE BLOCK ***** */
+@@ -4,7 +4,7 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
 -import re, sys, os, os.path, logging, shutil, signal, math, time
 +import re, sys, os, os.path, logging, shutil, signal, math, time, select
  import xml.dom.minidom
  from glob import glob
  from optparse import OptionParser
-@@ -677,7 +677,21 @@ class XPCShellTests(object):
+@@ -719,7 +719,21 @@ class XPCShellTests(object):
          # - don't move this line above launchProcess, or child will inherit the SIG_IGN
          signal.signal(signal.SIGINT, markGotSIGINT)
          # |stderr == None| as |pStderr| was either |None| or redirected to |stdout|.
