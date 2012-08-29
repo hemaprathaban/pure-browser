@@ -333,8 +333,8 @@ override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib/xulrunner-$(GRE_VERSION) dpkg-shlibdeps -Tdebian/xulrunner-$(GRE_VERSION).substvars -dDepends -pgnome $(foreach lib,dbusservice,debian/xulrunner-$(GRE_VERSION)/usr/lib/xulrunner-$(GRE_VERSION)/components/lib$(lib).so)
 
 override_dh_gencontrol:
-	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES), -p$(pkg)) -- -v1:$(DEBIAN_VERSION)
-	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES), -N$(pkg))
+	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES) iceweasel-l10n-all, -p$(pkg)) -- -v1:$(DEBIAN_VERSION)
+	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES) iceweasel-l10n-all, -N$(pkg))
 
 install binary binary-arch binary-indep: $(GENERATED_FILES)
 
