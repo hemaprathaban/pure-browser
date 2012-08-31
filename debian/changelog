@@ -1,3 +1,14 @@
+iceweasel (10.0.7esr-2) unstable; urgency=low
+
+  * debian/rules: Use xz compression for binary packages. Closes: #686325.
+
+  * widget/src/xpwidgets/GfxInfoX11.cpp: Allow webGL with mesa,
+    assuming users will have updated to 8.0.4-2 on wheezy. The version
+    in squeeze-backports is not affected by CVE-2012-2864, and the
+    version in squeeze is blacklisted.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 31 Aug 2012 09:20:36 +0200
+
 iceweasel (10.0.7esr-1) unstable; urgency=low
 
   * New upstream release.
