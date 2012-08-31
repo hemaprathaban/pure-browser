@@ -336,6 +336,9 @@ override_dh_gencontrol:
 	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES) iceweasel-l10n-all, -p$(pkg)) -- -v1:$(DEBIAN_VERSION)
 	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES) iceweasel-l10n-all, -N$(pkg))
 
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
 install binary binary-arch binary-indep: $(GENERATED_FILES)
 
 binary binary-indep: stamps/dh_install-l10n
