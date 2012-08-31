@@ -110,7 +110,7 @@ $(PREPROCESSED_FILES):
 
 %/Makefile: DIR=$(firstword $(subst /, ,$@))
 %/Makefile:
-	mkdir -p $* && cd $(DIR) && ../build/autoconf/make-makefile -t .. $(*:$(DIR)/%=%)
+	make -C $(DIR) SUBMAKEFILES=$(@:$(DIR)/%=%) $(@:$(DIR)/%=%)
 
 %/package-manifest: %/Makefile
 	$(MAKE) -C $*
