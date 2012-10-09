@@ -1,0 +1,23 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 20 Jul 2012 09:34:16 +0200
+Subject: Fix
+ media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc
+ to build against libvpx 1.1
+
+---
+ .../trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc     |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc b/media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc
+index 22c180b..bc7088e 100644
+--- a/media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc
++++ b/media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc
+@@ -691,7 +691,7 @@ int VP8Decoder::Decode(const EncodedImage& input_image,
+       propagation_cnt_++;
+   }
+ 
+-  vpx_dec_iter_t iter = NULL;
++  vpx_codec_iter_t iter = NULL;
+   vpx_image_t* img;
+   int ret;
+ 

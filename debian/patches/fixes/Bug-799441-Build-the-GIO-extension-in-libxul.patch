@@ -1,0 +1,22 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Tue, 9 Oct 2012 14:38:36 +0200
+Subject: Bug 799441 - Build the GIO extension in libxul
+
+---
+ extensions/gio/Makefile.in |    5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/extensions/gio/Makefile.in b/extensions/gio/Makefile.in
+index 0f6205f..9cc3e96 100644
+--- a/extensions/gio/Makefile.in
++++ b/extensions/gio/Makefile.in
+@@ -27,9 +27,4 @@ EXTRA_DSO_LDOPTS = \
+ 		   $(MOZ_GIO_LIBS) \
+ 		   $(NULL)
+ 
+-# make sure this component is never statically linked into the main
+-# application.  this is necessary since we don't want to force users
+-# to install gio in order to use the rest of mozilla ;-)
+-FORCE_SHARED_LIB= 1
+-
+ include $(topsrcdir)/config/rules.mk
