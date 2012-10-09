@@ -122,10 +122,13 @@ bool CopyFile(const char* inputFile, const char* outputFile)
   return (bytesRead >= 0);
 }
 
-bool GRELoadAndLaunch(const char* firefoxDir)
+bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
 {
   char xpcomDllPath[MAXPATHLEN];
   snprintf(xpcomDllPath, MAXPATHLEN, "%s/%s", firefoxDir, XPCOM_DLL);
+
+  if (silentFail && access(xpcomDllPath, F_OK) != 0)
+    return false;
 
   if (NS_FAILED(XPCOMGlueStartup(xpcomDllPath))) {
     ErrorDialog("Couldn't load the XPCOM library");
@@ -246,14 +249,10 @@ int main(int argc, char *argv[])
 
   char firefoxDir[MAXPATHLEN];
 
-  // Check if Firefox is in the ../../dist/bin directory (relative to the webapp runtime)
+  // Check if Firefox is in the same directory as the webapp runtime.
   // This is the case for webapprt chrome and content tests.
-  snprintf(firefoxDir, MAXPATHLEN, "%s/../../dist/bin", curExeDir);
-  if (access(firefoxDir, F_OK) != -1) {
-    if (GRELoadAndLaunch(firefoxDir))
-      return 0;
-
-    return 255;
+  if (GRELoadAndLaunch(curExeDir, true)) {
+    return 0;
   }
 
   // Set up webAppIniPath with path to webapp.ini
@@ -305,7 +304,7 @@ int main(int argc, char *argv[])
 
   // If WebAppRT version == Firefox version, load XUL and execute the application
   if (!strcmp(buildid, NS_STRINGIFY(GRE_BUILDID))) {
-    if (GRELoadAndLaunch(firefoxDir))
+    if (GRELoadAndLaunch(firefoxDir, false))
       return 0;
   }
   // Else, copy WebAppRT from Firefox installation and re-execute the process
