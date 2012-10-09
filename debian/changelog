@@ -1,8 +1,31 @@
-iceweasel (16.0-1) UNRELEASED; urgency=low
+iceweasel (16.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2012-{74-77,79-87}, also known as
+    CVE-2012-3983, CVE-2012-3982, CVE-2012-3984, CVE-2012-3985,
+    CVE-2012-3985, CVE-2012-3986, CVE-2012-3988, CVE-2012-3989,
+    CVE-2012-3991, CVE-2012-3994, CVE-2012-3993, CVE-2012-4184,
+    CVE-2012-3992, CVE-2012-3995, CVE-2012-4179, CVE-2012-4180,
+    CVE-2012-4181, CVE-2012-4182, CVE-2012-4183, CVE-2012-4185,
+    CVE-2012-4186, CVE-2012-4187, CVE-2012-4188, CVE-2012-3990.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 09 Oct 2012 14:19:27 +0200
+  * debian/rules: Use xz compression for binary packages. Closes: #686325.
+  * debian/xulrunner.mozconfig: Enable gio protocol-handler and icon decoder.
+  * debian/control*:
+    - Bump libnspr4-dev build dependency to 4.9.2.
+    - Bump libsqlite3-dev build dependency to 3.7.13.
+  * debian/iceweasel.install, debian/iceweasel.links.in: Install webapprt
+    files.
+
+  * media/webrtc/trunk/src/modules/video_coding/codecs/vp8/main/source/vp8.cc:
+    Fix to build against libvpx 1.1.
+  * extensions/gio/Makefile.in: Build the GIO extension in libxul. bz#799441.
+  * webapprt/gtk2/Makefile.in, webapprt/gtk2/webapprt.cpp: Don't search firefox
+    executable in $exe/../../dist/bin. bz#798233.
+  * webapprt/gtk2/webapprt.cpp: Fallback to the xulrunner subdirectory if
+    webapprt can't find xpcom in firefox directory. bz#762833.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 09 Oct 2012 15:13:08 +0200
 
 iceweasel (15.0.1-1) experimental; urgency=low
 
