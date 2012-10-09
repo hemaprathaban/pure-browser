@@ -27,9 +27,4 @@ EXTRA_DSO_LDOPTS = \
 		   $(MOZ_GIO_LIBS) \
 		   $(NULL)
 
-# make sure this component is never statically linked into the main
-# application.  this is necessary since we don't want to force users
-# to install gio in order to use the rest of mozilla ;-)
-FORCE_SHARED_LIB= 1
-
 include $(topsrcdir)/config/rules.mk
