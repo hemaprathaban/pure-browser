@@ -127,8 +127,11 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
   char xpcomDllPath[MAXPATHLEN];
   snprintf(xpcomDllPath, MAXPATHLEN, "%s/%s", firefoxDir, XPCOM_DLL);
 
-  if (silentFail && access(xpcomDllPath, F_OK) != 0)
-    return false;
+  if (access(xpcomDllPath, F_OK) != 0) {
+    snprintf(xpcomDllPath, MAXPATHLEN, "%s/xulrunner/%s", firefoxDir, XPCOM_DLL);
+    if (silentFail && access(xpcomDllPath, F_OK) != 0)
+      return false;
+  }
 
   if (NS_FAILED(XPCOMGlueStartup(xpcomDllPath))) {
     ErrorDialog("Couldn't load the XPCOM library");
@@ -189,12 +192,12 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
     }
 
     nsCOMPtr<nsIFile> xreDir;
-    if (NS_FAILED(XRE_GetFileFromPath(firefoxDir, getter_AddRefs(xreDir)))) {
+    if (NS_FAILED(XRE_GetFileFromPath(xpcomDllPath, getter_AddRefs(xreDir)))) {
       ErrorDialog("Couldn't open XRE directory");
       return false;
     }
 
-    xreDir.forget(&webShellAppData->xreDirectory);
+    xreDir->GetParent(&webShellAppData->xreDirectory);
     NS_IF_RELEASE(webShellAppData->directory);
     directory.forget(&webShellAppData->directory);
 
