@@ -8,7 +8,7 @@ Closes: #666675.
  1 file changed, 30 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/components/search/nsSearchService.js b/toolkit/components/search/nsSearchService.js
-index 7b72898..1a1451e 100644
+index eaa809d..731ebc9 100644
 --- a/toolkit/components/search/nsSearchService.js
 +++ b/toolkit/components/search/nsSearchService.js
 @@ -734,6 +734,7 @@ function getMozParamPref(prefName)
@@ -16,9 +16,9 @@ index 7b72898..1a1451e 100644
   * @see nsIBrowserSearchService.idl
   */
 +let gForceCacheInvalidation = false;
- let gEnginesLoaded = false;
+ let gInitialized = false;
  function notifyAction(aEngine, aVerb) {
-   if (gEnginesLoaded) {
+   if (gInitialized) {
 @@ -2024,6 +2025,20 @@ Engine.prototype = {
     **/
    _initWithJSON: function SRCH_ENG__initWithJSON(aJson) {
@@ -62,12 +62,12 @@ index 7b72898..1a1451e 100644
      }
  
      return this.__installLocation;
-@@ -2479,6 +2505,8 @@ function SearchService() {
-   }
-   gEnginesLoaded = true;
-   this._addObservers();
+@@ -2483,6 +2509,8 @@ function SearchService() {
+    * Once initialization is complete, |null|.
+    */
+   this._initObservers = [];
 +  if (gForceCacheInvalidation)
 +    this._batchCacheInvalidation();
  }
+ 
  SearchService.prototype = {
-   classID: Components.ID("{7319788a-fe93-4db3-9f39-818cf08f4256}"),

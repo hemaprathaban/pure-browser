@@ -3,10 +3,9 @@ Date: Thu, 30 Jun 2011 18:29:22 +0200
 Subject: Allow ipc code to build on GNU/kfreebsd
 
 ---
- ipc/chromium/src/base/platform_thread_posix.cc    |    4 ++++
- ipc/chromium/src/base/third_party/nspr/prcpucfg.h |    2 +-
- ipc/chromium/src/build/build_config.h             |    2 +-
- 3 files changed, 6 insertions(+), 2 deletions(-)
+ ipc/chromium/src/base/platform_thread_posix.cc |    4 ++++
+ ipc/chromium/src/build/build_config.h          |    2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/ipc/chromium/src/base/platform_thread_posix.cc b/ipc/chromium/src/base/platform_thread_posix.cc
 index 1b2ecf7..3a7f01e 100644
@@ -24,19 +23,6 @@ index 1b2ecf7..3a7f01e 100644
  #endif
  }
  
-diff --git a/ipc/chromium/src/base/third_party/nspr/prcpucfg.h b/ipc/chromium/src/base/third_party/nspr/prcpucfg.h
-index ef40994..30fef1b 100644
---- a/ipc/chromium/src/base/third_party/nspr/prcpucfg.h
-+++ b/ipc/chromium/src/base/third_party/nspr/prcpucfg.h
-@@ -34,7 +34,7 @@
- #include "base/third_party/nspr/prcpucfg_win.h"
- #elif defined(__APPLE__)
- #include "base/third_party/nspr/prcpucfg_mac.h"
--#elif defined(__linux__) || defined(ANDROID)
-+#elif defined(__linux__) || defined(ANDROID) || defined(__GLIBC__)
- #include "base/third_party/nspr/prcpucfg_linux.h"
- #elif defined(__OpenBSD__)
- #include "base/third_party/nspr/prcpucfg_openbsd.h"
 diff --git a/ipc/chromium/src/build/build_config.h b/ipc/chromium/src/build/build_config.h
 index 9e87ad2..f79884e 100644
 --- a/ipc/chromium/src/build/build_config.h

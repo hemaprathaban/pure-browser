@@ -54,6 +54,7 @@
 
 <!ENTITY close_tab "Tabblad sluiten">
 <!ENTITY new_tab "Nieuw tabblad">
+<!ENTITY one_tab "1 tabblad">
 <!-- Localization note (num_tabs) : Number of tabs is always more than one. 
      We can't use android plural forms, sadly. See bug #753859. -->
 <!ENTITY num_tabs "&#037;d tabbladen">
@@ -86,24 +87,27 @@
 <!ENTITY pref_font_size_xlarge "Extra groot">
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 <!ENTITY pref_import_android "Importeren uit Android">
 <!ENTITY pref_private_data_history "Navigatie- &amp; downloadgeschiedenis">
 <!ENTITY pref_private_data_formdata "Formulier- &amp; zoekgeschiedenis">
 <!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_passwords "Opgeslagen wachtwoorden">
 <!ENTITY pref_private_data_cache "Buffer">
 <!ENTITY pref_private_data_sessions "Actieve aanmeldingen">
 <!ENTITY pref_private_data_offlineApps "Offlinewebsitegegevens">
 <!ENTITY pref_private_data_siteSettings "Websitevoorkeuren">
-<!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 
 <!ENTITY quit "Afsluiten">
 
 <!ENTITY addons "Add-ons">
 <!ENTITY downloads "Downloads">
+<!ENTITY apps "Apps">
 <!ENTITY char_encoding "Tekenset">
 
 <!ENTITY share "Delen">
 <!ENTITY share_title "Delen via">
+<!ENTITY share_image_failed "Kan deze afbeelding niet delen">
 <!ENTITY save_as_pdf "Opslaan als PDF">
 <!ENTITY find_in_page "Zoeken op pagina">
 <!ENTITY desktop_mode "Desktopwebsite opvragen">
@@ -118,7 +122,7 @@
 <!ENTITY contextmenu_open_new_tab "Openen in nieuw tabblad">
 <!ENTITY contextmenu_remove_history "Verwijderen">
 <!ENTITY contextmenu_remove_bookmark "Verwijderen">
-<!ENTITY contextmenu_add_to_launcher "Toevoegen aan startpagina">
+<!ENTITY contextmenu_add_to_launcher "Toevoegen aan startscherm">
 <!ENTITY contextmenu_share "Delen">
 <!ENTITY contextmenu_pasteandgo "Plakken &amp; Gaan">
 <!ENTITY contextmenu_paste "Plakken">
@@ -139,9 +143,10 @@
 <!ENTITY site_settings_clear        "Wissen">
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
-<!ENTITY add_to_reading_list "Toevoegen aan leeslijst">
+<!ENTITY reading_list "Leeslijst">
 <!ENTITY reading_list_added "Pagina toegevoegd aan uw leeslijst">
 <!ENTITY reading_list_removed "Pagina verwijderd van uw leeslijst">
+<!ENTITY reading_list_failed "Pagina toevoegen aan uw leeslijst mislukt">
 <!ENTITY reader_mode "Leesmodus">
 
 <!ENTITY masterpassword_create_title "Hoofdwachtwoord aanmaken">
@@ -153,8 +158,8 @@
 <!ENTITY button_cancel "Annuleren">
 <!ENTITY button_clear_data "Gegevens wissen">
 
-<!ENTITY abouthome_addons_title "Add-ons voor &brandShortName;">
-<!ENTITY abouthome_addons_browse "Door alle &brandShortName; add-ons bladeren">
+<!ENTITY abouthome_addons_title "Add-ons voor uw &brandShortName;">
+<!ENTITY abouthome_addons_browse "Door alle &brandShortName;-add-ons bladeren">
 <!ENTITY abouthome_last_tabs_title "Uw tabbladen van de vorige keer">
 <!ENTITY abouthome_last_tabs_open "Alle tabbladen van de vorige keer openen">
 <!ENTITY abouthome_top_sites_title "Topwebsites">
@@ -183,6 +188,9 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "welke wordt beheerd door">
 
+<!ENTITY private_data_success "Privégegevens gewist">
+<!ENTITY private_data_fail "Sommige privégegevens konden niet worden gewist">
+
 <!ENTITY bookmarkhistory_button_import "Importeren">
 <!ENTITY bookmarkhistory_import_both "Bladwijzers en geschiedenis importeren
                                       uit Android">
@@ -192,5 +200,4 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          uit Android">
 <!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
 
-<!ENTITY private_data_success "Privégegevens gewist">
-<!ENTITY private_data_fail "Sommige provégegevens konden niet worden gewist">
+<!ENTITY webapp_generic_name "App">

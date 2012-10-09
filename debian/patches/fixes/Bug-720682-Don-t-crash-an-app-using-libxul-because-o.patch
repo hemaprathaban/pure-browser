@@ -8,10 +8,10 @@ Subject: Bug 720682 - Don't crash an app using libxul because of the lack of
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/storage/src/mozStorageService.cpp b/storage/src/mozStorageService.cpp
-index ad90685..176aa21 100644
+index 1e742d4..c989d4a 100644
 --- a/storage/src/mozStorageService.cpp
 +++ b/storage/src/mozStorageService.cpp
-@@ -535,7 +535,8 @@ static int sqliteMemSize(void *p)
+@@ -536,7 +536,8 @@ static int sqliteMemSize(void *p)
  
  static int sqliteMemRoundup(int n)
  {
