@@ -1,8 +1,15 @@
-iceweasel (16.0.1-1) UNRELEASED; urgency=low
+iceweasel (16.0.1-1) experimental; urgency=high
 
   * New upstream release.
+  * Fixes for mfsa2012-{88-89}, also known as
+    CVE-2012-4191, CVE-2012-4192, CVE-2012-4193.
 
- -- Mike Hommey <glandium@debian.org>  Thu, 11 Oct 2012 22:58:52 +0200
+  * config/autoconf.mk.in, configure.in, extensions/gio/Makefile.in,
+    toolkit/library/Makefile.in, toolkit/library/nsStaticXULComponents.cpp:
+    toolkit/toolkit-tiers.mk: Actually build the GIO extension in libxul.
+    bz#799441.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 12 Oct 2012 00:24:42 +0200
 
 iceweasel (16.0-1) experimental; urgency=low
 
