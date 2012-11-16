@@ -72,6 +72,7 @@ ifneq (,$(filter %~a1, $(VERSION)))
 # Nightly
 SOURCE_TYPE := nightly
 SOURCE_CHANNEL := $(REPO_PREFIX)-central
+L10N_REPO := http://hg.mozilla.org/l10n-central
 else
 # Release
 SOURCE_TYPE := releases
@@ -87,9 +88,7 @@ endif
 BASE_URL = ftp://ftp.mozilla.org/pub/mozilla.org/$(PRODUCT_NAME)/$(SOURCE_TYPE)
 
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
-ifneq ($(SOURCE_CHANNEL),$(REPO_PREFIX)-central)
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
-endif
 ifeq ($(SOURCE_TYPE),releases)
 SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(PRODUCT_NAME)-$(SOURCE_VERSION).source.tar.bz2
 SOURCE_REV = $(call uc,$(PRODUCT_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
@@ -106,13 +105,15 @@ SOURCE_REPO = $(patsubst %/,%,$(dir $(patsubst %/,%,$(dir $(SOURCE_URL)))))
 endif
 endif
 
+ifndef L10N_REPO
+L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/$(L10N_CHANNEL:$(REPO_PREFIX)-%=mozilla-%),$(SOURCE_REPO))
+endif
+
 ifneq (,$(filter download,$(MAKECMDGOALS)))
-ifneq ($(SOURCE_CHANNEL),$(REPO_PREFIX)-central)
-ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),$(REPO_PREFIX)-aurora))
+ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),$(REPO_PREFIX)-aurora $(REPO_PREFIX)-central))
 $(call lazy,L10N_LANGS,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE_REV)/$(PRODUCT)/locales/shipped-locales | $$(L10N_FILTER)))
 endif
 L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-$(lang).tar.bz2))
-endif
 
 download: $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2)
 
@@ -120,7 +121,7 @@ $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL): debian/source.filter
 	$(PYTHON) debian/repack.py -o $@ $(SOURCE_URL)
 
 $(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-%.tar.bz2): debian/l10n.filter
-	$(PYTHON) debian/repack.py -o $@ -t $* -f debian/l10n.filter $(subst $(SOURCE_CHANNEL),l10n/$(L10N_CHANNEL:$(REPO_PREFIX)-%=mozilla-%),$(SOURCE_REPO))/$*/archive/$(L10N_REV).tar.bz2
+	$(PYTHON) debian/repack.py -o $@ -t $* -f debian/l10n.filter $(L10N_REPO)/$*/archive/$(L10N_REV).tar.bz2
 
 $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2): debian/l10n.filter
 	$(PYTHON) debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter http://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
