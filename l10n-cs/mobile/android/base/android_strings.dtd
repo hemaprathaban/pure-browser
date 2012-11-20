@@ -45,6 +45,8 @@
 <!ENTITY history_week_section "Posledních 7 dnů">
 <!ENTITY history_older_section "Starší než 7 dnů">
 
+<!ENTITY go "Přejít">
+<!ENTITY search "Hledat">
 <!ENTITY reload "Obnovit">
 <!ENTITY forward "Vpřed">
 <!ENTITY menu "Nabídka">
@@ -85,16 +87,27 @@
 <!ENTITY pref_font_size_medium "Střední">
 <!ENTITY pref_font_size_large "Velké">
 <!ENTITY pref_font_size_xlarge "Extra velké">
+<!ENTITY pref_font_size_set "Nastavit">
+<!-- Localization note (pref_font_size_adjust_char): A button with a small version of this character
+(or combination of characters) is used to decrease the preview font size; a larger version of the
+same character/combination is used to increase the preview font size. It should be a concise
+representation of the language it is used in that will help show the text in the preview will change
+size. -->
+<!ENTITY pref_font_size_adjust_char "A">
+
+<!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
+    demonstrate the font size setting.  It is meant to be whimsical and fun. -->
+<!ENTITY pref_font_size_preview_text "Rychlá oranžová liška překoná vaše očekávání ohledně rychlosti, flexibility a bezpečnosti. Jako neziskovka, máme prostor k inovacím bez jakéhokoli tlaku ke kompromisu. To znamená lepší zážitek pro vás a světlejší budoucnost pro web.">
+
 <!ENTITY pref_use_master_password "Použít hlavní heslo">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Zobrazit našeptávač">
 <!ENTITY pref_import_android "Importovat z Androidu">
 <!ENTITY pref_private_data_history "Historie a stahování">
 <!ENTITY pref_private_data_formdata "Formuláře a hledání">
-<!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_cookies2 "Cookies a přihlášení">
 <!ENTITY pref_private_data_passwords "Uložená hesla">
 <!ENTITY pref_private_data_cache "Mezipaměť">
-<!ENTITY pref_private_data_sessions "Aktivní přihlášení">
 <!ENTITY pref_private_data_offlineApps "Offline data">
 <!ENTITY pref_private_data_siteSettings "Předvolby serveru">
 
@@ -138,7 +151,7 @@
 <!ENTITY bookmark_edit_location "Adresa">
 <!ENTITY bookmark_edit_keyword "Klíčové slovo">
 
-<!ENTITY site_settings_title "Vymazat nastavení serveru">
+<!ENTITY site_settings_title2 "Nastavení serveru…">
 <!ENTITY site_settings_cancel "Zrušit">
 <!ENTITY site_settings_clear "Vymazat">
 <!ENTITY site_settings_no_settings "Žádné nastavení neexistuje.">
@@ -164,9 +177,19 @@
 <!ENTITY abouthome_last_tabs_open "Otevřít všechny panely z minula">
 <!ENTITY abouthome_top_sites_title "Top stránky">
 <!ENTITY abouthome_top_sites_browse "Zobrazit všechny top stránky">
-<!ENTITY abouthome_no_top_sites "Zatím nemáte žádné top stránky. Brouzdání začnete klepnutím na pole titulku.">
-<!ENTITY abouthome_about_sync "Nastavte si Firefox Sync a přistupujte ke svým záložkám, historii a panelům ze svých ostatních zařízení">
+<!-- Localization note (abouthome_about_sync2, abouthome_about_apps): The
+     chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
+     clicking this text in the promotions box will perform some action. Note
+     that a non-breaking space (unicode= U+00A0) should be used between this
+     character and the remainder of the string to prevent word wrap. -->
+<!ENTITY abouthome_about_sync3 "Nastavte si Firefox Sync a přistupujte ke svým záložkám, historii a panelům ze svých ostatních zařízení&#x00A0;»">
+<!ENTITY abouthome_about_apps2 "Získejte z tržiště Mozilly nové aplikace a objevte to nejlepší, co web nabízí&#x00A0;»">
+<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
+     These strings are accentuated as bold text in the "abouthome_about_..."
+     strings above. These strings should be a subset of the strings above and
+     generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
+<!ENTITY abouthome_apps_bold_name "Tržiště Mozilly">
 
 <!ENTITY filepicker_title "Vyberte soubor">
 <!ENTITY filepicker_audio_title "Vyberte nebo nahrajte zvuk">
@@ -201,3 +224,19 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarkhistory_import_wait "Prosím čekejte...">
 
 <!ENTITY webapp_generic_name "Aplikace">
+
+<!-- Updater notifications -->
+<!ENTITY updater_start_title "&brandShortName;">
+<!ENTITY updater_start_ticker "Dostupná aktualizace aplikace &brandShortName;&#8230;">
+<!ENTITY updater_start_select "Klepněte pro stažení aktualizace.">
+
+<!ENTITY updater_downloading_title "Stahování aplikace &brandShortName;">
+<!ENTITY updater_downloading_ticker "Stahování aktualizace aplikace &brandShortName;&#8230;">
+<!ENTITY updater_downloading_ticker_failed "Chyba při stahování aktualizace aplikace &brandShortName;&#8230;">
+<!ENTITY updater_downloading_select "Klepněte pro instalaci aktualizace po stažení.">
+<!ENTITY updater_downloading_retry "Klepněte pro opakování stažení aktualizace.">
+<!ENTITY updater_downloading_willapply "Čeká se na stažení aktualizace.">
+
+<!ENTITY updater_apply_title "&brandShortName;">
+<!ENTITY updater_apply_ticker "Dostupná aktualizace aplikace &brandShortName;&#8230;">
+<!ENTITY updater_apply_select "Klepněte pro instalaci aktualizace.">
