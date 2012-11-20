@@ -1,41 +1,7 @@
  <!-- ***** BEGIN LICENSE BLOCK *****
-   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
-   -
-   - The contents of this file are subject to the Mozilla Public License Version
-   - 1.1 (the "License"); you may not use this file except in compliance with
-   - the License. You may obtain a copy of the License at
-   - http://www.mozilla.org/MPL/
-   -
-   - Software distributed under the License is distributed on an "AS IS" basis,
-   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
-   - for the specific language governing rights and limitations under the
-   - License.
-   -
-   - The Original Code is OEone Calendar Code, released October 31st, 2001.
-   -
-   - The Initial Developer of the Original Code is
-   - OEone Corporation.
-   - Portions created by the Initial Developer are Copyright (C) 2001
-   - the Initial Developer. All Rights Reserved.
-   -
-   - Contributor(s):
-   -   Cédric Corazza <cedric.corazza@wanadoo.fr>
-   -   Stefan Lewitas <stefan.lewitas@gmail.com>
-   -   Alexander Lindqvist <alexander@bitspace.se>
-   -   Adrian Lindqvist <adrian@bitspace.se>
-   - Alternatively, the contents of this file may be used under the terms of
-   - either the GNU General Public License Version 2 or later (the "GPL"), or
-   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
-   - in which case the provisions of the GPL or the LGPL are applicable instead
-   - of those above. If you wish to allow use of your version of this file only
-   - under the terms of either the GPL or the LGPL, and not to allow others to
-   - use your version of this file under the terms of the MPL, indicate your
-   - decision by deleting the provisions above and replace them with the notice
-   - and other provisions required by the LGPL or the GPL. If you do not delete
-   - the provisions above, a recipient may use your version of this file under
-   - the terms of any one of the MPL, the GPL or the LGPL.
-   -
-   - ***** END LICENSE BLOCK ***** -->
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!ENTITY event.title.label               "Redigera objekt" >
 
@@ -141,8 +107,6 @@
 
 <!ENTITY  event.menu.options.label                            "Alternativ">
 <!ENTITY  event.menu.options.accesskey                        "A">
-<!ENTITY  event.menu.options.attachments.label                "Bifoga webbsida…">
-<!ENTITY  event.menu.options.attachments.accesskey            "w">
 <!ENTITY  event.menu.options.attendees.label                  "Bjud in deltagare…">
 <!ENTITY  event.menu.options.attendees.accesskey              "B">
 <!ENTITY  event.menu.options.spellcheck.label                 "Kontrollera stavning…">
@@ -151,8 +115,8 @@
 <!ENTITY  event.menu.options.inline.spellcheck.accesskey      "s">
 <!ENTITY  event.menu.options.link.label                       "Lägg till länk…">
 <!ENTITY  event.menu.options.link.accesskey                   "L">
-<!ENTITY  event.menu.options.timezone.label                   "Tidszon">
-<!ENTITY  event.menu.options.timezone.accesskey               "T">
+<!ENTITY  event.menu.options.timezone2.label                  "Visa tidszoner">
+<!ENTITY  event.menu.options.timezone2.accesskey              "z">
 <!ENTITY  event.menu.options.priority2.label                  "Prioritet">
 <!ENTITY  event.menu.options.priority2.accesskey              "P">
 <!ENTITY  event.menu.options.priority.notspecified.label      "Ej angiven">
@@ -184,7 +148,6 @@
 <!ENTITY  event.toolbar.attendees.label                   "Bjud in deltagare">
 <!ENTITY  event.toolbar.spellcheck.label                  "Stavningskontroll">
 <!ENTITY  event.toolbar.privacy.label                     "Sekretess">
-<!ENTITY  event.toolbar.attachments.label                 "Bifoga">
 
 <!-- Main page -->
 <!ENTITY event.title.textbox.label                        "Titel:" >
@@ -217,6 +180,10 @@
 <!ENTITY event.description.accesskey                      "s">
 <!ENTITY event.attachments.label                          "Bilagor:" >
 <!ENTITY event.attachments.accesskey                      "B" >
+<!ENTITY event.attachments.menubutton.label               "Bifoga">
+<!ENTITY event.attachments.menubutton.accesskey           "f">
+<!ENTITY event.attachments.url.label                      "Webbsida…">
+<!ENTITY event.attachments.url.accesskey                  "W">
 <!ENTITY event.attachments.popup.remove.label             "Radera" >
 <!ENTITY event.attachments.popup.remove.accesskey         "R" >
 <!ENTITY event.attachments.popup.open.label               "Öppna" >
@@ -365,9 +332,14 @@
 <!ENTITY event.attendee.role.optional           "Valfri deltagare">
 <!ENTITY event.attendee.role.chair              "Stol">
 <!ENTITY event.attendee.role.nonparticipant     "Icke-deltagare">
+<!ENTITY event.attendee.usertype.individual     "Enskild person">
+<!ENTITY event.attendee.usertype.group          "Grupp">
+<!ENTITY event.attendee.usertype.resource       "Resurs">
+<!ENTITY event.attendee.usertype.room           "Rum">
 
 <!-- Timezone dialog -->
 <!ENTITY timezone.title.label            "Ange tidszon">
+<!ENTITY event.timezone.custom.label     "Fler tidszoner…">
 
 <!-- Read-Only dialog -->
 <!ENTITY read.only.general.label         "Allmänt">
@@ -375,7 +347,7 @@
 <!ENTITY read.only.event.start.label     "Start datum:">
 <!ENTITY read.only.task.start.label      "Start datum:">
 <!ENTITY read.only.event.end.label       "Slut datum:">
-<!ENTITY read.only.task.due.label        "Förafallodatum:">
+<!ENTITY read.only.task.due.label        "Förfallodatum:">
 <!ENTITY read.only.repeat.label          "Repetera:">
 <!ENTITY read.only.location.label        "Plats:">
 <!ENTITY read.only.category.label        "Kategori:">

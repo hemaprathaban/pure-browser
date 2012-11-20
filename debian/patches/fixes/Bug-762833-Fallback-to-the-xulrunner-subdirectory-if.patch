@@ -8,10 +8,10 @@ Subject: Bug 762833 - Fallback to the xulrunner subdirectory if webapprt
  1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/webapprt/gtk2/webapprt.cpp b/webapprt/gtk2/webapprt.cpp
-index 19f7865..9ffd29f 100644
+index 185808d..6b44df6 100644
 --- a/webapprt/gtk2/webapprt.cpp
 +++ b/webapprt/gtk2/webapprt.cpp
-@@ -127,8 +127,11 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
+@@ -129,8 +129,11 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
    char xpcomDllPath[MAXPATHLEN];
    snprintf(xpcomDllPath, MAXPATHLEN, "%s/%s", firefoxDir, XPCOM_DLL);
  
@@ -25,7 +25,7 @@ index 19f7865..9ffd29f 100644
  
    if (NS_FAILED(XPCOMGlueStartup(xpcomDllPath))) {
      ErrorDialog("Couldn't load the XPCOM library");
-@@ -189,12 +192,12 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
+@@ -191,12 +194,12 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)
      }
  
      nsCOMPtr<nsIFile> xreDir;

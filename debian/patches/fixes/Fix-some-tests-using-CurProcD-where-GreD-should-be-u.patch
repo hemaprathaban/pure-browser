@@ -22,7 +22,7 @@ index f1e00b3..bcc5c04 100644
    do_check_true(plugins.exists());
    var plugin = plugins.clone();
 diff --git a/netwerk/test/unit/test_socks.js b/netwerk/test/unit/test_socks.js
-index 2d35b39..7d19ff9 100644
+index a8c3695..08c0f29 100644
 --- a/netwerk/test/unit/test_socks.js
 +++ b/netwerk/test/unit/test_socks.js
 @@ -36,7 +36,7 @@ function runScriptSubprocess(script, args)
@@ -35,15 +35,15 @@ index 2d35b39..7d19ff9 100644
    bin.append("xpcshell");
    if (!bin.exists()) {
 diff --git a/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js b/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
-index 602713d..97ca0f3 100644
+index 6a2325e..1bc926c 100644
 --- a/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
 +++ b/toolkit/mozapps/extensions/test/xpcshell/test_plugins.js
 @@ -18,7 +18,7 @@ function run_test() {
  
  // Finds the test plugin library
  function get_test_plugin() {
--  var plugins = Services.dirsvc.get("CurProcD", AM_Ci.nsILocalFile);
-+  var plugins = Services.dirsvc.get("GreD", AM_Ci.nsILocalFile);
+-  var plugins = Services.dirsvc.get("CurProcD", AM_Ci.nsIFile);
++  var plugins = Services.dirsvc.get("GreD", AM_Ci.nsIFile);
    plugins.append("plugins");
    do_check_true(plugins.exists());
  

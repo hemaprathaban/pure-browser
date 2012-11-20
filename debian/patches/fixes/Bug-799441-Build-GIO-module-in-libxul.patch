@@ -3,30 +3,18 @@ Date: Thu, 11 Oct 2012 08:35:36 +0200
 Subject: Bug 799441 - Build GIO module in libxul
 
 ---
- config/autoconf.mk.in                     |    2 ++
  configure.in                              |    6 ++++++
  extensions/gio/Makefile.in                |   14 +++-----------
  toolkit/library/Makefile.in               |    5 +++++
  toolkit/library/nsStaticXULComponents.cpp |    7 +++++++
  toolkit/toolkit-tiers.mk                  |    4 ++++
- 6 files changed, 27 insertions(+), 11 deletions(-)
+ 5 files changed, 25 insertions(+), 11 deletions(-)
 
-diff --git a/config/autoconf.mk.in b/config/autoconf.mk.in
-index c67a0c6..94c25ea 100644
---- a/config/autoconf.mk.in
-+++ b/config/autoconf.mk.in
-@@ -670,4 +670,6 @@ MOZ_LINKER_EXTRACT = @MOZ_LINKER_EXTRACT@
- 
- MOZ_PER_WINDOW_PRIVATE_BROWSING = @MOZ_PER_WINDOW_PRIVATE_BROWSING@
- 
-+MOZ_GIO_COMPONENT = @MOZ_GIO_COMPONENT@
-+
- include $(topsrcdir)/config/baseconfig.mk
 diff --git a/configure.in b/configure.in
-index e731a93..4e7d45a 100644
+index e689936..ffa7c0b 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -6013,6 +6013,12 @@ if test -n "$LIBXUL_SDK_DIR" -a `echo "$MOZ_EXTENSIONS" | grep -c gio` -ne 0; th
+@@ -5963,6 +5963,12 @@ if test -n "$LIBXUL_SDK_DIR" -a `echo "$MOZ_EXTENSIONS" | grep -c gio` -ne 0; th
      MOZ_EXTENSIONS=`echo $MOZ_EXTENSIONS | sed -e 's|gio||'`
  fi
  
@@ -40,7 +28,7 @@ index e731a93..4e7d45a 100644
      AC_MSG_WARN([Cannot build venkman without JavaScript debug library. Removing venkman from MOZ_EXTENSIONS.])
      MOZ_EXTENSIONS=`echo $MOZ_EXTENSIONS | sed -e 's|venkman||'`
 diff --git a/extensions/gio/Makefile.in b/extensions/gio/Makefile.in
-index 0f6205f..c8b1e17 100644
+index 46412c4..79112a8 100644
 --- a/extensions/gio/Makefile.in
 +++ b/extensions/gio/Makefile.in
 @@ -14,6 +14,9 @@ MODULE		= nkgio
@@ -70,10 +58,10 @@ index 0f6205f..c8b1e17 100644
 -
  include $(topsrcdir)/config/rules.mk
 diff --git a/toolkit/library/Makefile.in b/toolkit/library/Makefile.in
-index 2e8424c..762b9ed 100644
+index 0d226f7..e6659d3 100644
 --- a/toolkit/library/Makefile.in
 +++ b/toolkit/library/Makefile.in
-@@ -323,6 +323,11 @@ COMPONENT_LIBS += gkdebug
+@@ -324,6 +324,11 @@ COMPONENT_LIBS += gkdebug
  endif
  endif
  
@@ -111,10 +99,10 @@ index dea1e1e..76b65a3 100644
  
  #define MODULE(_name) \
 diff --git a/toolkit/toolkit-tiers.mk b/toolkit/toolkit-tiers.mk
-index 7ee7ce7..0ae6648 100644
+index 309b1e5..292e603 100644
 --- a/toolkit/toolkit-tiers.mk
 +++ b/toolkit/toolkit-tiers.mk
-@@ -222,6 +222,10 @@ tier_platform_dirs += js/ductwork/debugger
+@@ -240,6 +240,10 @@ tier_platform_dirs += js/ductwork/debugger
  
  tier_platform_dirs += other-licenses/snappy
  

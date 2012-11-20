@@ -9,10 +9,10 @@ Subject: Modify search plugins depending on MOZ_APP_NAME
  3 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index 565211c..62ca9e7 100644
+index 8e15238..36903b6 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -135,6 +135,7 @@ libs:: $(addsuffix .xml,$(SEARCH_PLUGINS))
+@@ -132,6 +132,7 @@ libs:: $(addsuffix .xml,$(SEARCH_PLUGINS))
  	for SEARCH_PLUGIN in $^; do\
  	  SEARCH_PLUGIN_BASE=`basename $$SEARCH_PLUGIN`;\
  	  $(PYTHON) $(topsrcdir)/config/Preprocessor.py $(DEFINES) $(ACDEFINES) \

@@ -8,7 +8,7 @@ Subject: Bug 798233 - Don't search firefox executable in $exe/../../dist/bin
  2 files changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/webapprt/gtk2/Makefile.in b/webapprt/gtk2/Makefile.in
-index 14c59e6..9369436 100644
+index 44df8e6..b390063 100644
 --- a/webapprt/gtk2/Makefile.in
 +++ b/webapprt/gtk2/Makefile.in
 @@ -27,6 +27,8 @@ LIBS = \
@@ -21,10 +21,10 @@ index 14c59e6..9369436 100644
  
  CXXFLAGS += \
 diff --git a/webapprt/gtk2/webapprt.cpp b/webapprt/gtk2/webapprt.cpp
-index 86e15ff..19f7865 100644
+index e564f63..185808d 100644
 --- a/webapprt/gtk2/webapprt.cpp
 +++ b/webapprt/gtk2/webapprt.cpp
-@@ -122,11 +122,14 @@ bool CopyFile(const char* inputFile, const char* outputFile)
+@@ -124,11 +124,14 @@ bool CopyFile(const char* inputFile, const char* outputFile)
    return (bytesRead >= 0);
  }
  
@@ -40,7 +40,7 @@ index 86e15ff..19f7865 100644
    if (NS_FAILED(XPCOMGlueStartup(xpcomDllPath))) {
      ErrorDialog("Couldn't load the XPCOM library");
      return false;
-@@ -246,14 +249,10 @@ int main(int argc, char *argv[])
+@@ -327,14 +330,10 @@ int main(int argc, char *argv[])
  
    char firefoxDir[MAXPATHLEN];
  
@@ -58,7 +58,7 @@ index 86e15ff..19f7865 100644
    }
  
    // Set up webAppIniPath with path to webapp.ini
-@@ -305,7 +304,7 @@ int main(int argc, char *argv[])
+@@ -391,7 +390,7 @@ int main(int argc, char *argv[])
  
    // If WebAppRT version == Firefox version, load XUL and execute the application
    if (!strcmp(buildid, NS_STRINGIFY(GRE_BUILDID))) {

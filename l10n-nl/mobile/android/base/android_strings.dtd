@@ -45,6 +45,8 @@
 <!ENTITY history_week_section "7 dagen geleden">
 <!ENTITY history_older_section "Ouder dan 7 dagen">
 
+<!ENTITY go "Ga">
+<!ENTITY search "Zoeken">
 <!ENTITY reload "Vernieuwen">
 <!ENTITY forward "Vooruit">
 <!ENTITY menu "Menu">
@@ -85,16 +87,27 @@
 <!ENTITY pref_font_size_medium "Gemiddeld">
 <!ENTITY pref_font_size_large "Groot">
 <!ENTITY pref_font_size_xlarge "Extra groot">
+<!ENTITY pref_font_size_set "Instellen">
+<!-- Localization note (pref_font_size_adjust_char): A button with a small version of this character
+(or combination of characters) is used to decrease the preview font size; a larger version of the
+same character/combination is used to increase the preview font size. It should be a concise
+representation of the language it is used in that will help show the text in the preview will change
+size. -->
+<!ENTITY pref_font_size_adjust_char "A">
+
+<!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
+     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
+<!ENTITY pref_font_size_preview_text "De snelle oranje vos springt over uw verwachtingen met meer snelheid, meer flexibiliteit en meer veiligheid. Als stichting zijn we vrij om in uw belang en zonder druk voor compromissen te innoveren. Dat betekent een betere ervaring voor u en een stralende toekomst voor het internet.">
+
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 <!ENTITY pref_import_android "Importeren uit Android">
 <!ENTITY pref_private_data_history "Navigatie- &amp; downloadgeschiedenis">
 <!ENTITY pref_private_data_formdata "Formulier- &amp; zoekgeschiedenis">
-<!ENTITY pref_private_data_cookies "Cookies">
+<!ENTITY pref_private_data_cookies2 "Cookies &amp; actieve aanmeldingen">
 <!ENTITY pref_private_data_passwords "Opgeslagen wachtwoorden">
 <!ENTITY pref_private_data_cache "Buffer">
-<!ENTITY pref_private_data_sessions "Actieve aanmeldingen">
 <!ENTITY pref_private_data_offlineApps "Offlinewebsitegegevens">
 <!ENTITY pref_private_data_siteSettings "Websitevoorkeuren">
 
@@ -138,7 +151,7 @@
 <!ENTITY bookmark_edit_location "Locatie">
 <!ENTITY bookmark_edit_keyword "Sleutelwoord">
 
-<!ENTITY site_settings_title        "Website-instellingen wissen">
+<!ENTITY site_settings_title2       "Website-instellingen…">
 <!ENTITY site_settings_cancel       "Annuleren">
 <!ENTITY site_settings_clear        "Wissen">
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
@@ -164,9 +177,19 @@
 <!ENTITY abouthome_last_tabs_open "Alle tabbladen van de vorige keer openen">
 <!ENTITY abouthome_top_sites_title "Topwebsites">
 <!ENTITY abouthome_top_sites_browse "Door alle topwebsites bladeren">
-<!ENTITY abouthome_no_top_sites "U hebt nog geen topwebsites. Tik op de titelbalk om te starten.">
-<!ENTITY abouthome_about_sync "Stel Firefox Sync in voor toegang tot uw bladwijzers, geschiedenis en tabbladen van uw andere apparaten">
+<!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
+     chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
+     clicking this text in the promotions box will perform some action. Note
+     that a non-breaking space (unicode= U+00A0) should be used between this
+     character and the remainder of the string to prevent word wrap. -->
+<!ENTITY abouthome_about_sync3 "Stel Firefox Sync in voor toegang tot uw bladwijzers, geschiedenis en tabbladen van uw andere apparaten&#x00A0;»">
+<!ENTITY abouthome_about_apps2 "Download apps van de Mozilla Marketplace en ontdek het beste wat het internet te bieden heeft&#x00A0;»">
+<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
+     These strings are accentuated as bold text in the "abouthome_about_..."
+     strings above. These strings should be a subset of the strings above and
+     generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
+<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
 
 <!ENTITY filepicker_title "Bestand kiezen">
 <!ENTITY filepicker_audio_title "Een geluid kiezen of opnemen">
@@ -201,3 +224,15 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
 
 <!ENTITY webapp_generic_name "App">
+
+<!-- Updater notifications -->
+<!ENTITY updater_start_title2 "Update beschikbaar voor &brandShortName;">
+<!ENTITY updater_start_select2 "Aanraken om te downloaden">
+
+<!ENTITY updater_downloading_title2 "&brandShortName; downloaden">
+<!ENTITY updater_downloading_title_failed2 "Downloaden mislukt">
+<!ENTITY updater_downloading_select2 "Aanraken om update toe te passen wanneer gedownload">
+<!ENTITY updater_downloading_retry2 "Aanraken om opnieuw te proberen">
+
+<!ENTITY updater_apply_title2 "Update beschikbaar voor &brandShortName;">
+<!ENTITY updater_apply_select2 "Aanraken om bij te werken">
