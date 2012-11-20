@@ -1,8 +1,28 @@
-iceweasel (17.0-1) UNRELEASED; urgency=low
+iceweasel (17.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2012-{91-106}, also known as
+    CVE-2012-5842, CVE-2012-5843, CVE-2012-4202, CVE-2012-4201,
+    CVE-2012-5836, CVE-2012-4203, CVE-2012-4204, CVE-2012-4205,
+    CVE-2012-4206, CVE-2012-4208, CVE-2012-5841, CVE-2012-4207,
+    CVE-2012-5837, CVE-2012-4209, CVE-2012-4210, CVE-2012-4214,
+    CVE-2012-4215, CVE-2012-4216, CVE-2012-5829, CVE-2012-5839,
+    CVE-2012-5840, CVE-2012-4212, CVE-2012-4213, CVE-2012-4217,
+    CVE-2012-4218, CVE-2012-5830, CVE-2012-5833, CVE-2012-5835,
+    CVE-2012-5838.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 20 Nov 2012 23:48:35 +0100
+  * debian/upstream.mk: Get l10n for nightlies.
+  * debian/rules:
+    - Use a more generic command to build Makefiles. This avoids ftbfs
+      because make-makefile is gone.
+    - Modify the dh_xulrunner test to account for the second test plugin.
+  * debian/iceweasel.mozconfig: Disable webrtc during the browser build.
+
+  * browser/locales/jar.mn: Preprocess appstrings.properties. Closes: #688987.
+  * toolkit/mozapps/installer/packager.mk: Avoid installing .mkdir.done and
+    precomplete with make install. bz#798450
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 20 Nov 2012 23:54:09 +0100
 
 iceweasel (16.0.2-1) experimental; urgency=high
 
