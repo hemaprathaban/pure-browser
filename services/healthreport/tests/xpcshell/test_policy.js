@@ -6,7 +6,7 @@
 const {utils: Cu} = Components;
 
 Cu.import("resource://services-common/preferences.js");
-Cu.import("resource://gre/modules/services/healthreport/policy.jsm");
+Cu.import("resource:///modules/services/healthreport/policy.jsm");
 Cu.import("resource://testing-common/services/healthreport/mocks.jsm");
 
 
