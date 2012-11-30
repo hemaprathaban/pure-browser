@@ -6,8 +6,8 @@
 const {interfaces: Ci, results: Cr, utils: Cu} = Components;
 
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
-Cu.import("resource://gre/modules/services/healthreport/providers.jsm");
-Cu.import("resource://gre/modules/services/metrics/dataprovider.jsm");
+Cu.import("resource:///modules/services/healthreport/providers.jsm");
+Cu.import("resource:///modules/services/metrics/dataprovider.jsm");
 
 
 function run_test() {
