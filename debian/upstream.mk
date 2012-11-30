@@ -109,13 +109,18 @@ ifndef L10N_REPO
 L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/$(L10N_CHANNEL:$(REPO_PREFIX)-%=mozilla-%),$(SOURCE_REPO))
 endif
 
-ifneq (,$(filter download,$(MAKECMDGOALS)))
+ifneq (,$(filter import download,$(MAKECMDGOALS)))
 ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),$(REPO_PREFIX)-aurora $(REPO_PREFIX)-central))
 $(call lazy,L10N_LANGS,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE_REV)/$(PRODUCT)/locales/shipped-locales | $$(L10N_FILTER)))
 endif
 L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-$(lang).tar.bz2))
 
-download: $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2)
+ALL_TARBALLS = $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2)
+
+download: $(ALL_TARBALLS)
+
+import: $(ALL_TARBALLS)
+	$(PYTHON) debian/import-tar.py $(addprefix -H ,$(BRANCH)) $< | git fast-import
 
 $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL): debian/source.filter
 	$(PYTHON) debian/repack.py -o $@ $(SOURCE_URL)
