@@ -11,7 +11,7 @@ const {utils: Cu} = Components;
 Cu.import("resource://gre/modules/commonjs/promise/core.js");
 Cu.import("resource://services-common/log4moz.js");
 Cu.import("resource://services-common/utils.js");
-Cu.import("resource://gre/modules/services/metrics/dataprovider.jsm");
+Cu.import("resource:///modules/services/metrics/dataprovider.jsm");
 
 
 /**

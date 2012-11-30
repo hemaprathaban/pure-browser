@@ -14,7 +14,7 @@ const test_modules = [
 
 function run_test() {
   for (let m of modules) {
-    let resource = "resource://gre/modules/services/metrics/" + m;
+    let resource = "resource:///modules/services/metrics/" + m;
     Components.utils.import(resource, {});
   }
 
