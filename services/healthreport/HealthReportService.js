@@ -95,7 +95,7 @@ HealthReportService.prototype = {
     // Lazy import so application startup isn't adversely affected.
     let ns = {};
     Cu.import("resource://services-common/log4moz.js", ns);
-    Cu.import("resource://gre/modules/services/healthreport/healthreporter.jsm", ns);
+    Cu.import("resource:///modules/services/healthreport/healthreporter.jsm", ns);
 
     // How many times will we rewrite this code before rolling it up into a
     // generic module? See also bug 451283.
