@@ -15,8 +15,8 @@ Cu.import("resource://services-common/preferences.js");
 Cu.import("resource://services-common/utils.js");
 Cu.import("resource://gre/modules/commonjs/promise/core.js");
 Cu.import("resource://gre/modules/osfile.jsm");
-Cu.import("resource://gre/modules/services/healthreport/policy.jsm");
-Cu.import("resource://gre/modules/services/metrics/collector.jsm");
+Cu.import("resource:///modules/services/healthreport/policy.jsm");
+Cu.import("resource:///modules/services/metrics/collector.jsm");
 
 
 // Oldest year to allow in date preferences. This module was implemented in
