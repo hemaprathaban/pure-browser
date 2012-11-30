@@ -151,7 +151,6 @@ def filter_tar(orig, new, filt, topdir = None):
     if unused:
         print 'Unused filters:'
         print '', '\n '.join(unused)
-        exit(1)
 
 def get_package_name():
     control = os.path.join(os.path.dirname(__file__), "control")
