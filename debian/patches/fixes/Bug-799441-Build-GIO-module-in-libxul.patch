@@ -11,7 +11,7 @@ Subject: Bug 799441 - Build GIO module in libxul
  5 files changed, 25 insertions(+), 11 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index e689936..ffa7c0b 100644
+index f81e251..90438ff 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -5963,6 +5963,12 @@ if test -n "$LIBXUL_SDK_DIR" -a `echo "$MOZ_EXTENSIONS" | grep -c gio` -ne 0; th

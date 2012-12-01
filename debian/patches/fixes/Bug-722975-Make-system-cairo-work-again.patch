@@ -7,7 +7,7 @@ Subject: Bug 722975 - Make system cairo work again
  1 file changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/gfx/thebes/gfxPlatform.cpp b/gfx/thebes/gfxPlatform.cpp
-index 7e7e4bf..caae8c0 100644
+index af1f185..9701408 100644
 --- a/gfx/thebes/gfxPlatform.cpp
 +++ b/gfx/thebes/gfxPlatform.cpp
 @@ -490,11 +490,9 @@ void SourceBufferDestroy(void *srcBuffer)

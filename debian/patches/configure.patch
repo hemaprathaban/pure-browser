@@ -1,5 +1,5 @@
 diff --git a/configure b/configure
-index 3523242..7e52eb3 100755
+index 33fa0a3..8ca5f9a 100755
 --- a/configure
 +++ b/configure
 @@ -14286,6 +14286,7 @@ fi
@@ -2775,28 +2775,28 @@ index 3523242..7e52eb3 100755
    rm -rf conftest*
    eval "ac_cv_header_$ac_safe=yes"
  else
-@@ -26484,9 +26510,9 @@ EOF
+@@ -26492,9 +26518,9 @@ EOF
  
  
  echo $ac_n "checking for posix_fallocate""... $ac_c" 1>&6
--echo "configure:26488: checking for posix_fallocate" >&5
-+echo "configure:26514: checking for posix_fallocate" >&5
+-echo "configure:26496: checking for posix_fallocate" >&5
++echo "configure:26522: checking for posix_fallocate" >&5
  cat > conftest.$ac_ext <<EOF
--#line 26490 "configure"
-+#line 26516 "configure"
+-#line 26498 "configure"
++#line 26524 "configure"
  #include "confdefs.h"
  #define _XOPEN_SOURCE 600
    #include <fcntl.h>
-@@ -26494,7 +26520,7 @@ int main() {
+@@ -26502,7 +26528,7 @@ int main() {
  posix_fallocate(0, 0, 0);
  ; return 0; }
  EOF
--if { (eval echo configure:26498: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
-+if { (eval echo configure:26524: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+-if { (eval echo configure:26506: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:26532: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
    rm -rf conftest*
    ac_cv___posix_fallocate=true
  else
-@@ -26518,7 +26544,7 @@ else
+@@ -26526,7 +26552,7 @@ else
    echo "$ac_t""no" 1>&6
  fi
  
@@ -2805,49 +2805,49 @@ index 3523242..7e52eb3 100755
  if test "$MOZ_X11"; then
      if test "$WITHOUT_X11"; then
          { echo "configure: error: --without-x specified and MOZ_X11 still defined" 1>&2; exit 1; }
-@@ -26526,7 +26552,7 @@ if test "$MOZ_X11"; then
+@@ -26534,7 +26560,7 @@ if test "$MOZ_X11"; then
                  _SAVE_CFLAGS=$CFLAGS
      CFLAGS="$CFLAGS $XCFLAGS"
      cat > conftest.$ac_ext <<EOF
--#line 26530 "configure"
-+#line 26556 "configure"
+-#line 26538 "configure"
++#line 26564 "configure"
  #include "confdefs.h"
  
          #include <stdio.h>
-@@ -26545,7 +26571,7 @@ int main() {
+@@ -26553,7 +26579,7 @@ int main() {
      
  ; return 0; }
  EOF
--if { (eval echo configure:26549: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
-+if { (eval echo configure:26575: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+-if { (eval echo configure:26557: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
++if { (eval echo configure:26583: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
    :
  else
    echo "configure: failed program was:" >&5
-@@ -26565,12 +26591,12 @@ fi # MOZ_X11
+@@ -26573,12 +26599,12 @@ fi # MOZ_X11
  if test "$MOZ_GL_DEFAULT_PROVIDER" = "GLX"; then
         ac_safe=`echo "GL/glx.h" | sed 'y%./+-%__p_%'`
    echo $ac_n "checking for GL/glx.h""... $ac_c" 1>&6
--echo "configure:26569: checking for GL/glx.h" >&5
-+echo "configure:26595: checking for GL/glx.h" >&5
+-echo "configure:26577: checking for GL/glx.h" >&5
++echo "configure:26603: checking for GL/glx.h" >&5
    if eval "test \"`echo '$''{'ac_cv_header_$ac_safe'+set}'`\" = set"; then
    echo $ac_n "(cached) $ac_c" 1>&6
  else
     cat > conftest.$ac_ext <<EOF
--#line 26574 "configure"
-+#line 26600 "configure"
+-#line 26582 "configure"
++#line 26608 "configure"
  #include "confdefs.h"
  
  #include <GL/glx.h>
-@@ -26578,7 +26604,7 @@ int main() {
+@@ -26586,7 +26612,7 @@ int main() {
  
  ; return 0; }
  EOF
--if { (eval echo configure:26582: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
-+if { (eval echo configure:26608: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+-if { (eval echo configure:26590: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
++if { (eval echo configure:26616: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
    rm -rf conftest*
    eval "ac_cv_header_$ac_safe=yes"
  else
-@@ -27106,6 +27132,7 @@ sed 's/$/,/' >> $CONFIG_STATUS <<EOF
+@@ -27114,6 +27140,7 @@ sed 's/$/,/' >> $CONFIG_STATUS <<EOF
          (''' MOZ_GTHREAD_CFLAGS ''', r''' $MOZ_GTHREAD_CFLAGS ''')
          (''' MOZ_GTHREAD_LIBS ''', r''' $MOZ_GTHREAD_LIBS ''')
          (''' LIBJPEG_TURBO_AS ''', r''' $LIBJPEG_TURBO_AS ''')
