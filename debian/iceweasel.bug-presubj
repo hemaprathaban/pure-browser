@@ -25,8 +25,11 @@ If you get crashes and none of the above hints helped, please also
 try to run "MOZILLA_DISABLE_PLUGINS=1 iceweasel".
 
 If Iceweasel still crashes, please install the iceweasel-dbg package
-and run gdb with the "iceweasel -g" command line. At the gdb prompt,
-type the following commands:
+and run Iceweasel under gdb with:
+
+    gdb --args iceweasel [command-line-arguments]
+
+At the gdb prompt, type the following commands:
 
 set pagination off 
 run 

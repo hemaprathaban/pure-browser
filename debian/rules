@@ -291,10 +291,6 @@ stamps/dh_install:: debian/dh/dh_xulrunner debian/noinstall build-xulrunner/dist
 	awk '{print "debian/tmp/" $$1 }' < debian/noinstall | xargs rm -r
 	dh_install --fail-missing
 
-#Install helpers
-	install -m 755 debian/iceweasel-runner \
-		debian/iceweasel/$(LIB_DIR)/iceweasel
-
 # Install icons
 	install -d -m 755 debian/iceweasel/usr/share/icons/hicolor/16x16/apps
 	install -m 644 build-browser/debian/branding/default16.png \
