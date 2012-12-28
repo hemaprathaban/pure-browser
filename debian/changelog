@@ -1,3 +1,38 @@
+iceweasel (17.0.1-2) experimental; urgency=low
+
+  * debian/iceweasel-runner, debian/iceweasel.bug-presubj,
+    debian/iceweasel.install, debian/iceweasel.links.in, debian/noinstall.in,
+    debian/rules: Use the iceweasel binary instead of the xulrunner stub, and
+    remove the shell wrapper
+  * debian/control*: Remove xulrunner dependency on libnspr4-0d.
+    Closes: #695346.
+  * debian/iceweasel-xremote-client, debian/iceweasel.install, debian/rules:
+    Remove iceweasel-xremote-client.
+  * debian/noinstall.in, debian/rules: Don't remove update-settings.ini and
+    move firefox-l10n.js removal to debian/noinstall.in.
+  * debian/rules: Cleanup *.pyc removal, and remove *.pyo as well.
+  * debian/iceweasel.1: Update manpage.
+  * debian/noinstall.in: Remove usr/lib/xulrunner-@GRE_VERSION@/libmozjs.so
+    with noinstall.in, it's symlinked later on.
+  * debian/test.mk: Use the iceweasel binary for tests.
+  * debian/branding/Makefile.in, debian/iceweasel.install, debian/rules:
+    Don't generate mozicon*.xpm or firefox.ico, and generate iceweasel.xpm from
+    debian/rules.
+  * debian/*: Allow to build with the firefox branding.
+  * debian/browser.README.Debian.in: Update the text about the application not
+    being named Firefox.
+
+  * browser/app/Makefile.in: Move MOZ_OFFICIAL_BRANDING definition to avoid
+    conflict with bz#755724.
+  * browser/app/Makefile.in, browser/app/nsBrowserApp.cpp, configure.in:
+    Don't use the xulrunner stub when building Firefox against a libxul SDK.
+    bz#755724.
+  * toolkit/mozapps/installer/Packager.pm: Dereference symbolic links when
+    packaging. This effectively reverts a part of bz#552864 that ended up not
+    being useful.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 28 Dec 2012 17:56:41 +0100
+
 iceweasel (17.0.1-1) experimental; urgency=low
 
   * New upstream release.
