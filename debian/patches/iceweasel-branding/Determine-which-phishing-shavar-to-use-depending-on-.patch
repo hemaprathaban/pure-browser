@@ -11,20 +11,20 @@ Subject: Determine which phishing shavar to use depending on
  4 files changed, 16 insertions(+)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index 5f891ca..e337ef4 100644
+index 5f891ca..3599a04 100644
 --- a/browser/app/Makefile.in
 +++ b/browser/app/Makefile.in
-@@ -132,6 +132,10 @@ endif
- 
- endif #} LIBXUL_SDK
+@@ -140,6 +140,10 @@ libs::
+ 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(DIST)/bin/chrome/icons/default
+ endif
  
 +ifdef MOZ_OFFICIAL_BRANDING
 +DEFINES += -DMOZ_OFFICIAL_BRANDING
 +endif
 +
- ifeq ($(MOZ_WIDGET_TOOLKIT),gtk2)
- libs::
- 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/mozicon128.png $(DIST)/bin/icons
+ libs:: $(srcdir)/profile/prefs.js
+ 	$(INSTALL) $(IFLAGS1) $^ $(DIST)/bin/defaults/profile
+ 
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
 index caac30c..eb2a13b 100644
 --- a/browser/app/profile/firefox.js
