@@ -77,4 +77,4 @@ for code in sys.argv[1:]:
     print '%define L10N_RECOMMENDS', recommends[code.lower()]
   else:
     print '%undef L10N_RECOMMENDS'
-  print '%include iceweasel-l10n.control.in'
+  print '%include @PRODUCT@-l10n.control.in'

@@ -1,4 +1,4 @@
-Source: iceweasel
+Source: @browser@
 Section: web
 Priority: optional
 Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lists.alioth.debian.org>
@@ -53,7 +53,7 @@ Standards-Version: 3.9.2.0
 Vcs-Git: git://git.debian.org/git/pkg-mozilla/iceweasel.git
 Vcs-Browser: http://git.debian.org/?p=pkg-mozilla/iceweasel.git
 
-Package: iceweasel
+Package: @browser@
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
@@ -67,22 +67,31 @@ Suggests: fonts-stix | otf-stix,
           libgssapi-krb5-2 | libkrb53
 Provides: www-browser,
           gnome-www-browser
-Description: Web browser based on Firefox
- Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
- with support for modern web application technologies.
+%if browser == firefox
+%define DESCRIPTION Mozilla Firefox web browser
+%define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
+%define LONGDESC2 web application technologies.
+%else
+%define DESCRIPTION Web browser based on Firefox
+%define LONGDESC1 @Browser@ is Firefox, rebranded. It is a powerful, extensible web browser
+%define LONGDESC2 with support for modern web application technologies.
+%endif
+Description: @DESCRIPTION@
+ @LONGDESC1@
+ @LONGDESC2@
 
-Package: iceweasel-dbg
+Package: @browser@-dbg
 Architecture: any
 Priority: extra
 Section: debug
 Depends: ${misc:Depends},
-         iceweasel (= ${binary:Version}),
+         @browser@ (= ${binary:Version}),
          xulrunner-@GRE_VERSION@-dbg
-Description: debugging symbols for iceweasel
- Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
- with support for modern web application technologies.
+Description: Debugging symbols for @Browser@
+ @LONGDESC1@
+ @LONGDESC2@
  .
- This package contains the debugging symbols for iceweasel.
+ This package contains the debugging symbols for @browser@.
 
 Package: xulrunner-@GRE_VERSION@
 Section: libs
@@ -120,7 +129,7 @@ Depends: ${shlibs:Depends},
          ${misc:Depends}
 Description: Mozilla SpiderMonkey JavaScript library
  This library provides the embeddable JavaScript/ECMAScript engine from
- the Mozilla project (used among others by the Iceweasel (Firefox) browser
+ the Mozilla project (used among others by the @Browser@ (Firefox) browser
  as well as by the iPlanet WebServer).
 Homepage: http://www.mozilla.org/js/
 
@@ -132,7 +141,7 @@ Depends: ${misc:Depends},
          libnspr4-dev
 Description: Development files for the Mozilla SpiderMonkey JavaScript library
  This library provides the embeddable JavaScript/ECMAScript engine from
- the Mozilla project (used among others by the Iceweasel (Firefox) browser
+ the Mozilla project (used among others by the @Browser@ (Firefox) browser
  as well as by the iPlanet WebServer).
  .
  Install this package if you wish to develop your own programs using the
@@ -147,7 +156,7 @@ Depends: libmozjs@JS_SO_VERSION@ (= ${binary:Version}),
          ${misc:Depends}
 Description: Development files for the Mozilla SpiderMonkey JavaScript library
  This library provides the embeddable JavaScript/ECMAScript engine from
- the Mozilla project (used among others by the Iceweasel (Firefox) browser
+ the Mozilla project (used among others by the @Browser@ (Firefox) browser
  as well as by the iPlanet WebServer).
  .
  This package provides the debugging symbols for the library and for
@@ -224,13 +233,13 @@ Description: Debugging symbols for the Gecko engine library
  package.
 Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 
-Package: iceweasel-l10n-all
+Package: @browser@-l10n-all
 Architecture: all
 Section: localization
 Depends: ${misc:Depends}, @L10N_PACKAGES_DEPS@
-Description: All language packages for Iceweasel (meta)
- Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
- with support for modern web application technologies.
+Description: All language packages for @Browser@ (meta)
+ @LONGDESC1@
+ @LONGDESC2@
  .
- This is a metapackage depending on all available localizations of Iceweasel.
-%include l10n/iceweasel-l10n.control
+ This is a metapackage depending on all available localizations of @Browser@.
+%include l10n/browser-l10n.control

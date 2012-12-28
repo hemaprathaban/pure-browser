@@ -14,8 +14,8 @@ ifndef HAS_LOCALE
 xpcshell-tests: export LOCPATH = $(CURDIR)/debian/locales
 endif
 xpcshell-tests: export LC_ALL=$(LOCALE)
-xpcshell-tests: export EXTRA_TEST_ARGS += --app-path=$(CURDIR)/build-browser/dist/bin
-$(APP_TESTS): export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-browser/dist/bin/iceweasel
+xpcshell-tests: export EXTRA_TEST_ARGS += --app-path=$(CURDIR)/build-$(PRODUCT)/dist/bin
+$(APP_TESTS): export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-$(PRODUCT)/dist/bin/$($(PRODUCT))
 $(APP_TESTS): export GRE_HOME = $(CURDIR)/build-xulrunner/dist/bin
 $(APP_TESTS) xpcshell-tests: XVFB_RUN = xvfb-run -s "-screen 0 1024x768x24"
 $(TESTS): export MOZ_PLUGIN_PATH = $(CURDIR)/build-xulrunner/dist/bin/plugins
@@ -26,10 +26,10 @@ ifeq ($(DEB_BUILD_ARCH),armel)
 $(TESTS): export ARM_FORCE_PLATFORM=4
 endif
 
-$(CURDIR)/build-browser/dist/bin/xulrunner:
+$(CURDIR)/build-$(PRODUCT)/dist/bin/xulrunner:
 	ln -s ../../../build-xulrunner/dist/bin $@
 
-$(TESTS): $(CURDIR)/build-browser/dist/bin/xulrunner
+$(TESTS): $(CURDIR)/build-$(PRODUCT)/dist/bin/xulrunner
 	GNOME22_USER_DIR="$(CURDIR)/build-xulrunner/dist/.gnome2" \
 	HOME="$(CURDIR)/build-xulrunner/dist" \
 	$(XVFB_RUN) $(MAKE) -C build-xulrunner $@ 2>&1 | sed -u 's/^/$@> /'

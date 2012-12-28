@@ -1,4 +1,6 @@
+%if browser != firefox
 pref("general.useragent.compatMode.firefox", true);
+%endif
 pref("distribution.searchplugins.defaultLocale", "en-US");
 // Forbid application updates
 lockPref("app.update.enabled", false);

@@ -1,0 +1,35 @@
+debian/tmp/usr/lib/@browser@/@browser@ usr/lib/@browser@
+debian/tmp/usr/lib/@browser@/components usr/lib/@browser@
+
+debian/tmp/usr/lib/@browser@/defaults/preferences usr/share/@browser@/defaults
+debian/tmp/usr/lib/@browser@/searchplugins/* etc/@browser@/searchplugins/locale/en-US/
+debian/tmp/usr/lib/@browser@/icons usr/share/@browser@
+debian/tmp/usr/lib/@browser@/chrome usr/share/@browser@
+debian/tmp/usr/lib/@browser@/modules usr/share/@browser@
+
+debian/tmp/usr/lib/@browser@/application.ini usr/lib/@browser@
+debian/tmp/usr/lib/@browser@/blocklist.xml usr/lib/@browser@
+
+debian/tmp/usr/lib/@browser@/defaults/profile etc/@browser@/
+
+debian/@browser@.desktop usr/share/applications
+debian/@browser@.xpm usr/share/pixmaps
+
+build-browser/dist/bin/icons/mozicon128.png usr/share/@browser@/icons/
+
+debian/@browser@.js etc/@browser@/pref
+debian/vendor.js usr/share/@browser@/defaults/preferences
+
+debian/debsearch.xml etc/@browser@/searchplugins/common
+debian/duckduckgo.xml etc/@browser@/searchplugins/common
+
+debian/tmp/usr/lib/@browser@/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\} usr/lib/@browser@/extensions
+
+%if browser != firefox
+debian/firefox usr/bin
+%endif
+
+usr/lib/@browser@/chrome.manifest
+
+usr/lib/@browser@/webapprt-stub
+usr/lib/@browser@/webapprt usr/share/@browser@

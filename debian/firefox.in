@@ -3,4 +3,4 @@
 FIREFOX="$(which $0)"
 [ -x "$FIREFOX.real" ] && exec "$FIREFOX.real" "$@"
 
-exec iceweasel "$@"
+exec @browser@ "$@"
