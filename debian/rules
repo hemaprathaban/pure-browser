@@ -79,6 +79,10 @@ $(call lazy,CONFIGURE_ENV,$$(foreach export,$(EXPORTS),$$(export)="$$($$(export)
 
 GENERATED_FILES += debian/dh/dh_xulrunner.1
 
+debian/iceweasel.xpm: stamps/build-browser
+	convert build-browser/dist/bin/chrome/icons/default/default32.png $@
+GENERATED_FILES += debian/iceweasel.xpm
+
 debian/dh/dh_xulrunner.1: debian/dh/dh_xulrunner
 	pod2man -c Debhelper -r $(GRE_VERSION) $^ > $@
 

@@ -30,25 +30,15 @@ BROWSER_APP_FILES = \
         default32.png \
         default48.png \
         mozicon128.png \
-        mozicon16.xpm \
-        mozicon50.xpm \
-        firefox.ico \
         $(NULL)
 
 GARBAGE += $(BROWSER_APP_FILES)
 
-export:: $(BROWSER_APP_FILES) iceweasel.xpm
+export:: $(BROWSER_APP_FILES)
 	$(NSINSTALL) -D $(DIST)/branding
 	cp $(BROWSER_APP_FILES) $(DIST)/branding/
 
-mozicon50.xpm: default48.png
-mozicon16.xpm: default16.png
-firefox.ico: mozicon128.png
-%.ico %.xpm:
-	convert $< $@
-
-iceweasel.xpm: default32.png
-GARBAGE += iceweasel.xpm iceweasel.png
+GARBAGE += iceweasel.png
 
 default64.png: SIZE=64
 mozicon128.png: SIZE=128
