@@ -207,12 +207,12 @@ endif
 
 override_dh_auto_clean::
 	rm -f MPL
-	rm -f $(GENERATED_FILES) config/Expression.py[co]
+	rm -f $(GENERATED_FILES)
 	rm -rf stamps l10n
 
 	dh_auto_clean --builddirectory=build-browser
 	dh_auto_clean --builddirectory=build-xulrunner
-	find . -name "*.pyc" | xargs rm -f
+	find . -name "*.pyc" -o -name "*.pyo" | xargs --no-run-if-empty rm -f
 
 	for dir in $(AUTOCONF_DIRS); do \
 		for file in config.guess config.sub; do \
