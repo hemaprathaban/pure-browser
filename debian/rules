@@ -271,7 +271,6 @@ stamps/install-browser:: build-browser/debian/installer/package-manifest
 	dh_auto_install --builddirectory=build-browser -- installdir=$(LIB_DIR) \
 		MOZ_PKG_FATAL_WARNINGS=0 \
 		MOZ_PKG_MANIFEST=$(CURDIR)/$<
-	rm -f debian/tmp/usr/lib/iceweasel/update-settings.ini
 
 MPL: LICENSE
 	cp -f $< $@
@@ -303,9 +302,6 @@ stamps/dh_install:: debian/dh/dh_xulrunner debian/noinstall build-xulrunner/dist
 	install -d -m 755 debian/iceweasel/usr/share/icons/hicolor/scalable/apps
 	install -m 644 debian/branding/iceweasel_icon.svg \
 		debian/iceweasel/usr/share/icons/hicolor/scalable/apps/iceweasel.svg
-
-# Remove unneeded configs
-	rm -f debian/iceweasel/$(SHARE_DIR)/defaults/pref/firefox-l10n.js
 
 CMP_AWK := '$$0 !~ /^\t/ { txt = txt ? txt "\n" $$0 : $$0 } END { if (txt != expected) { print "Expected:\n" expected "\nGot:\n" txt; exit 1 }}'
 
