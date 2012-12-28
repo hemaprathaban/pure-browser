@@ -6,7 +6,7 @@ iceweasel - a Web browser for X11 derived from the Mozilla browser
 .B iceweasel
 [\fIOPTIONS\fR] [\fIURL\fR]
 
-.B /usr/lib/iceweasel/firefox\-bin
+.B /usr/lib/iceweasel/iceweasel
 [\fIOPTIONS\fR] [\fIURL\fR]
 
 .SH DESCRIPTION
@@ -14,11 +14,9 @@ iceweasel - a Web browser for X11 derived from the Mozilla browser
 standards compliance, performance and portability.
 
 .SH USAGE
-\fBiceweasel\fR is a simple shell script that will set up the
-environment for the actual executable, \fBfirefox\-bin\fR.
 If there is an Iceweasel browser already running, \fBiceweasel\fR will
 arrange for it to create a new browser window; otherwise it will start
-the Iceweasel application.
+a new instance.
 
 .SH OPTIONS
 A summary of the options supported by \fBiceweasel\fR is included below.
@@ -83,25 +81,18 @@ Open \fIURL\fR in a new tab in an already running Iceweasel process.
 .TP
 \fB\-chrome\fR \fIurl\fR
 Load the specified chrome.
-.SS "Debugger options"
-.TP
-.B \-g, \-debug
-Starts Iceweasel through a debugger (gdb by default).
-.TP
-\fB\-\-debugger\fR \fIprogram\fR
-Use \fIprogram\fR as a debugger for Iceweasel. Implies \fB\-debug\fR.
 
 .SH ENVIRONMENT
 \fIMOZILLA_DISABLE_PLUGINS\fR - when set, totally disables loading browser plugins
 (the ones that appear at the about:plugins url)
 
 .SH FILES
-\fI/usr/bin/iceweasel\fR - shell script wrapping
-\fBfirefox\-bin\fR
+\fI/usr/bin/iceweasel\fR - symbolic link to \fB/usr/lib/iceweasel/iceweasel\fR.
 .br
 
-\fI/usr/lib/iceweasel/firefox\-bin\fR - \fBiceweasel\fR
-executable
+\fI/usr/lib/iceweasel/iceweasel\fR - Iceweasel executable.
+
+\fI/usr/lib/iceweasel/firefox\-bin\fR - Legacy executable.
 .br
 
 .SH BUGS
