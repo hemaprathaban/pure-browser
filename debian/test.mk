@@ -15,7 +15,7 @@ xpcshell-tests: export LOCPATH = $(CURDIR)/debian/locales
 endif
 xpcshell-tests: export LC_ALL=$(LOCALE)
 xpcshell-tests: export EXTRA_TEST_ARGS += --app-path=$(CURDIR)/build-browser/dist/bin
-$(APP_TESTS): export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-browser/dist/bin/firefox
+$(APP_TESTS): export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-browser/dist/bin/iceweasel
 $(APP_TESTS): export GRE_HOME = $(CURDIR)/build-xulrunner/dist/bin
 $(APP_TESTS) xpcshell-tests: XVFB_RUN = xvfb-run -s "-screen 0 1024x768x24"
 $(TESTS): export MOZ_PLUGIN_PATH = $(CURDIR)/build-xulrunner/dist/bin/plugins
