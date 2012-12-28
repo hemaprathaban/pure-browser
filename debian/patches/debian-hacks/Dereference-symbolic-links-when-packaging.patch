@@ -1,0 +1,27 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 28 Dec 2012 08:52:23 +0100
+Subject: Dereference symbolic links when packaging
+
+This effectively reverts a part of bz#552864 that ended up not being useful.
+---
+ toolkit/mozapps/installer/Packager.pm |    7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/toolkit/mozapps/installer/Packager.pm b/toolkit/mozapps/installer/Packager.pm
+index e01e71c..7dfcc7e 100644
+--- a/toolkit/mozapps/installer/Packager.pm
++++ b/toolkit/mozapps/installer/Packager.pm
+@@ -337,13 +337,6 @@ sub do_copyfile
+     }
+ 
+     unlink("$destpath$destname$destsuffix") if ( -e "$destpath$destname$destsuffix");
+-    # If source is a symbolic link pointing in the same directory, create a
+-    # symbolic link
+-    if ((-l "$srcpath$srcname$srcsuffix") && (readlink("$srcpath$srcname$srcsuffix") !~ /\//)) {
+-      symlink(readlink("$srcpath$srcname$srcsuffix"), "$destpath$destname$destsuffix") ||
+-        die "Error: copy of symbolic link $srcpath$srcname$srcsuffix failed ($package, $component, $lineno): $!.  Exiting...\n";
+-      return;
+-    }
+     copy ("$srcpath$srcname$srcsuffix", "$destpath$destname$destsuffix") ||
+       die "Error: copy of file $srcpath$srcname$srcsuffix failed ($package, $component, $lineno): $!.  Exiting...\n";
+ 
