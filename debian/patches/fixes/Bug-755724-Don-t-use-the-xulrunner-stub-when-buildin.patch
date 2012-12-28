@@ -1,0 +1,312 @@
+From: Mike Hommey <mh+mozilla@glandium.org>
+Date: Thu, 27 Dec 2012 15:56:09 +0100
+Subject: Bug 755724 - Don't use the xulrunner stub when building Firefox
+ against a libxul SDK
+
+---
+ browser/app/Makefile.in      |   16 +----
+ browser/app/nsBrowserApp.cpp |  159 +++++++++++++++++++++++++++++++++++-------
+ configure.in                 |    5 --
+ 3 files changed, 135 insertions(+), 45 deletions(-)
+
+diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
+index 5f891ca..6990e23 100644
+--- a/browser/app/Makefile.in
++++ b/browser/app/Makefile.in
+@@ -36,9 +36,9 @@ DEFINES += \
+ 
+ ifdef LIBXUL_SDK #{
+ PREF_JS_EXPORTS += $(srcdir)/profile/channel-prefs.js
++DEFINES += -DLIBXUL_SDK
++endif #} LIBXUL_SDK
+ 
+-include $(topsrcdir)/config/rules.mk
+-else
+ # Build a binary bootstrapping with XRE_main
+ 
+ PROGRAM = $(MOZ_APP_NAME)$(BIN_SUFFIX)
+@@ -130,8 +130,6 @@ GARBAGE += $(addprefix $(DIST)/bin/defaults/pref/, firefox.js)
+ 
+ endif
+ 
+-endif #} LIBXUL_SDK
+-
+ ifeq ($(MOZ_WIDGET_TOOLKIT),gtk2)
+ libs::
+ 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/mozicon128.png $(DIST)/bin/icons
+@@ -188,21 +186,11 @@ libs repackage:: $(PROGRAM) $(libs-preqs)
+ 	sed -e "s/%APP_VERSION%/$(MOZ_APP_VERSION)/" -e "s/%MAC_APP_NAME%/$(MAC_APP_NAME)/" -e "s/%MOZ_MACBUNDLE_ID%/$(MOZ_MACBUNDLE_ID)/" -e "s/%MAC_BUNDLE_VERSION%/$(MAC_BUNDLE_VERSION)/" $(srcdir)/macbuild/Contents/Info.plist.in > $(dist_dest)/Contents/Info.plist
+ 	sed -e "s/%MAC_APP_NAME%/$(MAC_APP_NAME)/" $(srcdir)/macbuild/Contents/Resources/English.lproj/InfoPlist.strings.in | iconv -f UTF-8 -t UTF-16 > $(dist_dest)/Contents/Resources/$(AB).lproj/InfoPlist.strings
+ 	rsync -a $(DIST)/bin/ $(dist_dest)/Contents/$(APPFILES)
+-ifdef LIBXUL_SDK
+-	cp $(LIBXUL_DIST)/bin/$(XR_STUB_NAME) $(dist_dest)/Contents/MacOS/firefox
+-else
+ 	$(RM) $(dist_dest)/Contents/MacOS/$(PROGRAM)
+ 	rsync -aL $(PROGRAM) $(dist_dest)/Contents/MacOS
+-endif
+ 	cp -RL $(DIST)/branding/firefox.icns $(dist_dest)/Contents/Resources/firefox.icns
+ 	cp -RL $(DIST)/branding/document.icns $(dist_dest)/Contents/Resources/document.icns
+ 	printf APPLMOZB > $(dist_dest)/Contents/PkgInfo
+-
+-else
+-ifdef LIBXUL_SDK
+-libs::
+-	cp $(LIBXUL_DIST)/bin/$(XULRUNNER_STUB_NAME)$(BIN_SUFFIX) $(DIST)/bin/firefox$(BIN_SUFFIX)
+-endif
+ endif
+ 
+ ifdef LIBXUL_SDK #{
+diff --git a/browser/app/nsBrowserApp.cpp b/browser/app/nsBrowserApp.cpp
+index 95f16a2..17649da 100644
+--- a/browser/app/nsBrowserApp.cpp
++++ b/browser/app/nsBrowserApp.cpp
+@@ -4,6 +4,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ #include "nsXULAppAPI.h"
++#include "mozilla/AppData.h"
+ #include "application.ini.h"
+ #include "nsXPCOMGlue.h"
+ #if defined(XP_WIN)
+@@ -12,6 +13,7 @@
+ #elif defined(XP_UNIX)
+ #include <sys/time.h>
+ #include <sys/resource.h>
++#include <unistd.h>
+ #endif
+ 
+ #ifdef XP_MACOSX
+@@ -38,6 +40,8 @@
+ 
+ #include "mozilla/Telemetry.h"
+ 
++using namespace mozilla;
++
+ static void Output(const char *fmt, ... )
+ {
+   va_list ap;
+@@ -121,7 +125,7 @@ static const nsDynamicFunctionLoad kXULFuncs[] = {
+     { nullptr, nullptr }
+ };
+ 
+-static int do_main(int argc, char* argv[])
++static int do_main(int argc, char* argv[], nsIFile *xreDirectory)
+ {
+   nsCOMPtr<nsIFile> appini;
+   nsresult rv;
+@@ -166,12 +170,27 @@ static int do_main(int argc, char* argv[])
+       Output("Couldn't read application.ini");
+       return 255;
+     }
++    // xreDirectory already has a refcount from NS_NewLocalFile
++    appData->xreDirectory = xreDirectory;
+     int result = XRE_main(argc, argv, appData, 0);
+     XRE_FreeAppData(appData);
+     return result;
+   }
+ 
+-  return XRE_main(argc, argv, &sAppData, 0);
++  ScopedAppData appData(&sAppData);
++  nsCOMPtr<nsIFile> exeFile;
++  rv = mozilla::BinaryPath::GetFile(argv[0], getter_AddRefs(exeFile));
++  if (NS_FAILED(rv)) {
++    Output("Couldn't find the application directory.\n");
++    return 255;
++  }
++  nsCOMPtr<nsIFile> appDir;
++  exeFile->GetParent(getter_AddRefs(appDir));
++
++  SetStrongPtr(appData.directory, static_cast<nsIFile*>(appDir.get()));
++  // xreDirectory already has a refcount from NS_NewLocalFile
++  appData.xreDirectory = xreDirectory;
++  return XRE_main(argc, argv, &appData, 0);
+ }
+ 
+ /* Local implementation of PR_Now, since the executable can't depend on NSPR */
+@@ -196,35 +215,88 @@ static PRTime _PR_Now()
+ #endif
+ }
+ 
+-int main(int argc, char* argv[])
++static bool
++FileExists(const char *path)
+ {
+-  PRTime start = _PR_Now();
+-  char exePath[MAXPATHLEN];
++#ifdef XP_WIN
++  wchar_t wideDir[MAX_PATH];
++  MultiByteToWideChar(CP_UTF8, 0, path, -1, wideDir, MAX_PATH);
++  DWORD fileAttrs = GetFileAttributesW(wideDir);
++  return fileAttrs != INVALID_FILE_ATTRIBUTES;
++#else
++  return access(path, R_OK) == 0;
++#endif
++}
+ 
+-#ifdef XP_MACOSX
+-  TriggerQuirks();
++#ifdef LIBXUL_SDK
++#  define XPCOM_PATH "xulrunner" XPCOM_FILE_PATH_SEPARATOR XPCOM_DLL
++#else
++#  define XPCOM_PATH XPCOM_DLL
+ #endif
++static nsresult
++InitXPCOMGlue(const char *argv0, nsIFile **xreDirectory)
++{
++  char exePath[MAXPATHLEN];
+ 
+-  nsresult rv = mozilla::BinaryPath::Get(argv[0], exePath);
++  nsresult rv = mozilla::BinaryPath::Get(argv0, exePath);
+   if (NS_FAILED(rv)) {
+-    Output("Couldn't calculate the application directory.\n");
+-    return 255;
++    Output("Couldn't find the application directory.\n");
++    return rv;
+   }
+ 
+   char *lastSlash = strrchr(exePath, XPCOM_FILE_PATH_SEPARATOR[0]);
+-  if (!lastSlash || (size_t(lastSlash - exePath) > MAXPATHLEN - sizeof(XPCOM_DLL) - 1))
+-    return 255;
+-
+-  strcpy(++lastSlash, XPCOM_DLL);
+-
+-  int gotCounters;
+-#if defined(XP_UNIX)
+-  struct rusage initialRUsage;
+-  gotCounters = !getrusage(RUSAGE_SELF, &initialRUsage);
+-#elif defined(XP_WIN)
+-  IO_COUNTERS ioCounters;
+-  gotCounters = GetProcessIoCounters(GetCurrentProcess(), &ioCounters);
++  if (!lastSlash || (size_t(lastSlash - exePath) > MAXPATHLEN - sizeof(XPCOM_PATH) - 1))
++    return NS_ERROR_FAILURE;
++
++  strcpy(lastSlash + 1, XPCOM_PATH);
++  lastSlash += sizeof(XPCOM_PATH) - sizeof(XPCOM_DLL);
++
++  if (!FileExists(exePath)) {
++#if defined(LIBXUL_SDK) && defined(XP_MACOSX)
++    // Check for <bundle>/Contents/Frameworks/XUL.framework/libxpcom.dylib
++    bool greFound = false;
++    CFBundleRef appBundle = CFBundleGetMainBundle();
++    if (!appBundle)
++      return NS_ERROR_FAILURE;
++    CFURLRef fwurl = CFBundleCopyPrivateFrameworksURL(appBundle);
++    CFURLRef absfwurl = nullptr;
++    if (fwurl) {
++      absfwurl = CFURLCopyAbsoluteURL(fwurl);
++      CFRelease(fwurl);
++    }
++    if (absfwurl) {
++      CFURLRef xulurl =
++        CFURLCreateCopyAppendingPathComponent(NULL, absfwurl,
++                                              CFSTR("XUL.framework"),
++                                              true);
++
++      if (xulurl) {
++        CFURLRef xpcomurl =
++          CFURLCreateCopyAppendingPathComponent(NULL, xulurl,
++                                                CFSTR("libxpcom.dylib"),
++                                                false);
++
++        if (xpcomurl) {
++          if (CFURLGetFileSystemRepresentation(xpcomurl, true,
++                                               (UInt8*) exePath,
++                                               sizeof(exePath)) &&
++              access(tbuffer, R_OK | X_OK) == 0) {
++            if (realpath(tbuffer, exePath)) {
++              greFound = true;
++            }
++          }
++          CFRelease(xpcomurl);
++        }
++        CFRelease(xulurl);
++      }
++      CFRelease(absfwurl);
++    }
++  }
++  if (!greFound) {
+ #endif
++    Output("Could not find the Mozilla runtime.\n");
++    return NS_ERROR_FAILURE;
++  }
+ 
+   // We do this because of data in bug 771745
+   XPCOMGlueEnablePreload();
+@@ -232,14 +304,49 @@ int main(int argc, char* argv[])
+   rv = XPCOMGlueStartup(exePath);
+   if (NS_FAILED(rv)) {
+     Output("Couldn't load XPCOM.\n");
+-    return 255;
++    return rv;
+   }
+-  // Reset exePath so that it is the directory name and not the xpcom dll name
+-  *lastSlash = 0;
+ 
+   rv = XPCOMGlueLoadXULFunctions(kXULFuncs);
+   if (NS_FAILED(rv)) {
+     Output("Couldn't load XRE functions.\n");
++    return rv;
++  }
++
++  // chop XPCOM_DLL off exePath
++  *lastSlash = '\0';
++#ifdef XP_WIN
++  NS_NewLocalFile(NS_ConvertUTF8toUTF16(exePath), false,
++                  xreDirectory);
++#else
++  NS_NewNativeLocalFile(nsDependentCString(exePath), false,
++                        xreDirectory);
++#endif
++
++  return rv;
++}
++
++int main(int argc, char* argv[])
++{
++  PRTime start = _PR_Now();
++
++#ifdef XP_MACOSX
++  TriggerQuirks();
++#endif
++
++  int gotCounters;
++#if defined(XP_UNIX)
++  struct rusage initialRUsage;
++  gotCounters = !getrusage(RUSAGE_SELF, &initialRUsage);
++#elif defined(XP_WIN)
++  IO_COUNTERS ioCounters;
++  gotCounters = GetProcessIoCounters(GetCurrentProcess(), &ioCounters);
++#endif
++
++  nsIFile *xreDirectory;
++
++  nsresult rv = InitXPCOMGlue(argv[0], &xreDirectory);
++  if (NS_FAILED(rv)) {
+     return 255;
+   }
+ 
+@@ -276,7 +383,7 @@ int main(int argc, char* argv[])
+   int result;
+   {
+     ScopedLogging log;
+-    result = do_main(argc, argv);
++    result = do_main(argc, argv, xreDirectory);
+   }
+ 
+   XPCOMGlueShutdown();
+diff --git a/configure.in b/configure.in
+index 90438ff..33dcd9f 100644
+--- a/configure.in
++++ b/configure.in
+@@ -8398,11 +8398,6 @@ fi
+ AC_DEFINE_UNQUOTED(MOZ_UA_BUILDID, "$MOZ_UA_BUILDID")
+ AC_SUBST(MOZ_UA_BUILDID)
+ 
+-# We can't use the static application.ini data when building against
+-# a libxul SDK.
+-if test -n "$LIBXUL_SDK"; then
+-    MOZ_APP_STATIC_INI=
+-fi
+ AC_SUBST(MOZ_APP_STATIC_INI)
+ 
+ AC_SUBST(MOZ_PKG_SPECIAL)

@@ -26336,11 +26336,6 @@ EOF
 
 
 
-# We can't use the static application.ini data when building against
-# a libxul SDK.
-if test -n "$LIBXUL_SDK"; then
-    MOZ_APP_STATIC_INI=
-fi
 
 
 
@@ -26518,9 +26513,9 @@ EOF
 
 
 echo $ac_n "checking for posix_fallocate""... $ac_c" 1>&6
-echo "configure:26522: checking for posix_fallocate" >&5
+echo "configure:26517: checking for posix_fallocate" >&5
 cat > conftest.$ac_ext <<EOF
-#line 26524 "configure"
+#line 26519 "configure"
 #include "confdefs.h"
 #define _XOPEN_SOURCE 600
   #include <fcntl.h>
@@ -26528,7 +26523,7 @@ int main() {
 posix_fallocate(0, 0, 0);
 ; return 0; }
 EOF
-if { (eval echo configure:26532: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:26527: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   ac_cv___posix_fallocate=true
 else
@@ -26560,7 +26555,7 @@ if test "$MOZ_X11"; then
                 _SAVE_CFLAGS=$CFLAGS
     CFLAGS="$CFLAGS $XCFLAGS"
     cat > conftest.$ac_ext <<EOF
-#line 26564 "configure"
+#line 26559 "configure"
 #include "confdefs.h"
 
         #include <stdio.h>
@@ -26579,7 +26574,7 @@ int main() {
     
 ; return 0; }
 EOF
-if { (eval echo configure:26583: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+if { (eval echo configure:26578: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
   :
 else
   echo "configure: failed program was:" >&5
@@ -26599,12 +26594,12 @@ fi # MOZ_X11
 if test "$MOZ_GL_DEFAULT_PROVIDER" = "GLX"; then
        ac_safe=`echo "GL/glx.h" | sed 'y%./+-%__p_%'`
   echo $ac_n "checking for GL/glx.h""... $ac_c" 1>&6
-echo "configure:26603: checking for GL/glx.h" >&5
+echo "configure:26598: checking for GL/glx.h" >&5
   if eval "test \"`echo '$''{'ac_cv_header_$ac_safe'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
    cat > conftest.$ac_ext <<EOF
-#line 26608 "configure"
+#line 26603 "configure"
 #include "confdefs.h"
 
 #include <GL/glx.h>
@@ -26612,7 +26607,7 @@ int main() {
 
 ; return 0; }
 EOF
-if { (eval echo configure:26616: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+if { (eval echo configure:26611: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
   rm -rf conftest*
   eval "ac_cv_header_$ac_safe=yes"
 else
