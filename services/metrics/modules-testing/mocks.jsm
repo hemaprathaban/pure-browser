@@ -11,7 +11,7 @@ this.EXPORTED_SYMBOLS = [
 
 const {utils: Cu} = Components;
 
-Cu.import("resource://gre/modules/services/metrics/dataprovider.jsm");
+Cu.import("resource:///modules/services/metrics/dataprovider.jsm");
 
 this.DummyMeasurement = function DummyMeasurement(name="DummyMeasurement") {
   MetricsMeasurement.call(this, name, 2);
