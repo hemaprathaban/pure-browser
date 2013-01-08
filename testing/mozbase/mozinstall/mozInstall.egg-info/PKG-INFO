@@ -27,23 +27,23 @@ Description: [Mozinstall](https://github.com/mozilla/mozbase/tree/master/mozinst
         An application can be installed by running the commands below. The install
         method will return the installation path of the application.
         
-        import mozinstall
-        path = mozinstall.install(%installer%, %install_folder%)
+            import mozinstall
+            path = mozinstall.install(%installer%, %install_folder%)
         
         To retrieve the real binary call get_binary with the path and
         the application name as arguments:
         
-        mozinstall.get_binary(path, 'firefox')
+            mozinstall.get_binary(path, 'firefox')
         
         If the application is not needed anymore the uninstaller will remove all
         traces from the system:
         
-        mozinstall.uninstall(path)
+            mozinstall.uninstall(path)
         
         ## CLI
         The installer can also be used as a command line tool:
         
-        $ mozinstall -d firefox %installer%
+            $ mozinstall -d firefox %installer%
         
         Whereby the directory option is optional and will default to the current
         working directory. If the installation was successful the path to the
@@ -51,7 +51,7 @@ Description: [Mozinstall](https://github.com/mozilla/mozbase/tree/master/mozinst
         
         Also the uninstaller can be called via the command line:
         
-        $ mozuninstall %install_path%
+            $ mozuninstall %install_path%
         
         # Error Handling
         
@@ -64,7 +64,7 @@ Description: [Mozinstall](https://github.com/mozilla/mozbase/tree/master/mozinst
         
         # Dependencies
         
-        Mozinstall depends on the [mozinfo](https://github.com/mozilla/mozbase/tree/master/mozinfo)
+        Mozinstall depends on the [mozinfo](https://github.com/mozilla/mozbase/tree/master/mozinfo) 
         package which is also found in the mozbase repository.
         
 Keywords: mozilla

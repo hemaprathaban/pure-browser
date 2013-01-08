@@ -21,8 +21,8 @@ Description: [mozrunner](https://github.com/mozilla/mozbase/tree/master/mozrunne
         The `mozrunner` command will launch the application (specified by
         `--app`) from a binary specified with `-b` or as located on the `PATH`.
         
-        mozrunner takes the command line options from
-        [mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprofile) for constructing the profile to be used by
+        mozrunner takes the command line options from 
+        [mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprofile) for constructing the profile to be used by 
         the application.
         
         Run `mozrunner --help` for detailed information on the command line
@@ -31,8 +31,8 @@ Description: [mozrunner](https://github.com/mozilla/mozbase/tree/master/mozrunne
         
         # API Usage
         
-        mozrunner features a base class,
-        [mozrunner.runner.Runner](https://github.com/mozilla/mozbase/blob/master/mozrunner/mozrunner/runner.py)
+        mozrunner features a base class, 
+        [mozrunner.runner.Runner](https://github.com/mozilla/mozbase/blob/master/mozrunner/mozrunner/runner.py) 
         which is an integration layer API for interfacing with Mozilla applications.
         
         mozrunner also exposes two application specific classes,
@@ -41,13 +41,13 @@ Description: [mozrunner](https://github.com/mozilla/mozbase/tree/master/mozrunne
         
         Example API usage:
         
-        from mozrunner import FirefoxRunner
+            from mozrunner import FirefoxRunner
+        	
+            # start Firefox on a new profile
+            runner = FirefoxRunner()
+            runner.start()
         
-        # start Firefox on a new profile
-        runner = FirefoxRunner()
-        runner.start()
-        
-        See also a comparable implementation for [selenium](http://seleniumhq.org/):
+        See also a comparable implementation for [selenium](http://seleniumhq.org/): 
         http://code.google.com/p/selenium/source/browse/trunk/py/selenium/webdriver/firefox/firefox_binary.py
 Keywords: mozilla
 Platform: UNKNOWN

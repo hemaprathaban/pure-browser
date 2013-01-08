@@ -24,10 +24,10 @@ Description: [Mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprof
         switch. If a profile is not specified, one will be created in a
         temporary directory which will be echoed to the terminal:
         
-        (mozmill)> mozprofile
-        /tmp/tmp4q1iEU.mozrunner
-        (mozmill)> ls /tmp/tmp4q1iEU.mozrunner
-        user.js
+            (mozmill)> mozprofile
+            /tmp/tmp4q1iEU.mozrunner
+            (mozmill)> ls /tmp/tmp4q1iEU.mozrunner
+            user.js
         
         To run mozprofile from the command line enter:
         `mozprofile --help` for a list of options.
@@ -46,63 +46,63 @@ Description: [Mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprof
         
         `mozprofile.profile:Profile`:
         
-        def __init__(self,
-        profile=None, # Path to the profile
-        addons=None,  # String of one or list of addons to install
-        addon_manifests=None,  # Manifest for addons, see http://ahal.ca/blog/2011/bulk-installing-fx-addons/
-        preferences=None, # Dictionary or class of preferences
-        locations=None, # locations to proxy
-        proxy=False, # setup a proxy
-        restore=True # If true remove all installed addons preferences when cleaning up
-        ):
+            def __init__(self,
+                         profile=None, # Path to the profile
+                         addons=None,  # String of one or list of addons to install
+                         addon_manifests=None,  # Manifest for addons, see http://ahal.ca/blog/2011/bulk-installing-fx-addons/
+                         preferences=None, # Dictionary or class of preferences
+                         locations=None, # locations to proxy
+                         proxy=False, # setup a proxy
+                         restore=True # If true remove all installed addons preferences when cleaning up
+                         ):
         
-        def reset(self):
-        """reset the profile to the beginning state"""
+            def reset(self):
+                """reset the profile to the beginning state"""
         
-        def set_preferences(self, preferences, filename='user.js'):
-        """Adds preferences dict to profile preferences"""
+            def set_preferences(self, preferences, filename='user.js'):
+                """Adds preferences dict to profile preferences"""
         
-        def clean_preferences(self):
-        """Removed preferences added by mozrunner."""
+            def clean_preferences(self):
+                """Removed preferences added by mozrunner."""
         
-        def cleanup(self):
-        """Cleanup operations for the profile."""
+            def cleanup(self):
+                """Cleanup operations for the profile."""
         
         
         `mozprofile.addons:AddonManager`:
         
-        def __init__(self, profile):
-        """profile - the path to the profile for which we install addons"""
+            def __init__(self, profile):
+                """profile - the path to the profile for which we install addons"""
         
-        def install_addons(self, addons=None, manifests=None):
-        """
-        Installs all types of addons
-        addons - a list of addon paths to install
-        manifest - a list of addon manifests to install
-        """
+            def install_addons(self, addons=None, manifests=None):
+                """
+                Installs all types of addons
+                addons - a list of addon paths to install
+                manifest - a list of addon manifests to install
+                """
         
-        @classmethod
-        def get_amo_install_path(self, query):
-        """
-        Return the addon xpi install path for the specified AMO query.
-        See: https://developer.mozilla.org/en/addons.mozilla.org_%28AMO%29_API_Developers%27_Guide/The_generic_AMO_API
-        for query documentation.
-        """
+            @classmethod
+            def get_amo_install_path(self, query):
+                """
+                Return the addon xpi install path for the specified AMO query.
+                See: https://developer.mozilla.org/en/addons.mozilla.org_%28AMO%29_API_Developers%27_Guide/The_generic_AMO_API
+                for query documentation.
+                """
         
-        @classmethod
-        def addon_details(cls, addon_path):
-        """
-        returns a dictionary of details about the addon
-        - addon_path : path to the addon directory
-        Returns:
-        {'id':      u'rainbow@colors.org', # id of the addon
-        'version': u'1.4',                # version of the addon
-        'name':    u'Rainbow',            # name of the addon
-        'unpack': False } # whether to unpack the addon
-        """
+            @classmethod
+            def addon_details(cls, addon_path):
+                """
+                returns a dictionary of details about the addon
+                - addon_path : path to the addon directory
+                Returns:
+                {'id':      u'rainbow@colors.org', # id of the addon
+                 'version': u'1.4',                # version of the addon
+                 'name':    u'Rainbow',            # name of the addon
+                 'unpack': False } # whether to unpack the addon
+                """
         
-        def clean_addons(self):
-        """Cleans up addons in the profile."""
+            def clean_addons(self):
+                """Cleans up addons in the profile."""
         
         
         # Installing Addons
@@ -111,10 +111,10 @@ Description: [Mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprof
         
         Example:
         
-        from mozprofile import FirefoxProfile
-        
-        # create new profile to pass to mozmill/mozrunner
-        profile = FirefoxProfile(addons=["adblock.xpi"])
+        	from mozprofile import FirefoxProfile
+        	
+        	# create new profile to pass to mozmill/mozrunner
+        	profile = FirefoxProfile(addons=["adblock.xpi"])
         
         
         # Setting Preferences
@@ -122,7 +122,7 @@ Description: [Mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprof
         Preferences can be set in several ways:
         
         - using the API: You can pass preferences in to the Profile class's
-        constructor: `obj = FirefoxProfile(preferences=[("accessibility.typeaheadfind.flashBar", 0)])`
+          constructor: `obj = FirefoxProfile(preferences=[("accessibility.typeaheadfind.flashBar", 0)])`
         - using a JSON blob file: `mozprofile --preferences myprefs.json`
         - using a `.ini` file: `mozprofile --preferences myprefs.ini`
         - via the command line: `mozprofile --pref key:value --pref key:value [...]`
@@ -143,8 +143,8 @@ Description: [Mozprofile](https://github.com/mozilla/mozbase/tree/master/mozprof
         for profiles.  There is also substantive documentation on profiles and
         their management.
         
-        - [ProfileManager](https://developer.mozilla.org/en/Profile_Manager) :
-        XULRunner application for managing profiles. Has a GUI and CLI.
+        - [ProfileManager](https://developer.mozilla.org/en/Profile_Manager) : 
+          XULRunner application for managing profiles. Has a GUI and CLI.
         - [python-profilemanager](http://k0s.org/mozilla/hg/profilemanager/) : python CLI interface similar to ProfileManager
         - profile documentation : http://support.mozilla.com/en-US/kb/Profiles
         
