@@ -7,14 +7,14 @@ Subject: Set javascript.options.showInConsole
  1 file changed, 1 insertion(+)
 
 diff --git a/modules/libpref/src/init/all.js b/modules/libpref/src/init/all.js
-index be5bfa5..287f61b 100644
+index 76727af..380a8b3 100644
 --- a/modules/libpref/src/init/all.js
 +++ b/modules/libpref/src/init/all.js
-@@ -701,6 +701,7 @@ pref("javascript.options.strict",           false);
+@@ -717,6 +717,7 @@ pref("javascript.options.strict",           false);
  pref("javascript.options.strict.debug",     true);
  #endif
  pref("javascript.options.relimit",          true);
 +pref("javascript.options.showInConsole",    true);
  pref("javascript.options.methodjit.content", true);
  pref("javascript.options.methodjit.chrome",  true);
- pref("javascript.options.pccounts.content", false);
+ pref("javascript.options.ion.content",      true);

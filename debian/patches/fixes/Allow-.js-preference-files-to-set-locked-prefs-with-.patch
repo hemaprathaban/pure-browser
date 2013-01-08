@@ -10,10 +10,10 @@ Subject: Allow .js preference files to set locked prefs with lockPref()
  4 files changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index 18354b9..d1cd7a5 100644
+index 075ef9b..dab1db8 100644
 --- a/modules/libpref/src/prefapi.cpp
 +++ b/modules/libpref/src/prefapi.cpp
-@@ -978,7 +978,10 @@ void PREF_ReaderCallback(void       *closure,
+@@ -996,7 +996,10 @@ void PREF_ReaderCallback(void       *closure,
                           const char *pref,
                           PrefValue   value,
                           PrefType    type,
@@ -26,10 +26,10 @@ index 18354b9..d1cd7a5 100644
 +        PREF_LockPref(pref, true);
  }
 diff --git a/modules/libpref/src/prefapi.h b/modules/libpref/src/prefapi.h
-index 2fc8280..086a159 100644
+index 76c8f6d..d5503c0 100644
 --- a/modules/libpref/src/prefapi.h
 +++ b/modules/libpref/src/prefapi.h
-@@ -176,7 +176,8 @@ void PREF_ReaderCallback( void *closure,
+@@ -178,7 +178,8 @@ void PREF_ReaderCallback( void *closure,
                            const char *pref,
                            PrefValue   value,
                            PrefType    type,
@@ -37,8 +37,8 @@ index 2fc8280..086a159 100644
 +                          bool        isDefault,
 +                          bool        isLocked);
  
- PR_END_EXTERN_C
- #endif
+ #ifdef __cplusplus
+ }
 diff --git a/modules/libpref/src/prefread.cpp b/modules/libpref/src/prefread.cpp
 index f0423e8..444d08a 100644
 --- a/modules/libpref/src/prefread.cpp
@@ -90,10 +90,10 @@ index f0423e8..444d08a 100644
                  ps->nextstate = PREF_PARSE_UNTIL_COMMA; /* return here when done */
                  state = PREF_PARSE_QUOTED_STRING;
 diff --git a/modules/libpref/src/prefread.h b/modules/libpref/src/prefread.h
-index fe9850d..7afdce5 100644
+index 8d66746..4cc253c 100644
 --- a/modules/libpref/src/prefread.h
 +++ b/modules/libpref/src/prefread.h
-@@ -30,7 +30,8 @@ typedef void (*PrefReader)(void       *closure,
+@@ -32,7 +32,8 @@ typedef void (*PrefReader)(void       *closure,
                             const char *pref,
                             PrefValue   val,
                             PrefType    type,
@@ -103,7 +103,7 @@ index fe9850d..7afdce5 100644
  
  /* structure fields are private */
  typedef struct PrefParseState {
-@@ -50,7 +51,8 @@ typedef struct PrefParseState {
+@@ -52,7 +53,8 @@ typedef struct PrefParseState {
      char       *lbend;      /* line buffer end               */
      char       *vb;         /* value buffer (ptr into lb)    */
      PrefType    vtype;      /* PREF_STRING,INT,BOOL          */

@@ -12,7 +12,6 @@
 <!ENTITY  awesomebar_all_pages_title "Topwebsites">
 <!ENTITY  awesomebar_bookmarks_title "Bladwijzers">
 <!ENTITY  awesomebar_history_title "Geschiedenis">
-<!ENTITY  awesomebar_search_engine "Zoeken naar \&quot;&#037;s\&quot;">
 
 <!ENTITY  crash_reporter_title "&brandShortName;-crashreporter">
 <!ENTITY  crash_message "&brandShortName; is gecrasht. Uw tabbladen worden op de &brandShortName;-startpagina getoond wanneer u herstart.">
@@ -82,6 +81,7 @@
 <!ENTITY pref_plugins_tap_to_play "Tikken voor afspelen">
 <!ENTITY pref_plugins_disabled "Uitgeschakeld">
 <!ENTITY pref_text_size "Tekstgrootte">
+<!ENTITY pref_reflow_on_zoom "Reflow-On-Zoom inschakelen">
 <!ENTITY pref_font_size_tiny "Zeer klein">
 <!ENTITY pref_font_size_small "Klein">
 <!ENTITY pref_font_size_medium "Gemiddeld">
@@ -100,6 +100,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "De snelle oranje vos springt over uw verwachtingen met meer snelheid, meer flexibiliteit en meer veiligheid. Als stichting zijn we vrij om in uw belang en zonder druk voor compromissen te innoveren. Dat betekent een betere ervaring voor u en een stralende toekomst voor het internet.">
 
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
+<!ENTITY pref_show_product_announcements "Productaankondigingen tonen">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 <!ENTITY pref_import_android "Importeren uit Android">
@@ -124,6 +125,7 @@ size. -->
 <!ENTITY save_as_pdf "Opslaan als PDF">
 <!ENTITY find_in_page "Zoeken op pagina">
 <!ENTITY desktop_mode "Desktopwebsite opvragen">
+<!ENTITY tools "Extra">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -133,6 +135,7 @@ size. -->
 <!ENTITY find_close "Sluiten">
 
 <!ENTITY contextmenu_open_new_tab "Openen in nieuw tabblad">
+<!ENTITY contextmenu_open_in_reader "Openen in lezer">
 <!ENTITY contextmenu_remove_history "Verwijderen">
 <!ENTITY contextmenu_remove_bookmark "Verwijderen">
 <!ENTITY contextmenu_add_to_launcher "Toevoegen aan startscherm">
@@ -160,7 +163,7 @@ size. -->
 <!ENTITY reading_list_added "Pagina toegevoegd aan uw leeslijst">
 <!ENTITY reading_list_removed "Pagina verwijderd van uw leeslijst">
 <!ENTITY reading_list_failed "Pagina toevoegen aan uw leeslijst mislukt">
-<!ENTITY reader_mode "Leesmodus">
+<!ENTITY reader "Lezer">
 
 <!ENTITY masterpassword_create_title "Hoofdwachtwoord aanmaken">
 <!ENTITY masterpassword_remove_title "Hoofdwachtwoord verwijderen">
@@ -169,7 +172,11 @@ size. -->
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Annuleren">
+<!ENTITY button_yes "Ja">
+<!ENTITY button_no "Nee">
 <!ENTITY button_clear_data "Gegevens wissen">
+<!ENTITY button_set "Instellen">
+<!ENTITY button_clear "Wissen">
 
 <!ENTITY abouthome_addons_title "Add-ons voor uw &brandShortName;">
 <!ENTITY abouthome_addons_browse "Door alle &brandShortName;-add-ons bladeren">
@@ -183,13 +190,13 @@ size. -->
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Stel Firefox Sync in voor toegang tot uw bladwijzers, geschiedenis en tabbladen van uw andere apparaten&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "Download apps van de Mozilla Marketplace en ontdek het beste wat het internet te bieden heeft&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "Download apps van de Firefox Marketplace en ontdek het beste wat het internet te bieden heeft&#x00A0;»">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "Bestand kiezen">
 <!ENTITY filepicker_audio_title "Een geluid kiezen of opnemen">
@@ -223,7 +230,14 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          uit Android">
 <!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
 
+<!-- Localization note (suggestions_prompt): The placeholder (&#037;s) should
+     be kept in the string; this will be replaced with the name of the search
+     engine. -->
+<!ENTITY suggestions_prompt "Wild u &#037;s-zoeksuggesties aanzetten?">
+
 <!ENTITY webapp_generic_name "App">
+
+<!ENTITY searchable_description "Bladwijzers en geschiedenis">
 
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Update beschikbaar voor &brandShortName;">

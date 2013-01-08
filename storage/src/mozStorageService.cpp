@@ -33,7 +33,6 @@
 #include "nsIPromptService.h"
 #include "nsIMemoryReporter.h"
 
-#include "mozilla/FunctionTimer.h"
 #include "mozilla/Util.h"
 
 namespace {
@@ -574,8 +573,6 @@ const sqlite3_mem_methods memMethods = {
 nsresult
 Service::initialize()
 {
-  NS_TIME_FUNCTION;
-
   int rc;
 
 #ifdef MOZ_STORAGE_MEMORY
@@ -732,12 +729,6 @@ Service::OpenDatabase(nsIFile *aDatabaseFile,
 {
   NS_ENSURE_ARG(aDatabaseFile);
 
-#ifdef NS_FUNCTION_TIMER
-  nsCString leafname;
-  (void)aDatabaseFile->GetNativeLeafName(leafname);
-  NS_TIME_FUNCTION_FMT("mozIStorageService::OpenDatabase(%s)", leafname.get());
-#endif
-
   // Always ensure that SQLITE_OPEN_CREATE is passed in for compatibility
   // reasons.
   int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_SHAREDCACHE |
@@ -757,13 +748,6 @@ Service::OpenUnsharedDatabase(nsIFile *aDatabaseFile,
                               mozIStorageConnection **_connection)
 {
   NS_ENSURE_ARG(aDatabaseFile);
-
-#ifdef NS_FUNCTION_TIMER
-  nsCString leafname;
-  (void)aDatabaseFile->GetNativeLeafName(leafname);
-  NS_TIME_FUNCTION_FMT("mozIStorageService::OpenUnsharedDatabase(%s)",
-                       leafname.get());
-#endif
 
   // Always ensure that SQLITE_OPEN_CREATE is passed in for compatibility
   // reasons.
@@ -870,13 +854,6 @@ Service::OpenDatabaseWithVFS(nsIFile *aDatabaseFile,
                              mozIStorageConnection **_connection)
 {
   NS_ENSURE_ARG(aDatabaseFile);
-
-#ifdef NS_FUNCTION_TIMER
-  nsCString leafname;
-  (void)aDatabaseFile->GetNativeLeafName(leafname);
-  NS_TIME_FUNCTION_FMT("mozIStorageService::OpenDatabaseWithVFS(%s)",
-                       leafname.get());
-#endif
 
   // Always ensure that SQLITE_OPEN_CREATE is passed in for compatibility
   // reasons.

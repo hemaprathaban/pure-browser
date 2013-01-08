@@ -5,16 +5,16 @@ Subject: Bug 814693 - Allow webrtc to build on more architectures
 ---
  media/webrtc/shared_libs.mk                        |    9 ++-
  .../modules/audio_coding/codecs/pcm16b/pcm16b.c    |    8 +--
- media/webrtc/trunk/src/typedefs.h                  |   64 ++++++++++++++++++++
- 3 files changed, 73 insertions(+), 8 deletions(-)
+ media/webrtc/trunk/src/typedefs.h                  |   64 +++++++++++++++++++-
+ 3 files changed, 71 insertions(+), 10 deletions(-)
 
 diff --git a/media/webrtc/shared_libs.mk b/media/webrtc/shared_libs.mk
-index 451879b..76d4395 100644
+index 34396b1..3dd32c7 100644
 --- a/media/webrtc/shared_libs.mk
 +++ b/media/webrtc/shared_libs.mk
-@@ -29,13 +29,11 @@ SHARED_LIBRARY_LIBS += \
-   $(call EXPAND_LIBNAME_PATH,rtp_rtcp,$(DEPTH)/media/webrtc/trunk/src/modules/modules_rtp_rtcp) \
-   $(call EXPAND_LIBNAME_PATH,udp_transport,$(DEPTH)/media/webrtc/trunk/src/modules/modules_udp_transport) \
+@@ -28,13 +28,11 @@ WEBRTC_LIBS = \
+   $(call EXPAND_LIBNAME_PATH,bitrate_controller,$(DEPTH)/media/webrtc/trunk/src/modules/modules_bitrate_controller) \
+   $(call EXPAND_LIBNAME_PATH,remote_bitrate_estimator,$(DEPTH)/media/webrtc/trunk/src/modules/modules_remote_bitrate_estimator) \
    $(call EXPAND_LIBNAME_PATH,video_processing,$(DEPTH)/media/webrtc/trunk/src/modules/modules_video_processing) \
 -  $(call EXPAND_LIBNAME_PATH,video_processing_sse2,$(DEPTH)/media/webrtc/trunk/src/modules/modules_video_processing_sse2) \
    $(call EXPAND_LIBNAME_PATH,voice_engine_core,$(DEPTH)/media/webrtc/trunk/src/voice_engine/voice_engine_voice_engine_core) \
@@ -26,17 +26,20 @@ index 451879b..76d4395 100644
    $(call EXPAND_LIBNAME_PATH,apm_util,$(DEPTH)/media/webrtc/trunk/src/modules/modules_apm_util) \
    $(call EXPAND_LIBNAME_PATH,aecm,$(DEPTH)/media/webrtc/trunk/src/modules/modules_aecm) \
    $(call EXPAND_LIBNAME_PATH,agc,$(DEPTH)/media/webrtc/trunk/src/modules/modules_agc) \
-@@ -43,3 +41,10 @@ SHARED_LIBRARY_LIBS += \
-   $(call EXPAND_LIBNAME_PATH,yuv,$(DEPTH)/media/webrtc/trunk/third_party/libyuv/libyuv_libyuv) \
-   $(call EXPAND_LIBNAME_PATH,webrtc_jpeg,$(DEPTH)/media/webrtc/trunk/src/common_video/common_video_webrtc_jpeg) \
+@@ -45,6 +43,13 @@ WEBRTC_LIBS = \
+   $(call EXPAND_LIBNAME_PATH,nrappkit,$(DEPTH)/media/mtransport/third_party/nrappkit/nrappkit_nrappkit) \
    $(NULL)
-+
+ 
 +ifneq (,$(INTEL_ARCHITECTURE))
 +SHARED_LIBRARY_LIBS += \
 +  $(call EXPAND_LIBNAME_PATH,video_processing_sse2,$(DEPTH)/media/webrtc/trunk/src/modules/modules_video_processing_sse2) \
 +  $(call EXPAND_LIBNAME_PATH,aec_sse2,$(DEPTH)/media/webrtc/trunk/src/modules/modules_aec_sse2) \
 +  $(NULL)
 +endif
++
+ # If you enable one of these codecs in webrtc_config.gypi, you'll need to re-add the
+ # relevant library from this list:
+ #
 diff --git a/media/webrtc/trunk/src/modules/audio_coding/codecs/pcm16b/pcm16b.c b/media/webrtc/trunk/src/modules/audio_coding/codecs/pcm16b/pcm16b.c
 index 0cff5dd..c0befb9 100644
 --- a/media/webrtc/trunk/src/modules/audio_coding/codecs/pcm16b/pcm16b.c
@@ -71,13 +74,15 @@ index 0cff5dd..c0befb9 100644
      int i;
      int samples=len>>1;
 diff --git a/media/webrtc/trunk/src/typedefs.h b/media/webrtc/trunk/src/typedefs.h
-index 53db408..fe293ce 100644
+index d6d4015..e82bbef 100644
 --- a/media/webrtc/trunk/src/typedefs.h
 +++ b/media/webrtc/trunk/src/typedefs.h
-@@ -48,6 +48,70 @@
+@@ -53,10 +53,70 @@
  #define WEBRTC_ARCH_32_BITS
  #define WEBRTC_ARCH_LITTLE_ENDIAN
  #define WEBRTC_LITTLE_ENDIAN
+-#elif defined(__MIPSEL__)
+-#define WEBRTC_ARCH_32_BITS
 +#elif defined(__powerpc64__)
 +#define WEBRTC_ARCH_PPC64 1
 +#define WEBRTC_ARCH_64_BITS 1
@@ -135,8 +140,8 @@ index 53db408..fe293ce 100644
 +#elif defined(__alpha__)
 +#define WEBRTC_ARCH_ALPHA 1
 +#define WEBRTC_ARCH_64_BITS 1
-+#define WEBRTC_ARCH_LITTLE_ENDIAN
-+#define WEBRTC_LITTLE_ENDIAN
+ #define WEBRTC_ARCH_LITTLE_ENDIAN
+ #define WEBRTC_LITTLE_ENDIAN
 +#elif defined(__avr32__)
 +#define WEBRTC_ARCH_AVR32 1
 +#define WEBRTC_ARCH_32_BITS 1

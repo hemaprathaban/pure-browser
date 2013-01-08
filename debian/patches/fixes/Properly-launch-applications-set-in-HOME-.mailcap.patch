@@ -8,7 +8,7 @@ Replaces the previous patch in a much simpler way.
  1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
-index 518e591..642954d 100644
+index 7a8c27f..3bb9165 100644
 --- a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 +++ b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 @@ -65,6 +65,12 @@ nsMIMEInfoUnix::LoadUriInternal(nsIURI * aURI)
@@ -42,6 +42,6 @@ index 518e591..642954d 100644
 +  if (mDefaultApplication)
 +    return nsMIMEInfoImpl::LaunchDefaultWithFile(aFile);
 +
-   nsCAutoString nativePath;
+   nsAutoCString nativePath;
    aFile->GetNativePath(nativePath);
  

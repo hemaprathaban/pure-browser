@@ -8,7 +8,7 @@ Subject: Bug 762833 - Fallback to the xulrunner subdirectory if webapprt
  1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/webapprt/gtk2/webapprt.cpp b/webapprt/gtk2/webapprt.cpp
-index 185808d..6b44df6 100644
+index 440f563..b1a7e61 100644
 --- a/webapprt/gtk2/webapprt.cpp
 +++ b/webapprt/gtk2/webapprt.cpp
 @@ -129,8 +129,11 @@ bool GRELoadAndLaunch(const char* firefoxDir, bool silentFail)

@@ -7,11 +7,11 @@ Subject: Bug 722975 - Make system cairo work again
  1 file changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/gfx/thebes/gfxPlatform.cpp b/gfx/thebes/gfxPlatform.cpp
-index af1f185..9701408 100644
+index de598fe..f9c21a3 100644
 --- a/gfx/thebes/gfxPlatform.cpp
 +++ b/gfx/thebes/gfxPlatform.cpp
-@@ -490,11 +490,9 @@ void SourceBufferDestroy(void *srcBuffer)
-   static_cast<SourceSurface*>(srcBuffer)->Release();
+@@ -507,11 +507,9 @@ void SourceBufferDestroy(void *srcSurfUD)
+   delete static_cast<SourceSurfaceUserData*>(srcSurfUD);
  }
  
 -void SourceSnapshotDetached(cairo_surface_t *nullSurf)
@@ -24,7 +24,7 @@ index af1f185..9701408 100644
    origSurf->SetData(&kSourceSurface, NULL, NULL);
  }
  
-@@ -594,14 +592,8 @@ gfxPlatform::GetSourceSurfaceForSurface(DrawTarget *aTarget, gfxASurface *aSurfa
+@@ -626,14 +624,8 @@ gfxPlatform::GetSourceSurfaceForSurface(DrawTarget *aTarget, gfxASurface *aSurfa
  
      }
  
@@ -40,4 +40,4 @@ index af1f185..9701408 100644
 +		(const unsigned char *) "data", 4, SourceSnapshotDetached, imgSurface.get());
    }
  
-   srcBuffer->AddRef();
+   SourceSurfaceUserData *srcSurfUD = new SourceSurfaceUserData;

@@ -10,7 +10,7 @@ Subject: Bug 755724 - Don't use the xulrunner stub when building Firefox
  3 files changed, 135 insertions(+), 45 deletions(-)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index 5f891ca..6990e23 100644
+index e5d01f6..f1e8e6d 100644
 --- a/browser/app/Makefile.in
 +++ b/browser/app/Makefile.in
 @@ -36,9 +36,9 @@ DEFINES += \
@@ -25,7 +25,7 @@ index 5f891ca..6990e23 100644
  # Build a binary bootstrapping with XRE_main
  
  PROGRAM = $(MOZ_APP_NAME)$(BIN_SUFFIX)
-@@ -130,8 +130,6 @@ GARBAGE += $(addprefix $(DIST)/bin/defaults/pref/, firefox.js)
+@@ -130,8 +130,6 @@ GARBAGE += $(addprefix $(FINAL_TARGET)/defaults/pref/, firefox.js)
  
  endif
  
@@ -33,7 +33,7 @@ index 5f891ca..6990e23 100644
 -
  ifeq ($(MOZ_WIDGET_TOOLKIT),gtk2)
  libs::
- 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/mozicon128.png $(DIST)/bin/icons
+ 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/mozicon128.png $(FINAL_TARGET)/icons
 @@ -188,21 +186,11 @@ libs repackage:: $(PROGRAM) $(libs-preqs)
  	sed -e "s/%APP_VERSION%/$(MOZ_APP_VERSION)/" -e "s/%MAC_APP_NAME%/$(MAC_APP_NAME)/" -e "s/%MOZ_MACBUNDLE_ID%/$(MOZ_MACBUNDLE_ID)/" -e "s/%MAC_BUNDLE_VERSION%/$(MAC_BUNDLE_VERSION)/" $(srcdir)/macbuild/Contents/Info.plist.in > $(dist_dest)/Contents/Info.plist
  	sed -e "s/%MAC_APP_NAME%/$(MAC_APP_NAME)/" $(srcdir)/macbuild/Contents/Resources/English.lproj/InfoPlist.strings.in | iconv -f UTF-8 -t UTF-16 > $(dist_dest)/Contents/Resources/$(AB).lproj/InfoPlist.strings
@@ -295,10 +295,10 @@ index 95f16a2..17649da 100644
  
    XPCOMGlueShutdown();
 diff --git a/configure.in b/configure.in
-index 90438ff..33dcd9f 100644
+index 1de24b9..ddf4640 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -8398,11 +8398,6 @@ fi
+@@ -8538,11 +8538,6 @@ fi
  AC_DEFINE_UNQUOTED(MOZ_UA_BUILDID, "$MOZ_UA_BUILDID")
  AC_SUBST(MOZ_UA_BUILDID)
  

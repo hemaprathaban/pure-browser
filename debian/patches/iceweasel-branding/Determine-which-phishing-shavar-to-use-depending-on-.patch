@@ -11,11 +11,11 @@ Subject: Determine which phishing shavar to use depending on
  4 files changed, 16 insertions(+)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index 5f891ca..3599a04 100644
+index e5d01f6..4f29b93 100644
 --- a/browser/app/Makefile.in
 +++ b/browser/app/Makefile.in
 @@ -140,6 +140,10 @@ libs::
- 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(DIST)/bin/chrome/icons/default
+ 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(FINAL_TARGET)/chrome/icons/default
  endif
  
 +ifdef MOZ_OFFICIAL_BRANDING
@@ -23,13 +23,13 @@ index 5f891ca..3599a04 100644
 +endif
 +
  libs:: $(srcdir)/profile/prefs.js
- 	$(INSTALL) $(IFLAGS1) $^ $(DIST)/bin/defaults/profile
+ 	$(INSTALL) $(IFLAGS1) $^ $(FINAL_TARGET)/defaults/profile
  
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index caac30c..eb2a13b 100644
+index d6a186c..facf161 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -730,7 +730,11 @@ pref("urlclassifier.gethashnoise", 4);
+@@ -729,7 +729,11 @@ pref("urlclassifier.gethashnoise", 4);
  pref("urlclassifier.randomizeclient", false);
  
  // The list of tables that use the gethash request to confirm partial results.
@@ -42,7 +42,7 @@ index caac30c..eb2a13b 100644
  // If an urlclassifier table has not been updated in this number of seconds,
  // a gethash request will be forced to check that the result is still in
 diff --git a/browser/components/safebrowsing/Makefile.in b/browser/components/safebrowsing/Makefile.in
-index 8585a34..3aceb9f 100644
+index 541df02..c84ef39 100644
 --- a/browser/components/safebrowsing/Makefile.in
 +++ b/browser/components/safebrowsing/Makefile.in
 @@ -24,4 +24,8 @@ EXTRA_PP_JS_MODULES = \

@@ -8,10 +8,10 @@ Subject: Bug 798233 - Don't search firefox executable in $exe/../../dist/bin
  2 files changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/webapprt/gtk2/Makefile.in b/webapprt/gtk2/Makefile.in
-index 44df8e6..b390063 100644
+index a2fd43c..ede0ee0 100644
 --- a/webapprt/gtk2/Makefile.in
 +++ b/webapprt/gtk2/Makefile.in
-@@ -27,6 +27,8 @@ LIBS = \
+@@ -30,6 +30,8 @@ LIBS = \
    $(MOZ_GTK2_LIBS) \
    $(NULL)
  
@@ -21,7 +21,7 @@ index 44df8e6..b390063 100644
  
  CXXFLAGS += \
 diff --git a/webapprt/gtk2/webapprt.cpp b/webapprt/gtk2/webapprt.cpp
-index e564f63..185808d 100644
+index 46fdb96..440f563 100644
 --- a/webapprt/gtk2/webapprt.cpp
 +++ b/webapprt/gtk2/webapprt.cpp
 @@ -124,11 +124,14 @@ bool CopyFile(const char* inputFile, const char* outputFile)
