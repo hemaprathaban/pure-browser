@@ -1,8 +1,25 @@
-iceweasel (18.0-1) UNRELEASED; urgency=low
+iceweasel (18.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{01-19}, also known as
+    CVE-2013-0769, CVE-2013-0749, CVE-2013-0770, CVE-2013-0760,
+    CVE-2013-0762, CVE-2013-0766, CVE-2013-0767, CVE-2013-0761,
+    CVE-2013-0763, CVE-2013-0771, CVE-2012-5829, CVE-2013-0768,
+    CVE-2012-0759, CVE-2013-0744, CVE-2013-0751, CVE-2013-0764,
+    CVE-2013-0745, CVE-2013-0746, CVE-2013-0747, CVE-2013-0748,
+    CVE-2013-0750, CVE-2013-0752, CVE-2013-0757, CVE-2013-0758,
+    CVE-2013-0753, CVE-2013-0754, CVE-2013-0755, CVE-2013-0756.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 08 Jan 2013 20:04:00 +0100
+  * debian/control*: Bump nspr, nss and sqlite build dependencies.
+  * debian/control*, debian/xulrunner.mozconfig: Build against embedded
+    libjpeg-turbo and build depend on yasm accordingly.
+  * debian/xulrunner-GRE_VERSION.lintian-overrides.in: Add a lintian override
+    for libjpeg-turbo.
+  * debian/check_resources.overrides: Add an override for SettingsDB.jsm.
+
+  * services/*, testing/marionette/*: Fix services import urls. bz#815320.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 09 Jan 2013 08:56:15 +0100
 
 iceweasel (17.0.1-2) experimental; urgency=low
 
