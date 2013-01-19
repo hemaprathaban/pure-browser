@@ -7343,3 +7343,143 @@ index 4855c99..a5282b6 100755
  s%@NSINSTALL_BIN@%$NSINSTALL_BIN%g
  s%@DOXYGEN@%$DOXYGEN%g
  s%@AUTOCONF@%$AUTOCONF%g
+diff --git a/js/src/configure b/js/src/configure
+index 61bcf29..e3c7a6b 100755
+--- a/js/src/configure
++++ b/js/src/configure
+@@ -14190,6 +14190,21 @@ MDDEPDIR='.deps'
+ 
+ 
+ 
++if test "$GNU_CC"; then
++    
++    GCC_VERSION_FULL=`echo "$CXX_VERSION" | $PERL -pe 's/^.*gcc version ([^ ]*).*/$1/'`
++    GCC_VERSION=`echo "$GCC_VERSION_FULL" | $PERL -pe '(split(/\./))[0]>=4&&s/(^\d*\.\d*).*/$1/;'`
++    
++
++    GCC_MAJOR_VERSION=`echo ${GCC_VERSION} | $AWK -F\. '{ print $1 }'`
++    GCC_MINOR_VERSION=`echo ${GCC_VERSION} | $AWK -F\. '{ print $2 }'`
++
++        if test "$GCC_MAJOR_VERSION" -eq "4" -a "$GCC_MINOR_VERSION" -lt "5" ; then
++        CFLAGS="$CFLAGS -fno-strict-aliasing"
++        CXXFLAGS="$CXXFLAGS -fno-strict-aliasing"
++    fi
++fi
++
+ # Check whether --enable-readline or --disable-readline was given.
+ if test "${enable_readline+set}" = set; then
+   enableval="$enable_readline"
+@@ -14218,7 +14233,7 @@ esac
+ if test -z "$SKIP_LIBRARY_CHECKS" -a -z "$NO_EDITLINE"; then
+   if test -n "$JS_WANT_READLINE"; then
+     echo $ac_n "checking for readline in -lreadline""... $ac_c" 1>&6
+-echo "configure:14222: checking for readline in -lreadline" >&5
++echo "configure:14237: checking for readline in -lreadline" >&5
+ ac_lib_var=`echo readline'_'readline | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+@@ -14226,7 +14241,7 @@ else
+   ac_save_LIBS="$LIBS"
+ LIBS="-lreadline  $LIBS"
+ cat > conftest.$ac_ext <<EOF
+-#line 14230 "configure"
++#line 14245 "configure"
+ #include "confdefs.h"
+ /* Override any gcc2 internal prototype to avoid an error.  */
+ /* We use char because int might match the return type of a gcc2
+@@ -14237,7 +14252,7 @@ int main() {
+ readline()
+ ; return 0; }
+ EOF
+-if { (eval echo configure:14241: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:14256: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_lib_$ac_lib_var=yes"
+ else
+@@ -14465,9 +14480,9 @@ EOF
+ 
+ 
+ echo $ac_n "checking for posix_fallocate""... $ac_c" 1>&6
+-echo "configure:14469: checking for posix_fallocate" >&5
++echo "configure:14484: checking for posix_fallocate" >&5
+ cat > conftest.$ac_ext <<EOF
+-#line 14471 "configure"
++#line 14486 "configure"
+ #include "confdefs.h"
+ #define _XOPEN_SOURCE 600
+   #include <fcntl.h>
+@@ -14475,7 +14490,7 @@ int main() {
+ posix_fallocate(0, 0, 0);
+ ; return 0; }
+ EOF
+-if { (eval echo configure:14479: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:14494: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   ac_cv___posix_fallocate=true
+ else
+@@ -14501,7 +14516,7 @@ if test "$MOZ_X11"; then
+                 _SAVE_CFLAGS=$CFLAGS
+     CFLAGS="$CFLAGS $XCFLAGS"
+     cat > conftest.$ac_ext <<EOF
+-#line 14505 "configure"
++#line 14520 "configure"
+ #include "confdefs.h"
+ 
+         #include <stdio.h>
+@@ -14519,7 +14534,7 @@ int main() {
+     
+ ; return 0; }
+ EOF
+-if { (eval echo configure:14523: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
++if { (eval echo configure:14538: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+   :
+ else
+   echo "configure: failed program was:" >&5
+@@ -14610,12 +14625,12 @@ fi
+ for ac_func in setlocale
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:14614: checking for $ac_func" >&5
++echo "configure:14629: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 14619 "configure"
++#line 14634 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -14638,7 +14653,7 @@ $ac_func();
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:14642: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:14657: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
+@@ -14665,12 +14680,12 @@ done
+ for ac_func in localeconv
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:14669: checking for $ac_func" >&5
++echo "configure:14684: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 14674 "configure"
++#line 14689 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -14693,7 +14708,7 @@ $ac_func();
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:14697: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:14712: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
