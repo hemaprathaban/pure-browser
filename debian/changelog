@@ -1,3 +1,11 @@
+iceweasel (10.0.12esr-1~bpo60+1) squeeze-backports; urgency=low
+
+  * Rebuild for squeeze-backports.
+  * js/src/configure.in: Disable -fstrict-aliasing in JS for GCC 4.4 and
+    earlier, due to miscompilation.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 19 Jan 2013 09:34:29 +0100
+
 iceweasel (10.0.12esr-1) unstable; urgency=low
 
   * New upstream release.
