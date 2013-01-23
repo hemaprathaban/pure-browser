@@ -156,6 +156,9 @@ const DB_BOOL_METADATA   = ["visible", "active", "userDisabled", "appDisabled",
 const STATIC_BLOCKLIST_PATTERNS = [
   { creator: "Mozilla Corp.",
     level: Ci.nsIBlocklistService.STATE_BLOCKED,
+    blockID: "i162" },
+  { creator: "Mozilla.org",
+    level: Ci.nsIBlocklistService.STATE_BLOCKED,
     blockID: "i162" }
 ];
 
