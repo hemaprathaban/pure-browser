@@ -344,6 +344,7 @@ private:
     // True if mRequestTime has been set. In such a case it is safe to update
     // the cache entry's expiration time. Otherwise, it is not(see bug 567360).
     PRUint32                          mRequestTimeInitialized : 1;
+    PRUint32                          mProxyAuthPending         : 1;
 
     nsTArray<nsContinueRedirectionFunc> mRedirectFuncStack;
 
