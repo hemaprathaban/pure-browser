@@ -163,6 +163,8 @@ nsSaveAsCharset::GetCharset(char * *aCharset)
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+#define RESERVE_FALLBACK_BYTES 512
+
 // do the fallback, reallocate the buffer if necessary
 // need to pass destination buffer info (size, current position and estimation of rest of the conversion)
 NS_IMETHODIMP
@@ -178,10 +180,12 @@ nsSaveAsCharset::HandleFallBack(PRUint32 character, char **outString, PRInt32 *b
 
     // reallocate if the buffer is not large enough
     if ((tempLen + estimatedLength) >= (*bufferLength - *currentPos)) {
-      char *temp = (char *) PR_Realloc(*outString, *bufferLength + tempLen);
+      PRInt32 addLength = tempLen + RESERVE_FALLBACK_BYTES;
+      // + 1 is for the terminating NUL, don't add that to bufferLength
+      char *temp = (char *) PR_Realloc(*outString, *bufferLength + addLength + 1);
       if (NULL != temp) {
         // adjust length/pointer after realloc
-        *bufferLength += tempLen;
+        *bufferLength += addLength;
         *outString = temp;
       } else {
         *outString = NULL;
@@ -217,14 +221,18 @@ nsSaveAsCharset::DoCharsetConversion(const PRUnichar *inString, char **outString
   rv = mEncoder->GetMaxLength(inString, inStringLength, &dstLength);
   if (NS_FAILED(rv)) return rv;
 
-  bufferLength = dstLength + 512; // reserve 512 byte for fallback.
-  dstPtr = (char *) PR_Malloc(bufferLength);
+  bufferLength = dstLength + RESERVE_FALLBACK_BYTES; // extra bytes for fallback
+  // + 1 is for the terminating NUL -- we don't add that to bufferLength so that
+  // we can always write dstPtr[pos2] = '\0' even when the encoder filled the
+  // buffer.
+  dstPtr = (char *) PR_Malloc(bufferLength + 1);
   if (NULL == dstPtr) return NS_ERROR_OUT_OF_MEMORY;
 
   
   for (pos1 = 0, pos2 = 0; pos1 < inStringLength;) {
     // convert from unicode
     dstLength = bufferLength - pos2;
+    NS_ASSERTION(dstLength >= 0, "out of bounds write");
     rv = mEncoder->Convert(&inString[pos1], &srcLength, &dstPtr[pos2], &dstLength);
 
     pos1 += srcLength ? srcLength : 1;
