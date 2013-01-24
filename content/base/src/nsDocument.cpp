@@ -1719,8 +1719,28 @@ NS_INTERFACE_MAP_END
 
 
 NS_IMPL_CYCLE_COLLECTING_ADDREF(nsDocument)
-NS_IMPL_CYCLE_COLLECTING_RELEASE_WITH_DESTROY(nsDocument, 
-                                              nsNodeUtils::LastRelease(this))
+
+NS_IMETHODIMP_(nsrefcnt)
+nsDocument::Release()
+{
+  NS_PRECONDITION(0 != mRefCnt, "dup release");
+  NS_ASSERT_OWNINGTHREAD_AND_NOT_CCTHREAD(nsDocument);
+  nsISupports* base = NS_CYCLE_COLLECTION_CLASSNAME(nsDocument)::Upcast(this);
+  nsrefcnt count = mRefCnt.decr(base);
+  NS_LOG_RELEASE(this, count, "nsDocument");
+  if (count == 0) {
+    if (mStackRefCnt && !mNeedsReleaseAfterStackRefCntRelease) {
+      mNeedsReleaseAfterStackRefCntRelease = true;
+      NS_ADDREF_THIS();
+      return mRefCnt.get();
+    }
+    NS_ASSERT_OWNINGTHREAD(nsDocument);
+    mRefCnt.stabilizeForDeletion();
+    nsNodeUtils::LastRelease(this);
+    return 0;
+  }
+  return count;
+}
 
 static PLDHashOperator
 SubDocTraverser(PLDHashTable *table, PLDHashEntryHdr *hdr, PRUint32 number,
@@ -6239,6 +6259,8 @@ nsDocument::CreateEvent(const nsAString& aEventType, nsIDOMEvent** aReturn)
 void
 nsDocument::FlushPendingNotifications(mozFlushType aType)
 {
+  nsDocumentOnStack dos(this);
+
   if ((!IsHTML() || aType > Flush_ContentAndNotify) &&
       (mParser || mWeakSink)) {
     nsCOMPtr<nsIContentSink> sink;

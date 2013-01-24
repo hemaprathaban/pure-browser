@@ -124,6 +124,7 @@ class nsXMLEventsManager;
 class nsHTMLStyleSheet;
 class nsHTMLCSSStyleSheet;
 class nsDOMNavigationTiming;
+class nsDocumentOnStack;
 
 /**
  * Right now our identifier map entries contain information for 'name'
@@ -972,6 +973,20 @@ public:
 
 protected:
   friend class nsNodeUtils;
+  friend class nsDocumentOnStack;
+
+  void IncreaseStackRefCnt()
+  {
+    ++mStackRefCnt;
+  }
+
+  void DecreaseStackRefCnt()
+  {
+    if (--mStackRefCnt == 0 && mNeedsReleaseAfterStackRefCntRelease) {
+      mNeedsReleaseAfterStackRefCntRelease = false;
+      NS_RELEASE_THIS();
+    }
+  }
 
   // Returns true if a request for DOM full-screen is currently enabled in
   // this document. This returns true if there are no windowed plugins in this
@@ -1273,10 +1288,28 @@ private:
 
   VisibilityState mVisibilityState;
 
+  nsrefcnt mStackRefCnt;
+  bool mNeedsReleaseAfterStackRefCntRelease;
+
 #ifdef DEBUG
 protected:
   bool mWillReparent;
 #endif
+};
+
+class nsDocumentOnStack
+{
+public:
+  nsDocumentOnStack(nsDocument* aDoc) : mDoc(aDoc)
+  {
+    mDoc->IncreaseStackRefCnt();
+  }
+  ~nsDocumentOnStack()
+  {
+    mDoc->DecreaseStackRefCnt();
+  }
+private:
+  nsDocument* mDoc;
 };
 
 #define NS_DOCUMENT_INTERFACE_TABLE_BEGIN(_class)                             \
