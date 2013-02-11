@@ -32,7 +32,7 @@ js::Nursery::enable()
 
     fallbackBitmap.clear(false);
 
-    void *heap = MapAlignedPages(NurserySize, Alignment);
+    void *heap = MapAlignedPages(runtime(), NurserySize, Alignment);
     if (!heap)
         return false;
 
@@ -54,7 +54,7 @@ js::Nursery::disable()
 
     hugeSlots.finish();
     JS_ASSERT(start());
-    UnmapPages((void *)start(), NurserySize);
+    UnmapPages(runtime(), (void *)start(), NurserySize);
     runtime()->gcNurseryStart_ = runtime()->gcNurseryEnd_ = position_ = 0;
 }
 
