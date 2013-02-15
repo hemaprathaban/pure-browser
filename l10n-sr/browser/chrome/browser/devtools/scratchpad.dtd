@@ -1,12 +1,6 @@
 <!-- LOCALIZATION NOTE : FILE This file contains the Scratchpad window strings -->
 <!-- LOCALIZATION NOTE : FILE Do not translate commandkeys -->
 
-<!-- LOCALIZATION NOTE : FILE The correct localization of this file might be to
-  - keep it in English, or another language commonly spoken among web developers.
-  - You want to make that choice consistent across the developer tools.
-  - A good criteria is the language in which you'd find the best
-  - documentation on web development on the web. -->
-
 <!-- LOCALIZATION NOTE (scratchpad.title):
   -  The Scratchpad is intended to provide a simple text editor for creating
   -  and evaluating bits of JavaScript code for the purposes of function
@@ -19,41 +13,65 @@
 <!ENTITY window.title                 "Записник">
 
 <!ENTITY fileMenu.label               "Датотека">
-<!ENTITY fileMenu.accesskey           "F">
+<!ENTITY fileMenu.accesskey           "Д">
 
 <!ENTITY newWindowCmd.label           "Нови прозор">
-<!ENTITY newWindowCmd.accesskey       "N">
+<!ENTITY newWindowCmd.accesskey       "Н">
 <!ENTITY newWindowCmd.commandkey      "n">
 
 <!ENTITY openFileCmd.label            "Отвори датотеку…">
-<!ENTITY openFileCmd.accesskey        "O">
+<!ENTITY openFileCmd.accesskey        "О">
 <!ENTITY openFileCmd.commandkey       "o">
 
 <!ENTITY saveFileCmd.label            "Сачувај">
-<!ENTITY saveFileCmd.accesskey        "S">
+<!ENTITY saveFileCmd.accesskey        "С">
 <!ENTITY saveFileCmd.commandkey       "s">
 
 <!ENTITY saveFileAsCmd.label          "Сачувај као…">
-<!ENTITY saveFileAsCmd.accesskey      "A">
+<!ENTITY saveFileAsCmd.accesskey      "к">
 
 <!ENTITY closeCmd.label               "Затвори">
-<!ENTITY closeCmd.key                 "W">
-<!ENTITY closeCmd.accesskey           "C">
+<!ENTITY closeCmd.key                 "w">
+<!ENTITY closeCmd.accesskey           "З">
 
 <!ENTITY editMenu.label               "Уређивање">
-<!ENTITY editMenu.accesskey           "E">
+<!ENTITY editMenu.accesskey           "р">
+
+<!ENTITY undoCmd.label                "Опозови">
+<!ENTITY undoCmd.key                  "z">
+<!ENTITY undoCmd.accesskey            "О">
+
+<!ENTITY redoCmd.label                "Понови">
+<!ENTITY redoCmd.key                  "y">
+<!ENTITY redoCmd.accesskey            "П">
+
+<!ENTITY cutCmd.label                 "Исеци">
+<!ENTITY cutCmd.key                   "x">
+<!ENTITY cutCmd.accesskey             "с">
+
+<!ENTITY copyCmd.label                "Копирај">
+<!ENTITY copyCmd.key                  "C">
+<!ENTITY copyCmd.accesskey            "К">
+
+<!ENTITY pasteCmd.label               "Убаци">
+<!ENTITY pasteCmd.key                 "v">
+<!ENTITY pasteCmd.accesskey           "У">
+
+<!ENTITY selectAllCmd.label           "Изабери све">
+<!ENTITY selectAllCmd.key             "a">
+<!ENTITY selectAllCmd.accesskey       "с">
 
 <!ENTITY run.label                    "Покрени">
-<!ENTITY run.accesskey                "R">
+<!ENTITY run.accesskey                "П">
 <!ENTITY run.key                      "r">
 
 <!ENTITY inspect.label                "Испитај">
-<!ENTITY inspect.accesskey            "I">
+<!ENTITY inspect.accesskey            "с">
 <!ENTITY inspect.key                  "i">
 
 <!ENTITY display.label                "Приказ">
-<!ENTITY display.accesskey            "D">
-<!ENTITY display.key                  "l">
+<!ENTITY display.accesskey            "р">
+<!ENTITY display.key                  "i">
 
 <!-- LOCALIZATION NOTE (environmentMenu.label, accesskey): This menu item was
   -  renamed from "Context" to avoid confusion with the right-click context
@@ -62,11 +80,11 @@
   -  (browser).
   -->
 <!ENTITY environmentMenu.label        "Окружење">
-<!ENTITY environmentMenu.accesskey    "N">
+<!ENTITY environmentMenu.accesskey    "к">
 
 
 <!ENTITY contentContext.label         "Садржај">
-<!ENTITY contentContext.accesskey     "C">
+<!ENTITY contentContext.accesskey     "д">
 
 <!-- LOCALIZATION NOTE (browserContext.label, accesskey): This menu item is used
   -  to select an execution environment for the browser window itself as opposed
@@ -75,28 +93,16 @@
   -  was called "Chrome".
   -->
 <!ENTITY browserContext.label         "Читач">
-<!ENTITY browserContext.accesskey     "B">
-
-<!-- LOCALIZATION NOTE some localizations of Windows (ex:french, german) use "?"
-  -  for the help button in the menubar but Gnome does not.
-  -->
-<!ENTITY helpMenu.label               "Помоћ">
-<!ENTITY helpMenu.accesskey           "H">
-<!ENTITY helpMenuWin.label            "Помоћ">
-<!ENTITY helpMenuWin.accesskey        "H">
-
-<!ENTITY documentationLink.label      "Помоћ за бележницу на MDN">
-<!ENTITY documentationLink.accesskey  "Б">
-
+<!ENTITY browserContext.accesskey     "Ч">
 
 <!-- LOCALIZATION NOTE (resetContext2.label): This command allows the developer
   -  to reset/clear the global object of the environment where the code executes.
   -->
 <!ENTITY resetContext2.label          "Ресет променљивих">
-<!ENTITY resetContext2.accesskey      "T">
+<!ENTITY resetContext2.accesskey      "Р">
 
 <!ENTITY executeMenu.label            "Изврши">
-<!ENTITY executeMenu.accesskey        "X">
+<!ENTITY executeMenu.accesskey        "з">
 
 <!-- LOCALIZATION NOTE (errorConsoleCmd.commandkey): This command key launches
   -  the browser Error Console, the key should be identical to the property of
