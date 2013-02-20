@@ -168,7 +168,7 @@ index c0c6a56..dc57839 100644
  
  
 diff --git a/services/healthreport/tests/xpcshell/test_provider_appinfo.js b/services/healthreport/tests/xpcshell/test_provider_appinfo.js
-index b74553f..6c03e69 100644
+index 5baba7a..0f10c70 100644
 --- a/services/healthreport/tests/xpcshell/test_provider_appinfo.js
 +++ b/services/healthreport/tests/xpcshell/test_provider_appinfo.js
 @@ -6,8 +6,8 @@
@@ -183,7 +183,7 @@ index b74553f..6c03e69 100644
  function run_test() {
    let appInfo = {
 diff --git a/services/healthreport/tests/xpcshell/test_provider_sysinfo.js b/services/healthreport/tests/xpcshell/test_provider_sysinfo.js
-index 7fd82b0..b0f4e1c 100644
+index 921a730..66a77fb 100644
 --- a/services/healthreport/tests/xpcshell/test_provider_sysinfo.js
 +++ b/services/healthreport/tests/xpcshell/test_provider_sysinfo.js
 @@ -6,8 +6,8 @@
@@ -237,7 +237,7 @@ index e597a92..41e1eda 100644
    }
  
 diff --git a/services/metrics/tests/xpcshell/test_metrics_collection_result.js b/services/metrics/tests/xpcshell/test_metrics_collection_result.js
-index 5cfd182..26024a5 100644
+index 1331e16..dcbf9ef 100644
 --- a/services/metrics/tests/xpcshell/test_metrics_collection_result.js
 +++ b/services/metrics/tests/xpcshell/test_metrics_collection_result.js
 @@ -5,7 +5,7 @@
@@ -250,7 +250,7 @@ index 5cfd182..26024a5 100644
  
  
 diff --git a/services/metrics/tests/xpcshell/test_metrics_collector.js b/services/metrics/tests/xpcshell/test_metrics_collector.js
-index 8851288..b8f8448 100644
+index 9d615d9..6a571eb 100644
 --- a/services/metrics/tests/xpcshell/test_metrics_collector.js
 +++ b/services/metrics/tests/xpcshell/test_metrics_collector.js
 @@ -5,8 +5,8 @@
@@ -278,10 +278,10 @@ index 2a969ae..75d0e5f 100644
  
  
 diff --git a/testing/marionette/components/marionettecomponent.js b/testing/marionette/components/marionettecomponent.js
-index 6246f82..e63739a 100644
+index 32e54f6..60a7673 100644
 --- a/testing/marionette/components/marionettecomponent.js
 +++ b/testing/marionette/components/marionettecomponent.js
-@@ -18,7 +18,7 @@ const ServerSocket = CC("@mozilla.org/network/server-socket;1",
+@@ -19,7 +19,7 @@ const ServerSocket = CC("@mozilla.org/network/server-socket;1",
  Cu.import("resource://gre/modules/XPCOMUtils.jsm");
  Cu.import("resource://gre/modules/Services.jsm");
  Cu.import("resource://gre/modules/FileUtils.jsm");
@@ -291,7 +291,7 @@ index 6246f82..e63739a 100644
  function MarionetteComponent() {
    this._loaded = false;
 diff --git a/testing/marionette/marionette-actors.js b/testing/marionette/marionette-actors.js
-index f05e79f..6c6b2ca 100644
+index ff62dac..01ffdc1 100644
 --- a/testing/marionette/marionette-actors.js
 +++ b/testing/marionette/marionette-actors.js
 @@ -37,7 +37,7 @@ Services.prefs.setBoolPref("marionette.contentListener", false);

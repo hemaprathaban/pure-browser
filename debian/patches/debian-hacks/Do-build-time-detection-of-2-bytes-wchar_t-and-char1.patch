@@ -11,7 +11,7 @@ Closes: #577677
  3 files changed, 24 insertions(+)
 
 diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
-index 12ae59e..08b5ebd 100644
+index 5a404ca..f23b218 100644
 --- a/xpcom/base/nscore.h
 +++ b/xpcom/base/nscore.h
 @@ -336,6 +336,28 @@ typedef uint32_t nsrefcnt;
@@ -44,7 +44,7 @@ index 12ae59e..08b5ebd 100644
  #define __PRUNICHAR__
    /* For now, don't use wchar_t on Unix because it breaks the Netscape
 diff --git a/xpcom/glue/nsStringAPI.h b/xpcom/glue/nsStringAPI.h
-index 8e0b847..9fd5fdc 100644
+index 658f080..c848d67 100644
 --- a/xpcom/glue/nsStringAPI.h
 +++ b/xpcom/glue/nsStringAPI.h
 @@ -1092,6 +1092,7 @@ private:
@@ -56,14 +56,14 @@ index 8e0b847..9fd5fdc 100644
    #define NS_MULTILINE_LITERAL_STRING(s)          NS_ConvertASCIItoUTF16(s, uint32_t(sizeof(s)-1))
    #define NS_MULTILINE_LITERAL_STRING_INIT(n,s)   n(s, uint32_t(sizeof(s)-1))
 diff --git a/xpcom/string/public/nsLiteralString.h b/xpcom/string/public/nsLiteralString.h
-index 84a3381..301227f 100644
+index 99396e1..832d27f 100644
 --- a/xpcom/string/public/nsLiteralString.h
 +++ b/xpcom/string/public/nsLiteralString.h
-@@ -58,6 +58,7 @@ literal_string( const nsACString::char_type* aPtr, uint32_t aLength )
-   #define NS_NAMED_MULTILINE_LITERAL_STRING(n,s)  const nsDependentString n(reinterpret_cast<const nsAString::char_type*>(s), uint32_t((sizeof(s)/2)-1))
+@@ -87,6 +87,7 @@ inline uint32_t LiteralWStringLength(const wchar_t (&c)[n])
+   #define NS_NAMED_MULTILINE_LITERAL_STRING(n,s)  const nsDependentString n(reinterpret_cast<const nsAString::char_type*>(s), mozilla::internal::LiteralWStringLength(s))
    typedef nsDependentString nsLiteralString;
  #else
 +  #warning Using conversions for literal strings. Please consider using 2-bytes wchar_t or char16_t instead
    #define NS_LL(s)                                s
-   #define NS_MULTILINE_LITERAL_STRING(s)          NS_ConvertASCIItoUTF16(s, uint32_t(sizeof(s)-1))
-   #define NS_MULTILINE_LITERAL_STRING_INIT(n,s)   n(s, uint32_t(sizeof(s)-1))
+   #define NS_MULTILINE_LITERAL_STRING(s)          NS_ConvertASCIItoUTF16(s, mozilla::internal::LiteralStringLength(s))
+   #define NS_MULTILINE_LITERAL_STRING_INIT(n,s)   n(s, mozilla::internal::LiteralStringLength(s))

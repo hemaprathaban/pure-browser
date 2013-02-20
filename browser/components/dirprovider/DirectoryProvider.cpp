@@ -144,7 +144,7 @@ AppendDistroSearchDirs(nsIProperties* aDirSvc, nsCOMArray<nsIFile> &array)
   if (!appInfo)
     return;
 
-  nsCAutoString name;
+  nsAutoCString name;
   rv = appInfo->GetName(name);
   if (NS_FAILED(rv))
     return;

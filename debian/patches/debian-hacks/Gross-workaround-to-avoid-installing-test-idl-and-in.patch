@@ -10,7 +10,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=542749
  2 files changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/config/rules.mk b/config/rules.mk
-index ae58053..5ead356 100644
+index 07064c7..ccfec7d 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
 @@ -34,6 +34,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
@@ -31,7 +31,7 @@ index ae58053..5ead356 100644
  REPORT_BUILD = $(info $(notdir $<))
  
  ifeq ($(OS_ARCH),OS2)
-@@ -1294,7 +1305,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
+@@ -1305,7 +1316,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
  
  ifndef NO_DIST_INSTALL
  XPIDL_HEADERS_FILES := $(patsubst %.idl,$(XPIDL_GEN_DIR)/%.h, $(XPIDLSRCS))
@@ -41,7 +41,7 @@ index ae58053..5ead356 100644
  INSTALL_TARGETS += XPIDL_HEADERS
  
 diff --git a/js/src/config/rules.mk b/js/src/config/rules.mk
-index ae58053..5ead356 100644
+index 07064c7..ccfec7d 100644
 --- a/js/src/config/rules.mk
 +++ b/js/src/config/rules.mk
 @@ -34,6 +34,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
@@ -62,7 +62,7 @@ index ae58053..5ead356 100644
  REPORT_BUILD = $(info $(notdir $<))
  
  ifeq ($(OS_ARCH),OS2)
-@@ -1294,7 +1305,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
+@@ -1305,7 +1316,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
  
  ifndef NO_DIST_INSTALL
  XPIDL_HEADERS_FILES := $(patsubst %.idl,$(XPIDL_GEN_DIR)/%.h, $(XPIDLSRCS))
