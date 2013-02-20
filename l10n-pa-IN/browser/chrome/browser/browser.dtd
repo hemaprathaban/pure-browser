@@ -76,13 +76,6 @@ can reach it easily. -->
 <!ENTITY pageInfoCmd.label "ਪੇਜ਼ ਜਾਣਕਾਰੀ">
 <!ENTITY pageInfoCmd.accesskey "I">
 <!ENTITY pageInfoCmd.commandkey "i">
-
-<!-- LOCALIZATION NOTE (enterFullScreenCmd.label, exitFullScreenCmd.label):
-These should match what Safari and other Apple applications use on OS X Lion. -->
-<!ENTITY enterFullScreenCmd.label "ਪੂਰੀ ਸਕਰੀਨ ਉੱਤੇ ਜਾਓ">
-<!ENTITY enterFullScreenCmd.accesskey "F">
-<!ENTITY exitFullScreenCmd.label "ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ">
-<!ENTITY exitFullScreenCmd.accesskey "F">
 <!ENTITY fullScreenCmd.label "ਪੂਰੀ ਸਕਰੀਨ ਉੱਤੇ">
 <!ENTITY fullScreenCmd.accesskey "F">
 <!ENTITY fullScreenCmd.macCommandKey "f">
@@ -96,12 +89,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY fullScreenAutohide.accesskey "H">
 <!ENTITY fullScreenExit.label "ਪੂਰੀ ਸਕਰੀਨ ਮੋਡ ਬੰਦ ਕਰੋ">
 <!ENTITY fullScreenExit.accesskey "F">
-<!ENTITY fullscreenAllowButton.label "ਮਨਜ਼ੂਰ">
-<!ENTITY fullscreenExitButton.label "ਇਨਕਾਰ">
-<!ENTITY fullscreenApproval.value "ਪੂਰੀ ਸਕਰੀਨ ਮਨਜ਼ੂਰ?">
-<!ENTITY fullscreenExitHint.value "ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ ਆਉਣ ਲਈ ਕਿਸੇ ਵੀ ਸਮੇਂ ESC ਦੱਬੋ।">
-<!ENTITY leaveDOMFullScreen.label "ਪੂਰੀ ਸਕਰੀਨ ਬੰਦ ਕਰੋ">
-<!ENTITY leaveDOMFullScreen.accesskey "u">
 
 <!ENTITY closeWindow.label "ਵਿੰਡੋ ਬੰਦ ਕਰੋ">
 <!ENTITY closeWindow.accesskey "d">
@@ -110,12 +97,11 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey "B">
 <!ENTITY bookmarkThisPageCmd.label "ਇਹ ਪੇਜ਼ ਬੁੱਕਮਾਰਕ ਕਰੋ">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
-<!ENTITY sharePageCmd.commandkey "l">
 <!ENTITY subscribeToPageMenupopup.label "ਇਹ ਪੇਜ਼ ਲਈ ਮੈਂਬਰ ਬਣੋ">
 <!ENTITY subscribeToPageMenuitem.label "…ਪੇਜ਼ ਲਈ ਮੈਂਬਰ ਬਣੋ">
 <!ENTITY addCurPagesCmd.label "…ਸਭ ਟੈਬਾਂ ਲਈ ਬੁੱਕਮਾਰਕ ਬਣਾਓ">
 <!ENTITY showAllBookmarks2.label "ਸਭ ਬੁੱਕਮਾਰਕ ਵੇਖੋ">
-<!ENTITY unsortedBookmarksCmd.label "ਗ਼ੈਰ-ਲੜੀਬੱਧ ਬੁੱਕਮਾਰਕਗ">
+<!ENTITY unsortedBookmarksCmd.label "Unsorted Bookmarks">
 <!ENTITY bookmarksToolbarChevron.tooltip "ਹੋਰ ਬੁੱਕਮਾਰਕ ਵੇਖੋ">
 
 <!ENTITY backCmd.label                "ਪਿੱਛੇ">
@@ -124,8 +110,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY forwardCmd.label             "ਅੱਗੇ">
 <!ENTITY forwardCmd.accesskey         "F">
 <!ENTITY forwardButton.tooltip        "ਇੱਕ ਪੇਜ਼ ਅੱਗੇ ਜਾਓ">
-<!ENTITY backForwardButtonMenu.tooltip "ਅਤੀਤ ਵੇਖਣ ਲਈ ਸੱਜਾ ਕਲਿੱਕ ਕਰੋ ਜਾਂ ਹੇਠਾਂ ਖਿੱਚੋ">
-<!ENTITY backForwardButtonMenuMac.tooltip "ਅਤੀਤ ਵੇਖਣ ਲਈ ਹੇਠਾਂ ਖਿੱਚੋ">
+<!ENTITY backForwardButtonMenu.tooltip "Right-click or pull down to show history">
+<!ENTITY backForwardButtonMenuMac.tooltip "Pull down to show history">
 <!ENTITY reloadCmd.label              "ਮੁੜ ਲੋਡ">
 <!ENTITY reloadCmd.accesskey          "R">
 <!ENTITY reloadButton.tooltip         "ਮੌਜੂਦਾ ਪੇਜ਼ ਮੁੜ ਲੋਡ ਕਰੋ">
@@ -213,10 +199,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY inspectContextMenu.label     "ਐਲੀਮੈਂਟ ਜਾਂਚ">
 <!ENTITY inspectContextMenu.accesskey "Q">
 
-<!ENTITY responsiveDesignTool.label   "Responsive Design View">
-<!ENTITY responsiveDesignTool.accesskey "R">
-<!ENTITY responsiveDesignTool.commandkey "M">
-
 <!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
   -  in the Tools menu. See bug 653093.
   -  The Scratchpad is intended to provide a simple text editor for creating
@@ -232,52 +214,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.keycode           "VK_F4">
 <!ENTITY scratchpad.keytext           "F4">
 
-<!ENTITY inspectCloseButton.tooltiptext "ਇੰਸਪੈਕਟਰ ਬੰਦ ਕਰੋ">
+<!ENTITY inspectPanelTitle.label      "HTML">
+<!ENTITY inspectButton.label          "ਜਾਂਚ">
+<!ENTITY inspectButton.accesskey      "I">
 
-<!ENTITY devToolbarCloseButton.tooltiptext "ਡਿਵੈਲਪਰ ਟੂਲਬਾਰ ਬੰਦ ਕਰੋ">
-<!ENTITY devToolbarMenu.label              "ਡਿਵੈਲਪਰ ਮੋਡ">
-<!ENTITY devToolbarMenu.accesskey          "v">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-
-<!ENTITY webConsoleButton.label "Web Console">
-<!ENTITY inspectorButton.label "Inspector">
-
-<!ENTITY inspectorHTMLCopyInner.label       "ਅੰਦਰੂਨੀ HTML ਕਾਪੀ ਕਰੋ">
-<!ENTITY inspectorHTMLCopyInner.accesskey   "I">
-
-<!ENTITY inspectorHTMLCopyOuter.label       "ਬਾਹਰੀ HTML ਕਾਪੀ ਕਰੋ">
-<!ENTITY inspectorHTMLCopyOuter.accesskey   "O">
-
-<!ENTITY inspectorHTMLDelete.label          "ਨੋਡ ਹਟਾਓ">
-<!ENTITY inspectorHTMLDelete.accesskey      "D">
-
-
-<!-- LOCALIZATION NOTE (inspectOptionButton.*): The menu in the Inspector
-  -  toolbar.  -->
-<!ENTITY inspectOptionButton.tooltiptext    "ਇੰਸਪੈਕਟਰ ਚੋਣਾਂ">
-
-<!-- LOCALIZATION NOTE: These are for the menu in the Inspector Toolbar -->
-<!ENTITY inspectorToggleVeil.label          "ਪੇਜ਼ ਡਿਮ ਕਰੋ">
-<!ENTITY inspectorToggleVeil.accesskey      "D">
-<!ENTITY inspectorToggleInfobar.label       "ਨੋਡ ਜਾਣਕਾਰੀ ਵੇਖਾਓ">
-<!ENTITY inspectorToggleInfobar.accesskey   "S">
-
-<!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
-  -  alternate view for the Inspector, creating a 3D visualization of the
-  -  webpage. -->
-<!ENTITY inspect3DViewButton.label     "3D ਝਲਕ">
-<!ENTITY inspect3DViewButton.accesskey "W">
-
-<!ENTITY inspectStyleButton.label     "ਸਟਾਈਲ">
-<!ENTITY inspectStyleButton.accesskey "S">
-
-<!-- LOCALIZATION NOTE (styleeditor.label): This menu item label appears
-  -  in the Tools menu. -->
-<!ENTITY styleeditor.label            "ਸਟਾਈਲ ਐਡੀਟਰ">
-<!ENTITY styleeditor.accesskey        "y">
-<!ENTITY styleeditor.keycode          "VK_F7">
-<!ENTITY styleeditor.keytext          "F7">
 
 <!ENTITY getMoreDevtoolsCmd.label        "ਹੋਰ ਟੂਲ ਲਵੋ">
 <!ENTITY getMoreDevtoolsCmd.accesskey    "M">
@@ -442,8 +382,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarkThisFrameCmd.accesskey  "m">
 
 
-<!ENTITY emailPageCmd.label           "…ਲਿੰਕ ਈਮੇਲ ਕਰੋ">
-<!ENTITY emailPageCmd.accesskey       "E">
+<!ENTITY sendPageCmd.label            "…ਲਿੰਕ ਭੇਜੋ">
+<!ENTITY sendPageCmd.accesskey        "e">
 <!ENTITY savePageCmd.label            "…ਪੇਜ਼ ਇੰਝ ਸੰਭਾਲੋ">
 <!ENTITY savePageCmd.accesskey        "A">
 <!-- alternate for content area context menu -->
@@ -455,20 +395,23 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY printFrameCmd.accesskey      "P">
 <!ENTITY saveLinkCmd.label            "…ਲਿੰਕ ਇੰਝ ਸੰਭਾਲੋ">
 <!ENTITY saveLinkCmd.accesskey        "k">
+<!ENTITY sendLinkCmd.label            "…ਲਿੰਕ ਇੰਝ ਭੇਜੋ"> 
+<!ENTITY sendLinkCmd.accesskey        "d">
 <!ENTITY saveImageCmd.label           "…ਚਿੱਤਰ ਇੰਝ ਸੰਭਾਲੋ">
 <!ENTITY saveImageCmd.accesskey       "v">
 <!ENTITY saveVideoCmd.label           "…ਵਿਡੀਓ ਇੰਝ ਸੰਭਾਲੋ">
 <!ENTITY saveVideoCmd.accesskey       "v">
 <!ENTITY saveAudioCmd.label           "…ਆਡੀਓ ਇੰਝ ਸੰਭਾਲੋ">
 <!ENTITY saveAudioCmd.accesskey       "v">
-<!ENTITY emailImageCmd.label          "…ਚਿੱਤਰ ਈਮੇਲ ਕਰੋ">
-<!ENTITY emailImageCmd.accesskey      "a">
-<!ENTITY emailVideoCmd.label          "…ਵਿਡੀਓ ਈਮੇਲ ਕਰੋ">
-<!ENTITY emailVideoCmd.accesskey      "a">
-<!ENTITY emailAudioCmd.label          "…ਆਡੀਓ ਈਮੇਲ ਕਰੋ">
-<!ENTITY emailAudioCmd.accesskey      "a">
+<!ENTITY sendImageCmd.label           "…ਚਿੱਤਰ ਭੇਜੋ">
+<!ENTITY sendImageCmd.accesskey       "n">
+<!ENTITY sendVideoCmd.label           "…ਵਿਡੀਓ ਭੇਜੋ">
+<!ENTITY sendVideoCmd.accesskey       "n">
+<!ENTITY sendAudioCmd.label           "…ਆਡੀਓ ਭੇਜੋ">
+<!ENTITY sendAudioCmd.accesskey       "n">
 <!ENTITY copyLinkCmd.label            "ਲਿੰਕ ਟਿਕਾਣਾ ਕਾਪੀ ਕਰੋ">
 <!ENTITY copyLinkCmd.accesskey        "a">
+
 <!ENTITY copyImageCmd.label           "ਚਿੱਤਰ ਟਿਕਾਣਾ ਕਾਪੀ ਕਰੋ">
 <!ENTITY copyImageCmd.accesskey       "o">
 <!ENTITY copyImageContentsCmd.label   "ਚਿੱਤਰ ਕਾਪੀ ਕਰੋ">
@@ -498,16 +441,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY mediaHideControls.accesskey "C">
 <!ENTITY videoFullScreen.label       "ਪੂਰੀ ਸਕਰੀਨ">
 <!ENTITY videoFullScreen.accesskey   "F">
-<!ENTITY videoSaveImage.label        "ਸਨੈਪਸ਼ਾਟ ਇੰਝ ਸੰਭਾਲੋ…">
-<!ENTITY videoSaveImage.accesskey    "S">
-<!-- LOCALIZATION NOTE: The access keys for "Show Statistics" and
-"Hide Statistics" are the same because the two context-menu
-items are mutually exclusive. -->
-<!ENTITY videoShowStats.label        "ਅੰਕੜੇ ਵੇਖਾਓ">
-<!ENTITY videoShowStats.accesskey    "t">
-<!ENTITY videoHideStats.label        "ਅੰਕੜੇ ਓਹਲੇ ਕਰੋ">
-<!ENTITY videoHideStats.accesskey    "t">
-
 
 <!-- LOCALIZATION NOTE :
 fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey2 and
@@ -543,7 +476,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY cutButton.tooltip              "ਕੱਟੋ">
 <!ENTITY copyButton.tooltip             "ਕਾਪੀ ਕਰੋ">
 <!ENTITY pasteButton.tooltip            "ਚੇਪੋ">
-<!ENTITY fullScreenButton.tooltip       "ਵਿੰਡੋ ਪੂਰੀ ਸਕਰੀਨ'ਚ ਵੇਖੋ">
+<!ENTITY fullScreenButton.tooltip       "ਵਿੰਡੋ ਪੂਰੀ ਸਕਰਨੀ 'ਚ ਵੇਖੋ">
 
 
 <!ENTITY zoomOutButton.tooltip          "ਜ਼ੂਮ ਆਉਟ">
@@ -622,7 +555,7 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity.runBy "ਜੋ ਕਿ ਚਲਾਈ ਜਾ ਰਹੀ ਹੈ">
 
-<!ENTITY identity.moreInfoLinkText "...ਹੋਰ ਜਾਣਕਾਰੀ">
+<!ENTITY identity.moreInfoLinkText "ਹੋਰ ਜਾਣਕਾਰੀ…">
 
 <!ENTITY downloadMonitor2.tooltip "ਡਾਊਨਲੋਡ ਵਿੰਡੋ ਖੋਲ੍ਹਣ ਵਾਸਤੇ ਕਲਿੱਕ ਕਰੋ">
 
@@ -650,20 +583,3 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY addonBarCloseButton.tooltip  "ਐਡ-ਆਨ ਪੱਟੀ ਬੰਦ ਕਰੋ">
 <!ENTITY toggleAddonBarCmd.key        "/">
-
-<!-- LOCALIZATION NOTE (markupButton.arialabel): The markup button is the button
-located in front of the breadcrumbs display in the inspector toolbar. The button
-doesn't display any label, but exposes a label to screen-readers with "aria-label".
--->
-<!ENTITY markupButton.arialabel          "ਮਾਰਕਅੱਪ">
-<!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
-toolbar button -->
-<!ENTITY markupButton.accesskey          "M">
-
-<!ENTITY socialToolbar.title        "Social Toolbar Button">
-<!ENTITY social.notLoggedIn.label   "Not logged in">
-
-<!ENTITY social.sharePopup.undo.label     "ਨਾ-ਸਾਂਝਾ ਕਰੋ">
-<!ENTITY social.sharePopup.undo.accesskey "U">
-<!ENTITY social.sharePopup.ok.label       "ਠੀਕ ਹੈ">
-<!ENTITY social.sharePopup.ok.accesskey   "O">
