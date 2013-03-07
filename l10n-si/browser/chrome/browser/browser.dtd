@@ -79,25 +79,13 @@
 <!ENTITY pageInfoCmd.label "පිටුවේ තොරතුරු">
 <!ENTITY pageInfoCmd.accesskey "I">
 <!ENTITY pageInfoCmd.commandkey "i">
-<!-- LOCALIZATION NOTE (enterFullScreenCmd.label, exitFullScreenCmd.label):
-These should match what Safari and other Apple applications use on OS X Lion. -->
-<!ENTITY enterFullScreenCmd.label "Enter Full Screen">
-<!ENTITY enterFullScreenCmd.accesskey "F">
-<!ENTITY exitFullScreenCmd.label "Exit Full Screen">
-<!ENTITY exitFullScreenCmd.accesskey "F">
 <!ENTITY fullScreenCmd.label "පූර්ණ තිරය">
 <!ENTITY fullScreenCmd.accesskey "F">
-
-<!ENTITY fullscreenAllowButton.label "Allow">
-<!ENTITY fullscreenExitButton.label "Deny">
-<!ENTITY fullscreenApproval.value "Allow fullscreen?">
-<!ENTITY fullscreenExitHint.value "Press ESC at any time to exit fullscreen.">
-<!ENTITY leaveDOMFullScreen.label "Exit Full Screen">
-<!ENTITY leaveDOMFullScreen.accesskey "u">
 
 <!ENTITY fullScreenMinimize.tooltip "හකුළන්න">
 <!ENTITY fullScreenRestore.tooltip "ප්‍රතිස්ථාපනය">
 <!ENTITY fullScreenClose.tooltip "වසන්න">
+<!ENTITY domFullScreenWarning.label "පූර්ණ තිරයෙන් ඉවත්වීමට ESC යතුර ඔබන්න">
 
 <!ENTITY closeWindow.label "කවුළුව වසන්න">
 
@@ -221,12 +209,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY saveVideoCmd.accesskey       "v">
 <!ENTITY saveAudioCmd.label           "ශ්‍රව්‍ය සුරකින අයුර…">
 <!ENTITY saveAudioCmd.accesskey       "v">
-<!ENTITY emailImageCmd.label          "Email Image…">
-<!ENTITY emailImageCmd.accesskey      "a">
-<!ENTITY emailVideoCmd.label          "Email Video…">
-<!ENTITY emailVideoCmd.accesskey      "a">
-<!ENTITY emailAudioCmd.label          "Email Audio…">
-<!ENTITY emailAudioCmd.accesskey      "a">
+<!ENTITY sendVideoCmd.label           "දෘශ්‍ය යවන්න…">
+<!ENTITY sendVideoCmd.accesskey       "n">
+<!ENTITY sendAudioCmd.label           "ශ්‍රව්‍ය යවන්න…">
+<!ENTITY sendAudioCmd.accesskey       "n">
 <!ENTITY viewVideoCmd.label           "දෘශ්‍ය දර්ශනය">
 <!ENTITY viewVideoCmd.accesskey       "I">
 
@@ -297,19 +283,23 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY viewBGImageCmd.accesskey     "w">
 <!ENTITY setDesktopBackgroundCmd.label      "තිරයේ පසුබිමසේ සකසන්න...">
 <!ENTITY setDesktopBackgroundCmd.accesskey  "S">
+<!ENTITY sendPageCmd.label            "වෙබ් ලිපිනය යවන්න...">
+<!ENTITY sendPageCmd.accesskey        "e">
 <!ENTITY savePageCmd.label            "පිටුව සුරකින්න...">
 <!ENTITY savePageCmd.accesskey        "A">
 <!-- alternate for content area context menu -->
 <!ENTITY savePageCmd.accesskey2       "P">
-<!ENTITY emailPageCmd.label           "Email Link…">
-<!ENTITY emailPageCmd.accesskey       "E">
 <!ENTITY savePageCmd.commandkey       "s">
 <!ENTITY saveFrameCmd.label           "රාමුව සුරකින අයුර...">
 <!ENTITY saveFrameCmd.accesskey       "A">
 <!ENTITY saveLinkCmd.label            "සබැඳුම සුරකින අයුර...">
 <!ENTITY saveLinkCmd.accesskey        "k">
+<!ENTITY sendLinkCmd.label            "සබැඳුම යවන්න..."> 
+<!ENTITY sendLinkCmd.accesskey        "d">
 <!ENTITY saveImageCmd.label           "රූපය සුරකින අයුර...">
 <!ENTITY saveImageCmd.accesskey       "v">
+<!ENTITY sendImageCmd.label           "රූපය යවන්න...">
+<!ENTITY sendImageCmd.accesskey       "n">
 <!ENTITY copyLinkCmd.label            "පුරුකේ ස්ථානය පිටපත් කරන්න">
 <!ENTITY copyLinkCmd.accesskey        "C">
 <!ENTITY copyImageCmd.label           "රූපයෙ ස්ථානය පිටපත් කරන්න">
@@ -391,7 +381,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!-- new bookmarks and history -->
 
-<!ENTITY sharePageCmd.commandkey "l">
+
 <!ENTITY bookmarksToolbarChevron.tooltip "තවත් පිටුසලකුණු පෙන්වන්න">
 <!ENTITY privateBrowsingCmd.start.label         "පෞද්ගලික ගවේෂණය අරඹන්න">
 <!ENTITY privateBrowsingCmd.start.accesskey     "B">
@@ -445,20 +435,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY inspectCloseButton.tooltiptext "පරීක්ෂක වසන්න">
 <!ENTITY inspectStyleButton.label     "මෝස්තරය">
 <!ENTITY inspectStyleButton.accesskey "S">
-
-<!ENTITY responsiveDesignTool.label   "Responsive Design View">
-<!ENTITY responsiveDesignTool.accesskey "R">
-<!ENTITY responsiveDesignTool.commandkey "M">
-
-<!-- LOCALIZATION NOTE (inspectOptionButton.*): The menu in the Inspector
-  -  toolbar.  -->
-<!ENTITY inspectOptionButton.tooltiptext    "Inspector Options">
-
-<!-- LOCALIZATION NOTE: These are for the menu in the Inspector Toolbar -->
-<!ENTITY inspectorToggleVeil.label          "Dim The Page">
-<!ENTITY inspectorToggleVeil.accesskey      "D">
-<!ENTITY inspectorToggleInfobar.label       "Show Node Info">
-<!ENTITY inspectorToggleInfobar.accesskey   "S">
 
 <!ENTITY backForwardItem.title "පසුපසට/ඉදිරියට">
 <!ENTITY historyRestoreLastSession.label "පෙර සැසිය ප්‍රතිස්ථාපනය කරන්න">
@@ -528,9 +504,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY getMoreDevtoolsCmd.label        "තවත් මෙවලම් ලබාගන්න">
 <!ENTITY getMoreDevtoolsCmd.accesskey    "M">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-
 
 <!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
   -  in the Tools menu. See bug 653093.
@@ -546,14 +519,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.accesskey         "s">
 <!ENTITY scratchpad.keycode           "VK_F4">
 <!ENTITY scratchpad.keytext           "F4">
-
-<!ENTITY devToolbarCloseButton.tooltiptext "Close Developer Toolbar">
-<!ENTITY devToolbarMenu.label              "Developer Toolbar">
-<!ENTITY devToolbarMenu.accesskey          "v">
-
-<!ENTITY webConsoleButton.label "Web Console">
-<!ENTITY inspectorButton.label "Inspector">
-
 
 <!ENTITY inspectorHTMLCopyInner.label       "Copy Inner HTML">
 <!ENTITY inspectorHTMLCopyInner.accesskey   "I">
@@ -582,11 +547,4 @@ doesn't display any label, but exposes a label to screen-readers with "aria-labe
 toolbar button -->
 <!ENTITY markupButton.accesskey          "M">
 
-<!ENTITY socialToolbar.title        "Social Toolbar Button">
-<!ENTITY social.notLoggedIn.label   "Not logged in">
-
-<!ENTITY social.sharePopup.undo.label     "Unshare">
-<!ENTITY social.sharePopup.undo.accesskey "U">
-<!ENTITY social.sharePopup.ok.label       "OK">
-<!ENTITY social.sharePopup.ok.accesskey   "O">
 

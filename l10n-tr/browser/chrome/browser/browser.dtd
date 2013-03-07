@@ -115,6 +115,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey "e">
 <!ENTITY bookmarkThisPageCmd.label "Bu sayfayı yer imlerine ekle">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
+<!ENTITY sharePageCmd.commandkey "l">
 <!ENTITY subscribeToPageMenupopup.label "Bu sayfaya abone ol">
 <!ENTITY subscribeToPageMenuitem.label "Bu sayfaya abone ol…">
 <!ENTITY addCurPagesCmd.label "Tüm sekmeleri yer imlerine ekle…">
@@ -238,11 +239,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY devToolbarCloseButton.tooltiptext "Geliştirici araç çubuğunu kapat">
 <!ENTITY devToolbarMenu.label              "Geliştirici araç çubuğu">
 <!ENTITY devToolbarMenu.accesskey          "G">
-<!ENTITY devToolbar.commandkey             "v">
+<!ENTITY devToolbar.keycode                "VK_F2">
+<!ENTITY devToolbar.keytext                "F2">
+<!ENTITY devToolbarOtherToolsButton.label  "Daha fazla araç">
 
 <!ENTITY webConsoleButton.label "Web konsolu">
 <!ENTITY inspectorButton.label "Denetçi">
-<!ENTITY scriptsButton.label "Betikler">
 
 <!ENTITY inspectorHTMLCopyInner.label       "İç HTML'i kopyala">
 <!ENTITY inspectorHTMLCopyInner.accesskey   "H">
@@ -252,16 +254,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY inspectorHTMLDelete.label          "Düğümü sil">
 <!ENTITY inspectorHTMLDelete.accesskey      "s">
-
-<!-- LOCALIZATION NOTE (inspectOptionButton.*): The menu in the Inspector
-  -  toolbar.  -->
-<!ENTITY inspectOptionButton.tooltiptext    "Denetçi seçenekleri">
-
-<!-- LOCALIZATION NOTE: These are for the menu in the Inspector Toolbar -->
-<!ENTITY inspectorToggleVeil.label          "Sayfayı karart">
-<!ENTITY inspectorToggleVeil.accesskey      "k">
-<!ENTITY inspectorToggleInfobar.label       "Düğüm bilgilerini göster">
-<!ENTITY inspectorToggleInfobar.accesskey   "D">
 
 <!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
   -  alternate view for the Inspector, creating a 3D visualization of the
@@ -438,8 +430,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarkThisLinkCmd.accesskey  "l">
 <!ENTITY bookmarkThisFrameCmd.label      "Bu çerçeveyi yer imlerine ekle">
 <!ENTITY bookmarkThisFrameCmd.accesskey  "m">
-<!ENTITY sendPageCmd.label            "Bağlantıyı gönder…">
-<!ENTITY sendPageCmd.accesskey        "n">
+<!ENTITY emailPageCmd.label           "Bağlantıyı e-posta ile gönder…">
+<!ENTITY emailPageCmd.accesskey       "e">
 <!ENTITY savePageCmd.label            "Sayfayı farklı kaydet…">
 <!ENTITY savePageCmd.accesskey        "S">
 <!-- alternate for content area context menu -->
@@ -451,20 +443,18 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY printFrameCmd.accesskey      "y">
 <!ENTITY saveLinkCmd.label            "Bağlantıyı farklı kaydet…">
 <!ENTITY saveLinkCmd.accesskey        "f">
-<!ENTITY sendLinkCmd.label            "Bağlantıyı gönder…"> 
-<!ENTITY sendLinkCmd.accesskey        "t">
 <!ENTITY saveImageCmd.label           "Resmi farklı kaydet…">
 <!ENTITY saveImageCmd.accesskey       "R">
 <!ENTITY saveVideoCmd.label           "Videoyu farklı kaydet…">
 <!ENTITY saveVideoCmd.accesskey       "V">
 <!ENTITY saveAudioCmd.label           "Sesi farklı kaydet…">
 <!ENTITY saveAudioCmd.accesskey       "f">
-<!ENTITY sendImageCmd.label           "Resmi gönder…">
-<!ENTITY sendImageCmd.accesskey       "n">
-<!ENTITY sendVideoCmd.label           "Videoyu gönder…">
-<!ENTITY sendVideoCmd.accesskey       "n">
-<!ENTITY sendAudioCmd.label           "Sesi gönder…">
-<!ENTITY sendAudioCmd.accesskey       "n">
+<!ENTITY emailImageCmd.label          "Resmi e-posta ile gönder…">
+<!ENTITY emailImageCmd.accesskey      "e">
+<!ENTITY emailVideoCmd.label          "Videoyu e-posta ile gönder…">
+<!ENTITY emailVideoCmd.accesskey      "e">
+<!ENTITY emailAudioCmd.label          "Sesi e-posta ile gönder…">
+<!ENTITY emailAudioCmd.accesskey      "e">
 <!ENTITY copyLinkCmd.label            "Bağlantı konumunu kopyala">
 <!ENTITY copyLinkCmd.accesskey        "B">
 <!ENTITY copyImageCmd.label           "Resim konumunu kopyala">
@@ -653,4 +643,19 @@ doesn't display any label, but exposes a label to screen-readers with "aria-labe
 <!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
 toolbar button -->
 <!ENTITY markupButton.accesskey          "m">
+
+<!ENTITY socialToolbar.title        "Sosyal Araç Çubuğu Düğmesi">
+<!ENTITY social.notLoggedIn.label   "Oturum açılmadı">
+
+<!ENTITY social.ok.label       "Tamam">
+<!ENTITY social.ok.accesskey   "T">
+
+<!ENTITY social.toggleSidebar.label "Kenar çubuğunu göster">
+<!ENTITY social.toggleSidebar.accesskey "g">
+
+<!ENTITY social.toggleNotifications.label "Masaüstü bildirimlerini göster">
+<!ENTITY social.toggleNotifications.accesskey "b">
+
+<!ENTITY social.activated.undobutton.label "Geri al ">
+<!ENTITY social.activated.undobutton.accesskey "U">
 
