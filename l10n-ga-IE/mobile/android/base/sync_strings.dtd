@@ -15,8 +15,8 @@
 <!-- J-PAKE Key Screen -->
 
 <!ENTITY sync.subtitle.connect.label "Chun do ghléas nua a ghníomhachtú, roghnaigh “Socraigh &syncBrand.shortName.label;” ar an ngléas.">
-<!ENTITY sync.subtitle.header.label "Cuir an cód isteach ar do ríomhaire">
-<!ENTITY sync.subtitle.connectlocation.label "Roghnaigh “&sync.title.pair.label;” sna roghanna &syncBrand.shortName.label; i bhFirefox ar do ríomhaire deisce.">
+<!ENTITY sync.subtitle.header2.label "Cuir an cód seo isteach i do ghléas eile">
+<!ENTITY sync.subtitle.connectlocation2.label 'Select “&sync.title.pair.label;” in the &syncBrand.shortName.label; section of your other device\&apos;s Firefox options.'>
 <!ENTITY sync.subtitle.pair.label "Chun gníomhachtú, roghnaigh “Ceangail gléas” ar do ghléas eile.">
 <!ENTITY sync.pin.default.label "...\n...\n...\n">
 <!ENTITY sync.pin.oneline.label "...">
@@ -57,6 +57,14 @@
 
 <!ENTITY sync.settings.options.label "Roghanna">
 <!ENTITY sync.summary.pair.label "Nasc gléas eile le do chuntas &syncBrand.shortName.label;">
+<!-- Configure Engines -->
+
+<!ENTITY sync.configure.engines.title.label 'What to sync'>
+<!ENTITY sync.configure.engines.sync.my.title.label "Sioncrónaigh do…">
+<!ENTITY sync.configure.engines.title.bookmarks "Leabharmharcanna">
+<!ENTITY sync.configure.engines.title.passwords "Focail Fhaire">
+<!ENTITY sync.configure.engines.title.history "Stair">
+<!ENTITY sync.configure.engines.title.tabs "Cluaisíní">
 <!-- Common text -->
 
 <!ENTITY sync.button.cancel.label "Cealaigh">
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label "Leabharmharcanna Deisce">
 <!ENTITY bookmarks.folder.mobile.label "Leabharmharcanna Soghluaiste">
 <!ENTITY bookmarks.folder.readinglist.label "Liosta Léitheoireachta">
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Pinned'>
 <!-- Notification strings -->
 
 <!ENTITY sync.notification.oneaccount.label "Ní thacaítear ach aon chuntas &syncBrand.fullName.label; amháin.">
+<!ENTITY sync.notification.configure.saved "Sábháladh do chuid roghnúchán.">
 <!-- Incorrect settings and changing credentials. -->
 
 <!ENTITY sync.invalidcreds.label "Ainm cuntais nó focal faire mícheart.">
