@@ -8,10 +8,10 @@ This effectively reverts a part of bz#552864 that ended up not being useful.
  1 file changed, 7 deletions(-)
 
 diff --git a/toolkit/mozapps/installer/Packager.pm b/toolkit/mozapps/installer/Packager.pm
-index e01e71c..7dfcc7e 100644
+index 5170cc2..ed64c80 100644
 --- a/toolkit/mozapps/installer/Packager.pm
 +++ b/toolkit/mozapps/installer/Packager.pm
-@@ -337,13 +337,6 @@ sub do_copyfile
+@@ -344,13 +344,6 @@ sub do_copyfile
      }
  
      unlink("$destpath$destname$destsuffix") if ( -e "$destpath$destname$destsuffix");

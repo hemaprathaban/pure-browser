@@ -6,6 +6,7 @@
 const modules = [
   "collector.jsm",
   "dataprovider.jsm",
+  "storage.jsm",
 ];
 
 const test_modules = [
@@ -14,7 +15,7 @@ const test_modules = [
 
 function run_test() {
   for (let m of modules) {
-    let resource = "resource:///modules/services/metrics/" + m;
+    let resource = "resource://gre/modules/services/metrics/" + m;
     Components.utils.import(resource, {});
   }
 
@@ -22,5 +23,7 @@ function run_test() {
     let resource = "resource://testing-common/services/metrics/" + m;
     Components.utils.import(resource, {});
   }
+
+  Components.utils.import("resource://gre/modules/Metrics.jsm", {});
 }
 

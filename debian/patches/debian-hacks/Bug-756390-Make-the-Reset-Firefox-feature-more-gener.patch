@@ -94,11 +94,12 @@ Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
  .../chrome/browser/migration/migration.properties      |   10 +++++-----
  .../chrome/browser/migration/migration.properties      |   10 +++++-----
  .../chrome/browser/migration/migration.properties      |   10 +++++-----
+ .../chrome/browser/migration/migration.properties      |   10 +++++-----
  toolkit/content/jar.mn                                 |    2 +-
  toolkit/content/resetProfile.js                        |   15 ++++++---------
  toolkit/profile/nsIProfileMigrator.idl                 |   10 +++++++++-
  toolkit/xre/nsAppRunner.cpp                            |    2 +-
- 95 files changed, 470 insertions(+), 456 deletions(-)
+ 96 files changed, 475 insertions(+), 461 deletions(-)
 
 diff --git a/browser/components/migration/content/migration.js b/browser/components/migration/content/migration.js
 index 0e8ccf5..fa46c08 100644
@@ -178,10 +179,10 @@ index 52722e9..0448444 100644
  
  this.NSGetFactory = XPCOMUtils.generateNSGetFactory([FirefoxProfileMigrator]);
 diff --git a/browser/components/migration/src/MigrationUtils.jsm b/browser/components/migration/src/MigrationUtils.jsm
-index 1f60879..fc83a99 100644
+index 401623a..4ce7a3e 100644
 --- a/browser/components/migration/src/MigrationUtils.jsm
 +++ b/browser/components/migration/src/MigrationUtils.jsm
-@@ -403,11 +403,6 @@ this.MigrationUtils = Object.freeze({
+@@ -404,11 +404,6 @@ this.MigrationUtils = Object.freeze({
     * @see nsIStringBundle
     */
    getLocalizedString: function MU_getLocalizedString(aKey, aReplacements) {
@@ -193,7 +194,7 @@ index 1f60879..fc83a99 100644
      if (aReplacements === undefined)
        return getMigrationBundle().GetStringFromName(aKey);
      return getMigrationBundle().formatStringFromName(
-@@ -622,6 +617,17 @@ this.MigrationUtils = Object.freeze({
+@@ -623,6 +618,17 @@ this.MigrationUtils = Object.freeze({
    },
  
    /**
@@ -1133,29 +1134,29 @@ index 956e21e..d7ec9ad 100644
 -64_firefox=Resguardo de marcadores
 +64_self=Resguardo de marcadores
 diff --git a/l10n-es-CL/browser/chrome/browser/migration/migration.properties b/l10n-es-CL/browser/chrome/browser/migration/migration.properties
-index e7cc6c6..f9beed9 100644
+index 6427c43..cc3198b 100644
 --- a/l10n-es-CL/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-es-CL/browser/chrome/browser/migration/migration.properties
-@@ -21,27 +21,27 @@ importedSafariBookmarks=De Safari
- 2_ie = Cookies
- 2_safari = Cookies
+@@ -24,22 +24,22 @@ importedSafariReadingList=Lista de lectura (De Safari)
+ 2_ie=Cookies
+ 2_safari=Cookies
  2_chrome=Cookies
 -2_firefox=Cookies
 +2_self=Cookies
  
- 4_ie = Historial de navegación
- 4_safari = Historial de navegación
+ 4_ie=Historial de navegación
+ 4_safari=Historial de navegación
  4_chrome=Historial de navegación
--4_firefox=Historial de navegación
-+4_self=Historial de navegación
+-4_firefox_history_and_bookmarks=Historial de navegación y marcadores
++4_self=Historial de navegación y marcadores
  
- 8_ie = Historial de formularios guardados
- 8_safari = Historial de formularios guardados
+ 8_ie=Historial de formularios guardados
+ 8_safari=Historial de formularios guardados
  8_chrome=Historial de formularios guardados
 -8_firefox=Historial de formularios guardados
 +8_self=Historial de formularios guardados
  
- 16_ie = Contraseñas guardadas
+ 16_ie=Contraseñas guardadas
  16_safari=Contraseñas guardadas
  16_chrome=Contraseñas guardadas
 -16_firefox=Contraseñas guardadas
@@ -1163,12 +1164,12 @@ index e7cc6c6..f9beed9 100644
  
  32_ie=Favoritos
  32_safari=Marcadores
- 32_chrome=Marcadores
--32_firefox=Marcadores
-+32_self=Marcadores
- 
+@@ -48,4 +48,4 @@ importedSafariReadingList=Lista de lectura (De Safari)
  64_ie=Otros datos
  64_safari=Otros datos
+ 64_chrome=Otros datos
+-64_firefox=Respaldos de marcadores
++64_self=Respaldos de marcadores
 diff --git a/l10n-es-ES/browser/chrome/browser/migration/migration.properties b/l10n-es-ES/browser/chrome/browser/migration/migration.properties
 index f8edd5f..992e3f7 100755
 --- a/l10n-es-ES/browser/chrome/browser/migration/migration.properties
@@ -1756,10 +1757,10 @@ index 12357c4..b643887 100644
 -64_firefox=Pričuvne kopije zabilješki
 +64_self=Pričuvne kopije zabilješki
 diff --git a/l10n-hu/browser/chrome/browser/migration/migration.properties b/l10n-hu/browser/chrome/browser/migration/migration.properties
-index 3e1b6d1..ab1533f 100644
+index 03fe378..756515d 100644
 --- a/l10n-hu/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-hu/browser/chrome/browser/migration/migration.properties
-@@ -24,22 +24,22 @@ importedSafariReadingList=Olvasási lista (a Safariból)
+@@ -23,22 +23,22 @@ importedSafariReadingList=Olvasási lista (a Safariból)
  2_ie=Sütik
  2_safari=Sütik
  2_chrome=Sütik
@@ -1786,7 +1787,7 @@ index 3e1b6d1..ab1533f 100644
  
  32_ie=Kedvencek
  32_safari=Könyvjelzők
-@@ -48,4 +48,4 @@ importedSafariReadingList=Olvasási lista (a Safariból)
+@@ -47,4 +47,4 @@ importedSafariReadingList=Olvasási lista (a Safariból)
  64_ie=További adatok
  64_safari=További adatok
  64_chrome=További adatok
@@ -3293,6 +3294,43 @@ index b99e1b1..777154b 100644
  64_chrome=Інші дані
 -64_firefox=Резервні копії закладок
 +64_self=Резервні копії закладок
+diff --git a/l10n-vi/browser/chrome/browser/migration/migration.properties b/l10n-vi/browser/chrome/browser/migration/migration.properties
+index 0874e61..c8d28a5 100644
+--- a/l10n-vi/browser/chrome/browser/migration/migration.properties
++++ b/l10n-vi/browser/chrome/browser/migration/migration.properties
+@@ -24,22 +24,22 @@ importedSafariReadingList=Đang đọc danh sách (Từ Safari)
+ 2_ie=Cookie
+ 2_safari=Cookie
+ 2_chrome=Cookie
+-2_firefox=Cookie
++2_self=Cookie
+ 
+ 4_ie=Lược sử Duyệt web
+ 4_safari=Lược sử Duyệt web
+ 4_chrome=Lịch sử duyệt web
+-4_firefox_history_and_bookmarks=Lịch sử duyệt web và đánh dấu trang
++4_self=Lịch sử duyệt web và đánh dấu trang
+ 
+ 8_ie=Lược sử các Biểu mẫu đã lưu
+ 8_safari=Lược sử các Biểu mẫu đã lưu
+ 8_chrome=Lịch sử các Biểu mẫu đã lưu
+-8_firefox=Lịch sử các Biểu mẫu đã lưu
++8_self=Lịch sử các Biểu mẫu đã lưu
+ 
+ 16_ie=Mật khẩu đã lưu
+ 16_safari=Mật khẩu đã lưu
+ 16_chrome=Mật khẩu đã lưu
+-16_firefox=Mật khẩu đã lưu
++16_self=Mật khẩu đã lưu
+ 
+ 32_ie=Ưa thích
+ 32_safari=Trang đánh dấu
+@@ -48,4 +48,4 @@ importedSafariReadingList=Đang đọc danh sách (Từ Safari)
+ 64_ie=Dữ liệu Khác
+ 64_safari=Dữ liệu Khác
+ 64_chrome=Dữ liệu Khác
+-64_firefox=Các bản Sao lưu Các trang đánh dấu (Bookmarks)
++64_self=Các bản Sao lưu Các trang đánh dấu (Bookmarks)
 diff --git a/l10n-zh-CN/browser/chrome/browser/migration/migration.properties b/l10n-zh-CN/browser/chrome/browser/migration/migration.properties
 index 873e2e3..1007c8b 100644
 --- a/l10n-zh-CN/browser/chrome/browser/migration/migration.properties
@@ -3369,7 +3407,7 @@ index 7afb972..332b191 100644
 +64_self=書籤備份
  
 diff --git a/toolkit/content/jar.mn b/toolkit/content/jar.mn
-index 96cedd3..a0f8a75 100644
+index fa45115..1fcf3cd 100644
 --- a/toolkit/content/jar.mn
 +++ b/toolkit/content/jar.mn
 @@ -42,7 +42,7 @@ toolkit.jar:
@@ -3452,10 +3490,10 @@ index f35c227..7062886 100644
  
  %{C++
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index 1045665..04bd1aa 100644
+index 7665de2..4588f4a 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3698,7 +3698,7 @@ XREMain::XRE_mainRun()
+@@ -3699,7 +3699,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

@@ -53,11 +53,10 @@
 <!ENTITY site_security "Sécurité du site">
 
 <!ENTITY close_tab "Fermer l\u0027onglet">
-<!ENTITY new_tab "Nouvel onglet">
 <!ENTITY one_tab "1 onglet">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one.
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d onglets">
+<!ENTITY num_tabs2 "&formatD; onglets">
 <!ENTITY new_tab_opened "Nouvel onglet ouvert">
 
 <!ENTITY settings "Paramètres">
@@ -79,13 +78,13 @@
 <!ENTITY pref_char_encoding "Encodage de caractères">
 <!ENTITY pref_char_encoding_on "Afficher le menu">
 <!ENTITY pref_char_encoding_off "Masquer le menu">
-<!ENTITY pref_clear_private_data "Supprimer les données personnelles">
+<!ENTITY pref_clear_private_data "Effacer mes traces">
 <!ENTITY pref_plugins "Plugins">
 <!ENTITY pref_plugins_enabled "Activés">
 <!ENTITY pref_plugins_tap_to_play "Toucher pour lancer la lecture">
 <!ENTITY pref_plugins_disabled "Désactivés">
 <!ENTITY pref_text_size "Taille du texte">
-<!ENTITY pref_reflow_on_zoom2 "Adapter le texte en zoomant">
+<!ENTITY pref_reflow_on_zoom2 "Adapter le texte au zoom">
 <!ENTITY pref_font_size_tiny "Très petite">
 <!ENTITY pref_font_size_small "Petite">
 <!ENTITY pref_font_size_medium "Moyenne">
@@ -135,7 +134,15 @@ size. -->
 <!ENTITY find_in_page "Rechercher dans la page">
 <!ENTITY desktop_mode "Voir version ordinateur">
 <!ENTITY tools "Outils">
-<!ENTITY new_pb_tab "Navigation privée">
+<!ENTITY new_tab "Nouvel onglet">
+<!ENTITY new_private_tab "Onglet de nav. privée">
+<!ENTITY close_all_tabs "Fermer tous les onglets">
+<!ENTITY tabs_normal "Onglets">
+<!ENTITY tabs_private "Privés">
+<!ENTITY tabs_synced "Synchronisés">
+<!ENTITY wallpaper_success "Fond d\u0027écran remplacé">
+<!ENTITY wallpaper_progress "Remplacement du fond d\u0027écran">
+<!ENTITY wallpaper_fail "Impossible de remplacer le fond d\u0027écran">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -145,6 +152,7 @@ size. -->
 <!ENTITY find_close "Fermer">
 
 <!ENTITY contextmenu_open_new_tab "Ouvrir dans un nouvel onglet">
+<!ENTITY contextmenu_open_private_tab "Ouvrir en navigation privée">
 <!ENTITY contextmenu_open_in_reader "Ouvrir dans le lecteur">
 <!ENTITY contextmenu_remove_history "Supprimer">
 <!ENTITY contextmenu_remove_bookmark "Supprimer">
@@ -155,8 +163,6 @@ size. -->
 <!ENTITY contextmenu_copyurl "Copier l\u0027adresse">
 <!ENTITY contextmenu_edit_bookmark "Modifier">
 
-<!-- Localization note (history_removed) : Shown in a toast notification
-     after a page is removed from browser history. -->
 <!ENTITY history_removed "Page supprimée">
 
 <!ENTITY bookmark_edit_title "Modifier le marque-page">
@@ -184,7 +190,7 @@ size. -->
 <!ENTITY button_cancel "Annuler">
 <!ENTITY button_yes "Oui">
 <!ENTITY button_no "Non">
-<!ENTITY button_clear_data "Effacer les données">
+<!ENTITY button_clear_data "Effacer mes traces">
 <!ENTITY button_set "Valider">
 <!ENTITY button_clear "Effacer">
 
@@ -193,19 +199,23 @@ size. -->
 <!ENTITY abouthome_last_tabs_title "Vos derniers onglets ouverts">
 <!ENTITY abouthome_last_tabs_open "Ouvrir tous les onglets">
 <!ENTITY abouthome_top_sites_title "Les plus visités">
+<!ENTITY abouthome_topsites_edit "Modifier">
+<!ENTITY abouthome_topsites_pin "Épingler le site">
+<!ENTITY abouthome_topsites_unpin "Relâcher le site">
+<!ENTITY abouthome_topsites_unpinall "Relâcher tous les sites">
 <!-- Localization note (abouthome_about_sync2, abouthome_about_apps): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Paramétrer Firefox Sync pour accéder aux marque-pages, à l\u0027historique et aux onglets de vos autres appareils »">
-<!ENTITY abouthome_about_apps3 "Obtenir des applications sur le Marketplace Firefox et découvrir le meilleur de ce que le Web a à offrir »">
+<!ENTITY abouthome_about_apps3 "Obtenir des applications sur le Firefox Marketplace et découvrir le meilleur de ce qu\u0027offre le Web »">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name2 "Marketplace Firefox">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "Choisir un fichier">
 <!ENTITY filepicker_audio_title "Choisir ou enregistrer un son">
@@ -236,17 +246,16 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarkhistory_import_history "Importation de l\u0027historique depuis Android">
 <!ENTITY bookmarkhistory_import_wait "Veuillez patienter…">
 
-<!-- Localization note (suggestions_prompt): The placeholder (&#037;s) should
-     be kept in the string; this will be replaced with the name of the search
-     engine. -->
-<!ENTITY suggestions_prompt "Voulez-vous activer les suggestions de recherche &#037;s ?">
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "Voulez-vous activer les suggestions de recherche &formatS; ?">
 
 <!ENTITY webapp_generic_name "Application">
 
 <!ENTITY searchable_description "Marque-pages et historique">
 
 <!-- Updater notifications -->
-<!ENTITY updater_start_title2 "Mise à jour disponible pour &brandShortName;">
+<!ENTITY updater_start_title2 "Mise à jour de &brandShortName; disponible">
 <!ENTITY updater_start_select2 "Toucher pour télécharger">
 
 <!ENTITY updater_downloading_title2 "Téléchargement de &brandShortName;">
@@ -254,5 +263,5 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY updater_downloading_select2 "Toucher pour appliquer la mise à jour une fois téléchargée">
 <!ENTITY updater_downloading_retry2 "Toucher pour réessayer">
 
-<!ENTITY updater_apply_title2 "Mise à jour disponible pour &brandShortName;">
+<!ENTITY updater_apply_title2 "Mise à jour de &brandShortName; disponible">
 <!ENTITY updater_apply_select2 "Toucher pour mettre à jour">

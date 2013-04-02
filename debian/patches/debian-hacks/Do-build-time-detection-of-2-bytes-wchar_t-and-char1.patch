@@ -11,10 +11,10 @@ Closes: #577677
  3 files changed, 24 insertions(+)
 
 diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
-index 5a404ca..f23b218 100644
+index 8ea5031..bd25189 100644
 --- a/xpcom/base/nscore.h
 +++ b/xpcom/base/nscore.h
-@@ -336,6 +336,28 @@ typedef uint32_t nsrefcnt;
+@@ -335,6 +335,28 @@ typedef uint32_t nsrefcnt;
    #define HAVE_CPP_2BYTE_WCHAR_T
  #endif
  
@@ -56,10 +56,10 @@ index 658f080..c848d67 100644
    #define NS_MULTILINE_LITERAL_STRING(s)          NS_ConvertASCIItoUTF16(s, uint32_t(sizeof(s)-1))
    #define NS_MULTILINE_LITERAL_STRING_INIT(n,s)   n(s, uint32_t(sizeof(s)-1))
 diff --git a/xpcom/string/public/nsLiteralString.h b/xpcom/string/public/nsLiteralString.h
-index 99396e1..832d27f 100644
+index 9acf940..8c080d5 100644
 --- a/xpcom/string/public/nsLiteralString.h
 +++ b/xpcom/string/public/nsLiteralString.h
-@@ -87,6 +87,7 @@ inline uint32_t LiteralWStringLength(const wchar_t (&c)[n])
+@@ -56,6 +56,7 @@ inline uint32_t LiteralWStringLength(const wchar_t (&c)[n])
    #define NS_NAMED_MULTILINE_LITERAL_STRING(n,s)  const nsDependentString n(reinterpret_cast<const nsAString::char_type*>(s), mozilla::internal::LiteralWStringLength(s))
    typedef nsDependentString nsLiteralString;
  #else

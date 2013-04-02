@@ -43,12 +43,21 @@ WEBRTC_LIBS = \
   $(call EXPAND_LIBNAME_PATH,nrappkit,$(DEPTH)/media/mtransport/third_party/nrappkit/nrappkit_nrappkit) \
   $(NULL)
 
+# if we're on an intel arch, we want SSE2 optimizations
 ifneq (,$(INTEL_ARCHITECTURE))
-SHARED_LIBRARY_LIBS += \
+WEBRTC_LIBS += \
   $(call EXPAND_LIBNAME_PATH,video_processing_sse2,$(DEPTH)/media/webrtc/trunk/src/modules/modules_video_processing_sse2) \
   $(call EXPAND_LIBNAME_PATH,aec_sse2,$(DEPTH)/media/webrtc/trunk/src/modules/modules_aec_sse2) \
   $(NULL)
 endif
+
+# neon for ARM
+ifeq ($(HAVE_ARM_NEON),1)
+WEBRTC_LIBS += \
+  $(call EXPAND_LIBNAME_PATH,aecm_neon,$(DEPTH)/media/webrtc/trunk/src/modules/modules_aecm_neon) \
+  $(NULL)
+endif
+
 
 # If you enable one of these codecs in webrtc_config.gypi, you'll need to re-add the
 # relevant library from this list:
