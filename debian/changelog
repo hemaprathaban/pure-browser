@@ -1,8 +1,17 @@
 iceweasel (20.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{30,35-39}, also known as
+    CVE-2013-0788, CVE-2013-0789, CVE-2013-0796, CVE-2013-0795,
+    CVE-2013-0794, CVE-2013-0793, CVE-2013-0792.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 02 Apr 2013 21:04:42 +0200
+  * debian/browser.mozconfig: Disable DASH when building browser part.
+  * debian/check_resources.overrides: Add override for gcli.jsm.
+  * debian/rules: Test plugins have moved from dist/bin/plugins to
+    dist/plugins.
+  * debian/control.*: Bump nss and sqlite3 build dependencies.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 02 Apr 2013 21:13:56 +0200
 
 iceweasel (19.0.2-1) experimental; urgency=low
 
