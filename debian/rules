@@ -214,6 +214,7 @@ stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra
 stamps/build-$(PRODUCT):: stamps/configure-$(PRODUCT)
 	dh_auto_build --builddirectory=build-$(PRODUCT)
 
+ifeq (1,)
 ifneq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
 build-$(PRODUCT)/%/filelist: stamps/build-$(PRODUCT) build-$(PRODUCT)/%/Makefile
 	rm -rf build-$(PRODUCT)/$*/dist
@@ -223,6 +224,7 @@ build-$(PRODUCT)/%/filelist: stamps/build-$(PRODUCT) build-$(PRODUCT)/%/Makefile
 stamps/build-check-branding:: build-$(PRODUCT)/$(OFFICIAL_BRANDING)/filelist build-$(PRODUCT)/$(BRANDING)/filelist
 # Ensure the iceweasel branding contains everything it's supposed to
 	diff $^
+endif
 endif
 
 stamps/build-check-resources:: stamps/build-xulrunner stamps/build-$(PRODUCT)
