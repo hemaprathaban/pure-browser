@@ -10,11 +10,6 @@ VPATH = @srcdir@
 
 include $(DEPTH)/config/autoconf.mk
 
-DIRS = \
-	content \
-	locales \
-	$(NULL)
-
 PREF_JS_EXPORTS += $(srcdir)/firefox-branding.js
 
 ifndef BRANDING_TEST

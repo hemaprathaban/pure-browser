@@ -5,6 +5,8 @@ VPATH		= @srcdir@
 
 include $(DEPTH)/config/autoconf.mk
 
+STANDALONE_MAKEFILE := 1
+
 include $(topsrcdir)/config/rules.mk
 
 DEFINES += $(shell $(MAKE) --no-print-directory -C $(DEPTH)/../build-browser/browser/installer DEPTH="$(abspath $(DEPTH))" topsrcdir="$(abspath $(topsrcdir))" srcdir='$(topsrcdir)/browser/installer' VPATH='$(srcdir)' echo-variable-DEFINES | sed 's/"/\\"/g')
