@@ -231,11 +231,11 @@ stamps/build-check-resources:: stamps/build-xulrunner stamps/build-$(PRODUCT)
 L10N_BUILD_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/build-l10n-$(lang))
 stamps/build-l10n:: $(L10N_BUILD_STAMPS)
 
-$(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/build-xulrunner stamps/build-$(PRODUCT)
+$(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/build-xulrunner stamps/build-$(PRODUCT) $(foreach d,toolkit services/sync extensions/spellcheck intl netwerk dom security/manager,build-$(PRODUCT)/$(d)/locales/Makefile)
 	$(if $(wildcard l10n),,mkdir -p l10n)
 	$(if $(wildcard l10n/$*),,ln -sf ../l10n-$* l10n/$*)
 	$(PYTHON) config/pythonpath.py -I$(CURDIR)/compare-locales/lib $(CURDIR)/compare-locales/scripts/compare-locales -m $(CURDIR)/build-$(PRODUCT)/l10n-$* $(PRODUCT)/locales/l10n.ini $(CURDIR)/l10n $*
-	$(MAKE) -C build-$(PRODUCT)/$(PRODUCT)/locales langpack-$* L10NBASEDIR=$(CURDIR)/l10n MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-$(PRODUCT)/l10n-$*
+	$(MAKE) -C build-$(PRODUCT)/$(PRODUCT)/locales langpack-$* L10NBASEDIR=$(CURDIR)/l10n MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-$(PRODUCT)/l10n-$* STANDALONE_MAKEFILE=1
 
 override_dh_auto_build: stamps/build-check-branding stamps/build-check-resources
 
