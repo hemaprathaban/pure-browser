@@ -146,7 +146,7 @@ $(PREPROCESSED_FILES):
 
 %/Makefile: DIR=$(firstword $(subst /, ,$@))
 %/Makefile:
-	make -C $(DIR) SUBMAKEFILES=$(@:$(DIR)/%=%) $(@:$(DIR)/%=%)
+	$(DIR)/config.status -n -v --file=$@
 
 %/package-manifest: %/Makefile
 	$(MAKE) -C $*
