@@ -227,9 +227,6 @@ stamps/build-check-branding:: build-$(PRODUCT)/$(OFFICIAL_BRANDING)/filelist bui
 endif
 endif
 
-stamps/build-check-resources:: stamps/build-xulrunner stamps/build-$(PRODUCT)
-	$(PYTHON) debian/check_resources.py -a build-$(PRODUCT)/dist/bin/browser -x build-xulrunner/dist/bin
-
 L10N_BUILD_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/build-l10n-$(lang))
 stamps/build-l10n:: $(L10N_BUILD_STAMPS)
 
@@ -239,7 +236,7 @@ $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/build-xulrunner stamps/build-
 	$(PYTHON) config/pythonpath.py -I$(CURDIR)/compare-locales/lib $(CURDIR)/compare-locales/scripts/compare-locales -m $(CURDIR)/build-$(PRODUCT)/l10n-$* $(PRODUCT)/locales/l10n.ini $(CURDIR)/l10n $*
 	$(MAKE) -C build-$(PRODUCT)/$(PRODUCT)/locales langpack-$* L10NBASEDIR=$(CURDIR)/l10n MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-$(PRODUCT)/l10n-$* STANDALONE_MAKEFILE=1
 
-override_dh_auto_build: stamps/build-check-branding stamps/build-check-resources
+override_dh_auto_build: stamps/build-xulrunner stamps/build-$(PRODUCT) stamps/build-check-branding
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 include debian/test.mk
