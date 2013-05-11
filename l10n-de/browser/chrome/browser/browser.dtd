@@ -109,7 +109,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY leaveDOMFullScreen.accesskey "e">
 
 <!ENTITY closeWindow.label "Fenster schließen">
-<!ENTITY closeWindow.accesskey "c">
+<!ENTITY closeWindow.accesskey "h">
 
 <!ENTITY bookmarksMenu.label "Lesezeichen">
 <!ENTITY bookmarksMenu.accesskey "L">
@@ -160,7 +160,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY feedButton.tooltip           "Diese Seite abonnieren…">
 
 <!ENTITY bookmarksButton.label          "Lesezeichen">
-<!ENTITY bookmarksButton.tooltip        "Öffnet Ihre Lesezeichen-Liste">
+<!ENTITY bookmarksButton.tooltip        "Lesezeichen-Liste öffnen">
 <!ENTITY bookmarksCmd.commandkey "B">
 
 <!ENTITY bookmarksMenuButton.label          "Lesezeichen">
@@ -176,7 +176,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksWinCmd.commandkey "i">
 
 <!ENTITY historyButton.label            "Chronik">
-<!ENTITY historyButton.tooltip          "Zeigt Seiten an, die Sie kürzlich besucht haben">
+<!ENTITY historyButton.tooltip          "Kürzlich besuchte Seiten anzeigen">
 <!ENTITY historySidebarCmd.commandKey   "H">
 
 <!ENTITY toolsMenu.label              "Extras">
@@ -280,13 +280,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY preferencesCmdUnix.accesskey     "E"> 
 
 <!ENTITY clearRecentHistory.label            "Neueste Chronik löschen…">
-<!ENTITY clearRecentHistory.accesskey        "N">
 
-<!-- LOCALIZATION NOTE : These two strings can share an access key beause they never appear together on the menu -->
-<!ENTITY privateBrowsingCmd.start.label         "Privaten Modus starten">
-<!ENTITY privateBrowsingCmd.start.accesskey     "P">
-<!ENTITY privateBrowsingCmd.stop.label          "Privaten Modus beenden">
-<!ENTITY privateBrowsingCmd.stop.accesskey      "P">
 <!ENTITY privateBrowsingCmd.commandkey          "P">
 
 <!ENTITY viewMenu.label         "Ansicht"> 
@@ -325,7 +319,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuSafeMode.accesskey "d">
 
 <!ENTITY openCmd.commandkey           "l">
-<!ENTITY urlbar.placeholder           "Website öffnen">
+<!ENTITY urlbar.placeholder2          "Suche oder Adresse eingeben">
 <!ENTITY urlbar.accesskey             "s">
 <!ENTITY urlbar.switchToTab.label     "Wechseln zum Tab:">
 
@@ -428,6 +422,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY emailVideoCmd.accesskey      "n">
 <!ENTITY emailAudioCmd.label          "Audio per E-Mail senden…">
 <!ENTITY emailAudioCmd.accesskey      "n">
+<!ENTITY playPluginCmd.label          "Plugin aktivieren">
+<!ENTITY playPluginCmd.accesskey      "k">
+<!ENTITY hidePluginCmd.label          "Plugin ausblenden">
+<!ENTITY hidePluginCmd.accesskey      "b">
 <!ENTITY copyLinkCmd.label            "Link-Adresse kopieren">
 <!ENTITY copyLinkCmd.accesskey        "k">
 <!ENTITY copyImageCmd.label           "Grafikadresse kopieren">
@@ -504,8 +502,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY fullZoom.label                 "Zoom">
 <!ENTITY fullZoom.accesskey             "o">
 
-<!ENTITY newTabButton.tooltip           "Öffnet einen neuen Tab">
-<!ENTITY newWindowButton.tooltip        "Öffnet ein neues Fenster">
+<!ENTITY newTabButton.tooltip           "Einen neuen Tab öffnen">
+<!ENTITY newWindowButton.tooltip        "Ein neues Fenster öffnen">
 <!ENTITY sidebarCloseButton.tooltip     "Sidebar schließen">
 
 <!ENTITY cutButton.tooltip              "Ausschneiden">
@@ -587,7 +585,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY identity.moreInfoLinkText "Weitere Informationen…">
 
-<!ENTITY allTabs.filter.emptyText "Tabs durchsuchen">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
 <!ENTITY tabsToolbar.label "Browser-Tabs">
@@ -632,3 +629,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY webrtcIndicatorButton.label "Zugriff auf Kamera / Mikrofon">
 <!ENTITY webrtcIndicatorButton.tooltip "Websites anzeigen, denen derzeit der Zugriff auf Kamera oder Mikrofon erlaubt ist">
+
+<!ENTITY mixedContentBlocked.helplink "Weitere Informationen">
+<!ENTITY mixedContentBlocked.moreinfo "Die meisten Websites funktionieren auch, wenn diese Art Inhalt blockiert wird.">
