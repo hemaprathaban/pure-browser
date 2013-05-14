@@ -10,12 +10,8 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/Services.jsm");
 
-#ifdef MOZ_OFFICIAL_BRANDING
-const phishingList = "goog-phish-shavar";
-#else
-const phishingList = "googpub-phish-shavar";
-#endif
-const malwareList  = "goog-malware-shavar";
+const [phishingList, malwareList] =
+  Services.prefs.getCharPref("urlclassifier.gethashtables").split(",").map(function(value) value.trim());
 
 var debug = false;
 function log(...stuff) {
@@ -90,11 +86,11 @@ this.SafeBrowsing = {
 
 
   updateProviderURLs: function() {
-#ifdef USE_HISTORIC_SAFEBROWSING_ID
-    let clientID = "navclient-auto-ffox";
-#else
-    let clientID = Services.appinfo.name;
-#endif
+    try {
+      var clientID = Services.prefs.getCharPref("browser.safebrowsing.id");
+    } catch(e) {
+      var clientID = Services.appinfo.name;
+    }
 
     log("initializing safe browsing URLs");
     let basePref = "browser.safebrowsing.";

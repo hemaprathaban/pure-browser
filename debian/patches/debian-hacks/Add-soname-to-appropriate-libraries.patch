@@ -42,7 +42,7 @@ index 45303dc..3149aab 100644
  endif # SHARED_LIBRARY
  
 diff --git a/config/rules.mk b/config/rules.mk
-index 4c4885d..586eb7d 100644
+index fbaf54b..8307f4b 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
 @@ -190,6 +190,18 @@ else
@@ -83,7 +83,7 @@ index 4c4885d..586eb7d 100644
  $(SHARED_LIBRARY): $(OBJS) $(LOBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
  ifndef INCREMENTAL_LINKER
 diff --git a/js/src/Makefile.in b/js/src/Makefile.in
-index 3ceff35..790db4e 100644
+index 962a5b2..9e49708 100644
 --- a/js/src/Makefile.in
 +++ b/js/src/Makefile.in
 @@ -37,6 +37,7 @@ MODULE		    = js
@@ -94,7 +94,7 @@ index 3ceff35..790db4e 100644
  
  LIBS		= $(NSPR_LIBS)
  
-@@ -844,6 +845,9 @@ ifneq (,$(LIBRARY))
+@@ -915,6 +916,9 @@ ifneq (,$(LIBRARY))
  endif
  ifneq (,$(SHARED_LIBRARY))
  	$(SYSINSTALL) $(SHARED_LIBRARY) $(DESTDIR)$(libdir)
@@ -132,7 +132,7 @@ index 45303dc..3149aab 100644
  endif # SHARED_LIBRARY
  
 diff --git a/js/src/config/rules.mk b/js/src/config/rules.mk
-index 4c4885d..586eb7d 100644
+index fbaf54b..8307f4b 100644
 --- a/js/src/config/rules.mk
 +++ b/js/src/config/rules.mk
 @@ -190,6 +190,18 @@ else

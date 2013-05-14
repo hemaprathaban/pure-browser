@@ -1,8 +1,8 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-
 <!-- Note: each tab panel must contain unique accesskeys -->
+
 
 <!ENTITY generalTab.label                "ទូទៅ">
 
@@ -27,15 +27,32 @@
 <!ENTITY checkSpelling.accesskey         "ប">
 
 <!ENTITY systemDefaults.label            "លំនាំ​ដើម​ប្រព័ន្ធ">
-<!ENTITY alwaysCheckDefault.label        "ពិនិត្យមើល​ជានិច្ច ថា​តើ &brandShortName; គឺជា​កម្មវិធី​រុករក​លំនាំដើម នៅ​ពេល​ចាប់ផ្ដើម​ដែរ​ឬទេ"><!--XXX-->
-<!ENTITY alwaysCheckDefault.accesskey    "Մ">
+<!--XXX-->
+<!ENTITY alwaysCheckDefault.label        "ពិនិត្យមើល​ជានិច្ច ថា​តើ &brandShortName; គឺជា​កម្មវិធី​រុករក​លំនាំដើម នៅ​ពេល​ចាប់ផ្ដើម​ដែរ​ឬទេ">
+<!ENTITY alwaysCheckDefault.accesskey    "w">
 <!ENTITY setDefault.label                "ធ្វើឲ្យ &brandShortName; ជា​កម្មវិធី​រុករក​លំនាំដើម">
 <!ENTITY setDefault.accesskey            "d">
 <!ENTITY isDefault.label                 "&brandShortName; បច្ចុប្បន្ន​ជា​កម្មវិធី​រុករក​លំនាំដើម​របស់​អ្នក">
-<!ENTITY submitCrashes.label             "ដាក់​ស្នើ​របាយការណ៍​អំពី​ការ​គាំង">
-<!ENTITY submitCrashes.accesskey         "យ">
-<!ENTITY submitTelemetry.label           "ដាក់​ស្នើ​ទិន្នន័យ​​ប្រសិទ្ធភាព">
-<!ENTITY submitTelemetry.accesskey       "ដ">
+
+<!ENTITY dataChoicesTab.label            "ជម្រើស​ទិន្នន័យ">
+
+<!ENTITY healthReportSection.label       "&brandShortName; របាយការណ៍​សុខភាព">
+<!ENTITY healthReportDesc.label          "ជួយ​អ្នក​ឲ្យ​យល់​អំពី​ដំណើរការ​នៃ​កម្មវិធី​រុករក​បណ្ដាញ​របស់​អ្នក និង​ការ​ចែករំលែក​ទិន្នន័យ​អំពី​សុខភាព​កម្មវិធី​រុករក​របស់​អ្នក​ដោយ​ប្រើ &vendorShortName;">
+<!ENTITY enableHealthReport.label        "បើក &brandShortName; របាយការណ៍​សុខភាព">
+<!ENTITY enableHealthReport.accesskey    "រ">
+<!ENTITY healthReportLearnMore.label     "សិក្សា​​បន្ថែម">
+
+<!ENTITY telemetrySection.label          "ទូរមាត្រ​វិធី">
+<!ENTITY telemetryDesc.label             "ចែករំលែក​ដំណើរការ ការ​ប្រើប្រាស់ ផ្នែក​រឹង និង​ការ​ប្ដូរ​ទិន្នន័យ​តាម​បំណង​អំពី​កម្មវិធី​រុករក​បណ្ដាញ​របស់​អ្នក​ដោយ​ប្រើ &vendorShortName; ដើម្បី​ជួយ​ធ្វើឲ្យ &brandShortName; ប្រសើរ​ឡើង">
+<!ENTITY enableTelemetry.label           "បើក ​ទូរមាត្រ​វិធី">
+<!ENTITY enableTelemetry.accesskey       "​">
+<!ENTITY telemetryLearnMore.label        "សិក្សា​​បន្ថែម">
+
+<!ENTITY crashReporterSection.label      "កម្មវិធី​រាយការណ៍​អំពី​ការ​គាំង">
+<!ENTITY crashReporterDesc.label         "&brandShortName; ផ្ញើ​របាយការណ៍​គាំង​ដើម្បីឲ្យ &vendorShortName; ជួយ​ធ្វើឲ្យ​កម្មវិធី​រុករក​របស់​អ្នក​កាន់តែ​មាន​ស្ថិរភាព និង​សុវត្ថិភាព">
+<!ENTITY enableCrashReporter.label       "បើក​កម្មវិធី​ផ្ញើ​របាយការណ៍គាំង">
+<!ENTITY enableCrashReporter.accesskey   "គ">
+<!ENTITY crashReporterLearnMore.label    "សិក្សា​​បន្ថែម">
 
 <!ENTITY networkTab.label                "បណ្តាញ">
 
@@ -48,13 +65,13 @@
 <!ENTITY httpCache.label                 "មាតិកា​បណ្ដាញ​ដែល​បាន​ដាក់​ក្នុង​ឃ្លាំង​សម្ងាត់">
 
 <!ENTITY offlineStorage2.label           "មាតិកា​បណ្ដាញ និង​ទិន្នន័យ​អ្នកប្រើ​ក្រៅ​បណ្ដាញ">
-
 <!-- LOCALIZATION NOTE:
   The entities limitCacheSizeBefore.label and limitCacheSizeAfter.label appear on a single
   line in preferences as follows:
 
   &limitCacheSizeBefore.label [textbox for cache size in MB] &limitCacheSizeAfter.label;
 -->
+
 <!ENTITY limitCacheSizeBefore.label      "កំណត់​ឃ្លាំង​សម្ងាត់​ត្រឹម">
 <!ENTITY limitCacheSizeBefore.accesskey  "ម">
 <!ENTITY limitCacheSizeAfter.label       "MB នៃ​ទំហំ">
@@ -120,4 +137,3 @@
 <!ENTITY verify2.accesskey               "ល">
 <!ENTITY viewSecurityDevices.label       "ឧបករណ៍​សុវត្ថិភាព">
 <!ENTITY viewSecurityDevices.accesskey   "ឧ">
-
