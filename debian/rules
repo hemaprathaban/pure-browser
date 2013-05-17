@@ -284,6 +284,7 @@ stamps/install-xulrunner:: build-xulrunner/debian/installer/package-manifest
 
 	dh_auto_install --sourcedirectory=build-xulrunner/js/src -- prefix=/usr MODULE=mozjs FORCE_STATIC_LIB= _MOZBUILD_EXTERNAL_VARIABLES= REAL_LIBRARY=
 	cp -r debian/tmp/usr/include/xulrunner-$(GRE_VERSION)/js debian/tmp/usr/include/mozjs
+	mv debian/tmp/usr/lib/pkgconfig/mozjs.pc debian/tmp/usr/lib/pkgconfig/mozilla-js.pc
 	rm debian/tmp/usr/bin/js-config
 	find debian/tmp/usr/include/mozjs -type f -printf %P\\n | while read f; do \
 		file=$$(echo debian/tmp/usr/include/xulrunner-$(GRE_VERSION)/$$f); \
