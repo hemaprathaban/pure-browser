@@ -109,7 +109,7 @@ CXX := g++
 endif
 CXXFLAGS = $(CFLAGS)
 
-EXPORTS := CC CXX CFLAGS CXXFLAGS CPPFLAGS MOZILLA_OFFICIAL
+EXPORTS := CC CXX CFLAGS CXXFLAGS CPPFLAGS LDFLAGS MOZILLA_OFFICIAL
 $(call lazy,CONFIGURE_ENV,$$(foreach export,$(EXPORTS),$$(export)="$$($$(export))"))
 
 GENERATED_FILES += debian/dh/dh_xulrunner.1
@@ -176,8 +176,6 @@ stamps/configure-xulrunner:: stamps/prepare-configure
 	$(CONFIGURE_ENV) \
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-default-mozilla-five-home=/usr/lib/xulrunner-$(GRE_VERSION)
-	sed -i '/^OS_LDFLAGS/s|=|& $(LDFLAGS)|' build-xulrunner/config/autoconf.mk
-	sed -i '/^OS_LDFLAGS/s|=|& $(LDFLAGS)|' build-xulrunner/js/src/config/autoconf.mk
 
 stamps/configure-check-xulrunner:: stamps/configure-xulrunner
 # Ensure --{with,enable}-system options properly set expected variables
@@ -216,7 +214,6 @@ stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra
 		--with-libxul-sdk=$(CURDIR)/build-xulrunner/dist \
 		$(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING)) \
 		--with-system-libxul --with-system-nspr --with-system-nss
-	sed -i '/^OS_LDFLAGS/s|=|& $(LDFLAGS)|' build-$(PRODUCT)/config/autoconf.mk
 
 stamps/build-$(PRODUCT):: stamps/configure-$(PRODUCT)
 	dh_auto_build --builddirectory=build-$(PRODUCT)
