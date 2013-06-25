@@ -1,8 +1,19 @@
-iceweasel (17.0.7esr-1) UNRELEASED; urgency=low
+iceweasel (17.0.7esr-1) unstable; urgency=low
 
   * New upstream release.
+    - Updated version of virtualenv handles multiarch properly.
+      Closes: #713103.
+  * Fixes for mfsa2013-{49-51,53-56,59}, also known as
+    CVE-2013-1682, CVE-2013-1684, CVE-2013-1685, CVE-2013-1686,
+    CVE-2013-1687, CVE-2013-1690, CVE-2013-1692, CVE-2013-1693,
+    CVE-2013-1694, CVE-2013-1697.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 25 Jun 2013 18:23:31 +0900
+  * ipc/chromium/src/base/platform_thread_posix.cc: Fix FTBFS on
+    kFreeBSD and Hurd.
+  * memory/mozjemalloc/jemalloc.c: Don't hardcode page size on mips.
+    Should fix FTBFS on mips.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 26 Jun 2013 08:22:35 +0900
 
 iceweasel (17.0.6esr-1) unstable; urgency=low
 
