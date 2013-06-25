@@ -7,11 +7,11 @@ actually are never going to use minor and micro version numbers. Also, we
 now don't set a SO version on libxul and libxpcom because they will now
 be dlloaded() by the standalone xpcomglue.
 ---
- config/makefiles/target_libs.mk        |    4 +++-
- config/rules.mk                        |   16 +++++++++++++++-
- js/src/Makefile.in                     |    4 ++++
- js/src/config/makefiles/target_libs.mk |    4 +++-
- js/src/config/rules.mk                 |   16 +++++++++++++++-
+ config/makefiles/target_libs.mk        |  4 +++-
+ config/rules.mk                        | 16 +++++++++++++++-
+ js/src/Makefile.in                     |  4 ++++
+ js/src/config/makefiles/target_libs.mk |  4 +++-
+ js/src/config/rules.mk                 | 16 +++++++++++++++-
  5 files changed, 40 insertions(+), 4 deletions(-)
 
 diff --git a/config/makefiles/target_libs.mk b/config/makefiles/target_libs.mk

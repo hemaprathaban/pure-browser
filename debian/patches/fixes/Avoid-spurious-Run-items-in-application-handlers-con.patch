@@ -1,11 +1,10 @@
 From: Mike Hommey <glandium@debian.org>
 Date: Thu, 10 Jul 2008 21:40:08 +0200
-Subject: Avoid spurious "Run" items in application handlers configuration
- pane
+Subject: Avoid spurious "Run" items in application handlers configuration pane
 
 ---
- browser/components/preferences/applications.js |    1 +
- uriloader/exthandler/nsHandlerService.js       |   11 +++++------
+ browser/components/preferences/applications.js |  1 +
+ uriloader/exthandler/nsHandlerService.js       | 11 +++++------
  2 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/browser/components/preferences/applications.js b/browser/components/preferences/applications.js
