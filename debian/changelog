@@ -1,8 +1,32 @@
-iceweasel (22.0-1) UNRELEASED; urgency=low
+iceweasel (22.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{49-62}, also known as
+    CVE-2013-1682, CVE-2013-1684, CVE-2013-1685, CVE-2013-1686,
+    CVE-2013-1687, CVE-2013-1688, CVE-2013-1690, CVE-2013-1692,
+    CVE-2013-1693, CVE-2013-1694, CVE-2013-1695, CVE-2013-1696,
+    CVE-2013-1697, CVE-2013-1698, CVE-2013-1699, CVE-2013-1700.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 25 Jun 2013 18:37:14 +0900
+  * debian/rules:
+    - Fix configure-check-xulrunner with gawk. Closes: #708765.
+    - Work around moz.build limitations for l10n.
+    - Work around the variable override limitation for MODULE.
+    - gc and ds include subdirectories have been removed.
+    - Disable branding check for now.
+  * debian/control*: Bump sqlite build dependency.
+  * debian/*/Makefile.in, debian/branding/**/moz.build:
+    Accomodate our extra Makefiles to upstream build system changes.
+  * debian/xulrunner-GRE_VERSION.install.in: libxpcom was removed.
+  * debian/rules, debian/check_resources.*: Remove resource:// url
+    checker, now that resource://app and resource://gre are different
+    upstream, too.
+
+  * memory/mozjemalloc/jemalloc.c: Don't hardcode page size on mips.
+    Should fix FTBFS on mips.
+  * js/src/vm/Stack.cpp: Fix FTBFS on non-Linux glibc systems due to mincore
+    prototype discrepancy. Thanks Samuel Thibault. Closes: #697891.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 26 Jun 2013 08:43:55 +0900
 
 iceweasel (21.0-1) experimental; urgency=low
 
