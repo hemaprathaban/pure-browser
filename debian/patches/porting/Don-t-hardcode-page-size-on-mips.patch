@@ -1,0 +1,21 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sun, 23 Jun 2013 16:19:17 +0900
+Subject: Don't hardcode page size on mips
+
+---
+ memory/mozjemalloc/jemalloc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/memory/mozjemalloc/jemalloc.c b/memory/mozjemalloc/jemalloc.c
+index 5c9ce48..468b299 100644
+--- a/memory/mozjemalloc/jemalloc.c
++++ b/memory/mozjemalloc/jemalloc.c
+@@ -1104,7 +1104,7 @@ static unsigned		ncpus;
+  * controlling the malloc behavior are defined as compile-time constants
+  * for best performance and cannot be altered at runtime.
+  */
+-#if !defined(__ia64__) && !defined(__sparc__)
++#if !defined(__ia64__) && !defined(__sparc__) && !defined(__mips__)
+ #define MALLOC_STATIC_SIZES 1
+ #endif
+ 
