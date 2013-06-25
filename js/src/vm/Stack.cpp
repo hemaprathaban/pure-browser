@@ -799,8 +799,8 @@ StackSpace::sizeOf()
     size_t numBytes = (trustedEnd_ - base_) * sizeof(Value);
     size_t numPages = (numBytes + pageSize - 1) / pageSize;
 
-    // On Linux, mincore's third argument has type unsigned char*.
-#ifdef __linux__
+    // With glibc, mincore's third argument has type unsigned char*.
+#ifdef __GLIBC__
     typedef unsigned char MincoreArgType;
 #else
     typedef char MincoreArgType;
