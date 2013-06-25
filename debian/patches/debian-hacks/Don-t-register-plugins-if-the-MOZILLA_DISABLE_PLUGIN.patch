@@ -4,14 +4,14 @@ Subject: Don't register plugins if the MOZILLA_DISABLE_PLUGINS environment
  variable is set
 
 ---
- dom/plugins/base/nsPluginHost.cpp |    4 ++++
+ dom/plugins/base/nsPluginHost.cpp | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/dom/plugins/base/nsPluginHost.cpp b/dom/plugins/base/nsPluginHost.cpp
-index efaa3ae..04ae2df 100644
+index 8960031..010a524 100644
 --- a/dom/plugins/base/nsPluginHost.cpp
 +++ b/dom/plugins/base/nsPluginHost.cpp
-@@ -334,6 +334,10 @@ nsPluginHost::nsPluginHost()
+@@ -288,6 +288,10 @@ nsPluginHost::nsPluginHost()
    Preferences::AddStrongObserver(this, "plugin.disable");
    Preferences::AddStrongObserver(this, "plugins.click_to_play");
  

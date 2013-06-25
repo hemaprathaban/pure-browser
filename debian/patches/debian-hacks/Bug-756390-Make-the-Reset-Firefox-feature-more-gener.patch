@@ -3,106 +3,107 @@ Date: Tue, 5 Jun 2012 08:57:06 +0200
 Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
 
 ---
- browser/components/migration/content/migration.js      |   13 +++++++++----
- browser/components/migration/content/migration.xul     |    2 +-
- .../migration/src/BrowserProfileMigrators.manifest     |    2 +-
- .../components/migration/src/FirefoxProfileMigrator.js |    2 +-
- browser/components/migration/src/MigrationUtils.jsm    |   16 +++++++++++-----
- browser/components/migration/src/ProfileMigrator.js    |    1 +
- .../en-US/chrome/browser/migration/migration.dtd       |    2 --
- .../chrome/browser/migration/migration.properties      |   11 +++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   12 ++++++------
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |    8 ++++----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- .../chrome/browser/migration/migration.properties      |   10 +++++-----
- toolkit/content/jar.mn                                 |    2 +-
- toolkit/content/resetProfile.js                        |   15 ++++++---------
- toolkit/profile/nsIProfileMigrator.idl                 |   10 +++++++++-
- toolkit/xre/nsAppRunner.cpp                            |    2 +-
- 96 files changed, 471 insertions(+), 457 deletions(-)
+ browser/components/migration/content/migration.js        | 13 +++++++++----
+ browser/components/migration/content/migration.xul       |  2 +-
+ .../migration/src/BrowserProfileMigrators.manifest       |  2 +-
+ .../components/migration/src/FirefoxProfileMigrator.js   |  2 +-
+ browser/components/migration/src/MigrationUtils.jsm      | 16 +++++++++++-----
+ browser/components/migration/src/ProfileMigrator.js      |  1 +
+ .../locales/en-US/chrome/browser/migration/migration.dtd |  2 --
+ .../en-US/chrome/browser/migration/migration.properties  | 11 +++++------
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 12 ++++++------
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 12 ++++++------
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 12 ++++++------
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 12 ++++++------
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        |  8 ++++----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ .../chrome/browser/migration/migration.properties        | 10 +++++-----
+ toolkit/content/jar.mn                                   |  2 +-
+ toolkit/content/resetProfile.js                          | 15 ++++++---------
+ toolkit/profile/nsIProfileMigrator.idl                   | 10 +++++++++-
+ toolkit/xre/nsAppRunner.cpp                              |  2 +-
+ 97 files changed, 474 insertions(+), 460 deletions(-)
 
 diff --git a/browser/components/migration/content/migration.js b/browser/components/migration/content/migration.js
-index 0e8ccf5..fa46c08 100644
+index 91c5c1c..2f8bd1a 100644
 --- a/browser/components/migration/content/migration.js
 +++ b/browser/components/migration/content/migration.js
 @@ -249,7 +249,7 @@ var MigrationWizard = {
@@ -431,21 +432,21 @@ index a310832..c3fea51 100644
 -64_firefox=نُسخ العلامات الاحتياطية
 +64_self=نُسخ العلامات الاحتياطية
 diff --git a/l10n-as/browser/chrome/browser/migration/migration.properties b/l10n-as/browser/chrome/browser/migration/migration.properties
-index 098a9fa..87b5f3b 100644
+index eb53a31..2c59e1d 100644
 --- a/l10n-as/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-as/browser/chrome/browser/migration/migration.properties
-@@ -24,22 +24,22 @@ importedSafariReadingList=পঢ়াৰ তালিকা (Safari -ৰ পৰা
+@@ -24,22 +24,22 @@ importedSafariReadingList=পঢ়াৰ তালিকা (Safari ৰ পৰা)
  2_ie=কুকিসমূহ
  2_safari=কুকিসমূহ
  2_chrome=কুকিসমূহ
 -2_firefox=কুকিসমূহ
 +2_self=কুকিসমূহ
  
- 4_ie=ব্ৰাউছ কৰাৰ ইতিহাস
- 4_safari=ব্ৰাউছ কৰাৰ ইতিহাস
- 4_chrome=ব্ৰাউছ কৰাৰ ইতিহাস
--4_firefox_history_and_bookmarks=ব্ৰাউছ কৰাৰ ইতিহাস আৰু পত্ৰচিহ্নসমূহ
-+4_self=ব্ৰাউছ কৰাৰ ইতিহাস আৰু পত্ৰচিহ্নসমূহ
+ 4_ie=ব্ৰাউছিংৰ ইতিহাস
+ 4_safari=ব্ৰাউছিংৰ ইতিহাস
+ 4_chrome=ব্ৰাউছিংৰ ইতিহাস
+-4_firefox_history_and_bookmarks=ব্ৰাউছিংৰ ইতিহাস আৰু পত্ৰচিহ্নসমূহ
++4_self=ব্ৰাউছিংৰ ইতিহাস আৰু পত্ৰচিহ্নসমূহ
  
  8_ie=সংৰক্ষিত ফৰ্মৰ ইতিহাস
  8_safari=সংৰক্ষিত ফৰ্মৰ ইতিহাস
@@ -461,7 +462,7 @@ index 098a9fa..87b5f3b 100644
  
  32_ie=পছন্দ
  32_safari=পত্ৰচিহ্নসমূহ
-@@ -48,4 +48,4 @@ importedSafariReadingList=পঢ়াৰ তালিকা (Safari -ৰ পৰা
+@@ -48,4 +48,4 @@ importedSafariReadingList=পঢ়াৰ তালিকা (Safari ৰ পৰা)
  64_ie=অন্য তথ্য
  64_safari=অন্য তথ্য
  64_chrome=অন্য তথ্য
@@ -1605,10 +1606,10 @@ index 284871a..4f0597e 100644
 -64_firefox=Copias de seguranza dos marcadores
 +64_self=Copias de seguranza dos marcadores
 diff --git a/l10n-gu-IN/browser/chrome/browser/migration/migration.properties b/l10n-gu-IN/browser/chrome/browser/migration/migration.properties
-index 37caeb5..1f1bd84 100644
+index cfd360f..0c7e97e 100644
 --- a/l10n-gu-IN/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-gu-IN/browser/chrome/browser/migration/migration.properties
-@@ -19,7 +19,7 @@ importedBookmarksFolder=%S માંથી
+@@ -23,7 +23,7 @@ importedBookmarksFolder=%S માંથી
  2_ie=કુકીઓ
  2_safari=કુકીઓ
  2_chrome=કુકીઓ
@@ -1617,7 +1618,7 @@ index 37caeb5..1f1bd84 100644
  
  4_ie=બ્રાઉઝ ઇતિહાસ
  4_safari=બ્રાઉઝ ઇતિહાસ
-@@ -29,12 +29,12 @@ importedBookmarksFolder=%S માંથી
+@@ -33,12 +33,12 @@ importedBookmarksFolder=%S માંથી
  8_ie=ઈતિહાસમાંથી સંગ્રહાયેલ
  8_safari=ઈતિહાસમાંથી સંગ્રહાયેલ
  8_chrome=ઈતિહાસમાંથી સંગ્રહાયેલ
@@ -1632,7 +1633,7 @@ index 37caeb5..1f1bd84 100644
  
  32_ie=મનપસંદો
  32_safari=બુકમાર્કો
-@@ -45,7 +45,7 @@ importedBookmarksFolder=%S માંથી
+@@ -49,7 +49,7 @@ importedBookmarksFolder=%S માંથી
  64_safari=અન્ય માહિતી
  64_chrome=અન્ય માહિતી
  
@@ -1755,10 +1756,10 @@ index 12357c4..b643887 100644
 -64_firefox=Pričuvne kopije zabilješki
 +64_self=Pričuvne kopije zabilješki
 diff --git a/l10n-hu/browser/chrome/browser/migration/migration.properties b/l10n-hu/browser/chrome/browser/migration/migration.properties
-index 03fe378..756515d 100644
+index 64c0107..6818b8d 100644
 --- a/l10n-hu/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-hu/browser/chrome/browser/migration/migration.properties
-@@ -23,22 +23,22 @@ importedSafariReadingList=Olvasási lista (a Safariból)
+@@ -24,22 +24,22 @@ importedSafariReadingList=Olvasási lista (a Safariból)
  2_ie=Sütik
  2_safari=Sütik
  2_chrome=Sütik
@@ -1785,7 +1786,7 @@ index 03fe378..756515d 100644
  
  32_ie=Kedvencek
  32_safari=Könyvjelzők
-@@ -47,4 +47,4 @@ importedSafariReadingList=Olvasási lista (a Safariból)
+@@ -48,4 +48,4 @@ importedSafariReadingList=Olvasási lista (a Safariból)
  64_ie=További adatok
  64_safari=További adatok
  64_chrome=További adatok
@@ -2048,55 +2049,42 @@ index 39b37d1..b82a1b7 100644
 -64_firefox=ការ​បម្រុងទុក​ចំណាំ
 +64_self=ការ​បម្រុងទុក​ចំណាំ
 diff --git a/l10n-kn/browser/chrome/browser/migration/migration.properties b/l10n-kn/browser/chrome/browser/migration/migration.properties
-index 6affded..890b0ad 100644
+index d518650..6764c10 100644
 --- a/l10n-kn/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-kn/browser/chrome/browser/migration/migration.properties
-@@ -43,7 +43,7 @@ importedBookmarksFolder=%S ನಿಂದ
+@@ -24,22 +24,22 @@ importedSafariReadingList=ಓದುವ ಪಟ್ಟಿ (ಸಫಾರಿಯಿಂ
+ 2_ie=ಕುಕಿಗಳು
  2_safari=ಕುಕಿಗಳು
- #2_macie=ಕುಕಿಗಳು
  2_chrome=ಕುಕಿಗಳು
 -2_firefox=ಕುಕಿಗಳು
 +2_self=ಕುಕಿಗಳು
  
- 
  4_ie=ಜಾಲವೀಕ್ಷಣಾ ಇತಿಹಾಸ
-@@ -63,7 +63,7 @@ importedBookmarksFolder=%S ನಿಂದ
+ 4_safari=ಜಾಲವೀಕ್ಷಣಾ ಇತಿಹಾಸ
+ 4_chrome=ಜಾಲವೀಕ್ಷಣಾ ಇತಿಹಾಸ
+-4_firefox_history_and_bookmarks=ವೀಕ್ಷಣಾ ಇತಿಹಾಸ ಮತ್ತು ಬುಕ್‌ಮಾರ್ಕುಗಳು
++4_self=ವೀಕ್ಷಣಾ ಇತಿಹಾಸ ಮತ್ತು ಬುಕ್‌ಮಾರ್ಕುಗಳು
+ 
+ 8_ie=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
  8_safari=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
- #8_macie=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
  8_chrome=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
 -8_firefox=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
 +8_self=ಇತಿಹಾಸದಿಂದ ಉಳಿಸಲಾದ
  
  16_ie=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
- #16_opera=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
-@@ -73,7 +73,7 @@ importedBookmarksFolder=%S ನಿಂದ
  16_safari=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
- #16_macie=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
  16_chrome=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
 -16_firefox=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
 +16_self=ಉಳಿಸಲಾದ ಗುಪ್ತಪದಗಳು
  
  32_ie=ಅಚ್ಚುಮೆಚ್ಚಿನವು
- #32_opera=ಬುಕ್‌ಮಾರ್ಕುಗಳು
-@@ -83,7 +83,7 @@ importedBookmarksFolder=%S ನಿಂದ
  32_safari=ಬುಕ್‌ಮಾರ್ಕುಗಳು
- #32_macie=ಅಚ್ಚುಮೆಚ್ಚಿನವು
- 32_chrome=ಬುಕ್‌ಮಾರ್ಕುಗಳು
--#32_firefox=ಬುಕ್‌ಮಾರ್ಕುಗಳು
-+#32_self=ಬುಕ್‌ಮಾರ್ಕುಗಳು
- 
+@@ -48,4 +48,4 @@ importedSafariReadingList=ಓದುವ ಪಟ್ಟಿ (ಸಫಾರಿಯಿಂ
  64_ie=ಇತರೆ ಮಾಹಿತಿ
- #64_opera=ಇತರೆ ಮಾಹಿತಿ
-@@ -94,7 +94,7 @@ importedBookmarksFolder=%S ನಿಂದ
- #64_macie=ಇತರೆ ಮಾಹಿತಿ
+ 64_safari=ಇತರೆ ಮಾಹಿತಿ
  64_chrome=ಇತರೆ ಮಾಹಿತಿ
- 
--4_firefox_history_and_bookmarks=ವೀಕ್ಷಣಾ ಇತಿಹಾಸ ಮತ್ತು ಬುಕ್‌ಮಾರ್ಕುಗಳು
 -64_firefox=ಬುಕ್‌ಮಾರ್ಕುಗಳ ಬ್ಯಾಕ್ಅಪ್‌
-+4_self=ವೀಕ್ಷಣಾ ಇತಿಹಾಸ ಮತ್ತು ಬುಕ್‌ಮಾರ್ಕುಗಳು
 +64_self=ಬುಕ್‌ಮಾರ್ಕುಗಳ ಬ್ಯಾಕ್ಅಪ್‌
- importedSafariReadingList=ಓದುವ ಪಟ್ಟಿ (ಸಫಾರಿಯಿಂದ)
- 
 diff --git a/l10n-ko/browser/chrome/browser/migration/migration.properties b/l10n-ko/browser/chrome/browser/migration/migration.properties
 index b5ef464..dcd51af 100644
 --- a/l10n-ko/browser/chrome/browser/migration/migration.properties
@@ -2361,41 +2349,42 @@ index 69cb1a3..e3e6b94 100644
 -64_firefox=Резервни обележувачи
 +64_self=Резервни обележувачи
 diff --git a/l10n-ml/browser/chrome/browser/migration/migration.properties b/l10n-ml/browser/chrome/browser/migration/migration.properties
-index 9f64361..8dda382 100755
+index 394b551..a536d3d 100644
 --- a/l10n-ml/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ml/browser/chrome/browser/migration/migration.properties
-@@ -30,8 +30,8 @@ importedBookmarksFolder = %S-ല്‍ നിന്നും
- # 2_opera = കുക്കികള്‍ 
- # 2_dogbert = കുക്കികള്‍ 
- 
--4_firefox_history_and_bookmarks=വെബ് നാള്‍വഴിയും അടയാളക്കുറിപ്പുകളും
--64_firefox=അടയാളക്കുറിപ്പുകളുടെ ബാക്കപ്പ്
-+4_self=വെബ് നാള്‍വഴിയും അടയാളക്കുറിപ്പുകളും
-+64_self=അടയാളക്കുറിപ്പുകളുടെ ബാക്കപ്പ്
- importedSafariReadingList=വായനയ്ക്കുള്ള പട്ടിക (സഫാരിയില്‍ നിന്നും)
- 
- # 2_seamonkey = കുക്കികള്‍ 
-@@ -76,16 +76,16 @@ importedSafariReadingList=വായനയ്ക്കുള്ള പട്ട
- 
- 
- 16_chrome=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
--16_firefox=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
-+16_self=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
- 1_chrome=മുന്‍ഗണനകള്‍
+@@ -24,22 +24,22 @@ importedSafariReadingList=വായനയ്ക്കുള്ള പട്ട
+ 2_ie=കുക്കികള്‍ 
+ 2_safari=കുക്കികള്‍ 
  2_chrome=കുക്കികള്‍
 -2_firefox=കുക്കികള്‍
 +2_self=കുക്കികള്‍
- 32_chrome=അടയാളക്കുറിപ്പുകള്‍
--# 32_firefox=അടയാളക്കുറിപ്പുകള്‍
-+# 32_self=അടയാളക്കുറിപ്പുകള്‍
- 64_chrome=മറ്റു് ഡേറ്റാ
+ 
+ 4_ie=തിരയല്‍ ചരിത്രം 
+ 4_safari=തിരയല്‍ ചരിത്രം 
  4_chrome=ബ്രൌസ് ചെയ്ത നാള്‍വഴി
- # 4_firefox=ബ്രൌസ് ചെയ്ത നാള്‍വഴി
+-4_firefox_history_and_bookmarks=വെബ് നാള്‍വഴിയും അടയാളക്കുറിപ്പുകളും
++4_self=വെബ് നാള്‍വഴിയും അടയാളക്കുറിപ്പുകളും
+ 
+ 8_ie=സൂക്ഷിച്ചിരിക്കുന്ന ഫോറം ചരിത്രം
+ 8_safari=സൂക്ഷിച്ചിരിക്കുന്ന ഫോറം ചരിത്രം
  8_chrome=സൂക്ഷിച്ച നാള്‍വഴി
 -8_firefox=സൂക്ഷിച്ച നാള്‍വഴി
 +8_self=സൂക്ഷിച്ച നാള്‍വഴി
- sourceNameChrome=ഗൂഗിള്‍ ക്രോം
- sourceNameFirefox=മോസില്ലാ ഫയര്‍ഫോക്സ്
+ 
+ 16_ie=സൂക്ഷിച്ചിരിക്കുന്ന പസ്സ്‌വേര്‍ഡുകള്‍ 
+ 16_safari=സൂക്ഷിച്ചിരിക്കുന്ന പസ്സ്‌വേര്‍ഡുകള്‍ 
+ 16_chrome=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
+-16_firefox=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
++16_self=സൂക്ഷിച്ച രഹസ്യവാക്കുകള്‍
+ 
+ 32_ie=പ്രിയപ്പെട്ടവ
+ 32_safari=അടയാളങ്ങള്‍ 
+@@ -48,4 +48,4 @@ importedSafariReadingList=വായനയ്ക്കുള്ള പട്ട
+ 64_ie=മറ്റു വിവരങ്ങള്‍
+ 64_safari=മറ്റു വിവരങ്ങള്‍
+ 64_chrome=മറ്റു് ഡേറ്റാ
+-64_firefox=അടയാളക്കുറിപ്പുകളുടെ ബാക്കപ്പ്
++64_self=അടയാളക്കുറിപ്പുകളുടെ ബാക്കപ്പ്
 diff --git a/l10n-mr/browser/chrome/browser/migration/migration.properties b/l10n-mr/browser/chrome/browser/migration/migration.properties
 index 6579450..5bad260 100644
 --- a/l10n-mr/browser/chrome/browser/migration/migration.properties
@@ -3143,40 +3132,80 @@ index fd7156a..b1ffb86 100644
  64_chrome=Annan data
 -64_firefox=Säkerhetskopierade bokmärken
 +64_self=Säkerhetskopierade bokmärken
+diff --git a/l10n-ta/browser/chrome/browser/migration/migration.properties b/l10n-ta/browser/chrome/browser/migration/migration.properties
+index 330204b..2e5ce8e 100644
+--- a/l10n-ta/browser/chrome/browser/migration/migration.properties
++++ b/l10n-ta/browser/chrome/browser/migration/migration.properties
+@@ -24,22 +24,22 @@ importedSafariReadingList=(சபாரியில் இருந்து ) 
+ 2_ie=குக்கீகள்
+ 2_safari=குக்கீகள்
+ 2_chrome=குக்கீஸ்
+-2_firefox=குக்கீஸ்
++2_self=குக்கீஸ்
+ 
+ 4_ie=உலாவும் வரலாறு
+ 4_safari=உலாவும் வரலாறு
+ 4_chrome=உலாவலின் வரலாறு
+-4_firefox_history_and_bookmarks=உலாவுதலின் வரலாறு மற்றும் பூக்மார்க்குகள்
++4_self=உலாவுதலின் வரலாறு மற்றும் பூக்மார்க்குகள்
+ 
+ 8_ie=சேமிக்கப்பட்ட படிவ வரலாறு
+ 8_safari=சேமிக்கப்பட்ட படிவ வரலாறு
+ 8_chrome=வரலாற்றில் இருந்து சேமிக்கப்பட்டவை
+-8_firefox=வரலாற்றில் இருந்து சேமிக்கப்பட்டவை
++8_self=வரலாற்றில் இருந்து சேமிக்கப்பட்டவை
+ 
+ 16_ie=சேமிக்கப்பட்ட கடவுச்சொற்கள்
+ 16_safari=சேமிக்கப்பட்ட கடவுச்சொற்கள்
+ 16_chrome=சேமிக்கப்பட்ட கடவுச்சொற்கள்
+-16_firefox=சேமிக்கப்பட்ட கடவுச்சொற்கள்
++16_self=சேமிக்கப்பட்ட கடவுச்சொற்கள்
+ 
+ 32_ie=பிடித்தமானவை
+ 32_safari=புத்தகக்குறிகள்
+@@ -48,4 +48,4 @@ importedSafariReadingList=(சபாரியில் இருந்து ) 
+ 64_ie=வேறு தரவு
+ 64_safari=வேறு தரவு
+ 64_chrome=பிற தகவல்கள்
+-64_firefox=புத்தகக்குறிகள் மறுபிரதிகள்
++64_self=புத்தகக்குறிகள் மறுபிரதிகள்
 diff --git a/l10n-te/browser/chrome/browser/migration/migration.properties b/l10n-te/browser/chrome/browser/migration/migration.properties
-index cf4df9b..abab143 100755
+index e916621..b6df156 100644
 --- a/l10n-te/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-te/browser/chrome/browser/migration/migration.properties
-@@ -16,24 +16,24 @@ importedBookmarksFolder= %S నుండి
+@@ -24,22 +24,22 @@ importedSafariReadingList=జాబితాను చదువుతోంద
  2_ie=కుకీలు
  2_safari=కుకీలు
  2_chrome=కుకీలు
 -2_firefox=కుకీలు
 +2_self=కుకీలు
+ 
  4_ie=అన్వేషించిన చరిత్ర
  4_safari=అన్వేషించిన చరిత్ర
  4_chrome=అన్వేషించిన చరిత్ర
+-4_firefox_history_and_bookmarks=చరిత్రను మరియు యిష్టాంశములను అన్వేషిస్తోంది
++4_self=చరిత్రను మరియు యిష్టాంశములను అన్వేషిస్తోంది
+ 
  8_ie=చరిత్ర నుండి భద్రపరచు
  8_safari=చరిత్ర నుండి భద్రపరచు
  8_chrome=చరిత్ర నుండి భద్రపరచు
 -8_firefox=చరిత్ర నుండి భద్రపరచు
 +8_self=చరిత్ర నుండి భద్రపరచు
+ 
  16_ie=భద్రపరచిన సంకేతపదాలు
  16_safari=భద్రపరచిన సంకేతపదాలు
  16_chrome=భద్రపరచిన సంకేతపదాలు
 -16_firefox=భద్రపరచిన సంకేతపదాలు
 +16_self=భద్రపరచిన సంకేతపదాలు
+ 
  32_ie=ప్రియాలు
  32_safari=ఇష్టాంశములు
- 32_chrome=ఇష్టాంశములు
+@@ -48,4 +48,4 @@ importedSafariReadingList=జాబితాను చదువుతోంద
  64_ie=ఇతర డాటా
  64_safari=ఇతర డాటా
  64_chrome=ఇతర డాటా
--4_firefox_history_and_bookmarks=చరిత్రను మరియు యిష్టాంశములను అన్వేషిస్తోంది
 -64_firefox=ఇష్టాంశముల నకలునిల్వలు
-+4_self=చరిత్రను మరియు యిష్టాంశములను అన్వేషిస్తోంది
 +64_self=ఇష్టాంశముల నకలునిల్వలు
- importedSafariReadingList=జాబితాను చదువుతోంది (సఫారీ నుండి)
 diff --git a/l10n-th/browser/chrome/browser/migration/migration.properties b/l10n-th/browser/chrome/browser/migration/migration.properties
 index 58b4525..618d5e4 100644
 --- a/l10n-th/browser/chrome/browser/migration/migration.properties
@@ -3212,7 +3241,7 @@ index 58b4525..618d5e4 100644
  64_ie=ข้อมูลอื่น ๆ
  64_safari=ข้อมูลอื่น ๆ
 diff --git a/l10n-tr/browser/chrome/browser/migration/migration.properties b/l10n-tr/browser/chrome/browser/migration/migration.properties
-index 72ff59d..34c130d 100644
+index 9abca28..8476d0c 100644
 --- a/l10n-tr/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-tr/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Okuma listesi (Safari'den)
@@ -3286,7 +3315,7 @@ index b99e1b1..777154b 100644
 -64_firefox=Резервні копії закладок
 +64_self=Резервні копії закладок
 diff --git a/l10n-vi/browser/chrome/browser/migration/migration.properties b/l10n-vi/browser/chrome/browser/migration/migration.properties
-index 0874e61..c8d28a5 100644
+index fc8c1ae..3ba3e78 100644
 --- a/l10n-vi/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-vi/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Đang đọc danh sách (Từ Safari)
@@ -3296,14 +3325,14 @@ index 0874e61..c8d28a5 100644
 -2_firefox=Cookie
 +2_self=Cookie
  
- 4_ie=Lược sử Duyệt web
- 4_safari=Lược sử Duyệt web
+ 4_ie=Lịch sử duyệt web
+ 4_safari=Lịch sử duyệt web
  4_chrome=Lịch sử duyệt web
 -4_firefox_history_and_bookmarks=Lịch sử duyệt web và đánh dấu trang
 +4_self=Lịch sử duyệt web và đánh dấu trang
  
- 8_ie=Lược sử các Biểu mẫu đã lưu
- 8_safari=Lược sử các Biểu mẫu đã lưu
+ 8_ie=Lịch sử các biểu mẫu đã lưu
+ 8_safari=Lịch sử các biểu mẫu đã lưu
  8_chrome=Lịch sử các Biểu mẫu đã lưu
 -8_firefox=Lịch sử các Biểu mẫu đã lưu
 +8_self=Lịch sử các Biểu mẫu đã lưu
@@ -3315,7 +3344,7 @@ index 0874e61..c8d28a5 100644
 +16_self=Mật khẩu đã lưu
  
  32_ie=Ưa thích
- 32_safari=Trang đánh dấu
+ 32_safari=Trang ưa thích
 @@ -48,4 +48,4 @@ importedSafariReadingList=Đang đọc danh sách (Từ Safari)
  64_ie=Dữ liệu Khác
  64_safari=Dữ liệu Khác
@@ -3398,7 +3427,7 @@ index 7afb972..332b191 100644
 +64_self=書籤備份
  
 diff --git a/toolkit/content/jar.mn b/toolkit/content/jar.mn
-index fa45115..1fcf3cd 100644
+index 0541ebf..f983ae4 100644
 --- a/toolkit/content/jar.mn
 +++ b/toolkit/content/jar.mn
 @@ -42,7 +42,7 @@ toolkit.jar:
@@ -3481,10 +3510,10 @@ index f35c227..7062886 100644
  
  %{C++
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index b08f8ce..446ee74 100644
+index 17f5598..0b9a24a 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3747,7 +3747,7 @@ XREMain::XRE_mainRun()
+@@ -3743,7 +3743,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

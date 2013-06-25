@@ -8,14 +8,14 @@ and fixed (probably in xulrunner).
 
 Closes: #552426, #553453
 ---
- browser/components/sessionstore/src/SessionStore.jsm |    4 +---
+ browser/components/sessionstore/src/SessionStore.jsm | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/browser/components/sessionstore/src/SessionStore.jsm b/browser/components/sessionstore/src/SessionStore.jsm
-index b49507e..2e14829 100644
+index 6b2c1cb..1fb08f6 100644
 --- a/browser/components/sessionstore/src/SessionStore.jsm
 +++ b/browser/components/sessionstore/src/SessionStore.jsm
-@@ -3552,7 +3552,7 @@ let SessionStoreInternal = {
+@@ -3584,7 +3584,7 @@ let SessionStoreInternal = {
        aWindow.resizeTo(aWidth, aHeight);
      }
      if (!isNaN(aLeft) && !isNaN(aTop) && (aLeft != win_("screenX") || aTop != win_("screenY"))) {
@@ -24,7 +24,7 @@ index b49507e..2e14829 100644
      }
      if (aSizeMode && win_("sizemode") != aSizeMode)
      {
-@@ -3562,8 +3562,6 @@ let SessionStoreInternal = {
+@@ -3594,8 +3594,6 @@ let SessionStoreInternal = {
          aWindow.maximize();
          break;
        case "minimized":

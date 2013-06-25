@@ -4,15 +4,15 @@ Subject: Determine which phishing shavar to use depending on
  MOZ_OFFICIAL_BRANDING
 
 ---
- browser/app/Makefile.in        |    4 ++++
- browser/app/profile/firefox.js |    4 ++++
+ browser/app/Makefile.in        | 4 ++++
+ browser/app/profile/firefox.js | 4 ++++
  2 files changed, 8 insertions(+)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index 237e0bc..57c7c04 100644
+index fdcee86..3c6cb9f 100644
 --- a/browser/app/Makefile.in
 +++ b/browser/app/Makefile.in
-@@ -139,6 +139,10 @@ libs::
+@@ -141,6 +141,10 @@ libs::
  	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(FINAL_TARGET)/chrome/icons/default
  endif
  
@@ -24,10 +24,10 @@ index 237e0bc..57c7c04 100644
  	$(INSTALL) $(IFLAGS1) $^ $(FINAL_TARGET)/defaults/profile
  
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index a939f02..8a5a884 100644
+index 02c8e3f..979e01a 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -763,7 +763,11 @@ pref("urlclassifier.alternate_error_page", "blocked");
+@@ -760,7 +760,11 @@ pref("urlclassifier.alternate_error_page", "blocked");
  pref("urlclassifier.gethashnoise", 4);
  
  // The list of tables that use the gethash request to confirm partial results.

@@ -5,15 +5,15 @@ Subject: Gross workaround to avoid installing test idl and include files in
 
 https://bugzilla.mozilla.org/show_bug.cgi?id=542749
 ---
- config/rules.mk        |   13 ++++++++++++-
- js/src/config/rules.mk |   13 ++++++++++++-
+ config/rules.mk        | 13 ++++++++++++-
+ js/src/config/rules.mk | 13 ++++++++++++-
  2 files changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/config/rules.mk b/config/rules.mk
-index 8307f4b..3799451 100644
+index 1b8fbf4..a38308a 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
-@@ -34,6 +34,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
+@@ -71,6 +71,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
  EXPORTS += $(_EXTRA_EXPORTS)
  endif
  
@@ -31,7 +31,7 @@ index 8307f4b..3799451 100644
  REPORT_BUILD = $(info $(notdir $<))
  
  ifeq ($(OS_ARCH),OS2)
-@@ -1335,7 +1346,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
+@@ -1406,7 +1417,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
  
  ifndef NO_DIST_INSTALL
  XPIDL_HEADERS_FILES := $(patsubst %.idl,$(XPIDL_GEN_DIR)/%.h, $(XPIDLSRCS))
@@ -41,10 +41,10 @@ index 8307f4b..3799451 100644
  INSTALL_TARGETS += XPIDL_HEADERS
  
 diff --git a/js/src/config/rules.mk b/js/src/config/rules.mk
-index 8307f4b..3799451 100644
+index 1b8fbf4..a38308a 100644
 --- a/js/src/config/rules.mk
 +++ b/js/src/config/rules.mk
-@@ -34,6 +34,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
+@@ -71,6 +71,17 @@ _EXTRA_EXPORTS := $(filter-out $(EXPORTS),$(SDK_HEADERS))
  EXPORTS += $(_EXTRA_EXPORTS)
  endif
  
@@ -62,7 +62,7 @@ index 8307f4b..3799451 100644
  REPORT_BUILD = $(info $(notdir $<))
  
  ifeq ($(OS_ARCH),OS2)
-@@ -1335,7 +1346,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
+@@ -1406,7 +1417,7 @@ GARBAGE_DIRS		+= $(XPIDL_GEN_DIR)
  
  ifndef NO_DIST_INSTALL
  XPIDL_HEADERS_FILES := $(patsubst %.idl,$(XPIDL_GEN_DIR)/%.h, $(XPIDLSRCS))

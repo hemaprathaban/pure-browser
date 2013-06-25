@@ -3,11 +3,11 @@ Date: Fri, 23 Mar 2012 09:57:04 +0100
 Subject: Don't hardcode page size on ia64 or sparc
 
 ---
- memory/mozjemalloc/jemalloc.c |    2 ++
+ memory/mozjemalloc/jemalloc.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/memory/mozjemalloc/jemalloc.c b/memory/mozjemalloc/jemalloc.c
-index 7ac8f7b..8358c99 100644
+index ac87e8f..5c9ce48 100644
 --- a/memory/mozjemalloc/jemalloc.c
 +++ b/memory/mozjemalloc/jemalloc.c
 @@ -1104,7 +1104,9 @@ static unsigned		ncpus;

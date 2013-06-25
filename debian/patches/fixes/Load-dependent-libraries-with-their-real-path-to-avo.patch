@@ -4,20 +4,23 @@ Subject: Load dependent libraries with their real path to avoid confusing gdb
  when they are symlinks
 
 ---
- xpcom/glue/standalone/nsGlueLinkingDlopen.cpp |    3 +++
- 1 file changed, 3 insertions(+)
+ xpcom/glue/standalone/nsXPCOMGlue.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/xpcom/glue/standalone/nsGlueLinkingDlopen.cpp b/xpcom/glue/standalone/nsGlueLinkingDlopen.cpp
-index 2b028fe..0ab175c 100644
---- a/xpcom/glue/standalone/nsGlueLinkingDlopen.cpp
-+++ b/xpcom/glue/standalone/nsGlueLinkingDlopen.cpp
-@@ -184,6 +184,9 @@ preload(const char *file)
- static void
- ReadDependentCB(const char *aDependentLib, bool do_preload)
+diff --git a/xpcom/glue/standalone/nsXPCOMGlue.cpp b/xpcom/glue/standalone/nsXPCOMGlue.cpp
+index 0872392..0cf82f4 100644
+--- a/xpcom/glue/standalone/nsXPCOMGlue.cpp
++++ b/xpcom/glue/standalone/nsXPCOMGlue.cpp
+@@ -299,6 +299,12 @@ AppendDependentLib(LibHandleType libHandle)
+ static bool
+ ReadDependentCB(pathstr_t aDependentLib, bool do_preload)
  {
++#ifdef XP_UNIX
 +    char lib[MAXPATHLEN];
 +    if (realpath(aDependentLib, lib))
 +        aDependentLib = lib;
- #if defined(LINUX) && !defined(ANDROID)
-     if (do_preload)
-         preload(aDependentLib);
++#endif
++
+     if (do_preload) {
+         ReadAheadLib(aDependentLib);
+     }
