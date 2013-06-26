@@ -4,9 +4,9 @@ Subject: Bug 755724 - Don't use the xulrunner stub when building Firefox
  against a libxul SDK
 
 ---
- browser/app/Makefile.in      |   16 +----
- browser/app/nsBrowserApp.cpp |  159 +++++++++++++++++++++++++++++++++++-------
- configure.in                 |    5 --
+ browser/app/Makefile.in      |  16 +----
+ browser/app/nsBrowserApp.cpp | 159 ++++++++++++++++++++++++++++++++++++-------
+ configure.in                 |   5 --
  3 files changed, 135 insertions(+), 45 deletions(-)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in

@@ -5,7 +5,7 @@ Subject: Check less things during configure when using libxul-sdk
 We don't need to check e.g. cairo or pango when using libxul-sdk, since
 we won't be building most of the toolkit.
 ---
- configure.in |   28 +++++++++++++++++++++-------
+ configure.in | 28 +++++++++++++++++++++-------
  1 file changed, 21 insertions(+), 7 deletions(-)
 
 diff --git a/configure.in b/configure.in
