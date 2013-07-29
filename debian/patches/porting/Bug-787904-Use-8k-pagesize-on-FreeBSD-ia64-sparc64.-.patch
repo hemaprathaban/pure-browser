@@ -1,0 +1,22 @@
+From: Jan Beich <jbeich@tormail.org>
+Date: Thu, 6 Sep 2012 21:46:47 +0200
+Subject: Bug 787904 - Use 8k pagesize on FreeBSD ia64/sparc64. r=terrence
+
+---
+ js/src/gc/Heap.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/js/src/gc/Heap.h b/js/src/gc/Heap.h
+index b8f8c78..9712b15 100644
+--- a/js/src/gc/Heap.h
++++ b/js/src/gc/Heap.h
+@@ -108,7 +108,8 @@ struct Cell
+  * Bug 692267: Move page size definition to gc/Memory.h and include it
+  *             directly once jsgc.h is no longer an installed header.
+  */
+-#if defined(SOLARIS) && (defined(__sparc) || defined(__sparcv9))
++#if (defined(SOLARIS) || defined(__FreeBSD__)) && \
++    (defined(__sparc) || defined(__sparcv9) || defined(__ia64))
+ const size_t PageShift = 13;
+ #else
+ const size_t PageShift = 12;
