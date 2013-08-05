@@ -10,7 +10,7 @@ Subject: Allow .js preference files to set locked prefs with lockPref()
  4 files changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index 0dd74de..e2cdd7e 100644
+index cec84da..2825c0f 100644
 --- a/modules/libpref/src/prefapi.cpp
 +++ b/modules/libpref/src/prefapi.cpp
 @@ -988,7 +988,10 @@ void PREF_ReaderCallback(void       *closure,

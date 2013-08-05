@@ -8,10 +8,10 @@ Closes: #666675.
  1 file changed, 30 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/components/search/nsSearchService.js b/toolkit/components/search/nsSearchService.js
-index c990a6a..e2b9410 100644
+index 8e49608..7ea57ad 100644
 --- a/toolkit/components/search/nsSearchService.js
 +++ b/toolkit/components/search/nsSearchService.js
-@@ -750,6 +750,7 @@ function getMozParamPref(prefName)
+@@ -751,6 +751,7 @@ function getMozParamPref(prefName)
   *
   * @see nsIBrowserSearchService.idl
   */
@@ -19,7 +19,7 @@ index c990a6a..e2b9410 100644
  let gInitialized = false;
  function notifyAction(aEngine, aVerb) {
    if (gInitialized) {
-@@ -2069,6 +2070,20 @@ Engine.prototype = {
+@@ -2071,6 +2072,20 @@ Engine.prototype = {
     **/
    _initWithJSON: function SRCH_ENG__initWithJSON(aJson) {
      this.__id = aJson._id;
@@ -40,7 +40,7 @@ index c990a6a..e2b9410 100644
      this._name = aJson._name;
      this._description = aJson.description;
      if (aJson._hasPreferredIcon == undefined)
-@@ -2411,8 +2426,19 @@ Engine.prototype = {
+@@ -2413,8 +2428,19 @@ Engine.prototype = {
          this.__installLocation = SEARCH_APP_DIR;
        else if (this._file.parent.equals(getDir(NS_APP_USER_SEARCH_DIR)))
          this.__installLocation = SEARCH_PROFILE_DIR;
@@ -62,7 +62,7 @@ index c990a6a..e2b9410 100644
      }
  
      return this.__installLocation;
-@@ -2568,6 +2594,8 @@ function SearchService() {
+@@ -2574,6 +2600,8 @@ function SearchService() {
      LOG = DO_LOG;
  
    this._initObservers = Promise.defer();

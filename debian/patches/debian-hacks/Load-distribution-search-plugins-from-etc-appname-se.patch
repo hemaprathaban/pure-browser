@@ -7,7 +7,7 @@ Subject: Load distribution search plugins from /etc/<appname>/searchplugins
  1 file changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/browser/components/dirprovider/DirectoryProvider.cpp b/browser/components/dirprovider/DirectoryProvider.cpp
-index a51cc1d..23edc7c 100644
+index e3f2882..ab1669b 100644
 --- a/browser/components/dirprovider/DirectoryProvider.cpp
 +++ b/browser/components/dirprovider/DirectoryProvider.cpp
 @@ -5,7 +5,8 @@
@@ -20,7 +20,7 @@ index a51cc1d..23edc7c 100644
  #include "nsISimpleEnumerator.h"
  #include "nsIPrefService.h"
  #include "nsIPrefBranch.h"
-@@ -135,12 +136,21 @@ static void
+@@ -125,12 +126,21 @@ static void
  AppendDistroSearchDirs(nsIProperties* aDirSvc, nsCOMArray<nsIFile> &array)
  {
    nsCOMPtr<nsIFile> searchPlugins;

@@ -9,16 +9,20 @@
 <!ENTITY awesomebar_all_pages_title "Siti principali">
 <!ENTITY awesomebar_bookmarks_title "Segnalibri">
 <!ENTITY awesomebar_history_title "Cronologia">
+<!ENTITY awesomebar_switch_to_tab "Passa alla scheda">
 <!ENTITY crash_reporter_title "Crash Reporter &brandShortName;">
-<!ENTITY crash_message "Si è verificato un arresto anomalo di &brandShortName;. Un elenco delle schede aperte dovrebbe essere disponibile nella pagina iniziale di &brandShortName; dopo il riavvio.">
-<!ENTITY crash_help_message "Aiutaci a risolvere il problema!">
-<!ENTITY crash_send_report_message "Invia una segnalazione a Mozilla">
-<!ENTITY crash_include_url "Includi l’indirizzo della pagina">
+<!ENTITY crash_message2 "&brandShortName; ha riscontrato un problema e si è bloccato. Le schede aperte dovrebbero essere visibili nella pagina iniziale di &brandShortName; dopo il riavvio.">
+<!ENTITY crash_send_report_message2 "Segnala a Mozilla questo problema">
+<!ENTITY crash_include_url2 "Includi l’indirizzo della pagina che si stava visitando">
+<!ENTITY crash_sorry "Siamo spiacenti">
+<!ENTITY crash_comment "Aggiungi un commento (i commenti sono visibili pubblicamente)">
+<!ENTITY crash_allow_contact "Permetti a Mozilla di contattarmi in riferimento a questa segnalazione">
+<!ENTITY crash_email "Email">
+<!ENTITY crash_closing_alert "Uscire senza inviare una segnalazione?">
+<!ENTITY sending_crash_report "Invio segnalazione\u2026">
 <!ENTITY crash_close_label "Chiudi">
 <!ENTITY crash_restart_label "Riavvia &brandShortName;">
-<!ENTITY sending_crash_report "Invio segnalazione\u2026">
 <!ENTITY exit_label "Esci">
-<!ENTITY continue_label "Continua">
 <!ENTITY launcher_shortcuts_title "&brandShortName; web app">
 <!ENTITY launcher_shortcuts_empty "Nessuna web app trovata">
 <!ENTITY choose_file "Scelta file">
@@ -50,15 +54,20 @@
 <!ENTITY pref_category_general "Generale">
 <!ENTITY pref_category_privacy "Privacy e sicurezza">
 <!ENTITY pref_category_content "Contenuti">
-<!ENTITY pref_category_importexport "Importa ed esporta">
+<!ENTITY pref_category_datareporting "Condivisione dati">
 <!ENTITY pref_about_firefox "Informazioni su &brandShortName;">
-<!ENTITY pref_do_not_track "Attiva antitracciamento">
-<!ENTITY pref_telemetry "Invia dati prestazioni">
 <!ENTITY pref_remember_signons "Ricorda password">
+<!ENTITY pref_header_general "Generale">
+<!ENTITY pref_header_privacy "Privacy e sicurezza">
+<!ENTITY pref_header_content "Contenuti">
 <!ENTITY pref_cookies_menu "Cookie">
 <!ENTITY pref_cookies_accept_all "Attivi">
 <!ENTITY pref_cookies_not_accept_foreign "Attivi, esclusi di terze parti">
 <!ENTITY pref_cookies_disabled "Disattivati">
+<!ENTITY pref_donottrack_menu "Tracciamento">
+<!ENTITY pref_donottrack_disallow_tracking "Richiedi ai siti di non effettuare alcun tracciamento">
+<!ENTITY pref_donottrack_allow_tracking "Comunica ai siti la disponibilità a essere tracciato">
+<!ENTITY pref_donottrack_no_pref "Non comunicare alcuna preferenza relativa al tracciamento">
 <!ENTITY pref_char_encoding "Codifica caratteri">
 <!ENTITY pref_char_encoding_on "Visualizza menu">
 <!ENTITY pref_char_encoding_off "Non visualizzare menu">
@@ -90,6 +99,16 @@
 <!ENTITY pref_private_data_offlineApps "Dati non in linea dei siti web">
 <!ENTITY pref_private_data_siteSettings2 "Impostazioni siti">
 <!ENTITY pref_private_data_downloadFiles "File scaricati">
+<!ENTITY datareporting_notification_title "Statistiche e dati di &brandShortName;">
+<!ENTITY datareporting_notification_action "Scegli cosa condividere">
+<!ENTITY datareporting_notification_summary "Per migliorare l’esperienza utente, vengono inviate automaticamente alcune informazioni a &vendorShortName;. ">
+<!ENTITY datareporting_notification_summary_short "Per migliorare l’esperienza utente…">
+<!ENTITY datareporting_fhr_title "Analisi integrità di &brandShortName;">
+<!ENTITY datareporting_fhr_summary "Analizza le prestazioni del browser e condividi informazioni con &vendorShortName; sullo stato di integrità del software">
+<!ENTITY datareporting_telemetry_title "Telemetria">
+<!ENTITY datareporting_telemetry_summary "Condividi con &vendorShortName; informazioni relative a prestazioni, utilizzo, hardware e personalizzazioni del browser per contribuire al miglioramento di &brandShortName;">
+<!ENTITY datareporting_crashreporter_summary "Invia a &vendorShortName; segnalazioni relative ad arresti anomali di &brandShortName; per migliorarne la stabilità e la sicurezza">
+<!ENTITY datareporting_crashreporter_title "Crash Reporter &brandShortName;">
 <!ENTITY pref_update_autodownload "Aggiornamento automatico">
 <!ENTITY pref_update_autodownload_wifi "Solo con Wi-Fi">
 <!ENTITY pref_update_autodownload_disabled "Disattivato">
@@ -130,12 +149,17 @@
 <!ENTITY contextmenu_paste "Incolla">
 <!ENTITY contextmenu_copyurl "Copia indirizzo">
 <!ENTITY contextmenu_edit_bookmark "Modifica">
+<!ENTITY contextmenu_subscribe "Abbonati a questa pagina">
+<!ENTITY contextmenu_site_settings "Modifica impostazioni sito">
+<!ENTITY pref_titlebar_mode "Barra del titolo">
+<!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
+<!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
 <!ENTITY history_removed "Pagina rimossa">
 <!ENTITY bookmark_edit_title "Modifica segnalibro">
 <!ENTITY bookmark_edit_name "Nome">
 <!ENTITY bookmark_edit_location "Indirizzo">
 <!ENTITY bookmark_edit_keyword "Parola chiave">
-<!ENTITY site_settings_title2 "Impostazioni sito…">
+<!ENTITY site_settings_title3 "Impostazioni sito">
 <!ENTITY site_settings_cancel "Annulla">
 <!ENTITY site_settings_clear "Elimina">
 <!ENTITY site_settings_no_settings "Non ci sono impostazioni da eliminare.">
@@ -143,6 +167,7 @@
 <!ENTITY reading_list_added "Pagina aggiunta a Elenco lettura">
 <!ENTITY reading_list_removed "Pagina eliminata da Elenco lettura">
 <!ENTITY reading_list_failed "Impossibile aggiungere la pagina a Elenco lettura">
+<!ENTITY reading_list_duplicate "La pagina è già presente in Elenco lettura">
 <!ENTITY reader "Lettore">
 <!ENTITY masterpassword_create_title "Imposta password principale">
 <!ENTITY masterpassword_remove_title "Rimuovi password principale">
@@ -163,7 +188,6 @@
 <!ENTITY abouthome_topsites_edit "Modifica">
 <!ENTITY abouthome_topsites_pin "Blocca sito">
 <!ENTITY abouthome_topsites_unpin "Sblocca sito">
-<!ENTITY abouthome_topsites_remove "Rimuovi">
 <!ENTITY abouthome_about_sync3 "Configura Firefox Sync per accedere a segnalibri, cronologia e schede da altri dispositivi »">
 <!ENTITY abouthome_about_apps3 "Scarica nuove app da Firefox Marketplace e scopri il meglio che il Web può offrire »">
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">

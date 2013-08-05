@@ -9,10 +9,10 @@ Closes: #697891
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/js/src/vm/Stack.cpp b/js/src/vm/Stack.cpp
-index 15f770e..c9c2788 100644
+index bafef2c..09bcde3 100644
 --- a/js/src/vm/Stack.cpp
 +++ b/js/src/vm/Stack.cpp
-@@ -799,8 +799,8 @@ StackSpace::sizeOf()
+@@ -795,8 +795,8 @@ StackSpace::sizeOf()
      size_t numBytes = (trustedEnd_ - base_) * sizeof(Value);
      size_t numPages = (numBytes + pageSize - 1) / pageSize;
  
