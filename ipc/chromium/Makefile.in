@@ -244,9 +244,14 @@ ifdef OS_BSD # {
 
 CPPSRCS += \
   atomicops_internals_x86_gcc.cc \
-  process_util_bsd.cc \
   time_posix.cc \
   $(NULL)
+
+ifeq ($(OS_ARCH),GNU_kFreeBSD)
+CPPSRCS += process_util_linux.cc
+else
+CPPSRCS += process_util_bsd.cc
+endif
 
 ifdef MOZ_ENABLE_GTK2
 CPPSRCS += \
