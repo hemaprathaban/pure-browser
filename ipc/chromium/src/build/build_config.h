@@ -17,11 +17,11 @@
 // A set of macros to use for platform detection.
 #if defined(__APPLE__)
 #define OS_MACOSX 1
-#elif defined(__linux__) || defined(ANDROID) || defined(__GLIBC__) || defined(__GNU__)
+#elif defined(__linux__) || defined(ANDROID) || defined(__GNU__)
 #define OS_LINUX 1
 #elif defined(__DragonFly__)
 #define OS_DRAGONFLY 1
-#elif defined(__FreeBSD__)
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
 #define OS_FREEBSD 1
 #elif defined(__NetBSD__)
 #define OS_NETBSD 1
