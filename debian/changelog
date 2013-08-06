@@ -1,3 +1,15 @@
+iceweasel (17.0.8esr-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2013-{63,68-69,72-73,75}, also known as
+    CVE-2013-1701, CVE-2013-1709, CVE-2013-1710, CVE-2013-1713,
+    CVE-2013-1714, CVE-2013-1717.
+  * debian/rules: Reduce memory usage of the linker at the expense of
+    processing time. This should help on lower-end architectures like arm
+    and mips, which spend an immense amount of time swapping.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 07 Aug 2013 07:29:44 +0900
+
 iceweasel (17.0.7esr-2) unstable; urgency=low
 
   * build/unix/elfhack/elfhack.cpp: Support R_ARM_JUMP24 and R_ARM_CALL
