@@ -1,8 +1,50 @@
-iceweasel (23.0-1) UNRELEASED; urgency=low
+iceweasel (23.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{63-65,67-70,72-73,75}, also known as
+    CVE-2013-1701, CVE-2013-1702, CVE-2013-1704, CVE-2013-1705,
+    CVE-2013-1708, CVE-2013-1709, CVE-2013-1710, CVE-2013-1711,
+    CVE-2013-1713, CVE-2013-1714, CVE-2013-1717.
 
- -- Mike Hommey <glandium@debian.org>  Mon, 05 Aug 2013 16:35:56 +0900
+  * debian/control*: Bump nss build dependency.
+  * debian/rules:
+    - Avoid installing libmozjs.a.
+    - Install mozjs.pc as mozilla-js.pc.
+    - Reduce memory usage of the linker at the expense of processing time.
+    This should help on lower-end architectures like arm and mips, which
+    spend an immense amount of time swapping.
+  * debian/dh/dh_xulrunner.in: Change one of the searched strings to detect
+    the xulrunner stub. This avoids an error in detection when gcc inlines
+    strings in the code for strcpy.
+
+  * build/unix/elfhack/elfhack.cpp: Support R_ARM_JUMP24 and R_ARM_CALL
+    relocations. bz#892366. Fixes FTBFS on armel.
+  * build/unix/elfhack/elfhack.cpp, build/unix/elfhack/inject.c: Turn BL into
+    BLX when doing thumb call relocations and the target is ARM. bz#898998.
+    Fixes FTBFS on armhf.
+  * xpcom/glue/nsIClassInfoImpl.h: Properly align statically allocated
+    classinfo objects. bz#898916. Fixes FTBFS on armel.
+  * js/public/HeapAPI.h, js/src/gc/Memory.*, js/src/gc/Nursery.cpp,
+    js/src/ion/AsmJS.*, js/src/ion/AsmJSModule.h, js/src/jsapi.cpp,
+    js/src/jscntxt.h, js/src/jsgc.cpp, js/src/jstypedarray.cpp: Use the
+    runtime page size to control arena decommit. bz#840242. Fixes FTBFS on
+    sparc and runtime issues on mips and likely other architectures.
+  * js/src/configure*: Disable Yarr JIT on sparc and mips. bz#900821.
+  * xpcom/reflect/xptcall/src/md/unix/xptcstubs_*: Change SharedStub
+    definition in tier-3 xptcstubs to better fit reality and make the compiler
+    happy now that nsresult is an enum. bz#901200.
+  * configure*: Set WEBRTC_TARGET_ARCH to a right value on ia64. bz#901202.
+  * gfx/skia/src/opts/SkBlitRow_opts_arm.cpp: Fix Skia for ARM v4t. bz#901208.
+  * js/src/ion/AsmJSSignalHandlers.cpp: Support GNU/kFreeBSD.
+  * ipc/chromium/Makefile.in, ipc/chromium/chromium-config.mk,
+    ipc/chromium/src/base/dir_reader_posix.h,
+    ipc/chromium/src/base/platform_thread.h,
+    ipc/chromium/src/base/platform_thread_posix.cc,
+    ipc/chromium/src/base/process_util.h,
+    ipc/chromium/src/build/build_config.h: Fix ipc/chromium to build for
+    GNU/kFreeBSD. bz#901414.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 07 Aug 2013 08:25:28 +0900
 
 iceweasel (22.0-1) experimental; urgency=low
 
