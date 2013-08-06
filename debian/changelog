@@ -1,3 +1,27 @@
+iceweasel (17.0.8esr-1~deb7u1) stable-security; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2013-{63,68-69,72-73,75}, also known as
+    CVE-2013-1701, CVE-2013-1709, CVE-2013-1710, CVE-2013-1713,
+    CVE-2013-1714, CVE-2013-1717.
+  * debian/rules: Reduce memory usage of the linker at the expense of
+    processing time. This should help on lower-end architectures like arm
+    and mips, which spend an immense amount of time swapping.
+
+  * build/unix/elfhack/elfhack.cpp: Support R_ARM_JUMP24 and R_ARM_CALL
+    relocations. bz#892366. Fixes FTBFS on armel.
+  * build/unix/elfhack/elfhack.cpp, build/unix/elfhack/inject.c: Turn BL into
+    BLX when doing thumb call relocations and the target is ARM. bz#898998.
+    Fixes FTBFS on armhf.
+  * xpcom/glue/nsIClassInfoImpl.h: Properly align statically allocated
+    classinfo objects. bz#898916. Fixes FTBFS on armel.
+  * js/src/gc/Heap.h, js/src/gc/Memory.*, js/src/jsapi.cpp, js/src/jscntxt.h,
+    js/src/jsgc.cpp: Use the runtime page size to control arena decommit.
+    bz#840242, bz#746112, bz#787904. Fixes FTBFS on sparc and runtime issues
+    on mips and likely other architectures..
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 07 Aug 2013 07:46:16 +0900
+
 iceweasel (17.0.7esr-1~deb7u1) stable-security; urgency=low
 
   * New upstream release.
