@@ -1154,8 +1154,6 @@ JS_NewRuntime(uint32_t maxbytes, JSUseHelperThreads useHelperThreads)
 #undef MSG_DEF
 #endif /* DEBUG */
 
-        InitMemorySubsystem();
-
         if (!js::TlsPerThreadData.init())
             return NULL;
 

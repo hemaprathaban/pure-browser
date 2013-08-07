@@ -1,0 +1,28 @@
+From: Mike Hommey <mh+mozilla@glandium.org>
+Date: Mon, 5 Aug 2013 09:10:34 +0900
+Subject: Bug 900821 - Disable Yarr JIT on sparc and mips. r=luke
+
+---
+ js/src/configure.in | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/js/src/configure.in b/js/src/configure.in
+index fff3cfc..71632fc 100644
+--- a/js/src/configure.in
++++ b/js/src/configure.in
+@@ -2147,7 +2147,6 @@ sparc*-*)
+     ENABLE_MONOIC=1
+     ENABLE_POLYIC=1
+     ENABLE_METHODJIT_TYPED_ARRAY=1
+-    ENABLE_YARR_JIT=1
+ dnl ENABLE_ION=0
+     AC_DEFINE(JS_CPU_SPARC)
+     AC_DEFINE(JS_NUNBOX32)
+@@ -2158,7 +2157,6 @@ mips*-*)
+     ENABLE_MONOIC=1
+     ENABLE_POLYIC=1
+     ENABLE_METHODJIT_TYPED_ARRAY=1
+-    ENABLE_YARR_JIT=1
+     AC_DEFINE(JS_CPU_MIPS)
+     AC_DEFINE(JS_NUNBOX32)
+     ;;

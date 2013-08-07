@@ -1,0 +1,31 @@
+From: Mike Hommey <mh+mozilla@glandium.org>
+Date: Mon, 5 Aug 2013 17:02:02 +0900
+Subject: Bug 901202 - Set WEBRTC_TARGET_ARCH to a right value on ia64
+
+---
+ configure.in | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index ff97550..15e0793 100644
+--- a/configure.in
++++ b/configure.in
+@@ -5282,7 +5282,7 @@ fi
+ 
+ # target_arch is from {ia32|x64|arm|ppc}
+ case "$CPU_ARCH" in
+-x86_64 | ia64)
++x86_64)
+     WEBRTC_TARGET_ARCH=x64
+     ;;
+ 
+@@ -5297,6 +5297,9 @@ x86)
+ ppc*)
+     WEBRTC_TARGET_ARCH=ppc
+     ;;
++ia64)
++    WEBRTC_TARGET_ARCH=ia64
++    ;;
+ *)
+ # unsupported arch for webrtc
+     WEBRTC_TARGET_ARCH=unknown

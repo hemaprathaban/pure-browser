@@ -72,7 +72,7 @@ DEFINES += \
   $(NULL)
 
 else # } {
-ifeq ($(OS_ARCH),FreeBSD) # {
+ifneq (,$(filter $(OS_ARCH),FreeBSD GNU_kFreeBSD)) # {
 
 OS_FREEBSD = 1
 OS_BSD = 1
