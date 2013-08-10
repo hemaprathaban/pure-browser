@@ -76,7 +76,9 @@ ifneq (,$(filter $(OS_ARCH),FreeBSD GNU_kFreeBSD)) # {
 
 OS_FREEBSD = 1
 OS_BSD = 1
+ifneq ($(OS_ARCH),GNU_kFreeBSD)
 OS_LIBS += $(call EXPAND_LIBNAME,kvm)
+endif
 DEFINES += \
   -DOS_FREEBSD=1 \
   -DOS_BSD=1 \
