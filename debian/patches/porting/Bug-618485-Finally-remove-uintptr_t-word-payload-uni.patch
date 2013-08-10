@@ -1,0 +1,21 @@
+From: Landry Breuil <landry@openbsd.org>
+Date: Sat, 8 Jun 2013 12:49:10 +0200
+Subject: Bug 618485: Finally remove uintptr_t word payload union member on
+ 64BE, it grows jsval_layout size and is unused. r=luke
+
+---
+ js/public/Value.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/js/public/Value.h b/js/public/Value.h
+index 2c7fa1a..6dcf728 100644
+--- a/js/public/Value.h
++++ b/js/public/Value.h
+@@ -321,7 +321,6 @@ typedef union jsval_layout
+             int32_t        i32;
+             uint32_t       u32;
+             JSWhyMagic     why;
+-            uintptr_t      word;
+         } payload;
+     } s;
+     double asDouble;

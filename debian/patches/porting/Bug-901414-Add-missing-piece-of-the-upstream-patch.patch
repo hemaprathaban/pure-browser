@@ -1,0 +1,22 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sat, 10 Aug 2013 18:27:55 +0900
+Subject: Bug 901414 - Add missing piece of the upstream patch
+
+---
+ ipc/chromium/chromium-config.mk | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ipc/chromium/chromium-config.mk b/ipc/chromium/chromium-config.mk
+index 57f3265..21dd783 100644
+--- a/ipc/chromium/chromium-config.mk
++++ b/ipc/chromium/chromium-config.mk
+@@ -76,7 +76,9 @@ ifneq (,$(filter $(OS_ARCH),FreeBSD GNU_kFreeBSD)) # {
+ 
+ OS_FREEBSD = 1
+ OS_BSD = 1
++ifneq ($(OS_ARCH),GNU_kFreeBSD)
+ OS_LIBS += $(call EXPAND_LIBNAME,kvm)
++endif
+ DEFINES += \
+   -DOS_FREEBSD=1 \
+   -DOS_BSD=1 \
