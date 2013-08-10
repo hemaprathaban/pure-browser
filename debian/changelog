@@ -1,3 +1,12 @@
+iceweasel (17.0.8esr-2) unstable; urgency=low
+
+  * debian/rules:
+    - Don't use --no-keep-memory on ia64. Somehow, it makes ld fail to relax
+      some relocations.
+    - Don't use --as-needed on ia64. Somehow, it makes ld crash on some files.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 11 Aug 2013 08:15:26 +0900
+
 iceweasel (17.0.8esr-1) unstable; urgency=low
 
   * New upstream release.
