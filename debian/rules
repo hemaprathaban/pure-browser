@@ -58,7 +58,11 @@ $(Product) := $(subst ",,$(MOZ_APP_DISPLAYNAME))
 LIB_DIR := /usr/lib/$($(PRODUCT))
 SHARE_DIR := /usr/share/$($(PRODUCT))
 
-LDFLAGS := -Wl,--as-needed
+LDFLAGS :=
+# ld crashes for some files because of --as-needed :(
+ifeq (,$(filter ia64,$(DEB_BUILD_ARCH)))
+LDFLAGS += -Wl,--as-needed
+endif
 
 # Reduce memory usage of the linker at the expense of processing time
 # This should help on lower-end architectures like arm and mips, which
