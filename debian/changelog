@@ -1,3 +1,17 @@
+iceweasel (23.0-2) experimental; urgency=low
+
+  * debian/rules:
+    - Don't use --no-keep-memory on ia64. Somehow, it makes ld fail to relax
+      some relocations.
+    - Don't use --as-needed on ia64. Somehow, it makes ld crash on some files.
+
+  * ipc/chromium/chromium-config.mk: Add missing piece of the upstream patch
+    for bz#901414. Fixes FTBFS on kFreeBSD.
+  * js/public/Value.h: Remove uintptr_t word payload union member on 64BE, it
+    grows jsval_layout size and is unused. bz#618485. Fixes FTBFS on s390x.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 11 Aug 2013 16:22:14 +0900
+
 iceweasel (23.0-1) experimental; urgency=low
 
   * New upstream release.
