@@ -31,7 +31,7 @@ static void S32A_D565_Opaque(uint16_t* SK_RESTRICT dst,
                   "and     r4, r3, #0x0000f8            \n\t"
                   "and     r5, r3, #0x00fc00            \n\t"
                   "and     r6, r3, #0xf80000            \n\t"
-#if SK_ARM_ARCH >= 6
+#ifdef SK_ARM_HAS_EDSP
                   "pld     [r1, #32]                    \n\t"
 #endif
                   "lsl     r3, r4, #8                   \n\t"
@@ -53,7 +53,7 @@ static void S32A_D565_Opaque(uint16_t* SK_RESTRICT dst,
 #else
                   "ubfx    r5, r4, #5, #6               \n\t"
 #endif
-#if SK_ARM_ARCH >= 6
+#ifdef SK_ARM_HAS_EDSP
                   "pld     [r0, #16]                    \n\t"
 #endif
                   "lsr     r4, r4, #11                  \n\t"
@@ -66,7 +66,7 @@ static void S32A_D565_Opaque(uint16_t* SK_RESTRICT dst,
                   "mul     r5, r5, r7                   \n\t"
                   "mul     r4, r4, r7                   \n\t"
 #endif
-#ifdef SK_ARM_ARCH >= 6
+#if SK_ARM_ARCH >= 6
                   "uxtb    r7, r3, ROR #16              \n\t"
                   "uxtb    ip, r3, ROR #8               \n\t"
 #else
@@ -90,7 +90,7 @@ static void S32A_D565_Opaque(uint16_t* SK_RESTRICT dst,
                   "orr     r6, r6, r5, lsl #3           \n\t"
                   "orr     r4, r6, r4, lsl #8           \n\t"
                   "strh    r4, [%[dst]], #2             \n\t"
-#if SK_ARM_ARCH >= 6
+#ifdef SK_ARM_HAS_EDSP
                   "pld     [r1, #32]                    \n\t"
 #endif
                   "subs    %[count], %[count], #1       \n\t"
