@@ -64,7 +64,7 @@ Depends: ${shlibs:Depends},
          fontconfig,
          procps,
          debianutils (>= 1.16),
-         xulrunner-24.0 (>= ${binary:Version}),
+         xulrunner-24.0 (= ${binary:Version}),
          libsqlite3-0 (>= 3.7.12-1~)
 Suggests: fonts-stix | otf-stix,
           mozplugger,
@@ -187,10 +187,10 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-ply,
-         xulrunner-24.0 (>= ${binary:Version}),
+         xulrunner-24.0 (= ${binary:Version}),
          libnss3-dev,
          libnspr4-dev,
-         libmozjs-dev (>= ${binary:Version})
+         libmozjs-dev (= ${binary:Version})
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as
