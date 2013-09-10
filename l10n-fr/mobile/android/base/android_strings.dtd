@@ -15,13 +15,13 @@
 
 <!ENTITY  crash_reporter_title "Rapport de plantage de &brandShortName;">
 <!ENTITY  crash_message2 "&brandShortName; a rencontré un problème et a planté. Vos onglets devraient apparaître sur la page de démarrage de &brandShortName; à son prochain démarrage.">
-<!ENTITY  crash_send_report_message2 "Informer Mozilla de ce problème pour qu\u0027il puisse être corrigé">
+<!ENTITY  crash_send_report_message3 "Informer &vendorShortName; de ce problème pour qu\u0027il puisse être corrigé">
 <!ENTITY  crash_include_url2 "Inclure l\u0027URL de la page où vous vous trouviez">
 <!ENTITY  crash_sorry "Nous sommes désolés">
-<!ENTITY  crash_comment "Ajouter un commentaire (les commentaires sont publiquement visibles)">
-<!ENTITY  crash_allow_contact "Permettre à Mozilla de vous contacter à propos de ce rapport">
+<!ENTITY  crash_comment "Ajouter un commentaire (les commentaires sont visibles par tout le monde)">
+<!ENTITY  crash_allow_contact2 "Permettre à &vendorShortName; de vous contacter à propos de ce rapport">
 <!ENTITY  crash_email "Votre adresse électronique">
-<!ENTITY  crash_closing_alert "Quitter sans envoyer de rapport de plantage ?">
+<!ENTITY  crash_closing_alert "Quitter sans envoyer de rapport de plantage ?">
 <!ENTITY  sending_crash_report "Envoi du rapport de plantage\u2026">
 <!ENTITY  crash_close_label "Fermer">
 <!ENTITY  crash_restart_label "Redémarrer &brandShortName;">
@@ -41,6 +41,7 @@
 <!ENTITY bookmark_added "Marque-page ajouté">
 <!ENTITY bookmark_removed "Marque-page supprimé">
 <!ENTITY bookmark_updated "Marque-page mis à jour">
+<!ENTITY bookmark_options "Options">
 
 <!ENTITY history_today_section "Aujourd\u0027hui">
 <!ENTITY history_yesterday_section "Hier">
@@ -99,7 +100,7 @@
 <!ENTITY pref_plugins_tap_to_play "Appuyer pour lancer la lecture">
 <!ENTITY pref_plugins_disabled "Désactivés">
 <!ENTITY pref_text_size "Taille du texte">
-<!ENTITY pref_reflow_on_zoom2 "Adapter le texte au zoom">
+<!ENTITY pref_reflow_on_zoom3 "Adapter texte en 2 appuis sur l\u0027écran">
 <!ENTITY pref_font_size_tiny "Très petite">
 <!ENTITY pref_font_size_small "Petite">
 <!ENTITY pref_font_size_medium "Moyenne">
@@ -132,9 +133,11 @@ size. -->
 <!ENTITY pref_private_data_downloadFiles "Fichiers téléchargés">
 
 <!ENTITY datareporting_notification_title "Stats et données de &brandShortName;">
+<!ENTITY datareporting_notification_action_long "choisir ce que j\u0027envoie">
 <!ENTITY datareporting_notification_action "Choisir ce que j\u0027envoie">
 <!ENTITY datareporting_notification_summary "Afin d\u0027améliorer votre navigation, &brandShortName; envoie automatiquement certaines informations à &vendorShortName;.">
 <!ENTITY datareporting_notification_summary_short "Afin d\u0027améliorer votre navigation…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title; : &datareporting_notification_action_long;">
 
 <!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
      reporting_telemetry_title, datareporting_telemetry_summary,
@@ -143,13 +146,16 @@ size. -->
      healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
      crashReporterDesc.label). -->
 <!ENTITY datareporting_fhr_title "Bilan de santé de &brandShortName;">
-<!ENTITY datareporting_fhr_summary "Vous aide à comprendre les performances de votre navigateur et envoie à &vendorShortName; des informations concernant la santé de votre navigateur">
+<!ENTITY datareporting_fhr_summary2 "Envoie des données à &vendorShortName; concernant la santé de votre navigateur et vous aide à comprendre les performances de votre navigateur">
+<!ENTITY datareporting_abouthr_title "Voir mon bilan de santé">
 <!ENTITY datareporting_telemetry_title "Télémétrie">
 <!ENTITY datareporting_telemetry_summary "Envoie des informations sur les performances, le matériel, l\u0027utilisation et les personnalisations à &vendorShortName; pour aider à améliorer &brandShortName;">
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; envoie des rapports de plantage pour aider &vendorShortName; à rendre votre navigateur plus stable et sécurisé">
 <!-- Localization note (datareporting_crashreporter_title_short) : This string matches
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
-<!ENTITY datareporting_crashreporter_title "Rapports de plantage">
+<!ENTITY datareporting_crashreporter_title_short "Rapports de plantage">
+<!ENTITY datareporting_wifi_title "Services de localisation de &vendorShortName;">
+<!ENTITY datareporting_wifi_summary "Aide à améliorer les services de géolocalisation pour le Web ouvert en permettant à &brandShortName; de collecter et d\u0027envoyer des données anonymes sur les antennes de téléphonie mobile">
 
 <!ENTITY pref_update_autodownload "Mises à jour automatiques">
 <!ENTITY pref_update_autodownload_wifi "Seulement par Wi-Fi">
@@ -282,6 +288,15 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "dont le détenteur est">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "Cette page affiche du contenu non sécurisé.">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName; a bloqué du contenu non sécurisé.">
+<!ENTITY blocked_mixed_content_message_bottom "La plupart des sites web continueront de fonctionner correctement même si ce contenu est bloqué.">
+<!ENTITY learn_more "En savoir plus">
+<!ENTITY enable_protection "Activer la protection">
+<!ENTITY disable_protection "Désaciver la protection">
+<!ENTITY keep_blocking "Poursuivre le blocage">
+
 <!ENTITY private_data_success "Données personnelles effacées">
 <!ENTITY private_data_fail "Certaines données personnelles ne peuvent pas être effacées">
 
@@ -293,7 +308,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
      replaced with the name of the search engine. -->
-<!ENTITY suggestions_prompt2 "Voulez-vous activer les suggestions de recherche &formatS; ?">
+<!ENTITY suggestions_prompt2 "Voulez-vous activer les suggestions de recherche &formatS; ?">
 
 <!ENTITY webapp_generic_name "Application">
 
