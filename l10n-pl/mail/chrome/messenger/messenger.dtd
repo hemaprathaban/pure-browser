@@ -29,6 +29,8 @@
 <!ENTITY newExistingEmailAccountCmd.accesskey "K">
 <!ENTITY newIMAccountCmd.label "Konfigurację konta czat…">
 <!ENTITY newIMAccountCmd.accesskey "c">
+<!ENTITY newFeedAccountCmd.label "Konfigurację konta akutalności…">
+<!ENTITY newFeedAccountCmd.accesskey "a">
 <!ENTITY newIMContactCmd.label "Wizytówkę dla kontaktu z czatu…">
 <!ENTITY newIMContactCmd.accesskey "t">
 <!ENTITY newOtherAccountsCmd.label            "Konfigurację innego konta…">
@@ -475,6 +477,8 @@
 <!ENTITY errorConsoleCmd.commandkey "K">
 <!ENTITY clearRecentHistory.label "Wyczyść historię przeglądania…">
 <!ENTITY clearRecentHistory.accesskey "h">
+<!ENTITY allowRemoteDebugging.label "Zezwalaj na zdalne debugowanie">
+<!ENTITY allowRemoteDebugging.accesskey "n">
 <!ENTITY filtersCmd.label                  "Filtrowanie wiadomości…">
 <!ENTITY filtersCmd.accesskey              "F">
 <!ENTITY filtersApply.label                "Zastosuj filtry w bieżącym folderze">
@@ -531,6 +535,8 @@
 <!ENTITY replyAllButton.tooltip    "Odpowiedz nadawcy i wszystkim adresatom">
 <!ENTITY replyListButton.tooltip   "Odpowiedz liście dyskusyjnej">
 <!ENTITY forwardButton.tooltip     "Przekaż wybraną wiadomość">
+<!ENTITY forwardAsInline.tooltip "Przekaż zaznaczoną wiadomość bezpośrednio, jako tekst treści">
+<!ENTITY forwardAsAttachment.tooltip "Przekaż zaznaczoną wiadomość jako załącznik">
 <!ENTITY fileButton.tooltip        "Przenieś zaznaczoną wiadomość">
 <!ENTITY archiveButton.tooltip     "Archiwizuj zaznaczone wiadomości">
 <!ENTITY nextButton.tooltip        "Przejdź do następnej nieprzeczytanej wiadomości">
@@ -551,6 +557,10 @@
 <!ENTITY tagButton.tooltip         "Oznacz wiadomości etykietą">
 <!ENTITY compactButton.tooltip     "Porządkuj folder, aby wyczyścić pozostałości po usuniętych wiadomościach">
 <!ENTITY appmenuButton1.tooltip "Wyświetl menu programu &brandShortName;">
+
+<!-- Toolbar Button Popup -->
+<!ENTITY buttonMenuForwardAsInline.label "Przekaż bezpośrednio">
+<!ENTITY buttonMenuForwardAsAttachment.label "Przekaż jako załącznik">
 
 <!-- AppMenu Popup -->
 <!ENTITY appmenuNewMsgCmd.label "Nowa wiadomość">
@@ -574,8 +584,8 @@
 <!-- Folder Pane Context Menu -->
 <!ENTITY folderContextGetMessages.label         "Pobierz wiadomości">
 <!ENTITY folderContextGetMessages.accesskey     "P">
-<!ENTITY folderContextOpenNewWindow.label       "Otwórz">
-<!ENTITY folderContextOpenNewWindow.accesskey   "O">
+<!ENTITY folderContextOpenInNewWindow.label "Otwórz w nowym oknie">
+<!ENTITY folderContextOpenInNewWindow.accesskey "O">
 <!ENTITY folderContextOpenNewTab.label          "Otwórz w nowej karcie">
 <!ENTITY folderContextOpenNewTab.accesskey      "w">
 <!ENTITY contextOpenConversation.label          "Otwórz wątek w nowej karcie">
@@ -687,14 +697,24 @@
 <!ENTITY contextReplyList.accesskey      "l">
 <!ENTITY contextForward.label            "Przekaż">
 <!ENTITY contextForward.accesskey        "P">
-<!ENTITY contextForwardAsAttachment.label       "Przekaż jako załącznik">
-<!ENTITY contextForwardAsAttachment.accesskey   "z">
+<!ENTITY contextForwardAsMenu.label "Przekaż">
+<!ENTITY contextForwardAsMenu.accesskey "z">
+<!ENTITY contextForwardAsInline.label "Bezpośrednio">
+<!ENTITY contextForwardAsInline.accesskey "B">
+<!ENTITY contextForwardAsAttachmentItem.label "Jako załącznik">
+<!ENTITY contextForwardAsAttachmentItem.accesskey "z">
+<!ENTITY contextMultiForwardAsAttachment.label "Jako załączniki">
+<!ENTITY contextMultiForwardAsAttachment.accesskey "o">
 <!ENTITY contextMoveMsgMenu.label               "Przenieś do">
 <!ENTITY contextMoveMsgMenu.accesskey           "z">
 <!ENTITY contextMoveCopyMsgRecentMenu.label     "Ostatni">
 <!ENTITY contextMoveCopyMsgRecentMenu.accesskey "O">
 <!ENTITY contextCopyMsgMenu.label      "Kopiuj do">
 <!ENTITY contextCopyMsgMenu.accesskey  "K">
+<!ENTITY contextKillThreadMenu.label "Ignoruj wątek">
+<!ENTITY contextKillThreadMenu.accesskey "I">
+<!ENTITY contextKillSubthreadMenu.label "Ignoruj podwątek">
+<!ENTITY contextWatchThreadMenu.label "Obserwuj wątek">
 <!ENTITY contextSaveAs.label           "Zapisz jako…">
 <!ENTITY contextSaveAs.accesskey       "a">
 <!ENTITY contextPrint.label            "Drukuj…">
