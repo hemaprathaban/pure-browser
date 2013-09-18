@@ -1,3 +1,11 @@
+iceweasel (24.0-2) unstable; urgency=low
+
+  * debian/control*: Build-depend on fonts-freefont-ttf instead of
+    fonts-freefont, which doesn't exist. Closes: #714056. Interestingly, 
+    experimental was happy with that, but unstable isn't.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 19 Sep 2013 07:03:08 +0900
+
 iceweasel (24.0-1) unstable; urgency=low
 
   * New upstream release.
