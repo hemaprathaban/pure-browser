@@ -1,8 +1,20 @@
-iceweasel (24.0-1) UNRELEASED; urgency=low
+iceweasel (24.0-1) unstable; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{76-82,85,88-92}, also known as
+    CVE-2013-1718, CVE-2013-1719, CVE-2013-1720, CVE-2013-1721,
+    CVE-2013-1722, CVE-2013-1723, CVE-2013-1724, CVE-2013-1725,
+    CVE-2013-1728, CVE-2013-1730, CVE-2013-1732, CVE-2013-1735,
+    CVE-2013-1736, CVE-2013-1737, CVE-2013-1738.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 18 Sep 2013 09:01:09 +0900
+  * debian/control*:
+    - Bump sqlite build dependency.
+    - Add build dependencies on gstreamer. Closes: #682917.
+    - Build depend on fonts-freefont and fonts-dejima-mincho. Closes: #714056.
+    - Use strict dependencies between binary packages. Closes: #720467.
+    - Add Suggests for MathML-friendly fonts. Closes: #697277.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 18 Sep 2013 09:10:25 +0900
 
 iceweasel (23.0.1-1) unstable; urgency=low
 
