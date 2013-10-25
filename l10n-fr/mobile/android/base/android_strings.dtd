@@ -2,8 +2,6 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY  splash_settingup "Configuration de &brandShortName;">
-<!ENTITY  splash_bookmarks_history "Mise à jour de vos marque-pages et de votre historique. Ceci peut prendre une ou deux minutes.">
 
 <!ENTITY  no_space_to_start_error "Il n\u0027y a pas assez d\u0027espace disponible pour permettre à &brandShortName; de démarrer.">
 <!ENTITY  error_loading_file "Une erreur est survenue en essayant de charger des fichiers nécessaires pour lancer &brandShortName;">
@@ -66,20 +64,27 @@
 
 <!ENTITY settings "Paramètres">
 <!ENTITY settings_title "Paramètres">
-<!ENTITY pref_category_general "Général">
-<!ENTITY pref_category_privacy "Vie privée et sécurité">
-<!ENTITY pref_category_content "Contenu">
-<!-- Localization note (datareporting_title) : This string matches
-     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
-     capitalization. -->
+<!ENTITY pref_category_advanced "Avancé">
+<!ENTITY pref_category_customize "Personnalisation">
+<!ENTITY pref_category_search2 "Paramètres de recherche">
+<!ENTITY pref_category_display "Affichage">
+<!ENTITY pref_category_privacy_short "Vie privée">
+<!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Données collectées">
-<!ENTITY pref_about_firefox "À propos de &brandShortName;">
+<!ENTITY pref_category_installed_search_engines "Moteurs de recherche installés">
+<!ENTITY pref_category_devtools "Outils de développement">
+<!ENTITY pref_developer_remotedebugging "Débogage distant">
+<!ENTITY pref_developer_remotedebugging_docs "En savoir plus">
+
 <!ENTITY pref_remember_signons "Enreg. les mots de passe">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
-<!ENTITY pref_header_general "Général">
-<!ENTITY pref_header_privacy "Vie privée et sécurité">
-<!ENTITY pref_header_content "Contenu">
+<!ENTITY pref_header_customize "Personnalisation">
+<!ENTITY pref_header_display "Affichage">
+<!ENTITY pref_header_privacy_short "Vie privée">
+<!ENTITY pref_header_help "Aide">
+<!ENTITY pref_header_vendor "&vendorShortName;">
+<!ENTITY pref_header_devtools "Outils de développement">
 
 <!ENTITY pref_cookies_menu "Cookies">
 <!ENTITY pref_cookies_accept_all "Autorisés">
@@ -100,7 +105,11 @@
 <!ENTITY pref_plugins_tap_to_play "Appuyer pour lancer la lecture">
 <!ENTITY pref_plugins_disabled "Désactivés">
 <!ENTITY pref_text_size "Taille du texte">
-<!ENTITY pref_reflow_on_zoom3 "Adapter texte en 2 appuis sur l\u0027écran">
+<!ENTITY pref_reflow_on_zoom4 "Adaptation du texte">
+<!ENTITY pref_restore "Onglets">
+<!ENTITY pref_restore_always "Toujours restaurer">
+<!ENTITY pref_restore_crash "Restaurer après un plantage">
+<!ENTITY pref_restore_never "Ne jamais restaurer">
 <!ENTITY pref_font_size_tiny "Très petite">
 <!ENTITY pref_font_size_small "Petite">
 <!ENTITY pref_font_size_medium "Moyenne">
@@ -131,6 +140,11 @@ size. -->
 <!ENTITY pref_private_data_offlineApps "Données de site web hors connexion">
 <!ENTITY pref_private_data_siteSettings2 "Paramètres de site">
 <!ENTITY pref_private_data_downloadFiles "Fichiers téléchargés">
+
+
+<!ENTITY pref_about_firefox "À propos de &brandShortName;">
+<!ENTITY pref_vendor_faqs "FAQ">
+<!ENTITY pref_vendor_feedback "Donner votre avis">
 
 <!ENTITY datareporting_notification_title "Stats et données de &brandShortName;">
 <!ENTITY datareporting_notification_action_long "choisir ce que j\u0027envoie">
@@ -164,7 +178,7 @@ size. -->
 
 <!ENTITY quit "Quitter">
 
-<!ENTITY addons "Modules complémentaires">
+<!ENTITY addons "Modules complém.">
 <!ENTITY downloads "Téléchargements">
 <!ENTITY apps "Applications">
 <!ENTITY char_encoding "Encodage caractères">
@@ -173,7 +187,7 @@ size. -->
 <!ENTITY share_title "Partager à l\u0027aide de">
 <!ENTITY share_image_failed "Impossible de partager cette image">
 <!ENTITY save_as_pdf "Enregistrer en PDF">
-<!ENTITY find_in_page "Rechercher dans la page">
+<!ENTITY find_in_page "Rechercher sur la page">
 <!ENTITY desktop_mode "Voir version ordinateur">
 <!ENTITY tools "Outils">
 <!ENTITY new_tab "Nouvel onglet">
@@ -182,9 +196,8 @@ size. -->
 <!ENTITY tabs_normal "Onglets">
 <!ENTITY tabs_private "Privés">
 <!ENTITY tabs_synced "Synchronisés">
-<!ENTITY wallpaper_success "Fond d\u0027écran remplacé">
-<!ENTITY wallpaper_progress "Remplacement du fond d\u0027écran">
-<!ENTITY wallpaper_fail "Impossible de remplacer le fond d\u0027écran">
+<!ENTITY set_image_fail "Impossible de choisir cette image">
+<!ENTITY set_image_chooser_title "Définir l\u0027image comme">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -230,7 +243,10 @@ size. -->
 <!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
 <!ENTITY reading_list_failed "Impossible d\u0027ajouter la page à votre liste de lecture">
 <!ENTITY reading_list_duplicate "Page déjà dans votre liste de lecture">
-<!ENTITY reader "Lecteur">
+
+<!-- Localization note : These strings are used as alternate text for accessibility.
+     They are not visible in the UI. -->
+<!ENTITY page_action_dropmarker_description "Actions supplémentaires">
 
 <!ENTITY masterpassword_create_title "Créer un mot de passe principal">
 <!ENTITY masterpassword_remove_title "Effacer le mot de passe principal">
@@ -314,6 +330,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY searchable_description "Marque-pages et historique">
 
+<!ENTITY devtools_remote_debugging_forward "N\u0027oubliez pas de configurer la redirection de port !">
+
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Mise à jour de &brandShortName; disponible">
 <!ENTITY updater_start_select2 "Appuyer pour télécharger">
@@ -325,3 +343,14 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY updater_apply_title2 "Mise à jour de &brandShortName; disponible">
 <!ENTITY updater_apply_select2 "Appuyer pour mettre à jour">
+
+<!-- Guest mode -->
+<!ENTITY new_guest_session "Nouvelle session invité">
+<!ENTITY exit_guest_session "Quitter session invité">
+<!ENTITY guest_session_dialog_continue "Continuer">
+<!ENTITY guest_session_dialog_cancel "Annuler">
+<!ENTITY new_guest_session_title "&brandShortName; va redémarrer">
+<!ENTITY new_guest_session_text "L\u0027utilisateur actuel ne pourra pas accéder à vos données personnelles de navigation (comme par exemple les mots de passe enregistrés, l\u0027historique ou les marque-pages).\n\nLorsque votre invité aura terminé, ses données de navigation seront supprimées et votre session sera restaurée.">
+
+<!ENTITY exit_guest_session_title "&brandShortName; va redémarrer">
+<!ENTITY exit_guest_session_text "Les données de navigation de cette session vont être supprimées.">

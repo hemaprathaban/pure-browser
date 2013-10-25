@@ -2,8 +2,6 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY splash_settingup "Configurazione in corso di &brandShortName;">
-<!ENTITY splash_bookmarks_history "È in corso l’aggiornamento dei segnalibri e della cronologia, questo potrebbe richiedere circa un minuto.">
 <!ENTITY no_space_to_start_error "Spazio libero insufficiente per avviare &brandShortName;.">
 <!ENTITY error_loading_file "Si è verificato un errore durante il caricamento di un file necessario per l’esecuzione di &brandShortName;">
 <!ENTITY awesomebar_all_pages_title "Siti principali">
@@ -52,15 +50,24 @@
 <!ENTITY new_tab_opened "Aperta nuova scheda">
 <!ENTITY settings "Impostazioni">
 <!ENTITY settings_title "Impostazioni">
-<!ENTITY pref_category_general "Generale">
-<!ENTITY pref_category_privacy "Privacy e sicurezza">
-<!ENTITY pref_category_content "Contenuti">
+<!ENTITY pref_category_advanced "Avanzate">
+<!ENTITY pref_category_customize "Personalizzazione">
+<!ENTITY pref_category_search2 "Impostazioni ricerca">
+<!ENTITY pref_category_display "Visualizzazione">
+<!ENTITY pref_category_privacy_short "Privacy">
+<!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Condivisione dati">
-<!ENTITY pref_about_firefox "Informazioni su &brandShortName;">
+<!ENTITY pref_category_installed_search_engines "Motori di ricerca installati">
+<!ENTITY pref_category_devtools "Strumenti per sviluppatori">
+<!ENTITY pref_developer_remotedebugging "Debug remoto">
+<!ENTITY pref_developer_remotedebugging_docs "Altre informazioni">
 <!ENTITY pref_remember_signons "Ricorda password">
-<!ENTITY pref_header_general "Generale">
-<!ENTITY pref_header_privacy "Privacy e sicurezza">
-<!ENTITY pref_header_content "Contenuti">
+<!ENTITY pref_header_customize "Personalizzazione">
+<!ENTITY pref_header_display "Visualizzazione">
+<!ENTITY pref_header_privacy_short "Privacy">
+<!ENTITY pref_header_help "Aiuto">
+<!ENTITY pref_header_vendor "&vendorShortName;">
+<!ENTITY pref_header_devtools "Strumenti per sviluppatori">
 <!ENTITY pref_cookies_menu "Cookie">
 <!ENTITY pref_cookies_accept_all "Attivi">
 <!ENTITY pref_cookies_not_accept_foreign "Attivi, esclusi di terze parti">
@@ -78,7 +85,11 @@
 <!ENTITY pref_plugins_tap_to_play "Tocca per avviare">
 <!ENTITY pref_plugins_disabled "Disattivati">
 <!ENTITY pref_text_size "Dimensioni testo">
-<!ENTITY pref_reflow_on_zoom3 "Doppio tocco per ridisegnare il testo">
+<!ENTITY pref_reflow_on_zoom4 "Adattamento del testo">
+<!ENTITY pref_restore "Schede">
+<!ENTITY pref_restore_always "Ripristina sempre">
+<!ENTITY pref_restore_crash "Ripristina dopo un blocco">
+<!ENTITY pref_restore_never "Non ripristinare mai">
 <!ENTITY pref_font_size_tiny "Molto piccolo">
 <!ENTITY pref_font_size_small "Piccolo">
 <!ENTITY pref_font_size_medium "Medio">
@@ -100,6 +111,9 @@
 <!ENTITY pref_private_data_offlineApps "Dati non in linea dei siti web">
 <!ENTITY pref_private_data_siteSettings2 "Impostazioni siti">
 <!ENTITY pref_private_data_downloadFiles "File scaricati">
+<!ENTITY pref_about_firefox "Informazioni su &brandShortName;">
+<!ENTITY pref_vendor_faqs "FAQ">
+<!ENTITY pref_vendor_feedback "Invia feedback">
 <!ENTITY datareporting_notification_title "Statistiche e dati di &brandShortName;">
 <!ENTITY datareporting_notification_action_long "Scegli quali dati condividere">
 <!ENTITY datareporting_notification_action "Scegli cosa condividere">
@@ -137,9 +151,8 @@
 <!ENTITY tabs_normal "Schede">
 <!ENTITY tabs_private "Anonime">
 <!ENTITY tabs_synced "Sincronizzate">
-<!ENTITY wallpaper_success "Sfondo aggiornato">
-<!ENTITY wallpaper_progress "Impostazione sfondo">
-<!ENTITY wallpaper_fail "Impossibile impostare lo sfondo">
+<!ENTITY set_image_fail "Impossibile impostare immagine">
+<!ENTITY set_image_chooser_title "Imposta immagine come">
 <!ENTITY find_text "Trova nella pagina">
 <!ENTITY find_prev "Precedente">
 <!ENTITY find_next "Successivo">
@@ -174,7 +187,7 @@
 <!ENTITY reading_list_removed "Pagina eliminata da Elenco lettura">
 <!ENTITY reading_list_failed "Impossibile aggiungere la pagina a Elenco lettura">
 <!ENTITY reading_list_duplicate "La pagina è già presente in Elenco lettura">
-<!ENTITY reader "Lettore">
+<!ENTITY page_action_dropmarker_description "Azioni disponibili">
 <!ENTITY masterpassword_create_title "Imposta password principale">
 <!ENTITY masterpassword_remove_title "Rimuovi password principale">
 <!ENTITY masterpassword_password "Password">
@@ -187,7 +200,7 @@
 <!ENTITY button_set "Imposta">
 <!ENTITY button_clear "Cancella">
 <!ENTITY abouthome_addons_title "Componenti aggiuntivi per &brandShortName;">
-<!ENTITY abouthome_addons_browse "Sfoglia tutti i comp. aggiuntivi per &brandShortName;">
+<!ENTITY abouthome_addons_browse "Esplora i comp. aggiuntivi per &brandShortName;">
 <!ENTITY abouthome_last_tabs_title "Schede dall’ultima esecuzione">
 <!ENTITY abouthome_last_tabs_open "Apri tutte le schede dall’ultima esecuzione">
 <!ENTITY abouthome_top_sites_title "Siti principali">
@@ -221,6 +234,7 @@
 <!ENTITY suggestions_prompt2 "Attivare i suggerimenti di ricerca per &formatS;?">
 <!ENTITY webapp_generic_name "App">
 <!ENTITY searchable_description "Segnalibri e cronologia">
+<!ENTITY devtools_remote_debugging_forward "Ricordarsi di attivare l’inoltro alla porta (port forwarding).">
 <!ENTITY updater_start_title2 "Aggiornamento disponibile per &brandShortName;">
 <!ENTITY updater_start_select2 "Tocca per scaricare">
 <!ENTITY updater_downloading_title2 "Download di &brandShortName; in corso">
@@ -229,3 +243,11 @@
 <!ENTITY updater_downloading_retry2 "Tocca per riprovare">
 <!ENTITY updater_apply_title2 "Aggiornamento disponibile per &brandShortName;">
 <!ENTITY updater_apply_select2 "Tocca per aggiornare">
+<!ENTITY new_guest_session "Nuova sessione ospite">
+<!ENTITY exit_guest_session "Termina sessione ospite">
+<!ENTITY guest_session_dialog_continue "Continua">
+<!ENTITY guest_session_dialog_cancel "Annulla">
+<!ENTITY new_guest_session_title "&brandShortName; verrà riavviato">
+<!ENTITY new_guest_session_text "La persona che utilizza il browser non potrà visualizzare alcun dato personale già presente, come ad esempio password salvate, cronologia o segnalibri.\n\nAl termine i dati relativi a questa sessione di navigazione verranno eliminati e la sessione precedente verrà ripristinata.">
+<!ENTITY exit_guest_session_title "&brandShortName; verrà riavviato">
+<!ENTITY exit_guest_session_text "I dati relativi a questa sessione di navigazione verranno eliminati.">

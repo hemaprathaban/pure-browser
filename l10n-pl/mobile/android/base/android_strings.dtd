@@ -3,9 +3,6 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 
-<!ENTITY  splash_settingup "Przygotowywanie programu &brandShortName;">
-<!ENTITY  splash_bookmarks_history "Trwa synchronizacja twoich zakładek i historii przeglądania. Może to potrwać około minuty.">
-
 <!ENTITY  no_space_to_start_error "Na dysku jest za mało wolnego miejsca aby uruchomić program &brandShortName;">
 <!ENTITY  error_loading_file "Podczas wczytywania plików wymaganych do uruchomienia programu &brandShortName; wystąpił błąd.">
 
@@ -16,11 +13,11 @@
 
 <!ENTITY  crash_reporter_title "&brandShortName; - narzędzie zgłaszania awarii">
 <!ENTITY  crash_message2 "Przeglądarka &brandShortName; uległa awarii. Ostatnio otwarte karty powinny być dostępne na stronie startowej po ponowym uruchomieniu.">
-<!ENTITY  crash_send_report_message2 "Prześlij zgłoszenie problemu do Mozilli, aby mogli go rozwiązać">
+<!ENTITY  crash_send_report_message3 "Prześlij zgłoszenie problemu do organizacji &vendorShortName;, aby mogła go rozwiązać">
 <!ENTITY  crash_include_url2 "Załącz adres strony, na której wystąpił problem">
 <!ENTITY  crash_sorry "Przykro nam">
 <!ENTITY  crash_comment "Dodaj komentarz (komentarze są publicznie dostępne)">
-<!ENTITY  crash_allow_contact "Pozwól Mozilli skontaktować się z tobą w sprawie tego zgłoszenia">
+<!ENTITY  crash_allow_contact2 "Organizacja &vendorShortName; może skontaktować się ze mną w sprawie tego zgłoszenia">
 <!ENTITY  crash_email "Twój adres e-mail">
 <!ENTITY  crash_closing_alert "Chcesz wyjść bez wysłania zgłoszenia?">
 <!ENTITY  crash_close_label "Zamknij">
@@ -42,6 +39,7 @@
 <!ENTITY bookmark_added "Zakładka dodana">
 <!ENTITY bookmark_removed "Zakładka usunięta">
 <!ENTITY bookmark_updated "Zakładka uaktualniona">
+<!ENTITY bookmark_options "Opcje">
 
 <!ENTITY history_today_section "Dziś">
 <!ENTITY history_yesterday_section "Wczoraj">
@@ -65,20 +63,27 @@
 
 <!ENTITY settings "Ustawienia">
 <!ENTITY settings_title "Ustawienia">
-<!ENTITY pref_category_general "Ogólne">
-<!ENTITY pref_category_privacy "Prywatność i bezpieczeństwo">
-<!ENTITY pref_category_content "Treść">
-<!-- Localization note (datareporting_title) : This string matches
-     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
-     capitalization. -->
+
+<!ENTITY pref_category_advanced "Zaawansowane">
+<!ENTITY pref_category_customize "Dostosuj">
+<!ENTITY pref_category_search2 "Ustawienia wyszukiwania">
+<!ENTITY pref_category_display "Wyświetlanie">
+<!ENTITY pref_category_privacy_short "Prywatność">
+<!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Udostępnianie danych">
-<!ENTITY pref_about_firefox "O programie &brandShortName;">
+<!ENTITY pref_category_installed_search_engines "Zainstalowane silniki wyszukiwania">
+<!ENTITY pref_category_devtools "Narzędzia dla programistów">
+<!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
+<!ENTITY pref_developer_remotedebugging_docs "Dowiedz się więcej">
 <!ENTITY pref_remember_signons "Pamiętaj hasła">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
-<!ENTITY pref_header_general "Ogólne">
-<!ENTITY pref_header_privacy "Prywatność i bezpieczeństwo">
-<!ENTITY pref_header_content "Treść">
+<!ENTITY pref_header_customize "Dostosuj">
+<!ENTITY pref_header_display "Wyświetlanie">
+<!ENTITY pref_header_privacy_short "Prywatność">
+<!ENTITY pref_header_help "Pomoc">
+<!ENTITY pref_header_vendor "&vendorShortName;">
+<!ENTITY pref_header_devtools "Narzędzia dla programistów">
 
 <!ENTITY pref_cookies_menu "Ciasteczka">
 <!ENTITY pref_cookies_accept_all "Akceptuj wszystkie">
@@ -99,7 +104,11 @@
 <!ENTITY pref_plugins_tap_to_play "Dotknij, aby odtworzyć">
 <!ENTITY pref_plugins_disabled "Wyłączone">
 <!ENTITY pref_text_size "Rozmiar tekstu">
-<!ENTITY pref_reflow_on_zoom2 "Zsuń palce, by zmienić układ tekstu">
+<!ENTITY pref_reflow_on_zoom3 "Zmień układ tekstu">
+<!ENTITY pref_restore "Karty">
+<!ENTITY pref_restore_always "Przywracaj zawsze">
+<!ENTITY pref_restore_crash "Przywracaj po awarii">
+<!ENTITY pref_restore_never "Nigdy nie przywracaj">
 <!ENTITY pref_font_size_tiny "Bardzo mały">
 <!ENTITY pref_font_size_small "Mały">
 <!ENTITY pref_font_size_medium "Średni">
@@ -129,10 +138,16 @@ size. -->
 <!ENTITY pref_private_data_siteSettings2 "Ustawienia witryny">
 <!ENTITY pref_private_data_downloadFiles "Pobrane pliki">
 
+<!ENTITY pref_about_firefox "O programie &brandShortName;">
+<!ENTITY pref_vendor_faqs "FAQ">
+<!ENTITY pref_vendor_feedback "Przekaż informacje zwrotne">
+
 <!ENTITY datareporting_notification_title "&brandShortName;: statystyki i dane">
-<!ENTITY datareporting_notification_action "Wybierz informacje, które chcesz udostępniać">
+<!ENTITY datareporting_notification_action "Wybierz, co chcesz udostępniać">
+<!ENTITY datareporting_notification_action_long "Wybierz informacje, które chcesz udostępniać">
 <!ENTITY datareporting_notification_summary "Aby ulepszyć przeglądarkę &brandShortName;, &vendorShortName; automatycznie pobiera pewne informacje.">
 <!ENTITY datareporting_notification_summary_short "Aby ulepszyć przeglądarkę &brandShortName;…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;. &datareporting_notification_action_long;">
 
 <!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
      reporting_telemetry_title, datareporting_telemetry_summary,
@@ -140,15 +155,18 @@ size. -->
      chrome/browser/preferences/advanced.dtd (healthReportSection.label,
      healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
      crashReporterDesc.label). -->
-<!ENTITY datareporting_fhr_title "&brandShortName;: raport o zdrowie">
-<!ENTITY datareporting_fhr_summary "Pozwala ci zrozumieć wydajność przeglądarki i udostępnia dane o jej stanie organizacji &vendorShortName;">
+<!ENTITY datareporting_fhr_title "&brandShortName;: raport o zdrowiu">
+<!ENTITY datareporting_fhr_summary2 "Pozwala ci zrozumieć wydajność przeglądarki i udostępnia dane o jej stanie organizacji &vendorShortName;">
+<!ENTITY datareporting_abouthr_title "Wyświetl mój raport o zdrowiu">
 <!ENTITY datareporting_telemetry_title "Telemetria">
 <!ENTITY datareporting_telemetry_summary "Udostępnia organizacji &vendorShortName; dane o wydajności, wykorzystaniu, modyfikacjach przeglądarki oraz o sprzęcie, na którym działa, aby pomóc nam w ulepszeniu programu &brandShortName;">
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; przesyła zgłoszenia awarii, aby organizacja &vendorShortName; mogła poprawić stabilność i bezpieczeństwo przeglądarki">
 <!-- Localization note (datareporting_crashreporter_title) : This string matches
      (crashReporterSection.label) in chrome/browser/preferences/advanced.dtd
      except in branding. -->
-<!ENTITY datareporting_crashreporter_title "Zgłaszanie awarii programu &brandShortName;">
+<!ENTITY datareporting_crashreporter_title_short "Zgłaszanie awarii">
+<!ENTITY datareporting_wifi_title "Usługi lokalizacji organizacji &vendorShortName;">
+<!ENTITY datareporting_wifi_summary "Pomóż nam ulepszyć usługi geolokalizacji dla Otwartej Sieci, pozwalając, by przeglądarka &brandShortName; zbierała i wysyłała anonimowe dane">
 
 <!ENTITY pref_update_autodownload "Automatyczne aktualizacje">
 <!ENTITY pref_update_autodownload_wifi "Tylko przez Wi-Fi">
@@ -214,7 +232,10 @@ size. -->
 <!ENTITY reading_list_removed "Strona usunięta z listy „Do przeczytania”">
 <!ENTITY reading_list_failed "Nie udało się zapisać strony na liście „Do przeczytania”">
 <!ENTITY reading_list_duplicate "Strona już jest na liście „Do przeczytania”">
-<!ENTITY reader "Tryb czytania">
+
+<!-- Localization note : These strings are used as alternate text for accessibility.
+     They are not visible in the UI. -->
+<!ENTITY page_action_dropmarker_description "Dodatkowe czynności">
 
 <!ENTITY masterpassword_create_title "Utwórz hasło główne">
 <!ENTITY masterpassword_remove_title "Usuń hasło główne">
@@ -256,12 +277,11 @@ size. -->
 <!ENTITY filepicker_image_title "Wybierz istniejące zdjęcie lub zrób nowe">
 <!ENTITY filepicker_video_title "Wybierz istniejące wideo lub nagraj nowe">
 
-<!ENTITY wallpaper_success "Zmieniono tapetę">
-<!ENTITY wallpaper_progress "Zmienianie tapety">
-<!ENTITY wallpaper_fail "Nie można ustawić tapety">
 <!ENTITY tabs_normal "Karty">
 <!ENTITY tabs_private "Prywatne">
 <!ENTITY tabs_synced "Z Sync">
+<!ENTITY set_image_fail "Nie można ustawić obrazu">
+<!ENTITY set_image_chooser_title "Ustaw obraz jako">
 
 <!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
      replaced with the name of the search engine. -->
@@ -273,6 +293,15 @@ size. -->
 
 <!ENTITY identity_connected_to "Połączono z">
 <!ENTITY identity_run_by "Witrynę prowadzi:">
+
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "Na tej stronie znajdują się niebezpieczne treści">
+<!ENTITY blocked_mixed_content_message_top "Przeglądarka &brandShortName; zablokowała niebezpieczne treści.">
+<!ENTITY blocked_mixed_content_message_bottom "Większość witryn działa poprawnie nawet po zablokowaniu tych treści.">
+<!ENTITY learn_more "Dowiedz się więcej">
+<!ENTITY enable_protection "Włącz ochronę">
+<!ENTITY disable_protection "Wyłącz ochronę">
+<!ENTITY keep_blocking "Blokuj nadal">
 
 <!ENTITY private_data_success "Usunięto prywatne dane">
 <!ENTITY private_data_fail "Nie udało się usunąć wszystkich prywatnych danych">
@@ -290,6 +319,8 @@ size. -->
 
 <!ENTITY searchable_description "Zakładki i historia">
 
+<!ENTITY devtools_remote_debugging_forward "Nie zapomnij skonfigurować przekierowania portów!">
+
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Dla przeglądarki &brandShortName; dostępne są nowe aktualizacje">
 <!ENTITY updater_start_select2 "Dotknij, aby zaktualizować">
@@ -301,3 +332,14 @@ size. -->
 
 <!ENTITY updater_apply_title2 "Dla przeglądarki &brandShortName; dostępne są nowe aktualizacje">
 <!ENTITY updater_apply_select2 "Dotknij, aby zaktualizować">
+
+<!-- Guest mode -->
+<!ENTITY new_guest_session "Nowa sesja gościnna">
+<!ENTITY exit_guest_session "Zakończ sesję gościnną">
+<!ENTITY guest_session_dialog_continue "Kontynuuj">
+<!ENTITY guest_session_dialog_cancel "Anuluj">
+<!ENTITY new_guest_session_title "&brandShortName; zostanie uruchomiony ponownie">
+<!ENTITY new_guest_session_text "Osoba korzystająca z przeglądarki nie będzie widziała Twoich prywatnych informacji (takich, jak zapisane hasła, historia przeglądania czy zakładki). Kiedy gość skończy korzystać z przeglądarki, dane o sesji zostaną usunięte, a Twoja sesja zostanie przywrócona.">
+
+<!ENTITY exit_guest_session_title "&brandShortName; zostanie uruchomiony ponownie">
+<!ENTITY exit_guest_session_text "Dane o tej sesji zostaną usunięte.">

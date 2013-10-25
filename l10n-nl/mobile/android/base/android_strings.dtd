@@ -3,9 +3,6 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 
-<!ENTITY  splash_settingup "Uw &brandShortName; instellen">
-<!ENTITY  splash_bookmarks_history "We werken uw bladwijzers en geschiedenis bij, wat enkele minuten kan duren.">
-
 <!ENTITY  no_space_to_start_error "Er is niet genoeg ruimte beschikbaar om &brandShortName; te starten.">
 <!ENTITY  error_loading_file "Er is een fout opgetreden bij het laden van de benodigde bestanden voor &brandShortName;.">
 
@@ -67,20 +64,27 @@
 
 <!ENTITY settings "Instellingen">
 <!ENTITY settings_title "Instellingen">
-<!ENTITY pref_category_general "Algemeen">
-<!ENTITY pref_category_privacy "Privacy &amp; beveiliging">
-<!ENTITY pref_category_content "Inhoud">
-<!-- Localization note (datareporting_title) : This string matches
-     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
-     capitalization. -->
+<!ENTITY pref_category_advanced "Geavanceerd">
+<!ENTITY pref_category_customize "Aanpassen">
+<!ENTITY pref_category_search2 "Zoekinstellingen">
+<!ENTITY pref_category_display "Weergave">
+<!ENTITY pref_category_privacy_short "Privacy">
+<!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Gegevenskeuzes">
-<!ENTITY pref_about_firefox "Over &brandShortName;">
+<!ENTITY pref_category_installed_search_engines "Geïnstalleerde zoekmachines">
+<!ENTITY pref_category_devtools "Ontwikkelaarshulpmiddelen">
+<!ENTITY pref_developer_remotedebugging "Remote-debugging">
+<!ENTITY pref_developer_remotedebugging_docs "Meer info">
+
 <!ENTITY pref_remember_signons "Wachtwoorden onthouden">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
-<!ENTITY pref_header_general "Algemeen">
-<!ENTITY pref_header_privacy "Privacy &amp; beveiliging">
-<!ENTITY pref_header_content "Inhoud">
+<!ENTITY pref_header_customize "Aanpassen">
+<!ENTITY pref_header_display "Weergave">
+<!ENTITY pref_header_privacy_short "Privacy">
+<!ENTITY pref_header_help "Help">
+<!ENTITY pref_header_vendor "&vendorShortName;">
+<!ENTITY pref_header_devtools "Ontwikkelaarshulpmiddelen">
 
 <!ENTITY pref_cookies_menu "Cookies">
 <!ENTITY pref_cookies_accept_all "Ingeschakeld">
@@ -101,7 +105,11 @@
 <!ENTITY pref_plugins_tap_to_play "Tikken voor afspelen">
 <!ENTITY pref_plugins_disabled "Uitgeschakeld">
 <!ENTITY pref_text_size "Tekstgrootte">
-<!ENTITY pref_reflow_on_zoom3 "Dubbel tikken om tekst aan te passen">
+<!ENTITY pref_reflow_on_zoom4 "Tekst herschikking">
+<!ENTITY pref_restore "Tabbladen">
+<!ENTITY pref_restore_always "Altijd herstellen">
+<!ENTITY pref_restore_crash "Na een crash herstellen">
+<!ENTITY pref_restore_never "Nooit herstellen">
 <!ENTITY pref_font_size_tiny "Zeer klein">
 <!ENTITY pref_font_size_small "Klein">
 <!ENTITY pref_font_size_medium "Gemiddeld">
@@ -132,6 +140,11 @@ size. -->
 <!ENTITY pref_private_data_offlineApps "Offlinewebsitegegevens">
 <!ENTITY pref_private_data_siteSettings2 "Website-instellingen">
 <!ENTITY pref_private_data_downloadFiles "Gedownloade bestanden">
+
+
+<!ENTITY pref_about_firefox "Over &brandShortName;">
+<!ENTITY pref_vendor_faqs "FAQ\'s">
+<!ENTITY pref_vendor_feedback "Feedback geven">
 
 <!ENTITY datareporting_notification_title "&brandShortName; stats &amp; data">
 <!ENTITY datareporting_notification_action_long "Kies welke informatie u wilt delen">
@@ -183,9 +196,8 @@ size. -->
 <!ENTITY tabs_normal "Tabbladen">
 <!ENTITY tabs_private "Privé">
 <!ENTITY tabs_synced "Gesynchroniseerd">
-<!ENTITY wallpaper_success "Achtergrond bijgewerkt">
-<!ENTITY wallpaper_progress "Achtergrond instellen">
-<!ENTITY wallpaper_fail "Achtergrond instellen niet mogelijk">
+<!ENTITY set_image_fail "Instellen afbeelding niet mogelijk">
+<!ENTITY set_image_chooser_title "Afbeelding instellen als">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -231,7 +243,10 @@ size. -->
 <!ENTITY reading_list_removed "Pagina van uw leeslijst verwijderd">
 <!ENTITY reading_list_failed "Pagina aan uw leeslijst toevoegen mislukt">
 <!ENTITY reading_list_duplicate "Pagina staat al in uw leeslijst">
-<!ENTITY reader "Lezer">
+
+<!-- Localization note : These strings are used as alternate text for accessibility.
+     They are not visible in the UI. -->
+<!ENTITY page_action_dropmarker_description "Alternatieve acties">
 
 <!ENTITY masterpassword_create_title "Hoofdwachtwoord aanmaken">
 <!ENTITY masterpassword_remove_title "Hoofdwachtwoord verwijderen">
@@ -318,6 +333,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY searchable_description "Bladwijzers en geschiedenis">
 
+<!ENTITY devtools_remote_debugging_forward "Poort-forwarding niet vergeten in te stellen!">
+
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Update voor &brandShortName; beschikbaar">
 <!ENTITY updater_start_select2 "Raak aan om te downloaden">
@@ -329,3 +346,14 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY updater_apply_title2 "Update voor &brandShortName; beschikbaar">
 <!ENTITY updater_apply_select2 "Raak aan om bij te werken">
+
+<!-- Guest mode -->
+<!ENTITY new_guest_session "Nieuwe gastsessie">
+<!ENTITY exit_guest_session "Gastsessie verlaten">
+<!ENTITY guest_session_dialog_continue "Doorgaan">
+<!ENTITY guest_session_dialog_cancel "Annuleren">
+<!ENTITY new_guest_session_title "&brandShortName; zal nu herstarten">
+<!ENTITY new_guest_session_text "Het is niet mogelijk voor de persoon die dit gebruikt uw persoonlijke navigatiedata (zoals opgeslagen wachtwoorden, geschiedenis of bladwijzers) te zien.\n\nAls uw gast klaar is wordt hun navigatiedat gewist en uw sessie hersteld.">
+
+<!ENTITY exit_guest_session_title "&brandShortName; zal nu herstarten">
+<!ENTITY exit_guest_session_text "De navigatiegeschiedenis van deze sessie wordt verwijderd.">
