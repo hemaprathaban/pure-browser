@@ -1,3 +1,18 @@
+iceweasel (24.1.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2013-{93-102}, also known as
+    CVE-2013-5590, CVE-2013-5591, CVE-2013-5593, CVE-2013-5604,
+    CVE-2013-5595, CVE-2013-5596, CVE-2013-5597, CVE-2013-5598,
+    CVE-2013-5599, CVE-2013-5600, CVE-2013-5601, CVE-2013-5602,
+    CVE-2013-5603.
+
+  * debian/rules: Don't try to disable methodjit, since it's long gone.
+  * debian/upstream.mk: Adjust version mangling to handle the version scheme
+    change without changing package names.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 01 Nov 2013 13:34:25 +0900
+
 iceweasel (24.0-2) unstable; urgency=low
 
   * debian/control*: Build-depend on fonts-freefont-ttf instead of
