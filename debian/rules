@@ -90,12 +90,7 @@ ifneq (,$(filter kfreebsd-% hurd-%,$(DEB_BUILD_ARCH)))
 endif
 
 ifneq (,$(filter armel,$(DEB_BUILD_ARCH)))
-	CONFIGURE_FLAGS += --disable-methodjit
 	CFLAGS += -D__ARM_PCS
-endif
-
-ifeq (8.0_sparc,$(GRE_MILESTONE)_$(DEB_BUILD_ARCH))
-	CONFIGURE_FLAGS += --disable-methodjit
 endif
 
 ifneq (,$(filter ia64,$(DEB_BUILD_ARCH)))
