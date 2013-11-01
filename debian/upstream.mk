@@ -15,7 +15,7 @@ GRE_SRCDIR := $(strip $(foreach dir,. mozilla,$(if $(wildcard $(dir)/config/mile
 ifndef GRE_SRCDIR
 $(error Could not determine the top directory for GRE codebase)
 endif
-GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) | $(VERSION_FILTER))
+GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) | $(VERSION_FILTER) | sed 's/^\([0-9][0-9]*\)\.[0-9][0-9]*\./\1.0./;s/\.0\.0/.0/')
 
 # Construct GRE_VERSION from the first two digits in GRE_MILESTONE
 GRE_VERSION := $(subst ~, ,$(subst ., ,$(GRE_MILESTONE)))
