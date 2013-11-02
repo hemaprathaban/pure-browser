@@ -11,7 +11,7 @@ Closes: #577677
  3 files changed, 24 insertions(+)
 
 diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
-index c786455..31468f3 100644
+index cd817d0..f15f14a 100644
 --- a/xpcom/base/nscore.h
 +++ b/xpcom/base/nscore.h
 @@ -333,6 +333,28 @@ typedef uint32_t nsrefcnt;
@@ -44,7 +44,7 @@ index c786455..31468f3 100644
  #define __PRUNICHAR__
    /* For now, don't use wchar_t on Unix because it breaks the Netscape
 diff --git a/xpcom/glue/nsStringAPI.h b/xpcom/glue/nsStringAPI.h
-index 658f080..c848d67 100644
+index 1b731d2..d173994 100644
 --- a/xpcom/glue/nsStringAPI.h
 +++ b/xpcom/glue/nsStringAPI.h
 @@ -1092,6 +1092,7 @@ private:

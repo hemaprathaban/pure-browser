@@ -3,9 +3,6 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 
-<!ENTITY  splash_settingup "إعداد &brandShortName;">
-<!ENTITY  splash_bookmarks_history "نقوم بتحديث علاماتك وتأريخ التصفح، وقد يستغرق هذا قريبا من دقيقة.">
-
 <!ENTITY  no_space_to_start_error "لا يوجد مساحة تكفي لتشغيل &brandShortName;.">
 <!ENTITY  error_loading_file "حصل خطأ عند محاولة تحميل الملفات لتشغيل &brandShortName;">
 
@@ -16,11 +13,11 @@
 
 <!ENTITY  crash_reporter_title "مبلغ انهيارات &brandShortName;">
 <!ENTITY  crash_message2 "انهار &brandShortName;. ستجد ألسنتك مسرودة في صفحة بداية &brandShortName; عندما تعيد تشغيله.">
-<!ENTITY  crash_send_report_message2 "أبلغ موزيلا بهذا الانهيار ليُمكنهم إصلاحه">
+<!ENTITY  crash_send_report_message3 "أخبر &vendorShortName; عن هذا الانهيار ليُمكنهم إصلاحه">
 <!ENTITY  crash_include_url2 "ضمّنهُ عنوان الصفحة التي كنت أزور">
 <!ENTITY  crash_sorry "نعتذر">
 <!ENTITY  crash_comment "ضع تعليقًا (التعليقات ظاهرة للعموم)">
-<!ENTITY  crash_allow_contact "اسمح لموزيلا بالتواصل معي بخصوص هذا البلاغ">
+<!ENTITY  crash_allow_contact2 "اسمح ل&vendorShortName; بمراسلتي بخصوص هذا البلاغ">
 <!ENTITY  crash_email "بريدك الإلكتروني">
 <!ENTITY  crash_closing_alert "أأخرج بدون إرسال بلاغ الانهيار؟">
 <!ENTITY  sending_crash_report "يرسل بلاغ الانهيار\u2026">
@@ -42,6 +39,7 @@
 <!ENTITY bookmark_added "أُضيفت العلامة">
 <!ENTITY bookmark_removed "أُزيلت العلامة">
 <!ENTITY bookmark_updated "حُدّثت العلامة">
+<!ENTITY bookmark_options "الخيارات">
 
 <!ENTITY history_today_section "اليوم">
 <!ENTITY history_yesterday_section "أمس">
@@ -66,20 +64,24 @@
 
 <!ENTITY settings "الإعدادات">
 <!ENTITY settings_title "الإعدادات">
-<!ENTITY pref_category_general "عام">
-<!ENTITY pref_category_privacy "الخصوصية و السرية">
-<!ENTITY pref_category_content "المحتوى">
-<!-- Localization note (datareporting_title) : This string matches
-     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
-     capitalization. -->
+
+
+
+
+
+
 <!ENTITY pref_category_datareporting "اختيارات البيانات">
-<!ENTITY pref_about_firefox "عن &brandShortName;">
+
+
+
+
 <!ENTITY pref_remember_signons "تذكّر كلمات السر">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
-<!ENTITY pref_header_general "عام">
-<!ENTITY pref_header_privacy "الخصوصية و السرية">
-<!ENTITY pref_header_content "المحتوى">
+
+
+
+
 
 <!ENTITY pref_cookies_menu "الكعكات">
 <!ENTITY pref_cookies_accept_all "مفعّلة">
@@ -100,7 +102,11 @@
 <!ENTITY pref_plugins_tap_to_play "انقر للتشغيل">
 <!ENTITY pref_plugins_disabled "مُعطّلة">
 <!ENTITY pref_text_size "حجم النص">
-<!ENTITY pref_reflow_on_zoom2 "اقرص لتغيير انسياب النص">
+
+
+
+
+
 <!ENTITY pref_font_size_tiny "ضئيل">
 <!ENTITY pref_font_size_small "صغير">
 <!ENTITY pref_font_size_medium "متوسط">
@@ -132,26 +138,35 @@ size. -->
 <!ENTITY pref_private_data_siteSettings2 "إعدادات الموقع">
 <!ENTITY pref_private_data_downloadFiles "الملفّات المُنزّلة">
 
+
+<!ENTITY pref_about_firefox "عن &brandShortName;">
+
+<!ENTITY pref_vendor_feedback "أخبرنا بتعليقاتك">
+
 <!ENTITY datareporting_notification_title "بيانات و إحصائيات &brandShortName;">
+<!ENTITY datareporting_notification_action_long "اختر أي المعلومات تشارِك">
 <!ENTITY datareporting_notification_action " اختر ما الذي تريد مشاركته">
 <!ENTITY datareporting_notification_summary "لتَحسين استخدامك له، يُرسل &brandShortName;  بعض المعلومات آليًا إلى &vendorShortName;.">
 <!ENTITY datareporting_notification_summary_short "لتَحسين استخدامك له، &brandShortName;…">
-<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
+<!ENTITY datareporting_notification_ticker_text "datareporting_notification_title;: datareporting_notification_action_long;">
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
      reporting_telemetry_title, datareporting_telemetry_summary,
      datareporting_crashreporter_summary) : These match the strings in
-     chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
      healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
      crashReporterDesc.label). -->
 
 <!ENTITY datareporting_fhr_title "تقرير حالة &brandShortName;">
-<!ENTITY datareporting_fhr_summary "يساعدك في تفحص أداء متصفحك ومشاركة بيانات حالة المتصفح مع &vendorShortName;">
+
+<!ENTITY datareporting_abouthr_title "اعرض تقرير الحالة">
 <!ENTITY datareporting_telemetry_title "تليمتري">
 <!ENTITY datareporting_telemetry_summary "شارك بيانات المتصفح فيما يتعلق بالأداء و الاستخدام و العتاد و التخصيصات مع &vendorShortName; لمساعدتنا في جعل &brandShortName; أفضل">
 <!ENTITY datareporting_crashreporter_summary "يُرسل &brandShortName; بلاغات الانهيار إلى &vendorShortName; للمساعدة في تحسين أداء متصفحك و استقراره">
-<!-- Localization note (datareporting_crashreporter_title) : This string matches
-     (crashReporterSection.label) in chrome/browser/preferences/advanced.dtd
-     except in branding. -->
-<!ENTITY datareporting_crashreporter_title "مبلغ انهيارات &brandShortName;">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "مُبلّغ الانهيار">
+
+
 
 <!ENTITY pref_update_autodownload "التحديثات التلقائية">
 <!ENTITY pref_update_autodownload_wifi "عبر واي فاي فقط">
@@ -175,12 +190,11 @@ size. -->
 <!ENTITY new_tab "لسان جديد">
 <!ENTITY new_private_tab "لسان خاص جديد">
 <!ENTITY close_all_tabs "اغلق كل الألسنة">
-<!ENTITY tabs_normal "الألسنة">
+
 <!ENTITY tabs_private "خاص">
 <!ENTITY tabs_synced "مُزامَن">
-<!ENTITY wallpaper_success "حُدّثت الخلفية">
-<!ENTITY wallpaper_progress "تحديد الخلفية">
-<!ENTITY wallpaper_fail "تعذّر تحديد الخلفية">
+
+
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
 
@@ -226,7 +240,8 @@ size. -->
 <!ENTITY reading_list_removed "حُذِفت الصفحة من قائمة القراءة">
 <!ENTITY reading_list_failed "فشلت إضافة الصفحة إلى قائمة القراءة">
 <!ENTITY reading_list_duplicate "الصفحة موجودة في قائمة القراءة">
-<!ENTITY reader "القارئ">
+<!-- Localization note : These strings are used as alternate text for accessibility.
+     They are not visible in the UI. -->
 
 <!ENTITY masterpassword_create_title "أنشئ كلمة سر رئيسية">
 <!ENTITY masterpassword_remove_title "أزِل كلمة السر الرئيسية">
@@ -283,6 +298,13 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "والذي يعمل ب‍">
+<!-- Mixed content notifications in site identity popup -->
+
+
+<!ENTITY learn_more "اطّلع على المزيد">
+<!ENTITY enable_protection "فعّل الحماية">
+<!ENTITY disable_protection "عطّل الحماية">
+
 
 <!ENTITY private_data_success "مُسحت البيانات الخاصة">
 <!ENTITY private_data_fail "تعذّر مسح بعض البيانات الخاصة">
@@ -303,6 +325,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY webapp_generic_name "تطبيق">
 
 <!ENTITY searchable_description "العلامات والتأريخ">
+
 <!-- Updater notifications --> 
 
 <!ENTITY updater_start_title2 "يتوفر تحديث &brandShortName;">
@@ -315,3 +338,11 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY updater_apply_title2 "يتوفر تحديث &brandShortName;">
 <!ENTITY updater_apply_select2 "المس للتحديث">
+<!-- Guest mode -->
+
+<!ENTITY guest_session_dialog_continue "استمر">
+
+
+
+
+

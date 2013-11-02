@@ -2,8 +2,6 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY splash_settingup "Настройка вашего &brandShortName;">
-<!ENTITY splash_bookmarks_history "Идёт обновление ваших закладок и истории, что может занять примерно минуту.">
 <!ENTITY no_space_to_start_error "Недостаточно свободного места для запуска &brandShortName;.">
 <!ENTITY error_loading_file "При попытке загрузки файлов, требуемых для запуска &brandShortName;, произошла ошибка.">
 <!ENTITY awesomebar_all_pages_title "Топ сайтов">
@@ -52,15 +50,24 @@
 <!ENTITY new_tab_opened "Открыта новая вкладка">
 <!ENTITY settings "Параметры">
 <!ENTITY settings_title "Параметры">
-<!ENTITY pref_category_general "Основные">
-<!ENTITY pref_category_privacy "Приватность и защита">
-<!ENTITY pref_category_content "Содержимое">
+<!ENTITY pref_category_advanced "Дополнительно">
+<!ENTITY pref_category_customize "Настройка">
+<!ENTITY pref_category_search2 "Параметры поиска">
+<!ENTITY pref_category_display "Отображение">
+<!ENTITY pref_category_privacy_short "Приватность">
+<!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Выбор данных">
-<!ENTITY pref_about_firefox "О &brandShortName;">
+<!ENTITY pref_category_installed_search_engines "Установленные поисковые системы">
+<!ENTITY pref_category_devtools "Инструменты разработки">
+<!ENTITY pref_developer_remotedebugging "Удалённый отладчик">
+<!ENTITY pref_developer_remotedebugging_docs "Подробнее">
 <!ENTITY pref_remember_signons "Запоминать пароли">
-<!ENTITY pref_header_general "Основные">
-<!ENTITY pref_header_privacy "Приватность и защита">
-<!ENTITY pref_header_content "Содержимое">
+<!ENTITY pref_header_customize "Настройка">
+<!ENTITY pref_header_display "Отображение">
+<!ENTITY pref_header_privacy_short "Приватность">
+<!ENTITY pref_header_help "Справка">
+<!ENTITY pref_header_vendor "&vendorShortName;">
+<!ENTITY pref_header_devtools "Инструменты разработки">
 <!ENTITY pref_cookies_menu "Куки">
 <!ENTITY pref_cookies_accept_all "Включены">
 <!ENTITY pref_cookies_not_accept_foreign "Включены, кроме сторонних сайтов">
@@ -78,7 +85,11 @@
 <!ENTITY pref_plugins_tap_to_play "По нажатию">
 <!ENTITY pref_plugins_disabled "Отключены">
 <!ENTITY pref_text_size "Размер текста">
-<!ENTITY pref_reflow_on_zoom3 "Перерисовка после двух нажатий">
+<!ENTITY pref_reflow_on_zoom4 "Перерисовка текста">
+<!ENTITY pref_restore "Вкладки">
+<!ENTITY pref_restore_always "Всегда восстанавливать">
+<!ENTITY pref_restore_crash "Восстанавливать после падения">
+<!ENTITY pref_restore_never "Никогда не восстанавливать">
 <!ENTITY pref_font_size_tiny "Мелкий">
 <!ENTITY pref_font_size_small "Маленький">
 <!ENTITY pref_font_size_medium "Средний">
@@ -90,7 +101,7 @@
 <!ENTITY pref_use_master_password "Задать мастер-пароль">
 <!ENTITY pref_show_product_announcements "Анонсы продукта">
 <!ENTITY pref_sync "Синхронизация">
-<!ENTITY pref_search_suggestions "Поиск. предложения">
+<!ENTITY pref_search_suggestions "Поисковые предложения">
 <!ENTITY pref_import_android "Импорт из Android">
 <!ENTITY pref_private_data_history "Журнал посещений и загрузок">
 <!ENTITY pref_private_data_formdata "Журнал форм и поиска">
@@ -100,17 +111,20 @@
 <!ENTITY pref_private_data_offlineApps "Данные автономных веб-сайтов">
 <!ENTITY pref_private_data_siteSettings2 "Настройки сайтов">
 <!ENTITY pref_private_data_downloadFiles "Загруженные файлы">
+<!ENTITY pref_about_firefox "О &brandShortName;">
+<!ENTITY pref_vendor_faqs "FAQ">
+<!ENTITY pref_vendor_feedback "Отправить отзыв">
 <!ENTITY datareporting_notification_title "Статистика и данные &brandShortName;">
 <!ENTITY datareporting_notification_action_long "Выбрать, какой информацией поделиться">
 <!ENTITY datareporting_notification_action "Выбрать, чем поделиться">
 <!ENTITY datareporting_notification_summary "Чтобы улучшить вашу работу, &brandShortName; автоматически отправляет некоторые данные в &vendorShortName;.">
 <!ENTITY datareporting_notification_summary_short "Чтобы улучшить вашу работу, &brandShortName;…">
 <!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
-<!ENTITY datareporting_fhr_title "Отчёт о работоспособности &brandShortName;">
+<!ENTITY datareporting_fhr_title "Отчёт о здоровье &brandShortName;">
 <!ENTITY datareporting_fhr_summary2 "Делится данными о здоровье вашего браузера с &vendorShortName; и помогает вам больше узнать о скорости его работы">
 <!ENTITY datareporting_abouthr_title "Посмотреть мой отчёт о здоровье">
 <!ENTITY datareporting_telemetry_title "Телеметрия">
-<!ENTITY datareporting_telemetry_summary "Поделиться сведениями о производительности, использовании, аппаратном обеспечении и настройках вашего браузера с &vendorShortName;, чтобы помочь нам сделать &brandShortName; ещё лучше">
+<!ENTITY datareporting_telemetry_summary "Делится сведениями о производительности, использовании, аппаратном обеспечении и настройках вашего браузера с &vendorShortName;, чтобы помочь нам сделать &brandShortName; ещё лучше">
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; отправляет сообщения о падениях, чтобы помочь &vendorShortName; сделать ваш браузер более стабильным и безопасным">
 <!ENTITY datareporting_crashreporter_title_short "Сообщения о падениях">
 <!ENTITY datareporting_wifi_title "Службы местоположения &vendorShortName;">
@@ -137,9 +151,8 @@
 <!ENTITY tabs_normal "Вкладки">
 <!ENTITY tabs_private "Приватные">
 <!ENTITY tabs_synced "Синхронизированные">
-<!ENTITY wallpaper_success "Обои обновлены">
-<!ENTITY wallpaper_progress "Установка обоев">
-<!ENTITY wallpaper_fail "Не удалось установить обои">
+<!ENTITY set_image_fail "Не удалось установить изображение">
+<!ENTITY set_image_chooser_title "Установить изображение как">
 <!ENTITY find_text "Найти на странице">
 <!ENTITY find_prev "Назад">
 <!ENTITY find_next "Далее">
@@ -174,7 +187,7 @@
 <!ENTITY reading_list_removed "Страница удалена из вашего Списка для чтения">
 <!ENTITY reading_list_failed "Не удалось добавить страницу в ваш Список для чтения">
 <!ENTITY reading_list_duplicate "Страница уже в вашем Списке для чтения">
-<!ENTITY reader "Чтение">
+<!ENTITY page_action_dropmarker_description "Дополнительные действия">
 <!ENTITY masterpassword_create_title "Создать мастер-пароль">
 <!ENTITY masterpassword_remove_title "Удалить мастер-пароль">
 <!ENTITY masterpassword_password "Пароль">
@@ -221,6 +234,7 @@
 <!ENTITY suggestions_prompt2 "Вы хотите включить поисковые предложения &formatS;?">
 <!ENTITY webapp_generic_name "Приложение">
 <!ENTITY searchable_description "Закладки и история">
+<!ENTITY devtools_remote_debugging_forward "Не забудьте настроить перенаправление портов!">
 <!ENTITY updater_start_title2 "Доступно обновление &brandShortName;">
 <!ENTITY updater_start_select2 "Нажмите для загрузки">
 <!ENTITY updater_downloading_title2 "Загрузка &brandShortName;">
@@ -229,3 +243,11 @@
 <!ENTITY updater_downloading_retry2 "Нажмите для повтора">
 <!ENTITY updater_apply_title2 "Доступно обновление &brandShortName;">
 <!ENTITY updater_apply_select2 "Нажмите для обновления">
+<!ENTITY new_guest_session "Новая гостевая сессия">
+<!ENTITY exit_guest_session "Выйти из гостевой сессии">
+<!ENTITY guest_session_dialog_continue "Продолжить">
+<!ENTITY guest_session_dialog_cancel "Отмена">
+<!ENTITY new_guest_session_title "&brandShortName; сейчас будет перезапущен">
+<!ENTITY new_guest_session_text "Человек, использующий гостевую сессию, не увидит ничего из ваших личных данных веб-сёрфинга (таких как сохранённые пароли, история или закладки).\n\nКогда ваш гость закончит, его данные веб-сёрфинга будут удалены, а ваша сессия будет восстановлена.">
+<!ENTITY exit_guest_session_title "&brandShortName; сейчас будет перезапущен">
+<!ENTITY exit_guest_session_text "Данные веб-серфинга из этой сессии будут удалены.">

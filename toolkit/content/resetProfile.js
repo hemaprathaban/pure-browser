@@ -2,16 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-Components.utils.import("resource://gre/modules/Services.jsm");
+"use strict";
 
-let Cc = Components.classes;
-let Ci = Components.interfaces;
+let Cu = Components.utils;
+
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("resource://gre/modules/ResetProfile.jsm");
 
 // based on onImportItemsPageShow from migration.js
 function populateResetPane(aContainerID) {
   let resetProfileItems = document.getElementById(aContainerID);
   try {
-    let dataTypes = getMigratedData();
+    let dataTypes = ResetProfile.getMigratedData();
     for (let dataType of dataTypes) {
       let label = document.createElement("label");
       label.setAttribute("value", dataType);
@@ -26,6 +28,8 @@ function onResetProfileLoad() {
   populateResetPane("migratedItems");
 }
 
+<<<<<<< HEAD
+=======
 /**
  * Check if reset is supported for the currently running profile.
  *
@@ -75,6 +79,7 @@ function getMigratedData() {
   return dataTypes;
 }
 
+>>>>>>> Bug 756390 - Make the "Reset Firefox" feature more generic
 function onResetProfileAccepted() {
   let retVals = window.arguments[0];
   retVals.reset = true;

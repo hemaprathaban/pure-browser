@@ -3,105 +3,104 @@ Date: Tue, 5 Jun 2012 08:57:06 +0200
 Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
 
 ---
- browser/components/migration/content/migration.js       | 13 +++++++++----
- browser/components/migration/content/migration.xul      |  2 +-
- .../migration/src/BrowserProfileMigrators.manifest      |  2 +-
- .../components/migration/src/FirefoxProfileMigrator.js  |  2 +-
- browser/components/migration/src/MigrationUtils.jsm     | 17 +++++++++++------
- browser/components/migration/src/ProfileMigrator.js     |  1 +
- .../en-US/chrome/browser/migration/migration.dtd        |  2 --
- .../en-US/chrome/browser/migration/migration.properties | 11 +++++------
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       |  8 ++++----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- .../chrome/browser/migration/migration.properties       | 10 +++++-----
- toolkit/content/jar.mn                                  |  2 +-
- toolkit/content/resetProfile.js                         | 15 ++++++---------
- toolkit/profile/nsIProfileMigrator.idl                  | 10 +++++++++-
- toolkit/xre/nsAppRunner.cpp                             |  2 +-
- 98 files changed, 464 insertions(+), 451 deletions(-)
+ browser/components/migration/content/migration.js  | 13 ++++--
+ browser/components/migration/content/migration.xul |  2 +-
+ .../migration/src/BrowserProfileMigrators.manifest |  2 +-
+ .../migration/src/FirefoxProfileMigrator.js        |  2 +-
+ .../components/migration/src/MigrationUtils.jsm    | 17 ++++---
+ .../components/migration/src/ProfileMigrator.js    |  1 +
+ .../en-US/chrome/browser/migration/migration.dtd   |  2 -
+ .../chrome/browser/migration/migration.properties  | 14 +++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  |  8 ++--
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ toolkit/content/resetProfile.js                    | 52 ++++++++++++++++++++++
+ toolkit/profile/nsIProfileMigrator.idl             | 10 ++++-
+ toolkit/xre/nsAppRunner.cpp                        |  2 +-
+ 97 files changed, 569 insertions(+), 500 deletions(-)
 
 diff --git a/browser/components/migration/content/migration.js b/browser/components/migration/content/migration.js
 index 91c5c1c..2f8bd1a 100644
@@ -168,10 +167,10 @@ index d7fec75..d531b83 100644
  component {3d2532e3-4932-4774-b7ba-968f5899d3a4} IEProfileMigrator.js
  contract @mozilla.org/profile/migrator;1?app=browser&type=ie {3d2532e3-4932-4774-b7ba-968f5899d3a4}
 diff --git a/browser/components/migration/src/FirefoxProfileMigrator.js b/browser/components/migration/src/FirefoxProfileMigrator.js
-index 23e021d..469e504 100644
+index 3db6720..a3b3dda 100644
 --- a/browser/components/migration/src/FirefoxProfileMigrator.js
 +++ b/browser/components/migration/src/FirefoxProfileMigrator.js
-@@ -89,7 +89,7 @@ Object.defineProperty(FirefoxProfileMigrator.prototype, "startupOnlyMigrator", {
+@@ -128,7 +128,7 @@ Object.defineProperty(FirefoxProfileMigrator.prototype, "startupOnlyMigrator", {
  
  
  FirefoxProfileMigrator.prototype.classDescription = "Firefox Profile Migrator";
@@ -181,10 +180,10 @@ index 23e021d..469e504 100644
  
  this.NSGetFactory = XPCOMUtils.generateNSGetFactory([FirefoxProfileMigrator]);
 diff --git a/browser/components/migration/src/MigrationUtils.jsm b/browser/components/migration/src/MigrationUtils.jsm
-index 3d23a98..4ce7a3e 100644
+index 2c91e9a..08962c4 100644
 --- a/browser/components/migration/src/MigrationUtils.jsm
 +++ b/browser/components/migration/src/MigrationUtils.jsm
-@@ -404,12 +404,6 @@ this.MigrationUtils = Object.freeze({
+@@ -405,12 +405,6 @@ this.MigrationUtils = Object.freeze({
     * @see nsIStringBundle
     */
    getLocalizedString: function MU_getLocalizedString(aKey, aReplacements) {
@@ -197,7 +196,7 @@ index 3d23a98..4ce7a3e 100644
      if (aReplacements === undefined)
        return getMigrationBundle().GetStringFromName(aKey);
      return getMigrationBundle().formatStringFromName(
-@@ -624,6 +618,17 @@ this.MigrationUtils = Object.freeze({
+@@ -625,6 +619,17 @@ this.MigrationUtils = Object.freeze({
    },
  
    /**
@@ -241,18 +240,10 @@ index 21cf405..f3c1a6b 100644
  <!ENTITY noMigrationSources.label       "No programs that contain bookmarks, history or password data could be found.">
  
 diff --git a/browser/locales/en-US/chrome/browser/migration/migration.properties b/browser/locales/en-US/chrome/browser/migration/migration.properties
-index b1cb03d..1755ae7 100644
+index 094a9dc..a620905 100644
 --- a/browser/locales/en-US/chrome/browser/migration/migration.properties
 +++ b/browser/locales/en-US/chrome/browser/migration/migration.properties
-@@ -8,7 +8,6 @@ profileName_format=%S %S
- sourceNameIE=Internet Explorer
- sourceNameSafari=Safari
- sourceNameChrome=Google Chrome
--sourceNameFirefox=Mozilla Firefox
- 
- importedBookmarksFolder=From %S
- 
-@@ -24,22 +23,22 @@ importedSafariReadingList=Reading List (From Safari)
+@@ -24,30 +24,30 @@ importedSafariReadingList=Reading List (From Safari)
  2_ie=Cookies
  2_safari=Cookies
  2_chrome=Cookies
@@ -277,14 +268,19 @@ index b1cb03d..1755ae7 100644
 -16_firefox=Saved Passwords
 +16_self=Saved Passwords
  
- 32_ie=Favorites
+-32_ie=Favorites
++32_ie=Favourites
  32_safari=Bookmarks
-@@ -48,4 +47,4 @@ importedSafariReadingList=Reading List (From Safari)
+ 32_chrome=Bookmarks
+ 
  64_ie=Other Data
  64_safari=Other Data
  64_chrome=Other Data
 -64_firefox_other=Other Data
 +64_self=Other Data
+ 
+-128_firefox=Windows and Tabs
++128_self=Windows and Tabs
 diff --git a/l10n-ach/browser/chrome/browser/migration/migration.properties b/l10n-ach/browser/chrome/browser/migration/migration.properties
 index 7ce6659..054c399 100644
 --- a/l10n-ach/browser/chrome/browser/migration/migration.properties
@@ -317,7 +313,7 @@ index 7ce6659..054c399 100644
  32_ie=Me amara
  32_safari=Alama buk
 diff --git a/l10n-af/browser/chrome/browser/migration/migration.properties b/l10n-af/browser/chrome/browser/migration/migration.properties
-index 8b6d1fc..24d9166 100644
+index 2169d9e..bf54ff5 100644
 --- a/l10n-af/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-af/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Leeslys (van Safari)
@@ -347,14 +343,17 @@ index 8b6d1fc..24d9166 100644
  
  32_ie=Gunstelinge
  32_safari=Boekmerke
-@@ -48,4 +48,4 @@ importedSafariReadingList=Leeslys (van Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Leeslys (van Safari)
  64_ie=Ander data
  64_safari=Ander data
  64_chrome=Ander data
 -64_firefox_other=Ander data
 +64_self=Ander data
+ 
+-128_firefox=Vensters en oortjies
++128_self=Vensters en oortjies
 diff --git a/l10n-ak/browser/chrome/browser/migration/migration.properties b/l10n-ak/browser/chrome/browser/migration/migration.properties
-index 9057731..76ec593 100644
+index 76ef52f..ae2f8d1 100644
 --- a/l10n-ak/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ak/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Akenkan liste (Efi Safari)
@@ -384,8 +383,14 @@ index 9057731..76ec593 100644
  
  32_ie=Apɛde soronko
  32_safari=Nbukmaak
+@@ -49,4 +49,4 @@ importedSafariReadingList=Akenkan liste (Efi Safari)
+ 64_safari=Deta foforo
+ 64_chrome=Data foforo
+ 
+-128_firefox=Ntokuro ne Ntab
++128_self=Ntokuro ne Ntab
 diff --git a/l10n-ar/browser/chrome/browser/migration/migration.properties b/l10n-ar/browser/chrome/browser/migration/migration.properties
-index 60cff9b..52a018f 100644
+index de765e9..d065646 100644
 --- a/l10n-ar/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ar/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=قائمة القراءة (من سفاري)
@@ -415,12 +420,15 @@ index 60cff9b..52a018f 100644
  
  32_ie=المفضّلة
  32_safari=العلامات
-@@ -48,4 +48,4 @@ importedSafariReadingList=قائمة القراءة (من سفاري)
+@@ -48,6 +48,6 @@ importedSafariReadingList=قائمة القراءة (من سفاري)
  64_ie=بيانات أخرى
  64_safari=بيانات أخرى
  64_chrome=بيانات أخرى
 -64_firefox_other=بيانات أخرى
 +64_self=بيانات أخرى
+ 
+-128_firefox=النوافذ والألسنة
++128_self=النوافذ والألسنة
 diff --git a/l10n-as/browser/chrome/browser/migration/migration.properties b/l10n-as/browser/chrome/browser/migration/migration.properties
 index 759a021..b90f074 100644
 --- a/l10n-as/browser/chrome/browser/migration/migration.properties
@@ -459,7 +467,7 @@ index 759a021..b90f074 100644
 -64_firefox_other=অন্য তথ্য
 +64_self=অন্য তথ্য
 diff --git a/l10n-ast/browser/chrome/browser/migration/migration.properties b/l10n-ast/browser/chrome/browser/migration/migration.properties
-index a6ff953..9b40f2e 100644
+index 742c198..ee00e84 100644
 --- a/l10n-ast/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ast/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList = Llista de llectura (de Safari)
@@ -489,12 +497,14 @@ index a6ff953..9b40f2e 100644
  
  32_ie=Favoritos
  32_chrome=Marcadores
-@@ -46,4 +46,4 @@ importedSafariReadingList = Llista de llectura (de Safari)
+@@ -46,5 +46,5 @@ importedSafariReadingList = Llista de llectura (de Safari)
  64_ie=Otros datos
  64_chrome=Otros datos
  64_safari=Otros datos
 -64_firefox_other = Otros datos
+-128_firefox = Ventanes y llingüetes
 +64_self = Otros datos
++128_self = Ventanes y llingüetes
 diff --git a/l10n-be/browser/chrome/browser/migration/migration.properties b/l10n-be/browser/chrome/browser/migration/migration.properties
 index d2378f1..40e06b8 100644
 --- a/l10n-be/browser/chrome/browser/migration/migration.properties
@@ -646,7 +656,7 @@ index 745922f..e064d79 100644
  64_ie=অন্যান্য তথ্য
  # 64_opera=অন্যান্য তথ্য
 diff --git a/l10n-br/browser/chrome/browser/migration/migration.properties b/l10n-br/browser/chrome/browser/migration/migration.properties
-index 97df68d..5df429b 100644
+index 44ec489..7631cf9 100644
 --- a/l10n-br/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-br/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Roll al lennadurioù (diouzh Safari)
@@ -662,7 +672,7 @@ index 97df68d..5df429b 100644
 -4_firefox_history_and_bookmarks=Roll al lec'hiennoù bet gweladennet ha sinedoù
 +4_self=Roll al lec'hiennoù bet gweladennet ha sinedoù
  
- 8_ie=Istor ar furmskrid bet enrollet
+ 8_ie=Istor ar furmskrid enrollet
  8_safari=Istor ar furmskrid enrollet
  8_chrome=Istor ar furmskrid enrollet
 -8_firefox=Istor ar furmskrid enrollet
@@ -676,14 +686,17 @@ index 97df68d..5df429b 100644
  
  32_ie=Ma re well ganin
  32_safari=Sinedoù
-@@ -48,4 +48,4 @@ importedSafariReadingList=Roll al lennadurioù (diouzh Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Roll al lennadurioù (diouzh Safari)
  64_ie=Roadennoù all
  64_safari=Roadennoù all
  64_chrome=Roadennoù all
 -64_firefox_other=Roadennoù all
 +64_self=Roadennoù all
+ 
+-128_firefox=Prenestroù hag ivinelloù
++128_self=Prenestroù hag ivinelloù
 diff --git a/l10n-bs/browser/chrome/browser/migration/migration.properties b/l10n-bs/browser/chrome/browser/migration/migration.properties
-index d2a3c0a..fae2bb4 100644
+index c1a56f0..9168fe5 100644
 --- a/l10n-bs/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-bs/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Lista čitanja (iz Safarija)
@@ -713,8 +726,17 @@ index d2a3c0a..fae2bb4 100644
  
  32_ie=Favoriti
  32_safari=Zabilješke
+@@ -46,6 +46,6 @@ importedSafariReadingList=Lista čitanja (iz Safarija)
+ 64_ie=Ostali podaci
+ 64_safari=Ostali podaci
+ 64_chrome=Ostali podaci
+-64_firefox_other=Ostali podaci
++64_self=Ostali podaci
+ 
+-128_firefox=Prozori i tabovi
++128_self=Prozori i tabovi
 diff --git a/l10n-ca/browser/chrome/browser/migration/migration.properties b/l10n-ca/browser/chrome/browser/migration/migration.properties
-index 83f91cf..94d5f18 100644
+index 75a3d13..85cbe7e 100644
 --- a/l10n-ca/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ca/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=S'està llegint la llista (des del Safari)
@@ -744,14 +766,17 @@ index 83f91cf..94d5f18 100644
  
  32_ie=Preferits
  32_safari=Adreces d'interès
-@@ -48,4 +48,4 @@ importedSafariReadingList=S'està llegint la llista (des del Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=S'està llegint la llista (des del Safari)
  64_ie=Altres dades
  64_safari=Altres dades
  64_chrome=Altres dades
 -64_firefox_other=Altres dades
 +64_self=Altres dades
+ 
+-128_firefox=Finestres i pestanyes
++128_self=Finestres i pestanyes
 diff --git a/l10n-cs/browser/chrome/browser/migration/migration.properties b/l10n-cs/browser/chrome/browser/migration/migration.properties
-index 0e92211..2d496b8 100644
+index 792d7bb..1990f0b 100644
 --- a/l10n-cs/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-cs/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Seznam ke čtení (ze Safari)
@@ -781,17 +806,22 @@ index 0e92211..2d496b8 100644
  
  32_ie=Oblíbené
  32_safari=Záložky
-@@ -48,4 +48,4 @@ importedSafariReadingList=Seznam ke čtení (ze Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Seznam ke čtení (ze Safari)
  64_ie=Ostatní data
  64_safari=Ostatní data
  64_chrome=Ostatní data
 -64_firefox_other=Ostatní data
 +64_self=Ostatní data
+ 
+-128_firefox=Okna a panely
+\ No newline at end of file
++128_self=Okna a panely
+\ No newline at end of file
 diff --git a/l10n-csb/browser/chrome/browser/migration/migration.properties b/l10n-csb/browser/chrome/browser/migration/migration.properties
-index 2bd743a..0f1ed22 100644
+index 23cda1e..f632b3f 100644
 --- a/l10n-csb/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-csb/browser/chrome/browser/migration/migration.properties
-@@ -19,22 +19,22 @@ importedSafariReadingList=Lësta przezéraniô (z Safari)
+@@ -23,22 +23,22 @@ importedSafariReadingList=Lësta przezéraniô (z Safari)
  2_ie=Kùszczi
  2_safari=Kùszczi
  2_chrome=Kùszczi
@@ -818,14 +848,19 @@ index 2bd743a..0f1ed22 100644
  
  32_ie=Ùlëbnicë
  32_safari=Załóżczi
-@@ -43,4 +43,4 @@ importedSafariReadingList=Lësta przezéraniô (z Safari)
+@@ -47,6 +47,6 @@ importedSafariReadingList=Lësta przezéraniô (z Safari)
  64_ie=Jinszé pòdôwczi
  64_safari=Jinszé pòdôwczi
  64_chrome=Jinszé pòdôwczi
 -64_firefox_other=Jiné pòdôwczi
 +64_self=Jiné pòdôwczi
+ 
+-128_firefox=Òkna i kôrtë
+\ No newline at end of file
++128_self=Òkna i kôrtë
+\ No newline at end of file
 diff --git a/l10n-cy/browser/chrome/browser/migration/migration.properties b/l10n-cy/browser/chrome/browser/migration/migration.properties
-index 76bfad9..41835f9 100644
+index 86bdab3..d7c7b8f 100644
 --- a/l10n-cy/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-cy/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Rhestr Darllen (O Safari)
@@ -855,14 +890,17 @@ index 76bfad9..41835f9 100644
  
  32_ie=Ffefrynnau
  32_safari=Nodau Tudalen
-@@ -48,4 +48,4 @@ importedSafariReadingList=Rhestr Darllen (O Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Rhestr Darllen (O Safari)
  64_ie=Data Arall
  64_safari=Data Arall
  64_chrome=Data Arall
 -64_firefox_other=Data Arall
 +64_self=Data Arall
+ 
+-128_firefox=Ffenestri a Thabiau
++128_self=Ffenestri a Thabiau
 diff --git a/l10n-da/browser/chrome/browser/migration/migration.properties b/l10n-da/browser/chrome/browser/migration/migration.properties
-index 0eb0b2f..2189688 100644
+index 10ed32b..9eec213 100644
 --- a/l10n-da/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-da/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Læseliste (fra Safari)
@@ -892,14 +930,17 @@ index 0eb0b2f..2189688 100644
  
  32_ie=Favoritter
  32_safari=Bogmærker
-@@ -48,4 +48,4 @@ importedSafariReadingList=Læseliste (fra Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Læseliste (fra Safari)
  64_ie=Andre data
  64_safari=Andre data
  64_chrome=Andre data
 -64_firefox_other=Andre data
 +64_self=Andre data
+ 
+-128_firefox=Vinduer og faneblade
++128_self=Vinduer og faneblade
 diff --git a/l10n-de/browser/chrome/browser/migration/migration.properties b/l10n-de/browser/chrome/browser/migration/migration.properties
-index f97db3e..d819ae9 100644
+index f91f84a..2ce931e 100644
 --- a/l10n-de/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-de/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Leseliste (von Safari)
@@ -929,17 +970,20 @@ index f97db3e..d819ae9 100644
  
  32_ie=Favoriten
  32_safari=Lesezeichen
-@@ -48,4 +48,4 @@ importedSafariReadingList=Leseliste (von Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Leseliste (von Safari)
  64_ie=Sonstige Daten
  64_safari=Sonstige Daten
  64_chrome=Sonstige Daten
 -64_firefox_other=Sonstige Daten
 +64_self=Sonstige Daten
+ 
+-128_firefox=Fenster und Tabs
++128_self=Fenster und Tabs
 diff --git a/l10n-el/browser/chrome/browser/migration/migration.properties b/l10n-el/browser/chrome/browser/migration/migration.properties
-index a72c5a6..e3f9b3e 100644
+index 1e899fb..14476a4 100644
 --- a/l10n-el/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-el/browser/chrome/browser/migration/migration.properties
-@@ -38,11 +38,11 @@ importedBookmarksFolder=Από %S
+@@ -38,12 +38,12 @@ importedBookmarksFolder=Από %S
  32_safari=Σελιδοδείκτες
  64_safari=Άλλα δεδομένα
  16_safari=Αποθηκευμένοι κωδικοί
@@ -956,8 +1000,10 @@ index a72c5a6..e3f9b3e 100644
 -8_firefox=Ιστορικό αποθηκευμένων φορμών
 +8_self=Ιστορικό αποθηκευμένων φορμών
  sourceNameFirefox=Mozilla Firefox
+-128_firefox=Παράθυρα και καρτέλες
++128_self=Παράθυρα και καρτέλες
 diff --git a/l10n-en-GB/browser/chrome/browser/migration/migration.properties b/l10n-en-GB/browser/chrome/browser/migration/migration.properties
-index a85182e..dc75d68 100644
+index b584035..a620905 100644
 --- a/l10n-en-GB/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-en-GB/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Reading List (From Safari)
@@ -987,12 +1033,15 @@ index a85182e..dc75d68 100644
  
  32_ie=Favourites
  32_safari=Bookmarks
-@@ -48,4 +48,4 @@ importedSafariReadingList=Reading List (From Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Reading List (From Safari)
  64_ie=Other Data
  64_safari=Other Data
  64_chrome=Other Data
 -64_firefox_other=Other Data
 +64_self=Other Data
+ 
+-128_firefox=Windows and Tabs
++128_self=Windows and Tabs
 diff --git a/l10n-en-ZA/browser/chrome/browser/migration/migration.properties b/l10n-en-ZA/browser/chrome/browser/migration/migration.properties
 index a85182e..dc75d68 100644
 --- a/l10n-en-ZA/browser/chrome/browser/migration/migration.properties
@@ -1031,7 +1080,7 @@ index a85182e..dc75d68 100644
 -64_firefox_other=Other Data
 +64_self=Other Data
 diff --git a/l10n-eo/browser/chrome/browser/migration/migration.properties b/l10n-eo/browser/chrome/browser/migration/migration.properties
-index c609e12..1196fbd 100644
+index d45fe14..8e61018 100644
 --- a/l10n-eo/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-eo/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Legado de listo (de Safari)
@@ -1061,14 +1110,17 @@ index c609e12..1196fbd 100644
  
  32_ie=Plej ŝatataj
  32_safari=Legosignoj
-@@ -48,4 +48,4 @@ importedSafariReadingList=Legado de listo (de Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Legado de listo (de Safari)
  64_ie=Aliaj datumoj
  64_safari=Aliaj datumoj
  64_chrome=Aliaj datumoj
 -64_firefox_other=Aliaj datumoj
 +64_self=Aliaj datumoj
+ 
+-128_firefox=Fenestroj kaj langetoj
++128_self=Fenestroj kaj langetoj
 diff --git a/l10n-es-AR/browser/chrome/browser/migration/migration.properties b/l10n-es-AR/browser/chrome/browser/migration/migration.properties
-index 52fb713..9ff237a 100644
+index 7b718fc..5ecf9d7 100644
 --- a/l10n-es-AR/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-es-AR/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Reading List (From Safari)
@@ -1098,17 +1150,20 @@ index 52fb713..9ff237a 100644
  
  32_ie = Favoritos
  32_safari = Marcadores
-@@ -46,4 +46,4 @@ importedSafariReadingList=Reading List (From Safari)
+@@ -46,6 +46,6 @@ importedSafariReadingList=Reading List (From Safari)
  64_ie = Otros datos
  64_safari = Otros datos
  64_chrome=Otros datos
 -64_firefox_other=Otros datos
 +64_self=Otros datos
+ 
+-128_firefox=Ventanas y pestañas
++128_self=Ventanas y pestañas
 diff --git a/l10n-es-CL/browser/chrome/browser/migration/migration.properties b/l10n-es-CL/browser/chrome/browser/migration/migration.properties
-index 1d74f0a..b4d61b34 100644
+index 76f70b1..e307846 100644
 --- a/l10n-es-CL/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-es-CL/browser/chrome/browser/migration/migration.properties
-@@ -15,23 +15,23 @@ importedSafariReadingList = Lista de lectura (De Safari)
+@@ -15,24 +15,24 @@ importedSafariReadingList = Lista de lectura (De Safari)
  2_ie = Cookies
  2_safari = Cookies
  2_chrome = Cookies
@@ -1136,14 +1191,16 @@ index 1d74f0a..b4d61b34 100644
  64_safari = Otros datos
  64_chrome = Otros datos
 -64_firefox_other=Otros datos
+-128_firefox=Ventanas y pestañas
 \ No newline at end of file
 +64_self=Otros datos
++128_self=Ventanas y pestañas
 \ No newline at end of file
 diff --git a/l10n-es-ES/browser/chrome/browser/migration/migration.properties b/l10n-es-ES/browser/chrome/browser/migration/migration.properties
-index 851f5c8..ceca0b8 100755
+index 86555ed..9dd4186 100755
 --- a/l10n-es-ES/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-es-ES/browser/chrome/browser/migration/migration.properties
-@@ -15,23 +15,23 @@ importedSafariReadingList = Lista de lectura (de Safari)
+@@ -15,24 +15,24 @@ importedSafariReadingList = Lista de lectura (de Safari)
  2_ie = Cookies
  2_safari = Cookies
  2_chrome = Cookies
@@ -1171,7 +1228,9 @@ index 851f5c8..ceca0b8 100755
  64_safari = Otros datos
  64_chrome = Otros datos
 -64_firefox_other = Otros datos
+-128_firefox = Ventanas y pestañas
 +64_self = Otros datos
++128_self = Ventanas y pestañas
 diff --git a/l10n-es-MX/browser/chrome/browser/migration/migration.properties b/l10n-es-MX/browser/chrome/browser/migration/migration.properties
 index ce076a4..e1898bb 100644
 --- a/l10n-es-MX/browser/chrome/browser/migration/migration.properties
@@ -1201,7 +1260,7 @@ index ce076a4..e1898bb 100644
  32_safari = Marcadores
  32_chrome = Marcadores
 diff --git a/l10n-et/browser/chrome/browser/migration/migration.properties b/l10n-et/browser/chrome/browser/migration/migration.properties
-index 8e3c9cc..26d0db5 100644
+index da905ce..82b741b 100644
 --- a/l10n-et/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-et/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Lugemise nimekiri (Safarist)
@@ -1231,14 +1290,17 @@ index 8e3c9cc..26d0db5 100644
  
  32_ie=Lemmikud
  32_safari=Järjehoidjad
-@@ -48,4 +48,4 @@ importedSafariReadingList=Lugemise nimekiri (Safarist)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Lugemise nimekiri (Safarist)
  64_ie=Muud andmed
  64_safari=Muud andmed
  64_chrome=Muud andmed
 -64_firefox_other=Muud andmed
 +64_self=Muud andmed
+ 
+-128_firefox=Aknad ja kaardid
++128_self=Aknad ja kaardid
 diff --git a/l10n-eu/browser/chrome/browser/migration/migration.properties b/l10n-eu/browser/chrome/browser/migration/migration.properties
-index cb8049c..f998a89 100644
+index 12996b0..a2c1c32 100644
 --- a/l10n-eu/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-eu/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Zerrenda irakurtzen (Safari-tik)
@@ -1268,12 +1330,15 @@ index cb8049c..f998a89 100644
  
  32_ie=Gogokoak
  32_safari=Laster-markak
-@@ -48,4 +48,4 @@ importedSafariReadingList=Zerrenda irakurtzen (Safari-tik)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Zerrenda irakurtzen (Safari-tik)
  64_ie=Bestelako datuak
  64_safari=Bestelako datuak
  64_chrome=Bestelako datuak
 -64_firefox_other=Bestelako datuak
 +64_self=Bestelako datuak
+ 
+-128_firefox=Leihoak eta fitxak
++128_self=Leihoak eta fitxak
 diff --git a/l10n-fa/browser/chrome/browser/migration/migration.properties b/l10n-fa/browser/chrome/browser/migration/migration.properties
 index f5b6f54..bdcbfd4 100644
 --- a/l10n-fa/browser/chrome/browser/migration/migration.properties
@@ -1306,7 +1371,7 @@ index f5b6f54..bdcbfd4 100644
  32_ie=صفحات محبوب
  32_safari=نشانک‌ها
 diff --git a/l10n-ff/browser/chrome/browser/migration/migration.properties b/l10n-ff/browser/chrome/browser/migration/migration.properties
-index bc4f161..c013a83 100644
+index ac733bf..56219ef 100644
 --- a/l10n-ff/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ff/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Nana Tara Doggol (Iwde e Safari)
@@ -1336,14 +1401,17 @@ index bc4f161..c013a83 100644
  
  32_ie=Cuɓaɗe
  32_safari=Maantore
-@@ -48,4 +48,4 @@ importedSafariReadingList=Nana Tara Doggol (Iwde e Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Nana Tara Doggol (Iwde e Safari)
  64_ie=Keɓe Goɗɗe
  64_safari=Keɓe Goɗɗe
  64_chrome=Keɓe Goɗɗe
 -64_firefox_other=Keɓe Goɗɗe
 +64_self=Keɓe Goɗɗe
+ 
+-128_firefox=Kenorɗe e Tabbe
++128_self=Kenorɗe e Tabbe
 diff --git a/l10n-fi/browser/chrome/browser/migration/migration.properties b/l10n-fi/browser/chrome/browser/migration/migration.properties
-index 6bf249f..9538190 100644
+index 162846b..ad72c22 100644
 --- a/l10n-fi/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-fi/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Lukulista (Safarista)
@@ -1373,14 +1441,17 @@ index 6bf249f..9538190 100644
  
  32_ie=Suosikit
  32_safari=Kirjanmerkit
-@@ -48,4 +48,4 @@ importedSafariReadingList=Lukulista (Safarista)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Lukulista (Safarista)
  64_ie=Muita tietoja
  64_safari=Muita tietoja
  64_chrome=Muita tietoja
 -64_firefox_other=Muita tietoja
 +64_self=Muita tietoja
+ 
+-128_firefox=Ikkunat ja välilehdet
++128_self=Ikkunat ja välilehdet
 diff --git a/l10n-fr/browser/chrome/browser/migration/migration.properties b/l10n-fr/browser/chrome/browser/migration/migration.properties
-index d1c127d..ce26365 100644
+index f0eb768..7aac09b 100644
 --- a/l10n-fr/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-fr/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Liste de lecture (depuis Safari)
@@ -1410,14 +1481,17 @@ index d1c127d..ce26365 100644
  
  32_ie=Favoris
  32_safari=Signets
-@@ -46,4 +46,4 @@ importedSafariReadingList=Liste de lecture (depuis Safari)
+@@ -46,6 +46,6 @@ importedSafariReadingList=Liste de lecture (depuis Safari)
  64_ie=Autres données
  64_safari=Autres données
  64_chrome=Autres données
 -64_firefox_other=Autres données
 +64_self=Autres données
+ 
+-128_firefox=Fenêtres et onglets
++128_self=Fenêtres et onglets
 diff --git a/l10n-fy-NL/browser/chrome/browser/migration/migration.properties b/l10n-fy-NL/browser/chrome/browser/migration/migration.properties
-index b9b9cda..60357d1 100644
+index 9aa859a..8a0c845 100644
 --- a/l10n-fy-NL/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-fy-NL/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=List lêze (Ut Safari)
@@ -1447,14 +1521,17 @@ index b9b9cda..60357d1 100644
  
  32_ie=Favorieten
  32_safari=Blêdwizers
-@@ -46,4 +46,4 @@ importedSafariReadingList=List lêze (Ut Safari)
+@@ -46,6 +46,6 @@ importedSafariReadingList=List lêze (Ut Safari)
  64_ie=Oare gegevens
  64_safari=Oare gegevens
  64_chrome=Oare gegevens
 -64_firefox_other=Oare gegevens
 +64_self=Oare gegevens
+ 
+-128_firefox=Finsters en ljepblêden
++128_self=Finsters en ljepblêden
 diff --git a/l10n-ga-IE/browser/chrome/browser/migration/migration.properties b/l10n-ga-IE/browser/chrome/browser/migration/migration.properties
-index 2c05dc9..548eba2 100644
+index 8f08136..020bfb9 100644
 --- a/l10n-ga-IE/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ga-IE/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Léamhliosta (Ó Safari)
@@ -1484,14 +1561,17 @@ index 2c05dc9..548eba2 100644
  
  32_ie=Ceanáin
  32_safari=Leabharmharcanna
-@@ -48,4 +48,4 @@ importedSafariReadingList=Léamhliosta (Ó Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Léamhliosta (Ó Safari)
  64_ie=Sonraí Eile
  64_safari=Sonraí Eile
  64_chrome=Sonraí Eile
 -64_firefox_other=Sonraí Eile
 +64_self=Sonraí Eile
+ 
+-128_firefox=Fuinneoga agus Cluaisíní
++128_self=Fuinneoga agus Cluaisíní
 diff --git a/l10n-gd/browser/chrome/browser/migration/migration.properties b/l10n-gd/browser/chrome/browser/migration/migration.properties
-index 9450def..8d64226 100644
+index 598fd0a..7939e69 100644
 --- a/l10n-gd/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-gd/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Liosta leughaidh (o Safari)
@@ -1521,12 +1601,15 @@ index 9450def..8d64226 100644
  
  32_ie=Annsachdan
  32_safari=Comharran-lìn
-@@ -48,4 +48,4 @@ importedSafariReadingList=Liosta leughaidh (o Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Liosta leughaidh (o Safari)
  64_ie=Dàta eile
  64_safari=Dàta eile
  64_chrome=Dàta eile
 -64_firefox_other=Dàta eile
 +64_self=Dàta eile
+ 
+-128_firefox=Uinneagan is tabaichean
++128_self=Uinneagan is tabaichean
 diff --git a/l10n-gl/browser/chrome/browser/migration/migration.properties b/l10n-gl/browser/chrome/browser/migration/migration.properties
 index 284871a..e6703ac 100644
 --- a/l10n-gl/browser/chrome/browser/migration/migration.properties
@@ -1666,7 +1749,7 @@ index bb8becc..670c221 100644
 -64_firefox_other=अन्य आंकड़ा
 +64_self=अन्य आंकड़ा
 diff --git a/l10n-hr/browser/chrome/browser/migration/migration.properties b/l10n-hr/browser/chrome/browser/migration/migration.properties
-index 0c78879..be6e056 100644
+index 0d6e4c5..1fd63aa 100644
 --- a/l10n-hr/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-hr/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Popis čitanja (iz Safarija)
@@ -1696,14 +1779,17 @@ index 0c78879..be6e056 100644
  
  32_ie=Favoriti
  32_safari=Zabilješke
-@@ -48,4 +48,4 @@ importedSafariReadingList=Popis čitanja (iz Safarija)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Popis čitanja (iz Safarija)
  64_ie=Ostali podaci
  64_safari=Ostali podaci
  64_chrome=Ostali podaci
 -64_firefox_other=Ostali podaci
 +64_self=Ostali podaci
+ 
+-128_firefox=Prozori i kartice
++128_self=Prozori i kartice
 diff --git a/l10n-hu/browser/chrome/browser/migration/migration.properties b/l10n-hu/browser/chrome/browser/migration/migration.properties
-index 21e6d69..ca417ef 100644
+index 8f489a8..6d6ab24 100644
 --- a/l10n-hu/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-hu/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Olvasási lista (a Safariból)
@@ -1733,14 +1819,17 @@ index 21e6d69..ca417ef 100644
  
  32_ie=Kedvencek
  32_safari=Könyvjelzők
-@@ -48,4 +48,4 @@ importedSafariReadingList=Olvasási lista (a Safariból)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Olvasási lista (a Safariból)
  64_ie=További adatok
  64_safari=További adatok
  64_chrome=További adatok
 -64_firefox_other=További adatok
 +64_self=További adatok
+ 
+-128_firefox=Ablakok és lapok
++128_self=Ablakok és lapok
 diff --git a/l10n-hy-AM/browser/chrome/browser/migration/migration.properties b/l10n-hy-AM/browser/chrome/browser/migration/migration.properties
-index dd22f08..4ce9c13 100644
+index bbad674..752adcb 100644
 --- a/l10n-hy-AM/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-hy-AM/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Կարդում է ցանկը (Safari-ից)
@@ -1770,14 +1859,17 @@ index dd22f08..4ce9c13 100644
  
  32_ie=Ընտրյալները
  32_safari=Էջանիշեր
-@@ -48,4 +48,4 @@ importedSafariReadingList=Կարդում է ցանկը (Safari-ից)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Կարդում է ցանկը (Safari-ից)
  64_ie=Այլ Տվյալներ
  64_safari=Այլ Տվյալներ
  64_chrome=Այլ Տվյալներ
 -64_firefox_other=Այլ Տվյալներ
 +64_self=Այլ Տվյալներ
+ 
+-128_firefox=Պատուհաններ և Ներդիրներ
++128_self=Պատուհաններ և Ներդիրներ
 diff --git a/l10n-id/browser/chrome/browser/migration/migration.properties b/l10n-id/browser/chrome/browser/migration/migration.properties
-index f98fb16..4235461 100644
+index 55b7aa9..9952062 100644
 --- a/l10n-id/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-id/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Daftar Bacaan (Dari Safari)
@@ -1807,14 +1899,17 @@ index f98fb16..4235461 100644
  
  32_ie=Favorit
  32_safari=Bookmark
-@@ -48,4 +48,4 @@ importedSafariReadingList=Daftar Bacaan (Dari Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Daftar Bacaan (Dari Safari)
  64_ie=Data Lain
  64_safari=Data Lain
  64_chrome=Data Lain
 -64_firefox_other=Data Lain
 +64_self=Data Lain
+ 
+-128_firefox=Jendela dan Tab
++128_self=Jendela dan Tab
 diff --git a/l10n-is/browser/chrome/browser/migration/migration.properties b/l10n-is/browser/chrome/browser/migration/migration.properties
-index 246998b..09a5717 100644
+index 06c17f1..630f21c 100644
 --- a/l10n-is/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-is/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Leslisti (Frá Safari)
@@ -1844,17 +1939,20 @@ index 246998b..09a5717 100644
  
  32_ie=Uppáhald
  32_safari=Bókamerki
-@@ -48,4 +48,4 @@ importedSafariReadingList=Leslisti (Frá Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Leslisti (Frá Safari)
  64_ie=Önnur gögn
  64_safari=Önnur gögn
  64_chrome=Önnur gögn
 -64_firefox_other=Önnur gögn
 +64_self=Önnur gögn
+ 
+-128_firefox=Gluggar og flipar
++128_self=Gluggar og flipar
 diff --git a/l10n-it/browser/chrome/browser/migration/migration.properties b/l10n-it/browser/chrome/browser/migration/migration.properties
-index 700fad1..2461dec 100644
+index 8bc7644..f44ca4d 100644
 --- a/l10n-it/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-it/browser/chrome/browser/migration/migration.properties
-@@ -15,23 +15,23 @@ importedSafariReadingList = Elenco lettura (da Safari)
+@@ -15,24 +15,24 @@ importedSafariReadingList = Elenco lettura (da Safari)
  2_ie = Cookie
  2_safari = Cookie
  2_chrome = Cookie
@@ -1882,9 +1980,11 @@ index 700fad1..2461dec 100644
  64_safari = Altri dati
  64_chrome = Altri dati
 -64_firefox_other = Altri dati
+-128_firefox = Finestre e schede
 +64_self = Altri dati
++128_self = Finestre e schede
 diff --git a/l10n-ja/browser/chrome/browser/migration/migration.properties b/l10n-ja/browser/chrome/browser/migration/migration.properties
-index 7a3a8e0..fd67534 100644
+index 8c48799..c6578bb 100644
 --- a/l10n-ja/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ja/browser/chrome/browser/migration/migration.properties
 @@ -24,23 +24,23 @@ importedSafariReadingList	= リストを読み込む (Safari から)
@@ -1915,12 +2015,15 @@ index 7a3a8e0..fd67534 100644
  
  32_ie		= お気に入り
  32_safari	= ブックマーク
-@@ -49,4 +49,4 @@ importedSafariReadingList	= リストを読み込む (Safari から)
+@@ -49,6 +49,6 @@ importedSafariReadingList	= リストを読み込む (Safari から)
  64_ie		= その他のデータ
  64_safari	= その他のデータ
  64_chrome	= その他のデータ
 -64_firefox_other= その他のデータ
 +64_self= その他のデータ
+ 
+-128_firefox	= ウィンドウとタブ
++128_self	= ウィンドウとタブ
 diff --git a/l10n-kk/browser/chrome/browser/migration/migration.properties b/l10n-kk/browser/chrome/browser/migration/migration.properties
 index 0617ca4..935a9c7 100644
 --- a/l10n-kk/browser/chrome/browser/migration/migration.properties
@@ -1959,7 +2062,7 @@ index 0617ca4..935a9c7 100644
 -64_firefox_other=Басқа деректер
 +64_self=Басқа деректер
 diff --git a/l10n-km/browser/chrome/browser/migration/migration.properties b/l10n-km/browser/chrome/browser/migration/migration.properties
-index db316a2..d7a43c7 100644
+index 7f4ac38..70faaaf 100644
 --- a/l10n-km/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-km/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=បញ្ជី​អាន (ពី Safari)
@@ -1989,12 +2092,15 @@ index db316a2..d7a43c7 100644
  
  32_ie=សំណព្វ
  32_safari=ចំណាំ
-@@ -48,4 +48,4 @@ importedSafariReadingList=បញ្ជី​អាន (ពី Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=បញ្ជី​អាន (ពី Safari)
  64_ie=ទិន្នន័យ​ផ្សេងទៀត
  64_safari=ទិន្នន័យ​ផ្សេងទៀត
  64_chrome=ទិន្នន័យ​ផ្សេងទៀត
 -64_firefox_other=ទិន្នន័យ​ផ្សេង
 +64_self=ទិន្នន័យ​ផ្សេង
+ 
+-128_firefox=បង្អួច និង​ផ្ទាំង
++128_self=បង្អួច និង​ផ្ទាំង
 diff --git a/l10n-kn/browser/chrome/browser/migration/migration.properties b/l10n-kn/browser/chrome/browser/migration/migration.properties
 index bda2816..66d04c7 100644
 --- a/l10n-kn/browser/chrome/browser/migration/migration.properties
@@ -2033,10 +2139,10 @@ index bda2816..66d04c7 100644
 -64_firefox_other=ಇತರೆ ದತ್ತಾಂಶ
 +64_self=ಇತರೆ ದತ್ತಾಂಶ
 diff --git a/l10n-ko/browser/chrome/browser/migration/migration.properties b/l10n-ko/browser/chrome/browser/migration/migration.properties
-index a970f82..5f92b1a 100644
+index f6eca59..8e1d008 100644
 --- a/l10n-ko/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ko/browser/chrome/browser/migration/migration.properties
-@@ -21,22 +21,22 @@ importedSafariReadingList=구독 목록 (Safari로부터)
+@@ -24,22 +24,22 @@ importedSafariReadingList=구독 목록 (Safari로부터)
  2_ie=쿠키
  2_safari=쿠키
  2_chrome=쿠키
@@ -2063,12 +2169,15 @@ index a970f82..5f92b1a 100644
  
  32_ie=즐겨찾기
  32_safari=북마크
-@@ -45,4 +45,4 @@ importedSafariReadingList=구독 목록 (Safari로부터)
+@@ -48,6 +48,6 @@ importedSafariReadingList=구독 목록 (Safari로부터)
  64_ie=기타 데이터
  64_safari=기타 데이터
  64_chrome=기타 데이터
 -64_firefox_other=기타 데이터
 +64_self=기타 데이터
+ 
+-128_firefox=Windows and Tabs
++128_self=Windows and Tabs
 diff --git a/l10n-lg/browser/chrome/browser/migration/migration.properties b/l10n-lg/browser/chrome/browser/migration/migration.properties
 index 6ebe3da..72ffadc 100644
 --- a/l10n-lg/browser/chrome/browser/migration/migration.properties
@@ -2101,7 +2210,7 @@ index 6ebe3da..72ffadc 100644
  32_ie=Ebyagalwa
  32_safari=Obulambe
 diff --git a/l10n-lij/browser/chrome/browser/migration/migration.properties b/l10n-lij/browser/chrome/browser/migration/migration.properties
-index 9abf5ce..e41b451 100644
+index 2f1be52..e6e53c3 100644
 --- a/l10n-lij/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-lij/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=lìsta de letûe (Da Safari)
@@ -2138,9 +2247,10 @@ index 9abf5ce..e41b451 100644
 -64_firefox_other =Âtri dæti
 +64_self =Âtri dæti
  
- 
+-128_firefox = Barcoìn e féuggi
++128_self = Barcoìn e féuggi
 diff --git a/l10n-lt/browser/chrome/browser/migration/migration.properties b/l10n-lt/browser/chrome/browser/migration/migration.properties
-index 76eff7b..df605c0 100644
+index 433d76e..33e61c6 100644
 --- a/l10n-lt/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-lt/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Skaitinių sąrašas (iš „Safari“)
@@ -2170,14 +2280,17 @@ index 76eff7b..df605c0 100644
  
  32_ie=Parankiniai
  32_safari=Adresynas
-@@ -46,4 +46,4 @@ importedSafariReadingList=Skaitinių sąrašas (iš „Safari“)
+@@ -46,6 +46,6 @@ importedSafariReadingList=Skaitinių sąrašas (iš „Safari“)
  64_ie=Kiti duomenys
  64_safari=Kiti duomenys
  64_chrome=Kiti duomenys
 -64_firefox_other=Kiti duomenys
 +64_self=Kiti duomenys
+ 
+-128_firefox=Langai ir kortelės
++128_self=Langai ir kortelės
 diff --git a/l10n-lv/browser/chrome/browser/migration/migration.properties b/l10n-lv/browser/chrome/browser/migration/migration.properties
-index 9485eab..08949c0 100644
+index f5cdbda..996cc46 100644
 --- a/l10n-lv/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-lv/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Lasāmo lietu saraksts (No Safari)
@@ -2207,12 +2320,15 @@ index 9485eab..08949c0 100644
  
  32_ie=Izlases
  32_chrome=Grāmatzīmes
-@@ -46,5 +46,5 @@ importedSafariReadingList=Lasāmo lietu saraksts (No Safari)
+@@ -46,7 +46,7 @@ importedSafariReadingList=Lasāmo lietu saraksts (No Safari)
  64_ie=Citi dati
  64_chrome=Citi dati
  64_safari=Citi dati
 -64_firefox_other=Citi dati
 +64_self=Citi dati
+ 
+-128_firefox=Logus un cilnes
++128_self=Logus un cilnes
  
 diff --git a/l10n-mai/browser/chrome/browser/migration/migration.properties b/l10n-mai/browser/chrome/browser/migration/migration.properties
 index 0a37e11..32ff2d4 100644
@@ -2320,7 +2436,7 @@ index 219a35c..4cfa176 100644
 -64_firefox_other=മറ്റു വിവരങ്ങള്‍
 +64_self=മറ്റു വിവരങ്ങള്‍
 diff --git a/l10n-mr/browser/chrome/browser/migration/migration.properties b/l10n-mr/browser/chrome/browser/migration/migration.properties
-index 02ce158..82a68d4 100644
+index 928ef97..c26e310 100644
 --- a/l10n-mr/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-mr/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=सूची वाचत आहे (सफारी
@@ -2350,14 +2466,17 @@ index 02ce158..82a68d4 100644
  
  32_ie=पसंतीचे
  32_safari=वाचनखुणा
-@@ -48,4 +48,4 @@ importedSafariReadingList=सूची वाचत आहे (सफारी
+@@ -48,6 +48,6 @@ importedSafariReadingList=सूची वाचत आहे (सफारी
  64_ie=इतर माहिती
  64_safari=इतर माहिती
  64_chrome=इतर डाटा
 -64_firefox_other=इतर माहिती
 +64_self=इतर माहिती
+ 
+-128_firefox=चौकट व टॅब
++128_self=चौकट व टॅब
 diff --git a/l10n-nb-NO/browser/chrome/browser/migration/migration.properties b/l10n-nb-NO/browser/chrome/browser/migration/migration.properties
-index df31ef7..4a6ceb6 100644
+index 31f85ba..57306cd 100644
 --- a/l10n-nb-NO/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-nb-NO/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Leseliste (Fra Safari)
@@ -2387,14 +2506,17 @@ index df31ef7..4a6ceb6 100644
  
  32_ie=Favoritter
  32_safari=Bokmerker
-@@ -48,4 +48,4 @@ importedSafariReadingList=Leseliste (Fra Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Leseliste (Fra Safari)
  64_ie=Andre data
  64_safari=Andre data
  64_chrome=Andre data
 -64_firefox_other=Andre data
 +64_self=Andre data
+ 
+-128_firefox=Vinduer og faner
++128_self=Vinduer og faner
 diff --git a/l10n-nl/browser/chrome/browser/migration/migration.properties b/l10n-nl/browser/chrome/browser/migration/migration.properties
-index dcf96f5..c526ada 100644
+index 7f4b406..8661a91 100644
 --- a/l10n-nl/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-nl/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Lijst lezen (Uit Safari)
@@ -2424,14 +2546,17 @@ index dcf96f5..c526ada 100644
  
  32_ie=Favorieten
  32_safari=Bladwijzers
-@@ -48,4 +48,4 @@ importedSafariReadingList=Lijst lezen (Uit Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Lijst lezen (Uit Safari)
  64_ie=Andere gegevens
  64_safari=Andere gegevens
  64_chrome=Andere gegevens
 -64_firefox_other=Andere gegevens
 +64_self=Andere gegevens
+ 
+-128_firefox=Vensters en tabbladen
++128_self=Vensters en tabbladen
 diff --git a/l10n-nn-NO/browser/chrome/browser/migration/migration.properties b/l10n-nn-NO/browser/chrome/browser/migration/migration.properties
-index 1a7c077..41d6756 100644
+index 8d8e0c9..63578e4 100644
 --- a/l10n-nn-NO/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-nn-NO/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Leseliste (frå Safari)
@@ -2461,12 +2586,15 @@ index 1a7c077..41d6756 100644
  
  32_ie=Favorittar
  32_safari=Bokmerke
-@@ -48,4 +48,4 @@ importedSafariReadingList=Leseliste (frå Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Leseliste (frå Safari)
  64_ie=Andre data
  64_safari=Andre data
  64_chrome=Andre data
 -64_firefox_other=Andre data
 +64_self=Andre data
+ 
+-128_firefox=Vindauge og faner
++128_self=Vindauge og faner
 diff --git a/l10n-nso/browser/chrome/browser/migration/migration.properties b/l10n-nso/browser/chrome/browser/migration/migration.properties
 index 49107c2..4b24a51 100644
 --- a/l10n-nso/browser/chrome/browser/migration/migration.properties
@@ -2546,7 +2674,7 @@ index eeb56fa..b7e7414 100644
  sourceNameChrome=Google Chrome
  sourceNameFirefox=Mozilla Firefox
 diff --git a/l10n-pa-IN/browser/chrome/browser/migration/migration.properties b/l10n-pa-IN/browser/chrome/browser/migration/migration.properties
-index f61483f..5aba34f 100644
+index 8df251f..22f0712 100644
 --- a/l10n-pa-IN/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-pa-IN/browser/chrome/browser/migration/migration.properties
 @@ -23,23 +23,23 @@ importedSafariReadingList=Reading List (From Safari)
@@ -2577,14 +2705,17 @@ index f61483f..5aba34f 100644
  
  32_ie=Favorites
  32_safari=Bookmarks
-@@ -48,4 +48,4 @@ importedSafariReadingList=Reading List (From Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Reading List (From Safari)
  64_ie=ਹੋਰ ਡਾਟਾ
  64_safari=ਹੋਰ ਡਾਟਾ
  64_chrome=ਹੋਰ ਡਾਟਾ
 -64_firefox_other=ਹੋਰ ਡਾਟਾ
 +64_self=ਹੋਰ ਡਾਟਾ
+ 
+-128_firefox=ਵਿੰਡੋ ਅਤੇ ਟੈਬਾਂ
++128_self=ਵਿੰਡੋ ਅਤੇ ਟੈਬਾਂ
 diff --git a/l10n-pl/browser/chrome/browser/migration/migration.properties b/l10n-pl/browser/chrome/browser/migration/migration.properties
-index ee92c1d..2d33b54 100644
+index 81da425..9243129 100644
 --- a/l10n-pl/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-pl/browser/chrome/browser/migration/migration.properties
 @@ -23,22 +23,22 @@ importedSafariReadingList=Lista Czytelnia (z Safari)
@@ -2614,15 +2745,17 @@ index ee92c1d..2d33b54 100644
  
  32_ie=Ulubione
  32_safari=Zakładki
-@@ -47,5 +47,5 @@ importedSafariReadingList=Lista Czytelnia (z Safari)
+@@ -47,6 +47,6 @@ importedSafariReadingList=Lista Czytelnia (z Safari)
  64_ie=Inne dane
  64_safari=Inne dane
  64_chrome=Inne dane
 -64_firefox_other=Inne dane
 +64_self=Inne dane
  
+-128_firefox=Okna i karty
++128_self=Okna i karty
 diff --git a/l10n-pt-BR/browser/chrome/browser/migration/migration.properties b/l10n-pt-BR/browser/chrome/browser/migration/migration.properties
-index 20b9307..da314ab 100644
+index 8cbda98..450588d 100644
 --- a/l10n-pt-BR/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-pt-BR/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Lista de leitura (do Safari)
@@ -2652,14 +2785,17 @@ index 20b9307..da314ab 100644
  
  32_ie=Favoritos
  32_safari=Favoritos
-@@ -48,4 +48,4 @@ importedSafariReadingList=Lista de leitura (do Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Lista de leitura (do Safari)
  64_ie=Outras informações
  64_safari=Outras informações
  64_chrome=Outras informações
 -64_firefox_other=Outras informações
 +64_self=Outras informações
+ 
+-128_firefox=Janelas e abas
++128_self=Janelas e abas
 diff --git a/l10n-pt-PT/browser/chrome/browser/migration/migration.properties b/l10n-pt-PT/browser/chrome/browser/migration/migration.properties
-index 5e09bd3..786d9b9 100644
+index e84bbcf..35db11b 100644
 --- a/l10n-pt-PT/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-pt-PT/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Lista de leitura (Do Safari)
@@ -2689,14 +2825,17 @@ index 5e09bd3..786d9b9 100644
  
  32_ie=Favoritos
  32_safari=Marcadores
-@@ -48,4 +48,4 @@ importedSafariReadingList=Lista de leitura (Do Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Lista de leitura (Do Safari)
  64_ie=Outros dados
  64_safari=Outros dados
  64_chrome=Outros dados
 -64_firefox_other=Outros dados
 +64_self=Outros dados
+ 
+-128_firefox=Janelas e separadores
++128_self=Janelas e separadores
 diff --git a/l10n-rm/browser/chrome/browser/migration/migration.properties b/l10n-rm/browser/chrome/browser/migration/migration.properties
-index fbcf3b9..9b161ff 100644
+index 7ee3010..06c92b6 100644
 --- a/l10n-rm/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-rm/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Glista da lectura (da Safari)
@@ -2726,8 +2865,17 @@ index fbcf3b9..9b161ff 100644
  
  32_ie=Favurits
  32_safari=Segnapaginas
+@@ -46,6 +46,6 @@ importedSafariReadingList=Glista da lectura (da Safari)
+ 64_ie=Autras datas
+ 64_safari=Autras datas
+ 64_chrome=Autras datas
+-64_firefox_other=Autras datas
++64_self=Autras datas
+ 
+-128_firefox=Fanestras e tabs
++128_self=Fanestras e tabs
 diff --git a/l10n-ro/browser/chrome/browser/migration/migration.properties b/l10n-ro/browser/chrome/browser/migration/migration.properties
-index f685324..2f9c6ba 100644
+index fca0cdb..6007edb 100644
 --- a/l10n-ro/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ro/browser/chrome/browser/migration/migration.properties
 @@ -36,22 +36,22 @@ importedSafariReadingList=Lista de citit (din Safari)
@@ -2757,18 +2905,21 @@ index f685324..2f9c6ba 100644
  
  32_ie=Preferințe
  32_safari=Semne de carte
-@@ -60,5 +60,5 @@ importedSafariReadingList=Lista de citit (din Safari)
+@@ -60,7 +60,7 @@ importedSafariReadingList=Lista de citit (din Safari)
  64_ie=Alte date
  64_safari=Alte date
  64_chrome=Alte date
 -64_firefox_other=Alte date
 +64_self=Alte date
  
+-128_firefox=Ferestre și file
++128_self=Ferestre și file
+ 
 diff --git a/l10n-ru/browser/chrome/browser/migration/migration.properties b/l10n-ru/browser/chrome/browser/migration/migration.properties
-index f3b1d1d..cf7f940 100644
+index fd68f38..023f755 100644
 --- a/l10n-ru/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ru/browser/chrome/browser/migration/migration.properties
-@@ -15,23 +15,23 @@ importedSafariReadingList = Список для чтения (из Safari)
+@@ -15,24 +15,24 @@ importedSafariReadingList = Список для чтения (из Safari)
  2_ie = Куки
  2_safari = Куки
  2_chrome = Куки
@@ -2796,7 +2947,9 @@ index f3b1d1d..cf7f940 100644
  64_safari = Другие данные
  64_chrome = Другие данные
 -64_firefox_other = Другие данные
+-128_firefox = Окна и вкладки
 +64_self = Другие данные
++128_self = Окна и вкладки
 diff --git a/l10n-si/browser/chrome/browser/migration/migration.properties b/l10n-si/browser/chrome/browser/migration/migration.properties
 index c51e1da..86ab249 100644
 --- a/l10n-si/browser/chrome/browser/migration/migration.properties
@@ -2835,7 +2988,7 @@ index c51e1da..86ab249 100644
  64_ie=අනෙකුත් දත්ත
  64_chrome=අනෙකුත් දත්ත
 diff --git a/l10n-sk/browser/chrome/browser/migration/migration.properties b/l10n-sk/browser/chrome/browser/migration/migration.properties
-index 41bcc1d..e91e970 100644
+index 035d93c..4acd796 100644
 --- a/l10n-sk/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-sk/browser/chrome/browser/migration/migration.properties
 @@ -22,22 +22,22 @@ importedSafariReadingList=Zoznam na čítanie (zo Safari)
@@ -2865,17 +3018,20 @@ index 41bcc1d..e91e970 100644
  
  32_ie=Záložky
  32_safari=Záložky
-@@ -46,4 +46,4 @@ importedSafariReadingList=Zoznam na čítanie (zo Safari)
+@@ -46,6 +46,6 @@ importedSafariReadingList=Zoznam na čítanie (zo Safari)
  64_ie=Iné údaje
  64_safari=Iné údaje
  64_chrome=Iné údaje
 -64_firefox_other=Iné údaje
 +64_self=Iné údaje
+ 
+-128_firefox=Okná a karty
++128_self=Okná a karty
 diff --git a/l10n-sl/browser/chrome/browser/migration/migration.properties b/l10n-sl/browser/chrome/browser/migration/migration.properties
-index 9095b69..db83ea0 100644
+index f543bbe..dc35617 100644
 --- a/l10n-sl/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-sl/browser/chrome/browser/migration/migration.properties
-@@ -22,22 +22,22 @@ importedSafariReadingList=Seznam literature (iz Safarija)
+@@ -24,22 +24,22 @@ importedSafariReadingList=Seznam literature (iz Safarija)
  2_ie=Piškoti
  2_safari=Piškoti
  2_chrome=Piškoti
@@ -2902,12 +3058,15 @@ index 9095b69..db83ea0 100644
  
  32_ie=Priljubljene
  32_safari=Zaznamki
-@@ -46,4 +46,4 @@ importedSafariReadingList=Seznam literature (iz Safarija)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Seznam literature (iz Safarija)
  64_ie=Drugi podatki
  64_safari=Drugi podatki
  64_chrome=Drugi podatki
 -64_firefox_other=Drugi podatki
 +64_self=Drugi podatki
+ 
+-128_firefox=Okna in zavihki
++128_self=Okna in zavihki
 diff --git a/l10n-son/browser/chrome/browser/migration/migration.properties b/l10n-son/browser/chrome/browser/migration/migration.properties
 index cc673fa..5864629 100644
 --- a/l10n-son/browser/chrome/browser/migration/migration.properties
@@ -3022,7 +3181,7 @@ index a4e3951..471d04e 100644
  64_ie=Остали подаци
  64_opera=Остали подаци
 diff --git a/l10n-sv-SE/browser/chrome/browser/migration/migration.properties b/l10n-sv-SE/browser/chrome/browser/migration/migration.properties
-index 54c3ee7..61b1eb7 100644
+index d7946d6..ea1342f 100644
 --- a/l10n-sv-SE/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-sv-SE/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Läslista (från Safari)
@@ -3052,14 +3211,17 @@ index 54c3ee7..61b1eb7 100644
  
  32_ie=Favoriter
  32_safari=Bokmärken
-@@ -48,4 +48,4 @@ importedSafariReadingList=Läslista (från Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Läslista (från Safari)
  64_ie=Annan data
  64_safari=Annan data
  64_chrome=Annan data
 -64_firefox_other=Annan data
 +64_self=Annan data
+ 
+-128_firefox=Fönster och flikar
++128_self=Fönster och flikar
 diff --git a/l10n-ta/browser/chrome/browser/migration/migration.properties b/l10n-ta/browser/chrome/browser/migration/migration.properties
-index 9f170bf..f7e5cb9 100644
+index 012e630..f1fcdf8 100644
 --- a/l10n-ta/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ta/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=(சபாரியில் இருந்து ) 
@@ -3089,12 +3251,15 @@ index 9f170bf..f7e5cb9 100644
  
  32_ie=பிடித்தமானவை
  32_safari=புத்தகக்குறிகள்
-@@ -48,4 +48,4 @@ importedSafariReadingList=(சபாரியில் இருந்து ) 
+@@ -48,6 +48,6 @@ importedSafariReadingList=(சபாரியில் இருந்து ) 
  64_ie=வேறு தரவு
  64_safari=வேறு தரவு
  64_chrome=பிற தகவல்கள்
 -64_firefox_other=வேறு தரவு
 +64_self=வேறு தரவு
+ 
+-128_firefox=சாளரங்கள் மற்றும் தத்தல்கள்
++128_self=சாளரங்கள் மற்றும் தத்தல்கள்
 diff --git a/l10n-te/browser/chrome/browser/migration/migration.properties b/l10n-te/browser/chrome/browser/migration/migration.properties
 index 4fe0091..e3aad2b 100644
 --- a/l10n-te/browser/chrome/browser/migration/migration.properties
@@ -3133,7 +3298,7 @@ index 4fe0091..e3aad2b 100644
 -64_firefox_other=ఇతర డాటా
 +64_self=ఇతర డాటా
 diff --git a/l10n-th/browser/chrome/browser/migration/migration.properties b/l10n-th/browser/chrome/browser/migration/migration.properties
-index 328d224..f53729e 100644
+index ceba8da..9af7324 100644
 --- a/l10n-th/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-th/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=รายการอ่าน (จาก Safari)
@@ -3163,14 +3328,17 @@ index 328d224..f53729e 100644
  
  32_ie=รายการโปรด
  32_safari=ที่คั่นหน้า
-@@ -48,4 +48,4 @@ importedSafariReadingList=รายการอ่าน (จาก Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=รายการอ่าน (จาก Safari)
  64_ie=ข้อมูลอื่น ๆ
  64_safari=ข้อมูลอื่น ๆ
  64_chrome=ข้อมูลอื่น ๆ
 -64_firefox_other=ข้อมูลอื่น
 +64_self=ข้อมูลอื่น
+ 
+-128_firefox=หน้าต่างและแท็บ
++128_self=หน้าต่างและแท็บ
 diff --git a/l10n-tr/browser/chrome/browser/migration/migration.properties b/l10n-tr/browser/chrome/browser/migration/migration.properties
-index 62f1d92..7285cd6 100644
+index 0a6afd4..864a5ae 100644
 --- a/l10n-tr/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-tr/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Okuma listesi (Safari'den)
@@ -3200,12 +3368,15 @@ index 62f1d92..7285cd6 100644
  
  32_ie=Sık kullanılanlar
  32_safari=Yer imleri
-@@ -48,4 +48,4 @@ importedSafariReadingList=Okuma listesi (Safari'den)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Okuma listesi (Safari'den)
  64_ie=Diğer veriler
  64_safari=Diğer veriler
  64_chrome=Diğer veriler
 -64_firefox_other=Diğer veriler
 +64_self=Diğer veriler
+ 
+-128_firefox=Pencereler ve sekmeler
++128_self=Pencereler ve sekmeler
 diff --git a/l10n-uk/browser/chrome/browser/migration/migration.properties b/l10n-uk/browser/chrome/browser/migration/migration.properties
 index 67b53d3..5fa6ad7 100644
 --- a/l10n-uk/browser/chrome/browser/migration/migration.properties
@@ -3318,7 +3489,7 @@ index daad252..f403385 100644
 -64_firefox_other=其他数据
 +64_self=其他数据
 diff --git a/l10n-zh-TW/browser/chrome/browser/migration/migration.properties b/l10n-zh-TW/browser/chrome/browser/migration/migration.properties
-index b08c003..1d13fc2 100644
+index 2d13794..31c5cfa 100644
 --- a/l10n-zh-TW/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-zh-TW/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=閱讀列表（來自 Safari）
@@ -3348,12 +3519,15 @@ index b08c003..1d13fc2 100644
  
  32_ie=我的最愛
  32_safari=書籤
-@@ -48,5 +48,5 @@ importedSafariReadingList=閱讀列表（來自 Safari）
+@@ -48,7 +48,7 @@ importedSafariReadingList=閱讀列表（來自 Safari）
  64_ie=其他資料
  64_safari=其他資料
  64_chrome=其他資料
 -64_firefox_other=其他資料
 +64_self=其他資料
+ 
+-128_firefox=視窗與分頁
++128_self=視窗與分頁
  
 diff --git a/l10n-zu/browser/chrome/browser/migration/migration.properties b/l10n-zu/browser/chrome/browser/migration/migration.properties
 index 11008e3..96ac218 100644
@@ -3392,61 +3566,69 @@ index 11008e3..96ac218 100644
  64_chrome=Enye idatha
 -64_firefox_other=Enye idatha
 +64_self=Enye idatha
-diff --git a/toolkit/content/jar.mn b/toolkit/content/jar.mn
-index 5c23509..54b82bd 100644
---- a/toolkit/content/jar.mn
-+++ b/toolkit/content/jar.mn
-@@ -43,7 +43,7 @@ toolkit.jar:
- +  content/global/mozilla.xhtml               (mozilla.xhtml)
-    content/global/nsDragAndDrop.js            (nsDragAndDrop.js)
-    content/global/resetProfile.css            (resetProfile.css)
--*  content/global/resetProfile.js             (resetProfile.js)
-+   content/global/resetProfile.js             (resetProfile.js)
-    content/global/resetProfile.xul            (resetProfile.xul)
-    content/global/resetProfileProgress.xul    (resetProfileProgress.xul)
-    content/global/treeUtils.js                (treeUtils.js)
 diff --git a/toolkit/content/resetProfile.js b/toolkit/content/resetProfile.js
-index dcb4065..09c1146 100644
+index d46b43b..2253994 100644
 --- a/toolkit/content/resetProfile.js
 +++ b/toolkit/content/resetProfile.js
-@@ -36,13 +36,13 @@ function resetSupported() {
-                        getService(Ci.nsIToolkitProfileService);
-   let currentProfileDir = Services.dirsvc.get("ProfD", Ci.nsIFile);
+@@ -28,6 +28,58 @@ function onResetProfileLoad() {
+   populateResetPane("migratedItems");
+ }
  
--#expand const MOZ_APP_NAME = "__MOZ_APP_NAME__";
--#expand const MOZ_BUILD_APP = "__MOZ_BUILD_APP__";
--
-   // Reset is only supported for the default profile if the self-migrator used for reset exists.
-   try {
--    return currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
--             ("@mozilla.org/profile/migrator;1?app=" + MOZ_BUILD_APP + "&type=" + MOZ_APP_NAME in Cc);
++<<<<<<< HEAD
++=======
++/**
++ * Check if reset is supported for the currently running profile.
++ *
++ * @return boolean whether reset is supported.
++ */
++function resetSupported() {
++  let profileService = Cc["@mozilla.org/toolkit/profile-service;1"].
++                       getService(Ci.nsIToolkitProfileService);
++  let currentProfileDir = Services.dirsvc.get("ProfD", Ci.nsIFile);
++
++  // Reset is only supported for the default profile if the self-migrator used for reset exists.
++  try {
 +    if (currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
 +        "@mozilla.org/toolkit/profile-migrator;1" in Cc) {
 +      let pm = Cc["@mozilla.org/toolkit/profile-migrator;1"].createInstance(Ci.nsIProfileMigrator);
 +      return ("canMigrate" in pm) && pm.canMigrate("self");
 +    }
-   } catch (e) {
-     // Catch exception when there is no selected profile.
-     Cu.reportError(e);
-@@ -53,9 +53,6 @@ function resetSupported() {
- function getMigratedData() {
-   Components.utils.import("resource:///modules/MigrationUtils.jsm");
- 
--#expand const MOZ_BUILD_APP = "__MOZ_BUILD_APP__";
--#expand const MOZ_APP_NAME = "__MOZ_APP_NAME__";
--
-   // From migration.properties
-   const MIGRATED_TYPES = [
-     4,  // History and Bookmarks
-@@ -68,7 +65,7 @@ function getMigratedData() {
-   let dataTypes = [];
-   for (let itemID of MIGRATED_TYPES) {
-     try {
--      let typeName = MigrationUtils.getLocalizedString(itemID + "_" + MOZ_APP_NAME);
++  } catch (e) {
++    // Catch exception when there is no selected profile.
++    Cu.reportError(e);
++  }
++  return false;
++}
++
++function getMigratedData() {
++  Components.utils.import("resource:///modules/MigrationUtils.jsm");
++
++  // From migration.properties
++  const MIGRATED_TYPES = [
++    4,  // History and Bookmarks
++    16, // Passwords
++    8,  // Form History
++    2,  // Cookies
++  ];
++
++  // Loop over possible data to migrate to give the user a list of what will be preserved.
++  let dataTypes = [];
++  for (let itemID of MIGRATED_TYPES) {
++    try {
 +      let typeName = MigrationUtils.getLocalizedString(itemID + "_self");
-       dataTypes.push(typeName);
-     } catch (x) {
-       // Catch exceptions when the string for a data type doesn't exist.
++      dataTypes.push(typeName);
++    } catch (x) {
++      // Catch exceptions when the string for a data type doesn't exist.
++      Components.utils.reportError(x);
++    }
++  }
++  return dataTypes;
++}
++
++>>>>>>> Bug 756390 - Make the "Reset Firefox" feature more generic
+ function onResetProfileAccepted() {
+   let retVals = window.arguments[0];
+   retVals.reset = true;
 diff --git a/toolkit/profile/nsIProfileMigrator.idl b/toolkit/profile/nsIProfileMigrator.idl
 index f35c227..7062886 100644
 --- a/toolkit/profile/nsIProfileMigrator.idl
@@ -3476,10 +3658,10 @@ index f35c227..7062886 100644
  
  %{C++
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index cc3f65e..cdd4305 100644
+index 5f989ea..e7e21bd 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3731,7 +3731,7 @@ XREMain::XRE_mainRun()
+@@ -3733,7 +3733,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

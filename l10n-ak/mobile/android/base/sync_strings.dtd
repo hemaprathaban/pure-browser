@@ -15,8 +15,8 @@
 <!-- J-PAKE Key Screen -->
 
 <!ENTITY sync.subtitle.connect.label "Wopɛ sɛ wo sɔ woefidie foforo no a, paw “Hyehyɛ &syncBrand.shortName.label;” wɔ efidie no so.">
-<!ENTITY sync.subtitle.header.label "Bɔ saa kood yi wɔ wo kɔmputa no so">
-<!ENTITY sync.subtitle.connectlocation.label "Paw “&sync.title.pair.label;” wɔ &syncBrand.shortName.label; afa no wɔ wo dɛsktɔp Firefox ɔphyɛn no mu.">
+<!ENTITY sync.subtitle.header2.label 'Enter this code on your other device'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Select “&sync.title.pair.label;” in the &syncBrand.shortName.label; section of your other device\&apos;s Firefox options.'>
 <!ENTITY sync.subtitle.pair.label "Wo pɛ sɛ wo kenyan a, paw “Fa efidie bi bɔ ho” wɔ wo efidie foforo no so.">
 <!ENTITY sync.pin.default.label "...\n...\n...\n">
 <!ENTITY sync.pin.oneline.label "...">
@@ -57,6 +57,14 @@
 
 <!ENTITY sync.settings.options.label "Nɔphyɛn">
 <!ENTITY sync.summary.pair.label "Linke efidie foforo biara ɛma wo &syncBrand.shortName.label; akawnt no">
+<!-- Configure Engines -->
+
+<!ENTITY sync.configure.engines.title.label 'What to sync'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Sync your…'>
+<!ENTITY sync.configure.engines.title.bookmarks "Mbukmaak">
+<!ENTITY sync.configure.engines.title.passwords 'Passwords'>
+<!ENTITY sync.configure.engines.title.history "Abakɔsɛm">
+<!ENTITY sync.configure.engines.title.tabs 'Tabs'>
 <!-- Common text -->
 
 <!ENTITY sync.button.cancel.label "Twa-mu">
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label "Dɛsktɔp Mbukmak">
 <!ENTITY bookmarks.folder.mobile.label "Mobael Mbukmak">
 <!ENTITY bookmarks.folder.readinglist.label 'Reading List'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Pinned'>
 <!-- Notification strings -->
 
 <!ENTITY sync.notification.oneaccount.label "&syncBrand.fullName.label; akawnt baako pɛ na ɛwɔ kwan.">
+<!ENTITY sync.notification.configure.saved 'Your selections have been saved.'>
 <!-- Incorrect settings and changing credentials. -->
 
 <!ENTITY sync.invalidcreds.label 'Incorrect account name or password.'>
