@@ -15,12 +15,12 @@ GRE_SRCDIR := $(strip $(foreach dir,. mozilla,$(if $(wildcard $(dir)/config/mile
 ifndef GRE_SRCDIR
 $(error Could not determine the top directory for GRE codebase)
 endif
-GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) | $(VERSION_FILTER) | sed 's/^\([0-9][0-9]*\)\.[0-9][0-9]*\./\1.0./;s/\.0\.0/.0/')
+GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) --uaversion | $(VERSION_FILTER))
 
-# Construct GRE_VERSION from the first two digits in GRE_MILESTONE
+# Construct GRE_VERSION from the first digit in GRE_MILESTONE
 GRE_VERSION := $(subst ~, ,$(subst ., ,$(GRE_MILESTONE)))
 export JS_SO_VERSION := $(firstword $(GRE_VERSION))d
-export GRE_VERSION := $(firstword $(GRE_VERSION)).$(word 2,$(GRE_VERSION))
+export GRE_VERSION := $(firstword $(GRE_VERSION))
 
 # Last version in debian/changelog
 DEBIAN_SRC_VERSION := $(shell dpkg-parsechangelog | sed -n 's/^\(Source\|Version\): *// p')
