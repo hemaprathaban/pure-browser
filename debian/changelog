@@ -1,8 +1,17 @@
-iceweasel (25.0-1) UNRELEASED; urgency=low
+iceweasel (25.0-1) experimental; urgency=low
 
   * New upstream release.
+  * Fixes for mfsa2013-{93-102}, also known as
+    CVE-2013-5590, CVE-2013-5591, CVE-2013-5592, CVE-2013-5593,
+    CVE-2013-5604, CVE-2013-5595, CVE-2013-5596, CVE-2013-5597,
+    CVE-2013-5598, CVE-2013-5599, CVE-2013-5600, CVE-2013-5601,
+    CVE-2013-5602, CVE-2013-5603.
 
- -- Mike Hommey <glandium@debian.org>  Sat, 02 Nov 2013 10:31:40 +0900
+  * debian/rules: Don't try to disable methodjit, since it's long gone.
+  * debian/upstream.mk: Adjust version mangling to handle the version scheme
+    change without changing package names.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 02 Nov 2013 10:38:15 +0900
 
 iceweasel (24.0-2) unstable; urgency=low
 
