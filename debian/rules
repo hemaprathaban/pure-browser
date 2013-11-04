@@ -244,11 +244,20 @@ endif
 L10N_BUILD_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/build-l10n-$(lang))
 stamps/build-l10n:: $(L10N_BUILD_STAMPS)
 
-$(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/build-xulrunner stamps/build-$(PRODUCT) $(foreach d,toolkit services/sync extensions/spellcheck intl netwerk dom security/manager,build-$(PRODUCT)/$(d)/locales/Makefile)
+stamps/configure-l10n:: stamps/prepare-configure
+	$(if $(wildcard build-l10n),,mkdir build-l10n)
 	$(if $(wildcard l10n),,mkdir -p l10n)
+	cd build-l10n && \
+	$(CONFIGURE_ENV) \
+	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
+		--with-l10n-base=$(CURDIR)/l10n \
+		--disable-compile-environment \
+		--enable-application=$(PRODUCT)
+
+$(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 	$(if $(wildcard l10n/$*),,ln -sf ../l10n-$* l10n/$*)
-	$(PYTHON) config/pythonpath.py -I$(CURDIR)/compare-locales/lib $(CURDIR)/compare-locales/scripts/compare-locales -m $(CURDIR)/build-$(PRODUCT)/l10n-$* $(PRODUCT)/locales/l10n.ini $(CURDIR)/l10n $*
-	$(MAKE) -C build-$(PRODUCT)/$(PRODUCT)/locales langpack-$* L10NBASEDIR=$(CURDIR)/l10n MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-$(PRODUCT)/l10n-$* STANDALONE_MAKEFILE=1
+	$(PYTHON) config/pythonpath.py -I$(CURDIR)/compare-locales/lib $(CURDIR)/compare-locales/scripts/compare-locales -m $(CURDIR)/build-l10n/l10n-$* $(PRODUCT)/locales/l10n.ini $(CURDIR)/l10n $*
+	$(MAKE) -C build-l10n/$(PRODUCT)/locales langpack-$* MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-l10n/l10n-$*
 
 override_dh_auto_build: stamps/build-xulrunner stamps/build-$(PRODUCT) stamps/build-check-branding
 
@@ -338,8 +347,8 @@ L10N_DH_INSTALL_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/dh_install-l10n-$(l
 stamps/dh_install-l10n:: $(L10N_DH_INSTALL_STAMPS)
 
 $(L10N_DH_INSTALL_STAMPS):: stamps/dh_install-l10n-%: stamps/build-l10n-%
-	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-$(PRODUCT)/dist/xpi/langpack-$*@$($(PRODUCT)).mozilla.org.xpi usr/lib/$($(PRODUCT))/browser/extensions/
-	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-$(PRODUCT)/dist/xpi-stage/locale-$*/browser/searchplugins/* /etc/$($(PRODUCT))/searchplugins/locale/$*/
+	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi/langpack-$*@$($(PRODUCT)).mozilla.org.xpi usr/lib/$($(PRODUCT))/browser/extensions/
+	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi-stage/locale-$*/browser/searchplugins/* /etc/$($(PRODUCT))/searchplugins/locale/$*/
 
 branding_icon = $(or $(wildcard $(BRANDING)/$(1)),$(wildcard build-$(PRODUCT)/$(BRANDING)/$(1)))
 
