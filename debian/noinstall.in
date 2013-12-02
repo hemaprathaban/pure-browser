@@ -7,3 +7,7 @@ usr/lib/xulrunner-@GRE_VERSION@/libmozjs.so
 usr/lib/xulrunner-@GRE_VERSION@/dictionaries
 usr/include/xulrunner-@GRE_VERSION@/testing
 usr/lib/xulrunner-devel-@GRE_VERSION@/sdk/bin/ply
+%if LESS_SYSTEM_LIBS
+usr/lib/pkgconfig/mozilla-nspr.pc
+usr/lib/pkgconfig/mozilla-nss.pc
+%endif

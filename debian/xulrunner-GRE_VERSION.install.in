@@ -21,3 +21,21 @@ usr/lib/xulrunner-@GRE_VERSION@/components/libmozgnome.so
 
 usr/lib/xulrunner-@GRE_VERSION@/chrome.manifest
 usr/lib/xulrunner-@GRE_VERSION@/omni.ja
+
+%if LESS_SYSTEM_LIBS
+usr/lib/xulrunner-@GRE_VERSION@/libfreebl3.chk
+usr/lib/xulrunner-@GRE_VERSION@/libfreebl3.so
+usr/lib/xulrunner-@GRE_VERSION@/libmozsqlite3.so
+usr/lib/xulrunner-@GRE_VERSION@/libnspr4.so
+usr/lib/xulrunner-@GRE_VERSION@/libnss3.so
+usr/lib/xulrunner-@GRE_VERSION@/libnssckbi.so
+usr/lib/xulrunner-@GRE_VERSION@/libnssdbm3.so
+usr/lib/xulrunner-@GRE_VERSION@/libnssutil3.so
+usr/lib/xulrunner-@GRE_VERSION@/libnssdbm3.chk
+usr/lib/xulrunner-@GRE_VERSION@/libplc4.so
+usr/lib/xulrunner-@GRE_VERSION@/libplds4.so
+usr/lib/xulrunner-@GRE_VERSION@/libsmime3.so
+usr/lib/xulrunner-@GRE_VERSION@/libsoftokn3.chk
+usr/lib/xulrunner-@GRE_VERSION@/libsoftokn3.so
+usr/lib/xulrunner-@GRE_VERSION@/libssl3.so
+%endif
