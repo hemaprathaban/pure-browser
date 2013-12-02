@@ -18,6 +18,10 @@ PRODUCT := browser
 PRODUCT_NAME := firefox
 include debian/upstream.mk
 
+ifdef BACKPORT
+LESS_SYSTEM_LIBS = 1
+endif
+
 OFFICIAL_BRANDING := browser/branding/official
 ifeq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
 MOZILLA_OFFICIAL := 1
@@ -149,7 +153,7 @@ debian/l10n/$(PRODUCT)-l10n.control: %: %.in
 
 DICT_DIR := /usr/share/hunspell
 
-$(PREPROCESSED_FILES): VARS = GRE_VERSION JS_SO_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product)
+$(PREPROCESSED_FILES): VARS = GRE_VERSION JS_SO_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS
 debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) config/Preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
@@ -171,7 +175,7 @@ stamps/prepare-configure:: stamps/dummy
 	done
 	chmod 755 configure js/src/configure
 
-stamps/configure-xulrunner:: stamps/prepare-configure
+stamps/configure-xulrunner:: stamps/prepare-configure debian/xulrunner.mozconfig
 	$(if $(wildcard build-xulrunner),,mkdir build-xulrunner)
 	cd build-xulrunner && \
 	MOZCONFIG=$(CURDIR)/debian/xulrunner.mozconfig \
@@ -208,7 +212,7 @@ stamps/build-xulrunner:: stamps/configure-check-xulrunner
 stamps/build-xulrunner-extra:: stamps/build-xulrunner build-xulrunner/debian/extra-stuff/Makefile
 	$(MAKE) -C build-xulrunner/debian/extra-stuff
 
-stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra
+stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra debian/$(PRODUCT).mozconfig
 	$(if $(wildcard build-$(PRODUCT)),,mkdir build-$(PRODUCT))
 	cd build-$(PRODUCT) && \
 	MOZCONFIG=$(CURDIR)/debian/$(PRODUCT).mozconfig \
