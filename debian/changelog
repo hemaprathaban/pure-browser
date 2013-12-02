@@ -1,4 +1,4 @@
-iceweasel (26.0-1) UNRELEASED; urgency=medium
+iceweasel (26.0-1) experimental; urgency=low
 
   * New upstream release.
   * Fixes for mfsa2013-{104-116}, also known as
@@ -7,7 +7,25 @@ iceweasel (26.0-1) UNRELEASED; urgency=medium
     CVE-2013-6671, CVE-2013-6672, CVE-2013-6673, CVE-2013-5613,
     CVE-2013-5615, CVE-2013-6629, CVE-2013-6630.
 
- -- Mike Hommey <glandium@debian.org>  Sun, 15 Dec 2013 16:28:10 +0900
+  * debian/*.mozconfig: Add --enable-release configure flag.
+  * debian/control*: Bump nspr build dependency.
+  * debian/*.mozconfig: Don't build --with-system-ply, the option is gone.
+  * debian/noinstall.in: Don't install usr/lib/xulrunner-devel-*/sdk/bin/ply.
+  * debian/control*, debian/noinstall.in, debian/rules, debian/upstream.mk,
+    debian/xulrunner-GRE_VERSION.install.in, debian/xulrunner.mozconfig:
+    Don't build against system nspr, nss and sqlite3 when building backports.
+  * debian/control*, debian/xulrunner.mozconfig.in: Build with the in-tree
+    cairo. I think it's time to admit that there are too many issues with
+    system cairo.
+  * debian/rules: Ensure debian/control is updated when running debian/rules
+    clean.
+
+  * toolkit/content/resetProfile.js, toolkit/modules/ResetProfile.jsm:
+    Fixup "Reset Firefox" after bad merge.
+  * configure*: Fixup NSPR_CFLAGS when building with libxul-sdk and in-tree
+    nspr.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 15 Dec 2013 16:45:37 +0900
 
 iceweasel (25.0-1) experimental; urgency=low
 
