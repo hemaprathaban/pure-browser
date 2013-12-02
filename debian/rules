@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
-ifeq (,$(shell dh_testdir || echo no))
+TESTDIR = $(shell dh_testdir || echo no)
+ifeq (,$(TESTDIR))
 include debian/make.mk
 # Use dpkg-buildflags to get hardening flags, exclude non-hardening flags,
 # and disable read-only relocations.
@@ -142,7 +143,7 @@ PREPROCESSED_FILES += $(call preprocessed_filename,$(1))
 endef
 $(foreach f,$(IN_FILES),$(eval $(call preprocess, $(f))))
 
-GENERATED_FILES += $(filter-out debian/control,$(PREPROCESSED_FILES))
+GENERATED_FILES += $(PREPROCESSED_FILES) debian/l10n/$(PRODUCT)-l10n.control
 debian/control: debian/rules debian/changelog debian/l10n/$(PRODUCT)-l10n.control
 
 $(call lazy,L10N_PACKAGES,$$(foreach lang,$$(L10N_LANGS),$($(PRODUCT))-l10n-$$(call lc,$$(lang))))
@@ -257,6 +258,7 @@ override_dh_auto_clean::
 	rm -f MPL
 	rm -f $(GENERATED_FILES)
 	rm -rf stamps l10n
+	debian/rules debian/control TESTDIR=
 
 	dh_auto_clean --builddirectory=build-$(PRODUCT)
 	dh_auto_clean --builddirectory=build-xulrunner
