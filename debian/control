@@ -13,7 +13,6 @@ Build-Depends: autotools-dev,
                libgnomevfs2-dev,
                libgnome2-dev,
                libgnomeui-dev,
-               libcairo2-dev (>= 1.10.2-1.1~),
                libjpeg-dev,
                zlib1g-dev,
                libbz2-dev,
@@ -96,8 +95,7 @@ Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         libmozjs26d (= ${binary:Version}),
-         libcairo2 (>= 1.8.8)
+         libmozjs26d (= ${binary:Version})
 Suggests: ${gnome:Depends}, libgnomeui-0, libcanberra0
 Conflicts: j2re1.4,
            pango-graphite (<< 0.9.3)
