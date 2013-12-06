@@ -1,3 +1,25 @@
+iceweasel (24.2.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2013-{104,108-109,111,113-116}, also known as
+    CVE-2013-5609, CVE-2013-5616, CVE-2013-5618, CVE-2013-6671,
+    CVE-2013-6673, CVE-2013-5613, CVE-2013-5615, CVE-2013-6629,
+    CVE-2013-6630.
+
+  * debian/control*, debian/noinstall.in, debian/rules, debian/upstream.mk,
+    debian/xulrunner-GRE_VERSION.install.in, debian/xulrunner.mozconfig:
+    Don't build against system nspr, nss and sqlite3 when building backports.
+  * debian/control*, debian/xulrunner.mozconfig.in: Build with the in-tree
+    cairo. I think it's time to admit that there are too many issues with
+    system cairo.
+  * debian/rules: Ensure debian/control is updated when running debian/rules
+    clean.
+
+  * configure*: Fixup NSPR_CFLAGS when building with libxul-sdk and in-tree
+    nspr.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 15 Dec 2013 15:13:58 +0900
+
 iceweasel (24.1.0esr-1) unstable; urgency=high
 
   * New upstream release.
