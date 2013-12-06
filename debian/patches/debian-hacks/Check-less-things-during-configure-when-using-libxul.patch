@@ -9,10 +9,10 @@ we won't be building most of the toolkit.
  1 file changed, 21 insertions(+), 7 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index c9a1ddc..ed04569 100644
+index 240564f..ee1a91f 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -3806,6 +3806,7 @@ AC_SUBST(LIBXUL_SDK)
+@@ -3808,6 +3808,7 @@ AC_SUBST(LIBXUL_SDK)
  
  if test -n "$LIBXUL_SDK"; then
      LIBXUL_DIST="$LIBXUL_SDK"
@@ -20,7 +20,7 @@ index c9a1ddc..ed04569 100644
  else
      LIBXUL_DIST="$MOZ_BUILD_ROOT/dist"
  fi
-@@ -3854,8 +3855,8 @@ else
+@@ -3856,8 +3857,8 @@ else
              NSPR_LIBS="${LIBXUL_DIST}/lib/nspr${NSPR_VERSION}.lib ${LIBXUL_DIST}/lib/plc${NSPR_VERSION}.lib ${LIBXUL_DIST}/lib/plds${NSPR_VERSION}.lib "
          fi
      else
@@ -31,7 +31,7 @@ index c9a1ddc..ed04569 100644
      fi
  fi
  
-@@ -4678,6 +4679,7 @@ dnl ========================================================
+@@ -4680,6 +4681,7 @@ dnl ========================================================
  dnl = startup-notification support module
  dnl ========================================================
  
@@ -39,7 +39,7 @@ index c9a1ddc..ed04569 100644
  if test "$MOZ_ENABLE_GTK"
  then
      MOZ_ENABLE_STARTUP_NOTIFICATION=
-@@ -4706,6 +4708,7 @@ then
+@@ -4708,6 +4710,7 @@ then
  
      TK_LIBS="$TK_LIBS $MOZ_STARTUP_NOTIFICATION_LIBS"
  fi
@@ -47,7 +47,7 @@ index c9a1ddc..ed04569 100644
  AC_SUBST(MOZ_ENABLE_STARTUP_NOTIFICATION)
  AC_SUBST(MOZ_STARTUP_NOTIFICATION_CFLAGS)
  AC_SUBST(MOZ_STARTUP_NOTIFICATION_LIBS)
-@@ -4862,6 +4865,11 @@ AC_SUBST(MOZ_QT_LIBS)
+@@ -4864,6 +4867,11 @@ AC_SUBST(MOZ_QT_LIBS)
  AC_SUBST(MOC)
  AC_SUBST(RCC)
  
@@ -59,7 +59,7 @@ index c9a1ddc..ed04569 100644
  AC_SUBST(MOZ_X11)
  
  dnl ========================================================
-@@ -4947,7 +4955,7 @@ MOZ_ARG_DISABLE_BOOL(pango,
+@@ -4949,7 +4957,7 @@ MOZ_ARG_DISABLE_BOOL(pango,
  dnl ========================================================
  dnl = Pango
  dnl ========================================================
@@ -68,7 +68,7 @@ index c9a1ddc..ed04569 100644
  then
      AC_SUBST(MOZ_PANGO)
  
-@@ -4970,6 +4978,7 @@ dnl ========================================================
+@@ -4972,6 +4980,7 @@ dnl ========================================================
  dnl = GnomeVFS, GIO and GConf support module
  dnl ========================================================
  
@@ -76,7 +76,7 @@ index c9a1ddc..ed04569 100644
  if test "$MOZ_X11"
  then
      dnl build the GIO extension by default only when the
-@@ -5159,6 +5168,9 @@ AC_SUBST(MOZ_DBUS_LIBS)
+@@ -5161,6 +5170,9 @@ AC_SUBST(MOZ_DBUS_LIBS)
  AC_SUBST(MOZ_DBUS_GLIB_CFLAGS)
  AC_SUBST(MOZ_DBUS_GLIB_LIBS)
  
@@ -86,7 +86,7 @@ index c9a1ddc..ed04569 100644
  dnl ========================================================
  dnl = Enable Android History instead of Places
  dnl ========================================================
-@@ -5726,6 +5738,7 @@ dnl = Check alsa availability on Linux if using sydneyaudio
+@@ -5728,6 +5740,7 @@ dnl = Check alsa availability on Linux if using sydneyaudio
  dnl ========================================================
  
  dnl If using sydneyaudio with Linux, ensure that the alsa library is available
@@ -94,7 +94,7 @@ index c9a1ddc..ed04569 100644
  if test -n "$MOZ_CUBEB" -a "$OS_TARGET" = "Linux"; then
      MOZ_ALSA=1
  fi
-@@ -5741,6 +5754,7 @@ if test -n "$MOZ_ALSA"; then
+@@ -5743,6 +5756,7 @@ if test -n "$MOZ_ALSA"; then
           [echo "$MOZ_ALSA_PKG_ERRORS"
            AC_MSG_ERROR([Need alsa for Ogg, Wave or WebM decoding on Linux.  Disable with --disable-ogg --disable-wave --disable-webm.  (On Ubuntu, you might try installing the package libasound2-dev.)])])
  fi
@@ -102,7 +102,7 @@ index c9a1ddc..ed04569 100644
  
  AC_SUBST(MOZ_ALSA)
  AC_SUBST(MOZ_ALSA_CFLAGS)
-@@ -7156,7 +7170,7 @@ MOZ_ARG_ENABLE_BOOL(jemalloc,
+@@ -7158,7 +7172,7 @@ MOZ_ARG_ENABLE_BOOL(jemalloc,
      MOZ_MEMORY=1,
      MOZ_MEMORY=)
  
@@ -111,7 +111,7 @@ index c9a1ddc..ed04569 100644
      MOZ_MEMORY=
  fi
  
-@@ -8098,7 +8112,7 @@ MOZ_ARG_HEADER(Standalone module options (Not for building Mozilla))
+@@ -8100,7 +8114,7 @@ MOZ_ARG_HEADER(Standalone module options (Not for building Mozilla))
  dnl Check for GLib.
  dnl ========================================================
  
@@ -120,7 +120,7 @@ index c9a1ddc..ed04569 100644
  if test -z "${GLIB_CFLAGS}" -o -z "${GLIB_LIBS}" ; then
      if test "$MOZ_ENABLE_GTK2" -o "$USE_ELF_DYNSTR_GC" ; then
          PKG_CHECK_MODULES(GLIB, glib-2.0 >= 1.3.7 gobject-2.0)
-@@ -8132,7 +8146,7 @@ MOZ_ARG_ENABLE_BOOL(skia,
+@@ -8134,7 +8148,7 @@ MOZ_ARG_ENABLE_BOOL(skia,
  MOZ_ENABLE_SKIA=1,
  MOZ_ENABLE_SKIA=)
  
@@ -129,7 +129,7 @@ index c9a1ddc..ed04569 100644
      if test "$COMPILE_ENVIRONMENT"; then
          dnl ========================================================
          dnl = Check for freetype2 and its functionality
-@@ -9013,7 +9027,7 @@ else
+@@ -9015,7 +9029,7 @@ else
  fi
  
  dnl Check for missing components

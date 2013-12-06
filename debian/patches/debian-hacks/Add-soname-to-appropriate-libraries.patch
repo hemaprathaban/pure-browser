@@ -83,7 +83,7 @@ index f64edab..3a0b923 100644
  $(SHARED_LIBRARY): $(OBJS) $(LOBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
  	$(info $(notdir $@))
 diff --git a/js/src/Makefile.in b/js/src/Makefile.in
-index 34bc4c7..3964f55 100644
+index d888e4c..156a3d2 100644
 --- a/js/src/Makefile.in
 +++ b/js/src/Makefile.in
 @@ -21,6 +21,7 @@ endif
@@ -94,7 +94,7 @@ index 34bc4c7..3964f55 100644
  LIBS		= $(NSPR_LIBS)
  
  # JavaScript must be built shared, even for static builds, as it is used by
-@@ -586,6 +587,9 @@ ifneq (,$(REAL_LIBRARY))
+@@ -591,6 +592,9 @@ ifneq (,$(REAL_LIBRARY))
  endif
  ifneq (,$(SHARED_LIBRARY))
  	$(SYSINSTALL) $(SHARED_LIBRARY) $(DESTDIR)$(libdir)
