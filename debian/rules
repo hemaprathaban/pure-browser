@@ -221,7 +221,7 @@ stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra debian/$(PRODUCT).moz
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-libxul-sdk=$(CURDIR)/build-xulrunner/dist \
 		$(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING)) \
-		--with-system-libxul --with-system-nspr --with-system-nss
+		--with-system-libxul $(if $(LESS_SYSTEM_LIBS),,--with-system-nspr --with-system-nss)
 
 stamps/build-$(PRODUCT):: stamps/configure-$(PRODUCT)
 	dh_auto_build --builddirectory=build-$(PRODUCT)
@@ -304,9 +304,11 @@ stamps/install-xulrunner:: build-xulrunner/debian/installer/package-manifest
 		rm $$file; \
 		ln -s /usr/include/mozjs/$$f $$file; \
 	done
+ifndef LESS_SYSTEM_LIBS
 	for f in /usr/include/nspr/* /usr/include/nss/*; do \
 		ln -s $$f debian/tmp/usr/include/xulrunner-$(GRE_VERSION)/$$(basename $$f); \
 	done
+endif
 	for h in $$(grep -l -r EXPORTS build-xulrunner/media | grep Makefile$ | \
 		while read f; do $(MAKE) --no-print-directory -C $$(dirname $$f) echo-variable-EXPORTS echo-variable-EXPORTS_NAMESPACES; done); do \
 		rm -rf debian/tmp/usr/include/xulrunner-$(GRE_VERSION)/$$h; \
