@@ -15,19 +15,19 @@ be dlloaded() by the standalone xpcomglue.
  5 files changed, 50 insertions(+), 4 deletions(-)
 
 diff --git a/config/makefiles/target_libs.mk b/config/makefiles/target_libs.mk
-index a295e74..680212d 100644
+index 0d05789..891ea07 100644
 --- a/config/makefiles/target_libs.mk
 +++ b/config/makefiles/target_libs.mk
-@@ -43,7 +43,7 @@ GARBAGE += $(foreach lib,$(LIBRARY),$(EXPORT_LIBRARY)/$(lib))
+@@ -18,7 +18,7 @@ GARBAGE += $(foreach lib,$(LIBRARY),$(EXPORT_LIBRARY)/$(lib))
  endif
  endif # EXPORT_LIBRARY
  
--libs:: $(SUBMAKEFILES) $(MAKE_DIRS) $(HOST_LIBRARY) $(LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS) $(JAVA_LIBRARY)
-+libs:: $(SUBMAKEFILES) $(MAKE_DIRS) $(HOST_LIBRARY) $(LIBRARY) $(UNVERSIONED_LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS) $(JAVA_LIBRARY)
+-libs:: $(SUBMAKEFILES) $(HOST_LIBRARY) $(LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS)
++libs:: $(SUBMAKEFILES) $(HOST_LIBRARY) $(LIBRARY) $(UNVERSIONED_LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS)
  ifndef NO_DIST_INSTALL
  ifdef SHARED_LIBRARY
  ifdef IS_COMPONENT
-@@ -103,6 +103,13 @@ ifdef IMPORT_LIB_FILES
+@@ -77,6 +77,13 @@ ifdef IMPORT_LIB_FILES
  INSTALL_TARGETS += IMPORT_LIB
  endif
  
@@ -42,10 +42,10 @@ index a295e74..680212d 100644
  endif # SHARED_LIBRARY
  
 diff --git a/config/rules.mk b/config/rules.mk
-index b498822..d7053fe 100644
+index 2000762..3ef02f2 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
-@@ -263,6 +263,18 @@ else
+@@ -286,6 +286,18 @@ else
  SHARED_LIBRARY		:= $(DLL_PREFIX)$(SHARED_LIBRARY_NAME)$(DLL_SUFFIX)
  endif
  
@@ -64,7 +64,7 @@ index b498822..d7053fe 100644
  ifeq ($(OS_ARCH),OS2)
  DEF_FILE		:= $(SHARED_LIBRARY:.dll=.def)
  endif
-@@ -360,7 +372,7 @@ SIMPLE_PROGRAMS :=
+@@ -367,7 +379,7 @@ SIMPLE_PROGRAMS :=
  endif
  
  ifndef TARGETS
@@ -73,28 +73,28 @@ index b498822..d7053fe 100644
  endif
  
  COBJS = $(notdir $(CSRCS:.c=.$(OBJ_SUFFIX)))
-@@ -1030,6 +1042,8 @@ endif
+@@ -1002,6 +1014,8 @@ endif
  # so instead of deleting .o files after repacking them into a dylib, we make
  # symlinks back to the originals. The symlinks are a no-op for stabs debugging,
  # so no need to conditionalize on OS version or debugging format.
 +$(UNVERSIONED_LIBRARY): $(SHARED_LIBRARY)
 +	$(call MKSHLINKS,.)
  
- $(SHARED_LIBRARY): $(OBJS) $(LOBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
- 	$(info $(notdir $@))
+ $(SHARED_LIBRARY): $(OBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
+ 	$(REPORT_BUILD)
 diff --git a/js/src/Makefile.in b/js/src/Makefile.in
-index 63cf61c..5a020a50 100644
+index f94403c..fe853c8 100644
 --- a/js/src/Makefile.in
 +++ b/js/src/Makefile.in
-@@ -21,6 +21,7 @@ endif
+@@ -8,6 +8,7 @@ TOPLEVEL_BUILD := 1
  
+ run_for_side_effects := $(shell echo "MAKE: $(MAKE)")
  STATIC_LIBRARY_NAME = js_static
- MSVC_ENABLE_PGO := 1
 +SO_VERSION	= $(JS_SO_VERSION)
  LIBS		= $(NSPR_LIBS)
  
  # JavaScript must be built shared, even for static builds, as it is used by
-@@ -572,6 +573,9 @@ ifneq (,$(REAL_LIBRARY))
+@@ -583,6 +584,9 @@ ifneq (,$(REAL_LIBRARY))
  endif
  ifneq (,$(SHARED_LIBRARY))
  	$(SYSINSTALL) $(SHARED_LIBRARY) $(DESTDIR)$(libdir)
@@ -105,19 +105,19 @@ index 63cf61c..5a020a50 100644
  ifneq (,$(IMPORT_LIBRARY))
  	$(SYSINSTALL) $(IMPORT_LIBRARY) $(DESTDIR)$(libdir)
 diff --git a/js/src/config/makefiles/target_libs.mk b/js/src/config/makefiles/target_libs.mk
-index a295e74..680212d 100644
+index 0d05789..891ea07 100644
 --- a/js/src/config/makefiles/target_libs.mk
 +++ b/js/src/config/makefiles/target_libs.mk
-@@ -43,7 +43,7 @@ GARBAGE += $(foreach lib,$(LIBRARY),$(EXPORT_LIBRARY)/$(lib))
+@@ -18,7 +18,7 @@ GARBAGE += $(foreach lib,$(LIBRARY),$(EXPORT_LIBRARY)/$(lib))
  endif
  endif # EXPORT_LIBRARY
  
--libs:: $(SUBMAKEFILES) $(MAKE_DIRS) $(HOST_LIBRARY) $(LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS) $(JAVA_LIBRARY)
-+libs:: $(SUBMAKEFILES) $(MAKE_DIRS) $(HOST_LIBRARY) $(LIBRARY) $(UNVERSIONED_LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS) $(JAVA_LIBRARY)
+-libs:: $(SUBMAKEFILES) $(HOST_LIBRARY) $(LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS)
++libs:: $(SUBMAKEFILES) $(HOST_LIBRARY) $(LIBRARY) $(UNVERSIONED_LIBRARY) $(SHARED_LIBRARY) $(IMPORT_LIBRARY) $(HOST_PROGRAM) $(HOST_SIMPLE_PROGRAMS) $(SIMPLE_PROGRAMS)
  ifndef NO_DIST_INSTALL
  ifdef SHARED_LIBRARY
  ifdef IS_COMPONENT
-@@ -103,6 +103,13 @@ ifdef IMPORT_LIB_FILES
+@@ -77,6 +77,13 @@ ifdef IMPORT_LIB_FILES
  INSTALL_TARGETS += IMPORT_LIB
  endif
  
@@ -132,10 +132,10 @@ index a295e74..680212d 100644
  endif # SHARED_LIBRARY
  
 diff --git a/js/src/config/rules.mk b/js/src/config/rules.mk
-index b498822..d7053fe 100644
+index 2000762..3ef02f2 100644
 --- a/js/src/config/rules.mk
 +++ b/js/src/config/rules.mk
-@@ -263,6 +263,18 @@ else
+@@ -286,6 +286,18 @@ else
  SHARED_LIBRARY		:= $(DLL_PREFIX)$(SHARED_LIBRARY_NAME)$(DLL_SUFFIX)
  endif
  
@@ -154,7 +154,7 @@ index b498822..d7053fe 100644
  ifeq ($(OS_ARCH),OS2)
  DEF_FILE		:= $(SHARED_LIBRARY:.dll=.def)
  endif
-@@ -360,7 +372,7 @@ SIMPLE_PROGRAMS :=
+@@ -367,7 +379,7 @@ SIMPLE_PROGRAMS :=
  endif
  
  ifndef TARGETS
@@ -163,12 +163,12 @@ index b498822..d7053fe 100644
  endif
  
  COBJS = $(notdir $(CSRCS:.c=.$(OBJ_SUFFIX)))
-@@ -1030,6 +1042,8 @@ endif
+@@ -1002,6 +1014,8 @@ endif
  # so instead of deleting .o files after repacking them into a dylib, we make
  # symlinks back to the originals. The symlinks are a no-op for stabs debugging,
  # so no need to conditionalize on OS version or debugging format.
 +$(UNVERSIONED_LIBRARY): $(SHARED_LIBRARY)
 +	$(call MKSHLINKS,.)
  
- $(SHARED_LIBRARY): $(OBJS) $(LOBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
- 	$(info $(notdir $@))
+ $(SHARED_LIBRARY): $(OBJS) $(DEF_FILE) $(RESFILE) $(LIBRARY) $(EXTRA_DEPS) $(GLOBAL_DEPS)
+ 	$(REPORT_BUILD)

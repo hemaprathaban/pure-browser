@@ -9,10 +9,10 @@ Subject: Determine which phishing shavar to use depending on
  2 files changed, 8 insertions(+)
 
 diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index c4a5de5..247a718 100644
+index befaa57..85b4351 100644
 --- a/browser/app/Makefile.in
 +++ b/browser/app/Makefile.in
-@@ -140,6 +140,10 @@ libs::
+@@ -133,6 +133,10 @@ libs::
  	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(FINAL_TARGET)/chrome/icons/default
  endif
  
@@ -24,10 +24,10 @@ index c4a5de5..247a718 100644
  	$(INSTALL) $(IFLAGS1) $^ $(FINAL_TARGET)/defaults/profile
  
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 46f4000..fa3a49b 100644
+index 6c8ffab..9943b40 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -796,7 +796,11 @@ pref("urlclassifier.alternate_error_page", "blocked");
+@@ -807,7 +807,11 @@ pref("urlclassifier.alternate_error_page", "blocked");
  pref("urlclassifier.gethashnoise", 4);
  
  // The list of tables that use the gethash request to confirm partial results.

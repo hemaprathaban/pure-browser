@@ -7,12 +7,10 @@ Subject: Use a variable for xulrunner base version in various places
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/config/baseconfig.mk b/config/baseconfig.mk
-index ae69bae..ed1d009 100644
+index 50f4cd4..9c70e24 100644
 --- a/config/baseconfig.mk
 +++ b/config/baseconfig.mk
-@@ -1,9 +1,10 @@
- INCLUDED_AUTOCONF_MK = 1
- 
+@@ -1,7 +1,8 @@
 -includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 -idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 -installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)

@@ -61,6 +61,7 @@
 
 // for the dialog
 #include "nsIWindowWatcher.h"
+#include "nsIDOMElement.h"
 #include "nsIDOMWindow.h"
 
 #include "nsNetCID.h"
@@ -3653,6 +3654,18 @@ PRCList nsPluginDestroyRunnable::sRunnableListHead =
 
 PRCList PluginDestructionGuard::sListHead =
   PR_INIT_STATIC_CLIST(&PluginDestructionGuard::sListHead);
+
+PluginDestructionGuard::PluginDestructionGuard(nsNPAPIPluginInstance *aInstance)
+  : mInstance(aInstance)
+{
+  Init();
+}
+
+PluginDestructionGuard::PluginDestructionGuard(NPP npp)
+  : mInstance(npp ? static_cast<nsNPAPIPluginInstance*>(npp->ndata) : nullptr)
+{
+  Init();
+}
 
 PluginDestructionGuard::~PluginDestructionGuard()
 {

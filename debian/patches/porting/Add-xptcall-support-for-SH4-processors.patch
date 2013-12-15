@@ -13,10 +13,10 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=382214
  create mode 100644 xpcom/reflect/xptcall/src/md/unix/xptcstubs_linux_sh.cpp
 
 diff --git a/xpcom/reflect/xptcall/src/md/unix/Makefile.in b/xpcom/reflect/xptcall/src/md/unix/Makefile.in
-index a21c058..4ac73e5 100644
+index 8f25236..58ad937 100644
 --- a/xpcom/reflect/xptcall/src/md/unix/Makefile.in
 +++ b/xpcom/reflect/xptcall/src/md/unix/Makefile.in
-@@ -271,6 +271,17 @@ ifeq ($(OS_ARCH)$(OS_TEST),Linuxs390x)
+@@ -262,6 +262,17 @@ ifeq ($(OS_ARCH)$(OS_TEST),Linuxs390x)
  CXXFLAGS	+= -fno-strict-aliasing -fno-inline -fomit-frame-pointer -mbackchain
  endif
  
