@@ -14,7 +14,7 @@ EXTRA_COMPONENTS := addonsInfo.js addonsInfo.manifest
 include $(topsrcdir)/config/rules.mk
 
 places.js: $(topsrcdir)/browser/app/profile/firefox.js
-	$(PYTHON) $(topsrcdir)/config/Preprocessor.py $(DEFINES) $(ACDEFINES) $^ | grep '\(places\.frecency\.\|browser\.\(formfill\.enable\|history_expire_days\|urlbar\.\(restrict\.\|match\.\|default\.behavior\|filter\.javascript\)\)\)' > $@
+	$(PYTHON) -m mozbuild.action.preprocessor $(DEFINES) $(ACDEFINES) $^ | grep '\(places\.frecency\.\|browser\.\(formfill\.enable\|history_expire_days\|urlbar\.\(restrict\.\|match\.\|default\.behavior\|filter\.javascript\)\)\)' > $@
 
 DEFINES += -DAPP_UA_NAME=a -DAPP_VERSION=0
 
