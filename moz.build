@@ -35,3 +35,5 @@ include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
 
 if not CONFIG['LIBXUL_SDK']:
     add_tier_dir('platform', 'debian/extra-stuff')
+
+CONFIGURE_SUBST_FILES += ['debian/installer/Makefile']
