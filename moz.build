@@ -68,4 +68,7 @@ if not CONFIG['JS_STANDALONE']:
     # Bring in the configuration for the configured application.
     include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
 
+if not CONFIG['LIBXUL_SDK']:
+    add_tier_dir('platform', 'debian/extra-stuff')
+
 include('build/templates.mozbuild')
