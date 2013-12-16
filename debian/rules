@@ -213,10 +213,7 @@ stamps/build-xulrunner:: stamps/configure-check-xulrunner
 		_LEAKTEST_FILES=leaktest.py \
 		JS_READLINE=1
 
-stamps/build-xulrunner-extra:: stamps/build-xulrunner build-xulrunner/debian/extra-stuff/Makefile
-	$(MAKE) -C build-xulrunner/debian/extra-stuff
-
-stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra debian/$(PRODUCT).mozconfig
+stamps/configure-$(PRODUCT):: stamps/build-xulrunner debian/$(PRODUCT).mozconfig
 	$(if $(wildcard build-$(PRODUCT)),,mkdir build-$(PRODUCT))
 	cd build-$(PRODUCT) && \
 	MOZCONFIG=$(CURDIR)/debian/$(PRODUCT).mozconfig \
