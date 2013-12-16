@@ -71,4 +71,6 @@ if not CONFIG['JS_STANDALONE']:
 if not CONFIG['LIBXUL_SDK']:
     add_tier_dir('platform', 'debian/extra-stuff')
 
+CONFIGURE_SUBST_FILES += ['debian/installer/Makefile']
+
 include('build/templates.mozbuild')
