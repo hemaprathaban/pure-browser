@@ -161,11 +161,7 @@ debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
 
-%/Makefile: DIR=$(firstword $(subst /, ,$@))
-%/Makefile:
-	$(DIR)/config.status -n -v --file=$@
-
-%/package-manifest: %/Makefile
+%/package-manifest:
 	$(MAKE) -C $*
 
 override_dh_auto_configure:
