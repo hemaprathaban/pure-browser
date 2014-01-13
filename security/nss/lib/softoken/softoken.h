@@ -197,7 +197,7 @@ extern PRBool sftk_fatalError;
 
 #define CHECK_FORK_MIXED
 
-#elif defined(LINUX)
+#elif defined(LINUX) || defined (__GLIBC__)
 
 #define CHECK_FORK_PTHREAD
 
