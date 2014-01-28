@@ -49,7 +49,7 @@
 
 
 
-#define bookmarks_addons Firefox. Կարգավորել օժանդակիչներով
+#define bookmarks_addons Firefox. Կարգավորել հավելումներով
 
 
 
@@ -62,18 +62,6 @@
 
 
 #define bookmarks_support Firefox. Աջակցություն
-
-
-
-# LOCALIZATION NOTE (bookmarks_aboutHome):
-
-
-
-# link title for about:home
-
-
-
-#define bookmarks_aboutHome Firefox-ի Սկիզբը
 
 
 
