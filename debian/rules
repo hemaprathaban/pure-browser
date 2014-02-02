@@ -323,10 +323,13 @@ stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
 		MOZ_PKG_FATAL_WARNINGS=0 \
 		MOZ_PKG_MANIFEST=$(CURDIR)/$<
 
-MPL: LICENSE
+MPL-1.1: gfx/cairo/cairo/COPYING-MPL-1.1
 	cp -f $< $@
 
-override_dh_installdocs: MPL
+MPL-2.0: b2g/LICENSE
+	cp -f $< $@
+
+override_dh_installdocs: MPL-1.1 MPL-2.0
 	dh_installdocs -A $^
 
 L10N_DH_INSTALL_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/dh_install-l10n-$(lang))
