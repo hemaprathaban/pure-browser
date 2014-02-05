@@ -208,6 +208,7 @@ stamps/configure-check-xulrunner:: stamps/configure-xulrunner
 
 stamps/build-xulrunner:: stamps/configure-check-xulrunner
 	dh_auto_build --parallel --builddirectory=build-xulrunner -- \
+		_LEAKTEST_FILES=leaktest.py \
 		JS_READLINE=1
 
 stamps/build-xulrunner-extra:: stamps/build-xulrunner build-xulrunner/debian/extra-stuff/Makefile
@@ -224,7 +225,8 @@ stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra debian/$(PRODUCT).moz
 		--with-system-libxul $(if $(LESS_SYSTEM_LIBS),,--with-system-nspr --with-system-nss)
 
 stamps/build-$(PRODUCT):: stamps/configure-$(PRODUCT)
-	dh_auto_build --builddirectory=build-$(PRODUCT)
+	dh_auto_build --builddirectory=build-$(PRODUCT) -- \
+		_LEAKTEST_FILES=leaktest.py
 
 ifeq (1,)
 ifneq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
