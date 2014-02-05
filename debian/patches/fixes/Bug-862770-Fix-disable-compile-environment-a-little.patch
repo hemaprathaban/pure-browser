@@ -1,0 +1,61 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Mon, 4 Nov 2013 09:09:44 +0900
+Subject: Bug 862770 - Fix --disable-compile-environment a little
+
+---
+ moz.build                                   | 3 +--
+ widget/gonk/libdisplay/moz.build            | 2 +-
+ xpcom/ds/moz.build                          | 2 +-
+ xpcom/reflect/xptcall/src/md/unix/moz.build | 2 +-
+ 4 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/moz.build b/moz.build
+index 514c3d3..a40c36d 100644
+--- a/moz.build
++++ b/moz.build
+@@ -26,5 +26,4 @@ if not CONFIG['LIBXUL_SDK']:
+ add_tier_dir('precompile', 'xpcom/xpidl')
+ 
+ # Bring in the configuration for the configured application.
+-if CONFIG['COMPILE_ENVIRONMENT']:
+-    include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
++include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
+diff --git a/widget/gonk/libdisplay/moz.build b/widget/gonk/libdisplay/moz.build
+index 41c4d37..7ce9e95 100644
+--- a/widget/gonk/libdisplay/moz.build
++++ b/widget/gonk/libdisplay/moz.build
+@@ -35,7 +35,7 @@ elif CONFIG['ANDROID_VERSION'] == '15':
+     SOURCES += [
+         'GonkDisplayICS.cpp'
+     ]
+-else:
++elif CONFIG['COMPILE_ENVIRONMENT']:
+     error('Unsupported platform version: %s' % (CONFIG['ANDROID_VERSION']))
+ 
+ LIBRARY_NAME = 'display'
+diff --git a/xpcom/ds/moz.build b/xpcom/ds/moz.build
+index 7ca875b..4613ad8 100644
+--- a/xpcom/ds/moz.build
++++ b/xpcom/ds/moz.build
+@@ -105,7 +105,7 @@ elif CONFIG['OS_ARCH'] == 'Darwin':
+     SOURCES += [
+         'TimeStamp_darwin.cpp',
+     ]
+-else:
++elif CONFIG['COMPILE_ENVIRONMENT']:
+     error('No TimeStamp implementation on this platform.  Build will not succeed')
+ 
+ EXTRA_COMPONENTS += [
+diff --git a/xpcom/reflect/xptcall/src/md/unix/moz.build b/xpcom/reflect/xptcall/src/md/unix/moz.build
+index 4127ba7..950ff45 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/moz.build
++++ b/xpcom/reflect/xptcall/src/md/unix/moz.build
+@@ -136,7 +136,7 @@ if CONFIG['OS_ARCH'] == 'Linux':
+                 'xptcinvoke_pa32.cpp',
+                 'xptcstubs_pa32.cpp',
+             ]
+-        else:
++        elif CONFIG['COMPILE_ENVIRONMENT']:
+             error('Unknown C++ compiler, xptcall assembly will probably be incorrect.')
+ 
+ if CONFIG['OS_ARCH'] == 'NetBSD':
