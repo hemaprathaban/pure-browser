@@ -15,8 +15,8 @@
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Selecteer “&syncBrand.shortName.label; instellen” op uw nieuwe apparaat om het te activeren.'>
-<!ENTITY sync.subtitle.header.label 'Voer deze code in op uw computer'>
-<!ENTITY sync.subtitle.connectlocation.label 'Selecteer “&sync.title.pair.label;” in de sectie &syncBrand.shortName.label; van de opties van Firefox op uw desktop.'>
+<!ENTITY sync.subtitle.header2.label 'Voer deze code in op uw andere apparaat'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Selecteer “&sync.title.pair.label;” in de sectie &syncBrand.shortName.label; van de opties van Firefox op uw andere apparaat.'>
 <!ENTITY sync.subtitle.pair.label 'Selecteer “Een apparaat koppelen” op uw andere apparaat om het te activeren.'>
 <!ENTITY sync.pin.default.label '...\n...\n...\n'>
 <!ENTITY sync.pin.oneline.label '...'>
@@ -58,6 +58,14 @@
 <!ENTITY sync.settings.options.label 'Opties'>
 <!ENTITY sync.summary.pair.label 'Een ander apparaat aan uw &syncBrand.shortName.label;-account koppelen'>
 
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Wat te synchroniseren'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Synchroniseren:'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Bladwijzers'>
+<!ENTITY sync.configure.engines.title.passwords 'Wachtwoorden'>
+<!ENTITY sync.configure.engines.title.history 'Geschiedenis'>
+<!ENTITY sync.configure.engines.title.tabs 'Tabbladen'>
+
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Annuleren'>
 <!ENTITY sync.button.connect.label 'Verbinden'>
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label 'Desktop-bladwijzers'>
 <!ENTITY bookmarks.folder.mobile.label 'Mobiel-bladwijzers'>
 <!ENTITY bookmarks.folder.readinglist.label 'Leeslijst'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Vastgemaakt'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Er wordt maar één &syncBrand.fullName.label;-account ondersteund.'>
+<!ENTITY sync.notification.configure.saved 'Uw selecties zijn opgeslagen.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.invalidcreds.label 'Onjuiste accountnaam of wachtwoord.'>

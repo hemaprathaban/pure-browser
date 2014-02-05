@@ -36,6 +36,7 @@
     <li><a href="#keyboard_navigation">Navegación con el teclado</a></li>
     <li><a href="#fayt">Encontrar a medida que escribe</a></li>
     <li><a href="#cache">Caché</a></li>
+    <li><a href="#offline_apps">Aplicaciones sin conexión</a></li>
     <li><a href="#proxies">Proxies</a></li>
     <li><a href="#http_networking">Protocolo HTTP</a></li>
     <li><a href="#software_installation">Instalación de software</a></li>
@@ -322,6 +323,89 @@ de disco y memoria de &brandShortName;:</p>
 
 <p>[<a href="#advanced_preferences">Volver al principio de la sección</a>]</p>
 
+<h2 id="offline_apps">Preferencias avanzadas - Aplicaciones sin conexión</h2>
+
+<p>Esta sección describe cómo usar el panel de preferencias de aplicaciones
+  web sin conexión. Si no lo está viendo ya, siga estos pasos:</p>
+
+<ol>
+  <li>Abra el menú <span class="mac">&brandShortName;</span>
+    <span class="noMac">Editar</span> y elija Preferencias.</li>
+   <li>Bajo la categoría Avanzadas, pulse Aplicaciones sin conexión (si no hay
+     subcategorías visibles, haga doble clic en Avanzadas para expandir la
+     lista).</li>
+</ol>
+
+<p>El panel de aplicaciones web sin conexión le permite controlar y monitorizar
+  cómo usan los sitios web el almacenamiento sin conexión de &brandShortName;.
+  Los sitios web pueden proporcionar funcionalidades complejas más allá de
+  simplemente presentar contenido, implementando
+  <a href="glossary.xhtml#web_application">aplicaciones web</a>. En general,
+  tales aplicaciones web le obligan a estar conectado para poder usarlos,
+  por lo que no funcionarán si está desconectado de la red. Si se permite, los
+  sitios web pueden guardar su contenido y cualquier dato que se haya
+  introducido localmente en &brandShortName;. De esta manera, pueden ser usados
+  incluso sin una conexión de red.</p>
+
+<p>La sección <strong>Contenido web y datos del usuario sin conexión</strong>
+  proporciona las siguientes funciones:</p>
+
+<ul>
+  <li><strong>Su caché de aplicación está usando actualmente [__] de espacio en
+    disco</strong>: esta entrada es informativa y le proporciona una estimación
+    de los datos sin conexión usados actualmente por todas las aplicaciones web
+    juntas.</li>
+  <li><strong>Limpiar</strong>: limpia inmediatamente los datos que han sido
+    guardados por todos los sitios web para su uso sin conexión.</li>
+  <li><strong>Avisarme cuando un sitio web quiere guardar datos para su uso sin
+    conexión</strong>: marque esta casilla si quiere ser notificado cuando un
+    sitio web quiera utilizar la característica sin conexión pero no tenga
+    los permisos para hacerlo. Aparecerá una barra de información para este
+    sitio con las siguientes opciones:
+    <ul>
+      <li><strong>Permitir</strong>: permitir permanentemente a este sitio el
+        uso del almacenamiento sin conexión para éste y los futuros accesos.</li>
+      <li><strong>Nunca para este sitio</strong>: denegar permanentemente a
+        este sitio el uso del almacenamiento sin conexión para éste y los
+        futuros accesos.</li>
+      <li><strong>Ahora no</strong>: denegar a este sitio el uso del
+        almacenamiento sin conexión para esta petición, pero preguntar de
+        nuevo en futuros accesos.</li>
+    </ul>
+    <p><strong>Nota</strong>: si la caja de notificación <em>no</em> está
+      seleccionada, &brandShortName; procederá como si se hubiera seleccionado
+      <q>Ahora no</q>.</p>
+  </li>
+  <!-- NOTE: link "Data Manager" below once bug 599097 has been fixed -->
+  <li><strong>Administrar permisos</strong>: abre el administrador de datos
+    en una nueva pestaña o ventana en la que se puede modificar los permisos
+    de las aplicaciones web sin conexión para cada dominio:
+    <ul>
+      <li><strong>Usar valores predeterminados</strong>: marque esta casilla
+        para volver al comportamiento por defecto, es decir, presentar la
+        barra de información con la siguiente petición de un sitio de cada
+        dominio si se ha elegido la opción de notificación (en la práctica,
+        elimina la entrada de esta lista).</li>
+      <li><strong>Permitir</strong>: seleccione esta opción para permitir a
+        este sitio el uso del almacenamiento sin conexión para todos los
+        accesos.</li>
+      <li><strong>Bloquear</strong>: seleccione esta opción para denegar a
+        este sitio el uso del almacenamiento sin conexión para todos los
+        accesos.</li>
+    </ul>
+  </li>
+  <li><strong>Los siguientes sitios web tienen permitido guardar datos para
+    su uso sin conexión</strong>: lista los dominios de todos los sitios web
+    que han guardado datos sin conexión, junto con la cantidad de datos usados
+    actualmente por este dominio.</li>
+  <li><strong>Limpiar datos</strong>: seleccione un dominio de sitio web y
+    pulse este botón para eliminar todos los datos sin conexión del dominio
+    especificado. Pulse <q>Eliminar datos sin conexión</q> cuando se le
+    pida confirmación para ello.</li>
+</ul>
+
+<p>[<a href="#advanced_preferences">Volver al principio de la sección</a>]</p>
+
 <h2 id="proxies">Preferencias avanzadas - Proxies</h2>
 
 <p>Esta sección describe cómo usar el panel de preferencias de
@@ -498,7 +582,7 @@ intente seguir estos pasos:</p>
 
 <p>El panel de preferencias de instalación de software se usa para habilitar
   la instalación y actualizaciones de complementos. El administrador de
-  complementos te permite ver y administrar todas tus instalaciones y temas
+  complementos le permite ver y administrar todas sus extensiones y temas
   instalados:</p>
 
 <ul>
@@ -591,69 +675,64 @@ intente seguir estos pasos:</p>
 
 <h2 id="mouse_wheel">Preferencias avanzadas - Rueda del ratón</h2>
 
-<p>Esta sección describe cómo usar el panel de preferencias de
-Rueda del ratón. Si todavía no lo está viendo, intente
-seguir estos pasos:</p>
+<p>Esta sección describe cómo usar el panel de preferencias de Rueda del
+  ratón. Si todavía no lo está viendo, intente seguir estos pasos:</p>
 
 <ol>
  <li>Abra el menú <span class="mac">&brandShortName;</span>
-     <span class="noMac">Editar</span> y elija &quot;Preferencias&quot;.</li>
+   <span class="noMac">Editar</span> y elija &quot;Preferencias&quot;.</li>
   <li>Bajo la categoría de Avanzadas, pulse Rueda del ratón
-  (si no hay subcategorías visibles, haga doble clic en Avanzadas
-  para expandir la lista).</li>
+    (si no hay subcategorías visibles, haga doble clic en Avanzadas
+    para expandir la lista).</li>
 </ol>
 
-<p>El panel de rueda del ratón le permite controlar cómo se
-usa en &brandShortName; la rueda de su ratón (que se encuentra entre
-los botones del mismo). Los ratones modernos pueden tener dos ruedas o un
-botón que puede usarse para cambiar la dirección de
-desplazamiento de la rueda. El comportamiento para la función de la
-rueda vertical se establece en el panel superior <strong>Desplazamiento
-vertical</strong> mientras que el modo horizontal se controla por el panel
-inferior <strong>Desplazamiento horizontal</strong>.</p>
+<p>El panel de rueda del ratón le permite controlar cómo se usa en
+  &brandShortName; la rueda de su ratón (que se encuentra entre los botones
+  del mismo). Los ratones modernos pueden tener dos ruedas o un botón que
+  puede usarse para cambiar la dirección de desplazamiento de la rueda. El
+  comportamiento para la función de la rueda vertical se establece en el panel
+  superior <strong>Desplazamiento vertical</strong> mientras que el modo
+  horizontal se controla por el panel inferior <strong>Desplazamiento
+  horizontal</strong>.</p>
 
 <ul>
   <li>Seleccione <q>Sin tecla modificadora</q> o seleccione una tecla que
     quiera usar junto con la rueda del ratón. Use las casillas
     seleccionables que hay debajo para configurar el comportamiento del
     ratón:
+
     <ul>
-      <li>
-        <strong>Desplazar en saltos de</strong>: elija esta opción
-        para desplazar el documento el número de líneas (o
-        caracteres para movimiento horizontal) introducidos en el campo.
-        <ul>
-          <li><strong>Usar valor del sistema</strong>: marque esta casilla
-          para usar la configuración predeterminada de su sistema &mdash; el
-          número de líneas (caracteres) que hubiera introducido en la casilla
-          anterior no será tenido en cuenta. Lea la documentación de su
-          sistema para averiguar dónde cambiar las opciones por defecto del
-          sistema de la rueda/desplazamiento del ratón.</li>
-        </ul>
-      </li>
-      <li><strong>Mover el documento una página arriba (izquierda) o
-      abajo (derecha)</strong>: para desplazar una página abajo o
-      arriba de una vez. Esto permite un desplazamiento más
-      rápido pero menos preciso por la página con su rueda de
-      ratón.</li>
+      <li><strong>La misma que la del desplazamiento vertical</strong>:
+        seleccione esta opción cuando su ratón tenga un único control que
+        proporcione a la vez desplazamiento vertical y horizontal. Si su
+        ratón tiene un control separado de desplazamiento horizontal,
+        entonces puede elegir asignarle una función diferente.</li>
+      <li><strong>No hacer nada</strong>: marque esta opción para
+        desactivar la rueda del ratón cuando se use con la tecla modificadora
+        especificada.</li>
+      <li><strong>Desplazar el documento</strong>: seleccione esta opción
+        para desplazar el documento con el número de líneas o caracteres
+        predeterminado del sistema.</li>
       <li><strong>Moverse adelante y atrás en el historial de
-      navegación</strong>: elija esta opción para navegar hacia
-      atrás o adelante por páginas que haya visitado
-      previamente.</li>
-      <li><strong>Hacer el texto más grande o más
-      pequeño</strong>: elija esta opción para usar la rueda
-      del ratón para incrementar o decrementar el tamaño del
-      texto de una página web. Esta opción puede ayudarle a
-      leer mejor una página, o hacer que el texto quepa en la
-      pantalla.</li>
+        navegación</strong>: elija esta opción para navegar hacia atrás o
+        adelante por páginas que haya visitado previamente.</li>
+      <li><strong>Aumentar o reducir el tamaño de la página</strong>: marque
+        esta opción para usar la rueda del ratón para incrementar o disminuir
+        el tamaño de una página web. Esta opción puede ayudarle a leer mejor
+        una página o hacer que el texto encaje en la pantalla.</li>
     </ul>
 
+    <p>Use la opción <strong>Velocidad de la rueda del ratón</strong> para
+      ajustar la respuesta de la rueda. Para invertir la dirección de
+      desplazamiento, use números negativos o seleccione <strong>Invertir
+      dirección</strong>.</p>
+
     <p><strong>Nota</strong>: cada tecla modificadora puede ser asignada a
-    una función diferente.</p>
+      una función diferente.</p>
   </li>
   <li>Si su ratón no tiene un modo para desplazamiento horizontal, no
-  se tendrá en cuenta ningún valor en el panel inferior
-  <strong>Desplazamiento horizontal</strong>.</li>
+    se tendrá en cuenta ningún valor en el panel inferior
+    <strong>Desplazamiento horizontal</strong>.</li>
 </ul>
 
 <p>[<a href="#advanced_preferences">Volver al principio de la sección</a>]</p>

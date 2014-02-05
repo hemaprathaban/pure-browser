@@ -12,7 +12,7 @@
 
 <!ENTITY setup.choicePage.title.label     "Het jy &syncBrand.fullName.label; tevore gebruik?">
 <!ENTITY setup.choicePage.new.label       "Ek het nog nooit &syncBrand.shortName.label; tevore gebruik nie">
-<!ENTITY setup.choicePage.existing.label  "Ek gebruik reeds &syncBrand.shortName.label; op 'n ander rekenaar">
+<!ENTITY setup.choicePage.existing2.label "Ek gebruik reeds &syncBrand.shortName.label; op 'n ander toestel">
 <!-- New Account AND Existing Account -->
 
 <!ENTITY server.label               "Bediener">
@@ -33,8 +33,11 @@
 <!ENTITY setup.choosePassword.accesskey  "w">
 <!ENTITY setup.confirmPassword.label     "Bevestig wagwoord">
 <!ENTITY setup.confirmPassword.accesskey "s">
+<!ENTITY setup.setupMetro.label     "Sinkroniseer met &brandShortName; in die styl van Windows 8">
+<!ENTITY setup.setupMetro.accesskey "S">
 <!-- LOCALIZATION NOTE: tosAgree1, tosLink, tosAgree2, ppLink, tosAgree3 are
      joined with implicit white space, so spaces in the strings aren't necessary -->
+
 <!ENTITY setup.tosAgree1.label      "Ek stem in tot die">
 <!ENTITY setup.tosAgree1.accesskey  "s">
 <!ENTITY setup.tosLink.label        "Diensbepalings">
@@ -60,9 +63,9 @@
 <!ENTITY pairDevice.title.label             "Assosieer 'n toestel">
 <!ENTITY addDevice.showMeHow.label          "Wys my hoe.">
 <!ENTITY addDevice.dontHaveDevice.label     "Ek het nie 'n toestel by my nie">
-<!ENTITY pairDevice.setup.description.label  "Om te aktiveer, kies &#x0022;Assosieer 'n toestel&#x0022; op die ander toestel.">
+<!ENTITY pairDevice.setup.description.label  "Om te aktiveer, kies &quot;Assosieer &apos;n toestel&quot; op die ander toestel.">
 <!ENTITY addDevice.setup.enterCode.label    "Tik dan hierdie kode in:">
-<!ENTITY pairDevice.dialog.description.label "Om die nuwe toestel te aktiveer, kies &#x0022;Stel Sync op&#x0022; op die toestel.">
+<!ENTITY pairDevice.dialog.description.label "Om die nuwe toestel te aktiveer, kies &quot;Stel Sync op&quot; op die toestel.">
 <!ENTITY addDevice.dialog.enterCode.label   "Tik die kode wat die toestel gee:">
 <!ENTITY addDevice.dialog.tryAgain.label    "Probeer gerus weer.">
 <!ENTITY addDevice.dialog.successful.label  "Die toestel is suksesvol bygevoeg. Die aanvanklike sinkronisering kan lank duur en sal in die agtergrond klaarmaak.">
@@ -71,15 +74,15 @@
 <!-- Existing Account Page 2: Manual Login -->
 
 <!ENTITY setup.signInPage.title.label "Meld aan">
-<!ENTITY existingRecoveryKey.description "Om 'n afskrif van 'n herwinningsleutel te kry, gaan na &syncBrand.shortName.label; se Opsies op die ander toestel, en kies &#x0022;My herwinningsleutel&#x0022; in &#x0022;Bestuur rekening&#x0022;.">
+<!ENTITY existingRecoveryKey.description "Om &apos;n afskrif van &apos;n herwinningsleutel te kry, gaan na &syncBrand.shortName.label; se Opsies op die ander toestel, en kies &quot;My herwinningsleutel&quot; in &quot;Bestuur rekening&quot;.">
 <!ENTITY verifying.label              "Verifieer tans…">
 <!ENTITY resetPassword.label          "Stel wagwoord terug">
 <!ENTITY resetSyncKey.label           "Ek het my ander toestel verloor.">
 <!-- Sync Options -->
 
 <!ENTITY setup.optionsPage.title      "Sync-opsies">
-<!ENTITY syncComputerName.label       "Rekenaarnaam:">
-<!ENTITY syncComputerName.accesskey   "R">
+<!ENTITY syncDeviceName.label       "Toestelnaam:">
+<!ENTITY syncDeviceName.accesskey   "n">
 
 <!ENTITY syncMy.label               "Sync my">
 <!ENTITY engine.bookmarks.label     "Boekmerke">
@@ -95,16 +98,16 @@
 <!ENTITY engine.addons.label        "Byvoegings">
 <!ENTITY engine.addons.accesskey    "B">
 
-<!ENTITY choice2.merge.main.label      "Voeg hierdie rekenaar se data saam met my &syncBrand.shortName.label;-data">
+<!ENTITY choice2a.merge.main.label       "Voeg hierdie toestel se data saam met my &syncBrand.shortName.label;-data">
 <!ENTITY choice2.merge.recommended.label "Aanbevole:">
-<!ENTITY choice2.client.main.label     "Vervang alle data op hierdie rekenaar met my &syncBrand.shortName.label;-data">
-<!ENTITY choice2.server.main.label     "Vervang alle ander toestelle met hierdie rekenaar se data">
+<!ENTITY choice2a.client.main.label      "Vervang alle data op hierdie toestel met my &syncBrand.shortName.label;-data">
+<!ENTITY choice2a.server.main.label      "Vervang alle ander toestelle met hierdie toestel se data">
 <!-- Confirm Merge Options -->
 
 <!ENTITY setup.optionsConfirmPage.title "Bevestig">
-<!ENTITY confirm.merge.label    "&syncBrand.fullName.label; sal nou al hierdie rekenaar se blaaier se data met jou Sync-rekening saamvoeg.">
-<!ENTITY confirm.client2.label         "Let wel: Die volgende &brandShortName;-data op hierdie rekenaar sal geskrap word:">
-<!ENTITY confirm.client.moreinfo.label "&brandShortName; sal dan jou &syncBrand.fullName.label;-data na hierdie rekenaar kopieer.">
+<!ENTITY confirm.merge2.label    "&syncBrand.fullName.label; sal nou al hierdie toestel se blaaier se data met jou Sync-rekening saamvoeg.">
+<!ENTITY confirm.client3.label         "Let wel: Die volgende &brandShortName;-data op hierdie toestel sal geskrap word:">
+<!ENTITY confirm.client2.moreinfo.label "&brandShortName; sal dan die &syncBrand.fullName.label;-data na hierdie toestel kopieer.">
 <!ENTITY confirm.server2.label         "Let wel: Die volgende toestelle sal met jou plaaslike data oorheengeskryf word:">
 <!-- New & Existing Account: Setup Complete -->
 

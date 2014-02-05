@@ -4,8 +4,13 @@
 
 <!ENTITY tracking.label                 "Praćenje">
 
-<!ENTITY doNotTrack.label               "Obavijesti web stranice da me ne prate">
-<!ENTITY doNotTrack.accesskey           "d">
+<!ENTITY dntTrackingNopref.label2        "Ne obaviještavaj stranice o mojim postavkama praćenja.">
+<!ENTITY dntTrackingNopref.accesskey     "o">
+<!ENTITY dntTrackingNotOkay.label2       "Obavijesti stranice da me ne prate.">
+<!ENTITY dntTrackingNotOkay.accesskey    "n">
+<!ENTITY dntTrackingOkay.label2          "Obavijesti stranice da me prate">
+<!ENTITY dntTrackingOkay.accesskey       "t">
+<!ENTITY doNotTrackInfo.label            "Saznajte više">
 
 <!ENTITY  history.label                 "Povijest">
 
@@ -22,8 +27,11 @@
 <!ENTITY  acceptCookies.label           "Prihvati kolačiće sa stranica">
 <!ENTITY  acceptCookies.accesskey       "c">
 
-<!ENTITY  acceptThirdParty.label        "Prihvati kolačiće trećih strana">
-<!ENTITY  acceptThirdParty.accesskey    "s">
+<!ENTITY  acceptThirdParty.pre.label      "Prihvati kolačiće trećih strana:">
+<!ENTITY  acceptThirdParty.pre.accesskey  "c">
+<!ENTITY  acceptThirdParty.always.label   "Uvijek">
+<!ENTITY  acceptThirdParty.never.label    "Nikad">
+<!ENTITY  acceptThirdParty.visited.label  "Od posjećenih">
 
 <!ENTITY  keepUntil.label               "Zadrži do:">
 <!ENTITY  keepUntil.accesskey           "ž">
@@ -38,7 +46,6 @@
 <!ENTITY  showCookies.label             "Prikaži kolačiće...">
 <!ENTITY  showCookies.accesskey         "k">
 
-
 <!ENTITY  historyHeader.pre.label          "&brandShortName; će:">
 <!ENTITY  historyHeader.pre.accesskey      "e">
 <!ENTITY  historyHeader.remember.label     "zapamtiti povijest">
@@ -47,6 +54,10 @@
 <!ENTITY  historyHeader.post.label         "">
 
 <!ENTITY  rememberDescription.label      "&brandShortName; će zapamtiti povijest pretraživanja, preuzimanja, formi i traženja, te će sačuvati kolačiće stranica koje ste posjetili.">
+
+<!-- LOCALIZATION NOTE (rememberActions.pre.label): include a trailing space as needed -->
+<!-- LOCALIZATION NOTE (rememberActions.middle.label): include a starting and trailing space as needed -->
+<!-- LOCALIZATION NOTE (rememberActions.post.label): include a starting space as needed -->
 <!ENTITY  rememberActions.pre.label           "Možda ćete željeti ">
 <!ENTITY  rememberActions.clearHistory.label  "očistiti nedavnu povijest">
 <!ENTITY  rememberActions.middle.label        " ili ">
@@ -61,6 +72,8 @@
 
 <!ENTITY  dontrememberDescription.label  "&brandShortName; će koristiti iste postavke kao i za privatno pretraživanje, te neće pamtiti povijest pretraživanja.">
 
+<!-- LOCALIZATION NOTE (dontrememberActions.pre.label): include a trailing space as needed -->
+<!-- LOCALIZATION NOTE (dontrememberActions.post.label): include a starting space as needed -->
 <!ENTITY  dontrememberActions.pre.label          "Možda ćete željeti ">
 <!ENTITY  dontrememberActions.clearHistory.label "očistiti svu trenutnu povijest">
 <!ENTITY  dontrememberActions.post.label         ".">

@@ -32,10 +32,26 @@
 <!ENTITY setDefault.label                "Bruk &brandShortName; som standard nettleser">
 <!ENTITY setDefault.accesskey            "r">
 <!ENTITY isDefault.label                 "&brandShortName; er satt som standard nettleser">
-<!ENTITY submitCrashes.label             "Send inn krasjrapporter">
-<!ENTITY submitCrashes.accesskey         "e">
-<!ENTITY submitTelemetry.label           "Send ytelsesdata">
-<!ENTITY submitTelemetry.accesskey       "S">
+
+<!ENTITY dataChoicesTab.label            "Datainnstillinger">
+
+<!ENTITY healthReportSection.label       "&brandShortName; Helserapport">
+<!ENTITY healthReportDesc.label          "Hjelper deg å forstå nettleserytelsen, og deler data med &vendorShortName; om helsen til nettleseren din">
+<!ENTITY enableHealthReport.label        "Slå på &brandShortName; Helserapport">
+<!ENTITY enableHealthReport.accesskey    "S">
+<!ENTITY healthReportLearnMore.label     "Les mer">
+
+<!ENTITY telemetrySection.label          "Telemetri">
+<!ENTITY telemetryDesc.label             "Deler data om ytelse, bruksmønster, maskinvare og utvidelser med &vendorShortName;, for å hjelpe oss gjøre &brandShortName; bedre">
+<!ENTITY enableTelemetry.label           "Slå på Telemetry">
+<!ENTITY enableTelemetry.accesskey       "l">
+<!ENTITY telemetryLearnMore.label        "Les mer">
+
+<!ENTITY crashReporterSection.label      "Krasjrapportering">
+<!ENTITY crashReporterDesc.label         "&brandShortName; sender krasjrapporter for å hjelpe &vendorShortName; gjøre nettleseren mer stabil og sikker">
+<!ENTITY enableCrashReporter.label       "Slå på krasjrapportering">
+<!ENTITY enableCrashReporter.accesskey   "å">
+<!ENTITY crashReporterLearnMore.label    "Les mer">
 
 <!ENTITY networkTab.label                "Nettverk">
 
@@ -68,8 +84,13 @@
 <!ENTITY updateTab.label                 "Oppdatering">
 
 <!ENTITY updateApp.label                 "&brandShortName; oppdateringer:">
-<!ENTITY updateAuto.label                "Automatisk installer oppdateringer (anbefalt: bedre sikkerhet)">
-<!ENTITY updateAuto.accesskey            "A">
+<!-- Note either updateAuto1 is used or (updateAutoMetro and updateAutoDesktop),
+     so re-using accesss key in updateAuto1 is OK. updateAutoDesktop can be found
+     in preferences.properties -->
+<!ENTITY updateAuto1.label               "Automatisk installer oppdateringer (anbefalt: bedre sikkerhet)">
+<!ENTITY updateAuto1.accesskey           "A">
+<!ENTITY updateAutoMetro.label           "Automatisk oppdater fra skrivebords- og Windows 8-stil &brandShortName;">
+<!ENTITY updateAutoMetro.accesskey       "s">
 <!ENTITY updateCheck.label               "Søk etter oppdateringer, men la meg velge når jeg vil installere dem">
 <!ENTITY updateCheck.accesskey           "S">
 <!ENTITY updateManual.label              "Aldri søk etter oppdateringer (ikke anbefalt: sikkerhetsrisiko)">
@@ -77,6 +98,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Advar meg dersom dette vil slå av noen utvidelser">
 <!ENTITY updateAutoAddonWarn.accesskey   "d">
+
+<!ENTITY updateAutoMetroWarn.label       "(Windows 8-stil &brandShortName; sjekker ikke for kompatibilitet med utvidelser)">
 
 <!ENTITY updateHistory.label             "Vis oppdateringshistorikk">
 <!ENTITY updateHistory.accesskey         "V">
@@ -99,14 +122,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "S">
 <!ENTITY offlineAppRemove.confirm        "Slett frakoblet data">
 
-<!ENTITY encryptionTab.label             "Kryptering">
-
-<!ENTITY protocols.label                 "Protokoller">
-<!ENTITY useSSL3.label                   "Bruk SSL 3.0">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "Bruk TLS 1.0">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Sertifikater">
+<!ENTITY certificateTab.label            "Sertifikater">
 <!ENTITY certSelection.description       "Når et nettsted ber om mitt personlige sertifikat:">
 <!ENTITY certs.auto                      "Velg ett automatisk">
 <!ENTITY certs.auto.accesskey            "e">
@@ -114,8 +130,6 @@
 <!ENTITY certs.ask.accesskey             "S">
 <!ENTITY viewCerts.label                 "Vis sertifikater">
 <!ENTITY viewCerts.accesskey             "V">
-<!ENTITY viewCRLs.label                  "Tilbakekalling">
-<!ENTITY viewCRLs.accesskey              "T">
 <!ENTITY verify2.label                   "Validering">
 <!ENTITY verify2.accesskey               "a">
 <!ENTITY viewSecurityDevices.label       "Sikkerhetsenheter">

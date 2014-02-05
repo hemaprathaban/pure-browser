@@ -9,10 +9,11 @@
   - documentation on web development on the web. -->
 
 <!ENTITY window.title "Consola web">
+<!ENTITY browserConsole.title "Consola do navegador">
 
-<!ENTITY networkPanel.requestURL                  "Pedido do URL">
-<!ENTITY networkPanel.requestMethod               "Método do pedido">
-<!ENTITY networkPanel.statusCode                  "Código do estado">
+<!ENTITY networkPanel.requestURLColon             "Pedido do URL">
+<!ENTITY networkPanel.requestMethodColon          "Método do pedido">
+<!ENTITY networkPanel.statusCodeColon             "Código do estado">
 
 <!ENTITY networkPanel.requestHeaders              "Pedir cabeçalhos">
 <!ENTITY networkPanel.requestCookie               "Enviar Cookie">
@@ -20,6 +21,7 @@
 <!ENTITY networkPanel.requestFormData             "Enviar dados do formulário">
 
 <!ENTITY networkPanel.responseHeaders             "Cabeçalhos de resposta">
+<!ENTITY networkPanel.responseCookie              "Cookie recebido">
 <!ENTITY networkPanel.responseBody                "Corpo da resposta">
 <!ENTITY networkPanel.responseBodyCached          "Dados em cache">
 <!ENTITY networkPanel.responseBodyUnknownType     "Tipo de conteúdo desconhecido">
@@ -32,16 +34,33 @@
 <!ENTITY saveBodies.label     "Registar corpos de resposta e pedido">
 <!ENTITY saveBodies.accesskey "g">
 
+<!-- LOCALIZATION NOTE (openURL.label): You can see this string in the Web
+   - Console context menu. -->
+<!ENTITY openURL.label     "Abrir URL num novo separador">
+<!ENTITY openURL.accesskey "s">
+
 <!-- LOCALIZATION NOTE (btnPageNet.label): This string is used for the menu
   -  button that allows users to toggle the network logging output.
   -  This string and the following strings toggle various kinds of output
   -  filters. -->
 <!ENTITY btnPageNet.label   "Net">
 <!ENTITY btnPageNet.tooltip "Registar acesso à rede">
+<!ENTITY btnPageNet.accesskey "e">
+<!-- LOCALIZATION NOTE (btnPageNet.accesskeyMacOSX): This string is used as
+  -  access key for the menu button that allows users to toggle the network
+  -  logging output. On MacOSX accesskeys are available with Ctrl-*. Please make
+  -  sure you do not use the following letters: A, E, N and P. These are used
+  -  for editing commands in text inputs. -->
+<!ENTITY btnPageNet.accesskeyMacOSX "t">
 <!ENTITY btnPageCSS.label   "CSS">
-<!ENTITY btnPageCSS.tooltip "registar erros de CSS parsing">
+<!ENTITY btnPageCSS.tooltip "Registar erros de CSS parsing">
+<!ENTITY btnPageCSS.accesskey "C">
 <!ENTITY btnPageJS.label    "JS">
 <!ENTITY btnPageJS.tooltip  "Registar exceções JavaScript">
+<!ENTITY btnPageJS.accesskey  "J">
+<!ENTITY btnPageSecurity.label "Segurança">
+<!ENTITY btnPageSecurity.tooltip "Registar erros e avisos de segurança">
+<!ENTITY btnPageSecurity.accesskey "S">
 
 <!-- LOCALIZATION NOTE (btnPageLogging): This is used as the text of the
   -  the toolbar. It shows or hides messages that the web developer inserted on
@@ -49,35 +68,16 @@
   -  console.error(). -->
 <!ENTITY btnPageLogging.label   "Registo">
 <!ENTITY btnPageLogging.tooltip "Registar mensagens enviadas para objeto window.console">
+<!ENTITY btnPageLogging.accesskey "g">
 <!ENTITY btnConsoleErrors       "Erros">
 <!ENTITY btnConsoleInfo         "Info">
 <!ENTITY btnConsoleWarnings     "Avisos">
-<!ENTITY btnConsoleLog          "Log">
+<!ENTITY btnConsoleLog          "Registo">
 
-<!-- LOCALIZATION NOTE (btnPosition.label): The label shown for the menu which
-  -  allows the user to toggle between the Web Console positioning types. -->
-<!ENTITY btnPosition.label     "Posição">
-
-<!-- LOCALIZATION NOTE (btnPosition.tooltip): The tooltip shown when the user
-  -  hovers the Position button in the Web Console toolbar. -->
-<!ENTITY btnPosition.tooltip   "Posição da consola web acima ou abaixo do documento">
-
-<!-- LOCALIZATION NOTE (positionMenu.above): When this option is selected the
-  -  Web Console interface is displayed above the web page. -->
-<!ENTITY positionMenu.above    "Acima">
-
-<!-- LOCALIZATION NOTE (positionMenu.below): When this option is selected the
-  -  Web Console interface is displayed below the web page. -->
-<!ENTITY positionMenu.below    "Abaixo">
-
-<!-- LOCALIZATION NOTE (positionMenu.window): When this option is selected the
-  -  Web Console interface is displayed in a floating panel. -->
-<!ENTITY positionMenu.window   "Janela">
-
-<!ENTITY filterBox.placeholder "Filtro">
-<!ENTITY btnClear.label        "limpar">
-<!ENTITY btnClear.tooltip      "limpar a saída da consola web">
-<!ENTITY btnClose.tooltip      "Fechar a consola web">
+<!ENTITY filterOutput.placeholder "Filtrar saída">
+<!ENTITY btnClear.label        "Limpar">
+<!ENTITY btnClear.tooltip      "Limpar a saída da consola web">
+<!ENTITY btnClear.accesskey    "r">
 
 <!ENTITY fullZoomEnlargeCmd.commandkey  "+">
 <!ENTITY fullZoomEnlargeCmd.commandkey2 "="> <!-- + is above this key on many keyboards -->
@@ -88,3 +88,10 @@
 
 <!ENTITY fullZoomResetCmd.commandkey    "0">
 <!ENTITY fullZoomResetCmd.commandkey2   "">
+
+<!ENTITY copyURLCmd.label     "Copiar localização da ligação">
+<!ENTITY copyURLCmd.accesskey "a">
+
+<!ENTITY closeCmd.key  "W">
+<!ENTITY findCmd.key          "F">
+<!ENTITY clearOutputCmd.key   "K">

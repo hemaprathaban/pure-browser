@@ -15,8 +15,8 @@
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Aktivera den nya enheten genom att välja ”Ställ in &syncBrand.shortName.label;” på enheten.'>
-<!ENTITY sync.subtitle.header.label 'Ange denna kod på din dator'>
-<!ENTITY sync.subtitle.connectlocation.label 'Välj ”&sync.title.pair.label;” i &syncBrand.shortName.label;-sektionen i Firefox-inställningarna på din dator.'>
+<!ENTITY sync.subtitle.header2.label 'Ange denna kod på den andra enheten'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Välj ”&sync.title.pair.label;” i &syncBrand.shortName.label;-sektionen i Firefox-inställningarna på den andra enheten.'>
 <!ENTITY sync.subtitle.pair.label 'Aktivera genom att välja ”Para ihop enheter” på din andra enhet.'>
 <!ENTITY sync.pin.default.label '...\n...\n...\n'>
 <!ENTITY sync.pin.oneline.label '...'>
@@ -58,6 +58,14 @@
 <!ENTITY sync.settings.options.label 'Alternativ'>
 <!ENTITY sync.summary.pair.label 'Länka annan enhet till ditt &syncBrand.shortName.label;-konto'>
 
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Vad ska synkas'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Synka …'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Bokmärken'>
+<!ENTITY sync.configure.engines.title.passwords 'Lösenord'>
+<!ENTITY sync.configure.engines.title.history 'Historik'>
+<!ENTITY sync.configure.engines.title.tabs 'Flikar'>
+
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Avbryt'>
 <!ENTITY sync.button.connect.label 'Anslut'>
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label 'Datorns bokmärken'>
 <!ENTITY bookmarks.folder.mobile.label 'Mobila bokmärken'>
 <!ENTITY bookmarks.folder.readinglist.label 'Läslista'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Fasta'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Endast ett &syncBrand.fullName.label;-konto kan användas.'>
+<!ENTITY sync.notification.configure.saved 'Dina val har sparats.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.invalidcreds.label 'Fel kontonamn eller lösenord.'>

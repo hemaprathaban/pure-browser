@@ -32,10 +32,26 @@
 <!ENTITY setDefault.label                "Ustaw program &brandShortName; jako domyślną przeglądarkę">
 <!ENTITY setDefault.accesskey            "s">
 <!ENTITY isDefault.label                 "&brandShortName; jest obecnie domyślną przeglądarką">
-<!ENTITY submitCrashes.label             "Przesyłaj zgłoszenia awarii">
-<!ENTITY submitCrashes.accesskey         "z">
-<!ENTITY submitTelemetry.label           "Przesyłaj dane o wydajności">
-<!ENTITY submitTelemetry.accesskey       "e">
+
+<!ENTITY dataChoicesTab.label            "Udostępnianie danych">
+
+<!ENTITY healthReportSection.label       "&brandShortName; Health Report">
+<!ENTITY healthReportDesc.label          "Pozwala ci zrozumieć wydajność przeglądarki i udostępnia dane o jej stanie organizacji &vendorShortName;">
+<!ENTITY enableHealthReport.label        "Włącz funkcję &brandShortName; Health Report">
+<!ENTITY enableHealthReport.accesskey    "R">
+<!ENTITY healthReportLearnMore.label     "Więcej informacji">
+
+<!ENTITY telemetrySection.label          "Telemetria">
+<!ENTITY telemetryDesc.label             "Udostępnia organizacji &vendorShortName; dane o wydajności, wykorzystaniu, modyfikacjach przeglądarki oraz o sprzęcie, na którym działa, aby pomóc nam w ulepszeniu programu &brandShortName;">
+<!ENTITY enableTelemetry.label           "Włącz telemetrię">
+<!ENTITY enableTelemetry.accesskey       "t">
+<!ENTITY telemetryLearnMore.label        "Więcej informacji">
+
+<!ENTITY crashReporterSection.label      "Zgłaszanie awarii">
+<!ENTITY crashReporterDesc.label         "&brandShortName; przesyła zgłoszenia awarii, aby organizacja &vendorShortName; mogła poprawić stabilność i bezpieczeństwo przeglądarki">
+<!ENTITY enableCrashReporter.label       "Włącz zgłaszanie awarii">
+<!ENTITY enableCrashReporter.accesskey   "c">
+<!ENTITY crashReporterLearnMore.label    "Więcej informacji">
 
 <!ENTITY networkTab.label                "Sieć">
 
@@ -67,8 +83,13 @@
 <!ENTITY updateTab.label                 "Aktualizacja">
 
 <!ENTITY updateApp.label                 "Aktualizacje programu &brandShortName;:">
-<!ENTITY updateAuto.label                "Instaluj aktualizacje automatycznie (zalecane: większe bezpieczeństwo)">
-<!ENTITY updateAuto.accesskey            "n">
+<!-- Note either updateAuto1 is used or (updateAutoMetro and updateAutoDesktop),
+     so re-using accesss key in updateAuto1 is OK. updateAutoDesktop can be found
+     in preferences.properties -->
+<!ENTITY updateAuto1.label               "Instaluj aktualizacje automatycznie (zalecane: większe bezpieczeństwo)">
+<!ENTITY updateAuto1.accesskey           "n">
+<!ENTITY updateAutoMetro.label           "Automatycznie instaluj aktualizacje z poziomu programu &brandShortName; w stylu desktopowym i Windows 8">
+<!ENTITY updateAutoMetro.accesskey       "s">
 <!ENTITY updateCheck.label               "Sprawdzaj dostępność aktualizacji, ale wymagaj potwierdzenia ich instalacji">
 <!ENTITY updateCheck.accesskey           "S">
 <!ENTITY updateManual.label              "Nie sprawdzaj dostępności aktualizacji (niezalecane: zagrożenie bezpieczeństwa)">
@@ -76,6 +97,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Ostrzeż, jeśli spowoduje to wyłączenie któregoś z dodatków">
 <!ENTITY updateAutoAddonWarn.accesskey   "O">
+
+<!ENTITY updateAutoMetroWarn.label       "(&brandShortName; w stylu Windows 8 nie sprawdza zgodności dodatków)">
 
 <!ENTITY updateHistory.label             "Wyświetl historię aktualizacji">
 <!ENTITY updateHistory.accesskey         "W">
@@ -99,14 +122,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "s">
 <!ENTITY offlineAppRemove.confirm        "Usuń dane trybu offline">
 
-<!ENTITY encryptionTab.label             "Szyfrowanie">
-
-<!ENTITY protocols.label                 "Protokoły">
-<!ENTITY useSSL3.label                   "Włącz obsługę SSL 3.0">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "Włącz obsługę TLS 1.0">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Certyfikaty">
+<!ENTITY certificateTab.label            "Certyfikaty">
 <!ENTITY certSelection.description       "Kiedy serwer żąda osobistego certyfikatu użytkownika:">
 <!ENTITY certs.auto                      "wybierz certyfikat automatycznie">
 <!ENTITY certs.auto.accesskey            "c">
@@ -114,8 +130,6 @@
 <!ENTITY certs.ask.accesskey             "t">
 <!ENTITY viewCerts.label                 "Wyświetl certyfikaty">
 <!ENTITY viewCerts.accesskey             "e">
-<!ENTITY viewCRLs.label                  "Listy odwołania">
-<!ENTITY viewCRLs.accesskey              "L">
 <!ENTITY verify2.label                   "Weryfikacja">
 <!ENTITY verify2.accesskey               "j">
 <!ENTITY viewSecurityDevices.label       "Urządzenia zabezpieczające">

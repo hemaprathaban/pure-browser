@@ -32,10 +32,26 @@
 <!ENTITY setDefault.label                "Arverañ &brandShortName; evel merdeer dre ziouer">
 <!ENTITY setDefault.accesskey            "i">
 <!ENTITY isDefault.label                 "Ho merdeer dre ziouer eo &brandShortName;">
-<!ENTITY submitCrashes.label             "Kas an danevelloù sac'hadenn">
-<!ENTITY submitCrashes.accesskey         "n">
-<!ENTITY submitTelemetry.label           "Treuzkas roadennoù a-fet digonusted">
-<!ENTITY submitTelemetry.accesskey       "T">
+
+<!ENTITY dataChoicesTab.label            "Roadennoù">
+
+<!ENTITY healthReportSection.label       "Danevell yec'hed &brandShortName;">
+<!ENTITY healthReportDesc.label          "Skoazellañ a ra ac'hanoc'h kompren digonusted ho merdeer ha rannañ roadennoù a-fet yec'hed ho merdeer gant &vendorShortName;">
+<!ENTITY enableHealthReport.label        "Gweredekaat danevell yec'hed &brandShortName;">
+<!ENTITY enableHealthReport.accesskey    "y">
+<!ENTITY healthReportLearnMore.label     "Gouzout hiroc'h">
+
+<!ENTITY telemetrySection.label          "Telemetry">
+<!ENTITY telemetryDesc.label             "Rannañ a ra roadennoù a-fet digonusted, arver, periant ha personelaat gant &vendorShortName; evit skoazellañ ac'hanomp gwellaat &brandShortName;">
+<!ENTITY enableTelemetry.label           "Gweredekaat Telemetry">
+<!ENTITY enableTelemetry.accesskey       "T">
+<!ENTITY telemetryLearnMore.label        "Gouzout hiroc'h">
+
+<!ENTITY crashReporterSection.label      "Daneveller sac'hadenn">
+<!ENTITY crashReporterDesc.label         "&brandShortName; a dreuzkas danevelloù sac'hadenn evit skoazellañ &vendorShortName; lakaat ho merdeer da vezañ stabiloc'h ha diogeloc'h.">
+<!ENTITY enableCrashReporter.label       "Gweredekaat an daneveller sac'hadenn">
+<!ENTITY enableCrashReporter.accesskey   "d">
+<!ENTITY crashReporterLearnMore.label    "Gouzout hiroc'h">
 
 <!ENTITY networkTab.label                "Rouedad">
 
@@ -68,8 +84,13 @@
 <!ENTITY updateTab.label                 "Hizivaat">
 
 <!ENTITY updateApp.label                 "Hizivadurioù evit &brandShortName; :">
-<!ENTITY updateAuto.label                "Staliañ an hizivadurioù ent emgefreek (erbedet : diogelroez gwellaet)">
-<!ENTITY updateAuto.accesskey            "t">
+<!-- Note either updateAuto1 is used or (updateAutoMetro and updateAutoDesktop),
+     so re-using accesss key in updateAuto1 is OK. updateAutoDesktop can be found
+     in preferences.properties -->
+<!ENTITY updateAuto1.label               "Staliañ an hizivadennoù ent emgefreek (erbedet : diogelroez gwellaet)">
+<!ENTITY updateAuto1.accesskey           "h">
+<!ENTITY updateAutoMetro.label           "Hizivaat ent emgefreek evit ar stiloù burev ha Windows 8 eus &brandShortName;">
+<!ENTITY updateAutoMetro.accesskey       "H">
 <!ENTITY updateCheck.label               "Gwiriañ mard ez eus hizivadurioù met leuskel ac'hanon dibab mar bezint staliet">
 <!ENTITY updateCheck.accesskey           "G">
 <!ENTITY updateManual.label              "Na wiriañ biken mard ez eus hizivadurioù (ket erbedet : arvarus evit ho tiogelroez)">
@@ -77,6 +98,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Kemenn din mar bez diweredekaet un askouezh din gant an dra-se">
 <!ENTITY updateAutoAddonWarn.accesskey   "e">
+
+<!ENTITY updateAutoMetroWarn.label       "(ar stil Windows 8 eus &brandShortName; ne wir ket keverlec'hded an askouezhioù)">
 
 <!ENTITY updateHistory.label             "Diskouez roll istor an hizivaat">
 <!ENTITY updateHistory.accesskey         "r">
@@ -99,14 +122,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "D">
 <!ENTITY offlineAppRemove.confirm        "Dilemel ar roadennoù ezlinenn">
 
-<!ENTITY encryptionTab.label             "Enrinegañ">
-
-<!ENTITY protocols.label                 "Komenadoù">
-<!ENTITY useSSL3.label                   "Arverañ SSL 3.0">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "Arverañ TLS 1.0">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Testenioù">
+<!ENTITY certificateTab.label            "Testenioù">
 <!ENTITY certSelection.description       "Pa vez goulennet ma zesteni personel gant un dafariad :">
 <!ENTITY certs.auto                      "Diuz unan ent emgefreek">
 <!ENTITY certs.auto.accesskey            "D">
@@ -114,8 +130,6 @@
 <!ENTITY certs.ask.accesskey             "G">
 <!ENTITY viewCerts.label                 "Gwelout an testenioù">
 <!ENTITY viewCerts.accesskey             "w">
-<!ENTITY viewCRLs.label                  "Rolloù dizorniañ">
-<!ENTITY viewCRLs.accesskey              "R">
 <!ENTITY verify2.label                   "Talvoudekadur">
 <!ENTITY verify2.accesskey               "T">
 <!ENTITY viewSecurityDevices.label       "Trobarzhelloù Diogelroez">

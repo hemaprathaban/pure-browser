@@ -4,25 +4,39 @@
 
 <!ENTITY  SSLProtocolVersions.caption       "Verzie protokolu SSL">
 <!ENTITY  SSLWarnings.caption               "Upozornenia SSL">
+<!ENTITY  SSLMixedContent.caption           "Zmiešaný obsah">
 <!ENTITY  SSLClientAuthMethod.caption       "Výber klientskeho certifikátu">
 
 <!ENTITY pref.ssl.title                     "Secure Sockets Layer (SSL)">
-<!ENTITY enable.ssl30.label                 "Povoliť SSL 3.0">
-<!ENTITY enable.ssl30.accesskey             "3">
-<!ENTITY enable.tls10.label                 "Povoliť TLS 1.0">
-<!ENTITY enable.tls10.accesskey             "T">
+<!ENTITY limit.description                  "Môžete určiť, ktoré šifrovacie protokoly budú používané pre zabezpečené pripojenia. Zvoľte jednu verziu alebo súvislý rozsah verzií.">
+<!ENTITY limit.enable.label                 "Povoliť:">
+<!ENTITY limit.ssl30.label                  "SSL 3.0">
+<!ENTITY limit.ssl30.accesskey              "3">
+<!ENTITY limit.tls10.label                  "TLS 1.0">
+<!ENTITY limit.tls10.accesskey              "T">
+<!ENTITY limit.tls11.label                  "TLS 1.1">
+<!ENTITY limit.tls11.accesskey              "1">
+<!ENTITY limit.tls12.label                  "TLS 1.2">
+<!ENTITY limit.tls12.accesskey              "2">
 
 <!ENTITY warn.description                   "&brandShortName; vás môže upozorniť na stav zabezpečenia stránky, ktorú prehliadate. Nastavte si &brandShortName; tak, aby zobrazoval upozornenie a vyžadoval súhlas predtým, ako:">
 <!ENTITY warn.enteringsecure                "načíta zašifrovanú stránku">
-<!ENTITY warn.enteringsecure.accesskey      "z">
-<!ENTITY warn.enteringweak                  "načíta stránku, ktorá používa nízku úroveň šifrovania">
-<!ENTITY warn.enteringweak.accesskey        "n">
+<!ENTITY warn.enteringsecure.accesskey      "n">
 <!ENTITY warn.insecurepost                  "odošle vyplnený formulár z nezašifrovanej stránky na nezašifrovanú stránku">
-<!ENTITY warn.insecurepost.accesskey        "o">
+<!ENTITY warn.insecurepost.accesskey        "m">
 <!ENTITY warn.leavingsecure                 "opustí zašifrovanú stránku">
 <!ENTITY warn.leavingsecure.accesskey       "u">
 <!ENTITY warn.viewmixed                     "zobrazí stránku so zmiešaným zašifrovaným/nezašifrovaným obsahom">
-<!ENTITY warn.viewmixed.accesskey           "m">
+<!ENTITY warn.viewmixed.accesskey           "z">
+
+<!ENTITY warn.mixedactivecontent            "Upozorniť ma, ak zabezpečená stránka obsahuje nezabezpečený obsah">
+<!ENTITY warn.mixedactivecontent.accesskey  "b">
+<!ENTITY block.activecontent                "Nenačítavať nezabezpečený obsah na zabezpečených stránkach">
+<!ENTITY block.activecontent.accesskey      "s">
+<!ENTITY warn.mixeddisplaycontent           "Upozorniť ma, ak zabezpečená stránka obsahuje iné typy zmiešaného obsahu">
+<!ENTITY warn.mixeddisplaycontent.accesskey "h">
+<!ENTITY block.displaycontent               "Nenačítavať iné typy zmiešaného obsahu na zabezpečených stránkach">
+<!ENTITY block.displaycontent.accesskey     "e">
 
 <!ENTITY certselect.description             "Rozhodnite, ako má &brandShortName; vyberať certifikát, ktorý poskytne serverom, ktoré ho vyžadujú:">
 <!ENTITY certselect.auto                    "Vybrať automaticky">

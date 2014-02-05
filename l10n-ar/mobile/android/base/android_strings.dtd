@@ -12,18 +12,21 @@
 <!ENTITY  awesomebar_all_pages_title "المواقع الأكثر زيارة">
 <!ENTITY  awesomebar_bookmarks_title "العلامات">
 <!ENTITY  awesomebar_history_title "التأريخ">
-<!ENTITY  awesomebar_search_engine "ابحث عن \&quot;&#037;s\&quot;">
+<!ENTITY  awesomebar_switch_to_tab "انتقل للسان">
 
 <!ENTITY  crash_reporter_title "مبلغ انهيارات &brandShortName;">
-<!ENTITY  crash_message "انهار &brandShortName;. ستجد ألسنتك مسرودة في صفحة بداية &brandShortName; عندما تعيد تشغيله.">
-<!ENTITY  crash_help_message "ساعِدنا على حل هذه المشكلة!">
-<!ENTITY  crash_send_report_message "أرسِل بلاغًا بالانهيار إلى موزيلا ">
-<!ENTITY  crash_include_url "ضمّن عنوان الصفحة">
+<!ENTITY  crash_message2 "انهار &brandShortName;. ستجد ألسنتك مسرودة في صفحة بداية &brandShortName; عندما تعيد تشغيله.">
+<!ENTITY  crash_send_report_message2 "أبلغ موزيلا بهذا الانهيار ليُمكنهم إصلاحه">
+<!ENTITY  crash_include_url2 "ضمّنهُ عنوان الصفحة التي كنت أزور">
+<!ENTITY  crash_sorry "نعتذر">
+<!ENTITY  crash_comment "ضع تعليقًا (التعليقات ظاهرة للعموم)">
+<!ENTITY  crash_allow_contact "اسمح لموزيلا بالتواصل معي بخصوص هذا البلاغ">
+<!ENTITY  crash_email "بريدك الإلكتروني">
+<!ENTITY  crash_closing_alert "أأخرج بدون إرسال بلاغ الانهيار؟">
+<!ENTITY  sending_crash_report "يرسل بلاغ الانهيار\u2026">
 <!ENTITY  crash_close_label "أغلِق">
 <!ENTITY  crash_restart_label "أعِد تشغيل &brandShortName;">
-<!ENTITY  sending_crash_report "يرسل بلاغ الانهيار\u2026">
 <!ENTITY  exit_label "اخرج">
-<!ENTITY  continue_label "استمر">
 
 <!ENTITY  launcher_shortcuts_title "تطبيقات وب &brandShortName;">
 <!ENTITY  launcher_shortcuts_empty "لم يُعثر على أي تطبيقات وب">
@@ -55,24 +58,39 @@
 <!ENTITY site_security "أمن الموقع">
 
 <!ENTITY close_tab "أغلق اللسان">
-<!ENTITY new_tab "لسان جديد">
 <!ENTITY one_tab "لسان واحد">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d لسان">
+<!ENTITY num_tabs2 "&formatD; من الألسنة">
 <!ENTITY new_tab_opened "فُتح لسان جديد">
 
 <!ENTITY settings "الإعدادات">
 <!ENTITY settings_title "الإعدادات">
 <!ENTITY pref_category_general "عام">
-<!ENTITY pref_category_privacy "الخصوصية والسرية">
+<!ENTITY pref_category_privacy "الخصوصية و السرية">
 <!ENTITY pref_category_content "المحتوى">
-<!ENTITY pref_category_importexport "استورد وصدّر">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "اختيارات البيانات">
 <!ENTITY pref_about_firefox "عن &brandShortName;">
-<!ENTITY pref_do_not_track "أخبِر المواقع ألا تتعقبني">
-<!ENTITY pref_telemetry "أرسِل بيانات الأداء">
 <!ENTITY pref_remember_signons "تذكّر كلمات السر">
-<!ENTITY pref_cookies "فعّل الكعكات">
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+
+<!ENTITY pref_header_general "عام">
+<!ENTITY pref_header_privacy "الخصوصية و السرية">
+<!ENTITY pref_header_content "المحتوى">
+
+<!ENTITY pref_cookies_menu "الكعكات">
+<!ENTITY pref_cookies_accept_all "مفعّلة">
+<!ENTITY pref_cookies_not_accept_foreign "مفعّلة، باستثناء الأطراف الخارجية">
+<!ENTITY pref_cookies_disabled "مُعطّلة">
+
+<!ENTITY pref_donottrack_menu "التعقب">
+<!ENTITY pref_donottrack_disallow_tracking "أخبر المواقع أنني لا أريدها أن تتعقبني">
+<!ENTITY pref_donottrack_allow_tracking "أخبر المواقع أنني أريدها أن تتعقبني">
+<!ENTITY pref_donottrack_no_pref "لا تخبر المواقع بأي شيء عن تفضيلاتي للتعقب">
+
 <!ENTITY pref_char_encoding "ترميز المحارف">
 <!ENTITY pref_char_encoding_on "أظهر القائمة">
 <!ENTITY pref_char_encoding_off "لا تُظهر القائمة">
@@ -82,6 +100,7 @@
 <!ENTITY pref_plugins_tap_to_play "انقر للتشغيل">
 <!ENTITY pref_plugins_disabled "مُعطّلة">
 <!ENTITY pref_text_size "حجم النص">
+<!ENTITY pref_reflow_on_zoom2 "اقرص لتغيير انسياب النص">
 <!ENTITY pref_font_size_tiny "ضئيل">
 <!ENTITY pref_font_size_small "صغير">
 <!ENTITY pref_font_size_medium "متوسط">
@@ -100,6 +119,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "صِفْ خَلْقَ خَوْدٍ كَمِثْلِ ٱلشَّمْسِ إِذْ بَزَغَتْ يَحْظَىٰ ٱلضَّجِيعُ بِهَا نَجْلَاءَ مِعْطَارِ.">
 
 <!ENTITY pref_use_master_password "استخدم كلمة سر رئيسة">
+<!ENTITY pref_show_product_announcements "اعرض أخبار المنتجات">
 <!ENTITY pref_sync "تزامُن">
 <!ENTITY pref_search_suggestions "اعرض اقتراحات البحث">
 <!ENTITY pref_import_android "استورد من أندرويد">
@@ -109,7 +129,34 @@ size. -->
 <!ENTITY pref_private_data_passwords "كلمات السر المحفوظة">
 <!ENTITY pref_private_data_cache "الخبيئة">
 <!ENTITY pref_private_data_offlineApps "بيانات المواقع للعمل دون اتصال">
-<!ENTITY pref_private_data_siteSettings "تفضيلات الموقع">
+<!ENTITY pref_private_data_siteSettings2 "إعدادات الموقع">
+<!ENTITY pref_private_data_downloadFiles "الملفّات المُنزّلة">
+
+<!ENTITY datareporting_notification_title "بيانات و إحصائيات &brandShortName;">
+<!ENTITY datareporting_notification_action " اختر ما الذي تريد مشاركته">
+<!ENTITY datareporting_notification_summary "لتَحسين استخدامك له، يُرسل &brandShortName;  بعض المعلومات آليًا إلى &vendorShortName;.">
+<!ENTITY datareporting_notification_summary_short "لتَحسين استخدامك له، &brandShortName;…">
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+
+<!ENTITY datareporting_fhr_title "تقرير حالة &brandShortName;">
+<!ENTITY datareporting_fhr_summary "يساعدك في تفحص أداء متصفحك ومشاركة بيانات حالة المتصفح مع &vendorShortName;">
+<!ENTITY datareporting_telemetry_title "تليمتري">
+<!ENTITY datareporting_telemetry_summary "شارك بيانات المتصفح فيما يتعلق بالأداء و الاستخدام و العتاد و التخصيصات مع &vendorShortName; لمساعدتنا في جعل &brandShortName; أفضل">
+<!ENTITY datareporting_crashreporter_summary "يُرسل &brandShortName; بلاغات الانهيار إلى &vendorShortName; للمساعدة في تحسين أداء متصفحك و استقراره">
+<!-- Localization note (datareporting_crashreporter_title) : This string matches
+     (crashReporterSection.label) in chrome/browser/preferences/advanced.dtd
+     except in branding. -->
+<!ENTITY datareporting_crashreporter_title "مبلغ انهيارات &brandShortName;">
+
+<!ENTITY pref_update_autodownload "التحديثات التلقائية">
+<!ENTITY pref_update_autodownload_wifi "عبر واي فاي فقط">
+<!ENTITY pref_update_autodownload_disabled "مُعطّلة">
+<!ENTITY pref_update_autodownload_enabled "مفعّلة">
 
 <!ENTITY quit "أغلق">
 
@@ -124,6 +171,16 @@ size. -->
 <!ENTITY save_as_pdf "احفظ ك‍ PDF">
 <!ENTITY find_in_page "ابحث في الصفحة">
 <!ENTITY desktop_mode "اطلب موقع سطح مكتب">
+<!ENTITY tools "أدوات">
+<!ENTITY new_tab "لسان جديد">
+<!ENTITY new_private_tab "لسان خاص جديد">
+<!ENTITY close_all_tabs "اغلق كل الألسنة">
+<!ENTITY tabs_normal "الألسنة">
+<!ENTITY tabs_private "خاص">
+<!ENTITY tabs_synced "مُزامَن">
+<!ENTITY wallpaper_success "حُدّثت الخلفية">
+<!ENTITY wallpaper_progress "تحديد الخلفية">
+<!ENTITY wallpaper_fail "تعذّر تحديد الخلفية">
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
 
@@ -133,6 +190,8 @@ size. -->
 <!ENTITY find_close "أغلق">
 
 <!ENTITY contextmenu_open_new_tab "افتح في لسان جديد">
+<!ENTITY contextmenu_open_private_tab "افتح في لسان خاص">
+<!ENTITY contextmenu_open_in_reader "افتح في القارئ">
 <!ENTITY contextmenu_remove_history "أزِل">
 <!ENTITY contextmenu_remove_bookmark "أزِل">
 <!ENTITY contextmenu_add_to_launcher "أضِف إلى شاشة البداية">
@@ -141,8 +200,12 @@ size. -->
 <!ENTITY contextmenu_paste "لصق">
 <!ENTITY contextmenu_copyurl "انسخ العنوان">
 <!ENTITY contextmenu_edit_bookmark "حرِّر">
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-	 after a page is removed from browser history. -->
+<!ENTITY contextmenu_subscribe "اشترك بهذه الصفحة">
+<!ENTITY contextmenu_site_settings "حرر إعدادات الموقع">
+
+<!ENTITY pref_titlebar_mode "شريط العنوان">
+<!ENTITY pref_titlebar_mode_title "أظهر عنوان الصفحة">
+<!ENTITY pref_titlebar_mode_url "أظهر مسار الصفحة">
 
 <!ENTITY history_removed "أزِيلت الصفحة">
 
@@ -150,8 +213,10 @@ size. -->
 <!ENTITY bookmark_edit_name "الاسم">
 <!ENTITY bookmark_edit_location "المكان">
 <!ENTITY bookmark_edit_keyword "كلمة مفتاحية">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
 
-<!ENTITY site_settings_title2       "إعدادات الموقع…">
+<!ENTITY site_settings_title3       "إعدادات الموقع">
 <!ENTITY site_settings_cancel       "ألغِ">
 <!ENTITY site_settings_clear        "امسح">
 <!ENTITY site_settings_no_settings  "لا إعدادات لمسحها.">
@@ -160,7 +225,8 @@ size. -->
 <!ENTITY reading_list_added "أضِفت الصفحة إلى قائمة القراءة">
 <!ENTITY reading_list_removed "حُذِفت الصفحة من قائمة القراءة">
 <!ENTITY reading_list_failed "فشلت إضافة الصفحة إلى قائمة القراءة">
-<!ENTITY reader_mode "وضع القارئ">
+<!ENTITY reading_list_duplicate "الصفحة موجودة في قائمة القراءة">
+<!ENTITY reader "القارئ">
 
 <!ENTITY masterpassword_create_title "أنشئ كلمة سر رئيسية">
 <!ENTITY masterpassword_remove_title "أزِل كلمة السر الرئيسية">
@@ -169,27 +235,34 @@ size. -->
 
 <!ENTITY button_ok "حسنا">
 <!ENTITY button_cancel "ألغِ">
+<!ENTITY button_yes "نعم">
+<!ENTITY button_no "لا">
 <!ENTITY button_clear_data "امسح البيانات">
+<!ENTITY button_set "حدد">
+<!ENTITY button_clear "امسح">
 
 <!ENTITY abouthome_addons_title "إضافات &brandShortName;">
 <!ENTITY abouthome_addons_browse "تصفّح كل إضافات &brandShortName;">
 <!ENTITY abouthome_last_tabs_title "ألسنتك من المرة السابقة">
 <!ENTITY abouthome_last_tabs_open "افتح كل الألسنة من المرة السابقة">
 <!ENTITY abouthome_top_sites_title "المواقع الأكثر زيارة">
-<!ENTITY abouthome_top_sites_browse "تصفّح كل مواقعك الأكثر زيارة">
+<!ENTITY abouthome_topsites_edit "حرِّر">
+<!ENTITY abouthome_topsites_pin "ثبّت الموقع">
+<!ENTITY abouthome_topsites_unpin "افصل الموقع">
 <!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
+
 <!ENTITY abouthome_about_sync3 "اضبط تزامُن فيَرفُكس للوصول إلى العلامات والتأريخ والألسنة من أجهزتك الأخرى&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "احصل على التطبيقات من متجر موزيلا واكتشف أفضل ما تقدمه الوب&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "احصل على التطبيقات من متجر فَيرفُكس واكتشف أفضل ما تقدمه الوب&#x00A0;»">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "تزامُن فَيَرفُكس">
-<!ENTITY abouthome_apps_bold_name "متجر موزيلا">
+<!ENTITY abouthome_apps_bold_name2 "متجر فَيرفُكس">
 
 <!ENTITY filepicker_title "اختر ملفًا">
 <!ENTITY filepicker_audio_title "اختر أو سجل صوتًا">
@@ -222,17 +295,23 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarkhistory_import_history "يستورد التأريخ 
 من أندرويد">
 <!ENTITY bookmarkhistory_import_wait "انتظر من فضلك...">
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+
+<!ENTITY suggestions_prompt2 "أتريد تفعيل اقتراحات بحث &formatS;؟">
 
 <!ENTITY webapp_generic_name "تطبيق">
-<!-- Updater notifications -->
+
+<!ENTITY searchable_description "العلامات والتأريخ">
+<!-- Updater notifications --> 
 
 <!ENTITY updater_start_title2 "يتوفر تحديث &brandShortName;">
 <!ENTITY updater_start_select2 "المس لبدء التنزيل">
- 
+
 <!ENTITY updater_downloading_title2 "تنزيل &brandShortName;">
 <!ENTITY updater_downloading_title_failed2 "فشل التنزيل">
 <!ENTITY updater_downloading_select2 "المس لتطبيق التحديث بمجرد تنزيله">
 <!ENTITY updater_downloading_retry2 "المس لإعادة المحاولة">
- 
+
 <!ENTITY updater_apply_title2 "يتوفر تحديث &brandShortName;">
 <!ENTITY updater_apply_select2 "المس للتحديث">

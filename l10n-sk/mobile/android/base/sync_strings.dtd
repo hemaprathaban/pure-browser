@@ -22,8 +22,8 @@
 
 <!-- J-PAKE Waiting Screen -->
 <!ENTITY sync.jpake.subtitle.waiting.label 'Čaká sa na druhé zariadenie…'>
-<!ENTITY sync.subtitle.header.label 'Zadajte tento kód na svojom počítači'>
-<!ENTITY sync.subtitle.connectlocation.label 'Zvoľte položku “&sync.title.pair.label;” v sekcii &syncBrand.shortName.label; v okne nastavení Firefoxu vo vašom počítači.'>
+<!ENTITY sync.subtitle.header2.label 'Zadajte tento kód na svojom zariadení'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Zvoľte položku “&sync.title.pair.label;” na paneli Synchronizácia v okne nastavení Firefoxu vo vašom zariadení.'>
 <!ENTITY sync.pin.oneline.label '...'>
 <!ENTITY sync.link.advancedsetup.label 'Rozšírené nastavenia…'>
 
@@ -58,6 +58,14 @@
 <!ENTITY sync.settings.options.label 'Možnosti'>
 <!ENTITY sync.summary.pair.label 'Spárovať ďalšie zariadenie s vašim účtom služby &syncBrand.shortName.label;'>
 
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Položky na synchronizáciu'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Synchronizovať…'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Záložky'>
+<!ENTITY sync.configure.engines.title.passwords 'Heslá'>
+<!ENTITY sync.configure.engines.title.history 'Históriu'>
+<!ENTITY sync.configure.engines.title.tabs 'Karty'>
+
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Zrušiť'>
 <!ENTITY sync.button.connect.label 'Pripojiť'>
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label 'Záložky z plnej verzie'>
 <!ENTITY bookmarks.folder.mobile.label 'Záložky z mobilnej verzie'>
 <!ENTITY bookmarks.folder.readinglist.label 'Zoznam na prečítanie'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Pripnuté'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Podporovaný je len jeden účet služby &syncBrand.fullName.label;.'>
+<!ENTITY sync.notification.configure.saved 'Vaše voľby boli uložené.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.invalidcreds.label 'Neplatný názov účtu alebo heslo.'>

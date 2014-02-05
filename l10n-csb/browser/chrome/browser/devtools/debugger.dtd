@@ -2,69 +2,68 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!-- LOCALIZATION NOTE : FILE This file contains the Debugger strings -->
-<!-- LOCALIZATION NOTE : FILE Do not translate commandkey -->
 
-<!-- LOCALIZATION NOTE : FILE The correct localization of this file might be to
-  - keep it in English, or another language commonly spoken among web developers.
-  - You want to make that choice consistent across the developer tools.
-  - A good criteria is the language in which you'd find the best
-  - documentation on web development on the web. -->
+<!ENTITY debuggerUI.pauseExceptions          "Zatrzimôj egzekùcjã">
+<!ENTITY debuggerUI.pauseExceptions.key "Z">
 
-<!-- LOCALIZATION NOTE (debuggerMenu.label): This is the label for the
-  -  application menu item that opens the debugger UI. -->
-<!ENTITY debuggerMenu.label2          "Debugger">
+<!ENTITY debuggerUI.searchPanelTitle "Òperatorë">
 
-<!-- LOCALIZATION NOTE (remoteDebuggerMenu.label): This is the label for the
-  -  application menu item that opens the remote debugger UI. -->
-<!ENTITY remoteDebuggerMenu.label    "Remote Debugger">
+<!ENTITY debuggerUI.condBreakPanelTitle "Przerwa zadzeje blós żlë pòniższi sã òkôże">
 
-<!-- LOCALIZATION NOTE (chromeDebuggerMenu.label): This is the label for the
-  -  application menu item that opens the browser debugger UI. -->
-<!ENTITY chromeDebuggerMenu.label    "Browser Debugger">
+<!ENTITY debuggerUI.optsButton.tooltip  "Òptacje debùggera">
+<!ENTITY debuggerUI.seMenuBreak         "Dodôj pónkt przerwaniô">
+<!ENTITY debuggerUI.seMenuBreak.key     "o">
+<!ENTITY debuggerUI.seMenuCondBreak     "Dodôj warënkòwi pónkt przerwaniô">
+<!ENTITY debuggerUI.seMenuCondBreak.key "w">
 
-<!-- LOCALIZATION NOTE (debuggerMenu.commandkey): This is the command key that
-  -  launches the debugger UI. Do not translate this one! -->
-<!ENTITY debuggerMenu.commandkey     "S">
+<!ENTITY debuggerUI.searchFile          "Filtrëjë skriptë">
+<!ENTITY debuggerUI.searchFile.key      "s">
+<!ENTITY debuggerUI.searchFile.altkey   "k">
 
-<!-- LOCALIZATION NOTE (debuggerUI.closeButton.tooltip): This is the tooltip for
-  -  the button that closes the debugger UI. -->
-<!ENTITY debuggerUI.closeButton.tooltip        "Close">
+<!ENTITY debuggerUI.searchGlobal        "Przëszëkôj wszëtczé lopczi">
+<!ENTITY debuggerUI.searchGlobal.key    "r">
 
-<!-- LOCALIZATION NOTE (debuggerUI.pauseExceptions): This is the label for the
-  -  checkbox that toggles pausing on exceptions. -->
-<!ENTITY debuggerUI.pauseExceptions          "Pause on exceptions">
+<!ENTITY debuggerUI.searchLine          "Przekòkni do sztrichù...">
+<!ENTITY debuggerUI.searchLine.key      "P">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepOverButton.tooltip): This is the tooltip for
-  -  the button that steps over a function call. -->
-<!ENTITY debuggerUI.stepOverButton.tooltip   "Step Over">
+<!ENTITY debuggerUI.searchToken         "Nalezë">
+<!ENTITY debuggerUI.searchToken.key     "l">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepInButton): This is the tooltip for the
-  -  button that steps into a function call. -->
-<!ENTITY debuggerUI.stepInButton.tooltip     "Step In">
+<!ENTITY debuggerUI.searchVariable      "Filtrëjë zmienné">
+<!ENTITY debuggerUI.searchVariable.key  "z">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepOutButton): This is the tooltip for the
-  -  button that steps out of a function call. -->
-<!ENTITY debuggerUI.stepOutButton.tooltip    "Step Out">
+<!ENTITY debuggerUI.showOnlyEnum        "Wëskrzëni le numerowólné swòjiznë">
+<!ENTITY debuggerUI.showOnlyEnum.key    "n">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stackTitle): This is the label for the
-  -  widget that displays the call stack frames in the debugger. -->
-<!ENTITY debuggerUI.stackTitle       "Call stack">
+<!ENTITY debuggerUI.showVarsFilter      "Wëskrzëni kastkã filtrowaniô zmiennëch">
+<!ENTITY debuggerUI.showVarsFilter.key  "k">
 
-<!-- LOCALIZATION NOTE (debuggerUI.scriptTitle): This is the label for the
-  -  widget that displays the source code for the script that is currently
-  -  being inspected in the debugger. -->
-<!ENTITY debuggerUI.scriptTitle      "Script">
+<!ENTITY debuggerUI.stepping.resume     "VK_F6">
+<!ENTITY debuggerUI.stepping.stepOver   "VK_F7">
+<!ENTITY debuggerUI.stepping.stepIn     "VK_F8">
+<!ENTITY debuggerUI.stepping.stepOut    "VK_F8">
 
-<!-- LOCALIZATION NOTE (debuggerUI.propertiesTitle): This is the label for the
-  -  widget that displays the variables in the various available scopes in the
-  -  debugger. -->
-<!ENTITY debuggerUI.propertiesTitle  "Scope variables">
+<!ENTITY debuggerUI.addWatch            "Dodôj pòdzéróné wërażenia">
+<!ENTITY debuggerUI.addWatch.key        "p">
 
-<!-- LOCALIZATION NOTE (debuggerUI.emptyFilterText): This is the text that
-  -  appears in the filter text box when it is empty. -->
-<!ENTITY debuggerUI.emptyFilterText  "Filter scripts">
+<!ENTITY debuggerUI.panesButton.tooltip "Przełączë tafle">
+<!ENTITY debuggerUI.removeAllWatch      "Rëmôj pòdzéróné wërażenia">
+<!ENTITY debuggerUI.removeAllWatch.key  "R">
+<!ENTITY debuggerUI.removeAllWatch.key  "E">
 
-<!-- LOCALIZATION NOTE (emptyScriptText): The text to display in the menulist when
-  - there are no scripts. -->
-<!ENTITY debuggerUI.emptyScriptText  "No scripts.">
+<!ENTITY debuggerUI.seMenuAddWatch      "Dzél do pòdzéraniô">
+<!ENTITY debuggerUI.seMenuAddWatch.key  "D">
+
+<!ENTITY debuggerUI.showPanesOnInit     "Wëskrzëni tôfle przë zrëszanim">
+<!ENTITY debuggerUI.showPanesOnInit.key "z">
+
+<!ENTITY debuggerUI.focusVariables      "Pòdczorchni drzewò zmiennëch">
+<!ENTITY debuggerUI.focusVariables.key  "d">
+
+
+<!ENTITY debuggerUI.searchFunction      "Szëkôj za definicajama fùnkcje">
+<!ENTITY debuggerUI.searchFunction.key  "z">
+
+<!ENTITY debuggerUI.showOriginalSource      "Wëkrzëni òriginalné zdroje">
+<!ENTITY debuggerUI.showOriginalSource.key  "i">
+<!ENTITY debuggerUI.closeButton.tooltip "Zamkni">

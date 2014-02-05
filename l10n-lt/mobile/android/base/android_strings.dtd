@@ -11,18 +11,21 @@
 <!ENTITY awesomebar_all_pages_title "Dažniausios svetainės">
 <!ENTITY awesomebar_bookmarks_title "Adresynas">
 <!ENTITY awesomebar_history_title "Žurnalas">
-<!ENTITY awesomebar_search_engine "Ieškoti „&#037;s“">
+<!ENTITY awesomebar_switch_to_tab "Pereiti į kortelę">
 
 <!ENTITY crash_reporter_title "„&brandShortName;“ strigčių pranešiklis">
-<!ENTITY crash_message "Programa „&brandShortName;“ užstrigo. Strigties metu atvertos kortelės turėtų būti išvardintos „&brandShortName;“ pradžios tinklalapyje, paleidus programą iš naujo.">
-<!ENTITY crash_help_message "Padėkite mums pašalinti šią problemą!">
-<!ENTITY crash_send_report_message "Praneškite „Mozillai“ apie šią strigtį">
-<!ENTITY crash_include_url "Įtraukti į pranešimą tinklalapio adresą">
+<!ENTITY crash_message2 "Programa „&brandShortName;“ susidūrė su problema ir užstrigo. Strigties metu atvertos kortelės turėtų būti išvardintos „&brandShortName;“ pradžios tinklalapyje, paleidus programą iš naujo.">
+<!ENTITY crash_send_report_message3 "Praneškite „&vendorShortName;i“ apie šią strigtį">
+<!ENTITY crash_include_url2 "Į pranešimą įtraukti strigties metu atverto tinklalapio adresą">
+<!ENTITY crash_sorry "Apgailestaujame">
+<!ENTITY crash_comment "Pridėkite komentarą (pastaba: komentarai matomi viešai)">
+<!ENTITY crash_allow_contact2 "Leisti „&vendorShortName;i“ su Jumis susisiekti dėl šio pranešimo">
+<!ENTITY crash_email "El. pašto adresas">
+<!ENTITY crash_closing_alert "Ar norite baigti darbą, neišsiuntę strigties pranešimo?">
+<!ENTITY sending_crash_report "Išsiunčiamas strigties pranešimas…">
 <!ENTITY crash_close_label "Užverti">
 <!ENTITY crash_restart_label "Paleisti „&brandShortName;“ iš naujo">
-<!ENTITY sending_crash_report "Išsiunčiamas strigties pranešimas…">
 <!ENTITY exit_label "Baigti darbą">
-<!ENTITY continue_label "Tęsti">
 
 <!ENTITY launcher_shortcuts_title "„&brandShortName;“ saityno programėlės">
 <!ENTITY launcher_shortcuts_empty "Saityno programėlių nerasta">
@@ -38,6 +41,7 @@
 <!ENTITY bookmark_added "Tinklalapis įtrauktas į adresyną">
 <!ENTITY bookmark_removed "Tinklalapis pašalintas iš adresyno">
 <!ENTITY bookmark_updated "Adresyno įrašas atnaujintas">
+<!ENTITY bookmark_options "Savybės">
 
 <!ENTITY history_today_section "Šiandien">
 <!ENTITY history_yesterday_section "Vakar">
@@ -54,11 +58,10 @@
 <!ENTITY site_security "Svetainės saugumas">
 
 <!ENTITY close_tab "Užverti kortelę">
-<!ENTITY new_tab "Nauja kortelė">
 <!ENTITY one_tab "1 kortelė">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one. 
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d kortelės (-ių)">
+<!ENTITY num_tabs2 "&formatD; kortelės (-ių)">
 <!ENTITY new_tab_opened "Atverta nauja kortelė">
 
 <!ENTITY settings "Nuostatos">
@@ -66,12 +69,28 @@
 <!ENTITY pref_category_general "Bendrosios">
 <!ENTITY pref_category_privacy "Privatumas ir saugumas">
 <!ENTITY pref_category_content "Turinys">
-<!ENTITY pref_category_importexport "Importas ir eksportas">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "Duomenų siuntimas">
 <!ENTITY pref_about_firefox "Apie „&brandShortName;“">
-<!ENTITY pref_do_not_track "Nurodyti svetainėms, kad jos Jūsų nesektų">
-<!ENTITY pref_telemetry "Siųsti našumo ataskaitas">
 <!ENTITY pref_remember_signons "Įsiminti slaptažodžius">
-<!ENTITY pref_cookies "Leisti įrašyti slapukus">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "Bendrosios">
+<!ENTITY pref_header_privacy "Privatumas ir saugumas">
+<!ENTITY pref_header_content "Turinys">
+
+<!ENTITY pref_cookies_menu "Slapukai">
+<!ENTITY pref_cookies_accept_all "Leidžiami">
+<!ENTITY pref_cookies_not_accept_foreign "Leidžiami, išskyrus trečiųjų šalių">
+<!ENTITY pref_cookies_disabled "Neleidžiami">
+
+<!ENTITY pref_donottrack_menu "Sekimas">
+<!ENTITY pref_donottrack_disallow_tracking "Nurodyti svetainėms, kad jos Jūsų nesektų">
+<!ENTITY pref_donottrack_allow_tracking "Nurodyti svetainėms, kad jos Jus sektų">
+<!ENTITY pref_donottrack_no_pref "Neinformuoti svetainių apie Jūsų požiūrį į sekimą">
+
 <!ENTITY pref_char_encoding "Simbolių koduotė">
 <!ENTITY pref_char_encoding_on "Rodyti meniu">
 <!ENTITY pref_char_encoding_off "Nerodyti meniu">
@@ -81,6 +100,7 @@
 <!ENTITY pref_plugins_tap_to_play "Leidžiami bakstelėjus">
 <!ENTITY pref_plugins_disabled "Neleidžiami">
 <!ENTITY pref_text_size "Šriftų dydžiai">
+<!ENTITY pref_reflow_on_zoom3 "Pritaikyti teksto plotį, dukart bakstelėjus">
 <!ENTITY pref_font_size_tiny "Ypač maži">
 <!ENTITY pref_font_size_small "Maži">
 <!ENTITY pref_font_size_medium "Vidutiniai">
@@ -99,6 +119,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "Įlinkdama fechtuotojo špaga sublykčiojusi pragręžė apvalų arbūzą.">
 
 <!ENTITY pref_use_master_password "Naudoti pagrindinį slaptažodį">
+<!ENTITY pref_show_product_announcements "Rodyti pranešimus apie produktus">
 <!ENTITY pref_sync "Sinchronizavimas">
 <!ENTITY pref_search_suggestions "Rodyti paieškos žodžių siūlymus">
 <!ENTITY pref_import_android "Importuoti iš „Android“">
@@ -108,7 +129,38 @@ size. -->
 <!ENTITY pref_private_data_passwords "Įrašyti slaptažodžiai">
 <!ENTITY pref_private_data_cache "Podėlis">
 <!ENTITY pref_private_data_offlineApps "Duomenys darbui neprisijungus">
-<!ENTITY pref_private_data_siteSettings "Svetainių nuostatos">
+<!ENTITY pref_private_data_siteSettings2 "Svetainių nuostatos">
+<!ENTITY pref_private_data_downloadFiles "Parsiųsti failai">
+
+<!ENTITY datareporting_notification_title "„&brandShortName;“ statistika ir duomenys">
+<!ENTITY datareporting_notification_action_long "pasirinkite, kokia informacija dalintis">
+<!ENTITY datareporting_notification_action "Pasirinkite, kuo dalintis">
+<!ENTITY datareporting_notification_summary "Programos „&brandShortName;“ tobulinimo tikslais, ji automatiškai siunčia tam tikrus duomenis „&vendorShortName;i“.">
+<!ENTITY datareporting_notification_summary_short "Programos „&brandShortName;“ tobulinimo tikslais…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "„&brandShortName;“ sveikatos būklės ataskaitos">
+<!ENTITY datareporting_fhr_summary2 "Padeda Jums įvertinti naršyklės našumą ir siunčia „&vendorShortName;i“ duomenis apie naršyklės sveikatos būklę">
+<!ENTITY datareporting_abouthr_title "Parodyti Jūsų naršyklės ataskaitą">
+<!ENTITY datareporting_telemetry_title "Telemetrija">
+<!ENTITY datareporting_telemetry_summary "Naršyklės „&brandShortName;“ tobulinimo tikslais siunčia „&vendorShortName;i“ duomenis apie naršyklės našumą, naudojamas funkcijas, tinkinimą ir įrenginio aparatinę įrangą">
+<!ENTITY datareporting_crashreporter_summary "„&brandShortName;“ strigčių pranešimus siunčia „&vendorShortName;i“ programos stabilumo ir saugumo gerinimo tikslais">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "Strigčių pranešiklis">
+<!ENTITY datareporting_wifi_title "„Mozillos“ geografinės vietos nustatymo paslaugos">
+<!ENTITY datareporting_wifi_summary "Padėkite pagerinti atvirojo saityno vietos nustatymo paslaugas, leisdami „&brandShortName;“ kaupti ir siųsti anoniminius duomenis apie mobiliojo ryšio siųstuvus">
+
+<!ENTITY pref_update_autodownload "Automatiniai naujinimai">
+<!ENTITY pref_update_autodownload_wifi "Tik belaidžiu ryšiu">
+<!ENTITY pref_update_autodownload_disabled "Išjungti">
+<!ENTITY pref_update_autodownload_enabled "Įjungti">
 
 <!ENTITY quit "Baigti darbą">
 
@@ -122,7 +174,17 @@ size. -->
 <!ENTITY share_image_failed "Paveikslu pasidalinti nepavyko">
 <!ENTITY save_as_pdf "Įrašyti PDF formatu">
 <!ENTITY find_in_page "Ieškoti tinklalapyje">
-<!ENTITY desktop_mode "Prašyti svetainės kompiuteriui">
+<!ENTITY desktop_mode "Prašyti svetainės kompiuterio ekranui">
+<!ENTITY tools "Priemonės">
+<!ENTITY new_tab "Nauja kortelė">
+<!ENTITY new_private_tab "Nauja privačioji kortelė">
+<!ENTITY close_all_tabs "Užverti visas korteles">
+<!ENTITY tabs_normal "Kortelės">
+<!ENTITY tabs_private "Privačiosios">
+<!ENTITY tabs_synced "Sinchronizuojamos">
+<!ENTITY wallpaper_success "Darbastalio fonas pakeistas">
+<!ENTITY wallpaper_progress "Keičiamas darbastalio fonas">
+<!ENTITY wallpaper_fail "Nepavyko pakeisti darbastalio fono">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -132,6 +194,8 @@ size. -->
 <!ENTITY find_close "Užverti">
 
 <!ENTITY contextmenu_open_new_tab "Atverti naujoje kortelėje">
+<!ENTITY contextmenu_open_private_tab "Atverti privačiojoje kortelėje">
+<!ENTITY contextmenu_open_in_reader "Atverti skaityklėje">
 <!ENTITY contextmenu_remove_history "Pašalinti">
 <!ENTITY contextmenu_remove_bookmark "Pašalinti">
 <!ENTITY contextmenu_add_to_launcher "Įtraukti į pradžios ekraną">
@@ -140,9 +204,13 @@ size. -->
 <!ENTITY contextmenu_paste "Įdėti">
 <!ENTITY contextmenu_copyurl "Kopijuoti adresą">
 <!ENTITY contextmenu_edit_bookmark "Taisyti">
+<!ENTITY contextmenu_subscribe "Prenumeruoti tinklalapį">
+<!ENTITY contextmenu_site_settings "Keisti svetainės nuostatas">
 
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-     after a page is removed from browser history. -->
+<!ENTITY pref_titlebar_mode "Antraštės juosta">
+<!ENTITY pref_titlebar_mode_title "Rodyti tinklalapio antraštę">
+<!ENTITY pref_titlebar_mode_url "Rodyti tinklalapio adresą">
+
 <!ENTITY history_removed "Tinklalapis pašalintas">
 
 <!ENTITY bookmark_edit_title "Adresyno įrašo savybės">
@@ -150,7 +218,9 @@ size. -->
 <!ENTITY bookmark_edit_location "Vieta">
 <!ENTITY bookmark_edit_keyword "Gairė">
 
-<!ENTITY site_settings_title2       "Svetainės nuostatos…">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "Svetainės nuostatos">
 <!ENTITY site_settings_cancel       "Atsisakyti">
 <!ENTITY site_settings_clear        "Išvalyti">
 <!ENTITY site_settings_no_settings  "Valytinų nuostatų nėra.">
@@ -159,7 +229,8 @@ size. -->
 <!ENTITY reading_list_added "Tinklalapis įtrauktas į skaitinių sąrašą">
 <!ENTITY reading_list_removed "Tinklalapis pašalintas iš skaitinių sąrašo">
 <!ENTITY reading_list_failed "Tinklalapio nepavyko įtraukti į skaitinių sąrašą">
-<!ENTITY reader_mode "Skaityklės veiksena">
+<!ENTITY reading_list_duplicate "Tinklalapis jau yra skaitinių sąraše">
+<!ENTITY reader "Skaityklė">
 
 <!ENTITY masterpassword_create_title "Sukurti pagrindinį slaptažodį">
 <!ENTITY masterpassword_remove_title "Pašalinti pagrindinį slaptažodį">
@@ -168,27 +239,34 @@ size. -->
 
 <!ENTITY button_ok "Gerai">
 <!ENTITY button_cancel "Atsisakyti">
+<!ENTITY button_yes "Taip">
+<!ENTITY button_no "Ne">
 <!ENTITY button_clear_data "Valyti duomenis">
+<!ENTITY button_set "Nurodyti">
+<!ENTITY button_clear "Valyti">
 
 <!ENTITY abouthome_addons_title "Priedai „&brandShortName;“ naršyklei">
 <!ENTITY abouthome_addons_browse "Naršyti visus „&brandShortName;“ priedus">
 <!ENTITY abouthome_last_tabs_title "Kortelės iš pastarojo seanso">
 <!ENTITY abouthome_last_tabs_open "Visos atvertos kortelės iš pastarojo seanso">
 <!ENTITY abouthome_top_sites_title "Dažniausiai lankomos">
-<!ENTITY abouthome_top_sites_browse "Naršyti visas dažniausiai lankomas svetaines">
-<!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
+<!ENTITY abouthome_topsites_edit "Keisti">
+<!ENTITY abouthome_topsites_pin "Įsegti svetainę">
+<!ENTITY abouthome_topsites_unpin "Išsegti svetainę">
+
+<!-- Localization note (abouthome_about_sync3, abouthome_about_apps3): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Sukonfigūruokite „Firefox Sync“ ir galėsite naudotis savo adresynu, žurnalu ir kortelėmis iš kitų įrenginių&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "Įsigykite programų ir „Mozillos“ krautuvės ir atraskite geriausia, ką Jums gali pasiūlyti saitynas&#x00A0;»">
-<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
+<!ENTITY abouthome_about_apps3 "Įsigykite programų iš „Firefox“ krautuvės ir atraskite geriausia, ką Jums gali pasiūlyti saitynas&#x00A0;»">
+<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name2):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "„Firefox Sync“">
-<!ENTITY abouthome_apps_bold_name "„Mozillos“ krautuvės">
+<!ENTITY abouthome_apps_bold_name2 "„Firefox“ krautuvės">
 
 
 <!ENTITY filepicker_title "Parinkite failą">
@@ -211,6 +289,15 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "kurią valdo">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "Šiame tinklalapyje esama įkelto neapsaugoto turinio.">
+<!ENTITY blocked_mixed_content_message_top "„&brandShortName;“ užblokavo neapsaugotą turinį.">
+<!ENTITY blocked_mixed_content_message_bottom "Dauguma svetainių veikia korektiškai net kai šis turinys blokuojamas.">
+<!ENTITY learn_more "Sužinoti daugiau">
+<!ENTITY enable_protection "Įgalinti apsaugą">
+<!ENTITY disable_protection "Išjungti apsaugą">
+<!ENTITY keep_blocking "Blokuoti toliau">
+
 <!ENTITY private_data_success "Privatieji duomenys išvalyti">
 <!ENTITY private_data_fail "Kai kurių privačiųjų duomenų išvalyti nepavyko">
 
@@ -223,20 +310,22 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          iš „Android“">
 <!ENTITY bookmarkhistory_import_wait "Luktelėkite…">
 
+<!-- Localization note (suggestions_prompt2): The placeholder (&formatS;) will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "Ar norite įgalinti „&formatS;“ paieškos siūlymus?">
+
 <!ENTITY webapp_generic_name "Programa">
 
+<!ENTITY searchable_description "Adresynas ir žurnalas">
+
 <!-- Updater notifications -->
-<!ENTITY updater_start_title "&brandShortName;">
-<!ENTITY updater_start_ticker "Išleistas „&brandShortName;“ naujinimas&#8230;">
-<!ENTITY updater_start_select "Pažymėkite, kad naujinimas būtų parsiųstas.">
+<!ENTITY updater_start_title2 "Išleistas „&brandShortName;“ naujinimas">
+<!ENTITY updater_start_select2 "Bakstelėkite, kad naujinimas būtų parsiųstas">
 
-<!ENTITY updater_downloading_title "Parsiunčiama „&brandShortName;“">
-<!ENTITY updater_downloading_ticker "Parsiunčiamas „&brandShortName;“ naujinimas&#8230;">
-<!ENTITY updater_downloading_ticker_failed "„&brandShortName;“ naujinimo parsiųsti nepavyko&#8230;">
-<!ENTITY updater_downloading_select "Pažymėkite, kad užbaigus, naujinimas būtų įdiegtas.">
-<!ENTITY updater_downloading_retry "Pažymėkite, kad būtų pakartotinai bandoma atsiųsti naujinimą.">
-<!ENTITY updater_downloading_willapply "Laukiama, kol naujinimas bus parsiųstas.">
+<!ENTITY updater_downloading_title2 "Parsiunčiama „&brandShortName;“">
+<!ENTITY updater_downloading_title_failed2 "Parsiųsti nepavyko">
+<!ENTITY updater_downloading_select2 "Bakstelėkite, kad parsiuntus, naujinimas būtų įdiegtas">
+<!ENTITY updater_downloading_retry2 "Bakstelėkite, kad būtų pabandyta iš naujo">
 
-<!ENTITY updater_apply_title "&brandShortName;">
-<!ENTITY updater_apply_ticker "Parsiųstas „&brandShortName;“ naujinimas&#8230;">
-<!ENTITY updater_apply_select "Pažymėkite, kad parsiųstasis naujinimas būtų įdiegtas.">
+<!ENTITY updater_apply_title2 "Išleistas „&brandShortName;“ naujinimas">
+<!ENTITY updater_apply_select2 "Bakstelėkite, kad naujinimas būtų įdiegtas">

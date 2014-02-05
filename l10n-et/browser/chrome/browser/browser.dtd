@@ -20,17 +20,23 @@
 <!ENTITY  reloadTab.accesskey                    "i">
 <!ENTITY  reloadAllTabs.label                    "Laadi kõik kaardid uuesti">
 <!ENTITY  reloadAllTabs.accesskey                "a">
+<!-- LOCALIZATION NOTE (closeTabsToTheEnd.label): This should indicate the
+direction in which tabs are closed, i.e. locales that use RTL mode should say
+left instead of right. -->
+<!ENTITY  closeTabsToTheEnd.label                "Sulge paremale jäävad kaardid">
+<!ENTITY  closeTabsToTheEnd.accesskey            "u">
 <!ENTITY  closeOtherTabs.label                   "Sulge teised kaardid">
 <!ENTITY  closeOtherTabs.accesskey               "t">
-<!-- LOCALIZATION NOTE (pinAppTab.label, unpinAppTab.label): "Pin" is being
+
+<!-- LOCALIZATION NOTE (pinTab.label, unpinTab.label): "Pin" is being
 used as a metaphor for expressing the fact that these tabs are "pinned" to the
 left edge of the tabstrip. Really we just want the string to express the idea
 that this is a lightweight and reversible action that keeps your tab where you
 can reach it easily. -->
-<!ENTITY  pinAppTab.label                        "Tee püsikaardiks">
-<!ENTITY  pinAppTab.accesskey                    "e">
-<!ENTITY  unpinAppTab.label                      "Tee tavakaardiks">
-<!ENTITY  unpinAppTab.accesskey                  "d">
+<!ENTITY  pinTab.label                           "Tee püsikaardiks">
+<!ENTITY  pinTab.accesskey                       "e">
+<!ENTITY  unpinTab.label                         "Tee tavakaardiks">
+<!ENTITY  unpinTab.accesskey                     "d">
 <!ENTITY  moveToGroup.label                      "Liiguta gruppi">
 <!ENTITY  moveToGroup.accesskey                  "u">
 <!ENTITY  moveToNewGroup.label                   "Uus grupp">
@@ -114,7 +120,18 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey                 "J">
 <!ENTITY bookmarkThisPageCmd.label               "Lisa see veebileht järjehoidjatesse...">
 <!ENTITY bookmarkThisPageCmd.commandkey          "d">
-<!ENTITY sharePageCmd.commandkey                 "l">
+<!ENTITY markPageCmd.commandkey                  "l">
+<!ENTITY sharePageCmd.label                      "Jaga seda lehte">
+<!ENTITY sharePageCmd.commandkey                 "S">
+<!ENTITY sharePageCmd.accesskey                  "J">
+<!ENTITY shareLinkCmd.label                      "Jaga seda linki">
+<!ENTITY shareLinkCmd.accesskey                  "J">
+<!ENTITY shareImageCmd.label                     "Jaga seda pilti">
+<!ENTITY shareImageCmd.accesskey                 "J">
+<!ENTITY shareSelectCmd.label                    "Jaga valitud sisu">
+<!ENTITY shareSelectCmd.accesskey                "J">
+<!ENTITY shareVideoCmd.label                     "Jaga seda videot">
+<!ENTITY shareVideoCmd.accesskey                 "J">
 <!ENTITY subscribeToPageMenupopup.label          "Selle veebilehe uudistevoo tellimine">
 <!ENTITY subscribeToPageMenuitem.label           "Telli selle veebilehe uudistevoog...">
 <!ENTITY addCurPagesCmd.label                    "Lisa kõik kaardid järjehoidjatesse...">
@@ -160,7 +177,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY bookmarksButton.label                   "Järjehoidjad">
 <!ENTITY bookmarksButton.tooltip                 "Vaata oma järjehoidjaid">
-<!ENTITY bookmarksButton.accesskey               "j">
 <!ENTITY bookmarksCmd.commandkey                 "b">
 
 <!ENTITY bookmarksMenuButton.label               "Järjehoidjad">
@@ -177,7 +193,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY historyButton.label                     "Ajalugu">
 <!ENTITY historyButton.tooltip                   "Hiljuti külastatud lehtede vaatamine">
-<!ENTITY historySidebarCmd.accesskey             "A">
 <!ENTITY historySidebarCmd.commandKey            "h">
 
 <!ENTITY toolsMenu.label                         "Tööriistad">
@@ -199,17 +214,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label                  "Veebiarendajale">
 <!ENTITY webDeveloperMenu.accesskey              "b">
 
+<!ENTITY devtoolsConnect.label                   "Ühendu…">
+<!ENTITY devtoolsConnect.accesskey               "h">
+
 <!ENTITY errorConsoleCmd.label                   "Vigade konsool">
 <!ENTITY errorConsoleCmd.accesskey               "V">
-<!ENTITY errorConsoleCmd.commandkey              "j">
 
-<!ENTITY webConsoleCmd.label                     "Web Console">
-<!ENTITY webConsoleCmd.accesskey                 "W">
-<!ENTITY webConsoleCmd.commandkey                "k">
+<!ENTITY remoteWebConsoleCmd.label               "Remote Web Console">
 
-<!ENTITY inspectMenu.label                       "Inspect">
-<!ENTITY inspectMenu.accesskey                   "I">
-<!ENTITY inspectMenu.commandkey                  "I">
+<!ENTITY browserConsoleCmd.label                 "Browser Console">
+<!ENTITY browserConsoleCmd.commandkey            "j">
+<!ENTITY browserConsoleCmd.accesskey             "B">
 
 <!ENTITY inspectContextMenu.label                "Inspekteeri elementi">
 <!ENTITY inspectContextMenu.accesskey            "n">
@@ -233,42 +248,20 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.keycode                      "VK_F4">
 <!ENTITY scratchpad.keytext                      "F4">
 
-<!ENTITY inspectCloseButton.tooltiptext          "Sulge inspekteerija">
+<!-- LOCALIZATION NOTE (chromeDebuggerMenu.label): This is the label for the
+  -  application menu item that opens the browser debugger UI in the Tools menu. -->
+<!ENTITY chromeDebuggerMenu.label                "Browser Debugger">
 
 <!ENTITY devToolbarCloseButton.tooltiptext       "Sulge veebiarendaja tööriistariba">
 <!ENTITY devToolbarMenu.label                    "Veebiarendaja tööriistariba">
 <!ENTITY devToolbarMenu.accesskey                "d">
 <!ENTITY devToolbar.keycode                      "VK_F2">
 <!ENTITY devToolbar.keytext                      "F2">
+<!ENTITY devToolboxMenuItem.label                "Toggle Tools">
+<!ENTITY devToolboxMenuItem.accesskey            "T">
+
+<!ENTITY devToolbarToolsButton.tooltip           "Toggle developer tools">
 <!ENTITY devToolbarOtherToolsButton.label        "More Tools">
-
-<!ENTITY webConsoleButton.label                  "Web Console">
-<!ENTITY inspectorButton.label                   "Inspector">
-
-<!ENTITY inspectorHTMLCopyInner.label            "Kopeeri sisemine HTML">
-<!ENTITY inspectorHTMLCopyInner.accesskey        "s">
-
-<!ENTITY inspectorHTMLCopyOuter.label            "Kopeeri välimine HTML">
-<!ENTITY inspectorHTMLCopyOuter.accesskey        "v">
-
-<!ENTITY inspectorHTMLDelete.label               "Kustuta sõlm">
-<!ENTITY inspectorHTMLDelete.accesskey           "u">
-
-<!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
-  -  alternate view for the Inspector, creating a 3D visualization of the
-  -  webpage. -->
-<!ENTITY inspect3DViewButton.label               "3D View">
-<!ENTITY inspect3DViewButton.accesskey           "W">
-
-<!ENTITY inspectStyleButton.label                "Style">
-<!ENTITY inspectStyleButton.accesskey            "S">
-
-<!-- LOCALIZATION NOTE (styleeditor.label): This menu item label appears
-  -  in the Tools menu. -->
-<!ENTITY styleeditor.label                       "Style Editor">
-<!ENTITY styleeditor.accesskey                   "y">
-<!ENTITY styleeditor.keycode                     "VK_F7">
-<!ENTITY styleeditor.keytext                     "F7">
 
 <!ENTITY getMoreDevtoolsCmd.label                "Hangi rohkem tööriistu">
 <!ENTITY getMoreDevtoolsCmd.accesskey            "H">
@@ -278,6 +271,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY newNavigatorCmd.label                   "Uus aken">
 <!ENTITY newNavigatorCmd.key                     "N">
 <!ENTITY newNavigatorCmd.accesskey               "U">
+<!ENTITY newPrivateWindow.label                  "Uus privaatse veebilehitsemise aken">
+<!ENTITY newPrivateWindow.accesskey              "p">
 
 <!ENTITY editMenu.label                          "Redigeerimine">
 <!ENTITY editMenu.accesskey                      "R">
@@ -308,13 +303,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY preferencesCmdUnix.accesskey            "E">
 
 <!ENTITY clearRecentHistory.label                "Kustuta hiljutine ajalugu…">
-<!ENTITY clearRecentHistory.accesskey            "t">
 
-<!-- LOCALIZATION NOTE : These two strings can share an access key beause they never appear together on the menu -->
-<!ENTITY privateBrowsingCmd.start.label          "Alusta privaatset veebilehitsemist">
-<!ENTITY privateBrowsingCmd.start.accesskey      "A">
-<!ENTITY privateBrowsingCmd.stop.label           "Lõpeta privaatne veebilehitsemine">
-<!ENTITY privateBrowsingCmd.stop.accesskey       "L">
 <!ENTITY privateBrowsingCmd.commandkey           "P">
 
 
@@ -354,7 +343,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuSafeMode.accesskey               "T">
 
 <!ENTITY openCmd.commandkey                      "l">
-<!ENTITY urlbar.placeholder                      "Mine veebilehele">
+<!ENTITY urlbar.placeholder2                     "Otsi või sisesta aadress">
 <!ENTITY urlbar.accesskey                        "d">
 <!ENTITY urlbar.switchToTab.label                "Vaheta kaardile:">
 
@@ -389,6 +378,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openLinkCmdInTab.accesskey              "k">
 <!ENTITY openLinkCmd.label                       "Ava link uues aknas">
 <!ENTITY openLinkCmd.accesskey                   "l">
+<!ENTITY openLinkInPrivateWindowCmd.label        "Ava link uues privaatses aknas">
+<!ENTITY openLinkInPrivateWindowCmd.accesskey    "k">
 <!ENTITY openLinkCmdInCurrent.label              "Ava link">
 <!ENTITY openLinkCmdInCurrent.accesskey          "v">
 <!ENTITY openFrameCmdInTab.label                 "Ava paneel uuel kaardil">
@@ -456,6 +447,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY emailVideoCmd.accesskey                 "i">
 <!ENTITY emailAudioCmd.label                     "Saada audio e-postiga...">
 <!ENTITY emailAudioCmd.accesskey                 "u">
+<!ENTITY playPluginCmd.label                     "Aktiveeri see plugin">
+<!ENTITY playPluginCmd.accesskey                 "u">
+<!ENTITY hidePluginCmd.label                     "Peida see plugin">
+<!ENTITY hidePluginCmd.accesskey                 "d">
 <!ENTITY copyLinkCmd.label                       "Kopeeri lingi aadress">
 <!ENTITY copyLinkCmd.accesskey                   "o">
 <!ENTITY copyImageCmd.label                      "Kopeeri pildi aadress">
@@ -486,6 +481,19 @@ items are mutually exclusive. -->
 <!ENTITY mediaMute.accesskey                     "S">
 <!ENTITY mediaUnmute.label                       "Summutus maha">
 <!ENTITY mediaUnmute.accesskey                   "m">
+<!ENTITY mediaPlaybackRate.label                 "Esitamise kiirus">
+<!ENTITY mediaPlaybackRate.accesskey             "k">
+<!ENTITY mediaPlaybackRate050x.label             "Aegluubis (0,5×)">
+<!ENTITY mediaPlaybackRate050x.accesskey         "g">
+<!ENTITY mediaPlaybackRate100x.label             "Tavaline">
+<!ENTITY mediaPlaybackRate100x.accesskey         "T">
+<!ENTITY mediaPlaybackRate150x.label             "Kiirendatud (1,5×)">
+<!ENTITY mediaPlaybackRate150x.accesskey         "i">
+<!-- LOCALIZATION NOTE: "Ludicrous Speed" is a reference to the
+movie "Space Balls" and is meant to say that this speed is very
+fast. -->
+<!ENTITY mediaPlaybackRate200x.label             "Naeruväärselt kiire (2×)">
+<!ENTITY mediaPlaybackRate200x.accesskey         "N">
 <!-- LOCALIZATION NOTE: The access keys for "Show Controls" and
 "Hide Controls" are the same because the two context-menu
 items are mutually exclusive. -->
@@ -554,7 +562,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY quitApplicationCmd.label                "Välju">
 <!ENTITY quitApplicationCmd.accesskey            "j">
 <!ENTITY quitApplicationCmdMac.label             "Välju">
-<!ENTITY quitApplicationCmdMac.key               "Q">
+<!-- LOCALIZATION NOTE(quitApplicationCmdUnix.key): This keyboard shortcut is used by both Linux and OSX builds. -->
+<!ENTITY quitApplicationCmdUnix.key              "Q">
 
 <!ENTITY closeCmd.label                          "Sulge">
 <!ENTITY closeCmd.key                            "W">
@@ -616,15 +625,12 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY identity.moreInfoLinkText               "Rohkem infot...">
 
-<!ENTITY downloadMonitor2.tooltip                "Klõpsa, et avada allalaadimiste aken">
-
-<!ENTITY allTabs.filter.emptyText                "Otsi kaarte">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
 <!ENTITY tabsToolbar.label                       "Brauseri kaardid">
 
-<!-- LOCALIZATION NOTE (syncTabsMenu.label): This appears in the history menu -->
-<!ENTITY syncTabsMenu.label                      "Kaardid teistest arvutitest">
+<!-- LOCALIZATION NOTE (syncTabsMenu2.label): This appears in the history menu -->
+<!ENTITY syncTabsMenu2.label                     "Kaardid teistest seadmetest">
 
 <!ENTITY syncBrand.shortName.label               "Sync">
 
@@ -637,15 +643,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY addonBarCloseButton.tooltip             "Sulge lisade riba">
 <!ENTITY toggleAddonBarCmd.key                   "/">
 
-<!-- LOCALIZATION NOTE (markupButton.arialabel): The markup button is the button
-located in front of the breadcrumbs display in the inspector toolbar. The button
-doesn't display any label, but exposes a label to screen-readers with "aria-label".
--->
-<!ENTITY markupButton.arialabel                  "Märgendus">
-<!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
-toolbar button -->
-<!ENTITY markupButton.accesskey                  "M">
-
 <!ENTITY socialToolbar.title                     "Sotsiaalse tööriistariba nupp">
 <!ENTITY social.notLoggedIn.label                "Pole sisselogitud">
 
@@ -655,8 +652,43 @@ toolbar button -->
 <!ENTITY social.toggleSidebar.label              "Kuvatakse külgriba">
 <!ENTITY social.toggleSidebar.accesskey          "u">
 
+<!ENTITY social.addons.label                     "Halda teenuseid…">
+
 <!ENTITY social.toggleNotifications.label        "Kuvatakse töölauateavitusi">
 <!ENTITY social.toggleNotifications.accesskey    "v">
 
-<!ENTITY social.activated.undobutton.label       "Võta tagasi">
-<!ENTITY social.activated.undobutton.accesskey   "V">
+<!ENTITY social.activated.description            "Teenusepakkuja <label/> teenused on nüüd lubatud. Teenuste sätteid on võimalik muuta <label class='text-link'>lisade halduris</label>.">
+<!ENTITY social.activated.undo.label             "Ups, võta tagasi">
+<!ENTITY social.activated.undo.accesskey         "U">
+<!ENTITY social.learnMore.label                  "Rohkem teavet…">
+<!ENTITY social.learnMore.accesskey              "R">
+<!ENTITY social.closeNotificationItem.label      "Mitte praegu">
+
+<!ENTITY social.chatBar.commandkey               "c">
+<!ENTITY social.chatBar.label                    "Too vestlused fookusse">
+<!ENTITY social.chatBar.accesskey                "f">
+
+<!-- labels are set dynamically, see browser.properties -->
+<!ENTITY social.markpage.accesskey               "l">
+<!ENTITY social.marklink.accesskey               "l">
+
+<!ENTITY getUserMedia.selectCamera.label         "Jagatav kaamera:">
+<!ENTITY getUserMedia.selectCamera.accesskey     "J">
+<!ENTITY getUserMedia.selectMicrophone.label     "Jagatav mikrofon:">
+<!ENTITY getUserMedia.selectMicrophone.accesskey "m">
+
+<!ENTITY webrtcIndicatorButton.label             "Ligipääs kaamerale/mikrofonile">
+<!ENTITY webrtcIndicatorButton.tooltip           "Kuva saite, millel on sinu kaamera või mikrofoni kasutamine lubatud">
+
+<!ENTITY mixedContentBlocked.helplink            "Rohkem teavet">
+<!ENTITY mixedContentBlocked.moreinfo            "Enamik saite töötab korralikult edasi ka siis, kui see sisu on blokeeritud.">
+
+<!ENTITY pointerLock.notification.message        "Uuesti kuvamiseks vajuta klahvi ESC.">
+
+<!ENTITY pluginNotification.showAll.label        "Kuva kõiki">
+<!ENTITY pluginNotification.showAll.accesskey    "K">
+
+<!-- LOCALIZATION NOTE (pluginActivateNow.label, pluginActivateAlways.label, pluginBlockNow.label): These should be the same as the matching strings in browser.properties -->
+<!ENTITY pluginActivateNow.label                 "Luba">
+<!ENTITY pluginActivateAlways.label              "Luba ja pea meeles">
+<!ENTITY pluginBlockNow.label                    "Blokeeri plugin">

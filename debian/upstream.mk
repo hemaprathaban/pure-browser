@@ -15,7 +15,7 @@ GRE_SRCDIR := $(strip $(foreach dir,. mozilla,$(if $(wildcard $(dir)/config/mile
 ifndef GRE_SRCDIR
 $(error Could not determine the top directory for GRE codebase)
 endif
-GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) | $(VERSION_FILTER))
+GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) | $(VERSION_FILTER) | sed 's/^\([0-9][0-9]*\)\.[0-9][0-9]*\./\1.0./;s/\.0\.0/.0/')
 
 # Construct GRE_VERSION from the first two digits in GRE_MILESTONE
 GRE_VERSION := $(subst ~, ,$(subst ., ,$(GRE_MILESTONE)))
@@ -33,6 +33,10 @@ UPSTREAM_RELEASE := $(DEBIAN_VERSION:%-$(DEBIAN_RELEASE)=%)
 # Aurora builds have the build id in the upstream part of the debian/changelog version
 export MOZ_BUILD_DATE := $(word 2,$(subst +, ,$(UPSTREAM_RELEASE)))
 UPSTREAM_RELEASE := $(firstword $(subst +, ,$(UPSTREAM_RELEASE)))
+# If the debian part of the version contains ~bpo or ~deb, it's a backport
+ifneq (,$(filter bpo% deb%,$(word 2,$(subst ~, ,$(DEBIAN_RELEASE)))))
+BACKPORT = 1
+endif
 
 # Check if the version in debian/changelog matches actual upstream version
 # as VERSION_FILTER transforms it.

@@ -9,10 +9,11 @@
   - documentation on web development on the web. -->
 
 <!ENTITY window.title "Web konzola">
+<!ENTITY browserConsole.title "Konzola preglednika">
 
-<!ENTITY networkPanel.requestURL                  "URL zahtjeva">
-<!ENTITY networkPanel.requestMethod               "Metoda zahtjeva">
-<!ENTITY networkPanel.statusCode                  "Statusni kôd">
+<!ENTITY networkPanel.requestURLColon             "URL zahtjeva:">
+<!ENTITY networkPanel.requestMethodColon          "Metoda zahtjeva:">
+<!ENTITY networkPanel.statusCodeColon             "Statusni kôd:">
 
 <!ENTITY networkPanel.requestHeaders              "Zaglavlja zahtjeva">
 <!ENTITY networkPanel.requestCookie               "Poslan kolačić">
@@ -20,6 +21,7 @@
 <!ENTITY networkPanel.requestFormData             "Poslani podaci obrasca">
 
 <!ENTITY networkPanel.responseHeaders             "Zaglavlja odgovora">
+<!ENTITY networkPanel.responseCookie              "Primljeni kolačić">
 <!ENTITY networkPanel.responseBody                "Tijelo odgovora">
 <!ENTITY networkPanel.responseBodyCached          "Podaci u priručnoj memoriji">
 <!ENTITY networkPanel.responseBodyUnknownType     "Nepoznata vrsta sadržaja">
@@ -32,16 +34,33 @@
 <!ENTITY saveBodies.label     "Zapisuj zahtjeve i tijela odgovora">
 <!ENTITY saveBodies.accesskey "l">
 
+<!-- LOCALIZATION NOTE (openURL.label): You can see this string in the Web
+   - Console context menu. -->
+<!ENTITY openURL.label     "Otvori URL u novoj kartici">
+<!ENTITY openURL.accesskey "t">
+
 <!-- LOCALIZATION NOTE (btnPageNet.label): This string is used for the menu
   -  button that allows users to toggle the network logging output.
   -  This string and the following strings toggle various kinds of output
   -  filters. -->
 <!ENTITY btnPageNet.label   "Mreža">
 <!ENTITY btnPageNet.tooltip "Zapisuj pristup mreži">
+<!ENTITY btnPageNet.accesskey "Z">
+<!-- LOCALIZATION NOTE (btnPageNet.accesskeyMacOSX): This string is used as
+  -  access key for the menu button that allows users to toggle the network
+  -  logging output. On MacOSX accesskeys are available with Ctrl-*. Please make
+  -  sure you do not use the following letters: A, E, N and P. These are used
+  -  for editing commands in text inputs. -->
+<!ENTITY btnPageNet.accesskeyMacOSX "t">
 <!ENTITY btnPageCSS.label   "CSS">
 <!ENTITY btnPageCSS.tooltip "Zapisuj greške obrade CSS-a">
+<!ENTITY btnPageCSS.accesskey "C">
 <!ENTITY btnPageJS.label    "JS">
 <!ENTITY btnPageJS.tooltip  "Zapisuj JavaScript iznimke">
+<!ENTITY btnPageJS.accesskey  "J">
+<!ENTITY btnPageSecurity.label "Sigurnost">
+<!ENTITY btnPageSecurity.tooltip "Zapisuj sigurnosne greške i upozorenja">
+<!ENTITY btnPageSecurity.accesskey "s">
 
 <!-- LOCALIZATION NOTE (btnPageLogging): This is used as the text of the
   -  the toolbar. It shows or hides messages that the web developer inserted on
@@ -49,35 +68,16 @@
   -  console.error(). -->
 <!ENTITY btnPageLogging.label   "Zapisivanje">
 <!ENTITY btnPageLogging.tooltip "Zapisuj poruke poslane na window.console objekt">
+<!ENTITY btnPageLogging.accesskey "l">
 <!ENTITY btnConsoleErrors       "Greške">
 <!ENTITY btnConsoleInfo         "Informacije">
 <!ENTITY btnConsoleWarnings     "Upozorenja">
 <!ENTITY btnConsoleLog          "Zapisnik">
 
-<!-- LOCALIZATION NOTE (btnPosition.label): The label shown for the menu which
-  -  allows the user to toggle between the Web Console positioning types. -->
-<!ENTITY btnPosition.label     "Pozicija">
-
-<!-- LOCALIZATION NOTE (btnPosition.tooltip): The tooltip shown when the user
-  -  hovers the Position button in the Web Console toolbar. -->
-<!ENTITY btnPosition.tooltip   "Pozicioniraj Web konzolu iznad ili ispod dokumenta">
-
-<!-- LOCALIZATION NOTE (positionMenu.above): When this option is selected the
-  -  Web Console interface is displayed above the web page. -->
-<!ENTITY positionMenu.above    "Iznad">
-
-<!-- LOCALIZATION NOTE (positionMenu.below): When this option is selected the
-  -  Web Console interface is displayed below the web page. -->
-<!ENTITY positionMenu.below    "Ispod">
-
-<!-- LOCALIZATION NOTE (positionMenu.window): When this option is selected the
-  -  Web Console interface is displayed in a floating panel. -->
-<!ENTITY positionMenu.window   "Prozor">
-
-<!ENTITY filterBox.placeholder "Filter">
+<!ENTITY filterOutput.placeholder "Rezultati filtra">
 <!ENTITY btnClear.label        "Očisti">
 <!ENTITY btnClear.tooltip      "Očisti sadržaj Web konzole">
-<!ENTITY btnClose.tooltip      "Zatvori Web konzolu">
+<!ENTITY btnClear.accesskey    "r">
 
 <!ENTITY fullZoomEnlargeCmd.commandkey  "+">
 <!ENTITY fullZoomEnlargeCmd.commandkey2 "="> <!-- + is above this key on many keyboards -->
@@ -88,3 +88,10 @@
 
 <!ENTITY fullZoomResetCmd.commandkey    "0">
 <!ENTITY fullZoomResetCmd.commandkey2   "">
+
+<!ENTITY copyURLCmd.label     "Kopiraj lokaciju poveznice">
+<!ENTITY copyURLCmd.accesskey "a">
+
+<!ENTITY closeCmd.key         "W">
+<!ENTITY findCmd.key          "F">
+<!ENTITY clearOutputCmd.key   "K">

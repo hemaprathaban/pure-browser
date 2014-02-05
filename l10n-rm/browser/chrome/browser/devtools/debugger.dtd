@@ -15,6 +15,10 @@
   -  application menu item that opens the debugger UI. -->
 <!ENTITY debuggerMenu.label2         "Debugger">
 
+<!-- LOCALIZATION NOTE (debuggerMenu.accesskey): This is accesskey for the
+  -  Tools menu entry of Debugger that opens the debugger UI. -->
+<!ENTITY debuggerMenu.accesskey         "D">
+
 <!-- LOCALIZATION NOTE (remoteDebuggerMenu.label): This is the label for the
   -  application menu item that opens the remote debugger UI. -->
 <!ENTITY remoteDebuggerMenu.label    "Debugger a distanza">
@@ -31,40 +35,44 @@
   -  the button that closes the debugger UI. -->
 <!ENTITY debuggerUI.closeButton.tooltip      "Serrar">
 
+<!-- LOCALIZATION NOTE (debuggerUI.optsButton.tooltip): This is the tooltip for
+  -  the button that opens up an options context menu for the debugger UI. -->
+<!ENTITY debuggerUI.optsButton.tooltip  "Opziuns dal debugger">
+
 <!-- LOCALIZATION NOTE (debuggerUI.pauseExceptions): This is the label for the
   -  checkbox that toggles pausing on exceptions. -->
 <!ENTITY debuggerUI.pauseExceptions          "Pussar en cas dad ina 'exception'">
+<!ENTITY debuggerUI.pauseExceptions.key "E">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepOverButton.tooltip): This is the tooltip for
-  -  the button that steps over a function call. -->
-<!ENTITY debuggerUI.stepOverButton.tooltip   "Sursiglir">
+<!-- LOCALIZATION NOTE (debuggerUI.showPanesOnInit): This is the label for the
+  -  checkbox that toggles visibility of panes when opening the debugger. -->
+<!ENTITY debuggerUI.showPanesOnInit     "Mussar las lastras cun aviar">
+<!ENTITY debuggerUI.showPanesOnInit.key "S">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepInButton): This is the tooltip for the
-  -  button that steps into a function call. -->
-<!ENTITY debuggerUI.stepInButton.tooltip     "Entrar">
+<!-- LOCALIZATION NOTE (debuggerUI.showVarsSearch): This is the label for the
+  -  checkbox that toggles visibility of a designated variables searchbox. -->
+<!ENTITY debuggerUI.showVarsSearch      "Mussar il champ per tschertgar variablas">
+<!ENTITY debuggerUI.showVarsSearch.key  "V">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stepOutButton): This is the tooltip for the
- -  button that steps out of a function call. -->
-<!ENTITY debuggerUI.stepOutButton.tooltip    "Sortir">
+<!-- LOCALIZATION NOTE (debuggerUI.showNonEnums): This is the label for the
+  -  checkbox that toggles visibility of hidden (non-enumerable) variables and
+  -  properties in stack views. -->
+<!ENTITY debuggerUI.showNonEnums        "Mussar caracteristicas zuppentadas">
+<!ENTITY debuggerUI.showNonEnums.key    "P">
 
-<!-- LOCALIZATION NOTE (debuggerUI.stackTitle): This is the label for the
-  -  widget that displays the call stack frames in the debugger. -->
-<!ENTITY debuggerUI.stackTitle       "Call stack">
+<!-- LOCALIZATION NOTE (debuggerUI.searchPanelTitle): This is the text that
+  -  appears in the filter panel popup as a description. -->
+<!ENTITY debuggerUI.searchPanelTitle    "Operaturs">
 
-<!-- LOCALIZATION NOTE (debuggerUI.scriptTitle): This is the label for the
-  -  widget that displays the source code for the script that is currently
-  -  being inspected in the debugger. -->
-<!ENTITY debuggerUI.scriptTitle      "Script">
+<!-- LOCALIZATION NOTE (debuggerUI.condBreakPanelTitle): This is the text that
+  -  appears in the conditional breakpoint panel popup as a description. -->
+<!ENTITY debuggerUI.condBreakPanelTitle "Quest breakpoint interrumpa l'execuziun mo sche la suandanta expressiun è correcta">
 
-<!-- LOCALIZATION NOTE (debuggerUI.propertiesTitle): This is the label for the
-  -  widget that displays the variables in the various available scopes in the
-  -  debugger. -->
-<!ENTITY debuggerUI.propertiesTitle  "Variablas en il scope">
+<!-- LOCALIZATION NOTE (debuggerUI.seMenuBreak): This is the text that
+  -  appears in the source editor context menu for adding a breakpoint. -->
+<!ENTITY debuggerUI.seMenuBreak         "Agiuntar in breakpoint">
 
-<!-- LOCALIZATION NOTE (debuggerUI.emptyFilterText): This is the text that
-  -  appears in the filter text box when it is empty. -->
-<!ENTITY debuggerUI.emptyFilterText  "Filtrar scripts">
-
-<!-- LOCALIZATION NOTE (emptyScriptText): The text to display in the menulist when
-  - there are no scripts. -->
-<!ENTITY debuggerUI.emptyScriptText  "Nagins scripts.">
+<!-- LOCALIZATION NOTE (debuggerUI.seMenuCondBreak): This is the text that
+  -  appears in the source editor context menu for adding a conditional
+  -  breakpoint. -->
+<!ENTITY debuggerUI.seMenuCondBreak     "Agiuntar in breakpoint cundiziunal">

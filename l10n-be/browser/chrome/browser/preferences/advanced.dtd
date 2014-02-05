@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 <!ENTITY generalTab.label "Асноўныя">
 <!ENTITY accessibility.label "Даступнасць">
 <!ENTITY useCursorNavigation.label "Заўсёды ўжываць клавішы-стрэлкі для перамяшчэння ў старонках">
@@ -21,10 +25,22 @@
 <!ENTITY setDefault.label "Зрабіць &brandShortName; змоўчным азіральнікам">
 <!ENTITY setDefault.accesskey "з">
 <!ENTITY isDefault.label "&brandShortName; зараз змоўчны азіральнік">
-<!ENTITY submitCrashes.label "Дасыланне справаздачаў пра крахі">
-<!ENTITY submitCrashes.accesskey "Д">
-<!ENTITY submitTelemetry.label "Падаць звесткі пра працавыніковасць ">
-<!ENTITY submitTelemetry.accesskey "п">
+<!ENTITY dataChoicesTab.label "Выбар здаткаў">
+<!ENTITY healthReportSection.label "Справаздача пра стан &brandShortName;">
+<!ENTITY healthReportDesc.label "Дапамагае вам лепш разумець працавыніковасць вашага азіральніка і падзеляе здаткі з &vendorShortName; пра стан вашага азіральніка">
+<!ENTITY enableHealthReport.label "Дазволіць справаздачу пра стан &brandShortName;">
+<!ENTITY enableHealthReport.accesskey "с">
+<!ENTITY healthReportLearnMore.label "Падрабязней">
+<!ENTITY telemetrySection.label "Тэлеметрыя">
+<!ENTITY telemetryDesc.label "Дзеліцца здаткамі пра працавыніковасць, выкарыстанне. начынне і ўладкаванні вашага азіральніка з &vendorShortName;, каб дапамагчы ўдасканаліць &brandShortName;">
+<!ENTITY enableTelemetry.label "Дазволіць тэлеметрыю">
+<!ENTITY enableTelemetry.accesskey "т">
+<!ENTITY telemetryLearnMore.label "Падрабязней">
+<!ENTITY crashReporterSection.label "Паведамляльнік пра крахі">
+<!ENTITY crashReporterDesc.label "&brandShortName; падае справаздачы пра крахі, каб дапамагчы &vendorShortName; зрабіць ваш азіральнік больш устойлівым і бяспечным">
+<!ENTITY enableCrashReporter.label "Дазволіць паведаляльнік пра крахі">
+<!ENTITY enableCrashReporter.accesskey "к">
+<!ENTITY crashReporterLearnMore.label "Падрабязней">
 <!ENTITY networkTab.label "Сетка">
 <!ENTITY connection.label "Злучэнне">
 <!ENTITY connectionDesc.label "Наладзіць, як &brandShortName; мусіць злучацца з Інтэрнэтам">
@@ -43,14 +59,17 @@
 <!ENTITY overrideSmartCacheSize.accesskey "З">
 <!ENTITY updateTab.label "Абнаўленне">
 <!ENTITY updateApp.label "Абнаўленні &brandShortName;:">
-<!ENTITY updateAuto.label "Самастойна ўсталёўваць абнаўленні (раіцца: паляпшае бяспеку)">
-<!ENTITY updateAuto.accesskey "С">
+<!ENTITY updateAuto1.label "Самастойнае ўсталяванне абнаўленняў (раіцца: палепшаная бяспека)">
+<!ENTITY updateAuto1.accesskey "С">
+<!ENTITY updateAutoMetro.label "Самастойна абнаўляць з працоўнага стала і &brandShortName; стыля Windows 8">
+<!ENTITY updateAutoMetro.accesskey "п">
 <!ENTITY updateCheck.label "Правяраць, ці існуюць абнаўленні, але я сам буду вырашаць, ці ўсталёўваць іх">
 <!ENTITY updateCheck.accesskey "П">
 <!ENTITY updateManual.label "Ніколі не правяраць, ці існуюць абнаўленні (не раіцца: рызыка для бяспекі)">
 <!ENTITY updateManual.accesskey "Н">
 <!ENTITY updateAutoAddonWarn.label "Папярэджваць мяне, калі ў выніку забараняцца мае дадаткі">
 <!ENTITY updateAutoAddonWarn.accesskey "я">
+<!ENTITY updateAutoMetroWarn.label "(&brandShortName; стыля Windows 8 не правярае сумяшчальнасць дадаткаў)">
 <!ENTITY updateHistory.label "Паказаць гісторыю абнаўленняў">
 <!ENTITY updateHistory.accesskey "а">
 <!ENTITY useService.label "Ужываць фонаваю службу для ўсталявання абналенняў">
@@ -67,13 +86,7 @@
 <!ENTITY offlineAppsListRemove.label "Выдаліць…">
 <!ENTITY offlineAppsListRemove.accesskey "В">
 <!ENTITY offlineAppRemove.confirm "Выдаліць пазасеткавыя здаткі">
-<!ENTITY encryptionTab.label "Тайнапіс">
-<!ENTITY protocols.label "Пратаколы">
-<!ENTITY useSSL3.label "Ужываць SSL 3.0">
-<!ENTITY useSSL3.accesskey "3">
-<!ENTITY useTLS1.label "Ужываць TLS 1.0">
-<!ENTITY useTLS1.accesskey "1">
-<!ENTITY certificates.label "Пасведчанні">
+<!ENTITY certificateTab.label "Пасведчанні">
 <!ENTITY certSelection.description "Калі паслугач патрабуе маё асабістае пасведчанне:">
 <!ENTITY certs.auto "Выбраць адзін самастойна">
 <!ENTITY certs.auto.accesskey "с">
@@ -81,8 +94,6 @@
 <!ENTITY certs.ask.accesskey "р">
 <!ENTITY viewCerts.label "Прагляд пасведчанняў">
 <!ENTITY viewCerts.accesskey "г">
-<!ENTITY viewCRLs.label "Спісы адклікання">
-<!ENTITY viewCRLs.accesskey "к">
 <!ENTITY verify2.label "Пацвярджэнне">
 <!ENTITY verify2.accesskey "П">
 <!ENTITY viewSecurityDevices.label "Збудовы бяспекі">

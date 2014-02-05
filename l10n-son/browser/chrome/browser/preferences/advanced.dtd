@@ -33,10 +33,26 @@
 <!ENTITY setDefault.label                "Ka &brandShortName; tee war tilasu ceecikaa">
 <!ENTITY setDefault.accesskey            "t">
 <!ENTITY isDefault.label                 "&brandShortName; ti war tilasu ceecikaa sohõda.">
-<!ENTITY submitCrashes.label             "Kaŋyan bayrandiyaney sanba">
-<!ENTITY submitCrashes.accesskey         "s">
-<!ENTITY submitTelemetry.label           "Teeyan bayhayey sanba">
-<!ENTITY submitTelemetry.accesskey       "T">
+
+<!ENTITY dataChoicesTab.label            "Bayhaya suubarey">
+
+<!ENTITY healthReportSection.label       "&brandShortName; baani bayrandikaw">
+<!ENTITY healthReportDesc.label          "Ga war gaa ka faham ceecikaa goysahãa še nda ka bayhaya žemni war ceecikaa baanoo ga nda &vendorShortName;">
+<!ENTITY enableHealthReport.label        "&brandShortName; baani bayrandikaa tunandi">
+<!ENTITY enableHealthReport.accesskey    "r">
+<!ENTITY healthReportLearnMore.label     "Bay ka tonton">
+
+<!ENTITY telemetrySection.label          "Mooruneešiyan">
+<!ENTITY telemetryDesc.label             "Goysahã, goyfondo, jinay šenda nda boŋše hanseyan bayhayey žemni war ceecikaa ga nda &vendorShortName; k'ir gaa ka &brandShortName; boryandi">
+<!ENTITY enableTelemetry.label           "Mooruneešiyan tunandi">
+<!ENTITY enableTelemetry.accesskey       "t">
+<!ENTITY telemetryLearnMore.label        "Bay ka tonton">
+
+<!ENTITY crashReporterSection.label      "Kaŋyan bayrandikaw">
+<!ENTITY crashReporterDesc.label         "&brandShortName; ga kaŋyan bayrandi sanba ka gaa ka &vendorShortName; tee ceecikaw tabatante nda saajante bešere">
+<!ENTITY enableCrashReporter.label       "Kaŋyan bayrandikaw tunandi">
+<!ENTITY enableCrashReporter.accesskey   "K">
+<!ENTITY crashReporterLearnMore.label    "Bay ka tonton">
 
 <!ENTITY networkTab.label                "Sankay">
 
@@ -69,8 +85,13 @@
 <!ENTITY updateTab.label                 "Taagandiri">
 
 <!ENTITY updateApp.label                 "&brandShortName; taagandiri:">
-<!ENTITY updateAuto.label                "Taagandirey sinji ngey boŋše (yaamarante: saajaw tontonandi)">
-<!ENTITY updateAuto.accesskey            "a">
+<!-- Note either updateAuto1 is used or (updateAutoMetro and updateAutoDesktop),
+     so re-using accesss key in updateAuto1 is OK. updateAutoDesktop can be found
+     in preferences.properties -->
+<!ENTITY updateAuto1.label               "Taagandirey sinji ngey boŋše (yaamarante: saajaw tontonandi)">
+<!ENTITY updateAuto1.accesskey           "a">
+<!ENTITY updateAutoMetro.label           "Ga taagandi nga boŋ še ordinater nda Windows 8 fasal &brandShortName; ga">
+<!ENTITY updateAutoMetro.accesskey       "s">
 <!ENTITY updateCheck.label               "Taagandirey guna, amma naŋ ya ngey sinjiyan dogoo suuba">
 <!ENTITY updateCheck.accesskey           "g">
 <!ENTITY updateManual.label              "Ši taagandirey ceeci abada (manti yaamarante: saajaw allamaana)">
@@ -78,6 +99,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Ay yaamar nda woo ga tontoney jerey kayandi">
 <!ENTITY updateAutoAddonWarn.accesskey   "A">
+
+<!ENTITY updateAutoMetroWarn.label       "(Windows 8 fasal &brandShortName; ši cerekanbeyan tontoni koroši)">
 
 <!ENTITY updateHistory.label             "Taagandiri taariku cebe">
 <!ENTITY updateHistory.accesskey         "a">
@@ -100,14 +123,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "K">
 <!ENTITY offlineAppRemove.confirm        "Bila-nda-ciyari kaa">
 
-<!ENTITY encryptionTab.label             "Tuguyan">
-
-<!ENTITY protocols.label                 "Berehawey">
-<!ENTITY useSSL3.label                   "SSL 3.0 goyandi">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "TLS 1.0 goyandi">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Tabatiyan-tiirawey">
+<!ENTITY certificateTab.label            "Tabatiyan-tiirawey">
 <!ENTITY certSelection.description       "Waati kaŋ feršikaw n'ay boŋ tabatiyan-tiiraa wiri:">
 <!ENTITY certs.auto                      "Affoo suuba boŋše">
 <!ENTITY certs.auto.accesskey            "l">
@@ -115,8 +131,6 @@
 <!ENTITY certs.ask.accesskey             "i">
 <!ENTITY viewCerts.label                 "Tabatiyan-tiirawey guna">
 <!ENTITY viewCerts.accesskey             "a">
-<!ENTITY viewCRLs.label                  "Maašeedawey sayyan">
-<!ENTITY viewCRLs.accesskey              "s">
 <!ENTITY verify2.label                   "Alhakiikandiyan">
 <!ENTITY verify2.accesskey               "h">
 <!ENTITY viewSecurityDevices.label       "Saajaw jinawey">

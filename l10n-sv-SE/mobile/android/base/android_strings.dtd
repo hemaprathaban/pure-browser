@@ -12,18 +12,21 @@
 <!ENTITY  awesomebar_all_pages_title "Alla sidor">
 <!ENTITY  awesomebar_bookmarks_title "Bokmärken">
 <!ENTITY  awesomebar_history_title "Historik">
-<!ENTITY  awesomebar_search_engine "Sök efter ”&#037;s”">
+<!ENTITY  awesomebar_switch_to_tab "Byt till flik">
 
 <!ENTITY  crash_reporter_title "&brandShortName; kraschrapportör">
-<!ENTITY  crash_message "&brandShortName; har kraschat. Dina flikar kommer att listas på sidan &brandShortName; Start när du startat om.">
-<!ENTITY  crash_help_message "Hjälp oss att lösa problemet!">
-<!ENTITY  crash_send_report_message "Skicka en kraschrapport till Mozilla">
-<!ENTITY  crash_include_url "Inkludera sidans adress">
+<!ENTITY  crash_message2 "&brandShortName; hade ett problem och kraschade. Dina flikar kommer att listas på sidan &brandShortName; Start när du startat om.">
+<!ENTITY  crash_send_report_message3 "Meddela &vendorShortName; om den här kraschen så de kan fixa den">
+<!ENTITY  crash_include_url2 "Inkludera adressen till sidan jag var på">
+<!ENTITY  crash_sorry "Vi är ledsna">
+<!ENTITY  crash_comment "Lägg till en kommentar (kommentarer är synliga för alla)">
+<!ENTITY  crash_allow_contact2 "Tillåt att &vendorShortName; kontaktar mig om den här rapporten">
+<!ENTITY  crash_email "Din e-postadress">
+<!ENTITY  crash_closing_alert "Avsluta utan att skicka någon kraschrapport?">
+<!ENTITY  sending_crash_report "Skickar kraschrapport…">
 <!ENTITY  crash_close_label "Stäng">
 <!ENTITY  crash_restart_label "Starta om &brandShortName;">
-<!ENTITY  sending_crash_report "Skickar kraschrapport…">
 <!ENTITY  exit_label "Avsluta">
-<!ENTITY  continue_label "Fortsätt">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName; webbappar">
 <!ENTITY  launcher_shortcuts_empty "Hittade inga webbappar">
@@ -39,6 +42,7 @@
 <!ENTITY bookmark_added "Bokmärkt">
 <!ENTITY bookmark_removed "Bokmärket borttaget">
 <!ENTITY bookmark_updated "Uppdaterat bokmärke">
+<!ENTITY bookmark_options "Alternativ">
 
 <!ENTITY history_today_section "Idag">
 <!ENTITY history_yesterday_section "Igår">
@@ -55,11 +59,10 @@
 <!ENTITY site_security "Webbplatssäkerhet">
 
 <!ENTITY close_tab "Stäng flik">
-<!ENTITY new_tab "Ny flik">
 <!ENTITY one_tab "1 flik">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d flikar">
+<!ENTITY num_tabs2 "&formatD; flikar">
 <!ENTITY new_tab_opened "Ny flik öppnades">
 
 <!ENTITY settings "Inställningar">
@@ -67,12 +70,28 @@
 <!ENTITY pref_category_general "Allmänt">
 <!ENTITY pref_category_privacy "Sekretess och säkerhet">
 <!ENTITY pref_category_content "Innehåll">
-<!ENTITY pref_category_importexport "Importera och exportera">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "Dataalternativ">
 <!ENTITY pref_about_firefox "Om &brandShortName;">
-<!ENTITY pref_do_not_track "Be platser att inte spåra mig">
-<!ENTITY pref_telemetry "Skicka prestandadata">
 <!ENTITY pref_remember_signons "Spara lösenord">
-<!ENTITY pref_cookies "Aktivera kakor">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "Allmänt">
+<!ENTITY pref_header_privacy "Sekretess och säkerhet">
+<!ENTITY pref_header_content "Innehåll">
+
+<!ENTITY pref_cookies_menu "Kakor">
+<!ENTITY pref_cookies_accept_all "Aktiverade">
+<!ENTITY pref_cookies_not_accept_foreign "Aktiverade, utom för tredje part">
+<!ENTITY pref_cookies_disabled "Inaktiverade">
+
+<!ENTITY pref_donottrack_menu "Spårning">
+<!ENTITY pref_donottrack_disallow_tracking "Be webbplatser att inte spåra mig">
+<!ENTITY pref_donottrack_allow_tracking "Tillåt webbplatser att spåra mig">
+<!ENTITY pref_donottrack_no_pref "Säg inget till webbplatser om min inställning till spårning">
+
 <!ENTITY pref_char_encoding "Teckenkodning">
 <!ENTITY pref_char_encoding_on "Visa meny">
 <!ENTITY pref_char_encoding_off "Visa ingen meny">
@@ -82,6 +101,7 @@
 <!ENTITY pref_plugins_tap_to_play "Tryck för att visa">
 <!ENTITY pref_plugins_disabled "Inaktiverade">
 <!ENTITY pref_text_size "Textstorlek">
+<!ENTITY pref_reflow_on_zoom3 "Dubbeltryck för att omarbeta text">
 <!ENTITY pref_font_size_tiny "Pytteliten">
 <!ENTITY pref_font_size_small "Liten">
 <!ENTITY pref_font_size_medium "Normal">
@@ -100,6 +120,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "Hoppande eldrävar söka överraska med högre fart, mer flexibilitet och mer säkerhet. Som icke-vinstdrivande kan vi utveckla för din skull utan någon press att kompomissa. Det blir bättre för dig och för webben.">
 
 <!ENTITY pref_use_master_password "Använd huvudlösenord">
+<!ENTITY pref_show_product_announcements "Visa produktmeddelanden">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Visa sökförslag">
 <!ENTITY pref_import_android "Importera från Android">
@@ -109,7 +130,38 @@ size. -->
 <!ENTITY pref_private_data_passwords "Sparade lösenord">
 <!ENTITY pref_private_data_cache "Cache">
 <!ENTITY pref_private_data_offlineApps "Nedkopplad webbplatsdata">
-<!ENTITY pref_private_data_siteSettings "Platsinställningar">
+<!ENTITY pref_private_data_siteSettings2 "Platsinställningar">
+<!ENTITY pref_private_data_downloadFiles "Hämtade filer">
+
+<!ENTITY datareporting_notification_title "&brandShortName;-statistik och data">
+<!ENTITY datareporting_notification_action_long "Välj vilken information som ska delas">
+<!ENTITY datareporting_notification_action "Välj vad som ska delas">
+<!ENTITY datareporting_notification_summary "För att förbättra upplevelsen skickar &brandShortName; automatiskt viss information till &vendorShortName;.">
+<!ENTITY datareporting_notification_summary_short "För att förbättra upplevelsen …">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "&brandShortName; hälsorapport">
+<!ENTITY datareporting_fhr_summary2 "Delar data med &vendorShortName; om webbläsarens status, samt hjälper dig att förstå webbläsarens prestanda">
+<!ENTITY datareporting_abouthr_title "Visa hälsorapporten">
+<!ENTITY datareporting_telemetry_title "Telemetri">
+<!ENTITY datareporting_telemetry_summary "Delar webbläsardata om prestanda, användning, hårdvara och anpassningar med &vendorShortName; för att hjälpa oss att förbättra &brandShortName;">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName; skickar in kraschrapporter för att hjälpa &vendorShortName; att göra webbläsaren stabilare och säkrare">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "Kraschrapportör">
+<!ENTITY datareporting_wifi_title "&vendorShortName;s platstjänster">
+<!ENTITY datareporting_wifi_summary "Hjälp till att förbättra positioneringstjänster för den öppna webben genom att låta &brandShortName; samla in och skicka anonymiserad data om mobilmaster">
+
+<!ENTITY pref_update_autodownload "Automatiska uppdateringar">
+<!ENTITY pref_update_autodownload_wifi "Endast över Wi-Fi">
+<!ENTITY pref_update_autodownload_disabled "Inaktiverat">
+<!ENTITY pref_update_autodownload_enabled "Aktiverat">
 
 <!ENTITY quit "Avsluta">
 
@@ -123,7 +175,17 @@ size. -->
 <!ENTITY share_image_failed "Kan inte dela bilden">
 <!ENTITY save_as_pdf "Spara som PDF">
 <!ENTITY find_in_page "Sök på sidan">
-<!ENTITY desktop_mode "Begär datoranpassad webbplats">
+<!ENTITY desktop_mode "Begär datorwebbplats">
+<!ENTITY tools "Verktyg">
+<!ENTITY new_tab "Ny flik">
+<!ENTITY new_private_tab "Ny privat flik">
+<!ENTITY close_all_tabs "Stäng alla flikar">
+<!ENTITY tabs_normal "Flikar">
+<!ENTITY tabs_private "Privata">
+<!ENTITY tabs_synced "Synkade">
+<!ENTITY wallpaper_success "Bakgrund uppdaterad">
+<!ENTITY wallpaper_progress "Byter bakgrund">
+<!ENTITY wallpaper_fail "Kunde inte byta bakgrund">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -133,6 +195,8 @@ size. -->
 <!ENTITY find_close "Stäng">
 
 <!ENTITY contextmenu_open_new_tab "Öppna i ny flik">
+<!ENTITY contextmenu_open_private_tab "Öppna i privat flik">
+<!ENTITY contextmenu_open_in_reader "Öppna i läsaren">
 <!ENTITY contextmenu_remove_history "Ta bort">
 <!ENTITY contextmenu_remove_bookmark "Ta bort">
 <!ENTITY contextmenu_add_to_launcher "Lägg till på startsidan">
@@ -141,9 +205,13 @@ size. -->
 <!ENTITY contextmenu_paste "Klistra in">
 <!ENTITY contextmenu_copyurl "Kopiera adress">
 <!ENTITY contextmenu_edit_bookmark "Redigera">
+<!ENTITY contextmenu_subscribe "Prenumerera på sidan">
+<!ENTITY contextmenu_site_settings "Redigera platsinställningar">
 
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-	 after a page is removed from browser history. -->
+<!ENTITY pref_titlebar_mode "Namnfältet">
+<!ENTITY pref_titlebar_mode_title "Visa sidans namn">
+<!ENTITY pref_titlebar_mode_url "Visa sidans adress">
+
 <!ENTITY history_removed "Sidan borttagen">
 
 <!ENTITY bookmark_edit_title "Redigera bokmärke">
@@ -151,7 +219,9 @@ size. -->
 <!ENTITY bookmark_edit_location "Adress">
 <!ENTITY bookmark_edit_keyword "Nyckelord">
 
-<!ENTITY site_settings_title2       "Platsinställningar…">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "Platsinställningar">
 <!ENTITY site_settings_cancel       "Avbryt">
 <!ENTITY site_settings_clear        "Rensa">
 <!ENTITY site_settings_no_settings  "Det finns inga inställningar att rensa.">
@@ -160,7 +230,8 @@ size. -->
 <!ENTITY reading_list_added "Sidan finns nu i din läslista">
 <!ENTITY reading_list_removed "Sidan borttagen från din läslista">
 <!ENTITY reading_list_failed "Kunde inte lägga till sidan i din läslista">
-<!ENTITY reader_mode "Läsläge">
+<!ENTITY reading_list_duplicate "Sidan finns redan i din läslista">
+<!ENTITY reader "Läsaren">
 
 <!ENTITY masterpassword_create_title "Skapa ett huvudlösenord">
 <!ENTITY masterpassword_remove_title "Ta bort huvudlösenord">
@@ -169,27 +240,34 @@ size. -->
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Avbryt">
+<!ENTITY button_yes "Ja">
+<!ENTITY button_no "Nej">
 <!ENTITY button_clear_data "Rensa data">
+<!ENTITY button_set "Ange">
+<!ENTITY button_clear "Rensa">
 
 <!ENTITY abouthome_addons_title "Tillägg till &brandShortName;">
 <!ENTITY abouthome_addons_browse "Bläddra bland alla &brandShortName;-tillägg">
 <!ENTITY abouthome_last_tabs_title "Dina senaste flikar">
 <!ENTITY abouthome_last_tabs_open "Öppna alla flikar från sist">
 <!ENTITY abouthome_top_sites_title "Mest besökta">
-<!ENTITY abouthome_top_sites_browse "Bläddra bland de mest besökta">
+<!ENTITY abouthome_topsites_edit "Redigera">
+<!ENTITY abouthome_topsites_pin "Fäst plats">
+<!ENTITY abouthome_topsites_unpin "Lösgör plats">
+
 <!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Ställ in Firefox Sync för att få tillgång till bokmärken, historik och flikar från dina andra enheter&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "Hämta appar från Mozilla Marketplace och upptäck det bästa som webben har att erbjuda&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "Hämta appar från Firefox Marketplace och upptäck det bästa som webben har att erbjuda&#x00A0;»">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "Välj fil">
 <!ENTITY filepicker_audio_title "Välj eller spela in ett ljud">
@@ -211,6 +289,15 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "som drivs av">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "Den här sidan visar innehåll som inte är säkert.">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName; har blockerat osäkert innehåll.">
+<!ENTITY blocked_mixed_content_message_bottom "De flesta webbplatser fungerar bra även om det här innehållet blockeras.">
+<!ENTITY learn_more "Läs mer">
+<!ENTITY enable_protection "Aktivera skydd">
+<!ENTITY disable_protection "Inaktivera skydd">
+<!ENTITY keep_blocking "Fortsätt blockera">
+
 <!ENTITY private_data_success "Känslig data är rensad">
 <!ENTITY private_data_fail "Viss känslig data kunde inte rensas ut">
 
@@ -223,7 +310,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          från Android">
 <!ENTITY bookmarkhistory_import_wait "Vänta …">
 
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "Vill du aktivera &formatS; sökförslag?">
+
 <!ENTITY webapp_generic_name "App">
+
+<!ENTITY searchable_description "Bokmärken och historik">
 
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Uppdatering finns för &brandShortName;">

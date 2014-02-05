@@ -32,8 +32,26 @@
 <!ENTITY setDefault.label                "Učini &brandShortName; zadanim preglednikom">
 <!ENTITY setDefault.accesskey            "d">
 <!ENTITY isDefault.label                 "&brandShortName; je trenutno vaš zadani preglednik">
-<!ENTITY submitTelemetry.label           "Pošalji informacije o performansama">
-<!ENTITY submitTelemetry.accesskey       "š">
+
+<!ENTITY dataChoicesTab.label            "Izbori podataka">
+
+<!ENTITY healthReportSection.label       "&brandShortName; izvještaj zdravlja">
+<!ENTITY healthReportDesc.label          "Pomaže vam shvatiti performanse vašeg preglednika, te šalje podatke kako bi &vendorShortName; bila upoznata o zdravlju vašeg preglednika">
+<!ENTITY enableHealthReport.label        "Omogući &brandShortName; izvještaj zdravlja">
+<!ENTITY enableHealthReport.accesskey    "z">
+<!ENTITY healthReportLearnMore.label     "Saznajte više">
+
+<!ENTITY telemetrySection.label          "Telemetrija">
+<!ENTITY telemetryDesc.label             "Dijeli podatke o performansama, korištenju hardveru i prilagodbama vašeg preglednika, kako bi &vendorShortName; mogla unaprijediti &brandShortName;">
+<!ENTITY enableTelemetry.label           "Omogući telemetriju">
+<!ENTITY enableTelemetry.accesskey       "T">
+<!ENTITY telemetryLearnMore.label        "Saznajte više">
+
+<!ENTITY crashReporterSection.label      "Prijavitelj rušenja">
+<!ENTITY crashReporterDesc.label         "&brandShortName; šalje izvještaje o rušenju kako bi &vendorShortName; mogla vaš preglednik učiniti stabilnijim i sigurnijim">
+<!ENTITY enableCrashReporter.label       "Omogući prijavitelja rušenja">
+<!ENTITY enableCrashReporter.accesskey   "r">
+<!ENTITY crashReporterLearnMore.label    "Saznajte više">
 
 <!ENTITY networkTab.label                "Mreža">
 
@@ -72,14 +90,13 @@
 <!ENTITY clearCacheNow.label             "Očisti sada">
 <!ENTITY clearCacheNow.accesskey         "č">
 
-<!ENTITY submitCrashes.label             "Pošalji izvještaje o rušenju">
-<!ENTITY submitCrashes.accesskey         "i">
-
 <!ENTITY updateTab.label                 "Nadogradnje">
 
 <!ENTITY updateApp.label                 "&brandShortName; dopune:">
-<!ENTITY updateAuto.label                "Automatski instaliraj dopune (preporučeno: sigurnije)">
-<!ENTITY updateAuto.accesskey            "A">
+<!ENTITY updateAuto1.label               "Automatski instaliraj dopune (preporučeno: sigurnije)">
+<!ENTITY updateAuto1.accesskey           "A">
+<!ENTITY updateAutoMetro.label           "Automatski ažuriraj s desktop i Windows 8 stila &brandShortName;">
+<!ENTITY updateAutoMetro.accesskey       "s">
 <!ENTITY updateCheck.label               "Provjeri dostupnost dopuna, ali mi ponudi instalaciju">
 <!ENTITY updateCheck.accesskey           "c">
 <!ENTITY updateManual.label              "Nikada ne provjeravaj dostupnost dopuna (nije preporučeno: sigurnosni rizik)">
@@ -87,6 +104,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Upozori me ako će to onemogućiti neke od mojih dodataka">
 <!ENTITY updateAutoAddonWarn.accesskey   "U">
+
+<!ENTITY updateAutoMetroWarn.label       "(Windows 8 stil &brandShortName;a ne provjerava kompatibilnost dodataka)">
 
 <!ENTITY useService.label                "Koristi pozadinski servis za instalaciju dopuna">
 <!ENTITY useService.accesskey            "k">
@@ -108,15 +127,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "U">
 <!ENTITY offlineAppRemove.confirm        "Ukloni izvanmrežne podatke">
 
-
-<!ENTITY encryptionTab.label             "Enkripcija">
-
-<!ENTITY protocols.label                 "Protokoli">
-<!ENTITY useSSL3.label                   "Koristi SSL 3.0">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "Koristi TLS 1.0">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Certifikati">
+<!ENTITY certificateTab.label            "Certifikati">
 <!ENTITY certSelection.description       "Kad poslužitelj zatraži moje osobni certifikat:">
 <!ENTITY certs.auto                      "Automatski označi jednoga">
 <!ENTITY certs.auto.accesskey            "A">
@@ -124,8 +135,6 @@
 <!ENTITY certs.ask.accesskey             "i">
 <!ENTITY viewCerts.label                 "Pogledaj certifikate">
 <!ENTITY viewCerts.accesskey             "c">
-<!ENTITY viewCRLs.label                  "Liste opoziva">
-<!ENTITY viewCRLs.accesskey              "L">
 <!ENTITY verify2.label                   "Ovjera">
 <!ENTITY verify2.accesskey               "V">
 <!ENTITY viewSecurityDevices.label       "Sigurnosni uređaji">

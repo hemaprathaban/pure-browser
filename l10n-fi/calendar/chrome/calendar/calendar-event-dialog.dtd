@@ -153,6 +153,8 @@
 <!ENTITY event.location.accesskey                         "s">
 <!ENTITY event.categories.label                           "Tyyppi:">
 <!ENTITY event.categories.accesskey                       "y">
+<!ENTITY event.categories.textbox.label                   "Lisää uusi tapahtumatyyppi" >
+<!ENTITY event.categories.textbox.accesskey               "m">
 <!ENTITY event.calendar.label                             "Kalenteri:" >
 <!ENTITY event.calendar.accesskey                         "e">
 <!ENTITY event.attendees.label                            "Osallistujat:" >
@@ -171,22 +173,18 @@
 <!ENTITY task.status.accesskey                            "T">
 <!ENTITY event.repeat.label                               "Toista:" >
 <!ENTITY event.repeat.accesskey                           "i">
+<!ENTITY event.until.label                                "Kunnes:">
+<!ENTITY event.until.accesskey                            "n">
 <!ENTITY event.reminder.label                             "Muistuta:" >
 <!ENTITY event.reminder.accesskey                         "u">
 <!ENTITY event.description.label                          "Kuvaus:" >
 <!ENTITY event.description.accesskey                      "v">
 <!ENTITY event.attachments.label                          "Liitteet:" >
 <!ENTITY event.attachments.accesskey                      "L" >
-
-<!-- LOCALIZATION NOTE - These 4 strings are not in production yet,
-  but I want to land Filelink support for Lightning soon. The attach
-  button will become a dropdown button that allows to attach links
-  as usual, but also files via the Filelink providers. -->
 <!ENTITY event.attachments.menubutton.label               "Lisää liite">
 <!ENTITY event.attachments.menubutton.accesskey           "L">
 <!ENTITY event.attachments.url.label                      "Verkkosivu…">
 <!ENTITY event.attachments.url.accesskey                  "V">
-
 <!ENTITY event.attachments.popup.remove.label             "Poista" >
 <!ENTITY event.attachments.popup.remove.accesskey         "P" >
 <!ENTITY event.attachments.popup.open.label               "Avaa" >
@@ -347,13 +345,13 @@
 <!-- Read-Only dialog -->
 <!ENTITY read.only.general.label         "Yleistiedot">
 <!ENTITY read.only.title.label           "Otsikko:">
-<!ENTITY read.only.event.start.label     "Aloituspäivä:">
-<!ENTITY read.only.task.start.label      "Aloituspäivä:">
-<!ENTITY read.only.event.end.label       "Päättymispäivä:">
+<!ENTITY read.only.event.start.label     "Aloitusaika:">
+<!ENTITY read.only.task.start.label      "Aloitusaika:">
+<!ENTITY read.only.event.end.label       "Lopetusaika:">
 <!ENTITY read.only.task.due.label        "Valmis:">
 <!ENTITY read.only.repeat.label          "Toista:">
-<!ENTITY read.only.location.label        "Osoite:">
-<!ENTITY read.only.category.label        "Tyyppi:">
+<!ENTITY read.only.location.label        "Paikka:">
+<!ENTITY read.only.category.label        "Kategoria:">
 <!ENTITY read.only.organizer.label       "Järjestäjä:">
 <!ENTITY read.only.reply.label           "Vastaa:">
 <!ENTITY read.only.accept.label          "Osallistun">

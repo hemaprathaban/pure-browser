@@ -12,18 +12,21 @@
 <!ENTITY  awesomebar_all_pages_title "トップサイト"><!-- Max6文字 -->
 <!ENTITY  awesomebar_bookmarks_title "ブックマーク">
 <!ENTITY  awesomebar_history_title "履歴">
-<!ENTITY  awesomebar_search_engine "\&quot;&#037;s\&quot; を検索">
+<!ENTITY  awesomebar_switch_to_tab "タブに切り換え">
 
 <!ENTITY  crash_reporter_title "&brandShortName; クラッシュレポータ">
-<!ENTITY  crash_message "&brandShortName; がクラッシュしました。次回の起動時には開いていたタブの一覧がスタートページに表示されます。">
-<!ENTITY  crash_help_message "問題の修正にご協力ください！">
-<!ENTITY  crash_send_report_message "Mozilla にクラッシュレポートを送信">
-<!ENTITY  crash_include_url "ページの URL を含める">
+<!ENTITY  crash_message2 "&brandShortName; がクラッシュしました。次回の起動時には開いていたタブの一覧が &brandShortName; のスタートページに表示されます。">
+<!ENTITY  crash_send_report_message3 "問題の修正のため、このクラッシュに関する情報を &vendorShortName; に送信してください">
+<!ENTITY  crash_include_url2 "閲覧していたページの URL を含める">
+<!ENTITY  crash_sorry "申し訳ありません">
+<!ENTITY  crash_comment "コメントを追加する (コメントは公開されます)">
+<!ENTITY  crash_allow_contact2 "このレポートに関する &vendorShortName; からの連絡を許可する">
+<!ENTITY  crash_email "あなたのメールアドレス">
+<!ENTITY  crash_closing_alert "クラッシュレポートを送信せずに終了しますか？">
+<!ENTITY  sending_crash_report "クラッシュレポートを送信しています...">
 <!ENTITY  crash_close_label "閉じる">
 <!ENTITY  crash_restart_label "&brandShortName; を再起動">
-<!ENTITY  sending_crash_report "クラッシュレポートを送信しています...">
 <!ENTITY  exit_label "終了">
-<!ENTITY  continue_label "続ける">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName; Web アプリ">
 <!ENTITY  launcher_shortcuts_empty "Web アプリは登録されていません">
@@ -39,6 +42,7 @@
 <!ENTITY bookmark_added "ブックマークを追加しました">
 <!ENTITY bookmark_removed "ブックマークを削除しました">
 <!ENTITY bookmark_updated "ブックマークを更新しました">
+<!ENTITY bookmark_options "オプション">
 
 <!ENTITY history_today_section "今日">
 <!ENTITY history_yesterday_section "昨日">
@@ -55,11 +59,10 @@
 <!ENTITY site_security "サイトセキュリティ">
 
 <!ENTITY close_tab "タブを閉じる">
-<!ENTITY new_tab "新しいタブ">
 <!ENTITY one_tab "1 個のタブ">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d 個のタブ">
+<!ENTITY num_tabs2 "&formatD; 個のタブ">
 <!ENTITY new_tab_opened "新しいタブを開きました">
 
 <!ENTITY settings "設定">
@@ -67,12 +70,28 @@
 <!ENTITY pref_category_general "一般">
 <!ENTITY pref_category_privacy "プライバシーとセキュリティ">
 <!ENTITY pref_category_content "コンテンツ">
-<!ENTITY pref_category_importexport "インポートとエクスポート">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "データの選択">
 <!ENTITY pref_about_firefox "&brandShortName; について">
-<!ENTITY pref_do_not_track "追跡拒否をサイトに通知する"><!-- 文字数注意 -->
-<!ENTITY pref_telemetry "パフォーマンス情報を送信する">
 <!ENTITY pref_remember_signons "パスワードを保存する">
-<!ENTITY pref_cookies "Cookie を有効化する">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "一般">
+<!ENTITY pref_header_privacy "プライバシーとセキュリティ">
+<!ENTITY pref_header_content "コンテンツ">
+
+<!ENTITY pref_cookies_menu "Cookie">
+<!ENTITY pref_cookies_accept_all "すべてのサイトで有効">
+<!ENTITY pref_cookies_not_accept_foreign "有効 (サードパーティを除く)">
+<!ENTITY pref_cookies_disabled "無効">
+
+<!ENTITY pref_donottrack_menu "トラッキング">
+<!ENTITY pref_donottrack_disallow_tracking "トラッキングの拒否をサイトに通知する">
+<!ENTITY pref_donottrack_allow_tracking "トラッキングの許可をサイトに通知する">
+<!ENTITY pref_donottrack_no_pref "トラッキングの設定についてサイトに通知しない">
+
 <!ENTITY pref_char_encoding "文字エンコーディング">
 <!ENTITY pref_char_encoding_on "メニューを表示する">
 <!ENTITY pref_char_encoding_off "メニューを表示しない">
@@ -82,6 +101,7 @@
 <!ENTITY pref_plugins_tap_to_play "タップして実行">
 <!ENTITY pref_plugins_disabled "無効化">
 <!ENTITY pref_text_size "テキストサイズ">
+<!ENTITY pref_reflow_on_zoom3 "ダブルタップしてテキストを再配置">
 <!ENTITY pref_font_size_tiny "最小">
 <!ENTITY pref_font_size_small "小">
 <!ENTITY pref_font_size_medium "中">
@@ -93,13 +113,14 @@
 same character/combination is used to increase the preview font size. It should be a concise
 representation of the language it is used in that will help show the text in the preview will change
 size. -->
-<!ENTITY pref_font_size_adjust_char "A">
+<!ENTITY pref_font_size_adjust_char "あ">
 
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
-<!ENTITY pref_font_size_preview_text "The quick orange fox jumps over your expectations with more speed, more flexibility and more security. As a non-profit, we\'re free to innovate on your behalf without any pressure to compromise. That means a better experience for you and a brighter future for the Web.">
+<!ENTITY pref_font_size_preview_text "オレンジ色のすばしこいキツネは、みんなの期待をこえて、たゆまぬ成長を続ける。より早く、よりフレキシブルに、そして、より安全に。私たちには、ほんの少しのあきらめも許されない。人々のよりよい体験と、明るい Web の未来へ向かって。"> <!-- Japanese pangram -->
 
 <!ENTITY pref_use_master_password "マスターパスワードを使用する">
+<!ENTITY pref_show_product_announcements "製品のお知らせを表示する">
 <!ENTITY pref_sync "Firefox Sync で同期">
 <!ENTITY pref_search_suggestions "検索語句の候補を表示">
 <!ENTITY pref_import_android "Android からインポートする">
@@ -109,7 +130,38 @@ size. -->
 <!ENTITY pref_private_data_passwords "保存されたパスワード">
 <!ENTITY pref_private_data_cache "キャッシュ">
 <!ENTITY pref_private_data_offlineApps "オフライン作業用データ">
-<!ENTITY pref_private_data_siteSettings "サイト設定">
+<!ENTITY pref_private_data_siteSettings2 "サイト設定">
+<!ENTITY pref_private_data_downloadFiles "ダウンロードしたファイル">
+
+<!ENTITY datareporting_notification_title "&brandShortName; 統計とデータ">
+<!ENTITY datareporting_notification_action_long "共有する情報を選択してください">
+<!ENTITY datareporting_notification_action "共有するものを選択してください">
+<!ENTITY datareporting_notification_summary "ユーザ体験の向上のため、&brandShortName; は情報を自動的に &vendorShortName; へ送信します">
+<!ENTITY datareporting_notification_summary_short "ユーザ体験の向上のため、&brandShortName; は...">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "&brandShortName; ヘルスレポート">
+<!ENTITY datareporting_fhr_summary2 "ブラウザの健康状態を &vendorShortName; と共有し、ブラウザのパフォーマンス状態の確認に役立ちます">
+<!ENTITY datareporting_abouthr_title "ヘルスレポートを見る">
+<!ENTITY datareporting_telemetry_title "パフォーマンス情報の送信">
+<!ENTITY datareporting_telemetry_summary "&brandShortName; をよりよいものにするため、パフォーマンス情報、使用状況、ハードウェア情報、設定したデータを &vendorShortName; と共有します">
+<!ENTITY datareporting_crashreporter_summary "&vendorShortName; がブラウザをより安定した、セキュアなものにするため、&brandShortName; はクラッシュレポートを送信します">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "クラッシュレポータ">
+<!ENTITY datareporting_wifi_title "&vendorShortName; 位置情報サービス">
+<!ENTITY datareporting_wifi_summary "基地局のデータを匿名で &brandShortName; に収集し送信させることにより、オープンな Web のための位置情報サービスの向上に役立ちます">
+
+<!ENTITY pref_update_autodownload "自動で更新をダウンロードする">
+<!ENTITY pref_update_autodownload_wifi "Wi-Fi 環境でのみ有効にする">
+<!ENTITY pref_update_autodownload_disabled "無効">
+<!ENTITY pref_update_autodownload_enabled "有効">
 
 <!ENTITY quit "終了">
 
@@ -124,6 +176,16 @@ size. -->
 <!ENTITY save_as_pdf "PDF として保存">
 <!ENTITY find_in_page "ページ内検索">
 <!ENTITY desktop_mode "PC サイトモード">
+<!ENTITY tools "ツール">
+<!ENTITY new_tab "新しいタブ">
+<!ENTITY new_private_tab "プライベートタブ">
+<!ENTITY close_all_tabs "すべてのタブを閉じる">
+<!ENTITY tabs_normal "タブ">
+<!ENTITY tabs_private "プライベートタブ">
+<!ENTITY tabs_synced "同期したタブ">
+<!ENTITY wallpaper_success "壁紙を設定しました">
+<!ENTITY wallpaper_progress "壁紙を設定中">
+<!ENTITY wallpaper_fail "壁紙を設定できません">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -133,6 +195,8 @@ size. -->
 <!ENTITY find_close "閉じる">
 
 <!ENTITY contextmenu_open_new_tab "新しいタブで開く">
+<!ENTITY contextmenu_open_private_tab "プライベートタブで開く">
+<!ENTITY contextmenu_open_in_reader "リーダーで開く">
 <!ENTITY contextmenu_remove_history "削除">
 <!ENTITY contextmenu_remove_bookmark "削除">
 <!ENTITY contextmenu_add_to_launcher "ホーム画面に追加">
@@ -141,9 +205,13 @@ size. -->
 <!ENTITY contextmenu_paste "貼り付け">
 <!ENTITY contextmenu_copyurl "アドレスをコピー">
 <!ENTITY contextmenu_edit_bookmark "編集">
+<!ENTITY contextmenu_subscribe "このページを購読">
+<!ENTITY contextmenu_site_settings "サイトの設定を編集">
 
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-	 after a page is removed from browser history. -->
+<!ENTITY pref_titlebar_mode "タイトルバー">
+<!ENTITY pref_titlebar_mode_title "ページのタイトルを表示">
+<!ENTITY pref_titlebar_mode_url "ページのアドレスを表示">
+
 <!ENTITY history_removed "履歴からページが削除されました">
 
 <!ENTITY bookmark_edit_title "ブックマークを編集">
@@ -151,7 +219,9 @@ size. -->
 <!ENTITY bookmark_edit_location "ロケーション">
 <!ENTITY bookmark_edit_keyword "キーワード">
 
-<!ENTITY site_settings_title2       "サイトの設定...">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "サイトの設定">
 <!ENTITY site_settings_cancel       "キャンセル">
 <!ENTITY site_settings_clear        "消去">
 <!ENTITY site_settings_no_settings  "消去する設定がありません。">
@@ -160,7 +230,8 @@ size. -->
 <!ENTITY reading_list_added "ページがリーディングリストに追加されました">
 <!ENTITY reading_list_removed "ページがリーディングリストから削除されました">
 <!ENTITY reading_list_failed "ページをリーディングリストに追加できませんでした">
-<!ENTITY reader_mode "リーダーモード">
+<!ENTITY reading_list_duplicate "ページはすでにリーディングリストに追加されています">
+<!ENTITY reader "リーダー">
 
 <!ENTITY masterpassword_create_title "マスターパスワードを作成">
 <!ENTITY masterpassword_remove_title "マスターパスワードを削除">
@@ -169,27 +240,34 @@ size. -->
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "キャンセル">
+<!ENTITY button_yes "はい">
+<!ENTITY button_no "いいえ">
 <!ENTITY button_clear_data "データを消去">
+<!ENTITY button_set "設定">
+<!ENTITY button_clear "消去">
 
 <!ENTITY abouthome_addons_title "&brandShortName; のためのアドオン">
 <!ENTITY abouthome_addons_browse "&brandShortName; のアドオンをすべて見る">
 <!ENTITY abouthome_last_tabs_title "最後に閉じたタブ">
 <!ENTITY abouthome_last_tabs_open "最後に閉じたタブをすべて開く">
 <!ENTITY abouthome_top_sites_title "トップサイト (よく見るページ)"><!-- awesomebar_all_pages_titleがMax6文字 -->
-<!ENTITY abouthome_top_sites_browse "トップサイトをすべて見る">
+<!ENTITY abouthome_topsites_edit "編集">
+<!ENTITY abouthome_topsites_pin "サイトをピン留め">
+<!ENTITY abouthome_topsites_unpin "ピンを外す">
+
 <!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Firefox Sync を設定し、あなたの他のデバイスからブックマークや履歴、タブなどにアクセスできるようにします&#x00A0;&#x00BB;"><!-- "»" を実体参照に置き換えた -->
-<!ENTITY abouthome_about_apps2 "Marketplace からアプリを入手し、 Web の持つ素晴らしさを発掘しましょう&#x00A0;&#x00BB;"><!-- "»" を実体参照に置き換えた -->
+<!ENTITY abouthome_about_apps3 "Marketplace からアプリを入手し、Web の持つ素晴らしさを発掘しましょう&#x00A0;&#x00BB;"><!-- "»" を実体参照に置き換えた -->
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "ファイル選択">
 <!ENTITY filepicker_audio_title "音声を選択または録音する">
@@ -211,6 +289,15 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "このサイトの運営者:">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "このページは安全でないコンテンツを表示しようとしています。">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName; は安全でないコンテンツをブロックしました。">
+<!ENTITY blocked_mixed_content_message_bottom "ほとんどの Web サイトはこのコンテンツをブロックしても正しく動作します。">
+<!ENTITY learn_more "詳細を表示">
+<!ENTITY enable_protection "保護を有効化">
+<!ENTITY disable_protection "保護を無効化">
+<!ENTITY keep_blocking "ブロックを継続">
+
 <!ENTITY private_data_success "プライベートデータを消去しました">
 <!ENTITY private_data_fail "一部のプライベートデータが消去できませんでした">
 
@@ -223,20 +310,22 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          インポートしています">
 <!ENTITY bookmarkhistory_import_wait "しばらくお待ちください...">
 
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "&formatS; で検索語句の候補を表示しますか？">
+
 <!ENTITY webapp_generic_name "アプリ">
 
-<!-- Updater notifications -->
-<!ENTITY updater_start_title "&brandShortName;">
-<!ENTITY updater_start_ticker "&brandShortName; の利用可能な更新">
-<!ENTITY updater_start_select "更新をダウンロードします。">
+<!ENTITY searchable_description "ブックマークと履歴">
 
-<!ENTITY updater_downloading_title "&brandShortName; のダウンロード中">
-<!ENTITY updater_downloading_ticker "&brandShortName; の更新をダウンロード中...">
-<!ENTITY updater_downloading_ticker_failed "&brandShortName; の更新のダウンロードに失敗しました...">
-<!ENTITY updater_downloading_select "ダウンロードの完了時に更新を適用します。">
-<!ENTITY updater_downloading_retry "更新をダウンロードし直します。">
-<!ENTITY updater_downloading_willapply "ダウンロードの完了を待っています。">
+ <!-- Updater notifications -->
+<!ENTITY updater_start_title2 "&brandShortName; の利用可能な更新">
+<!ENTITY updater_start_select2 "タッチしてダウンロードを開始します">
 
-<!ENTITY updater_apply_title "&brandShortName;">
-<!ENTITY updater_apply_ticker "&brandShortName; の利用可能な更新">
-<!ENTITY updater_apply_select "ダウンロードした更新を適用します。">
+<!ENTITY updater_downloading_title2 "&brandShortName; のダウンロード中">
+<!ENTITY updater_downloading_title_failed2 "ダウンロードに失敗しました">
+<!ENTITY updater_downloading_select2 "タッチしてダウンロードした更新を適用します">
+<!ENTITY updater_downloading_retry2 "タッチして再試行します">
+
+<!ENTITY updater_apply_title2 "&brandShortName; の利用可能な更新">
+<!ENTITY updater_apply_select2 "タッチして更新を開始します">

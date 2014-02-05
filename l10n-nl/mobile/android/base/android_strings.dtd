@@ -12,18 +12,21 @@
 <!ENTITY  awesomebar_all_pages_title "Topwebsites">
 <!ENTITY  awesomebar_bookmarks_title "Bladwijzers">
 <!ENTITY  awesomebar_history_title "Geschiedenis">
-<!ENTITY  awesomebar_search_engine "Zoeken naar \&quot;&#037;s\&quot;">
+<!ENTITY  awesomebar_switch_to_tab "Wisselen naar tabblad">
 
 <!ENTITY  crash_reporter_title "&brandShortName;-crashreporter">
-<!ENTITY  crash_message "&brandShortName; is gecrasht. Uw tabbladen worden op de &brandShortName;-startpagina getoond wanneer u herstart.">
-<!ENTITY  crash_help_message "Help ons dit probleem op te lossen!">
-<!ENTITY  crash_send_report_message "Crashrapport naar Mozilla verzenden">
-<!ENTITY  crash_include_url "Pagina-adres bijvoegen">
+<!ENTITY  crash_message2 "&brandShortName; ondervond een probleem en is vastgelopen. Uw tabbladen worden getoond op de &brandShortName;-startpagina als u opnieuw start.">
+<!ENTITY  crash_send_report_message3 "&vendorShortName; van deze crash op de hoogte stellen, zodat ze dit kunnen verhelpen">
+<!ENTITY  crash_include_url2 "Het adres van de bezochte website meesturen">
+<!ENTITY  crash_sorry "Het spijt ons">
+<!ENTITY  crash_comment "Voeg commentaar toe (commentaar is publiekelijk zichtbaar)">
+<!ENTITY  crash_allow_contact2 "&vendorShortName; toestaan om contact met mij op te nemen over dit rapport">
+<!ENTITY  crash_email "Uw e-mailadres">
+<!ENTITY  crash_closing_alert "Afsluiten zonder crashrapport verzenden?">
+<!ENTITY  sending_crash_report "Crashrapport verzenden\u2026">
 <!ENTITY  crash_close_label "Sluiten">
 <!ENTITY  crash_restart_label "&brandShortName; herstarten">
-<!ENTITY  sending_crash_report "Crashrapport verzenden\u2026">
 <!ENTITY  exit_label "Afsluiten">
-<!ENTITY  continue_label "Doorgaan">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName;-webapps">
 <!ENTITY  launcher_shortcuts_empty "Geen webapps gevonden">
@@ -39,6 +42,7 @@
 <!ENTITY bookmark_added "Bladwijzer toegevoegd">
 <!ENTITY bookmark_removed "Bladwijzer verwijderd">
 <!ENTITY bookmark_updated "Bladwijzer bijgewerkt">
+<!ENTITY bookmark_options "Opties">
 
 <!ENTITY history_today_section "Vandaag">
 <!ENTITY history_yesterday_section "Gisteren">
@@ -55,11 +59,10 @@
 <!ENTITY site_security "Websitebeveiliging">
 
 <!ENTITY close_tab "Tabblad sluiten">
-<!ENTITY new_tab "Nieuw tabblad">
 <!ENTITY one_tab "1 tabblad">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d tabbladen">
+<!ENTITY num_tabs2 "&formatD; tabbladen">
 <!ENTITY new_tab_opened "Nieuw tabblad geopend">
 
 <!ENTITY settings "Instellingen">
@@ -67,12 +70,28 @@
 <!ENTITY pref_category_general "Algemeen">
 <!ENTITY pref_category_privacy "Privacy &amp; beveiliging">
 <!ENTITY pref_category_content "Inhoud">
-<!ENTITY pref_category_importexport "Importeren &amp; exporteren">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "Gegevenskeuzes">
 <!ENTITY pref_about_firefox "Over &brandShortName;">
-<!ENTITY pref_do_not_track "Websites vertellen mij niet te volgen">
-<!ENTITY pref_telemetry "Prestatiegegevens verzenden">
 <!ENTITY pref_remember_signons "Wachtwoorden onthouden">
-<!ENTITY pref_cookies "Cookies inschakelen">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "Algemeen">
+<!ENTITY pref_header_privacy "Privacy &amp; beveiliging">
+<!ENTITY pref_header_content "Inhoud">
+
+<!ENTITY pref_cookies_menu "Cookies">
+<!ENTITY pref_cookies_accept_all "Ingeschakeld">
+<!ENTITY pref_cookies_not_accept_foreign "Ingeschakeld, behalve van derden">
+<!ENTITY pref_cookies_disabled "Uitgeschakeld">
+
+<!ENTITY pref_donottrack_menu "Volgen">
+<!ENTITY pref_donottrack_disallow_tracking "Websites laten weten dat ik niet gevolgd wil worden">
+<!ENTITY pref_donottrack_allow_tracking "Websites laten weten dat ik gevolgd wil worden">
+<!ENTITY pref_donottrack_no_pref "Websites niets vertellen over mijn volginstellingen">
+
 <!ENTITY pref_char_encoding "Tekenset">
 <!ENTITY pref_char_encoding_on "Menu tonen">
 <!ENTITY pref_char_encoding_off "Menu niet tonen">
@@ -82,6 +101,7 @@
 <!ENTITY pref_plugins_tap_to_play "Tikken voor afspelen">
 <!ENTITY pref_plugins_disabled "Uitgeschakeld">
 <!ENTITY pref_text_size "Tekstgrootte">
+<!ENTITY pref_reflow_on_zoom3 "Dubbel tikken om tekst aan te passen">
 <!ENTITY pref_font_size_tiny "Zeer klein">
 <!ENTITY pref_font_size_small "Klein">
 <!ENTITY pref_font_size_medium "Gemiddeld">
@@ -100,6 +120,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "De snelle oranje vos springt over uw verwachtingen met meer snelheid, meer flexibiliteit en meer veiligheid. Als stichting zijn we vrij om in uw belang en zonder druk voor compromissen te innoveren. Dat betekent een betere ervaring voor u en een stralende toekomst voor het internet.">
 
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
+<!ENTITY pref_show_product_announcements "Productaankondigingen tonen">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Zoeksuggesties tonen">
 <!ENTITY pref_import_android "Importeren uit Android">
@@ -109,7 +130,38 @@ size. -->
 <!ENTITY pref_private_data_passwords "Opgeslagen wachtwoorden">
 <!ENTITY pref_private_data_cache "Buffer">
 <!ENTITY pref_private_data_offlineApps "Offlinewebsitegegevens">
-<!ENTITY pref_private_data_siteSettings "Websitevoorkeuren">
+<!ENTITY pref_private_data_siteSettings2 "Website-instellingen">
+<!ENTITY pref_private_data_downloadFiles "Gedownloade bestanden">
+
+<!ENTITY datareporting_notification_title "&brandShortName; stats &amp; data">
+<!ENTITY datareporting_notification_action_long "Kies welke informatie u wilt delen">
+<!ENTITY datareporting_notification_action "Kies wat u wilt delen">
+<!ENTITY datareporting_notification_summary "Om uw ervaring te verbeteren verzendt &brandShortName; automatisch een aantal gegevens naar &vendorShortName;.">
+<!ENTITY datareporting_notification_summary_short "Om uw ervaring te verbeteren verzendt &brandShortName;…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "&brandShortName;-statusrapport">
+<!ENTITY datareporting_fhr_summary2 "Deelt gegevens met &vendorShortName; over uw browserstatus en helpt u uw browserprestaties te begrijpen">
+<!ENTITY datareporting_abouthr_title "Statusrapport bekijken">
+<!ENTITY datareporting_telemetry_title "Telemetry">
+<!ENTITY datareporting_telemetry_summary "Deelt gegevens over prestaties, hardware, gebruik en aanpassingen van uw browser met &vendorShortName; om &brandShortName; te helpen verbeteren">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName; verzendt crashrapporten om &vendorShortName; te helpen uw browser stabieler en veiliger te maken">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "Crashreporter">
+<!ENTITY datareporting_wifi_title "&vendorShortName;-locatiediensten">
+<!ENTITY datareporting_wifi_summary "Help geolocatiediensten voor het openweb te verbeteren door &brandShortName; toe te staan mobiele zendmast informatie te verzamen en deze anoniem te verzenden">
+
+<!ENTITY pref_update_autodownload "Automatische updates">
+<!ENTITY pref_update_autodownload_wifi "Alleen via Wi-Fi">
+<!ENTITY pref_update_autodownload_disabled "Uitgeschakeld">
+<!ENTITY pref_update_autodownload_enabled "Ingeschakeld">
 
 <!ENTITY quit "Afsluiten">
 
@@ -124,6 +176,16 @@ size. -->
 <!ENTITY save_as_pdf "Opslaan als PDF">
 <!ENTITY find_in_page "Zoeken op pagina">
 <!ENTITY desktop_mode "Desktopwebsite opvragen">
+<!ENTITY tools "Extra">
+<!ENTITY new_tab "Nieuw tabblad">
+<!ENTITY new_private_tab "Nieuw privétabblad">
+<!ENTITY close_all_tabs "Alle tabbladen sluiten">
+<!ENTITY tabs_normal "Tabbladen">
+<!ENTITY tabs_private "Privé">
+<!ENTITY tabs_synced "Gesynchroniseerd">
+<!ENTITY wallpaper_success "Achtergrond bijgewerkt">
+<!ENTITY wallpaper_progress "Achtergrond instellen">
+<!ENTITY wallpaper_fail "Achtergrond instellen niet mogelijk">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -133,6 +195,8 @@ size. -->
 <!ENTITY find_close "Sluiten">
 
 <!ENTITY contextmenu_open_new_tab "Openen in nieuw tabblad">
+<!ENTITY contextmenu_open_private_tab "Openen in privétabblad">
+<!ENTITY contextmenu_open_in_reader "Openen in lezer">
 <!ENTITY contextmenu_remove_history "Verwijderen">
 <!ENTITY contextmenu_remove_bookmark "Verwijderen">
 <!ENTITY contextmenu_add_to_launcher "Toevoegen aan startscherm">
@@ -141,9 +205,13 @@ size. -->
 <!ENTITY contextmenu_paste "Plakken">
 <!ENTITY contextmenu_copyurl "Adres kopiëren">
 <!ENTITY contextmenu_edit_bookmark "Bewerken">
+<!ENTITY contextmenu_subscribe "Abonneren op pagina">
+<!ENTITY contextmenu_site_settings "Website-instellingen bewerken">
 
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-	 after a page is removed from browser history. -->
+<!ENTITY pref_titlebar_mode "Titelbalk">
+<!ENTITY pref_titlebar_mode_title "Paginatitel tonen">
+<!ENTITY pref_titlebar_mode_url "Pagina-adres tonen">
+
 <!ENTITY history_removed "Pagina verwijderd">
 
 <!ENTITY bookmark_edit_title "Bladwijzer bewerken">
@@ -151,45 +219,55 @@ size. -->
 <!ENTITY bookmark_edit_location "Locatie">
 <!ENTITY bookmark_edit_keyword "Sleutelwoord">
 
-<!ENTITY site_settings_title2       "Website-instellingen…">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "Website-instellingen">
 <!ENTITY site_settings_cancel       "Annuleren">
 <!ENTITY site_settings_clear        "Wissen">
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
 <!ENTITY reading_list "Leeslijst">
-<!ENTITY reading_list_added "Pagina toegevoegd aan uw leeslijst">
-<!ENTITY reading_list_removed "Pagina verwijderd van uw leeslijst">
-<!ENTITY reading_list_failed "Pagina toevoegen aan uw leeslijst mislukt">
-<!ENTITY reader_mode "Leesmodus">
+<!ENTITY reading_list_added "Pagina aan uw leeslijst toegevoegd">
+<!ENTITY reading_list_removed "Pagina van uw leeslijst verwijderd">
+<!ENTITY reading_list_failed "Pagina aan uw leeslijst toevoegen mislukt">
+<!ENTITY reading_list_duplicate "Pagina staat al in uw leeslijst">
+<!ENTITY reader "Lezer">
 
 <!ENTITY masterpassword_create_title "Hoofdwachtwoord aanmaken">
 <!ENTITY masterpassword_remove_title "Hoofdwachtwoord verwijderen">
 <!ENTITY masterpassword_password "Wachtwoord">
-<!ENTITY masterpassword_confirm "Wachtwoord bevestigen">
+<!ENTITY masterpassword_confirm "Bevestig wachtwoord">
 
 <!ENTITY button_ok "OK">
 <!ENTITY button_cancel "Annuleren">
+<!ENTITY button_yes "Ja">
+<!ENTITY button_no "Nee">
 <!ENTITY button_clear_data "Gegevens wissen">
+<!ENTITY button_set "Instellen">
+<!ENTITY button_clear "Wissen">
 
 <!ENTITY abouthome_addons_title "Add-ons voor uw &brandShortName;">
 <!ENTITY abouthome_addons_browse "Door alle &brandShortName;-add-ons bladeren">
 <!ENTITY abouthome_last_tabs_title "Uw tabbladen van de vorige keer">
 <!ENTITY abouthome_last_tabs_open "Alle tabbladen van de vorige keer openen">
 <!ENTITY abouthome_top_sites_title "Topwebsites">
-<!ENTITY abouthome_top_sites_browse "Door alle topwebsites bladeren">
+<!ENTITY abouthome_topsites_edit "Bewerken">
+<!ENTITY abouthome_topsites_pin "Website vastmaken">
+<!ENTITY abouthome_topsites_unpin "Website losmaken">
+
 <!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
      chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
      clicking this text in the promotions box will perform some action. Note
      that a non-breaking space (unicode= U+00A0) should be used between this
      character and the remainder of the string to prevent word wrap. -->
-<!ENTITY abouthome_about_sync3 "Stel Firefox Sync in voor toegang tot uw bladwijzers, geschiedenis en tabbladen van uw andere apparaten&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "Download apps van de Mozilla Marketplace en ontdek het beste wat het internet te bieden heeft&#x00A0;»">
+<!ENTITY abouthome_about_sync3 "Stel Firefox Sync in voor toegang tot bladwijzers, geschiedenis en tabbladen van uw andere apparaten&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "Download apps van de Firefox Marketplace en ontdek het beste wat het internet te bieden heeft&#x00A0;»">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
      These strings are accentuated as bold text in the "abouthome_about_..."
      strings above. These strings should be a subset of the strings above and
      generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "Bestand kiezen">
 <!ENTITY filepicker_audio_title "Een geluid kiezen of opnemen">
@@ -211,6 +289,15 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "welke wordt beheerd door">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "Deze pagina toont onvelige inhoud.">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName; heeft de onveile inhoud geblokkeerd.">
+<!ENTITY blocked_mixed_content_message_bottom "De meeste websites werken gewoon zelfs als deze inhoud wordt geblokkeerd.">
+<!ENTITY learn_more "Meer info">
+<!ENTITY enable_protection "Bescherming inschakelen">
+<!ENTITY disable_protection "Bescherming uitschakelen">
+<!ENTITY keep_blocking "Blijven blokkeren">
+
 <!ENTITY private_data_success "Privégegevens gewist">
 <!ENTITY private_data_fail "Sommige privégegevens konden niet worden gewist">
 
@@ -223,16 +310,22 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          uit Android">
 <!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
 
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "Wilt u &formatS;-zoeksuggesties aanzetten?">
+
 <!ENTITY webapp_generic_name "App">
 
+<!ENTITY searchable_description "Bladwijzers en geschiedenis">
+
 <!-- Updater notifications -->
-<!ENTITY updater_start_title2 "Update beschikbaar voor &brandShortName;">
-<!ENTITY updater_start_select2 "Aanraken om te downloaden">
+<!ENTITY updater_start_title2 "Update voor &brandShortName; beschikbaar">
+<!ENTITY updater_start_select2 "Raak aan om te downloaden">
 
 <!ENTITY updater_downloading_title2 "&brandShortName; downloaden">
 <!ENTITY updater_downloading_title_failed2 "Downloaden mislukt">
-<!ENTITY updater_downloading_select2 "Aanraken om update toe te passen wanneer gedownload">
-<!ENTITY updater_downloading_retry2 "Aanraken om opnieuw te proberen">
+<!ENTITY updater_downloading_select2 "Raak aan om update na downloaden toe te passen">
+<!ENTITY updater_downloading_retry2 "Raak aan om opnieuw te proberen">
 
-<!ENTITY updater_apply_title2 "Update beschikbaar voor &brandShortName;">
-<!ENTITY updater_apply_select2 "Aanraken om bij te werken">
+<!ENTITY updater_apply_title2 "Update voor &brandShortName; beschikbaar">
+<!ENTITY updater_apply_select2 "Raak aan om bij te werken">

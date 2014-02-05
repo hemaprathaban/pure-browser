@@ -9,10 +9,11 @@
 
 
 <!ENTITY window.title "Consol Gwe">
+<!ENTITY browserConsole.title "Consol y Porwr">
 
-<!ENTITY networkPanel.requestURL                  "URL sy'n gofyn">
-<!ENTITY networkPanel.requestMethod               "Dull Gofyn">
-<!ENTITY networkPanel.statusCode                  "Cod Statws">
+<!ENTITY networkPanel.requestURLColon             "URL sy'n Gofyn:">
+<!ENTITY networkPanel.requestMethodColon          "Dull Gofyn:">
+<!ENTITY networkPanel.statusCodeColon             "Cod Statws:">
 
 <!ENTITY networkPanel.requestHeaders              "Pennyn Gofyn">
 <!ENTITY networkPanel.requestCookie               "Cwci wedi ei Anfon">
@@ -20,6 +21,7 @@
 <!ENTITY networkPanel.requestFormData             "Data Ffurflen Anfonwyd">
 
 <!ENTITY networkPanel.responseHeaders             "Pennyn Ymateb">
+<!ENTITY networkPanel.responseCookie              "Cwci wedi ei Dderbyn">
 <!ENTITY networkPanel.responseBody                "Corff Ymateb">
 <!ENTITY networkPanel.responseBodyCached          "Data Cadwyd">
 <!ENTITY networkPanel.responseBodyUnknownType     "Cynnwys o Fath Anyhysbys">
@@ -31,6 +33,11 @@
 
 <!ENTITY saveBodies.label     "Cofnodi Ceisiadau ac Ymateb Cyrff">
 <!ENTITY saveBodies.accesskey "o">
+<!-- LOCALIZATION NOTE (openURL.label): You can see this string in the Web
+   - Console context menu. -->
+
+<!ENTITY openURL.label     "Agor URL mewn Tab Newydd">
+<!ENTITY openURL.accesskey "T">
 <!-- LOCALIZATION NOTE (btnPageNet.label): This string is used for the menu
   -  button that allows users to toggle the network logging output.
   -  This string and the following strings toggle various kinds of output
@@ -38,10 +45,22 @@
 
 <!ENTITY btnPageNet.label   "Gwe">
 <!ENTITY btnPageNet.tooltip "Cofnodi mynediad gwe">
+<!ENTITY btnPageNet.accesskey "G">
+<!-- LOCALIZATION NOTE (btnPageNet.accesskeyMacOSX): This string is used as
+  -  access key for the menu button that allows users to toggle the network
+  -  logging output. On MacOSX accesskeys are available with Ctrl-*. Please make
+  -  sure you do not use the following letters: A, E, N and P. These are used
+  -  for editing commands in text inputs. -->
+<!ENTITY btnPageNet.accesskeyMacOSX "t">
 <!ENTITY btnPageCSS.label   "CSS">
 <!ENTITY btnPageCSS.tooltip "Cofnodi gwallau didoli CSS">
+<!ENTITY btnPageCSS.accesskey "C">
 <!ENTITY btnPageJS.label    "JS">
 <!ENTITY btnPageJS.tooltip  "Cofnodi eithriadau JavaScript">
+<!ENTITY btnPageJS.accesskey  "J">
+<!ENTITY btnPageSecurity.label "Diogelwch">
+<!ENTITY btnPageSecurity.tooltip "Cofnodi gwallau a rhybuddion diogelwch">
+<!ENTITY btnPageSecurity.accesskey "D">
 <!-- LOCALIZATION NOTE (btnPageLogging): This is used as the text of the
   -  the toolbar. It shows or hides messages that the web developer inserted on
   -  the page for debugging purposes, using calls such console.log() and
@@ -49,35 +68,16 @@
 
 <!ENTITY btnPageLogging.label   "Cofnodi">
 <!ENTITY btnPageLogging.tooltip "Anfonwyd negeseuon cofnod at gwrthrych window.console">
+<!ENTITY btnPageLogging.accesskey "o">
 <!ENTITY btnConsoleErrors       "Gwallau">
 <!ENTITY btnConsoleInfo         "Gwybodaeth">
 <!ENTITY btnConsoleWarnings     "Rhybuddion">
 <!ENTITY btnConsoleLog          "Cofnodi">
-<!-- LOCALIZATION NOTE (btnPosition.label): The label shown for the menu which
-  -  allows the user to toggle between the Web Console positioning types. -->
 
-<!ENTITY btnPosition.label     "Safle">
-<!-- LOCALIZATION NOTE (btnPosition.tooltip): The tooltip shown when the user
-  -  hovers the Position button in the Web Console toolbar. -->
-
-<!ENTITY btnPosition.tooltip   "Gosod y Consol Gwe uwchlaw neu o dan y ddogfen">
-<!-- LOCALIZATION NOTE (positionMenu.above): When this option is selected the
-  -  Web Console interface is displayed above the web page. -->
-
-<!ENTITY positionMenu.above    "Uwchlaw">
-<!-- LOCALIZATION NOTE (positionMenu.below): When this option is selected the
-  -  Web Console interface is displayed below the web page. -->
-
-<!ENTITY positionMenu.below    "Islaw">
-<!-- LOCALIZATION NOTE (positionMenu.window): When this option is selected the
-  -  Web Console interface is displayed in a floating panel. -->
-
-<!ENTITY positionMenu.window   "Ffenestr">
-
-<!ENTITY filterBox.placeholder "Hidl">
+<!ENTITY filterOutput.placeholder "Allbwn hidl">
 <!ENTITY btnClear.label        "Clirio">
 <!ENTITY btnClear.tooltip      "Clirio allbwn y Consol Gwe">
-<!ENTITY btnClose.tooltip      "Cau'r Consol Gwe">
+<!ENTITY btnClear.accesskey    "l">
 
 <!ENTITY fullZoomEnlargeCmd.commandkey  "+">
 <!-- + is above this key on many keyboards -->
@@ -89,3 +89,10 @@
 
 <!ENTITY fullZoomResetCmd.commandkey    "0">
 <!ENTITY fullZoomResetCmd.commandkey2   "">
+
+<!ENTITY copyURLCmd.label     "Copïo Lleoliad Dolen">
+<!ENTITY copyURLCmd.accesskey "C">
+
+<!ENTITY closeCmd.key         "W">
+<!ENTITY findCmd.key          "F">
+<!ENTITY clearOutputCmd.key   "K">

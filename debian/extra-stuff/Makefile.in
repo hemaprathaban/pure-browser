@@ -5,6 +5,8 @@ VPATH		= @srcdir@
 
 include $(DEPTH)/config/autoconf.mk
 
+STANDALONE_MAKEFILE := 1
+
 PREF_JS_EXPORTS := places.js
 
 EXTRA_COMPONENTS := addonsInfo.js addonsInfo.manifest

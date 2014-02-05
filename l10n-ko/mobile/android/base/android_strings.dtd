@@ -11,18 +11,21 @@
 <!ENTITY  awesomebar_all_pages_title "전체">
 <!ENTITY  awesomebar_bookmarks_title "북마크">
 <!ENTITY  awesomebar_history_title "방문기록">
-<!ENTITY  awesomebar_search_engine "\&quot;&#037;s\&quot; 검색">
+<!ENTITY  awesomebar_switch_to_tab "탭 전환">
 
 <!ENTITY  crash_reporter_title "&brandShortName; 문제점 보고">
-<!ENTITY  crash_message "&brandShortName;가 예기치 않게 종료하였습니다. 다시 시작하면 현재 탭 목록이 &brandShortName; 첫화면에 보일 것입니다.">
-<!ENTITY  crash_help_message "문제 해결에 도움주기">
-<!ENTITY  crash_send_report_message "문제 사항을 Mozilla에 보내기">
-<!ENTITY  crash_include_url "주소 포함">
+<!ENTITY  crash_message2 "&brandShortName;가 문제가 생겨 예기치 않게 종료하였습니다. 다시 시작하면 현재 탭 목록이 &brandShortName; 첫 화면에 보일 것입니다.">
+<!ENTITY  crash_send_report_message3 "문제점을 고치기 위해 &vendorShortName;에 보내기">
+<!ENTITY  crash_include_url2 "방문 했던 페이지의 주소 포함하기">
+<!ENTITY  crash_sorry "죄송합니다">
+<!ENTITY  crash_comment "의견 추가하기 (의견은 공개적으로 불 수 있습니다)">
+<!ENTITY  crash_allow_contact2 "이 보고서에 대해 &vendorShortName;가 연락하는 것을 허가함">
+<!ENTITY  crash_email "이메일">
+<!ENTITY  crash_closing_alert "문제점 보고서를 보내지 않고 종료하시겠습니까?">
 <!ENTITY  crash_close_label "닫기">
 <!ENTITY  crash_restart_label "&brandShortName; 다시 시작">
 <!ENTITY  sending_crash_report "문제 보내기\u2026">
 <!ENTITY  exit_label "종료">
-<!ENTITY  continue_label "계속">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName; 웹앱">
 <!ENTITY  launcher_shortcuts_empty "검색된 웹앱이 없음">
@@ -38,6 +41,7 @@
 <!ENTITY bookmark_added "북마크 추가">
 <!ENTITY bookmark_removed "북마크 삭제">
 <!ENTITY bookmark_updated "북마크 업데이트">
+<!ENTITY bookmark_options "설정">
 
 <!ENTITY history_today_section "오늘">
 <!ENTITY history_yesterday_section "어제">
@@ -53,10 +57,11 @@
 <!ENTITY stop "중지">
 <!ENTITY site_security "보안 정보">
 
-<!ENTITY new_tab "새 탭">
 <!ENTITY close_tab "탭 닫기">
 <!ENTITY one_tab "한 개의 탭">
-<!ENTITY num_tabs "&#037;d 개의 탭">
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one
+     We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs2 "&formatD; 개의 탭">
 <!ENTITY new_tab_opened "열린 새 탭">
 
 <!ENTITY settings "프로그램 설정">
@@ -64,12 +69,28 @@
 <!ENTITY pref_category_general "일반">
 <!ENTITY pref_category_privacy "개인 정보 및 보안">
 <!ENTITY pref_category_content "내용">
-<!ENTITY pref_category_importexport "가져오기 및 내보내기">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "데이터 선택">
 <!ENTITY pref_about_firefox "&brandShortName; 정보">
-<!ENTITY pref_do_not_track "개인 정보 추적 금지">
-<!ENTITY pref_telemetry "성능 개선 정보 보내기">
 <!ENTITY pref_remember_signons "암호 저장">
-<!ENTITY pref_cookies "쿠키(Cookie) 사용">
+
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "일반">
+<!ENTITY pref_header_privacy "개인 정보 &amp; 보안">
+<!ENTITY pref_header_content "내용">
+
+<!ENTITY pref_cookies_menu "쿠키">
+<!ENTITY pref_cookies_accept_all "사용하기">
+<!ENTITY pref_cookies_not_accept_foreign "사용하기 (제3자 쿠키 제외)">
+<!ENTITY pref_cookies_disabled "사용 안 함">
+
+<!ENTITY pref_donottrack_menu "추적">
+<!ENTITY pref_donottrack_disallow_tracking "웹 사이트에 방문자 추적 중지 요청 전송">
+<!ENTITY pref_donottrack_allow_tracking "웹 사이트에 방문자 추적 요청 전송">
+<!ENTITY pref_donottrack_no_pref "웹 사이트에 방문자 추적 여부 전송 안 함">
+
 <!ENTITY pref_char_encoding "문자 인코딩 표시">
 <!ENTITY pref_char_encoding_on "메뉴 보기">
 <!ENTITY pref_char_encoding_off "메뉴 숨기기">
@@ -77,8 +98,9 @@
 <!ENTITY pref_plugins "플러그인">
 <!ENTITY pref_plugins_enabled "사용하기">
 <!ENTITY pref_plugins_tap_to_play "탭으로 실행">
-<!ENTITY pref_plugins_disabled "사용 안함">
+<!ENTITY pref_plugins_disabled "사용 안 함">
 <!ENTITY pref_text_size "글자 크기">
+<!ENTITY pref_reflow_on_zoom3 "더블 탭 시 자동 줄 바꿈">
 <!ENTITY pref_font_size_tiny "매우 작게">
 <!ENTITY pref_font_size_small "작게">
 <!ENTITY pref_font_size_medium "중간">
@@ -95,6 +117,7 @@ size. -->
 demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_font_size_preview_text "불여우는 여러분이 생각하는 속도, 유연성, 안전성을 뛰어넘습니다. 비영리 단체이기 때문에 타협하는 압박 없이 여러분을 위한 혁신을 마음껏 할 수 있습니다. 이것은 여러분에게 더 나은 인터넷 경험과 웹 미래를  밝게 해줄 것입니다.">
 <!ENTITY pref_use_master_password "기본 암호 사용">
+<!ENTITY pref_show_product_announcements "제품 알림 보여주기">
 <!ENTITY pref_sync "동기화">
 <!ENTITY pref_search_suggestions "추천 검색어 표시">
 <!ENTITY pref_import_android "Android에서 가져오기">
@@ -104,7 +127,39 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_private_data_passwords "저장한 암호">
 <!ENTITY pref_private_data_cache "캐시">
 <!ENTITY pref_private_data_offlineApps "오프라인 웹 데이터">
-<!ENTITY pref_private_data_siteSettings "웹 사이트별 설정">
+<!ENTITY pref_private_data_siteSettings2 "웹 사이트별 설정">
+<!ENTITY pref_private_data_downloadFiles "다운로드된 파일">
+
+<!ENTITY datareporting_notification_title "&brandShortName; 통계 &amp; 데이터">
+<!ENTITY datareporting_notification_action_long "공유할 정보 선택하기">
+<!ENTITY datareporting_notification_action "공유 대상 선택하기">
+<!ENTITY datareporting_notification_summary "여러분이 보다 나은 경험을 할 수 있도록 &brandShortName;는 &vendorShortName;에 자동으로 일부 정보를 전송합니다.">
+<!ENTITY datareporting_notification_summary_short "여러분이 보다 나은 경험을 할 수 있도록 &brandShortName;…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
+
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "&brandShortName; 상태 검사 보고서">
+<!ENTITY datareporting_fhr_summary2 "브라우저 상태를 &vendorShortName;와 공유하고 성능을 이해할 수 있도록 도움">
+<!ENTITY datareporting_abouthr_title "상태 검사 보고서 보기">
+<!ENTITY datareporting_telemetry_title "데이터 수집">
+<!ENTITY datareporting_telemetry_summary "브라우저의 성능, 사용, 그리고 설정에 대한 데이터를 &vendorShortName;와 공유하여 &brandShortName;가 보다 나아지도록 도움">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName;가 오류 보고서를 전송하여 &vendorShortName;가 브라우저를 보다 안정적이고 보안이 강화되도록 도움">
+<!-- Localization note (datareporting_crashreporter_title_short) : This string matches
+     (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "오류 보고서">
+<!ENTITY datareporting_wifi_title "&vendorShortName; 위치 기반 서비스">
+<!ENTITY datareporting_wifi_summary "&brandShortName;가 익명의 셀룰러 타워 데이터를 수집하고 전송하도록 허락하여 오픈 웹을 위해 위치 기반 서비스를 향상시키도록 도움">
+
+<!ENTITY pref_update_autodownload "자동 업데이트">
+<!ENTITY pref_update_autodownload_wifi "Wi-Fi에서만">
+<!ENTITY pref_update_autodownload_disabled "사용 안 함">
+<!ENTITY pref_update_autodownload_enabled "사용하기">
+
 <!ENTITY quit "종료">
 
 <!ENTITY addons "부가 기능">
@@ -116,8 +171,18 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY share_title "공유 방법 선택">
 <!ENTITY share_image_failed "이미지 공유하지 않기">
 <!ENTITY save_as_pdf "PDF로 저장">
-<!ENTITY desktop_mode "PC웹으로 보기">
 <!ENTITY find_in_page "페이지내 검색">
+<!ENTITY desktop_mode "PC웹으로 보기">
+<!ENTITY tools "도구">
+<!ENTITY new_tab "새 탭">
+<!ENTITY new_private_tab "새 사생활 탭">
+<!ENTITY close_all_tabs "모든 탭 닫기">
+<!ENTITY tabs_normal "탭">
+<!ENTITY tabs_private "사생활">
+<!ENTITY tabs_synced "동기화">
+<!ENTITY wallpaper_success "배경 업데이트">
+<!ENTITY wallpaper_progress "배경 적용 중">
+<!ENTITY wallpaper_fail "배경 적용 실패">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
@@ -127,6 +192,8 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY find_close "닫기">
 
 <!ENTITY contextmenu_open_new_tab "새 탭 열기">
+<!ENTITY contextmenu_open_private_tab "사생활 탭 열기">
+<!ENTITY contextmenu_open_in_reader "읽기 모드로 열기">
 <!ENTITY contextmenu_remove_history "삭제">
 <!ENTITY contextmenu_remove_bookmark "삭제">
 <!ENTITY contextmenu_add_to_launcher "홈 화면에 추가">
@@ -135,6 +202,12 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY contextmenu_paste "붙여넣기">
 <!ENTITY contextmenu_copyurl "주소 복사">
 <!ENTITY contextmenu_edit_bookmark "편집">
+<!ENTITY contextmenu_subscribe "페이지 구독">
+<!ENTITY contextmenu_site_settings "사이트 설정 변경">
+
+<!ENTITY pref_titlebar_mode "제목창">
+<!ENTITY pref_titlebar_mode_title "페이지 제목 표시">
+<!ENTITY pref_titlebar_mode_url "페이지 주소 표시">
 
 <!ENTITY history_removed "방문 기록에서 웹 페이지 삭제 완료">
 
@@ -143,7 +216,9 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY bookmark_edit_location "위치">
 <!ENTITY bookmark_edit_keyword "키워드">
 
-<!ENTITY site_settings_title2        "웹사이트 설정…">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "사이트 설정">
 <!ENTITY site_settings_cancel       "취소">
 <!ENTITY site_settings_clear        "변경">
 <!ENTITY site_settings_no_settings  "변경할 웹 페이지 설정이 없습니다.">
@@ -152,7 +227,8 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY reading_list_added "페이지를 읽기 목록에서 추가 완료">
 <!ENTITY reading_list_removed "페이지를 읽기 목록에서 삭제 완료">
 <!ENTITY reading_list_failed "페이지를 읽기 목록에 추가 실패">
-<!ENTITY reader_mode "읽기 모드">
+<!ENTITY reading_list_duplicate "이미 읽기 목록에 있음">
+<!ENTITY reader "읽기 모드">
 
 
 <!ENTITY masterpassword_create_title "기본 암호 만들기">
@@ -162,27 +238,33 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 
 <!ENTITY button_ok "확인">
 <!ENTITY button_cancel "취소">
+<!ENTITY button_yes "예">
+<!ENTITY button_no "아니오">
 <!ENTITY button_clear_data "데이터 삭제">
+<!ENTITY button_set "설정">
+<!ENTITY button_clear "지우기">
 
 <!ENTITY abouthome_addons_title "&brandShortName; 부가 기능">
 <!ENTITY abouthome_addons_browse "&brandShortName; 부가 기능 전체 목록">
 <!ENTITY abouthome_last_tabs_title "마지막 닫은 탭">
 <!ENTITY abouthome_last_tabs_open "마지막 닫은 탭 모두 열기">
 <!ENTITY abouthome_top_sites_title "상위사이트">
-<!ENTITY abouthome_top_sites_browse "자주 방문 사이트 모두 보기">
+<!ENTITY abouthome_topsites_edit "편집">
+<!ENTITY abouthome_topsites_pin "사이트 고정">
+<!ENTITY abouthome_topsites_unpin "사이트 고정 해제">
 <!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
       chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
       clicking this text in the promotions box will perform some action. Note
       that a non-breaking space (unicode= U+00A0) should be used between this
       character and the remainder of the string to prevent word wrap. -->
 <!ENTITY abouthome_about_sync3 "Firefox Sync를 설정하여, 다른 기기로부터 북마크나 방문 기록, 탭 정보 등을 가져올 수 있습니다&#x00A0;»">
-<!ENTITY abouthome_about_apps2 "Mozilla Marketplace에서 앱을 받으세요. 그리고 웹이 제공하는 최고의 경험을 느껴보세요&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "Firefox Marketplace에서 앱을 받으세요. 그리고 웹이 제공하는 최고의 경험을 느껴보세요&#x00A0;»">
 <!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
       These strings are accentuated as bold text in the "abouthome_about_..."
       strings above. These strings should be a subset of the strings above and
       generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
-<!ENTITY abouthome_apps_bold_name "Mozilla Marketplace">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "파일 선택">
 <!ENTITY filepicker_audio_title "음성 선택 또는 녹음">
@@ -193,6 +275,15 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY identity_connected_to "현재 웹 사이트는 인증 되었음">
 <!ENTITY identity_run_by "운영 업체 정보:">
 
+<!-- Mixed content notifications in site identity popup -->
+<!ENTITY loaded_mixed_content_message "이 페이지는 안전하지 않은 콘텐츠를 보여주고 있습니다.">
+<!ENTITY blocked_mixed_content_message_top "&brandShortName;가 안전하지 않은 콘텐츠를 차단했습니다.">
+<!ENTITY blocked_mixed_content_message_bottom "이 콘텐츠가 차단되어도 대부분의 웹사이트들은 잘 작동할 것입니다.">
+<!ENTITY learn_more "더 알아보기">
+<!ENTITY enable_protection "보호하기">
+<!ENTITY disable_protection "보호하지 않기">
+<!ENTITY keep_blocking "차단 유지">
+
 <!ENTITY private_data_success "개인 정보 삭제 완료">
 <!ENTITY private_data_fail "일부 개인 정보 삭제 안됨">
 
@@ -202,20 +293,22 @@ demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY bookmarkhistory_import_history "방문 기록 가져오는 중">
 <!ENTITY bookmarkhistory_import_wait "잠시 기다리세요…">
 
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+<!ENTITY suggestions_prompt2 "&formatS; 검색 자동완성을 사용하시겠습니까?">
+
 <!ENTITY webapp_generic_name "앱">
 
+<!ENTITY searchable_description "북마크 및 방문 기록">
+
 <!-- Updater notifications -->
-<!ENTITY updater_start_title "&brandShortName;">
-<!ENTITY updater_start_ticker "&brandShortName; - 새로 나온 업데이트">
-<!ENTITY updater_start_select "업데이트를 다운로드합니다.">
+<!ENTITY updater_start_title2 "&brandShortName; 업데이트 가능">
+<!ENTITY updater_start_select2 "다운로드 하기">
 
-<!ENTITY updater_downloading_title "&brandShortName; 다운로드 중">
-<!ENTITY updater_downloading_ticker "&brandShortName; 업데이트 다운로드 중…">
-<!ENTITY updater_downloading_ticker_failed "&brandShortName; 업데이트 다운로드를 실패했습니다...">
-<!ENTITY updater_downloading_select "다운로드 완료시 업데이트를 적용합니다.">
-<!ENTITY updater_downloading_retry "업데이트를 다시 다운로드합니다.">
-<!ENTITY updater_downloading_willapply "다운로드 완료를 기다리고 있습니다.">
+<!ENTITY updater_downloading_title2 "&brandShortName; 다운로드 중">
+<!ENTITY updater_downloading_title_failed2 "다운로드 실패">
+<!ENTITY updater_downloading_select2 "다운로드된 업데이트 적용">
+<!ENTITY updater_downloading_retry2 "재시도">
 
-<!ENTITY updater_apply_title "&brandShortName;">
-<!ENTITY updater_apply_ticker "&brandShortName; 업데이트">
-<!ENTITY updater_apply_select "다운로드한 업데이트를 적용합니다.">
+<!ENTITY updater_apply_title2 "&brandShortName;의 업데이트 있음">
+<!ENTITY updater_apply_select2 "업데이트">

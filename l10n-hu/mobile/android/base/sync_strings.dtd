@@ -15,8 +15,8 @@
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Új eszközének aktiválásához válassza az eszközön a „Szinkronizálás beállítása” lehetőséget.'>
-<!ENTITY sync.subtitle.header.label 'Adja meg ezt a kódot a számítógépén'>
-<!ENTITY sync.subtitle.connectlocation.label 'Válassza az „&sync.title.pair.label;” lehetőséget az asztali Firefox beállításainak &syncBrand.shortName.label; szakaszában.'>
+<!ENTITY sync.subtitle.header2.label 'Adja meg ezt a kódot az eszközén'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Válassza az „&sync.title.pair.label;” lehetőséget a másik eszköz Firefox beállításainak &syncBrand.shortName.label; szakaszában.'>
 <!ENTITY sync.subtitle.pair.label 'Az aktiváláshoz válassza a másik eszközön az „Eszköz párosítása” lehetőséget.'>
 <!ENTITY sync.pin.default.label '…\n…\n…\n'>
 <!ENTITY sync.pin.oneline.label '...'>
@@ -51,12 +51,20 @@
 <!ENTITY sync.subtitle.manage.label1 'A &syncBrand.fullName.label;-fiókja már be van állítva. A Beállítások alatt kezelheti a fiókját, vagy elindíthatja a &brandShortName;-ot.'>
 
 <!-- Pair Device -->
-<!ENTITY sync.pair.tryagain.label 'Próbálja meg újra.'>
+<!ENTITY sync.pair.tryagain.label 'Próbálja újra.'>
 <!ENTITY sync.pair.connectlocation.label 'Új eszközének aktiválásához válassza az eszközön a „Szinkronizálás beállítása”, majd a „Van már fiókom” lehetőséget.'>
 
 <!-- Firefox SyncAdapter Settings Screen -->
 <!ENTITY sync.settings.options.label 'Beállítások'>
 <!ENTITY sync.summary.pair.label 'Másik eszköz csatolása a &syncBrand.shortName.label;-fiókjához'>
+
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Szinkronizálandó elemek'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Szinkronizálandó…'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Könyvjelzők'>
+<!ENTITY sync.configure.engines.title.passwords 'Jelszavak'>
+<!ENTITY sync.configure.engines.title.history 'Előzmények'>
+<!ENTITY sync.configure.engines.title.tabs 'Lapok'>
 
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Mégse'>
@@ -75,15 +83,18 @@
 <!ENTITY bookmarks.folder.desktop.label 'Asztali könyvjelzők'>
 <!ENTITY bookmarks.folder.mobile.label 'Mobil könyvjelzők'>
 <!ENTITY bookmarks.folder.readinglist.label 'Olvasási lista'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Mindig felül'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Csak egy &syncBrand.fullName.label;-fiók támogatott.'>
+<!ENTITY sync.notification.configure.saved 'A beállítások mentve.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.invalidcreds.label 'Helytelen fióknév vagy jelszó.'>
 <!ENTITY sync.invalidserver.label 'Írjon be egy érvényes kiszolgáló URL-t'>
 <!ENTITY sync.verifying.label 'Ellenőrzés…'>
-<!ENTITY sync.new.recoverykey.status.incorrect 'A helyreállítási kulcs helytelen. Próbálja meg újra.'>
+<!ENTITY sync.new.recoverykey.status.incorrect 'A helyreállítási kulcs helytelen. Próbálja újra.'>
 
 <!-- Send tab to device. -->
 <!ENTITY sync.title.send.tab.label 'Lap küldése eszközökre'>

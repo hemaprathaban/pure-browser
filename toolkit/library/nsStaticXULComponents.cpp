@@ -54,12 +54,6 @@
 #define ICON_MODULE
 #endif
 
-#ifdef ACCESSIBILITY
-#define ACCESS_MODULES MODULE(nsAccessibilityModule)
-#else
-#define ACCESS_MODULES
-#endif
-
 #ifdef MOZ_ENABLE_XREMOTE
 #define XREMOTE_MODULES MODULE(RemoteServiceModule)
 #else
@@ -143,6 +137,12 @@
 #define WINDOWSPROXY_MODULE
 #endif
 
+#if defined(MOZ_WIDGET_ANDROID)
+#define ANDROIDPROXY_MODULE MODULE(nsAndroidProxyModule)
+#else
+#define ANDROIDPROXY_MODULE
+#endif
+
 #if defined(BUILD_CTYPES)
 #define JSCTYPES_MODULE MODULE(jsctypes)
 #else
@@ -162,6 +162,12 @@
 #define PROFILER_MODULE MODULE(nsProfilerModule)
 #else
 #define PROFILER_MODULE
+#endif
+
+#if defined(MOZ_WEBRTC)
+#define PEERCONNECTION_MODULE MODULE(peerconnection)
+#else
+#define PEERCONNECTION_MODULE
 #endif
 
 #if defined(MOZ_GIO_COMPONENT)
@@ -186,6 +192,7 @@
     MODULE(nsWindowDataSourceModule)         \
     MODULE(nsParserModule)                   \
     MODULE(nsImageLib2Module)                \
+    MODULE(nsMediaSnifferModule)             \
     MODULE(nsGfxModule)                      \
     PROFILER_MODULE                          \
     WIDGET_MODULES                           \
@@ -195,7 +202,6 @@
     MODULE(docshell_provider)                \
     MODULE(embedcomponents)                  \
     MODULE(Browser_Embedding_Module)         \
-    ACCESS_MODULES                           \
     MODULE(appshell)                         \
     MODULE(nsTransactionManagerModule)       \
     MODULE(nsComposerModule)                 \
@@ -217,6 +223,7 @@
     UNIXPROXY_MODULE                         \
     OSXPROXY_MODULE                          \
     WINDOWSPROXY_MODULE                      \
+    ANDROIDPROXY_MODULE                      \
     JSCTYPES_MODULE                          \
     MODULE(jsreflect)                        \
     MODULE(jsperf)                           \
@@ -226,7 +233,9 @@
     MODULE(nsTelemetryModule)                \
     MODULE(jsinspector)                      \
     MODULE(jsdebugger)                       \
+    PEERCONNECTION_MODULE                    \
     GIO_MODULE                               \
+    MODULE(DiskSpaceWatcherModule)           \
     /* end of list */
 
 #define MODULE(_name) \

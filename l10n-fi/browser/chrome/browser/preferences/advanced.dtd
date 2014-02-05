@@ -32,10 +32,26 @@
 <!ENTITY setDefault.label                "Aseta &brandShortName; oletusselaimeksi">
 <!ENTITY setDefault.accesskey            "t">
 <!ENTITY isDefault.label                 "&brandShortName; on järjestelmän oletusselain">
-<!ENTITY submitCrashes.label             "Lähetä kaatumisilmoitus">
-<!ENTITY submitCrashes.accesskey         "ä">
-<!ENTITY submitTelemetry.label           "Lähetä suorityskykytietoja">
-<!ENTITY submitTelemetry.accesskey       "h">
+
+<!ENTITY dataChoicesTab.label            "Tietojen lähettäminen">
+
+<!ENTITY healthReportSection.label       "&brandShortName;in terveydentilaraportti">
+<!ENTITY healthReportDesc.label          "Antaa sinulle tietoa selaimesi suorituskyvystä ja jakaa tietoja selaimen terveydentilasta &vendorShortName;n kanssa">
+<!ENTITY enableHealthReport.label        "Kerää &brandShortName;in terveydentilaraportin tiedot">
+<!ENTITY enableHealthReport.accesskey    "K">
+<!ENTITY healthReportLearnMore.label     "Lue lisää">
+
+<!ENTITY telemetrySection.label          "Tietojen mittaaminen">
+<!ENTITY telemetryDesc.label             "Lähetä &vendorShortName;lle tietoja selaimen suorituskyvystä, käytöstä, käytetystä laitteistosta ja tehdyistä muokkauksista ja auta meitä kehittämään &brandShortName;ia">
+<!ENTITY enableTelemetry.label           "Mittaa tietoja">
+<!ENTITY enableTelemetry.accesskey       "M">
+<!ENTITY telemetryLearnMore.label        "Lue lisää">
+
+<!ENTITY crashReporterSection.label      "Kaatumisilmoitukset">
+<!ENTITY crashReporterDesc.label         "&brandShortName; lähettää tietoja kaatumisista &vendorShortName;lle, jotta voimme tehdä selaimestasi entistä vakaamman ja turvallisen">
+<!ENTITY enableCrashReporter.label       "Tee kaatumisilmoituksia">
+<!ENTITY enableCrashReporter.accesskey   "T">
+<!ENTITY crashReporterLearnMore.label    "Lue lisää">
 
 <!ENTITY networkTab.label                "Verkko">
 
@@ -68,8 +84,13 @@
 <!ENTITY updateTab.label                 "Päivitys">
 
 <!ENTITY updateApp.label                 "&brandShortName;in päivitykset:">
-<!ENTITY updateAuto.label                "Asenna automaattisesti (suositeltu: turvallisin)">
-<!ENTITY updateAuto.accesskey            "A">
+<!-- Note either updateAuto1 is used or (updateAutoMetro and updateAutoDesktop),
+     so re-using accesss key in updateAuto1 is OK. updateAutoDesktop can be found
+     in preferences.properties -->
+<!ENTITY updateAuto1.label               "Asenna päivitykset automaattisesti (suositeltu: turvallisin)">
+<!ENTITY updateAuto1.accesskey           "A">
+<!ENTITY updateAutoMetro.label           "Päivitä automaattisesti &brandShortName;in työpöytä- ja Windows 8 -versioista">
+<!ENTITY updateAutoMetro.accesskey       "a">
 <!ENTITY updateCheck.label               "Hae päivityksiä, mutta minä päätän asennetaanko ne">
 <!ENTITY updateCheck.accesskey           "H">
 <!ENTITY updateManual.label              "Älä hae päivityksiä (ei suositeltu: turvallisuusriski)">
@@ -77,6 +98,8 @@
 
 <!ENTITY updateAutoAddonWarn.label       "Varoita, jos päivitys poistaa käytöstä lisäosia">
 <!ENTITY updateAutoAddonWarn.accesskey   "V">
+
+<!ENTITY updateAutoMetroWarn.label       "(&brandShortName;in Windows 8 -versio ei tarkista lisäosien yhteensopivuutta)">
 
 <!ENTITY updateHistory.label             "Näytä päivityshistoria">
 <!ENTITY updateHistory.accesskey         "N">
@@ -99,14 +122,7 @@
 <!ENTITY offlineAppsListRemove.accesskey "s">
 <!ENTITY offlineAppRemove.confirm        "Poista yhteydetöntä tilaa varten tallennetut tiedot">
 
-<!ENTITY encryptionTab.label             "Salaus">
-
-<!ENTITY protocols.label                 "Yhteyskäytännöt">
-<!ENTITY useSSL3.label                   "Salli SSL 3.0 -turvakäytäntö">
-<!ENTITY useSSL3.accesskey               "3">
-<!ENTITY useTLS1.label                   "Salli TLS 1.0 -turvakäytäntö">
-<!ENTITY useTLS1.accesskey               "1">
-<!ENTITY certificates.label              "Varmenteet">
+<!ENTITY certificateTab.label            "Varmenteet">
 <!ENTITY certSelection.description       "Sivuston pyytäessä varmennettani:">
 <!ENTITY certs.auto                      "Valitse sellainen automaattisesti">
 <!ENTITY certs.auto.accesskey            "V">
@@ -114,8 +130,6 @@
 <!ENTITY certs.ask.accesskey             "K">
 <!ENTITY viewCerts.label                 "Näytä varmenteet">
 <!ENTITY viewCerts.accesskey             "N">
-<!ENTITY viewCRLs.label                  "Sulkulistat">
-<!ENTITY viewCRLs.accesskey              "S">
 <!ENTITY verify2.label                   "Varmennus">
 <!ENTITY verify2.accesskey               "m">
 <!ENTITY viewSecurityDevices.label       "Turvallisuuslaitteet">

@@ -8,76 +8,76 @@
   - A good criteria is the language in which you'd find the best
   - documentation on web development on the web. -->
 
-<!ENTITY window.title "Penel Gwiad">
+<!ENTITY window.title "Web Console">
+<!ENTITY browserConsole.title "Browser Console">
 
-<!ENTITY networkPanel.requestURL                  "Goulenn un URL">
-<!ENTITY networkPanel.requestMethod               "Hentenn ar goulenn">
-<!ENTITY networkPanel.statusCode                  "Boneg ar stad">
+<!ENTITY networkPanel.requestURLColon             "Request URL:">
+<!ENTITY networkPanel.requestMethodColon          "Request Method:">
+<!ENTITY networkPanel.statusCodeColon             "Status Code:">
 
-<!ENTITY networkPanel.requestHeaders              "Talbennoù ar goulenn">
-<!ENTITY networkPanel.requestCookie               "Toupin kaset">
-<!ENTITY networkPanel.requestBody                 "Korf ar goulenn">
-<!ENTITY networkPanel.requestFormData             "Roadennoù ar furmskrid kaset">
+<!ENTITY networkPanel.requestHeaders              "Request Headers">
+<!ENTITY networkPanel.requestCookie               "Sent Cookie">
+<!ENTITY networkPanel.requestBody                 "Request Body">
+<!ENTITY networkPanel.requestFormData             "Sent Form Data">
 
-<!ENTITY networkPanel.responseHeaders             "Talbennoù ar respont">
-<!ENTITY networkPanel.responseBody                "Korf ar respont">
-<!ENTITY networkPanel.responseBodyCached          "Roadennoù lakaet er grubuilh">
-<!ENTITY networkPanel.responseBodyUnknownType     "Rizh an endalc'had dianav">
-<!ENTITY networkPanel.responseNoBody              "Korf ar respont ebet">
-<!ENTITY networkPanel.responseImage               "Skeudenn degemeret">
-<!ENTITY networkPanel.responseImageCached         "Skeudenn lakaet er grubuilh">
+<!ENTITY networkPanel.responseHeaders             "Response Headers">
+<!ENTITY networkPanel.responseCookie              "Received Cookie">
+<!ENTITY networkPanel.responseBody                "Response Body">
+<!ENTITY networkPanel.responseBodyCached          "Cached Data">
+<!ENTITY networkPanel.responseBodyUnknownType     "Unknown Content Type">
+<!ENTITY networkPanel.responseNoBody              "No Response Body">
+<!ENTITY networkPanel.responseImage               "Received Image">
+<!ENTITY networkPanel.responseImageCached         "Cached Image">
 
 <!-- LOCALIZATION NOTE (saveBodies.label): You can see this string in the Web
    - Console context menu. -->
-<!ENTITY saveBodies.label     "Skrivañ korfoù an azgoulennoù hag ar respontoù war ar c'herzhlevr">
-<!ENTITY saveBodies.accesskey "l">
+<!ENTITY saveBodies.label     "Log Request and Response Bodies">
+<!ENTITY saveBodies.accesskey "L">
+
+<!-- LOCALIZATION NOTE (openURL.label): You can see this string in the Web
+   - Console context menu. -->
+<!ENTITY openURL.label     "Open URL in New Tab">
+<!ENTITY openURL.accesskey "T">
 
 <!-- LOCALIZATION NOTE (btnPageNet.label): This string is used for the menu
   -  button that allows users to toggle the network logging output.
   -  This string and the following strings toggle various kinds of output
   -  filters. -->
-<!ENTITY btnPageNet.label   "Rouedad">
-<!ENTITY btnPageNet.tooltip "Skrivañ an doare da haeziñ ar rouedad war ur c'herzhlevr">
+<!ENTITY btnPageNet.label   "Net">
+<!ENTITY btnPageNet.tooltip "Log network access">
+<!ENTITY btnPageNet.accesskey "N">
+<!-- LOCALIZATION NOTE (btnPageNet.accesskeyMacOSX): This string is used as
+  -  access key for the menu button that allows users to toggle the network
+  -  logging output. On MacOSX accesskeys are available with Ctrl-*. Please make
+  -  sure you do not use the following letters: A, E, N and P. These are used
+  -  for editing commands in text inputs. -->
+<!ENTITY btnPageNet.accesskeyMacOSX "t">
 <!ENTITY btnPageCSS.label   "CSS">
-<!ENTITY btnPageCSS.tooltip "Skrivañ ar fazioù dezrannañ CSS war ur c'herzhlevr">
+<!ENTITY btnPageCSS.tooltip "Log CSS parsing errors">
+<!ENTITY btnPageCSS.accesskey "C">
 <!ENTITY btnPageJS.label    "JS">
-<!ENTITY btnPageJS.tooltip  "Skrivañ an nemedennoù JavaScript war ur c'herzhlevr">
+<!ENTITY btnPageJS.tooltip  "Log JavaScript exceptions">
+<!ENTITY btnPageJS.accesskey  "J">
+<!ENTITY btnPageSecurity.label "Security">
+<!ENTITY btnPageSecurity.tooltip "Log security errors and warnings">
+<!ENTITY btnPageSecurity.accesskey "S">
 
 <!-- LOCALIZATION NOTE (btnPageLogging): This is used as the text of the
   -  the toolbar. It shows or hides messages that the web developer inserted on
   -  the page for debugging purposes, using calls such console.log() and
   -  console.error(). -->
-<!ENTITY btnPageLogging.label   "Kerzhlevr">
-<!ENTITY btnPageLogging.tooltip "Skrivañ ar c'hemennadennoù kaset d'an ergorenn window.console war ur c'herzhlevr">
-<!ENTITY btnConsoleErrors       "Fazioù">
-<!ENTITY btnConsoleInfo         "Titour">
-<!ENTITY btnConsoleWarnings     "Kemennoù">
-<!ENTITY btnConsoleLog          "Kerzhlevr">
+<!ENTITY btnPageLogging.label   "Logging">
+<!ENTITY btnPageLogging.tooltip "Log messages sent to the window.console object">
+<!ENTITY btnPageLogging.accesskey "L">
+<!ENTITY btnConsoleErrors       "Errors">
+<!ENTITY btnConsoleInfo         "Info">
+<!ENTITY btnConsoleWarnings     "Warnings">
+<!ENTITY btnConsoleLog          "Log">
 
-<!-- LOCALIZATION NOTE (btnPosition.label): The label shown for the menu which
-  -  allows the user to toggle between the Web Console positioning types. -->
-<!ENTITY btnPosition.label     "Lec'hiadur">
-
-<!-- LOCALIZATION NOTE (btnPosition.tooltip): The tooltip shown when the user
-  -  hovers the Position button in the Web Console toolbar. -->
-<!ENTITY btnPosition.tooltip   "Lakait ar Penel Web a-us pe zindan an teul">
-
-<!-- LOCALIZATION NOTE (positionMenu.above): When this option is selected the
-  -  Web Console interface is displayed above the web page. -->
-<!ENTITY positionMenu.above    "A-us">
-
-<!-- LOCALIZATION NOTE (positionMenu.below): When this option is selected the
-  -  Web Console interface is displayed below the web page. -->
-<!ENTITY positionMenu.below    "Dindan">
-
-<!-- LOCALIZATION NOTE (positionMenu.window): When this option is selected the
-  -  Web Console interface is displayed in a floating panel. -->
-<!ENTITY positionMenu.window   "Prenestr">
-
-<!ENTITY filterBox.placeholder "Silañ">
-<!ENTITY btnClear.label        "Skarzhañ">
-<!ENTITY btnClear.tooltip      "Skarzhañ ar penel gwiad">
-<!ENTITY btnClose.tooltip      "Serriñ ar penel gwiad">
+<!ENTITY filterOutput.placeholder "Filter output">
+<!ENTITY btnClear.label        "Clear">
+<!ENTITY btnClear.tooltip      "Clear the Web Console output">
+<!ENTITY btnClear.accesskey    "r">
 
 <!ENTITY fullZoomEnlargeCmd.commandkey  "+">
 <!ENTITY fullZoomEnlargeCmd.commandkey2 "="> <!-- + is above this key on many keyboards -->
@@ -88,3 +88,10 @@
 
 <!ENTITY fullZoomResetCmd.commandkey    "0">
 <!ENTITY fullZoomResetCmd.commandkey2   "">
+
+<!ENTITY copyURLCmd.label     "Copy Link Location">
+<!ENTITY copyURLCmd.accesskey "a">
+
+<!ENTITY closeCmd.key         "W">
+<!ENTITY findCmd.key          "F">
+<!ENTITY clearOutputCmd.key   "K">

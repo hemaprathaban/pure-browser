@@ -15,8 +15,8 @@
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Pour activer votre nouvel appareil, sélectionner « Configurer la synchronisation » sur celui-ci.'>
-<!ENTITY sync.subtitle.header.label 'Saisissez ce code sur votre ordinateur'>
-<!ENTITY sync.subtitle.connectlocation.label 'Sélectionnez « &sync.title.pair.label; » dans la section &syncBrand.shortName.label; des options de Firefox sur votre ordinateur.'>
+<!ENTITY sync.subtitle.header2.label 'Saisissez ce code sur votre appareil'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Sélectionnez « &sync.title.pair.label; » dans la section &syncBrand.shortName.label; des options de Firefox sur votre appareil.'>
 <!ENTITY sync.subtitle.pair.label 'Pour activer, sélectionnez « Associer un appareil » sur votre appareil.'>
 <!ENTITY sync.pin.default.label '...\n...\n...\n'>
 <!ENTITY sync.pin.oneline.label '...'>
@@ -37,12 +37,12 @@
 
 <!-- Setup Fail -->
 <!ENTITY sync.title.fail.label 'Impossible de configurer &syncBrand.shortName.label;'>
-<!ENTITY sync.subtitle.fail.label '&syncBrand.fullName.label; n\u0027a pas pu se connecter au serveur. Voulez-vous réessayer ?'>
+<!ENTITY sync.subtitle.fail.label '&syncBrand.fullName.label; n\u0027a pas pu se connecter au serveur. Voulez-vous réessayer ?'>
 <!ENTITY sync.button.tryagain.label 'Réessayer'>
 <!ENTITY sync.button.manual.label 'Configuration manuelle'>
 <!ENTITY sync.subtitle.nointernet.label 'Connexion à Internet non disponible.'>
 <!ENTITY sync.subtitle.failaccount.label 'La création du compte sur votre appareil a échoué.'>
-<!ENTITY sync.subtitle.failmultiple.label 'Avez-vous plusieurs Firefox installés ? &syncBrand.fullName.label; ne supporte actuellement qu\u0027une seule installation de Firefox à la fois. Désinstallez les autres instances pour utiliser &syncBrand.shortName.label;.'>
+<!ENTITY sync.subtitle.failmultiple.label 'Avez-vous plusieurs Firefox installés ? &syncBrand.fullName.label; ne prend actuellement en charge qu\u0027une seule installation de Firefox à la fois. Désinstallez les autres instances pour utiliser &syncBrand.shortName.label;.'>
 
 <!-- Setup Success -->
 <!ENTITY sync.title.success.label 'Configuration terminée'>
@@ -57,6 +57,14 @@
 <!-- Firefox SyncAdapter Settings Screen -->
 <!ENTITY sync.settings.options.label 'Options'>
 <!ENTITY sync.summary.pair.label 'Associer un autre appareil à votre compte &syncBrand.shortName.label;'>
+
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Que synchroniser'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Synchroniser…'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Les marque-pages'>
+<!ENTITY sync.configure.engines.title.passwords 'Les mots de passe'>
+<!ENTITY sync.configure.engines.title.history 'L\u0027historique'>
+<!ENTITY sync.configure.engines.title.tabs 'Les onglets'>
 
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Annuler'>
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label 'Marque-pages ordinateur'>
 <!ENTITY bookmarks.folder.mobile.label 'Marque-pages mobile'>
 <!ENTITY bookmarks.folder.readinglist.label 'Liste de lecture'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Épinglés'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Un seul compte &syncBrand.fullName.label; peut être géré.'>
+<!ENTITY sync.notification.configure.saved 'Vos choix ont été enregistrés.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.invalidcreds.label 'Le nom du compte ou le mot de passe est incorrect.'>
@@ -86,10 +97,10 @@
 <!ENTITY sync.new.recoverykey.status.incorrect 'Clé de récupération incorrecte. Veuillez réessayer.'>
 
 <!-- Send tab to device. -->
-<!ENTITY sync.title.send.tab.label 'Envoyer un onglet à tous les appareils'>
+<!ENTITY sync.title.send.tab.label 'Envoyer l\u0027onglet à d\u0027autres appareils'>
 <!ENTITY sync.button.send.label 'Envoyer'>
 <!ENTITY sync.button.set.up.sync.label 'Configurer &syncBrand.shortName.label;'>
 <!ENTITY sync.title.redirect.to.set.up.sync.label 'Configurer &syncBrand.shortName.label; pour l\u0027envoi d\u0027onglets'>
 <!ENTITY sync.text.redirect.to.set.up.sync.label 'Configurez &syncBrand.fullName.label; sur votre appareil afin qu\u0027il puisse envoyer des onglets à d\u0027autres appareils.'>
-<!ENTITY sync.text.tab.sent.label 'Votre onglet a été envoyé !'>
+<!ENTITY sync.text.tab.sent.label 'Votre onglet a été envoyé !'>
 <!ENTITY sync.text.tab.not.sent.label 'Un problème est survenu lors de l\u0027envoi de votre onglet.'>

@@ -106,7 +106,12 @@ ShowUnInstDetails nevershow
 BrandingText " "
 
 Function .onInit
+  ; Remove the current exe directory from the search order.
+  ; This only effects LoadLibrary calls and not implicitly loaded DLLs.
+  System::Call 'kernel32::SetDllDirectoryW(w "")'
+
   SetSilent silent
+
 !ifdef HAVE_64BIT_OS
   ; We plan to eventually enable 64bit native builds to use the maintenance
   ; service, but for the initial release, to reduce testing and development,
@@ -123,6 +128,10 @@ Function .onInit
 FunctionEnd
 
 Function un.onInit
+  ; Remove the current exe directory from the search order.
+  ; This only effects LoadLibrary calls and not implicitly loaded DLLs.
+  System::Call 'kernel32::SetDllDirectoryW(w "")'
+
   StrCpy $BrandFullNameDA "${MaintFullName}"
   StrCpy $BrandFullName "${MaintFullName}"
 FunctionEnd
@@ -203,7 +212,7 @@ Section "MaintenanceService"
   ; These keys are used to bypass the installation dir is a valid installation
   ; check from the service so that tests can be run.
   ; WriteRegStr HKLM "${FallbackKey}\0" "name" "Mozilla Corporation"
-  ; WriteRegStr HKLM "${FallbackKey}\0" "issuer" "Thawte Code Signing CA - G2"
+  ; WriteRegStr HKLM "${FallbackKey}\0" "issuer" "DigiCert Assured ID Code Signing CA-1"
   ${If} ${RunningX64}
     SetRegView lastused
   ${EndIf}

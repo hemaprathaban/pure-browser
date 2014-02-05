@@ -20,18 +20,23 @@
 <!ENTITY  reloadTab.accesskey                "R">
 <!ENTITY  reloadAllTabs.label                "Reŝargi ĉiujn langetojn">
 <!ENTITY  reloadAllTabs.accesskey            "A">
+<!-- LOCALIZATION NOTE (closeTabsToTheEnd.label): This should indicate the
+direction in which tabs are closed, i.e. locales that use RTL mode should say
+left instead of right. -->
+<!ENTITY  closeTabsToTheEnd.label            "Fermi langetojn dekstren">
+<!ENTITY  closeTabsToTheEnd.accesskey        "i">
 <!ENTITY  closeOtherTabs.label               "Fermi aliajn langetojn">
 <!ENTITY  closeOtherTabs.accesskey           "o">
 
-<!-- LOCALIZATION NOTE (pinAppTab.label, unpinAppTab.label): "Pin" is being
+<!-- LOCALIZATION NOTE (pinTab.label, unpinTab.label): "Pin" is being
 used as a metaphor for expressing the fact that these tabs are "pinned" to the
 left edge of the tabstrip. Really we just want the string to express the idea
 that this is a lightweight and reversible action that keeps your tab where you
 can reach it easily. -->
-<!ENTITY  pinAppTab.label                    "Alpingli kiel programa langeto">
-<!ENTITY  pinAppTab.accesskey                "P">
-<!ENTITY  unpinAppTab.label                  "Depingli langeton">
-<!ENTITY  unpinAppTab.accesskey              "D">
+<!ENTITY  pinTab.label                       "Alpingli langeton">
+<!ENTITY  pinTab.accesskey                   "l">
+<!ENTITY  unpinTab.label                     "Depingli langeton">
+<!ENTITY  unpinTab.accesskey                 "D">
 <!ENTITY  moveToGroup.label                  "Movi al grupo">
 <!ENTITY  moveToGroup.accesskey              "M">
 <!ENTITY  moveToNewGroup.label               "Nova grupo">
@@ -78,15 +83,15 @@ can reach it easily. -->
 <!ENTITY pageSourceCmd.label "Fonto de paĝo">
 <!ENTITY pageSourceCmd.accesskey "p">
 <!ENTITY pageSourceCmd.commandkey "u">
-<!ENTITY pageInfoCmd.label "Informo de paĝo">
+<!ENTITY pageInfoCmd.label "Informo pri paĝo">
 <!ENTITY pageInfoCmd.accesskey "I">
 <!ENTITY pageInfoCmd.commandkey "i">
 <!-- LOCALIZATION NOTE (enterFullScreenCmd.label, exitFullScreenCmd.label):
 These should match what Safari and other Apple applications use on OS X Lion. -->
 <!ENTITY enterFullScreenCmd.label "Eniri plenekranan reĝimon">
-<!ENTITY enterFullScreenCmd.accesskey "P">
+<!ENTITY enterFullScreenCmd.accesskey "n">
 <!ENTITY exitFullScreenCmd.label "Eliri el ekranplena reĝimo">
-<!ENTITY exitFullScreenCmd.accesskey "F">
+<!ENTITY exitFullScreenCmd.accesskey "l">
 <!ENTITY fullScreenCmd.label "Plenekrane">
 <!ENTITY fullScreenCmd.accesskey "P">
 <!ENTITY fullScreenCmd.macCommandKey "f">
@@ -115,7 +120,18 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey "L">
 <!ENTITY bookmarkThisPageCmd.label "Aldoni legosignon por tiu ĉi paĝo">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
+<!ENTITY markPageCmd.commandkey "l">
+<!ENTITY sharePageCmd.label "Dividi tiun ĉi paĝon">
 <!ENTITY sharePageCmd.commandkey "l">
+<!ENTITY sharePageCmd.accesskey "p">
+<!ENTITY shareLinkCmd.label "Dividi tiun ĉi ligilon">
+<!ENTITY shareLinkCmd.accesskey "l">
+<!ENTITY shareImageCmd.label "Dividi tiun ĉi bildon">
+<!ENTITY shareImageCmd.accesskey "b">
+<!ENTITY shareSelectCmd.label "Dividi elektaĵon">
+<!ENTITY shareSelectCmd.accesskey "e">
+<!ENTITY shareVideoCmd.label "Dividi filmeton">
+<!ENTITY shareVideoCmd.accesskey "f">
 <!ENTITY subscribeToPageMenupopup.label "Aboni tiun ĉi paĝon">
 <!ENTITY subscribeToPageMenuitem.label "Aboni tiun ĉi paĝon…">
 <!ENTITY addCurPagesCmd.label "Aldoni legosignon por ĉiuj langetoj…">
@@ -125,7 +141,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY backCmd.label                "Malantaŭen">
 <!ENTITY backCmd.accesskey            "M">
-<!ENTITY backButton.tooltip           "Unu paĝo malantauen">
+<!ENTITY backButton.tooltip           "Unu paĝo malantaŭen">
 <!ENTITY forwardCmd.label             "Antaŭen">
 <!ENTITY forwardCmd.accesskey         "A">
 <!ENTITY forwardButton.tooltip        "Unu paĝo antaŭen">
@@ -161,7 +177,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY bookmarksButton.label          "Legosignoj">
 <!ENTITY bookmarksButton.tooltip        "Montri viajn legosignojn">
-<!ENTITY bookmarksButton.accesskey  "L">
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Legosignoj">
@@ -178,7 +193,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY historyButton.label            "Historio">
 <!ENTITY historyButton.tooltip          "Montri antaŭ nelonge viditajn paĝojn">
-<!ENTITY historySidebarCmd.accesskey    "H">
 <!ENTITY historySidebarCmd.commandKey   "h">
 
 <!ENTITY toolsMenu.label              "Iloj">
@@ -200,17 +214,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "TTTa programisto">
 <!ENTITY webDeveloperMenu.accesskey   "P">
 
+<!ENTITY devtoolsConnect.label        "Konekti…">
+<!ENTITY devtoolsConnect.accesskey    "k">
+
 <!ENTITY errorConsoleCmd.label        "Konzolo de eraroj">
 <!ENTITY errorConsoleCmd.accesskey    "E">
-<!ENTITY errorConsoleCmd.commandkey   "j">
 
-<!ENTITY webConsoleCmd.label          "TTTa konzolo">
-<!ENTITY webConsoleCmd.accesskey      "k">
-<!ENTITY webConsoleCmd.commandkey     "k">
+<!ENTITY remoteWebConsoleCmd.label    "Fora teksaĵa konzolo">
 
-<!ENTITY inspectMenu.label            "Inspekti">
-<!ENTITY inspectMenu.accesskey        "T">
-<!ENTITY inspectMenu.commandkey       "I">
+<!ENTITY browserConsoleCmd.label      "Retesplorila konzolo">
+<!ENTITY browserConsoleCmd.commandkey "j">
+<!ENTITY browserConsoleCmd.accesskey  "R">
 
 <!ENTITY inspectContextMenu.label     "Inspekti elementon">
 <!ENTITY inspectContextMenu.accesskey "n">
@@ -234,42 +248,20 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.keycode           "VK_F4">
 <!ENTITY scratchpad.keytext           "F4">
 
-<!ENTITY inspectCloseButton.tooltiptext "Fermi inspektilon">
+<!-- LOCALIZATION NOTE (chromeDebuggerMenu.label): This is the label for the
+  -  application menu item that opens the browser debugger UI in the Tools menu. -->
+<!ENTITY chromeDebuggerMenu.label       "Sencimigilo de retesplorilo">
 
 <!ENTITY devToolbarCloseButton.tooltiptext "Fermi ilaron de programistoj">
 <!ENTITY devToolbarMenu.label              "Ilaro de programistoj">
 <!ENTITY devToolbarMenu.accesskey          "p">
 <!ENTITY devToolbar.keycode                "VK_F2">
 <!ENTITY devToolbar.keytext                "F2">
+<!ENTITY devToolboxMenuItem.label          "Montri/kaŝi ilojn">
+<!ENTITY devToolboxMenuItem.accesskey      "T">
+
+<!ENTITY devToolbarToolsButton.tooltip     "Montri/kaŝi ilojn de disvolvanto">
 <!ENTITY devToolbarOtherToolsButton.label  "Pli da iloj">
-
-<!ENTITY webConsoleButton.label "Teksaĵa konzolo">
-<!ENTITY inspectorButton.label "Inspektilo">
-
-<!ENTITY inspectorHTMLCopyInner.label       "Kopii enan HTML">
-<!ENTITY inspectorHTMLCopyInner.accesskey   "e">
-
-<!ENTITY inspectorHTMLCopyOuter.label       "Kopii eksteran HTML">
-<!ENTITY inspectorHTMLCopyOuter.accesskey   "k">
-
-<!ENTITY inspectorHTMLDelete.label          "Forigi nodon">
-<!ENTITY inspectorHTMLDelete.accesskey      "F">
-
-<!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
-  -  alternate view for the Inspector, creating a 3D visualization of the
-  -  webpage. -->
-<!ENTITY inspect3DViewButton.label     "Vido 3D">
-<!ENTITY inspect3DViewButton.accesskey "V">
-
-<!ENTITY inspectStyleButton.label     "Stilo">
-<!ENTITY inspectStyleButton.accesskey "S">
-
-<!-- LOCALIZATION NOTE (styleeditor.label): This menu item label appears
-  -  in the Tools menu. -->
-<!ENTITY styleeditor.label            "Redaktado de stiloj">
-<!ENTITY styleeditor.accesskey        "i">
-<!ENTITY styleeditor.keycode          "VK_F7">
-<!ENTITY styleeditor.keytext          "F7">
 
 <!ENTITY getMoreDevtoolsCmd.label        "Akiri pli da iloj">
 <!ENTITY getMoreDevtoolsCmd.accesskey    "A">
@@ -279,6 +271,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY newNavigatorCmd.label        "Nova fenestro">
 <!ENTITY newNavigatorCmd.key        "N">
 <!ENTITY newNavigatorCmd.accesskey      "N">
+<!ENTITY newPrivateWindow.label     "Nova privata fenestro">
+<!ENTITY newPrivateWindow.accesskey "f">
 
 <!ENTITY editMenu.label         "Redakti"> 
 <!ENTITY editMenu.accesskey       "R"> 
@@ -303,19 +297,13 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY selectAllCmd.label         "Elekti ĉion">  
 <!ENTITY selectAllCmd.key         "A">  
 <!ENTITY selectAllCmd.accesskey       "E"> 
-<!ENTITY preferencesCmd2.label       "Opcioj">
+<!ENTITY preferencesCmd2.label       "Elektebloj">
 <!ENTITY preferencesCmd2.accesskey     "O">
 <!ENTITY preferencesCmdUnix.label       "Preferoj">
 <!ENTITY preferencesCmdUnix.accesskey     "P"> 
 
 <!ENTITY clearRecentHistory.label               "Forigi ĵusan historion…">
-<!ENTITY clearRecentHistory.accesskey           "h">
 
-<!-- LOCALIZATION NOTE : These two strings can share an access key because they never appear together on the menu -->
-<!ENTITY privateBrowsingCmd.start.label         "Komenci privatan retesploradon">
-<!ENTITY privateBrowsingCmd.start.accesskey     "K">
-<!ENTITY privateBrowsingCmd.stop.label          "Haltigi privatan retesploradon">
-<!ENTITY privateBrowsingCmd.stop.accesskey      "H">
 <!ENTITY privateBrowsingCmd.commandkey          "P">
 
 <!ENTITY viewMenu.label         "Vidi"> 
@@ -354,7 +342,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuSafeMode.accesskey "R">
 
 <!ENTITY openCmd.commandkey           "l">
-<!ENTITY urlbar.placeholder           "Iri al retejo">
+<!ENTITY urlbar.placeholder2          "Serĉi aŭ tajpi adreson">
 <!ENTITY urlbar.accesskey             "d">
 <!ENTITY urlbar.switchToTab.label     "Iri al langeto:">
 
@@ -388,6 +376,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openLinkCmdInTab.accesskey   "l">
 <!ENTITY openLinkCmd.label            "Malfermi ligilon en nova fenestro">
 <!ENTITY openLinkCmd.accesskey        "F">
+<!ENTITY openLinkInPrivateWindowCmd.label "Malfermi ligilon en nova privata fenestro">
+<!ENTITY openLinkInPrivateWindowCmd.accesskey "p">
 <!ENTITY openLinkCmdInCurrent.label     "Malfermi ligilon">
 <!ENTITY openLinkCmdInCurrent.accesskey "O">
 <!ENTITY openFrameCmdInTab.label      "Malfermi kadron en nova langeto">
@@ -405,33 +395,33 @@ These should match what Safari and other Apple applications use on OS X Lion. --
          viewPartialSourceForSelectionCmd.label and viewPartialSourceForMathMLCmd.label -->
 <!ENTITY viewPartialSourceCmd.accesskey "e">
 <!ENTITY viewPageSourceCmd.label      "Vidi fonton de paĝo">
-<!ENTITY viewPageSourceCmd.accesskey  "V">
+<!ENTITY viewPageSourceCmd.accesskey  "f">
 <!ENTITY viewFrameSourceCmd.label     "Vidi fonton de kadro">
-<!ENTITY viewFrameSourceCmd.accesskey "V">
+<!ENTITY viewFrameSourceCmd.accesskey "f">
 <!ENTITY viewPageInfoCmd.label        "Vidi informon de paĝo">
-<!ENTITY viewPageInfoCmd.accesskey    "P">
+<!ENTITY viewPageInfoCmd.accesskey    "i">
 <!ENTITY viewFrameInfoCmd.label       "Vidi informon de kadro">
-<!ENTITY viewFrameInfoCmd.accesskey   "K">
+<!ENTITY viewFrameInfoCmd.accesskey   "i">
 <!ENTITY reloadImageCmd.label         "Reŝargi bildon">
 <!ENTITY reloadImageCmd.accesskey     "R">
 <!ENTITY viewImageCmd.label           "Vidi bildon">
-<!ENTITY viewImageCmd.accesskey       "B">
+<!ENTITY viewImageCmd.accesskey       "b">
 <!ENTITY viewImageInfoCmd.label       "Vidi bildan informon">
-<!ENTITY viewImageInfoCmd.accesskey   "f">
+<!ENTITY viewImageInfoCmd.accesskey   "i">
 <!ENTITY viewVideoCmd.label           "Spekti videon">
-<!ENTITY viewVideoCmd.accesskey       "I">
+<!ENTITY viewVideoCmd.accesskey       "v">
 <!ENTITY viewBGImageCmd.label         "Vidi fonan bildon">
-<!ENTITY viewBGImageCmd.accesskey     "i">
+<!ENTITY viewBGImageCmd.accesskey     "b">
 <!ENTITY setDesktopBackgroundCmd.label      "Difini kiel skribotablan fonan bildon…">
 <!ENTITY setDesktopBackgroundCmd.accesskey  "D">
 <!ENTITY bookmarkPageCmd2.label       "Aldoni legosignon por tiu ĉi paĝo">
-<!ENTITY bookmarkPageCmd2.accesskey   "p">
+<!ENTITY bookmarkPageCmd2.accesskey   "l">
 <!ENTITY bookmarkThisLinkCmd.label      "Aldoni legosignon por tiu ĉi ligilo">
-<!ENTITY bookmarkThisLinkCmd.accesskey  "L">
+<!ENTITY bookmarkThisLinkCmd.accesskey  "l">
 <!ENTITY bookmarkThisFrameCmd.label      "Aldoni legosignon por tiu ĉi kadro">
-<!ENTITY bookmarkThisFrameCmd.accesskey  "k">
-<!ENTITY emailPageCmd.label           "Retpoŝte sendi ligilon…">
-<!ENTITY emailPageCmd.accesskey       "E">
+<!ENTITY bookmarkThisFrameCmd.accesskey  "l">
+<!ENTITY emailPageCmd.label           "Sendi ligilon retpoŝte…">
+<!ENTITY emailPageCmd.accesskey       "S">
 <!ENTITY savePageCmd.label            "Konservi paĝon kiel…">
 <!ENTITY savePageCmd.accesskey        "K">
 <!-- alternate for content area context menu -->
@@ -442,31 +432,35 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY printFrameCmd.label          "Presi kadron…">
 <!ENTITY printFrameCmd.accesskey      "P">
 <!ENTITY saveLinkCmd.label            "Konservi ligitan dosieron kiel…">
-<!ENTITY saveLinkCmd.accesskey        "l">
+<!ENTITY saveLinkCmd.accesskey        "K">
 <!ENTITY saveImageCmd.label           "Konservi bildon kiel…">
-<!ENTITY saveImageCmd.accesskey       "n">
+<!ENTITY saveImageCmd.accesskey       "K">
 <!ENTITY saveVideoCmd.label           "Konservi videon kiel…">
-<!ENTITY saveVideoCmd.accesskey       "v">
+<!ENTITY saveVideoCmd.accesskey       "K">
 <!ENTITY saveAudioCmd.label           "Konservi sonon kiel…">
-<!ENTITY saveAudioCmd.accesskey       "s">
+<!ENTITY saveAudioCmd.accesskey       "K">
 <!ENTITY emailImageCmd.label          "Sendi bildon retpoŝte…">
 <!ENTITY emailImageCmd.accesskey      "b">
 <!ENTITY emailVideoCmd.label          "Sendi filmeton retpoŝte…">
-<!ENTITY emailVideoCmd.accesskey      "f">
+<!ENTITY emailVideoCmd.accesskey      "S">
 <!ENTITY emailAudioCmd.label          "Sendi sonon retpoŝte…">
-<!ENTITY emailAudioCmd.accesskey      "s">
+<!ENTITY emailAudioCmd.accesskey      "S">
+<!ENTITY playPluginCmd.label          "Aktivigi tiun ĉi kromprogramon">
+<!ENTITY playPluginCmd.accesskey      "A">
+<!ENTITY hidePluginCmd.label          "Kaŝi tiun ĉi kromprogramon">
+<!ENTITY hidePluginCmd.accesskey      "K">
 <!ENTITY copyLinkCmd.label            "Kopii adreson de ligilo">
-<!ENTITY copyLinkCmd.accesskey        "k">
+<!ENTITY copyLinkCmd.accesskey        "a">
 <!ENTITY copyImageCmd.label           "Kopii adreson de bildo">
-<!ENTITY copyImageCmd.accesskey       "o">
+<!ENTITY copyImageCmd.accesskey       "a">
 <!ENTITY copyImageContentsCmd.label   "Kopii bildon">
 <!ENTITY copyImageContentsCmd.accesskey  "b"> 
 <!ENTITY copyVideoURLCmd.label        "Kopii adreson de filmeto">
-<!ENTITY copyVideoURLCmd.accesskey    "f">
+<!ENTITY copyVideoURLCmd.accesskey    "a">
 <!ENTITY copyAudioURLCmd.label        "Kopii adreson de sono">
-<!ENTITY copyAudioURLCmd.accesskey    "s">
+<!ENTITY copyAudioURLCmd.accesskey    "a">
 <!ENTITY copyEmailCmd.label           "Kopii retpoŝtan adreson">
-<!ENTITY copyEmailCmd.accesskey       "R">
+<!ENTITY copyEmailCmd.accesskey       "a">
 <!ENTITY thisFrameMenu.label              "Tiu ĉi kadro">
 <!ENTITY thisFrameMenu.accesskey          "i">
 
@@ -475,25 +469,38 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 "Pause" are the same because the two context-menu
 items are mutually exclusive. -->
 <!ENTITY mediaPlay.label             "Ludi">
-<!ENTITY mediaPlay.accesskey         "P">
+<!ENTITY mediaPlay.accesskey         "L">
 <!ENTITY mediaPause.label            "Paŭzigi">
 <!ENTITY mediaPause.accesskey        "P">
 <!-- LOCALIZATION NOTE: The access keys for "Mute" and
 "Unmute" are the same because the two context-menu
 items are mutually exclusive. -->
 <!ENTITY mediaMute.label             "Silentigi">
-<!ENTITY mediaMute.accesskey         "M">
+<!ENTITY mediaMute.accesskey         "S">
 <!ENTITY mediaUnmute.label           "Malsilentigi">
-<!ENTITY mediaUnmute.accesskey       "m">
+<!ENTITY mediaUnmute.accesskey       "M">
+<!ENTITY mediaPlaybackRate.label     "Ludrapido">
+<!ENTITY mediaPlaybackRate.accesskey "l">
+<!ENTITY mediaPlaybackRate050x.label "Malrapide (0.5×)">
+<!ENTITY mediaPlaybackRate050x.accesskey "M">
+<!ENTITY mediaPlaybackRate100x.label "Normale rapide">
+<!ENTITY mediaPlaybackRate100x.accesskey "N">
+<!ENTITY mediaPlaybackRate150x.label "Tre rapide (1.5×)">
+<!ENTITY mediaPlaybackRate150x.accesskey "T">
+<!-- LOCALIZATION NOTE: "Ludicrous Speed" is a reference to the
+movie "Space Balls" and is meant to say that this speed is very
+fast. -->
+<!ENTITY mediaPlaybackRate200x.label "Treege rapide (2×)">
+<!ENTITY mediaPlaybackRate200x.accesskey "g">
 <!-- LOCALIZATION NOTE: The access keys for "Show Controls" and
 "Hide Controls" are the same because the two context-menu
 items are mutually exclusive. -->
 <!ENTITY mediaShowControls.label     "Montri regilojn">
-<!ENTITY mediaShowControls.accesskey "C">
+<!ENTITY mediaShowControls.accesskey "M">
 <!ENTITY mediaHideControls.label     "Kaŝi regilojn">
-<!ENTITY mediaHideControls.accesskey "C">
+<!ENTITY mediaHideControls.accesskey "K">
 <!ENTITY videoFullScreen.label       "Plenekrane">
-<!ENTITY videoFullScreen.accesskey   "F">
+<!ENTITY videoFullScreen.accesskey   "P">
 <!ENTITY videoSaveImage.label        "Konservi filmetan bildon kiel…">
 <!ENTITY videoSaveImage.accesskey    "K">
 <!-- LOCALIZATION NOTE: The access keys for "Show Statistics" and
@@ -552,7 +559,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY quitApplicationCmd.label       "Fini"> 
 <!ENTITY quitApplicationCmd.accesskey   "F">
 <!ENTITY quitApplicationCmdMac.label    "Fini &brandShortName;">
-<!ENTITY quitApplicationCmdMac.key      "Q">
+<!-- LOCALIZATION NOTE(quitApplicationCmdUnix.key): This keyboard shortcut is used by both Linux and OSX builds. -->
+<!ENTITY quitApplicationCmdUnix.key     "Q">
 
 <!ENTITY closeCmd.label                 "Fermi">  
 <!ENTITY closeCmd.key                   "W">  
@@ -572,7 +580,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
      on Linux and Mac OS X we use "Preferences" - carry that distinction
      over into this string, which is used in the "popup blocked" info bar . -->
 <!ENTITY editPopupSettingsUnix.label "Modifi la preferojn de la blokilo de ŝprucfenestroj…">
-<!ENTITY editPopupSettings.label "Modifi la opciojn de la blokilo de ŝprucfenestroj…">
+<!ENTITY editPopupSettings.label "Modifi la elekteblojn de la blokilo de ŝprucfenestroj…">
 <!ENTITY editPopupSettings.accesskey "M">
 <!ENTITY dontShowMessage.accesskey "N">
 
@@ -614,15 +622,12 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY identity.moreInfoLinkText "Pli da informo…">
 
-<!ENTITY downloadMonitor2.tooltip "Alklaku por malfermi elŝutan fenestron">
-
-<!ENTITY allTabs.filter.emptyText "Serĉi langetojn">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
 <!ENTITY tabsToolbar.label "Langetoj de retesplorilo">
 
-<!-- LOCALIZATION NOTE (syncTabsMenu.label): This appears in the history menu -->
-<!ENTITY syncTabsMenu.label     "Langetoj el aliaj komputiloj">
+<!-- LOCALIZATION NOTE (syncTabsMenu2.label): This appears in the history menu -->
+<!ENTITY syncTabsMenu2.label     "Langetoj el aliaj aparatoj">
 
 <!ENTITY syncBrand.shortName.label    "Speguli">
 
@@ -635,15 +640,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY addonBarCloseButton.tooltip  "Fermi strion de aldonaĵoj">
 <!ENTITY toggleAddonBarCmd.key        "/">
 
-<!-- LOCALIZATION NOTE (markupButton.arialabel): The markup button is the button
-located in front of the breadcrumbs display in the inspector toolbar. The button
-doesn't display any label, but exposes a label to screen-readers with "aria-label".
--->
-<!ENTITY markupButton.arialabel          "Marklingvo">
-<!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
-toolbar button -->
-<!ENTITY markupButton.accesskey          "M">
-
 <!ENTITY socialToolbar.title        "Butono de socia ilaro">
 <!ENTITY social.notLoggedIn.label   "Ne konektita">
 
@@ -653,8 +649,43 @@ toolbar button -->
 <!ENTITY social.toggleSidebar.label "Montri flankan strion">
 <!ENTITY social.toggleSidebar.accesskey "f">
 
+<!ENTITY social.addons.label "Administri servojn…">
+
 <!ENTITY social.toggleNotifications.label "Montri labortablajn sciigojn">
 <!ENTITY social.toggleNotifications.accesskey "M">
 
-<!ENTITY social.activated.undobutton.label "Malfari">
-<!ENTITY social.activated.undobutton.accesskey "M">
+<!ENTITY social.activated.description "Servoj el <label/> estis aktivigitaj. Vi povas ŝanĝi viajn agordojn de servoj en la <label class='text-link'>Administrado de aldonaĵoj</label>.">
+<!ENTITY social.activated.undo.label "Fuŝ!, malfaru tion!">
+<!ENTITY social.activated.undo.accesskey "m">
+<!ENTITY social.learnMore.label "Pli da informo…">
+<!ENTITY social.learnMore.accesskey "i">
+<!ENTITY social.closeNotificationItem.label "Nun ne">
+
+<!ENTITY social.chatBar.commandkey "c">
+<!ENTITY social.chatBar.label "Focus chats">
+<!ENTITY social.chatBar.accesskey "c">
+
+<!-- labels are set dynamically, see browser.properties -->
+<!ENTITY social.markpage.accesskey "p">
+<!ENTITY social.marklink.accesskey "l">
+
+<!ENTITY getUserMedia.selectCamera.label "Dividota filmilo:">
+<!ENTITY getUserMedia.selectCamera.accesskey "f">
+<!ENTITY getUserMedia.selectMicrophone.label "Dividota mikrofono:">
+<!ENTITY getUserMedia.selectMicrophone.accesskey "m">
+
+<!ENTITY webrtcIndicatorButton.label "Aliro al filmilo kaj mikrofono">
+<!ENTITY webrtcIndicatorButton.tooltip "Montri la retejojn kun kiuj vi nuntempe dividas vian filmilon aŭ mikrofonon">
+
+<!ENTITY mixedContentBlocked.helplink "Pli da informo">
+<!ENTITY mixedContentBlocked.moreinfo "La plimulto de la retejoj funkcios bone eĉ se tiu ĉi enhavo estas blokita.">
+
+<!ENTITY pointerLock.notification.message "Premu ESC iam ajn por denove montri ĝin.">
+
+<!ENTITY pluginNotification.showAll.label "Montri ĉion">
+<!ENTITY pluginNotification.showAll.accesskey "M">
+
+<!-- LOCALIZATION NOTE (pluginActivateNow.label, pluginActivateAlways.label, pluginBlockNow.label): These should be the same as the matching strings in browser.properties -->
+<!ENTITY pluginActivateNow.label "Permesi nun">
+<!ENTITY pluginActivateAlways.label "Permesi kaj memori">
+<!ENTITY pluginBlockNow.label "Bloki kromprogramon">

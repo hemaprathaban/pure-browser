@@ -20,18 +20,23 @@
 <!ENTITY  reloadTab.accesskey                "r">
 <!ENTITY  reloadAllTabs.label                "Berritu fitxa guztiak">
 <!ENTITY  reloadAllTabs.accesskey            "B">
+<!-- LOCALIZATION NOTE (closeTabsToTheEnd.label): This should indicate the
+direction in which tabs are closed, i.e. locales that use RTL mode should say
+left instead of right. -->
+<!ENTITY  closeTabsToTheEnd.label            "Itxi eskuinera dauden fitxak">
+<!ENTITY  closeTabsToTheEnd.accesskey        "s">
 <!ENTITY  closeOtherTabs.label               "Itxi beste fitxak">
 <!ENTITY  closeOtherTabs.accesskey           "t">
-<!-- LOCALIZATION NOTE (pinAppTab.label, unpinAppTab.label): "Pin" is being
+<!-- LOCALIZATION NOTE (pinTab.label, unpinTab.label): "Pin" is being
 used as a metaphor for expressing the fact that these tabs are "pinned" to the
 left edge of the tabstrip. Really we just want the string to express the idea
 that this is a lightweight and reversible action that keeps your tab where you
 can reach it easily. -->
 
-<!ENTITY  pinAppTab.label                    "Ainguratu aplikazio-fitxa gisa">
-<!ENTITY  pinAppTab.accesskey                "A">
-<!ENTITY  unpinAppTab.label                  "Desainguratu fitxa">
-<!ENTITY  unpinAppTab.accesskey              "a">
+<!ENTITY  pinTab.label                       "Ainguratu fitxa">
+<!ENTITY  pinTab.accesskey                   "A">
+<!ENTITY  unpinTab.label                     "Desainguratu fitxa">
+<!ENTITY  unpinTab.accesskey                 "a">
 <!ENTITY  moveToGroup.label                  "Eraman taldera">
 <!ENTITY  moveToGroup.accesskey              "E">
 <!ENTITY  moveToNewGroup.label               "Talde berria">
@@ -115,7 +120,18 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey "m">
 <!ENTITY bookmarkThisPageCmd.label "Egin orriaren laster-marka">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
-<!ENTITY sharePageCmd.commandkey "l">
+<!ENTITY markPageCmd.commandkey "l">
+<!ENTITY sharePageCmd.label "Partekatu orri hau">
+<!ENTITY sharePageCmd.commandkey "S">
+<!ENTITY sharePageCmd.accesskey "P">
+<!ENTITY shareLinkCmd.label "Partekatu lotura hau">
+<!ENTITY shareLinkCmd.accesskey "P">
+<!ENTITY shareImageCmd.label "Partekatu irudi hau">
+<!ENTITY shareImageCmd.accesskey "P">
+<!ENTITY shareSelectCmd.label "Partekatu hautapena">
+<!ENTITY shareSelectCmd.accesskey "P">
+<!ENTITY shareVideoCmd.label "Partekatu bideo hau">
+<!ENTITY shareVideoCmd.accesskey "P">
 <!ENTITY subscribeToPageMenupopup.label "Harpidetu orri honetara">
 <!ENTITY subscribeToPageMenuitem.label "Harpidetu orri honetara…">
 <!ENTITY addCurPagesCmd.label "Egin fitxa guztien laster-marka…">
@@ -161,7 +177,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY bookmarksButton.label          "Laster-markak">
 <!ENTITY bookmarksButton.tooltip        "Bistaratu zure laster-markak">
-<!ENTITY bookmarksButton.accesskey  "L">
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Laster-markak">
@@ -178,7 +193,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY historyButton.label            "Historia">
 <!ENTITY historyButton.tooltip          "Erakutsi azkenaldian ikusitako orriak">
-<!ENTITY historySidebarCmd.accesskey    "s">
 <!ENTITY historySidebarCmd.commandKey   "h">
 
 <!ENTITY toolsMenu.label              "Tresnak">
@@ -200,17 +214,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Web garapena">
 <!ENTITY webDeveloperMenu.accesskey   "W">
 
+<!ENTITY devtoolsConnect.label        "Konektatu…">
+<!ENTITY devtoolsConnect.accesskey    "e">
+
 <!ENTITY errorConsoleCmd.label        "Errore-kontsola">
 <!ENTITY errorConsoleCmd.accesskey    "k">
-<!ENTITY errorConsoleCmd.commandkey   "j">
 
-<!ENTITY webConsoleCmd.label          "Web kontsola">
-<!ENTITY webConsoleCmd.accesskey      "W">
-<!ENTITY webConsoleCmd.commandkey     "k">
+<!ENTITY remoteWebConsoleCmd.label    "Urruneko web kontsola">
 
-<!ENTITY inspectMenu.label            "Ikuskatu">
-<!ENTITY inspectMenu.accesskey        "t">
-<!ENTITY inspectMenu.commandkey       "I">
+<!ENTITY browserConsoleCmd.label      "Nabigatzailearen kontsola">
+<!ENTITY browserConsoleCmd.commandkey "j">
+<!ENTITY browserConsoleCmd.accesskey  "N">
 
 <!ENTITY inspectContextMenu.label     "Ikuskatu elementua">
 <!ENTITY inspectContextMenu.accesskey "s">
@@ -233,43 +247,21 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.accesskey         "Z">
 <!ENTITY scratchpad.keycode           "VK_F4">
 <!ENTITY scratchpad.keytext           "F4">
+<!-- LOCALIZATION NOTE (chromeDebuggerMenu.label): This is the label for the
+  -  application menu item that opens the browser debugger UI in the Tools menu. -->
 
-<!ENTITY inspectCloseButton.tooltiptext "Itxi ikuskatzailea">
+<!ENTITY chromeDebuggerMenu.label       "Nabigatzailearen araztailea">
 
 <!ENTITY devToolbarCloseButton.tooltiptext "Itxi garatzailearen tresna-barra">
 <!ENTITY devToolbarMenu.label              "Garatzailearen tresna-barra">
 <!ENTITY devToolbarMenu.accesskey          "G">
 <!ENTITY devToolbar.keycode                "VK_F2">
 <!ENTITY devToolbar.keytext                "F2">
+<!ENTITY devToolboxMenuItem.label          "Txandakatu tresnak">
+<!ENTITY devToolboxMenuItem.accesskey      "T">
+
+<!ENTITY devToolbarToolsButton.tooltip     "Txandakatu garatzaile-tresnak">
 <!ENTITY devToolbarOtherToolsButton.label  "Tresna gehiago">
-
-<!ENTITY webConsoleButton.label "Web kontsola">
-<!ENTITY inspectorButton.label "Ikuskatzailea">
-
-<!ENTITY inspectorHTMLCopyInner.label       "Kopiatu barruko HTMLa">
-<!ENTITY inspectorHTMLCopyInner.accesskey   "b">
-
-<!ENTITY inspectorHTMLCopyOuter.label       "Kopiatu kanpoko HTMLa">
-<!ENTITY inspectorHTMLCopyOuter.accesskey   "K">
-
-<!ENTITY inspectorHTMLDelete.label          "Ezabatu nodoa">
-<!ENTITY inspectorHTMLDelete.accesskey      "E">
-<!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
-  -  alternate view for the Inspector, creating a 3D visualization of the
-  -  webpage. -->
-
-<!ENTITY inspect3DViewButton.label     "3D ikuspegia">
-<!ENTITY inspect3DViewButton.accesskey "k">
-
-<!ENTITY inspectStyleButton.label     "Estiloa">
-<!ENTITY inspectStyleButton.accesskey "s">
-<!-- LOCALIZATION NOTE (styleeditor.label): This menu item label appears
-  -  in the Tools menu. -->
-
-<!ENTITY styleeditor.label            "Estiloen editorea">
-<!ENTITY styleeditor.accesskey        "d">
-<!ENTITY styleeditor.keycode          "VK_F7">
-<!ENTITY styleeditor.keytext          "F7">
 
 <!ENTITY getMoreDevtoolsCmd.label        "Eskuratu tresna gehiago">
 <!ENTITY getMoreDevtoolsCmd.accesskey    "E">
@@ -279,6 +271,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY newNavigatorCmd.label        "Leiho berria">
 <!ENTITY newNavigatorCmd.key        "N">
 <!ENTITY newNavigatorCmd.accesskey      "L">
+<!ENTITY newPrivateWindow.label     "Leiho pribatu berria">
+<!ENTITY newPrivateWindow.accesskey "h">
 
 <!ENTITY editMenu.label         "Editatu"> 
 <!ENTITY editMenu.accesskey       "E"> 
@@ -309,13 +303,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY preferencesCmdUnix.accesskey     "n"> 
 
 <!ENTITY clearRecentHistory.label               "Garbitu azkenaldiko historia…">
-<!ENTITY clearRecentHistory.accesskey           "h">
-<!-- LOCALIZATION NOTE : These two strings can share an access key because they never appear together on the menu -->
 
-<!ENTITY privateBrowsingCmd.start.label         "Hasi nabigatze pribatua">
-<!ENTITY privateBrowsingCmd.start.accesskey     "p">
-<!ENTITY privateBrowsingCmd.stop.label          "Gelditu nabigatze pribatua">
-<!ENTITY privateBrowsingCmd.stop.accesskey      "p">
 <!ENTITY privateBrowsingCmd.commandkey          "P">
 
 <!ENTITY viewMenu.label         "Ikusi"> 
@@ -354,7 +342,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuSafeMode.accesskey "B">
 
 <!ENTITY openCmd.commandkey           "l">
-<!ENTITY urlbar.placeholder           "Joan webgune batera">
+<!ENTITY urlbar.placeholder2          "Bilatu edo idatzi helbidea">
 <!ENTITY urlbar.accesskey             "d">
 <!ENTITY urlbar.switchToTab.label     "Aldatu fitxara:">
 <!-- 
@@ -388,6 +376,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openLinkCmdInTab.accesskey   "t">
 <!ENTITY openLinkCmd.label            "Ireki leiho berrian">
 <!ENTITY openLinkCmd.accesskey        "l">
+<!ENTITY openLinkInPrivateWindowCmd.label "Ireki lotura leiho pribatu berrian">
+<!ENTITY openLinkInPrivateWindowCmd.accesskey "p">
 <!ENTITY openLinkCmdInCurrent.label     "Ireki lotura">
 <!ENTITY openLinkCmdInCurrent.accesskey "I">
 <!ENTITY openFrameCmdInTab.label      "Ireki markoa fitxa berrian">
@@ -455,6 +445,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY emailVideoCmd.accesskey      "a">
 <!ENTITY emailAudioCmd.label          "Bidali audioa posta elektronikoz…">
 <!ENTITY emailAudioCmd.accesskey      "a">
+<!ENTITY playPluginCmd.label          "Aktibatu plugin hau">
+<!ENTITY playPluginCmd.accesskey      "k">
+<!ENTITY hidePluginCmd.label          "Ezkutatu plugin hau">
+<!ENTITY hidePluginCmd.accesskey      "E">
 <!ENTITY copyLinkCmd.label            "Kopiatu loturaren helbidea">
 <!ENTITY copyLinkCmd.accesskey        "K">
 <!ENTITY copyImageCmd.label           "Kopiatu irudiaren helbidea">
@@ -485,6 +479,19 @@ items are mutually exclusive. -->
 <!ENTITY mediaMute.accesskey         "M">
 <!ENTITY mediaUnmute.label           "Ez mututu">
 <!ENTITY mediaUnmute.accesskey       "m">
+<!ENTITY mediaPlaybackRate.label     "Erreprodukzio-abiadura">
+<!ENTITY mediaPlaybackRate.accesskey "b">
+<!ENTITY mediaPlaybackRate050x.label "Mantsoa (0.5×)">
+<!ENTITY mediaPlaybackRate050x.accesskey "M">
+<!ENTITY mediaPlaybackRate100x.label "Abiadura normala">
+<!ENTITY mediaPlaybackRate100x.accesskey "n">
+<!ENTITY mediaPlaybackRate150x.label "Abiadura azkarra (1.5×)">
+<!ENTITY mediaPlaybackRate150x.accesskey "z">
+<!-- LOCALIZATION NOTE: "Ludicrous Speed" is a reference to the
+movie "Space Balls" and is meant to say that this speed is very
+fast. -->
+<!ENTITY mediaPlaybackRate200x.label "Abiadura bizia (2×)">
+<!ENTITY mediaPlaybackRate200x.accesskey "b">
 <!-- LOCALIZATION NOTE: The access keys for "Show Controls" and
 "Hide Controls" are the same because the two context-menu
 items are mutually exclusive. -->
@@ -553,7 +560,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY quitApplicationCmd.label       "Irten"> 
 <!ENTITY quitApplicationCmd.accesskey   "I">
 <!ENTITY quitApplicationCmdMac.label    "Utzi &brandShortName;">
-<!ENTITY quitApplicationCmdMac.key      "Q">
+<!-- LOCALIZATION NOTE(quitApplicationCmdUnix.key): This keyboard shortcut is used by both Linux and OSX builds. -->
+<!ENTITY quitApplicationCmdUnix.key     "Q">
 
 <!ENTITY closeCmd.label                 "Itxi">  
 <!ENTITY closeCmd.key                   "W">  
@@ -614,16 +622,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity.runBy "Honen menpe dago: ">
 
 <!ENTITY identity.moreInfoLinkText "Argibide gehiago…">
-
-<!ENTITY downloadMonitor2.tooltip "Egin klik deskargen leihoa irekitzeko">
-
-<!ENTITY allTabs.filter.emptyText "Bilatu fitxak">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
-<!ENTITY tabsToolbar.label "Nabigatzailearen fitxak">
-<!-- LOCALIZATION NOTE (syncTabsMenu.label): This appears in the history menu -->
 
-<!ENTITY syncTabsMenu.label     "Beste ordenagailuetako fitxak">
+<!ENTITY tabsToolbar.label "Nabigatzailearen fitxak">
+<!-- LOCALIZATION NOTE (syncTabsMenu2.label): This appears in the history menu -->
+
+<!ENTITY syncTabsMenu2.label     "Beste gailuetako fitxak">
 
 <!ENTITY syncBrand.shortName.label    "Sync">
 
@@ -635,15 +640,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY addonBarCloseButton.tooltip  "Itxi gehigarri-barra">
 <!ENTITY toggleAddonBarCmd.key        "/">
-<!-- LOCALIZATION NOTE (markupButton.arialabel): The markup button is the button
-located in front of the breadcrumbs display in the inspector toolbar. The button
-doesn't display any label, but exposes a label to screen-readers with "aria-label".
--->
-
-<!ENTITY markupButton.arialabel          "Markaketa">
-<!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
-toolbar button -->
-<!ENTITY markupButton.accesskey          "M">
 
 <!ENTITY socialToolbar.title        "Tresna-barra sozialaren botoia">
 <!ENTITY social.notLoggedIn.label   "Saioa hasi gabe">
@@ -654,8 +650,43 @@ toolbar button -->
 <!ENTITY social.toggleSidebar.label "Erakutsi alboko barra">
 <!ENTITY social.toggleSidebar.accesskey "E">
 
+<!ENTITY social.addons.label "Kudeatu zerbitzuak…">
+
 <!ENTITY social.toggleNotifications.label "Erakutsi mahaigaineko jakinarazpenak">
 <!ENTITY social.toggleNotifications.accesskey "m">
 
-<!ENTITY social.activated.undobutton.label "Desegin">
-<!ENTITY social.activated.undobutton.accesskey "D">
+<!ENTITY social.activated.description "<label/>(e)ko zerbitzuak gaitu egin dira. Zerbitzuen zure ezarpenak <label class='text-link'>Gehigarrien kudeatzailea</label>n alda ditzakezu.">
+<!ENTITY social.activated.undo.label "Ene, desegin hau!">
+<!ENTITY social.activated.undo.accesskey "d">
+<!ENTITY social.learnMore.label "Argibide gehiago…">
+<!ENTITY social.learnMore.accesskey "A">
+<!ENTITY social.closeNotificationItem.label "Une honetan ez">
+
+<!ENTITY social.chatBar.commandkey "c">
+<!ENTITY social.chatBar.label "Ezarri fokua txatetan">
+<!ENTITY social.chatBar.accesskey "k">
+<!-- labels are set dynamically, see browser.properties -->
+
+<!ENTITY social.markpage.accesskey "m">
+<!ENTITY social.marklink.accesskey "M">
+
+<!ENTITY getUserMedia.selectCamera.label "Partekatzeko kamera:">
+<!ENTITY getUserMedia.selectCamera.accesskey "k">
+<!ENTITY getUserMedia.selectMicrophone.label "Partekatzeko mikrofonoa:">
+<!ENTITY getUserMedia.selectMicrophone.accesskey "m">
+
+<!ENTITY webrtcIndicatorButton.label "Kamera / Mikrofono atzipena">
+<!ENTITY webrtcIndicatorButton.tooltip "Bistaratu une honetan zein gunerekin partekatzen duzun kamera edo mikrofonoa">
+
+<!ENTITY mixedContentBlocked.helplink "Argibide gehiago">
+<!ENTITY mixedContentBlocked.moreinfo "Webgune gehienak ondo ibiliko dira eduki hau blokeatuta ere.">
+
+<!ENTITY pointerLock.notification.message "Berriro erakusteko, sakatu ESK tekla edozein unetan.">
+
+<!ENTITY pluginNotification.showAll.label "Erakutsi denak">
+<!ENTITY pluginNotification.showAll.accesskey "E">
+<!-- LOCALIZATION NOTE (pluginActivateNow.label, pluginActivateAlways.label, pluginBlockNow.label): These should be the same as the matching strings in browser.properties -->
+
+<!ENTITY pluginActivateNow.label "Baimendu orain">
+<!ENTITY pluginActivateAlways.label "Baimendu eta gogoratu">
+<!ENTITY pluginBlockNow.label "Blokeatu plugina">

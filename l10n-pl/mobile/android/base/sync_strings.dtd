@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 <!-- Don't localize these. They're here until they have
      a better place to live. -->
 <!ENTITY syncBrand.fullName.label "Firefox Sync">
@@ -11,8 +15,8 @@
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Aby aktywować nowe urządzenie, wybierz na nim opcję „Skonfiguruj &syncBrand.shortName.label;”.'>
-<!ENTITY sync.subtitle.header.label 'Wpisz ten kod na komputerze'>
-<!ENTITY sync.subtitle.connectlocation.label 'Wybierz “&sync.title.pair.label;” w sekcji &syncBrand.shortName.label; w ustawieniach Firefoksa na komputerze.'>
+<!ENTITY sync.subtitle.header2.label 'Wpisz ten kod na innym urządzeniu'>
+<!ENTITY sync.subtitle.connectlocation2.label 'Wybierz “&sync.title.pair.label;” w sekcji &syncBrand.shortName.label; w ustawieniach Firefoksa na innym urządzeniu.'>
 <!ENTITY sync.subtitle.pair.label 'Aby aktywować, na innym urządzeniu wybierz „Sparuj urządzenie”.'>
 <!ENTITY sync.pin.default.label '...\n...\n...\n'>
 <!ENTITY sync.pin.oneline.label '...'>
@@ -54,6 +58,14 @@
 <!ENTITY sync.settings.options.label 'Ustawienia'>
 <!ENTITY sync.summary.pair.label 'Dodaj inne urządzenie do twojego konta &syncBrand.shortName.label;'>
 
+<!-- Configure Engines -->
+<!ENTITY sync.configure.engines.title.label 'Co synchronizować'>
+<!ENTITY sync.configure.engines.sync.my.title.label 'Synchronizuj…'>
+<!ENTITY sync.configure.engines.title.bookmarks 'Zakładki'>
+<!ENTITY sync.configure.engines.title.passwords 'Hasła'>
+<!ENTITY sync.configure.engines.title.history 'Historia przeglądania'>
+<!ENTITY sync.configure.engines.title.tabs 'Karty'>
+
 <!-- Common text -->
 <!ENTITY sync.button.cancel.label 'Anuluj'>
 <!ENTITY sync.button.connect.label 'Połącz'>
@@ -71,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label 'Zakładki z komputera'>
 <!ENTITY bookmarks.folder.mobile.label 'Zakładki z telefonu'>
 <!ENTITY bookmarks.folder.readinglist.label 'Do przeczytania'>
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label 'Przypięte'>
 
 <!-- Notification strings -->
 <!ENTITY sync.notification.oneaccount.label 'Można używać tylko jednego konta &syncBrand.fullName.label; naraz.'>
+<!ENTITY sync.notification.configure.saved 'Ustawienia zapisano.'>
 
 <!-- Incorrect settings and changing credentials. -->
 <!ENTITY sync.new.recoverykey.status.incorrect 'Nieprawidłowy klucz odzyskiwania. Spróbuj ponownie.'>

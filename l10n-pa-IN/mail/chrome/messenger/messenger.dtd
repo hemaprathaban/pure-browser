@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 
 <!ENTITY titledefault.label    "&brandFullName;">
 <!ENTITY titleSeparator.label " - ">
@@ -29,6 +33,8 @@
 <!ENTITY newExistingEmailAccountCmd.accesskey "E">
 <!ENTITY newIMAccountCmd.label "Chat Account…">
 <!ENTITY newIMAccountCmd.accesskey "C">
+<!ENTITY newIMContactCmd.label "Chat Contact…">
+<!ENTITY newIMContactCmd.accesskey "h">
 <!ENTITY openMessageFileCmd.label "ਸੰਭਾਲਿਆ ਸੁਨੇਹਾ ਖੋਲ੍ਹੋ…">
 <!ENTITY openMessageFileCmd.accesskey "O">
 <!ENTITY openAttachmentCmd.label "ਅਟੈਚਮੈਂਟ">
@@ -247,32 +253,7 @@
 <!ENTITY viewAttachmentsInlineCmd.label "ਅਟੈਚਮੈਂਟ ਇਨਲਾਈਨ ਵੇਖਾਓ">
 <!ENTITY viewAttachmentsInlineCmd.accesskey "A">
 
-<!-- LOCALIZATION NOTE :
-fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey2 and
-fullZoomResetCmd.commandkey2 are alternative acceleration keys for zoom.
-If shift key is needed with your locale popular keyboard for them,
-you can use these alternative items. Otherwise, their values should be empty.  -->
 
-<!ENTITY fullZoomEnlargeCmd.label       "ਜ਼ੂਮ ਇਨ">
-<!ENTITY fullZoomEnlargeCmd.accesskey   "I">
-<!ENTITY fullZoomEnlargeCmd.commandkey  "+">
-<!ENTITY fullZoomEnlargeCmd.commandkey2 "="> <!-- + is above this key on many keyboards -->
-<!ENTITY fullZoomEnlargeCmd.commandkey3 "">
-
-<!ENTITY fullZoomReduceCmd.label        "ਜ਼ੂਮ ਆਉਟ">
-<!ENTITY fullZoomReduceCmd.accesskey    "O">
-<!ENTITY fullZoomReduceCmd.commandkey   "-">
-<!ENTITY fullZoomReduceCmd.commandkey2  "">
-
-<!ENTITY fullZoomResetCmd.label         "ਮੁੜ-ਸੈੱਟ">
-<!ENTITY fullZoomResetCmd.accesskey     "R">
-<!ENTITY fullZoomResetCmd.commandkey    "0">
-<!ENTITY fullZoomResetCmd.commandkey2   "">
-
-<!ENTITY fullZoomToggleCmd.label        "ਕੇਵਲ ਟੈਕਸਟ ਹੀ ਜ਼ੂਮ ਕਰੋ">
-<!ENTITY fullZoomToggleCmd.accesskey    "T">
-<!ENTITY fullZoom.label                 "ਜ਼ੂਮ">
-<!ENTITY fullZoom.accesskey             "Z">
 
 <!ENTITY pageSourceCmd.label "ਸੁਨੇਹਾ ਸਰੋਤ">
 <!ENTITY pageSourceCmd.accesskey "o">
@@ -330,7 +311,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY goBackCmd.commandKey "[">
 <!ENTITY goChatCmd.label "ਗੱਲਬਾਤ">
 <!ENTITY goChatCmd.accesskey "c">
-<!ENTITY goChatCmd.commandKey "C">
+<!ENTITY goChatCmd.key "I">
 <!ENTITY prevStarredMsgCmd.label "ਤਾਰੇ ਵਾਲਾ ਸੁਨੇਹਾ">
 <!ENTITY prevStarredMsgCmd.accesskey "S">
 <!ENTITY folderMenu.label "ਫੋਲਡਰ">
@@ -481,6 +462,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY imStatus.offline            "ਆਫਲਾਈਨ">
 <!ENTITY imStatus.showAccounts       "ਅਕਾਊਂਟ ਵੇਖਾਓ…">
 <!ENTITY imStatus.showAccounts       "ਅਕਾਊਂਟ ਵੇਖਾਓ…">
+<!ENTITY joinChatCmd.label "…ਗੱਲਬਾਤ ਵਿੱਚ ਭਾਗ ਲਵੋ">
+<!ENTITY joinChatCmd.accesskey "o">
 <!ENTITY savedFiles.label "ਸੰਭਾਲੀਆਂ ਫਾਇਲਾਂ">
 <!ENTITY savedFiles.accesskey "l">
 <!ENTITY savedFiles.key "j">
@@ -501,7 +484,9 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY errorConsoleCmd.label "ਗਲਤੀ ਕਨਸੋਲ">
 <!ENTITY errorConsoleCmd.accesskey "E">
 <!ENTITY errorConsoleCmd.commandkey "j">
-<!ENTITY accountManagerCmd.label "ਅਕਾਊਂਟ ਸੈਟਿੰਗ…">
+<!ENTITY clearRecentHistory.label "...ਤਾਜ਼ਾ ਅਤੀਤ ਸਾਫ਼ ਕਰੋ">
+<!ENTITY clearRecentHistory.accesskey "H">
+<!ENTITY accountManagerCmd.label "...ਅਕਾਊਂਟ ਸੈਟਿੰਗ">
 <!ENTITY accountManagerCmd.accesskey "S">
 <!-- LOCALIZATION NOTE (accountManagerCmdUnix.accesskey): belongs to accountManagerCmd.label,
         which is placed under the Edit menu on Unix systems -->
@@ -538,6 +523,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY folderLocationToolbarItem.title "ਫੋਲਡਰ ਟਿਕਾਣਾ">
 <!ENTITY tagButton.label "ਟੈਗ">
 <!ENTITY compactButton.label "ਸੰਖੇਪ">
+<!ENTITY appmenuButton.label "AppMenu">
 
 <!-- Mail Toolbar Tooltips-->
 <!ENTITY advancedButton.tooltip "ਤਕਨੀਕੀ ਸੁਨੇਹਾ ਖੋਜ">
@@ -566,10 +552,21 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY chatButton.tooltip "ਗੱਲਬਾਤ ਟੈਬ ਵੇਖਾਓ">
 <!ENTITY tagButton.tooltip "ਸੁਨੇਹੇ ਟੈਗ ਕਰੋ">
 <!ENTITY compactButton.tooltip "ਚੁਣੇ ਫੋਲਡਰ ਤੋਂ ਹਟਾਏ ਗਏ ਸੁਨੇਹੇ ਹਟਾਓ">
+<!ENTITY appmenuButton1.tooltip "&brandShortName; ਮੇਨੂ ਵੇਖਾਓ">
+
+
+<!-- AppMenu Popup -->
+<!ENTITY appmenuNewMsgCmd.label "ਨਵਾਂ ਸੁਨੇਹਾ">
+<!ENTITY appmenuNewContactCmd.label "…ਐਡਰੈਸ ਬੁੱਕ ਸੰਪਰਕ">
+<!ENTITY appmenuEditMenu.label "ਸੋਧ">
+<!ENTITY appmenuQFBMenu.label "ਤੁਰੰਤ ਫਿਲਟਰ ਪੱਟੀ">
+<!ENTITY appmenuToolbarLayout.label "…ਟੂਲਬਾਰ ਲੇਆਉਟ">
 
 <!-- Tags Menu Popup -->
 <!ENTITY addNewTag.label "ਨਵਾਂ ਟੈਗ…">
 <!ENTITY addNewTag.accesskey "N">
+<!ENTITY manageTags.label "…ਟੈਗ ਪਰਬੰਧ">
+<!ENTITY manageTags.accesskey "M">
 
 <!-- Folder Pane -->
 <!ENTITY folderColumn.label "ਨਾਂ">
@@ -889,11 +886,11 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY showAllAppsCmdMac.label        "ਸਭ ਵੇਖਾਓ">
 
 
-<!ENTITY previousMsgButton.label "Previous">
+<!ENTITY previousMsgButton.label "ਪਿੱਛੇ">
 <!ENTITY previousButtonToolbarItem.label "Previous Unread">
 <!ENTITY previousMsgButton.tooltip "Move to the previous message">
 
-<!ENTITY nextMsgButton.label "Next">
+<!ENTITY nextMsgButton.label "ਅੱਗੇ">
 <!ENTITY nextMsgButton.tooltip "Move to the next message">
 
 <!ENTITY nextButtonToolbarItem.label "Next Unread">

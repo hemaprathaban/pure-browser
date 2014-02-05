@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 <!ENTITY accountSetupTitle.label    "&syncBrand.fullName.label; Podešavanje">
 
 <!-- First page of the wizard -->
@@ -8,7 +12,7 @@
 
 <!ENTITY setup.choicePage.title.label     "Da li ste ikada prije koristili &syncBrand.fullName.label;?">
 <!ENTITY setup.choicePage.new.label       "Nisam nikada prije koristio &syncBrand.shortName.label;">
-<!ENTITY setup.choicePage.existing.label  "Već koristim &syncBrand.shortName.label; na drugom računaru">
+<!ENTITY setup.choicePage.existing2.label "Već koristim &syncBrand.shortName.label; na drugom uređaju">
 
 <!-- New Account AND Existing Account -->
 <!ENTITY server.label               "Server">
@@ -29,6 +33,9 @@
 <!ENTITY setup.emailAddress.accesskey "E">
 <!ENTITY setup.choosePassword.label      "Izaberite lozinku">
 <!ENTITY setup.choosePassword.accesskey  "L">
+<!ENTITY setup.setupMetro.label     "Sync sa Windows 8 stilom &brandShortName;">
+<!ENTITY setup.setupMetro.accesskey "S">
+
 <!-- LOCALIZATION NOTE: tosAgree1, tosLink, tosAgree2, ppLink, tosAgree3 are
      joined with implicit white space, so spaces in the strings aren't necessary -->
 <!ENTITY setup.tosAgree1.label      "Prihvatam">
@@ -75,8 +82,8 @@
 
 <!-- Sync Options -->
 <!ENTITY setup.optionsPage.title      "Sync opcije">
-<!ENTITY syncComputerName.label       "Naziv računara:">
-<!ENTITY syncComputerName.accesskey   "N">
+<!ENTITY syncDeviceName.label       "Naziv uređaja:">
+<!ENTITY syncDeviceName.accesskey   "u">
 
 <!ENTITY syncMy.label               "Sinhronizuj moje">
 <!ENTITY engine.bookmarks.label     "Zabilješke">
@@ -92,16 +99,16 @@
 <!ENTITY engine.addons.label        "Add-oni">
 <!ENTITY engine.addons.accesskey    "A">
 
-<!ENTITY choice2.merge.main.label      "Spoji podatke sa ovog računara sa mojim &syncBrand.shortName.label; podacima">
+<!ENTITY choice2a.merge.main.label       "Spoji podatke sa ovog uređaja sa mojim &syncBrand.shortName.label; podacima">
 <!ENTITY choice2.merge.recommended.label "Preporučeno:">
-<!ENTITY choice2.client.main.label     "Zamijeni sve podatke na ovom računaru sa mojim &syncBrand.shortName.label; podacima">
-<!ENTITY choice2.server.main.label     "Zamijeni sve ostale uređaje sa podacima sa ovog računara">
+<!ENTITY choice2a.client.main.label      "Zamijeni sve podatke na ovom uređaju sa mojim &syncBrand.shortName.label; podacima">
+<!ENTITY choice2a.server.main.label      "Zmaijeni sve druge uređaje sa podacima sa ovog uređaja">
 
 <!-- Confirm Merge Options -->
 <!ENTITY setup.optionsConfirmPage.title "Potvrdi">
-<!ENTITY confirm.merge.label    "&syncBrand.fullName.label; će sada spojiti podatke iz browsera sa ovog računara sa vašim Sync računom.">
-<!ENTITY confirm.client2.label         "Upozorenje: Sljedeći &brandShortName; podaci sa ovog računara će biti obrisani:">
-<!ENTITY confirm.client.moreinfo.label "&brandShortName; će zatim iskopirati vaše &syncBrand.fullName.label; podatke na ovaj računar.">
+<!ENTITY confirm.merge2.label    "&syncBrand.fullName.label; će sada spojiti sve podatke iz browsera ovog uređaja sa podacima u vašem Sync računu.">
+<!ENTITY confirm.client3.label         "Upozorenje: sljedeći &brandShortName; podaci na ovom uređaju će biti obrisani:">
+<!ENTITY confirm.client2.moreinfo.label "&brandShortName; će zatim kopirati vaše &syncBrand.fullName.label; podatke na ovaj uređaj.">
 <!ENTITY confirm.server2.label         "Upozorenje: Na sljedećim uređajima će biti prepisani podaci sa vašim lokalnim podacima:">
 
 <!-- New & Existing Account: Setup Complete -->

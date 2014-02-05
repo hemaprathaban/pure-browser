@@ -25,10 +25,22 @@
 <!ENTITY setDefault.label "Сделать &brandShortName; браузером по умолчанию">
 <!ENTITY setDefault.accesskey "е">
 <!ENTITY isDefault.label "В настоящий момент браузером по умолчанию является &brandShortName;">
-<!ENTITY submitCrashes.label "Отправлять сообщения о падениях">
-<!ENTITY submitCrashes.accesskey "т">
-<!ENTITY submitTelemetry.label "Отправлять данные о производительности">
-<!ENTITY submitTelemetry.accesskey "я">
+<!ENTITY dataChoicesTab.label "Выбор данных">
+<!ENTITY healthReportSection.label "Отчёт о работоспособности &brandShortName;">
+<!ENTITY healthReportDesc.label "Помогает вам больше узнать о скорости работы вашего браузера и поделиться данными о его работоспособности с &vendorShortName;">
+<!ENTITY enableHealthReport.label "Включить отправку Отчёта о работоспособности &brandShortName;">
+<!ENTITY enableHealthReport.accesskey "ю">
+<!ENTITY healthReportLearnMore.label "Подробнее">
+<!ENTITY telemetrySection.label "Телеметрия">
+<!ENTITY telemetryDesc.label "Поделиться сведениями о производительности, использовании, аппаратном обеспечении и настройках вашего браузера с &vendorShortName;, чтобы помочь нам сделать &brandShortName; ещё лучше">
+<!ENTITY enableTelemetry.label "Включить телеметрию">
+<!ENTITY enableTelemetry.accesskey "и">
+<!ENTITY telemetryLearnMore.label "Подробнее">
+<!ENTITY crashReporterSection.label "Сообщения о падениях">
+<!ENTITY crashReporterDesc.label "&brandShortName; отправляет сообщения о падении, чтобы помочь &vendorShortName; сделать ваш браузер более стабильным и безопасным">
+<!ENTITY enableCrashReporter.label "Включить отправку сообщений о падении">
+<!ENTITY enableCrashReporter.accesskey "к">
+<!ENTITY crashReporterLearnMore.label "Подробнее">
 <!ENTITY networkTab.label "Сеть">
 <!ENTITY connection.label "Соединение">
 <!ENTITY connectionDesc.label "Настройка параметров соединения &brandShortName; с Интернетом">
@@ -47,14 +59,17 @@
 <!ENTITY overrideSmartCacheSize.accesskey "л">
 <!ENTITY updateTab.label "Обновления">
 <!ENTITY updateApp.label "Обновления &brandShortName;:">
-<!ENTITY updateAuto.label "Автоматически устанавливать обновления (рекомендовано: повышает безопасность)">
-<!ENTITY updateAuto.accesskey "м">
+<!ENTITY updateAuto1.label "Автоматически устанавливать обновления (рекомендовано: повышает безопасность)">
+<!ENTITY updateAuto1.accesskey "м">
+<!ENTITY updateAutoMetro.label "Автоматически обновляться через классический и плиточный &brandShortName;">
+<!ENTITY updateAutoMetro.accesskey "о">
 <!ENTITY updateCheck.label "Проверять наличие обновлений, но позволять мне решать, устанавливать ли их или нет">
 <!ENTITY updateCheck.accesskey "в">
 <!ENTITY updateManual.label "Никогда не проверять наличие обновлений (не рекомендовано: ставит безопасность под угрозу)">
 <!ENTITY updateManual.accesskey "и">
 <!ENTITY updateAutoAddonWarn.label "Предупреждать меня, если при этом будут отключены какие-либо дополнения">
 <!ENTITY updateAutoAddonWarn.accesskey "е">
+<!ENTITY updateAutoMetroWarn.label "(плиточный &brandShortName; не проверяет совместимость дополнений)">
 <!ENTITY updateHistory.label "Показать журнал обновлений">
 <!ENTITY updateHistory.accesskey "ж">
 <!ENTITY useService.label "Использовать фоновую службу для установки обновлений">
@@ -71,13 +86,7 @@
 <!ENTITY offlineAppsListRemove.label "Удалить…">
 <!ENTITY offlineAppsListRemove.accesskey "д">
 <!ENTITY offlineAppRemove.confirm "Удалить данные автономных веб-сайтов">
-<!ENTITY encryptionTab.label "Шифрование">
-<!ENTITY protocols.label "Протоколы">
-<!ENTITY useSSL3.label "Использовать SSL 3.0">
-<!ENTITY useSSL3.accesskey "3">
-<!ENTITY useTLS1.label "Использовать TLS 1.0">
-<!ENTITY useTLS1.accesskey "1">
-<!ENTITY certificates.label "Сертификаты">
+<!ENTITY certificateTab.label "Сертификаты">
 <!ENTITY certSelection.description "Когда сервер запрашивает личный сертификат:">
 <!ENTITY certs.auto "Отправлять автоматически">
 <!ENTITY certs.auto.accesskey "а">
@@ -85,8 +94,6 @@
 <!ENTITY certs.ask.accesskey "ш">
 <!ENTITY viewCerts.label "Просмотр сертификатов">
 <!ENTITY viewCerts.accesskey "с">
-<!ENTITY viewCRLs.label "Управление CRL">
-<!ENTITY viewCRLs.accesskey "в">
 <!ENTITY verify2.label "Настройки OCSP">
 <!ENTITY verify2.accesskey "р">
 <!ENTITY viewSecurityDevices.label "Устройства защиты">

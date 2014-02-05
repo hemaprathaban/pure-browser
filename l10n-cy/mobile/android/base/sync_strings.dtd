@@ -15,8 +15,8 @@
 <!-- J-PAKE Key Screen -->
 
 <!ENTITY sync.subtitle.connect.label "I weithredu eich dyfais newydd, dewiswch “Gosod &syncBrand.shortName.label;” ar y ddyfais.">
-<!ENTITY sync.subtitle.header.label "Rhowch y cod yma ar eich cyfrifiadur">
-<!ENTITY sync.subtitle.connectlocation.label "Dewiswch “&sync.title.pair.label;” yn adran &syncBrand.shortName.label; dewisiadau bwrdd gwaith Firefox.">
+<!ENTITY sync.subtitle.header2.label "Rhowch y cod yma ar eich dyfais arall">
+<!ENTITY sync.subtitle.connectlocation2.label "Dewiswch “&sync.title.pair.label;” yn adran &syncBrand.shortName.label; dewisiadau Firefox eich dyfais arall.">
 <!ENTITY sync.subtitle.pair.label "I weithredu, dewiswch “Paru dyfais” yn eich dyfais arall.">
 <!ENTITY sync.pin.default.label "...\n...\n...\n">
 <!ENTITY sync.pin.oneline.label "...">
@@ -41,12 +41,12 @@
 <!ENTITY sync.button.tryagain.label "Ceisio eto">
 <!ENTITY sync.button.manual.label "Gosod gyda Llaw">
 <!ENTITY sync.subtitle.nointernet.label "Dim cysylltiad gwe ar gael.">
-<!ENTITY sync.subtitle.failaccount.label "Methodd creu cyfrif ar eich dyfais">
+<!ENTITY sync.subtitle.failaccount.label "Methodd creu cyfrif ar eich dyfais.">
 <!ENTITY sync.subtitle.failmultiple.label "A oes gennych fwy nag un Firefox wedi ei osod? Ar hyn o bryd mae &syncBrand.fullName.label; yn cynnal dim ond un Firefox ar y tro. Dadosodwch unrhyw engraifft er mwyn defnyddio&syncBrand.shortName.label;.">
 <!-- Setup Success -->
   
 <!ENTITY sync.title.success.label "Wedi Cwblhau’r Gosod">
-<!ENTITY sync.subtitle.success.label1 "Mae eich data\'n cael ei lwytho i lawr yn y cefndir. Gallwch fynd i Gosodiadau i reoli eich cyfrif neu i gychwyn pori gyda &brandShortName;.">
+<!ENTITY sync.subtitle.success.label1 "Mae eich data\u0027n cael ei lwytho i lawr yn y cefndir. Gallwch fynd i Gosodiadau i reoli eich cyfrif neu i gychwyn pori gyda &brandShortName;.">
 <!ENTITY sync.settings.label "Gosodiadau">
 <!ENTITY sync.subtitle.manage.label1 "Mae eich cyfrif &syncBrand.fullName.label; wedi ei greu yn barod. Gallwch fynd i Gosodiadau i reoli eich cyfrif neu i gychwyn pori gyda &brandShortName;.">
 <!-- Pair Device -->
@@ -57,6 +57,14 @@
 
 <!ENTITY sync.settings.options.label "Dewisiadau">
 <!ENTITY sync.summary.pair.label "Cysylltu dyfais arall i’ch cyfrif &syncBrand.shortName.label;">
+<!-- Configure Engines -->
+
+<!ENTITY sync.configure.engines.title.label "Beth i\u0027w gydweddu">
+<!ENTITY sync.configure.engines.sync.my.title.label "Cydweddu eich…">
+<!ENTITY sync.configure.engines.title.bookmarks "Nodau Tudalen">
+<!ENTITY sync.configure.engines.title.passwords "Cyfrineiriau">
+<!ENTITY sync.configure.engines.title.history "Hanes">
+<!ENTITY sync.configure.engines.title.tabs "Tabiau">
 <!-- Common text -->
 
 <!ENTITY sync.button.cancel.label "Diddymu">
@@ -75,9 +83,12 @@
 <!ENTITY bookmarks.folder.desktop.label "Nodau Tudalen Bwrdd Gwaith">
 <!ENTITY bookmarks.folder.mobile.label "Nodau Tudalen Symudol">
 <!ENTITY bookmarks.folder.readinglist.label "Rhestr Ddarllen">
+<!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
+<!ENTITY bookmarks.folder.pinned.label "Piniwyd">
 <!-- Notification strings -->
 
 <!ENTITY sync.notification.oneaccount.label "Dim ond un cyfrif &syncBrand.fullName.label; sy’n cael ei gynnal.">
+<!ENTITY sync.notification.configure.saved "Mae eich dewis wedi eu cadw.">
 <!-- Incorrect settings and changing credentials. -->
 
 <!ENTITY sync.invalidcreds.label "Enw cyfrif neu gyfrinair anghywir.">

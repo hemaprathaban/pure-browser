@@ -10,12 +10,14 @@
 <!ENTITY reloadTab.accesskey "и">
 <!ENTITY reloadAllTabs.label "Обновить все вкладки">
 <!ENTITY reloadAllTabs.accesskey "н">
+<!ENTITY closeTabsToTheEnd.label "Закрыть вкладки справа">
+<!ENTITY closeTabsToTheEnd.accesskey "п">
 <!ENTITY closeOtherTabs.label "Закрыть другие вкладки">
-<!ENTITY closeOtherTabs.accesskey "д">
-<!ENTITY pinAppTab.label "Закрепить вкладку">
-<!ENTITY pinAppTab.accesskey "к">
-<!ENTITY unpinAppTab.label "Открепить вкладку">
-<!ENTITY unpinAppTab.accesskey "п">
+<!ENTITY closeOtherTabs.accesskey "ы">
+<!ENTITY pinTab.label "Закрепить вкладку">
+<!ENTITY pinTab.accesskey "к">
+<!ENTITY unpinTab.label "Открепить вкладку">
+<!ENTITY unpinTab.accesskey "п">
 <!ENTITY moveToGroup.label "Переместить в группу">
 <!ENTITY moveToGroup.accesskey "м">
 <!ENTITY moveToNewGroup.label "Новая группа">
@@ -26,7 +28,7 @@
 <!ENTITY undoCloseTab.label "Восстановить закрытую вкладку">
 <!ENTITY undoCloseTab.accesskey "с">
 <!ENTITY closeTab.label "Закрыть вкладку">
-<!ENTITY closeTab.accesskey "р">
+<!ENTITY closeTab.accesskey "а">
 <!ENTITY listAllTabs.label "Список всех вкладок">
 <!ENTITY tabCmd.label "Новая вкладка">
 <!ENTITY tabCmd.accesskey "о">
@@ -41,7 +43,7 @@
 <!ENTITY printPreviewCmd.label "Предварительный просмотр">
 <!ENTITY printPreviewCmd.accesskey "д">
 <!ENTITY printCmd.label "Печать…">
-<!ENTITY printCmd.accesskey "е">
+<!ENTITY printCmd.accesskey "ч">
 <!ENTITY printCmd.commandkey "p">
 <!ENTITY goOfflineCmd.label "Работать автономно">
 <!ENTITY goOfflineCmd.accesskey "б">
@@ -88,7 +90,18 @@
 <!ENTITY bookmarksMenu.accesskey "З">
 <!ENTITY bookmarkThisPageCmd.label "Добавить страницу">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
-<!ENTITY sharePageCmd.commandkey "l">
+<!ENTITY markPageCmd.commandkey "l">
+<!ENTITY sharePageCmd.label "Поделиться этой страницей">
+<!ENTITY sharePageCmd.commandkey "S">
+<!ENTITY sharePageCmd.accesskey "о">
+<!ENTITY shareLinkCmd.label "Поделиться этой ссылкой">
+<!ENTITY shareLinkCmd.accesskey "о">
+<!ENTITY shareImageCmd.label "Поделиться этой картинкой">
+<!ENTITY shareImageCmd.accesskey "о">
+<!ENTITY shareSelectCmd.label "Поделиться выделенным текстом">
+<!ENTITY shareSelectCmd.accesskey "о">
+<!ENTITY shareVideoCmd.label "Поделиться этим видео">
+<!ENTITY shareVideoCmd.accesskey "о">
 <!ENTITY subscribeToPageMenupopup.label "Подписаться на ленты новостей">
 <!ENTITY subscribeToPageMenuitem.label "Подписаться на ленты новостей…">
 <!ENTITY addCurPagesCmd.label "Добавить все вкладки…">
@@ -127,7 +140,6 @@
 <!ENTITY feedButton.tooltip "Подписаться на ленты новостей…">
 <!ENTITY bookmarksButton.label "Закладки">
 <!ENTITY bookmarksButton.tooltip "Показать ваши закладки">
-<!ENTITY bookmarksButton.accesskey "к">
 <!ENTITY bookmarksCmd.commandkey "b">
 <!ENTITY bookmarksMenuButton.label "Закладки">
 <!ENTITY bookmarksMenuButton.tooltip "Показать ваши закладки">
@@ -138,7 +150,6 @@
 <!ENTITY bookmarksWinCmd.commandkey "i">
 <!ENTITY historyButton.label "Журнал">
 <!ENTITY historyButton.tooltip "Отобразить список недавно просмотренных страниц">
-<!ENTITY historySidebarCmd.accesskey "Ж">
 <!ENTITY historySidebarCmd.commandKey "h">
 <!ENTITY toolsMenu.label "Инструменты">
 <!ENTITY toolsMenu.accesskey "И">
@@ -156,15 +167,14 @@
 <!ENTITY addons.commandkey "A">
 <!ENTITY webDeveloperMenu.label "Веб-разработка">
 <!ENTITY webDeveloperMenu.accesskey "б">
+<!ENTITY devtoolsConnect.label "Соединиться…">
+<!ENTITY devtoolsConnect.accesskey "е">
 <!ENTITY errorConsoleCmd.label "Консоль ошибок">
 <!ENTITY errorConsoleCmd.accesskey "К">
-<!ENTITY errorConsoleCmd.commandkey "j">
-<!ENTITY webConsoleCmd.label "Веб-консоль">
-<!ENTITY webConsoleCmd.accesskey "б">
-<!ENTITY webConsoleCmd.commandkey "k">
-<!ENTITY inspectMenu.label "Инспектор">
-<!ENTITY inspectMenu.accesskey "н">
-<!ENTITY inspectMenu.commandkey "I">
+<!ENTITY remoteWebConsoleCmd.label "Удалённая веб-консоль">
+<!ENTITY browserConsoleCmd.label "Консоль браузера">
+<!ENTITY browserConsoleCmd.commandkey "j">
+<!ENTITY browserConsoleCmd.accesskey "о">
 <!ENTITY inspectContextMenu.label "Исследовать элемент">
 <!ENTITY inspectContextMenu.accesskey "л">
 <!ENTITY responsiveDesignTool.label "Адаптивный дизайн">
@@ -174,29 +184,16 @@
 <!ENTITY scratchpad.accesskey "р">
 <!ENTITY scratchpad.keycode "VK_F4">
 <!ENTITY scratchpad.keytext "F4">
-<!ENTITY inspectCloseButton.tooltiptext "Закрыть Инспектор">
+<!ENTITY chromeDebuggerMenu.label "Отладчик браузера">
 <!ENTITY devToolbarCloseButton.tooltiptext "Закрыть панель разработки">
 <!ENTITY devToolbarMenu.label "Панель разработки">
 <!ENTITY devToolbarMenu.accesskey "а">
 <!ENTITY devToolbar.keycode "VK_F2">
 <!ENTITY devToolbar.keytext "F2">
+<!ENTITY devToolboxMenuItem.label "Показать/скрыть инструменты">
+<!ENTITY devToolboxMenuItem.accesskey "а">
+<!ENTITY devToolbarToolsButton.tooltip "Показать/скрыть инструменты разработчика">
 <!ENTITY devToolbarOtherToolsButton.label "Другие инструменты">
-<!ENTITY webConsoleButton.label "Веб-консоль">
-<!ENTITY inspectorButton.label "Инспектор">
-<!ENTITY inspectorHTMLCopyInner.label "Копировать внутренний HTML">
-<!ENTITY inspectorHTMLCopyInner.accesskey "п">
-<!ENTITY inspectorHTMLCopyOuter.label "Копировать внешний HTML">
-<!ENTITY inspectorHTMLCopyOuter.accesskey "о">
-<!ENTITY inspectorHTMLDelete.label "Удалить узел">
-<!ENTITY inspectorHTMLDelete.accesskey "д">
-<!ENTITY inspect3DViewButton.label "3D вид">
-<!ENTITY inspect3DViewButton.accesskey "в">
-<!ENTITY inspectStyleButton.label "Стиль">
-<!ENTITY inspectStyleButton.accesskey "и">
-<!ENTITY styleeditor.label "Редактор стилей">
-<!ENTITY styleeditor.accesskey "д">
-<!ENTITY styleeditor.keycode "VK_F7">
-<!ENTITY styleeditor.keytext "F7">
 <!ENTITY getMoreDevtoolsCmd.label "Другие инструменты">
 <!ENTITY getMoreDevtoolsCmd.accesskey "у">
 <!ENTITY fileMenu.label "Файл">
@@ -204,6 +201,8 @@
 <!ENTITY newNavigatorCmd.label "Новое окно">
 <!ENTITY newNavigatorCmd.key "N">
 <!ENTITY newNavigatorCmd.accesskey "Н">
+<!ENTITY newPrivateWindow.label "Новое приватное окно">
+<!ENTITY newPrivateWindow.accesskey "е">
 <!ENTITY editMenu.label "Правка">
 <!ENTITY editMenu.accesskey "П">
 <!ENTITY undoCmd.label "Отменить">
@@ -232,11 +231,6 @@
 <!ENTITY preferencesCmdUnix.label "Настройки">
 <!ENTITY preferencesCmdUnix.accesskey "Н">
 <!ENTITY clearRecentHistory.label "Стереть недавнюю историю…">
-<!ENTITY clearRecentHistory.accesskey "т">
-<!ENTITY privateBrowsingCmd.start.label "Начать приватный просмотр">
-<!ENTITY privateBrowsingCmd.start.accesskey "п">
-<!ENTITY privateBrowsingCmd.stop.label "Закончить приватный просмотр">
-<!ENTITY privateBrowsingCmd.stop.accesskey "п">
 <!ENTITY privateBrowsingCmd.commandkey "P">
 <!ENTITY viewMenu.label "Вид">
 <!ENTITY viewMenu.accesskey "В">
@@ -269,17 +263,19 @@
 <!ENTITY appMenuSafeMode.label "Перезапустить с отключёнными дополнениями…">
 <!ENTITY appMenuSafeMode.accesskey "з">
 <!ENTITY openCmd.commandkey "l">
-<!ENTITY urlbar.placeholder "Перейти на веб-сайт">
+<!ENTITY urlbar.placeholder2 "Введите поисковый запрос или адрес">
 <!ENTITY urlbar.accesskey "d">
 <!ENTITY urlbar.switchToTab.label "Перейти на вкладку:">
 <!ENTITY searchFocus.commandkey "k">
 <!ENTITY searchFocus.commandkey2 "e">
 <!ENTITY searchFocusUnix.commandkey "j">
 <!ENTITY tabView.commandkey "e">
-<!ENTITY openLinkCmdInTab.label "Открыть в новой вкладке">
+<!ENTITY openLinkCmdInTab.label "Открыть ссылку в новой вкладке">
 <!ENTITY openLinkCmdInTab.accesskey "в">
-<!ENTITY openLinkCmd.label "Открыть в новом окне">
+<!ENTITY openLinkCmd.label "Открыть ссылку в новом окне">
 <!ENTITY openLinkCmd.accesskey "н">
+<!ENTITY openLinkInPrivateWindowCmd.label "Открыть ссылку в новом приватном окне">
+<!ENTITY openLinkInPrivateWindowCmd.accesskey "ы">
 <!ENTITY openLinkCmdInCurrent.label "Открыть ссылку">
 <!ENTITY openLinkCmdInCurrent.accesskey "к">
 <!ENTITY openFrameCmdInTab.label "Открыть фрейм в новой вкладке">
@@ -344,6 +340,10 @@
 <!ENTITY emailVideoCmd.accesskey "а">
 <!ENTITY emailAudioCmd.label "Отправить аудио по почте…">
 <!ENTITY emailAudioCmd.accesskey "а">
+<!ENTITY playPluginCmd.label "Включить этот плагин">
+<!ENTITY playPluginCmd.accesskey "ю">
+<!ENTITY hidePluginCmd.label "Скрыть этот плагин">
+<!ENTITY hidePluginCmd.accesskey "к">
 <!ENTITY copyLinkCmd.label "Копировать ссылку">
 <!ENTITY copyLinkCmd.accesskey "ы">
 <!ENTITY copyImageCmd.label "Копировать ссылку на изображение">
@@ -366,6 +366,16 @@
 <!ENTITY mediaMute.accesskey "т">
 <!ENTITY mediaUnmute.label "Восстановить звук">
 <!ENTITY mediaUnmute.accesskey "т">
+<!ENTITY mediaPlaybackRate.label "Скорость воспроизведения">
+<!ENTITY mediaPlaybackRate.accesskey "к">
+<!ENTITY mediaPlaybackRate050x.label "Замедленное движение (0.5×)">
+<!ENTITY mediaPlaybackRate050x.accesskey "м">
+<!ENTITY mediaPlaybackRate100x.label "Нормальная скорость">
+<!ENTITY mediaPlaybackRate100x.accesskey "о">
+<!ENTITY mediaPlaybackRate150x.label "Высокая скорость (1.5×)">
+<!ENTITY mediaPlaybackRate150x.accesskey "ы">
+<!ENTITY mediaPlaybackRate200x.label "Безумная скорость (2×)">
+<!ENTITY mediaPlaybackRate200x.accesskey "з">
 <!ENTITY mediaShowControls.label "Показать пульт управления">
 <!ENTITY mediaShowControls.accesskey "п">
 <!ENTITY mediaHideControls.label "Скрыть пульт управления">
@@ -412,7 +422,7 @@
 <!ENTITY quitApplicationCmd.label "Выход">
 <!ENTITY quitApplicationCmd.accesskey "ы">
 <!ENTITY quitApplicationCmdMac.label "Завершить &brandShortName;">
-<!ENTITY quitApplicationCmdMac.key "Q">
+<!ENTITY quitApplicationCmdUnix.key "Q">
 <!ENTITY closeCmd.label "Закрыть">
 <!ENTITY closeCmd.key "W">
 <!ENTITY closeCmd.accesskey "З">
@@ -449,10 +459,8 @@
 <!ENTITY identity.connectedTo "Вы соединены с">
 <!ENTITY identity.runBy "который управляется">
 <!ENTITY identity.moreInfoLinkText "Подробнее…">
-<!ENTITY downloadMonitor2.tooltip "Щёлкните, чтобы открыть окно загрузок">
-<!ENTITY allTabs.filter.emptyText "Поиск вкладок">
 <!ENTITY tabsToolbar.label "Вкладки браузера">
-<!ENTITY syncTabsMenu.label "Вкладки с других компьютеров">
+<!ENTITY syncTabsMenu2.label "Вкладки с других устройств">
 <!ENTITY syncBrand.shortName.label "Sync">
 <!ENTITY syncSetup.label "Настроить &syncBrand.shortName.label;…">
 <!ENTITY syncSetup.accesskey "с">
@@ -461,15 +469,37 @@
 <!ENTITY syncToolbarButton.label "Синхронизация">
 <!ENTITY addonBarCloseButton.tooltip "Закрыть панель дополнений">
 <!ENTITY toggleAddonBarCmd.key "\">
-<!ENTITY markupButton.arialabel "Разметка">
-<!ENTITY markupButton.accesskey "M">
 <!ENTITY socialToolbar.title "Кнопка социальной панели">
 <!ENTITY social.notLoggedIn.label "Не зашёл">
 <!ENTITY social.ok.label "OK">
 <!ENTITY social.ok.accesskey "O">
 <!ENTITY social.toggleSidebar.label "Показать боковую панель">
 <!ENTITY social.toggleSidebar.accesskey "з">
+<!ENTITY social.addons.label "Управление службами…">
 <!ENTITY social.toggleNotifications.label "Отображать уведомления на десктопе">
 <!ENTITY social.toggleNotifications.accesskey "а">
-<!ENTITY social.activated.undobutton.label "Отменить">
-<!ENTITY social.activated.undobutton.accesskey "м">
+<!ENTITY social.activated.description "Были включены службы от <label/>. Вы можете изменить параметры служб в <label class='text-link'>окне управления дополнениями</label>.">
+<!ENTITY social.activated.undo.label "Ой, отменить это!">
+<!ENTITY social.activated.undo.accesskey "м">
+<!ENTITY social.learnMore.label "Подробнее…">
+<!ENTITY social.learnMore.accesskey "о">
+<!ENTITY social.closeNotificationItem.label "Не сейчас">
+<!ENTITY social.chatBar.commandkey "c">
+<!ENTITY social.chatBar.label "Переключаться на чаты">
+<!ENTITY social.chatBar.accesskey "ч">
+<!ENTITY social.markpage.accesskey "а">
+<!ENTITY social.marklink.accesskey "а">
+<!ENTITY getUserMedia.selectCamera.label "Доступ к камере:">
+<!ENTITY getUserMedia.selectCamera.accesskey "к">
+<!ENTITY getUserMedia.selectMicrophone.label "Доступ к микрофону:">
+<!ENTITY getUserMedia.selectMicrophone.accesskey "м">
+<!ENTITY webrtcIndicatorButton.label "Доступ к Камере / Микрофону">
+<!ENTITY webrtcIndicatorButton.tooltip "Показать сайты, которые сейчас имеют доступ к вашей камере или микрофону">
+<!ENTITY mixedContentBlocked.helplink "Подробнее">
+<!ENTITY mixedContentBlocked.moreinfo "Большинство веб-сайтов будут продолжать нормально работать, даже когда это содержимое заблокировано.">
+<!ENTITY pointerLock.notification.message "Нажмите в любой момент кнопку Esc, чтобы показать его снова.">
+<!ENTITY pluginNotification.showAll.label "Показать все">
+<!ENTITY pluginNotification.showAll.accesskey "о">
+<!ENTITY pluginActivateNow.label "Временно разрешить">
+<!ENTITY pluginActivateAlways.label "Разрешить и запомнить">
+<!ENTITY pluginBlockNow.label "Заблокировать плагин">

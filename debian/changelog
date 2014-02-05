@@ -1,30 +1,129 @@
-iceweasel (17.0.9esr-1~deb7u1) stable-security; urgency=low
+iceweasel (24.3.0esr-1~deb7u1) stable-security; urgency=low
 
   * New upstream release.
-  * Fixes for mfsa2013-{76,79,82,88-91}, also known as
-    CVE-2013-1718, CVE-2013-1722, CVE-2013-1725, CVE-2013-1730,
-    CVE-2013-1732, CVE-2013-1735, CVE-2013-1736, CVE-2013-1737.
+  * Fixes for mfsa2014-{01-02,04,08-09,13} also known as
+    CVE-2014-1477, CVE-2014-1479, CVE-2014-1482, CVE-2014-1486,
+    CVE-2014-1487, CVE-2014-1481.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 17 Sep 2013 22:17:40 +0900
+  * Import patches from the nss source package that are relevant to building
+    iceweasel against the in-tree nss source, for backports:
+    - security/nss/lib/freebl/unix_rand.c,
+      security/nss/cmd/shlibsign/shlibsign.c: Fix FTBFS on Hurd because of
+      MAXPATHLEN
+    - security/nss/coreconf/Linux.mk,
+      security/nss/coreconf/arch.mk, security/nss/coreconf/config.mk,
+      security/nss/lib/freebl/unix_rand.c, security/nss/lib/softoken/softoken.h,
+      security/nss/lib/ssl/sslmutex.*: GNU/kFreeBSD support.
+    - security/nss/lib/ckfw/builtins/certdata.txt: Adds the SPI Inc. and
+      CAcert.org CA certificates.
+  * debian/copyright, debian/rules: Update copyright info. Closes: #735297.
+  * debian/source.filter:
+    - Remove build/pgo/blueprint/valid.png from the source archive.
+      Closes: #736592
+    - Remove minified jquery from source archive. Closes: #736725.
+  * debian/control*: Bump nspr and nss build dependencies.
+  * debian/rules: Work around build failure following the removal of valid.png.
 
-iceweasel (17.0.8esr-2~deb7u1) stable-security; urgency=low
+ -- Mike Hommey <glandium@debian.org>  Thu, 06 Feb 2014 06:50:49 +0900
 
+iceweasel (24.2.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2013-{104,108-109,111,113-116}, also known as
+    CVE-2013-5609, CVE-2013-5616, CVE-2013-5618, CVE-2013-6671,
+    CVE-2013-6673, CVE-2013-5613, CVE-2013-5615, CVE-2013-6629,
+    CVE-2013-6630.
+
+  * debian/control*, debian/noinstall.in, debian/rules, debian/upstream.mk,
+    debian/xulrunner-GRE_VERSION.install.in, debian/xulrunner.mozconfig:
+    Don't build against system nspr, nss and sqlite3 when building backports.
+  * debian/control*, debian/xulrunner.mozconfig.in: Build with the in-tree
+    cairo. I think it's time to admit that there are too many issues with
+    system cairo.
+  * debian/rules: Ensure debian/control is updated when running debian/rules
+    clean.
+
+  * configure*: Fixup NSPR_CFLAGS when building with libxul-sdk and in-tree
+    nspr.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 15 Dec 2013 15:13:58 +0900
+
+iceweasel (24.1.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2013-{93-102}, also known as
+    CVE-2013-5590, CVE-2013-5591, CVE-2013-5593, CVE-2013-5604,
+    CVE-2013-5595, CVE-2013-5596, CVE-2013-5597, CVE-2013-5598,
+    CVE-2013-5599, CVE-2013-5600, CVE-2013-5601, CVE-2013-5602,
+    CVE-2013-5603.
+
+  * debian/rules: Don't try to disable methodjit, since it's long gone.
+  * debian/upstream.mk: Adjust version mangling to handle the version scheme
+    change without changing package names.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 01 Nov 2013 13:34:25 +0900
+
+iceweasel (24.0-2) unstable; urgency=low
+
+  * debian/control*: Build-depend on fonts-freefont-ttf instead of
+    fonts-freefont, which doesn't exist. Closes: #714056. Interestingly, 
+    experimental was happy with that, but unstable isn't.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 19 Sep 2013 07:03:08 +0900
+
+iceweasel (24.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2013-{76-82,85,88-92}, also known as
+    CVE-2013-1718, CVE-2013-1719, CVE-2013-1720, CVE-2013-1721,
+    CVE-2013-1722, CVE-2013-1723, CVE-2013-1724, CVE-2013-1725,
+    CVE-2013-1728, CVE-2013-1730, CVE-2013-1732, CVE-2013-1735,
+    CVE-2013-1736, CVE-2013-1737, CVE-2013-1738.
+
+  * debian/control*:
+    - Bump sqlite build dependency.
+    - Add build dependencies on gstreamer. Closes: #682917.
+    - Build depend on fonts-freefont and fonts-dejima-mincho. Closes: #714056.
+    - Use strict dependencies between binary packages. Closes: #720467.
+    - Add Suggests for MathML-friendly fonts. Closes: #697277.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 18 Sep 2013 09:10:25 +0900
+
+iceweasel (23.0.1-1) unstable; urgency=low
+
+  * New upstream release.
   * debian/rules:
     - Don't use --no-keep-memory on ia64. Somehow, it makes ld fail to relax
       some relocations.
     - Don't use --as-needed on ia64. Somehow, it makes ld crash on some files.
 
- -- Mike Hommey <glandium@debian.org>  Sun, 11 Aug 2013 08:15:26 +0900
+  * ipc/chromium/chromium-config.mk: Add missing piece of the upstream patch
+    for bz#901414. Fixes FTBFS on kFreeBSD.
+  * js/public/Value.h: Remove uintptr_t word payload union member on 64BE, it
+    grows jsval_layout size and is unused. bz#618485. Fixes FTBFS on s390x.
+  * gfx/skia/src/opts/SkBlitRow_opts_arm.cpp: Fixups landed upstream. Fixes
+    FTBFS on armel.
 
-iceweasel (17.0.8esr-1~deb7u1) stable-security; urgency=low
+ -- Mike Hommey <glandium@debian.org>  Wed, 21 Aug 2013 22:07:49 +0900
+
+iceweasel (23.0-1) experimental; urgency=low
 
   * New upstream release.
-  * Fixes for mfsa2013-{63,68-69,72-73,75}, also known as
-    CVE-2013-1701, CVE-2013-1709, CVE-2013-1710, CVE-2013-1713,
-    CVE-2013-1714, CVE-2013-1717.
-  * debian/rules: Reduce memory usage of the linker at the expense of
-    processing time. This should help on lower-end architectures like arm
-    and mips, which spend an immense amount of time swapping.
+  * Fixes for mfsa2013-{63-65,67-70,72-73,75}, also known as
+    CVE-2013-1701, CVE-2013-1702, CVE-2013-1704, CVE-2013-1705,
+    CVE-2013-1708, CVE-2013-1709, CVE-2013-1710, CVE-2013-1711,
+    CVE-2013-1713, CVE-2013-1714, CVE-2013-1717.
+
+  * debian/control*: Bump nss build dependency.
+  * debian/rules:
+    - Avoid installing libmozjs.a.
+    - Install mozjs.pc as mozilla-js.pc.
+    - Reduce memory usage of the linker at the expense of processing time.
+    This should help on lower-end architectures like arm and mips, which
+    spend an immense amount of time swapping.
+  * debian/dh/dh_xulrunner.in: Change one of the searched strings to detect
+    the xulrunner stub. This avoids an error in detection when gcc inlines
+    strings in the code for strcpy.
 
   * build/unix/elfhack/elfhack.cpp: Support R_ARM_JUMP24 and R_ARM_CALL
     relocations. bz#892366. Fixes FTBFS on armel.
@@ -33,76 +132,158 @@ iceweasel (17.0.8esr-1~deb7u1) stable-security; urgency=low
     Fixes FTBFS on armhf.
   * xpcom/glue/nsIClassInfoImpl.h: Properly align statically allocated
     classinfo objects. bz#898916. Fixes FTBFS on armel.
-  * js/src/gc/Heap.h, js/src/gc/Memory.*, js/src/jsapi.cpp, js/src/jscntxt.h,
-    js/src/jsgc.cpp: Use the runtime page size to control arena decommit.
-    bz#840242, bz#746112, bz#787904. Fixes FTBFS on sparc and runtime issues
-    on mips and likely other architectures..
+  * js/public/HeapAPI.h, js/src/gc/Memory.*, js/src/gc/Nursery.cpp,
+    js/src/ion/AsmJS.*, js/src/ion/AsmJSModule.h, js/src/jsapi.cpp,
+    js/src/jscntxt.h, js/src/jsgc.cpp, js/src/jstypedarray.cpp: Use the
+    runtime page size to control arena decommit. bz#840242. Fixes FTBFS on
+    sparc and runtime issues on mips and likely other architectures.
+  * js/src/configure*: Disable Yarr JIT on sparc and mips. bz#900821.
+  * xpcom/reflect/xptcall/src/md/unix/xptcstubs_*: Change SharedStub
+    definition in tier-3 xptcstubs to better fit reality and make the compiler
+    happy now that nsresult is an enum. bz#901200.
+  * configure*: Set WEBRTC_TARGET_ARCH to a right value on ia64. bz#901202.
+  * gfx/skia/src/opts/SkBlitRow_opts_arm.cpp: Fix Skia for ARM v4t. bz#901208.
+  * js/src/ion/AsmJSSignalHandlers.cpp: Support GNU/kFreeBSD.
+  * ipc/chromium/Makefile.in, ipc/chromium/chromium-config.mk,
+    ipc/chromium/src/base/dir_reader_posix.h,
+    ipc/chromium/src/base/platform_thread.h,
+    ipc/chromium/src/base/platform_thread_posix.cc,
+    ipc/chromium/src/base/process_util.h,
+    ipc/chromium/src/build/build_config.h: Fix ipc/chromium to build for
+    GNU/kFreeBSD. bz#901414.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 07 Aug 2013 07:46:16 +0900
+ -- Mike Hommey <glandium@debian.org>  Wed, 07 Aug 2013 08:25:28 +0900
 
-iceweasel (17.0.7esr-1~deb7u1) stable-security; urgency=low
+iceweasel (22.0-1) experimental; urgency=low
 
   * New upstream release.
-    - Updated version of virtualenv handles multiarch properly.
-      Closes: #713103.
-  * Fixes for mfsa2013-{49-51,53-56,59}, also known as
+  * Fixes for mfsa2013-{49-62}, also known as
     CVE-2013-1682, CVE-2013-1684, CVE-2013-1685, CVE-2013-1686,
-    CVE-2013-1687, CVE-2013-1690, CVE-2013-1692, CVE-2013-1693,
-    CVE-2013-1694, CVE-2013-1697.
+    CVE-2013-1687, CVE-2013-1688, CVE-2013-1690, CVE-2013-1692,
+    CVE-2013-1693, CVE-2013-1694, CVE-2013-1695, CVE-2013-1696,
+    CVE-2013-1697, CVE-2013-1698, CVE-2013-1699, CVE-2013-1700.
 
-  * ipc/chromium/src/base/platform_thread_posix.cc: Fix FTBFS on
-    kFreeBSD and Hurd.
+  * debian/rules:
+    - Fix configure-check-xulrunner with gawk. Closes: #708765.
+    - Work around moz.build limitations for l10n.
+    - Work around the variable override limitation for MODULE.
+    - gc and ds include subdirectories have been removed.
+    - Disable branding check for now.
+  * debian/control*: Bump sqlite build dependency.
+  * debian/*/Makefile.in, debian/branding/**/moz.build:
+    Accomodate our extra Makefiles to upstream build system changes.
+  * debian/xulrunner-GRE_VERSION.install.in: libxpcom was removed.
+  * debian/rules, debian/check_resources.*: Remove resource:// url
+    checker, now that resource://app and resource://gre are different
+    upstream, too.
+
   * memory/mozjemalloc/jemalloc.c: Don't hardcode page size on mips.
     Should fix FTBFS on mips.
+  * js/src/vm/Stack.cpp: Fix FTBFS on non-Linux glibc systems due to mincore
+    prototype discrepancy. Thanks Samuel Thibault. Closes: #697891.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 26 Jun 2013 08:22:35 +0900
+ -- Mike Hommey <glandium@debian.org>  Wed, 26 Jun 2013 08:43:55 +0900
 
-iceweasel (17.0.6esr-1~deb7u1) stable-security; urgency=low
-
-  * New upstream release.
-  * Fixes for mfsa2013-{41-42,44,46-48}, also known as
-    CVE-2013-0801, CVE-2013-1670, CVE-2013-1672, CVE-2013-1674,
-    CVE-2013-1675, CVE-2013-1676, CVE-2013-1677, CVE-2013-1679,
-    CVE-2013-1680, CVE-2013-1681.
-
- -- Mike Hommey <glandium@debian.org>  Wed, 15 May 2013 08:34:37 +0200
-
-iceweasel (17.0.5esr-1) unstable; urgency=low
+iceweasel (21.0-1) experimental; urgency=low
 
   * New upstream release.
-  * Fixes for mfsa2013-{30,35-36,38}, also known as
-    CVE-2013-0788, CVE-2013-0796, CVE-2013-0795, CVE-2013-0793.
+  * Fixes for mfsa2013-{41-43,46-48}, also known as
+    CVE-2013-0801, CVE-2013-1669, CVE-2013-1670, CVE-2013-1671,
+    CVE-2013-1674, CVE-2013-1675, CVE-2013-1676, CVE-2013-1677,
+    CVE-2013-1679, CVE-2013-1680, CVE-2013-1681.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 02 Apr 2013 22:00:00 +0200
+  * debian/control*:
+    - Add Breaks: xul-ext-torbutton. Closes: #690729.
+    - Build depend on python 2.7 and python-minimal >= 2.6.6-13~.
+    - Bump nspr build dependencies.
+  * debian/rules:
+    - Use config.status directly to generate Makefiles.
+    - Adjust --{with,enable}-system options check to upstream build system
+      changes (in advance).
+  * debian/browser.install.in, debian/browser.links.in,
+    debian/check_resources.overrides,
+    debian/installer/package-manifest.xulrunner, debian/noinstall.in,
+    debian/rules, debian/branding/defs.mk: Browser parts moved in a
+    subdirectory.
+  * debian/check_resources.overrides: Add new overrides for providermanager.jsm.
+  * debian/xulrunner-GRE_VERSION.links.in: Use the full libmozjs soname for the
+    symlink in the xulrunner directory.
 
-iceweasel (17.0.4esr-1) UNRELEASED; urgency=low
+  * browser/confvars.sh: Disable Firefox Health Report.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 15 May 2013 12:40:11 +0200
+
+iceweasel (20.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2013-{30,35-39}, also known as
+    CVE-2013-0788, CVE-2013-0789, CVE-2013-0796, CVE-2013-0795,
+    CVE-2013-0794, CVE-2013-0793, CVE-2013-0792.
+
+  * debian/browser.mozconfig: Disable DASH when building browser part.
+  * debian/check_resources.overrides: Add override for gcli.jsm.
+  * debian/rules: Test plugins have moved from dist/bin/plugins to
+    dist/plugins.
+  * debian/control.*: Bump nss and sqlite3 build dependencies.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 02 Apr 2013 21:13:56 +0200
+
+iceweasel (19.0.2-1) experimental; urgency=low
 
   * New upstream release.
   * Fix for mfsa2013-29, also known as CVE-2013-0787.
 
- -- Mike Hommey <glandium@debian.org>  Sat, 23 Mar 2013 09:30:10 +0100
+ -- Mike Hommey <glandium@debian.org>  Fri, 08 Mar 2013 22:29:04 +0100
 
-iceweasel (17.0.3esr-1) UNRELEASED; urgency=low
-
-  * New upstream release.
-  * Fixes for mfsa2013-{21,24-28}, also known as
-    CVE-2013-0783, CVE-2013-0773, CVE-2013-0774, CVE-2013-0775,
-    CVE-2013-0776, CVE-2013-0780, CVE-2013-0782.
-
- -- Mike Hommey <glandium@debian.org>  Wed, 20 Feb 2013 15:02:30 +0100
-
-iceweasel (17.0.2esr-1) UNRELEASED; urgency=low
+iceweasel (19.0-1) experimental; urgency=low
 
   * New upstream release.
-  * Fixes for mfsa2013-{01-05,07,09-19}, also known as
-    CVE-2013-0769, CVE-2013-0749, CVE-2013-0762, CVE-2013-0766,
-    CVE-2013-0767, CVE-2013-0761, CVE-2013-0763, CVE-2013-0771,
-    CVE-2013-0768, CVE-2012-0759, CVE-2013-0744, CVE-2013-0764,
+  * Fixes for mfsa2013-{21-28}, also known as
+    CVE-2013-0783, CVE-2013-0784, CVE-2013-0772, CVE-2013-0765,
+    CVE-2013-0773, CVE-2013-0774, CVE-2013-0775, CVE-2013-0776,
+    CVE-2013-0780, CVE-2013-0782, CVE-2013-0777, CVE-2013-0778,
+    CVE-2013-0779, CVE-2013-0781.
+
+  * debian/control*: Bump nspr build dependency and add missing epoch to nspr
+    and nss build dependencies. Closes: #698961.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 20 Feb 2013 09:22:52 +0100
+
+iceweasel (18.0.2-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 08 Feb 2013 16:03:33 +0100
+
+iceweasel (18.0.1-1) experimental; urgency=low
+
+  * New upstream release.
+    - Fixes handling of language packs. Closes: #697836.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 18 Jan 2013 22:39:42 +0100
+
+iceweasel (18.0-1) experimental; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2013-{01-19}, also known as
+    CVE-2013-0769, CVE-2013-0749, CVE-2013-0770, CVE-2013-0760,
+    CVE-2013-0762, CVE-2013-0766, CVE-2013-0767, CVE-2013-0761,
+    CVE-2013-0763, CVE-2013-0771, CVE-2012-5829, CVE-2013-0768,
+    CVE-2012-0759, CVE-2013-0744, CVE-2013-0751, CVE-2013-0764,
     CVE-2013-0745, CVE-2013-0746, CVE-2013-0747, CVE-2013-0748,
     CVE-2013-0750, CVE-2013-0752, CVE-2013-0757, CVE-2013-0758,
     CVE-2013-0753, CVE-2013-0754, CVE-2013-0755, CVE-2013-0756.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 08 Jan 2013 20:13:59 +0100
+  * debian/control*: Bump nspr, nss and sqlite build dependencies.
+  * debian/control*, debian/xulrunner.mozconfig: Build against embedded
+    libjpeg-turbo and build depend on yasm accordingly.
+  * debian/xulrunner-GRE_VERSION.lintian-overrides.in: Add a lintian override
+    for libjpeg-turbo.
+  * debian/check_resources.overrides: Add an override for SettingsDB.jsm.
+
+  * services/*, testing/marionette/*: Fix services import urls. bz#815320.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 09 Jan 2013 08:56:15 +0100
 
 iceweasel (17.0.1-2) experimental; urgency=low
 

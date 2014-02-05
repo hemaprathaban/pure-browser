@@ -10,6 +10,11 @@
 <rdf:Description about="help-indexAZ.rdf#a">
    <nc:subheadings>
      <rdf:Seq><rdf:li>
+       <rdf:Description ID="add-ons:updating_add-ons"
+         nc:name="Actualizar complementos"
+         nc:link="customize_help.xhtml#updating_add-ons"/>
+     </rdf:li>
+     <rdf:li>
        <rdf:Description ID="return_receipts"
          nc:name="acuses de recibo"
          nc:link="mailnews_account_settings.xhtml#return_receipts"/>
@@ -47,6 +52,11 @@
        <rdf:Description ID="helper_applications"
          nc:name="aplicaciones auxiliares"
          nc:link="nav_help.xhtml#plugins_and_downloads"/>
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="Offline:offline_apps"
+         nc:name="aplicaciones web sin conexión"
+         nc:link="cs_nav_prefs_advanced.xhtml#offline_apps"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="Filing_messages"
@@ -186,6 +196,11 @@
      <rdf:Seq><rdf:li>
        <rdf:Description ID="toolbar"
          nc:name="barra de herramientas" />
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="add-ons:searching_for_add-ons"
+         nc:name="Buscar complementos"
+         nc:link="customize_help.xhtml#searching_for_add-ons"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="search"
@@ -332,11 +347,6 @@
          nc:link="mailnews_getting_started.xhtml"/>
      </rdf:li>
      <rdf:li>
-       <rdf:Description ID="CRLs"
-         nc:name="CRLs"
-	 nc:link="using_certs_help.xhtml#how_validation_works"/>
-     </rdf:li>
-     <rdf:li>
        <rdf:Description ID="default_account"
          nc:name="cuenta por defecto"
          nc:link="mailnews_getting_started.xhtml#set_as_default"/>
@@ -479,7 +489,7 @@
      <rdf:li>
        <rdf:Description ID="add-ons:manager"
          nc:name="Administrador de complementos"
-         nc:link="customize_help.xhtml#using_the_add-on_manager"/>
+         nc:link="customize_help.xhtml#using_the_add-ons_manager"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>
@@ -487,29 +497,39 @@
 <rdf:Description about="#add-ons:manager">
    <nc:subheadings>
      <rdf:Seq><rdf:li>
+       <rdf:Description ID="add-ons:searching_for_add-ons"
+         nc:name="Buscar complementos"
+         nc:link="customize_help.xhtml#searching_for_add-ons"/>
+     </rdf:li>
+     <rdf:li>
        <rdf:Description ID="add-ons:get_add-ons"
-         nc:name="Get Add-ons Panel"
+         nc:name="Panel Obtener complementos"
          nc:link="customize_help.xhtml#the_get_add-ons_panel"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="add-ons:extensions_panel"
-         nc:name="Extensions Panel"
+         nc:name="Panel Extensiones"
          nc:link="customize_help.xhtml#the_extensions_panel"/>
      </rdf:li>
      <rdf:li>
-       <rdf:Description ID="add-ons:themes_panel"
-         nc:name="Themes Panel"
-         nc:link="customize_help.xhtml#the_themes_panel"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="add-ons:languages_panel"
-         nc:name="Languages Panel"
-         nc:link="customize_help.xhtml#the_languages_panel"/>
+       <rdf:Description ID="add-ons:appearance_panel"
+         nc:name="Panel Apariencia"
+         nc:link="customize_help.xhtml#the_appearance_panel"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="add-ons:plugins_panel"
-         nc:name="Plugins Panel"
+         nc:name="Panel Plugins"
          nc:link="customize_help.xhtml#the_plugins_panel"/>
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="add-ons:languages_panel"
+         nc:name="Panel Idiomas"
+         nc:link="customize_help.xhtml#the_languages_panel"/>
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="add-ons:updating_add-ons"
+         nc:name="Actualizar complementos"
+         nc:link="customize_help.xhtml#updating_add-ons"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>
@@ -645,11 +665,6 @@
        <rdf:Description ID="settings:SSL"
          nc:name="configuraci&#243;n de SSL"
 	 nc:link="ssl_help.xhtml#ssl_settings"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="settings:validation"
-         nc:name="configuraci&#243;n de validaci&#243;n"
-	 nc:link="validation_help.xhtml#validation_settings"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>
@@ -717,11 +732,6 @@
 	 nc:link="privacy_help.xhtml#how_can_i_control_web_pages_in_email_messages"/>
      </rdf:li>
      <rdf:li>
-       <rdf:Description ID="cookies:foreign"
-         nc:name="cookies externas"
-	 nc:link="privacy_help.xhtml#what_are_third-party_cookies"/>
-     </rdf:li>
-     <rdf:li>
        <rdf:Description ID="cookies:managing_per_site"
          nc:name="administrar cookies sitio web por sitio web"
 	 nc:link="using_priv_help.xhtml#managing_cookies_site-by-site"/>
@@ -735,6 +745,11 @@
        <rdf:Description ID="cookies:removing"
          nc:name="eliminar cookies"
 	 nc:link="using_priv_help.xhtml#removing_cookies"/>
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="cookies:third-party"
+         nc:name="cookies de terceros"
+	 nc:link="privacy_help.xhtml#what_are_third-party_cookies"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="cookies:viewing"
@@ -965,36 +980,6 @@
        <rdf:Description ID="Mail_and_Newsgroups:working_offline"
          nc:name="trabajar sin conexi&#243;n"
          nc:link="mailnews_offline.xhtml#working_offline"/>
-     </rdf:li></rdf:Seq>
-   </nc:subheadings>
-</rdf:Description>
-
-<rdf:Description about="#CRLs">
-   <nc:subheadings>
-     <rdf:Seq><rdf:li>
-       <rdf:Description ID="CRLs:about"
-         nc:name="acerca de CRLs"
-	 nc:link="using_certs_help.xhtml#how_validation_works"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="CRLs:auto_upates_for"
-         nc:name="actualizaci&#243;n autom&#225;tica de CRLs"
-	 nc:link="validation_help.xhtml#automatic_crl_update_preferences"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="CRLs:managing"
-         nc:name="administrar CRLs"
-	 nc:link="validation_help.xhtml#manage_crls"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="CRLs:Next_Update_date"
-         nc:name="fecha de pr&#243;xima actualizaci&#243;n"
-	 nc:link="using_certs_help.xhtml#about_the_next_update_date"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="CRLs:preferences"
-         nc:name="preferencias de CRL"
-	 nc:link="validation_help.xhtml#privacy_and_security_preferences_validation"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>
@@ -1272,11 +1257,6 @@
          nc:link="certs_help.xhtml#your_certificates"/>
      </rdf:li>
      <rdf:li>
-       <rdf:Description ID="import:crls"
-         nc:name="importar CRLs"
-         nc:link="using_certs_help.xhtml#importing_crls"/>
-     </rdf:li>
-     <rdf:li>
        <rdf:Description ID="import:mail"
          nc:name="importar correo o configuraci&#243;n de cuentas de correo de otros programas"
          nc:link="mailnews_getting_started.xhtml#importing_mail_from_other_programs"/>
@@ -1487,7 +1467,7 @@
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="browser"
-         nc:name="navegador  "
+         nc:name="navegador"
 	 nc:link="nav_help.xhtml"/>
      </rdf:li>
      <rdf:li>
@@ -1616,11 +1596,6 @@
 <rdf:Description about="help-indexAZ.rdf#o">
    <nc:subheadings>
      <rdf:Seq><rdf:li>
-       <rdf:Description ID="OSCP"
-         nc:name="OSCP"
-         nc:link="using_certs_help.xhtml#how_validation_works"/>
-     </rdf:li>
-     <rdf:li>
        <rdf:Description ID="OPML"
          nc:name="OPML"
          nc:link="glossary.xhtml#opml"/>
@@ -1666,8 +1641,8 @@
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="themes_panel"
-         nc:name="themes panel"
-         nc:link="customize_help.xhtml#the_themes_panel"/>
+         nc:name="panel de apariencia"
+         nc:link="customize_help.xhtml#the_appearance_panel"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="profiles"
@@ -1697,6 +1672,16 @@
      <rdf:li>
        <rdf:Description ID="preferences"
          nc:name="preferencias" />
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="safe_browsing"
+         nc:name="preferencias de navegación segura"
+         nc:link="privsec_help.xhtml#safe_browsing"/>
+     </rdf:li>
+     <rdf:li>
+       <rdf:Description ID="user_tracking"
+         nc:name="preferencias de rastreo del usuario"
+         nc:link="privsec_help.xhtml#privacy_and_security"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="keyboard_preferences"
@@ -1947,11 +1932,6 @@
        <rdf:Description ID="preferences:Tabbed_Browsing"
          nc:name="preferencias de navegaci&#243;n por pesta&#241;as"
 	 nc:link="cs_nav_prefs_navigator.xhtml#tabbed_browsing"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="preferences:validation"
-         nc:name="preferencias de validaci&#243;n"
-	 nc:link="validation_help.xhtml#privacy_and_security_preferences_validation"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>
@@ -2221,29 +2201,14 @@
 	 nc:link="using_certs_help.xhtml#how_validation_works"/>
      </rdf:li>
      <rdf:li>
-       <rdf:Description ID="validation:auto_updating_CRLs"
-         nc:name="actualizar autom&#225;ticamente las CRLs"
-	 nc:link="validation_help.xhtml#automatic_crl_update_preferences"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="validation:CRLs"
-         nc:name="CRLs"
-	 nc:link="validation_help.xhtml#privacy_and_security_preferences_validation"/>
-     </rdf:li>
-     <rdf:li>
-       <rdf:Description ID="validation:managing_CRLs"
-         nc:name="administrar CRLs"
-	 nc:link="validation_help.xhtml#manage_crls"/>
-     </rdf:li>
-     <rdf:li>
        <rdf:Description ID="validation:OCSP"
          nc:name="OCSP"
-	 nc:link="validation_help.xhtml#privacy_and_security_preferences_validation"/>
+         nc:link="certs_prefs_help.xhtml#ocsp"/>
      </rdf:li>
      <rdf:li>
        <rdf:Description ID="validation:settings"
          nc:name="configuraci&#243;n de validaci&#243;n"
-	 nc:link="validation_help.xhtml#validation_settings"/>
+         nc:link="certs_prefs_help.xhtml#privacy_and_security_preferences_certificates"/>
      </rdf:li></rdf:Seq>
    </nc:subheadings>
 </rdf:Description>

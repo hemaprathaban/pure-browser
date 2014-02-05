@@ -12,7 +12,7 @@
 
 <!ENTITY setup.choicePage.title.label     "A meeɗii huutoraade &syncBrand.fullName.label;?">
 <!ENTITY setup.choicePage.new.label       "Mi meeɗaa huutoraade &syncBrand.shortName.label;">
-<!ENTITY setup.choicePage.existing.label  "Miɗo huutoroo kisa &syncBrand.shortName.label; e ordinateer goɗɗo">
+<!ENTITY setup.choicePage.existing2.label "Miɗo huutoroo kisa &syncBrand.shortName.label; e kaɓirgol goɗngol">
 <!-- New Account AND Existing Account -->
 
 <!ENTITY server.label               "Sarworde">
@@ -33,8 +33,11 @@
 <!ENTITY setup.choosePassword.accesskey  "F">
 <!ENTITY setup.confirmPassword.label     "Teeŋtin Finnde">
 <!ENTITY setup.confirmPassword.accesskey "n">
+<!ENTITY setup.setupMetro.label     "Sync e &brandShortName; mo pannol Windows 8">
+<!ENTITY setup.setupMetro.accesskey "S">
 <!-- LOCALIZATION NOTE: tosAgree1, tosLink, tosAgree2, ppLink, tosAgree3 are
      joined with implicit white space, so spaces in the strings aren't necessary -->
+
 <!ENTITY setup.tosAgree1.label      "I jaɓii e">
 <!ENTITY setup.tosAgree1.accesskey  "j">
 <!ENTITY setup.tosLink.label        "Laabi Carwe">
@@ -60,9 +63,9 @@
 <!ENTITY pairDevice.title.label             "Jokkondir Kaɓirɗi">
 <!ENTITY addDevice.showMeHow.label          "Hollu no waɗirtee.">
 <!ENTITY addDevice.dontHaveDevice.label     "Mi jogaaki kaɓirgol ngol jooni">
-<!ENTITY pairDevice.setup.description.label  "Ngam daaƴtude, labo &#x0022;Jokkondir Kaɓirgol&#x0022; e kaɓirgol maa ngola.">
+<!ENTITY pairDevice.setup.description.label  "Ngam daaƴtude, labo &quot;Jokkondir Kaɓirgol&quot; e kaɓirgol maa ngola.">
 <!ENTITY addDevice.setup.enterCode.label    "Caggal ɗum, naatnu ngol dokkol:">
-<!ENTITY pairDevice.dialog.description.label "Ngam daaƴtude kaɓirgol maa kesol, labo &#x0022;Teelto Sync&#x0022; e kaɓirgol ngol.">
+<!ENTITY pairDevice.dialog.description.label "Ngam daaƴtude kaɓirgol maa kesol, labo &quot;Teelto Sync&quot; e kaɓirgol ngol.">
 <!ENTITY addDevice.dialog.enterCode.label   "Naatnu dokkol ngol kaɓirgol ngol hokkiri:">
 <!ENTITY addDevice.dialog.tryAgain.label    "Tiiɗno fuɗɗito.">
 <!ENTITY addDevice.dialog.successful.label  "Kaɓirgol ngol ɓeydiraama no moƴƴi. Sanngoɗinal gadanal ngal maa won hojomaaji keewɗi etee maa gas e cakkitol.">
@@ -71,15 +74,15 @@
 <!-- Existing Account Page 2: Manual Login -->
 
 <!ENTITY setup.signInPage.title.label "Winndito">
-<!ENTITY existingRecoveryKey.description "Aɗa waawi heɓde tummbitare Kelal maa Yiytorde so a hahii to Cuɓe &syncBrand.shortName.label; e kaɓirgol maa, labo-ɗaa &#x0022;Kelal Yiytorde  Am&#x0022; les &#x0022;Toppito Konte&#x0022;.">
+<!ENTITY existingRecoveryKey.description "Aɗa waawi heɓde tummbitare Kelal maa Yiytorde so a hahii to Cuɓe &syncBrand.shortName.label; e kaɓirgol maa, labo-ɗaa &quot;Kelal Yiytorde  Am&quot; les &quot;Toppito Konte&quot;.">
 <!ENTITY verifying.label              "Nana ƴeewtoo…">
 <!ENTITY resetPassword.label          "Waklit Finnde">
 <!ENTITY resetSyncKey.label           "Mi majjiraama kaɓirgol am ngola.">
 <!-- Sync Options -->
 
 <!ENTITY setup.optionsPage.title      "Cuɓe Sync">
-<!ENTITY syncComputerName.label       "Innde Ordinateer:">
-<!ENTITY syncComputerName.accesskey   "I">
+<!ENTITY syncDeviceName.label       "Innde Kaɓirgol:">
+<!ENTITY syncDeviceName.accesskey   "d">
 
 <!ENTITY syncMy.label               "Sanngoɗin">
 <!ENTITY engine.bookmarks.label     "Maantore am">
@@ -95,16 +98,16 @@
 <!ENTITY engine.addons.label        "Ɓeyditte">
 <!ENTITY engine.addons.accesskey    "Ɓ">
 
-<!ENTITY choice2.merge.main.label      "Naattondir keɓe oo ordinateer e keɓe &syncBrand.shortName.label; am">
-<!ENTITY choice2.merge.recommended.label "Wasiyaaɗo:">
-<!ENTITY choice2.client.main.label     "Lomtin keɓe gonɗe e oo ordinateer fof keɓe &syncBrand.shortName.label; am">
-<!ENTITY choice2.server.main.label     "Lomtin kaɓirɗe goɗɗe fof keɓe oo ordinateer">
+<!ENTITY choice2a.merge.main.label       "Naattondir keɓe ngol kaɓirgol e keɓe &syncBrand.shortName.label; am">
+<!ENTITY choice2.merge.recommended.label "Ena wasiyaa:">
+<!ENTITY choice2a.client.main.label      "Lomtin keɓe gonɗe e ngol kaɓirgol fof keɓe &syncBrand.shortName.label; am">
+<!ENTITY choice2a.server.main.label      "Lomtin kaɓirɗe goɗɗe fof keɓe ngol kaɓirgol">
 <!-- Confirm Merge Options -->
 
 <!ENTITY setup.optionsConfirmPage.title "Teeŋtin">
-<!ENTITY confirm.merge.label    "&syncBrand.fullName.label; maa naattondir keɓe wanngorde oo ordinateer fof e nder konte Sync maa.">
-<!ENTITY confirm.client2.label         "Reentino: Ɗeeɗoo keɓe &brandShortName; e oo ordinateer maa momte:">
-<!ENTITY confirm.client.moreinfo.label "&brandShortName; wadde maa natto keɓe &syncBrand.fullName.label; maa e oo ordinateer.">
+<!ENTITY confirm.merge2.label    "&syncBrand.fullName.label; maa naattondir keɓe wanngorde ngol kaɓirgol fof e nder konte Sync maa.">
+<!ENTITY confirm.client3.label         "Reentino:  Ɗeeɗoo keɓe &brandShortName; e ngol kaɓirgol maa momte:">
+<!ENTITY confirm.client2.moreinfo.label "&brandShortName; wadde maa natto keɓe &syncBrand.fullName.label; maa e ngol kaɓirgol.">
 <!ENTITY confirm.server2.label         "Reentino: Ɗeeɗoo kaɓirɗe maa keɓe maa mbinndite e dow mum'en:">
 <!-- New & Existing Account: Setup Complete -->
 

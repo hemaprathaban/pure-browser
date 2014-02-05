@@ -13,8 +13,6 @@
  * When in FIPS 140 mode, the NSS Internal FIPS PKCS #11 Module will
  * compute the checksum for the NSS cryptographic boundary libraries
  * and compare the checksum with the value in .chk file.
- *
- * $Id: shlibsign.c,v 1.21 2012/09/25 22:21:12 rrelyea%redhat.com Exp $
  */
 
 #ifdef XP_UNIX
@@ -703,11 +701,11 @@ int main(int argc, char **argv)
     int i;
     PRBool verify = PR_FALSE;
     static PRBool FIPSMODE = PR_FALSE;
+    PRBool successful = PR_FALSE;
 
 #ifdef USES_LINKS
     int ret;
     struct stat stat_buf;
-    char link_buf[MAXPATHLEN+1];
     char *link_file = NULL;
 #endif
 
@@ -1035,10 +1033,22 @@ int main(int argc, char **argv)
     }
     if (S_ISLNK(stat_buf.st_mode)) {
         char *dirpath,*dirend;
-        ret = readlink(input_file, link_buf, sizeof(link_buf) - 1);
-        if (ret < 0) {
-            perror(input_file);
-            goto cleanup;
+        char *link_buf = NULL;
+        size_t size = 64;
+        while (1) {
+            link_buf = realloc(link_buf, size);
+            if (!link_buf) {
+                perror(input_file);
+                goto cleanup;
+            }
+            ret = readlink(input_file, link_buf, size - 1);
+            if (ret < 0) {
+                perror(input_file);
+                goto cleanup;
+            }
+            if (ret < size - 1)
+                break;
+            size *= 2;
         }
         link_buf[ret] = 0;
         link_file = mkoutput(input_file);
@@ -1247,6 +1257,8 @@ int main(int argc, char **argv)
     }
 #endif
 
+    successful = PR_TRUE;
+
 cleanup:
     if (pFunctionList) {
         /* C_Finalize will automatically logout, close session, */
@@ -1283,5 +1295,8 @@ cleanup:
     }
     PR_Cleanup();
 
-    return crv;
+    if (crv != CKR_OK)
+	return crv;
+    
+    return (successful) ? 0 : 1;
 }

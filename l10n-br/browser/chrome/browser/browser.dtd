@@ -20,18 +20,23 @@
 <!ENTITY  reloadTab.accesskey                "A">
 <!ENTITY  reloadAllTabs.label                "Adkargañ an holl ivinelloù">
 <!ENTITY  reloadAllTabs.accesskey            "d">
+<!-- LOCALIZATION NOTE (closeTabsToTheEnd.label): This should indicate the
+direction in which tabs are closed, i.e. locales that use RTL mode should say
+left instead of right. -->
+<!ENTITY  closeTabsToTheEnd.label            "Serriñ an ivinelloù a-gleiz">
+<!ENTITY  closeTabsToTheEnd.accesskey        "i">
 <!ENTITY  closeOtherTabs.label               "Serriñ an ivinelloù all">
 <!ENTITY  closeOtherTabs.accesskey           "S">
 
-<!-- LOCALIZATION NOTE (pinAppTab.label, unpinAppTab.label): "Pin" is being
+<!-- LOCALIZATION NOTE (pinTab.label, unpinTab.label): "Pin" is being
 used as a metaphor for expressing the fact that these tabs are "pinned" to the
 left edge of the tabstrip. Really we just want the string to express the idea
 that this is a lightweight and reversible action that keeps your tab where you
 can reach it easily. -->
-<!ENTITY  pinAppTab.label                    "Spilhennañ evel ivinell un arload">
-<!ENTITY  pinAppTab.accesskey                "p">
-<!ENTITY  unpinAppTab.label                  "Dispilhennañ an ivinell">
-<!ENTITY  unpinAppTab.accesskey              "D">
+<!ENTITY  pinTab.label                       "Spilhennañ an ivinell">
+<!ENTITY  pinTab.accesskey                   "p">
+<!ENTITY  unpinTab.label                     "Dispilhennañ an ivinell">
+<!ENTITY  unpinTab.accesskey                 "s">
 <!ENTITY  moveToGroup.label                  "Dilec'hiañ en ur strollad">
 <!ENTITY  moveToGroup.accesskey              "D">
 <!ENTITY  moveToNewGroup.label               "Strollad nevez">
@@ -115,7 +120,18 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksMenu.accesskey "n">
 <!ENTITY bookmarkThisPageCmd.label "Lakaat ur sined war ar bajenn-mañ">
 <!ENTITY bookmarkThisPageCmd.commandkey "d">
-<!ENTITY sharePageCmd.commandkey "l">
+<!ENTITY markPageCmd.commandkey "l">
+<!ENTITY sharePageCmd.label "Rannañ ar bajenn-mañ">
+<!ENTITY sharePageCmd.commandkey "S">
+<!ENTITY sharePageCmd.accesskey "R">
+<!ENTITY shareLinkCmd.label "Rannañ an ere-mañ">
+<!ENTITY shareLinkCmd.accesskey "R">
+<!ENTITY shareImageCmd.label "Rannañ ar skeudenn-mañ">
+<!ENTITY shareImageCmd.accesskey "R">
+<!ENTITY shareSelectCmd.label "Rannañ an diuzad">
+<!ENTITY shareSelectCmd.accesskey "R">
+<!ENTITY shareVideoCmd.label "Rannañ ar video-mañ">
+<!ENTITY shareVideoCmd.accesskey "R">
 <!ENTITY subscribeToPageMenupopup.label "En em enrollañ d'ar bajenn-mañ">
 <!ENTITY subscribeToPageMenuitem.label "En em enrollañ d'ar bajenn-mañ…">
 <!ENTITY addCurPagesCmd.label "Ouzhpennañ an holl ivinelloù d'ar sinedoù">
@@ -161,7 +177,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY bookmarksButton.label          "Sinedoù">
 <!ENTITY bookmarksButton.tooltip        "Diskouez ho sinedoù">
-<!ENTITY bookmarksButton.accesskey  "S">
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Sinedoù">
@@ -178,7 +193,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY historyButton.label            "Roll istor">
 <!ENTITY historyButton.tooltip          "Diskouez pajennadoù ho peus gwelet n'eus ket pell">
-<!ENTITY historySidebarCmd.accesskey    "s">
 <!ENTITY historySidebarCmd.commandKey   "h">
 
 <!ENTITY toolsMenu.label              "Binvioù">
@@ -200,17 +214,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Diorroer web">
 <!ENTITY webDeveloperMenu.accesskey   "w">
 
+<!ENTITY devtoolsConnect.label        "Kennaskañ…">
+<!ENTITY devtoolsConnect.accesskey    "e">
+
 <!ENTITY errorConsoleCmd.label        "Penel ar fazioù">
 <!ENTITY errorConsoleCmd.accesskey    "P">
-<!ENTITY errorConsoleCmd.commandkey   "j">
 
-<!ENTITY webConsoleCmd.label          "Penel Gwiad">
-<!ENTITY webConsoleCmd.accesskey      "w">
-<!ENTITY webConsoleCmd.commandkey     "k">
+<!ENTITY remoteWebConsoleCmd.label    "Penel gwiad a-bell">
 
-<!ENTITY inspectMenu.label            "Ensellout">
-<!ENTITY inspectMenu.accesskey        "E">
-<!ENTITY inspectMenu.commandkey       "I">
+<!ENTITY browserConsoleCmd.label      "Penel ar merdeer">
+<!ENTITY browserConsoleCmd.commandkey "j">
+<!ENTITY browserConsoleCmd.accesskey  "m">
 
 <!ENTITY inspectContextMenu.label     "Ensellout an elfenn">
 <!ENTITY inspectContextMenu.accesskey "E">
@@ -234,44 +248,22 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY scratchpad.keycode           "VK_F4">
 <!ENTITY scratchpad.keytext           "F4">
 
-<!ENTITY inspectCloseButton.tooltiptext "Serriñ an enseller">
+<!-- LOCALIZATION NOTE (chromeDebuggerMenu.label): This is the label for the
+  -  application menu item that opens the browser debugger UI in the Tools menu. -->
+<!ENTITY chromeDebuggerMenu.label       "Diveuger ar merdeer">
 
 <!ENTITY devToolbarCloseButton.tooltiptext "Serriñ barrenn ostilhoù an diorroer">
 <!ENTITY devToolbarMenu.label              "Barrenn ostilhoù an diorroer">
 <!ENTITY devToolbarMenu.accesskey          "o">
 <!ENTITY devToolbar.keycode                "VK_F2">
 <!ENTITY devToolbar.keytext                "F2">
+<!ENTITY devToolboxMenuItem.label          "Ostilhoù">
+<!ENTITY devToolboxMenuItem.accesskey      "T">
+
+<!ENTITY devToolbarToolsButton.tooltip     "Gweredekaat/Diweredekaat ostilhoù an diorroer">
 <!ENTITY devToolbarOtherToolsButton.label  "Muioc'h a ostilhoù">
 
-<!ENTITY webConsoleButton.label "Penel Web">
-<!ENTITY inspectorButton.label "Enseller">
-
-<!ENTITY inspectorHTMLCopyInner.label       "Eilañ an HTML diabarzh">
-<!ENTITY inspectorHTMLCopyInner.accesskey   "b">
-
-<!ENTITY inspectorHTMLCopyOuter.label       "Eilañ an HTML diavaez">
-<!ENTITY inspectorHTMLCopyOuter.accesskey   "v">
-
-<!ENTITY inspectorHTMLDelete.label          "Dilemel ar c'hlom">
-<!ENTITY inspectorHTMLDelete.accesskey      "D">
-
-<!-- LOCALIZATION NOTE (inspect3DViewButton.label): This button shows an
-  -  alternate view for the Inspector, creating a 3D visualization of the
-  -  webpage. -->
-<!ENTITY inspect3DViewButton.label     "Gwel 3D">
-<!ENTITY inspect3DViewButton.accesskey "w">
-
-<!ENTITY inspectStyleButton.label     "Stil">
-<!ENTITY inspectStyleButton.accesskey "S">
-
-<!-- LOCALIZATION NOTE (styleeditor.label): This menu item label appears
-  -  in the Tools menu. -->
-<!ENTITY styleeditor.label            "Embanner stil">
-<!ENTITY styleeditor.accesskey        "E">
-<!ENTITY styleeditor.keycode          "VK_F7">
-<!ENTITY styleeditor.keytext          "F7">
-
-<!ENTITY getMoreDevtoolsCmd.label        "Kaout muioc'h a vinvioù">
+<!ENTITY getMoreDevtoolsCmd.label        "Kaout muioc'h a ostilhoù">
 <!ENTITY getMoreDevtoolsCmd.accesskey    "m">
 
 <!ENTITY fileMenu.label         "Restr"> 
@@ -279,6 +271,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY newNavigatorCmd.label        "Prenestr nevez">
 <!ENTITY newNavigatorCmd.key        "N">
 <!ENTITY newNavigatorCmd.accesskey      "n">
+<!ENTITY newPrivateWindow.label     "Prenestr merdeiñ prevez nevez">
+<!ENTITY newPrivateWindow.accesskey "v">
 
 <!ENTITY editMenu.label         "Embann"> 
 <!ENTITY editMenu.accesskey       "E"> 
@@ -309,13 +303,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY preferencesCmdUnix.accesskey     "l"> 
 
 <!ENTITY clearRecentHistory.label               "Skarzhañ ar roll istor nevesañ…">
-<!ENTITY clearRecentHistory.accesskey           "S">
 
-<!-- LOCALIZATION NOTE : These two strings can share an access key beause they never appear together on the menu -->
-<!ENTITY privateBrowsingCmd.start.label         "Kregiñ ar merdeiñ prevez">
-<!ENTITY privateBrowsingCmd.start.accesskey     "p">
-<!ENTITY privateBrowsingCmd.stop.label          "Paouez gant ar merdeiñ prevez">
-<!ENTITY privateBrowsingCmd.stop.accesskey      "P">
 <!ENTITY privateBrowsingCmd.commandkey          "P">
 
 <!ENTITY viewMenu.label         "Gwelout"> 
@@ -354,7 +342,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuSafeMode.accesskey "r">
 
 <!ENTITY openCmd.commandkey           "l">
-<!ENTITY urlbar.placeholder           "Mont d'ul lec'hienn">
+<!ENTITY urlbar.placeholder2          "Bizskrivit un termen da glask pe ur chomlec'h">
 <!ENTITY urlbar.accesskey             "d">
 <!ENTITY urlbar.switchToTab.label     "Mont d'an ivinell :">
 
@@ -388,6 +376,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openLinkCmdInTab.accesskey   "i">
 <!ENTITY openLinkCmd.label            "Digeriñ an ere e-barzh ur prenestr nevez">
 <!ENTITY openLinkCmd.accesskey        "b">
+<!ENTITY openLinkInPrivateWindowCmd.label "Digeriñ an ere e-barzh ur prenestr merdeiñ prevez nevez">
+<!ENTITY openLinkInPrivateWindowCmd.accesskey "m">
 <!ENTITY openLinkCmdInCurrent.label     "Digeriñ an ere">
 <!ENTITY openLinkCmdInCurrent.accesskey "g">
 <!ENTITY openFrameCmdInTab.label      "Digeriñ ar frammad e-barzh un ivinell nevez">
@@ -455,6 +445,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY emailVideoCmd.accesskey      "K">
 <!ENTITY emailAudioCmd.label          "Kas ar restr klevet dre bostel…">
 <!ENTITY emailAudioCmd.accesskey      "K">
+<!ENTITY playPluginCmd.label          "Gweredekaat an enlugellad-mañ">
+<!ENTITY playPluginCmd.accesskey      "w">
+<!ENTITY hidePluginCmd.label          "Kuzhat an enlugellad-mañ">
+<!ENTITY hidePluginCmd.accesskey      "u">
 <!ENTITY copyLinkCmd.label            "Eilañ lec'hiadur an ere">
 <!ENTITY copyLinkCmd.accesskey        "l">
 <!ENTITY copyImageCmd.label           "Eilañ lec'hiadur ar skeudenn">
@@ -471,14 +465,36 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY thisFrameMenu.accesskey          "f">
 
 <!-- Media (video/audio) controls -->
+<!-- LOCALIZATION NOTE: The access keys for "Play" and
+"Pause" are the same because the two context-menu
+items are mutually exclusive. -->
 <!ENTITY mediaPlay.label             "Lenn">
 <!ENTITY mediaPlay.accesskey         "L">
 <!ENTITY mediaPause.label            "Ehan">
 <!ENTITY mediaPause.accesskey        "E">
+<!-- LOCALIZATION NOTE: The access keys for "Mute" and
+"Unmute" are the same because the two context-menu
+items are mutually exclusive. -->
 <!ENTITY mediaMute.label             "Mud">
 <!ENTITY mediaMute.accesskey         "M">
 <!ENTITY mediaUnmute.label           "Heglev">
 <!ENTITY mediaUnmute.accesskey       "H">
+<!ENTITY mediaPlaybackRate.label     "Tizh lenn">
+<!ENTITY mediaPlaybackRate.accesskey "l">
+<!ENTITY mediaPlaybackRate050x.label "Gorrekaet (0.5×)">
+<!ENTITY mediaPlaybackRate050x.accesskey "G">
+<!ENTITY mediaPlaybackRate100x.label "Tizh reizh">
+<!ENTITY mediaPlaybackRate100x.accesskey "r">
+<!ENTITY mediaPlaybackRate150x.label "Tizh uhel (1.5×)">
+<!ENTITY mediaPlaybackRate150x.accesskey "u">
+<!-- LOCALIZATION NOTE: "Ludicrous Speed" is a reference to the
+movie "Space Balls" and is meant to say that this speed is very
+fast. -->
+<!ENTITY mediaPlaybackRate200x.label "Tizh divuzul (2×)">
+<!ENTITY mediaPlaybackRate200x.accesskey "d">
+<!-- LOCALIZATION NOTE: The access keys for "Show Controls" and
+"Hide Controls" are the same because the two context-menu
+items are mutually exclusive. -->
 <!ENTITY mediaShowControls.label     "Diskouez ar reolerezhioù">
 <!ENTITY mediaShowControls.accesskey "D">
 <!ENTITY mediaHideControls.label     "Kuzhat ar reolerezhioù">
@@ -487,6 +503,9 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY videoFullScreen.accesskey   "S">
 <!ENTITY videoSaveImage.label        "Enrollañ an dapadenn-skramm evel…">
 <!ENTITY videoSaveImage.accesskey    "n">
+<!-- LOCALIZATION NOTE: The access keys for "Show Statistics" and
+"Hide Statistics" are the same because the two context-menu
+items are mutually exclusive. -->
 <!ENTITY videoShowStats.label        "Diskouez ar stadegoù">
 <!ENTITY videoShowStats.accesskey    "i">
 <!ENTITY videoHideStats.label        "Kuzhat ar stadegoù">
@@ -540,7 +559,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY quitApplicationCmd.label       "Kuitaat"> 
 <!ENTITY quitApplicationCmd.accesskey   "K">
 <!ENTITY quitApplicationCmdMac.label    "Kuitaat &brandShortName;">
-<!ENTITY quitApplicationCmdMac.key      "Q">
+<!-- LOCALIZATION NOTE(quitApplicationCmdUnix.key): This keyboard shortcut is used by both Linux and OSX builds. -->
+<!ENTITY quitApplicationCmdUnix.key     "Q">
 
 <!ENTITY closeCmd.label                 "Serriñ">  
 <!ENTITY closeCmd.key                   "W">  
@@ -602,15 +622,12 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY identity.moreInfoLinkText "Muioc'h a stlennoù…">
 
-<!ENTITY downloadMonitor2.tooltip "Klikañ evit digeriñ prenestr ar pellgargadurioù">
-
-<!ENTITY allTabs.filter.emptyText "Klask e-touez an ivinelloù">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
 <!ENTITY tabsToolbar.label "Ivinelloù merdeer">
 
-<!-- LOCALIZATION NOTE (syncTabsMenu.label): This appears in the history menu -->
-<!ENTITY syncTabsMenu.label     "Ivinelloù eus urzhiataerioù all">
+<!-- LOCALIZATION NOTE (syncTabsMenu2.label): This appears in the history menu -->
+<!ENTITY syncTabsMenu2.label     "Ivinelloù eus trevnadoù all">
 
 <!ENTITY syncBrand.shortName.label    "Sync">
 
@@ -623,31 +640,52 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY addonBarCloseButton.tooltip  "Serriñ barrenn an askouezh">
 <!ENTITY toggleAddonBarCmd.key        "/">
 
-<!-- LOCALIZATION NOTE (markupButton.arialabel): The markup button is the button
-located in front of the breadcrumbs display in the inspector toolbar. The button
-doesn't display any label, but exposes a label to screen-readers with "aria-label".
--->
-<!ENTITY markupButton.arialabel          "Klav">
-<!-- LOCALIZATION NOTE (markupButton.accesskey): The key bound to the Markup panel's
-toolbar button -->
-<!ENTITY markupButton.accesskey          "K">
-
 <!ENTITY socialToolbar.title        "Afell ar varrenn ostilhoù kevredadel">
 <!ENTITY social.notLoggedIn.label   "N'oc'h ket kennasket">
 
-<!-- LOCALIZATION NOTE (social.ok.label, social.ok.accesskey): this string is
-     used for the "OK" button for two different social panels. One appears when
-     the feature is activated (social.activated.* below), and the other when
-     the user clicks the "Share" button a second time (social.sharePopup.*
-     below). -->
 <!ENTITY social.ok.label       "Mat eo">
 <!ENTITY social.ok.accesskey   "M">
 
 <!ENTITY social.toggleSidebar.label "Diskouez ar varrenn gostez">
 <!ENTITY social.toggleSidebar.accesskey "s">
 
+<!ENTITY social.addons.label "Ardeiñ ar gwazerezhioù…">
+
 <!ENTITY social.toggleNotifications.label "Diskouez ar c'hemennadennoù rebuziñ war ar burev">
 <!ENTITY social.toggleNotifications.accesskey "n">
 
-<!ENTITY social.activated.undobutton.label "Dizober">
-<!ENTITY social.activated.undobutton.accesskey "D">
+<!ENTITY social.activated.description "Gweredekaet eo bet gwazerezhioù <label/>. Gallout a rit kemmañ arventennoù ar gwazerezhioù e-barzh <label class='text-link'>Ardoer an askouezhioù</label>.">
+<!ENTITY social.activated.undo.label "Hopala, disc'hra an dra-se !">
+<!ENTITY social.activated.undo.accesskey "p">
+<!ENTITY social.learnMore.label "Gouzout hiroc'h…">
+<!ENTITY social.learnMore.accesskey "G">
+<!ENTITY social.closeNotificationItem.label "Ket bremañ">
+
+<!ENTITY social.chatBar.commandkey "c">
+<!ENTITY social.chatBar.label "Diuzañ ar c'haozeadennoù">
+<!ENTITY social.chatBar.accesskey "c">
+
+<!-- labels are set dynamically, see browser.properties -->
+<!ENTITY social.markpage.accesskey "m">
+<!ENTITY social.marklink.accesskey "M">
+
+<!ENTITY getUserMedia.selectCamera.label "Webkam da rannañ :">
+<!ENTITY getUserMedia.selectCamera.accesskey "W">
+<!ENTITY getUserMedia.selectMicrophone.label "Mikrofon da rannañ :">
+<!ENTITY getUserMedia.selectMicrophone.accesskey "M">
+
+<!ENTITY webrtcIndicatorButton.label "Haeziñ d'ar webkam / mikrofon">
+<!ENTITY webrtcIndicatorButton.tooltip "Diskouez al lec'hiennoù ma rannit ho webkam pe ho mikrofon ganto">
+
+<!ENTITY mixedContentBlocked.helplink "Gouzout hiroc'h">
+<!ENTITY mixedContentBlocked.moreinfo "An darn vrasañ eus al lec'hiennoù a yelo en-dro ent dereat ha pa vo harzet an endalc'had-mañ.">
+
+<!ENTITY pointerLock.notification.message "Pouezit war ESC evit diskouez anezhañ en-dro.">
+
+<!ENTITY pluginNotification.showAll.label "Diskouez pep tra">
+<!ENTITY pluginNotification.showAll.accesskey "S">
+
+<!-- LOCALIZATION NOTE (pluginActivateNow.label, pluginActivateAlways.label, pluginBlockNow.label): These should be the same as the matching strings in browser.properties -->
+<!ENTITY pluginActivateNow.label "Aotren diouzhtu">
+<!ENTITY pluginActivateAlways.label "Aotren ha derc'hel soñj">
+<!ENTITY pluginBlockNow.label "Herzel an enlugellad">

@@ -12,7 +12,7 @@
 
 <!ENTITY setup.choicePage.title.label     "Heu fet servir el &syncBrand.fullName.label; abans?">
 <!ENTITY setup.choicePage.new.label       "Mai abans he fet servir el &syncBrand.shortName.label;">
-<!ENTITY setup.choicePage.existing.label  "Ja faig servir el &syncBrand.shortName.label; en un altre ordinador">
+<!ENTITY setup.choicePage.existing2.label "Ja estic utilitzant &syncBrand.shortName.label; en altre dispositiu">
 <!-- New Account AND Existing Account -->
 
 <!ENTITY server.label               "Servidor">
@@ -33,8 +33,11 @@
 <!ENTITY setup.choosePassword.accesskey  "T">
 <!ENTITY setup.confirmPassword.label     "Confirmeu la contrasenya">
 <!ENTITY setup.confirmPassword.accesskey "m">
+<!ENTITY setup.setupMetro.label     "Sincronitza el &brandShortName; amb l'estil de Windows 8">
+<!ENTITY setup.setupMetro.accesskey "S">
 <!-- LOCALIZATION NOTE: tosAgree1, tosLink, tosAgree2, ppLink, tosAgree3 are
      joined with implicit white space, so spaces in the strings aren't necessary -->
+
 <!ENTITY setup.tosAgree1.label      "Accepto">
 <!ENTITY setup.tosAgree1.accesskey  "A">
 <!ENTITY setup.tosLink.label        "els termes del servei">
@@ -49,7 +52,7 @@
 <!ENTITY recoveryKeyEntry.label        "La vostra clau de recuperació">
 <!ENTITY recoveryKeyEntry.accesskey    "c">
 <!ENTITY syncGenerateNewKey.label  "Genera una clau nova">
-<!ENTITY recoveryKeyBackup.description "La vostra clau de recuperació us farà falta per accedir al &syncBrand.fullName.label; des d'altres màquines. Cal que feu una còpia de seguretat. Ja que no us podrem ajudar a recuperar la clau de seguretat. ">
+<!ENTITY recoveryKeyBackup.description "La vostra clau de recuperació us farà falta per accedir al &syncBrand.fullName.label; des d'altres màquines. Cal que feu una còpia de seguretat. Ja que no us podrem ajudar a recuperar la clau de seguretat.">
 
 <!ENTITY button.syncKeyBackup.print.label     "Imprimeix…">
 <!ENTITY button.syncKeyBackup.print.accesskey "p">
@@ -78,8 +81,8 @@
 <!-- Sync Options -->
 
 <!ENTITY setup.optionsPage.title      "Opcions de sincronització">
-<!ENTITY syncComputerName.label       "Nom de l'ordinador:">
-<!ENTITY syncComputerName.accesskey   "o">
+<!ENTITY syncDeviceName.label       "Nom del dispositiu:">
+<!ENTITY syncDeviceName.accesskey   "d">
 
 <!ENTITY syncMy.label               "Sincronitza:">
 <!ENTITY engine.bookmarks.label     "Adreces d'interès">
@@ -95,16 +98,16 @@
 <!ENTITY engine.addons.label        "Complements">
 <!ENTITY engine.addons.accesskey    "C">
 
-<!ENTITY choice2.merge.main.label      "Fusiona les dades d'aquest ordinador amb les meves dades del &syncBrand.shortName.label;">
+<!ENTITY choice2a.merge.main.label       "Combina les dades d'aquest dispositiu amb les del meu &syncBrand.shortName.label;">
 <!ENTITY choice2.merge.recommended.label "Recomanat:">
-<!ENTITY choice2.client.main.label     "Reemplaça totes les dades d'aquest ordinador amb les meves dades del &syncBrand.shortName.label;">
-<!ENTITY choice2.server.main.label     "Reemplaça tots els altres dispositius amb les meves dades locals">
+<!ENTITY choice2a.client.main.label      "Reemplaça les dades d'aquest dispositiu amb les del meu &syncBrand.shortName.label;">
+<!ENTITY choice2a.server.main.label      "Reemplaça la resta de dispositius amb les dades d'aquest dispositiu">
 <!-- Confirm Merge Options -->
 
 <!ENTITY setup.optionsConfirmPage.title "Confirmació">
-<!ENTITY confirm.merge.label    "El &syncBrand.fullName.label; ara fusionarà les dades de navegació d'aquest ordinador en el vostre compte de sincronització.">
-<!ENTITY confirm.client2.label         "Avís: les dades següents del &brandShortName; se suprimiran en aquest ordinador:">
-<!ENTITY confirm.client.moreinfo.label "Aleshores el &brandShortName; copiarà les vostres dades del &syncBrand.fullName.label; a l'ordinador.">
+<!ENTITY confirm.merge2.label    "&syncBrand.fullName.label; combinarà totes les dades del navegador d'aquest dispositiu al vostre compte del Sync.">
+<!ENTITY confirm.client3.label         "Atenció: Les dades &brandShortName; d'aquest dispositiu  seran suprimides:">
+<!ENTITY confirm.client2.moreinfo.label "El &brandShortName; copiarà les dades de &syncBrand.fullName.label; en aquest dispositiu.">
 <!ENTITY confirm.server2.label         "Avís: se sobreescriuran les dades dels dispositius següents amb les vostres dades locals:">
 <!-- New & Existing Account: Setup Complete -->
 
