@@ -4,38 +4,38 @@ Subject: Determine which phishing shavar to use depending on
  MOZ_OFFICIAL_BRANDING
 
 ---
- browser/app/Makefile.in        | 4 ++++
- browser/app/profile/firefox.js | 4 ++++
+ modules/libpref/src/Makefile.in | 4 ++++
+ modules/libpref/src/init/all.js | 4 ++++
  2 files changed, 8 insertions(+)
 
-diff --git a/browser/app/Makefile.in b/browser/app/Makefile.in
-index befaa57..85b4351 100644
---- a/browser/app/Makefile.in
-+++ b/browser/app/Makefile.in
-@@ -133,6 +133,10 @@ libs::
- 	$(INSTALL) $(IFLAGS1) $(DIST)/branding/default48.png  $(FINAL_TARGET)/chrome/icons/default
- endif
+diff --git a/modules/libpref/src/Makefile.in b/modules/libpref/src/Makefile.in
+index 31333bc..e833ecd 100644
+--- a/modules/libpref/src/Makefile.in
++++ b/modules/libpref/src/Makefile.in
+@@ -7,6 +7,10 @@ DEFINES += -DOS_ARCH=$(OS_ARCH) \
+            -DMOZ_WIDGET_TOOLKIT=$(MOZ_WIDGET_TOOLKIT) \
+            $(NULL)
  
 +ifdef MOZ_OFFICIAL_BRANDING
 +DEFINES += -DMOZ_OFFICIAL_BRANDING
 +endif
 +
- libs:: $(srcdir)/profile/prefs.js
- 	$(INSTALL) $(IFLAGS1) $^ $(FINAL_TARGET)/defaults/profile
+ include $(topsrcdir)/config/rules.mk
  
-diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 6c8ffab..9943b40 100644
---- a/browser/app/profile/firefox.js
-+++ b/browser/app/profile/firefox.js
-@@ -807,7 +807,11 @@ pref("urlclassifier.alternate_error_page", "blocked");
- pref("urlclassifier.gethashnoise", 4);
+ GARBAGE		+= $(addprefix $(DIST)/bin/defaults/pref/, \
+diff --git a/modules/libpref/src/init/all.js b/modules/libpref/src/init/all.js
+index 24f1574..9c98f3e 100644
+--- a/modules/libpref/src/init/all.js
++++ b/modules/libpref/src/init/all.js
+@@ -4538,7 +4538,11 @@ pref("dom.inter-app-communication-api.enabled", false);
  
- // The list of tables that use the gethash request to confirm partial results.
+ // The tables used for Safebrowsing phishing and malware checks.
+ pref("urlclassifier.malware_table", "goog-malware-shavar");
 +#ifdef MOZ_OFFICIAL_BRANDING
- pref("urlclassifier.gethashtables", "goog-phish-shavar,goog-malware-shavar");
+ pref("urlclassifier.phish_table", "goog-phish-shavar");
 +#else
-+pref("urlclassifier.gethashtables", "googpub-phish-shavar,goog-malware-shavar");
++pref("urlclassifier.phish_table", "googpub-phish-shavar");
 +#endif
+ pref("urlclassifier.download_block_table", "goog-badbinurl-shavar");
+ pref("urlclassifier.download_allow_table", "goog-downloadwhite-digest256");
  
- // If an urlclassifier table has not been updated in this number of seconds,
- // a gethash request will be forced to check that the result is still in

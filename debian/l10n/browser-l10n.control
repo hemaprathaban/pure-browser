@@ -9,8 +9,8 @@
 %undef L10N_RECOMMENDS
 %include @PRODUCT@-l10n.control.in
 
-%define L10N_LANG ak
-%define L10N_LANGUAGE Akan
+%define L10N_LANG an
+%define L10N_LANGUAGE Aragonese
 %undef L10N_RECOMMENDS
 %include @PRODUCT@-l10n.control.in
 
@@ -254,11 +254,6 @@
 %define L10N_RECOMMENDS myspell-ku
 %include @PRODUCT@-l10n.control.in
 
-%define L10N_LANG lg
-%define L10N_LANGUAGE Ganda
-%undef L10N_RECOMMENDS
-%include @PRODUCT@-l10n.control.in
-
 %define L10N_LANG lij
 %define L10N_LANGUAGE Ligurian
 %undef L10N_RECOMMENDS
@@ -307,11 +302,6 @@
 %define L10N_LANG nn-no
 %define L10N_LANGUAGE Norwegian Nynorsk (Norway)
 %define L10N_RECOMMENDS myspell-nn
-%include @PRODUCT@-l10n.control.in
-
-%define L10N_LANG nso
-%define L10N_LANGUAGE Pedi
-%undef L10N_RECOMMENDS
 %include @PRODUCT@-l10n.control.in
 
 %define L10N_LANG or
@@ -394,11 +384,6 @@
 %undef L10N_RECOMMENDS
 %include @PRODUCT@-l10n.control.in
 
-%define L10N_LANG ta-lk
-%define L10N_LANGUAGE Tamil (Sri Lanka)
-%undef L10N_RECOMMENDS
-%include @PRODUCT@-l10n.control.in
-
 %define L10N_LANG te
 %define L10N_LANGUAGE Telugu
 %undef L10N_RECOMMENDS
@@ -421,6 +406,11 @@
 
 %define L10N_LANG vi
 %define L10N_LANGUAGE Vietnamese
+%undef L10N_RECOMMENDS
+%include @PRODUCT@-l10n.control.in
+
+%define L10N_LANG xh
+%define L10N_LANGUAGE Xhosa
 %undef L10N_RECOMMENDS
 %include @PRODUCT@-l10n.control.in
 

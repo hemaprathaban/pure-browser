@@ -5,35 +5,30 @@ Subject: Add xptcall support for SH4 processors
 Closes: #553593
 https://bugzilla.mozilla.org/show_bug.cgi?id=382214
 ---
- xpcom/reflect/xptcall/src/md/unix/Makefile.in      |  11 +
+ xpcom/reflect/xptcall/src/md/unix/moz.build        |   6 +
  .../xptcall/src/md/unix/xptcinvoke_linux_sh.cpp    | 203 +++++++++++++++
  .../xptcall/src/md/unix/xptcstubs_linux_sh.cpp     | 271 +++++++++++++++++++++
- 3 files changed, 485 insertions(+)
+ 3 files changed, 480 insertions(+)
  create mode 100644 xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp
  create mode 100644 xpcom/reflect/xptcall/src/md/unix/xptcstubs_linux_sh.cpp
 
-diff --git a/xpcom/reflect/xptcall/src/md/unix/Makefile.in b/xpcom/reflect/xptcall/src/md/unix/Makefile.in
-index 8f25236..58ad937 100644
---- a/xpcom/reflect/xptcall/src/md/unix/Makefile.in
-+++ b/xpcom/reflect/xptcall/src/md/unix/Makefile.in
-@@ -262,6 +262,17 @@ ifeq ($(OS_ARCH)$(OS_TEST),Linuxs390x)
- CXXFLAGS	+= -fno-strict-aliasing -fno-inline -fomit-frame-pointer -mbackchain
- endif
+diff --git a/xpcom/reflect/xptcall/src/md/unix/moz.build b/xpcom/reflect/xptcall/src/md/unix/moz.build
+index 4127ba7..3741937 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/moz.build
++++ b/xpcom/reflect/xptcall/src/md/unix/moz.build
+@@ -252,6 +252,12 @@ if CONFIG['OS_ARCH'] == 'Linux':
+             'xptcstubs_linux_s390x.cpp',
+         ]
  
-+############
-+# SuperH
-+############
-+#
-+#
-+# Currently, tested on sh4 and sh4a (non sh4al and sh4al-dsp..)
-+ifeq ($(OS_ARCH),Linux)
-+ifneq (,$(filter sh4 sh4a,$(OS_TEST)))
-+CPPSRCS		:= xptcinvoke_linux_sh.cpp xptcstubs_linux_sh.cpp
-+endif
-+endif
++    if CONFIG['OS_TEST'] in ('sh4', 'sh4a'):
++        SOURCES += [
++            'xptcinvoke_linux_sh.cpp',
++            'xptcstubs_linux_sh.cpp',
++        ]
++
+ LIBRARY_NAME = 'xptcmd'
  
  # we don't want the shared lib, but we want to force the creation of a static lib.
- FORCE_STATIC_LIB = 1
 diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp
 new file mode 100644
 index 0000000..ca4807d

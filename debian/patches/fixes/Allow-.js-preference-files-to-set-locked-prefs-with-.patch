@@ -10,7 +10,7 @@ Subject: Allow .js preference files to set locked prefs with lockPref()
  4 files changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index 5069ca4..e893a4f 100644
+index 2de0a68..8d368dc 100644
 --- a/modules/libpref/src/prefapi.cpp
 +++ b/modules/libpref/src/prefapi.cpp
 @@ -988,7 +988,10 @@ void PREF_ReaderCallback(void       *closure,
@@ -40,7 +40,7 @@ index 76c8f6d..d5503c0 100644
  #ifdef __cplusplus
  }
 diff --git a/modules/libpref/src/prefread.cpp b/modules/libpref/src/prefread.cpp
-index f0423e8..444d08a 100644
+index 01612ba..a119669 100644
 --- a/modules/libpref/src/prefread.cpp
 +++ b/modules/libpref/src/prefread.cpp
 @@ -43,6 +43,7 @@ enum {
@@ -61,7 +61,7 @@ index f0423e8..444d08a 100644
  }
  
 @@ -188,6 +189,7 @@ PREF_ParseBuf(PrefParseState *ps, const char *buf, int bufLen)
-                 ps->vb    = NULL;
+                 ps->vb    = nullptr;
                  ps->vtype = PREF_INVALID;
                  ps->fdefault = false;
 +                ps->flock = false;
@@ -90,10 +90,10 @@ index f0423e8..444d08a 100644
                  ps->nextstate = PREF_PARSE_UNTIL_COMMA; /* return here when done */
                  state = PREF_PARSE_QUOTED_STRING;
 diff --git a/modules/libpref/src/prefread.h b/modules/libpref/src/prefread.h
-index 8d66746..4cc253c 100644
+index 3e30f17..4492964 100644
 --- a/modules/libpref/src/prefread.h
 +++ b/modules/libpref/src/prefread.h
-@@ -32,7 +32,8 @@ typedef void (*PrefReader)(void       *closure,
+@@ -31,7 +31,8 @@ typedef void (*PrefReader)(void       *closure,
                             const char *pref,
                             PrefValue   val,
                             PrefType    type,
@@ -103,7 +103,7 @@ index 8d66746..4cc253c 100644
  
  /* structure fields are private */
  typedef struct PrefParseState {
-@@ -52,7 +53,8 @@ typedef struct PrefParseState {
+@@ -51,7 +52,8 @@ typedef struct PrefParseState {
      char       *lbend;      /* line buffer end               */
      char       *vb;         /* value buffer (ptr into lb)    */
      PrefType    vtype;      /* PREF_STRING,INT,BOOL          */

@@ -7,10 +7,10 @@ Subject: Fix some tests using CurProcD where GreD should be used
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/netwerk/test/unit/test_socks.js b/netwerk/test/unit/test_socks.js
-index a8c3695..08c0f29 100644
+index 28ef019..4819f82 100644
 --- a/netwerk/test/unit/test_socks.js
 +++ b/netwerk/test/unit/test_socks.js
-@@ -36,7 +36,7 @@ function runScriptSubprocess(script, args)
+@@ -32,7 +32,7 @@ function runScriptSubprocess(script, args)
  {
    // logic copied from ted's crashreporter unit test
    var ds = new DirectoryService();
