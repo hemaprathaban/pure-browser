@@ -1,8 +1,25 @@
 iceweasel (27.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{01-05,07-11,13}, also known as
+    CVE-2014-1477, CVE-2014-1478, CVE-2014-1479, CVE-2014-1480,
+    CVE-2014-1482, CVE-2014-1483, CVE-2014-1485, CVE-2014-1486,
+    CVE-2014-1487, CVE-2014-1489, CVE-2014-1488, CVE-2014-1481.
 
- -- Mike Hommey <glandium@glandium.org>  Wed, 05 Feb 2014 19:54:14 +0900
+  * debian/upstream.mk: Only use one digit of the GRE_MILESTONE for
+    GRE_VERSION.
+  * debian/control*: Bump sqlite3 and nss build dependencies.
+  * debian/rules: Use a separate build directory for l10n, without
+    --with-libxul-sdk.
+  * debian/copyright: Updated.
+
+  * config/makefiles/target_libs.mk, js/src/config/makefiles/target_libs.mk:
+    Fixup soname rules for upstream changes.
+  * moz.build, widget/gonk/libdisplay/moz.build, xpcom/ds/moz.build,
+    xpcom/reflect/xptcall/src/md/unix/moz.build: Fix
+    --disable-compile-environment a little. bz#862770.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 05 Feb 2014 20:06:49 +0900
 
 iceweasel (26.0-1) experimental; urgency=low
 
