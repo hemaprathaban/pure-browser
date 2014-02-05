@@ -1,0 +1,33 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sun, 3 Nov 2013 10:54:46 +0900
+Subject: Fixup soname rules for upstream changes
+
+---
+ config/makefiles/target_libs.mk        | 1 +
+ js/src/config/makefiles/target_libs.mk | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/config/makefiles/target_libs.mk b/config/makefiles/target_libs.mk
+index 154e53f..861a7e0 100644
+--- a/config/makefiles/target_libs.mk
++++ b/config/makefiles/target_libs.mk
+@@ -85,6 +85,7 @@ endif
+ ifdef UNVERSIONED_LIBRARY
+ $(DIST)/lib/$(UNVERSIONED_LIBRARY) $(FINAL_TARGET)/$(UNVERSIONED_LIBRARY): %/$(UNVERSIONED_LIBRARY): %/$(SHARED_LIBRARY)
+ 	$(call MKSHLINKS,$*)
++	$(TOUCH) $(MDDEPDIR)/$(@F).pp
+ 
+ libs:: $(DIST)/lib/$(UNVERSIONED_LIBRARY) $(FINAL_TARGET)/$(UNVERSIONED_LIBRARY)
+ endif
+diff --git a/js/src/config/makefiles/target_libs.mk b/js/src/config/makefiles/target_libs.mk
+index 154e53f..861a7e0 100644
+--- a/js/src/config/makefiles/target_libs.mk
++++ b/js/src/config/makefiles/target_libs.mk
+@@ -85,6 +85,7 @@ endif
+ ifdef UNVERSIONED_LIBRARY
+ $(DIST)/lib/$(UNVERSIONED_LIBRARY) $(FINAL_TARGET)/$(UNVERSIONED_LIBRARY): %/$(UNVERSIONED_LIBRARY): %/$(SHARED_LIBRARY)
+ 	$(call MKSHLINKS,$*)
++	$(TOUCH) $(MDDEPDIR)/$(@F).pp
+ 
+ libs:: $(DIST)/lib/$(UNVERSIONED_LIBRARY) $(FINAL_TARGET)/$(UNVERSIONED_LIBRARY)
+ endif
