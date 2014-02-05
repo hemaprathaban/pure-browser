@@ -1,3 +1,31 @@
+iceweasel (24.3.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2014-{01-02,04,08-09,13} also known as
+    CVE-2014-1477, CVE-2014-1479, CVE-2014-1482, CVE-2014-1486,
+    CVE-2014-1487, CVE-2014-1481.
+
+  * Import patches from the nss source package that are relevant to building
+    iceweasel against the in-tree nss source, for backports:
+    - security/nss/lib/freebl/unix_rand.c,
+      security/nss/cmd/shlibsign/shlibsign.c: Fix FTBFS on Hurd because of
+      MAXPATHLEN
+    - security/nss/coreconf/Linux.mk,
+      security/nss/coreconf/arch.mk, security/nss/coreconf/config.mk,
+      security/nss/lib/freebl/unix_rand.c, security/nss/lib/softoken/softoken.h,
+      security/nss/lib/ssl/sslmutex.*: GNU/kFreeBSD support.
+    - security/nss/lib/ckfw/builtins/certdata.txt: Adds the SPI Inc. and
+      CAcert.org CA certificates.
+  * debian/copyright, debian/rules: Update copyright info. Closes: #735297.
+  * debian/source.filter:
+    - Remove build/pgo/blueprint/valid.png from the source archive.
+      Closes: #736592
+    - Remove minified jquery from source archive. Closes: #736725.
+  * debian/control*: Bump nspr and nss build dependencies.
+  * debian/rules: Work around build failure following the removal of valid.png.
+
+ -- Mike Hommey <glandium@zenigata.glandium.org>  Wed, 05 Feb 2014 16:20:18 +0900
+
 iceweasel (24.2.0esr-1) unstable; urgency=high
 
   * New upstream release.
