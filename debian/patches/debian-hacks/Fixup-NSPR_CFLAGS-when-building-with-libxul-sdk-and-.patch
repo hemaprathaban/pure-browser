@@ -7,10 +7,10 @@ Subject: Fixup NSPR_CFLAGS when building with libxul-sdk and in-tree nspr
  1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index ee1a91f..e8821c3 100644
+index 2fa6cac..aeaa44e 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -3849,16 +3849,11 @@ if test -n "$MOZ_NATIVE_NSPR"; then
+@@ -3854,16 +3854,11 @@ if test -n "$MOZ_NATIVE_NSPR"; then
                  AC_MSG_ERROR([system NSPR does not support PR_UINT64 or including prtypes.h does not provide it]))
      CFLAGS=$_SAVE_CFLAGS
  else
