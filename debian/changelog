@@ -1,3 +1,13 @@
+iceweasel (27.0-2) experimental; urgency=medium
+
+  * debian/installer/package-manifest.browser: Install files from the right
+    location to fix about:iceweasel.
+  * debian/rules: Add missing branding flag to l10n configure. Closes: #737824.
+
+  * xpcom/base/nsMemoryReporterManager.cpp: Fix FTBFS on kFreeBSD.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 08 Feb 2014 08:24:19 +0900
+
 iceweasel (27.0-1) experimental; urgency=medium
 
   * New upstream release.
