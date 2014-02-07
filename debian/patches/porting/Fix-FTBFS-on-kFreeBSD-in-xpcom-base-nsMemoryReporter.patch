@@ -1,0 +1,45 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sat, 8 Feb 2014 08:18:53 +0900
+Subject: Fix FTBFS on kFreeBSD in xpcom/base/nsMemoryReporterManager.cpp
+
+---
+ xpcom/base/nsMemoryReporterManager.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/xpcom/base/nsMemoryReporterManager.cpp b/xpcom/base/nsMemoryReporterManager.cpp
+index 5b99d2a..2724e8a 100644
+--- a/xpcom/base/nsMemoryReporterManager.cpp
++++ b/xpcom/base/nsMemoryReporterManager.cpp
+@@ -119,11 +119,12 @@ private:
+ };
+ 
+ #elif defined(__DragonFly__) || defined(__FreeBSD__) \
+-    || defined(__NetBSD__) || defined(__OpenBSD__)
++    || defined(__NetBSD__) || defined(__OpenBSD__) \
++    || defined(__FreeBSD_kernel__)
+ 
+ #include <sys/param.h>
+ #include <sys/sysctl.h>
+-#if defined(__DragonFly__) || defined(__FreeBSD__)
++#if defined(__DragonFly__) || defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ #include <sys/user.h>
+ #endif
+ 
+@@ -140,7 +141,7 @@ private:
+ #if defined(__DragonFly__)
+ #define KP_SIZE(kp) (kp.kp_vm_map_size)
+ #define KP_RSS(kp) (kp.kp_vm_rssize * getpagesize())
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ #define KP_SIZE(kp) (kp.ki_size)
+ #define KP_RSS(kp) (kp.ki_rssize * getpagesize())
+ #elif defined(__NetBSD__)
+@@ -1112,7 +1113,7 @@ nsMemoryReporterManager::GetVsize(int64_t* aVsize)
+ #ifdef HAVE_VSIZE_AND_RESIDENT_REPORTERS
+     return VsizeDistinguishedAmount(aVsize);
+ #else
+-    *aResident = 0;
++    *aVsize = 0;
+     return NS_ERROR_NOT_AVAILABLE;
+ #endif
+ }
