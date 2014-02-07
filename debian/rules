@@ -53,6 +53,8 @@ endif
 
 include $(BRANDING)/configure.sh
 
+BRANDING_CONFIGURE_FLAG = $(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING))
+
 # Define PRODUCT, product and Product variables (replacing product with the
 # actual value of $(PRODUCT))
 $(PRODUCT) := $(call lc,$(DEBIAN_SOURCE))
@@ -221,7 +223,7 @@ stamps/configure-$(PRODUCT):: stamps/build-xulrunner-extra debian/$(PRODUCT).moz
 	$(CONFIGURE_ENV) \
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-libxul-sdk=$(CURDIR)/build-xulrunner/dist \
-		$(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING)) \
+		$(BRANDING_CONFIGURE_FLAG) \
 		--with-system-libxul $(if $(LESS_SYSTEM_LIBS),,--with-system-nspr --with-system-nss)
 
 stamps/build-$(PRODUCT):: stamps/configure-$(PRODUCT)
@@ -251,6 +253,7 @@ stamps/configure-l10n:: stamps/prepare-configure
 	$(CONFIGURE_ENV) \
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-l10n-base=$(CURDIR)/l10n \
+		$(BRANDING_CONFIGURE_FLAG) \
 		--disable-compile-environment \
 		--enable-application=$(PRODUCT)
 
