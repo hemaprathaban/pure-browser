@@ -82,7 +82,7 @@ endif
 # Also add execution time and memory usage stats in the logs
 LDFLAGS += -Wl,--stats
 
-AUTOCONF_DIRS := build/autoconf js/src/build/autoconf
+AUTOCONF_DIRS := build/autoconf
 
 ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
 	CONFIGURE_FLAGS += --disable-optimize
