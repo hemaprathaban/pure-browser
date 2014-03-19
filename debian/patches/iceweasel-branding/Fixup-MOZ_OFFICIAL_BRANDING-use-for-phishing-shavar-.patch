@@ -1,0 +1,35 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Wed, 19 Mar 2014 14:02:08 +0900
+Subject: Fixup MOZ_OFFICIAL_BRANDING use for phishing shavar after upstream
+ build system changes
+
+---
+ modules/libpref/src/Makefile.in | 4 ----
+ modules/libpref/src/moz.build   | 2 ++
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/modules/libpref/src/Makefile.in b/modules/libpref/src/Makefile.in
+index f9aaa6f..45ca3fa 100644
+--- a/modules/libpref/src/Makefile.in
++++ b/modules/libpref/src/Makefile.in
+@@ -3,10 +3,6 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-ifdef MOZ_OFFICIAL_BRANDING
+-DEFINES += -DMOZ_OFFICIAL_BRANDING
+-endif
+-
+ include $(topsrcdir)/config/rules.mk
+ 
+ GARBAGE		+= $(addprefix $(DIST)/bin/defaults/pref/, \
+diff --git a/modules/libpref/src/moz.build b/modules/libpref/src/moz.build
+index ee85b27..cff1001 100644
+--- a/modules/libpref/src/moz.build
++++ b/modules/libpref/src/moz.build
+@@ -20,3 +20,5 @@ FINAL_LIBRARY = 'xul'
+ 
+ DEFINES['OS_ARCH'] = CONFIG['OS_ARCH']
+ DEFINES['MOZ_WIDGET_TOOLKIT'] = CONFIG['MOZ_WIDGET_TOOLKIT']
++if CONFIG['MOZ_OFFICIAL_BRANDING']:
++    DEFINES['MOZ_OFFICIAL_BRANDING'] = True
