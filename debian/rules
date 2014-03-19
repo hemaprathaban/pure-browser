@@ -253,7 +253,7 @@ $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/build-xulrunner stamps/build-
 override_dh_auto_build: stamps/build-xulrunner stamps/build-$(PRODUCT) stamps/build-check-branding
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-include debian/test.mk
+#include debian/test.mk
 endif
 
 override_dh_auto_clean::
