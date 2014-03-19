@@ -9,12 +9,12 @@ Subject: Determine which phishing shavar to use depending on
  2 files changed, 8 insertions(+)
 
 diff --git a/modules/libpref/src/Makefile.in b/modules/libpref/src/Makefile.in
-index 31333bc..e833ecd 100644
+index 45ca3fa..f9aaa6f 100644
 --- a/modules/libpref/src/Makefile.in
 +++ b/modules/libpref/src/Makefile.in
-@@ -7,6 +7,10 @@ DEFINES += -DOS_ARCH=$(OS_ARCH) \
-            -DMOZ_WIDGET_TOOLKIT=$(MOZ_WIDGET_TOOLKIT) \
-            $(NULL)
+@@ -3,6 +3,10 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
 +ifdef MOZ_OFFICIAL_BRANDING
 +DEFINES += -DMOZ_OFFICIAL_BRANDING
@@ -24,10 +24,10 @@ index 31333bc..e833ecd 100644
  
  GARBAGE		+= $(addprefix $(DIST)/bin/defaults/pref/, \
 diff --git a/modules/libpref/src/init/all.js b/modules/libpref/src/init/all.js
-index 24f1574..9c98f3e 100644
+index d8df5a2..25e2c34 100644
 --- a/modules/libpref/src/init/all.js
 +++ b/modules/libpref/src/init/all.js
-@@ -4538,7 +4538,11 @@ pref("dom.inter-app-communication-api.enabled", false);
+@@ -4625,7 +4625,11 @@ pref("dom.inter-app-communication-api.enabled", false);
  
  // The tables used for Safebrowsing phishing and malware checks.
  pref("urlclassifier.malware_table", "goog-malware-shavar");
@@ -36,6 +36,6 @@ index 24f1574..9c98f3e 100644
 +#else
 +pref("urlclassifier.phish_table", "googpub-phish-shavar");
 +#endif
- pref("urlclassifier.download_block_table", "goog-badbinurl-shavar");
- pref("urlclassifier.download_allow_table", "goog-downloadwhite-digest256");
+ pref("urlclassifier.download_block_table", "");
+ pref("urlclassifier.download_allow_table", "");
  

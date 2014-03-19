@@ -178,10 +178,13 @@ size. -->
 <!ENTITY datareporting_wifi_title "&vendorShortName;s platstjänster">
 <!ENTITY datareporting_wifi_summary "Hjälp till att förbättra positioneringstjänster för den öppna webben genom att låta &brandShortName; samla in och skicka anonymiserad data om mobilmaster">
 
-<!ENTITY pref_update_autodownload "Automatiska uppdateringar">
+<!-- Localization note (pref_update_autodownload2) : This should mention downloading
+     specifically, since the pref only prevents automatic downloads and not the
+     actual notification that an update is available. -->
+<!ENTITY pref_update_autodownload2 "Hämta uppdateringar automatiskt">
 <!ENTITY pref_update_autodownload_wifi "Endast över Wi-Fi">
-<!ENTITY pref_update_autodownload_disabled "Inaktiverat">
-<!ENTITY pref_update_autodownload_enabled "Aktiverat">
+<!ENTITY pref_update_autodownload_never "Aldrig">
+<!ENTITY pref_update_autodownload_always "Alltid">
 
 <!ENTITY quit "Avsluta">
 
@@ -228,10 +231,13 @@ size. -->
 <!ENTITY contextmenu_top_sites_edit "Redigera">
 <!ENTITY contextmenu_top_sites_pin "Fäst plats">
 <!ENTITY contextmenu_top_sites_unpin "Lösgör plats">
+<!ENTITY contextmenu_add_search_engine "Lägg till en sökmotor">
 
 <!ENTITY pref_titlebar_mode "Namnfältet">
 <!ENTITY pref_titlebar_mode_title "Visa sidans namn">
 <!ENTITY pref_titlebar_mode_url "Visa sidans adress">
+
+<!ENTITY pref_dynamic_toolbar "Dölj namnfältet vid skrollning">
 
 <!ENTITY history_removed "Sidan borttagen">
 
@@ -371,3 +377,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY exit_guest_session_title "&brandShortName; startas om">
 <!ENTITY exit_guest_session_text "Webbläsardatan från den här sessionen kommer att raderas.">
+
+<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+     They are never shown to users -->
+<!ENTITY actionbar_menu "Meny">
+<!ENTITY actionbar_done "Klar">

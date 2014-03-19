@@ -5,30 +5,28 @@ Subject: Add xptcall support for SH4 processors
 Closes: #553593
 https://bugzilla.mozilla.org/show_bug.cgi?id=382214
 ---
- xpcom/reflect/xptcall/src/md/unix/moz.build        |   6 +
+ xpcom/reflect/xptcall/src/md/unix/moz.build        |   5 +
  .../xptcall/src/md/unix/xptcinvoke_linux_sh.cpp    | 203 +++++++++++++++
  .../xptcall/src/md/unix/xptcstubs_linux_sh.cpp     | 271 +++++++++++++++++++++
- 3 files changed, 480 insertions(+)
+ 3 files changed, 479 insertions(+)
  create mode 100644 xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp
  create mode 100644 xpcom/reflect/xptcall/src/md/unix/xptcstubs_linux_sh.cpp
 
 diff --git a/xpcom/reflect/xptcall/src/md/unix/moz.build b/xpcom/reflect/xptcall/src/md/unix/moz.build
-index 4127ba7..3741937 100644
+index edde951..0fce1bf 100644
 --- a/xpcom/reflect/xptcall/src/md/unix/moz.build
 +++ b/xpcom/reflect/xptcall/src/md/unix/moz.build
-@@ -252,6 +252,12 @@ if CONFIG['OS_ARCH'] == 'Linux':
+@@ -324,5 +324,10 @@ if CONFIG['OS_ARCH'] == 'Linux':
+             'xptcinvoke_linux_s390x.cpp',
              'xptcstubs_linux_s390x.cpp',
          ]
- 
-+    if CONFIG['OS_TEST'] in ('sh4', 'sh4a'):
++    elif CONFIG['OS_TEST'] in ('sh4', 'sh4a'):
 +        SOURCES += [
 +            'xptcinvoke_linux_sh.cpp',
 +            'xptcstubs_linux_sh.cpp',
 +        ]
-+
- LIBRARY_NAME = 'xptcmd'
  
- # we don't want the shared lib, but we want to force the creation of a static lib.
+ FINAL_LIBRARY = 'xpcom_core'
 diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_linux_sh.cpp
 new file mode 100644
 index 0000000..ca4807d

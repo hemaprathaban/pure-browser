@@ -132,7 +132,7 @@ size. -->
 <!ENTITY pref_font_size_preview_text "Le panda roux, rapide comme l\u0027éclair, bondit au-delà de vos attentes avec plus de vitesse, plus de souplesse et plus de sécurité. En tant que fondation à but non lucratif, nous sommes libres d\u0027innover pour vous sans aucune pression ni aucun compromis. Cela signifie une meilleure expérience pour vous et un meilleur avenir pour le Web.">
 
 <!ENTITY pref_use_master_password "Mot de passe principal">
-<!ENTITY pref_show_product_announcements "Notifications produit">
+<!ENTITY pref_show_product_announcements "Notifications du logiciel">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Suggestions de recherche">
 <!ENTITY pref_import_android "Importer depuis Android">
@@ -179,10 +179,13 @@ size. -->
 <!ENTITY datareporting_wifi_title "Services de localisation de &vendorShortName;">
 <!ENTITY datareporting_wifi_summary "Aide à améliorer les services de géolocalisation pour le Web ouvert en permettant à &brandShortName; de collecter et d\u0027envoyer des données anonymes sur les antennes de téléphonie mobile">
 
-<!ENTITY pref_update_autodownload "Mises à jour automatiques">
+<!-- Localization note (pref_update_autodownload2) : This should mention downloading
+     specifically, since the pref only prevents automatic downloads and not the
+     actual notification that an update is available. -->
+<!ENTITY pref_update_autodownload2 "Téléch. mises à jour automatiquement">
 <!ENTITY pref_update_autodownload_wifi "Seulement par Wi-Fi">
-<!ENTITY pref_update_autodownload_disabled "Désactivées">
-<!ENTITY pref_update_autodownload_enabled "Activées">
+<!ENTITY pref_update_autodownload_never "Jamais">
+<!ENTITY pref_update_autodownload_always "Toujours">
 
 <!ENTITY quit "Quitter">
 
@@ -229,10 +232,13 @@ size. -->
 <!ENTITY contextmenu_top_sites_edit "Modifier">
 <!ENTITY contextmenu_top_sites_pin "Épingler ce site">
 <!ENTITY contextmenu_top_sites_unpin "Relâcher ce site">
+<!ENTITY contextmenu_add_search_engine "Ajouter un moteur de recherche">
 
 <!ENTITY pref_titlebar_mode "Barre de titre">
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
 <!ENTITY pref_titlebar_mode_url "Afficher l\u0027adresse de la page">
+
+<!ENTITY pref_dynamic_toolbar "Barre de titre dynamique">
 
 <!ENTITY history_removed "Page supprimée">
 
@@ -246,7 +252,7 @@ size. -->
 <!ENTITY site_settings_title3       "Paramètres de site">
 <!ENTITY site_settings_cancel       "Annuler">
 <!ENTITY site_settings_clear        "Effacer">
-<!ENTITY site_settings_no_settings  "Il n\u0027y a pas de paramètre à effacer.">
+<!ENTITY site_settings_no_settings  "Aucun paramètre à effacer.">
 
 <!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
 <!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
@@ -369,3 +375,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY exit_guest_session_title "&brandShortName; va redémarrer">
 <!ENTITY exit_guest_session_text "Les données de navigation de cette session vont être supprimées.">
+
+<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+     They are never shown to users -->
+<!ENTITY actionbar_menu "Menu">
+<!ENTITY actionbar_done "Terminé">
