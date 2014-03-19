@@ -1,3 +1,19 @@
+iceweasel (24.4.0esr-1~deb7u1) stable-security; urgency=low
+
+  * New upstream release.
+  * Fixes for mfsa2014-{15,17,26-32}, also known as
+    CVE-2014-1493, CVE-2014-1497, CVE-2014-1508, CVE-2014-1509,
+    CVE-2014-1505, CVE-2014-1510, CVE-2014-1511, CVE-2014-1512,
+    CVE-2014-1513, CVE-2014-1514.
+
+  * debian/noinstall.in, debian/xulrunner-dev.install.in: Install
+    mozilla-nspr.pc and mozilla-nss.pc when building backports. Closes: #739490.
+
+  * xulrunner/installer/mozilla-ns*.pc.in: Fix includedir in mozilla-nspr.pc
+    and mozilla-nss.pc. bz#985200.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 19 Mar 2014 08:28:20 +0900
+
 iceweasel (24.3.0esr-1~deb7u1) stable-security; urgency=low
 
   * New upstream release.

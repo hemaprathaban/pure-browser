@@ -7,3 +7,7 @@ usr/lib/xulrunner-devel-@GRE_VERSION@
 usr/lib/pkgconfig/libxul.pc
 usr/lib/pkgconfig/libxul-embedding.pc
 usr/lib/pkgconfig/mozilla-plugin.pc
+%if LESS_SYSTEM_LIBS
+usr/lib/pkgconfig/mozilla-nspr.pc
+usr/lib/pkgconfig/mozilla-nss.pc
+%endif
