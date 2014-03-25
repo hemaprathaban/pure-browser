@@ -69,13 +69,16 @@ Depends: ${shlibs:Depends},
          fontconfig,
          procps,
          debianutils (>= 1.16),
-         xulrunner-@GRE_VERSION@ (= ${binary:Version}),
          libsqlite3-0 (>= 3.7.12-1~)
 Suggests: fonts-stix | otf-stix,
           fonts-oflb-asana-math,
           fonts-mathjax,
           mozplugger,
-          libgssapi-krb5-2 | libkrb53
+          libgssapi-krb5-2 | libkrb53,
+          libgnomeui-0,
+          libcanberra0
+Conflicts: j2re1.4,
+           pango-graphite (<< 0.9.3)
 Breaks: xul-ext-torbutton
 Provides: www-browser,
           gnome-www-browser
@@ -96,43 +99,19 @@ Package: @browser@-dbg
 Architecture: any
 Priority: extra
 Section: debug
-Depends: ${misc:Depends},
-         @browser@ (= ${binary:Version}),
-         xulrunner-@GRE_VERSION@-dbg
+Depends: @browser@ (= ${binary:Version}),
+%if !LESS_SYSTEM_LIBS
+         libnss3-dbg | libnss3-1d-dbg,
+         libnspr4-dbg | libnspr4-0d-dbg,
+%endif
+         ${misc:Depends}
 Description: Debugging symbols for @Browser@
  @LONGDESC1@
  @LONGDESC2@
  .
  This package contains the debugging symbols for @browser@.
 
-Package: xulrunner-@GRE_VERSION@
-Section: libs
-Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
-Suggests: libgnomeui-0, libcanberra0
-Conflicts: j2re1.4,
-           pango-graphite (<< 0.9.3)
-Description: XUL + XPCOM application runner
- XULRunner is a single "gecko runtime" that can be used to bootstrap
- multiple XUL + XPCOM applications that are as rich as Firefox and
- Thunderbird.
- .
- XUL is Mozilla's XML based User Interface language that lets you build
- feature-rich cross platform applications. These applications are easily
- customized with alternative text, graphics and layout so that they can be
- readily branded or localized for various markets. Web developers already
- familiar with Dynamic HTML (DHTML) will learn XUL quickly and can start
- building applications right away.
- .
- XPCOM is a cross platform component model. It has multiple language
- bindings and IDL descriptions so programmers can plug their custom
- functionality into the framework and connect it with other components.
- .
- This package also contains the Gecko engine library (libxul)
-Homepage: http://developer.mozilla.org/en/docs/XULRunner
-
-Package: xulrunner-dev
+Package: @browser@-dev
 Section: libdevel
 Architecture: any
 Depends: ${shlibs:Depends},
@@ -142,10 +121,7 @@ Depends: ${shlibs:Depends},
          libnss3-dev,
          libnspr4-dev,
 %endif
-         xulrunner-@GRE_VERSION@ (= ${binary:Version})
-Conflicts: libmozjs-dev
-Provides: libmozjs-dev
-Replaces: libmozjs-dev
+         @browser@ (= ${binary:Version})
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as
@@ -160,29 +136,6 @@ Description: Development files for the Gecko engine library
  .
  This package also provides the Xulrunner Software Development Kit in the
  same form as the one you may find on mozilla.org in /usr/lib/xulrunner/sdk.
-Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
-
-Package: xulrunner-@GRE_VERSION@-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: xulrunner-@GRE_VERSION@ (= ${binary:Version}),
-%if !LESS_SYSTEM_LIBS
-         libnss3-dbg | libnss3-1d-dbg,
-         libnspr4-dbg | libnspr4-0d-dbg,
-%endif
-         ${misc:Depends}
-Description: Debugging symbols for the Gecko engine library
- This library provides an  API for XUL applications and Gecko embedders.
- The Gecko engine is the core of the mozilla.org applications such as
- Firefox, Thunderbird or SeaMonkey.
- .
- Gecko features include XPCOM, networking, DOM editing and transaction
- support, XBL, XUL, SVG, XSLT, XML Extras (XMLHttpRequest and DOMParser),
- Web Services (SOAP), accessibility support, IPC services, gtkmozembed, etc.
- .
- This package provides the debugging symbols for the xulrunner-@GRE_VERSION@
- package.
 Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 
 Package: @browser@-l10n-all

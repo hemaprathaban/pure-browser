@@ -1,16 +1,53 @@
-debian/tmp/usr/lib/@browser@/@browser@ usr/lib/@browser@
-debian/tmp/usr/lib/@browser@/browser/components usr/lib/@browser@/browser
+usr/lib/@browser@/platform.ini
 
-debian/tmp/usr/lib/@browser@/browser/defaults/preferences usr/share/@browser@/browser/defaults
-debian/tmp/usr/lib/@browser@/browser/searchplugins/* etc/@browser@/searchplugins/locale/en-US/
-debian/tmp/usr/lib/@browser@/browser/icons usr/share/@browser@/browser
-debian/tmp/usr/lib/@browser@/browser/chrome usr/share/@browser@/browser
+usr/lib/@browser@/libxul.so
+usr/lib/@browser@/libmozalloc.so
+usr/lib/@browser@/dependentlibs.list
 
-debian/tmp/usr/lib/@browser@/application.ini usr/lib/@browser@
-debian/tmp/usr/lib/@browser@/browser/blocklist.xml usr/lib/@browser@/browser
-debian/tmp/usr/lib/@browser@/browser/omni.ja usr/lib/@browser@/browser
+usr/lib/@browser@/mozilla-xremote-client
+usr/lib/@browser@/reportbug-helper-script
+usr/lib/@browser@/plugin-container
 
-debian/tmp/usr/lib/@browser@/browser/defaults/profile etc/@browser@/
+usr/lib/@browser@/components/*.manifest
+usr/lib/@browser@/components/libdbusservice.so
+usr/lib/@browser@/components/libmozgnome.so
+
+usr/lib/@browser@/chrome.manifest
+usr/lib/@browser@/omni.ja
+
+%if LESS_SYSTEM_LIBS
+usr/lib/@browser@/libfreebl3.chk
+usr/lib/@browser@/libfreebl3.so
+usr/lib/@browser@/libmozsqlite3.so
+usr/lib/@browser@/libnspr4.so
+usr/lib/@browser@/libnss3.so
+usr/lib/@browser@/libnssckbi.so
+usr/lib/@browser@/libnssdbm3.so
+usr/lib/@browser@/libnssutil3.so
+usr/lib/@browser@/libnssdbm3.chk
+usr/lib/@browser@/libplc4.so
+usr/lib/@browser@/libplds4.so
+usr/lib/@browser@/libsmime3.so
+usr/lib/@browser@/libsoftokn3.chk
+usr/lib/@browser@/libsoftokn3.so
+usr/lib/@browser@/libssl3.so
+%endif
+
+usr/lib/@browser@/defaults/pref/channel-prefs.js
+
+usr/lib/@browser@/@browser@ usr/lib/@browser@
+usr/lib/@browser@/browser/components usr/lib/@browser@/browser
+
+usr/lib/@browser@/browser/defaults/preferences usr/share/@browser@/browser/defaults
+usr/lib/@browser@/browser/searchplugins/* etc/@browser@/searchplugins/locale/en-US/
+usr/lib/@browser@/browser/icons usr/share/@browser@/browser
+usr/lib/@browser@/browser/chrome usr/share/@browser@/browser
+
+usr/lib/@browser@/application.ini usr/lib/@browser@
+usr/lib/@browser@/browser/blocklist.xml usr/lib/@browser@/browser
+usr/lib/@browser@/browser/omni.ja usr/lib/@browser@/browser
+
+usr/lib/@browser@/browser/defaults/profile etc/@browser@/
 
 debian/@browser@.desktop usr/share/applications
 debian/@browser@.xpm usr/share/pixmaps
@@ -23,7 +60,7 @@ debian/vendor.js usr/share/@browser@/browser/defaults/preferences
 debian/debsearch.xml etc/@browser@/searchplugins/common
 debian/duckduckgo.xml etc/@browser@/searchplugins/common
 
-debian/tmp/usr/lib/@browser@/browser/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\} usr/lib/@browser@/browser/extensions
+usr/lib/@browser@/browser/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\} usr/lib/@browser@/browser/extensions
 
 %if browser != firefox
 debian/firefox usr/bin

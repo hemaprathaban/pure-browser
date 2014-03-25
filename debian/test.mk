@@ -14,11 +14,7 @@ ifndef HAS_LOCALE
 xpcshell-tests: export LOCPATH = $(CURDIR)/debian/locales
 endif
 xpcshell-tests: export LC_ALL=$(LOCALE)
-xpcshell-tests: export EXTRA_TEST_ARGS += --app-path=$(CURDIR)/build-$(PRODUCT)/dist/bin
-$(APP_TESTS): export EXTRA_TEST_ARGS += --appname=$(CURDIR)/build-$(PRODUCT)/dist/bin/$($(PRODUCT))
-$(APP_TESTS): export GRE_HOME = $(CURDIR)/build-xulrunner/dist/bin
 $(APP_TESTS) xpcshell-tests: XVFB_RUN = xvfb-run -s "-screen 0 1024x768x24"
-$(TESTS): export MOZ_PLUGIN_PATH = $(CURDIR)/build-xulrunner/dist/bin/plugins
 
 ifeq ($(DEB_BUILD_ARCH),armel)
 # Force armel JIT to compile ARMv4T instructions at runtime even when the buildd
@@ -26,19 +22,16 @@ ifeq ($(DEB_BUILD_ARCH),armel)
 $(TESTS): export ARM_FORCE_PLATFORM=4
 endif
 
-$(CURDIR)/build-$(PRODUCT)/dist/bin/xulrunner:
-	ln -s ../../../build-xulrunner/dist/bin $@
-
-$(TESTS): $(CURDIR)/build-$(PRODUCT)/dist/bin/xulrunner
-	GNOME22_USER_DIR="$(CURDIR)/build-xulrunner/dist/.gnome2" \
-	HOME="$(CURDIR)/build-xulrunner/dist" \
-	$(XVFB_RUN) $(MAKE) -C build-xulrunner $@ 2>&1 | sed -u 's/^/$@> /'
+$(TESTS):
+	GNOME22_USER_DIR="$(CURDIR)/build-browser/dist/.gnome2" \
+	HOME="$(CURDIR)/build-browser/dist" \
+	$(XVFB_RUN) $(MAKE) -C build-browser $@ 2>&1 | sed -u 's/^/$@> /'
 
 xpcshell-tests: $(if $(HAS_LOCALE),,debian/locales/$(LOCALE))
 
 xpcshell-tests-skip:
 # This one fails because it supposes some kind of preexisting gnome/mailcap configuration
-	rm -f build-xulrunner/_tests/xpcshell/uriloader/exthandler/tests/unit/test_handlerService.js
+	rm -f build-browser/_tests/xpcshell/uriloader/exthandler/tests/unit/test_handlerService.js
 
 check-skip:
 # This one fails because it only works in an american time zone. bz#515254
