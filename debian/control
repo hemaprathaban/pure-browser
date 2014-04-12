@@ -124,9 +124,9 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-ply,
-         xulrunner-28 (= ${binary:Version}),
          libnss3-dev,
-         libnspr4-dev
+         libnspr4-dev,
+         xulrunner-28 (= ${binary:Version})
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as
