@@ -199,8 +199,10 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-ply,
          xulrunner-@GRE_VERSION@ (= ${binary:Version}),
+%if !LESS_SYSTEM_LIBS
          libnss3-dev,
          libnspr4-dev,
+%endif
          libmozjs-dev (= ${binary:Version})
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
@@ -224,8 +226,10 @@ Priority: extra
 Architecture: any
 Depends: xulrunner-@GRE_VERSION@ (= ${binary:Version}),
          libmozjs@JS_SO_VERSION@-dbg (= ${binary:Version}),
+%if !LESS_SYSTEM_LIBS
          libnss3-dbg | libnss3-1d-dbg,
          libnspr4-dbg | libnspr4-0d-dbg,
+%endif
          ${misc:Depends}
 Description: Debugging symbols for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
