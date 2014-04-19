@@ -317,6 +317,8 @@ stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
 		MOZ_PKG_FATAL_WARNINGS=0 \
 		MOZ_PKG_MANIFEST=$(CURDIR)/$<
 
+	-unzip -d debian/tmp/usr/lib/$($(PRODUCT))/browser debian/tmp/usr/lib/$($(PRODUCT))/browser/omni.ja 'defaults/*'
+
 MPL-1.1: gfx/cairo/cairo/COPYING-MPL-1.1
 	cp -f $< $@
 
