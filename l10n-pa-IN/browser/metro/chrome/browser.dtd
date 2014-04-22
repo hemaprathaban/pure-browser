@@ -9,6 +9,7 @@
 <!ENTITY back.label            "ਪਿੱਛੇ">
 <!ENTITY forward.label         "ਅੱਗੇ">
 <!ENTITY newtab.label          "ਨਵੀਂ ਟੈਬ">
+<!ENTITY newPrivateTab.label   "ਨਵੀਂ ਪ੍ਰਾਈਵੇਟ ਟੈਬ">
 <!ENTITY closetab.label        "ਟੈਬ ">
 
 <!ENTITY autocompleteResultsHeader.label  "ਤੁਹਾਡੇ ਲਈ ਨਤੀਜੇ">
@@ -16,9 +17,9 @@
 <!ENTITY appbarErrorConsole.label   "ਗਲਤੀ ਕਨਸੋਲ  ਖੋਲ੍ਹੋ">
 <!ENTITY appbarJSShell.label        "JavaScript ਸ਼ੈੱਲ ਖੋਲ੍ਹੋ">
 <!ENTITY appbarFindInPage2.label    "ਪੇਜ਼ ਵਿੱਚ ਲੱਭੋ">
-<!ENTITY appbarRelaunchInDesktop.label "Relaunch in Desktop">
+<!ENTITY appbarRelaunchInDesktop.label "ਡੈਸਕਟਾਪ ਵਿੱਚ ਮੁੜ-ਚਾਲੂ ਕਰੋ">
 <!ENTITY appbarMSMetaData2.label    "ਇਹ ਸਾਈਟ ਲਈ ਐਪ ਲਵੋ">
-<!ENTITY appbarViewPageSource.label    "View page source">
+<!ENTITY appbarViewPageSource.label    "ਪੇਜ਼ ਸਰੋਤ ਵੇਖੋ">
 
 <!ENTITY topSitesHeader.label        "ਚੋਟੀ ਦੀਆਂ ਸਾਈਟਾਂ">
 <!ENTITY bookmarksHeader.label       "ਬੁੱਕਮਾਰਕ">
@@ -103,6 +104,8 @@
 <!ENTITY newTab.key "t">
 <!ENTITY newTab2.key "n">
 <!ENTITY closeTab.key "w">
+<!-- Private browsing (control+shift+key) -->
+<!ENTITY newPrivateTab.key "p">
 
 <!-- DEVELOPER SHORTCUTS (control+shift+key) -->
 <!ENTITY jsConsole.key "j">
@@ -131,3 +134,21 @@
 <!ENTITY firstRunHistory.label "ਵੇਖੋ ਕਿ ਤੁਸੀਂ ਵੈੱਬ ਉੱਤੇ ਕਿੱਥੇ ਹੋ">
 <!ENTITY firstRunWelcome.label "&brandShortName; ਵਲੋਂ ਜੀ ਆਇਆਂ ਨੂੰ">
 <!ENTITY firstRunDifferent.label "ਡਿਜ਼ਾਇਨ ਰਾਹੀਂ ਵੱਖਰਾ">
+
+  <!-- LOCALIZATION NOTE (firstRunBack.label,
+                          firstRunNewTab.label,
+                          firstRunStar.label,
+                          firstRunPin.label,
+                          firstRunGotIt.label )
+       These strings appear as a content overlay the first few times a page
+       is visited. Each one has an arrow pointing toward the feature it
+       references. The code to display these strings is not enabled yet,
+       but will be soon. For now, you can see this mockup for an example
+       of how they are used:
+       https://bug949213.bugzilla.mozilla.org/attachment.cgi?id=8363973
+       -->
+<!ENTITY firstRunBack.label "ਪਿਛਲੇ ਸਫ਼ੇ ਉੱਤੇ ਜਾਣ ਲਈ ਪਿੱਛੇ ਜਾਓ ਨੂੰ ਛੂਹੋ">
+<!ENTITY firstRunNewTab.label "ਨਵੀਂ ਸਾਈਟ ਖੋਲ੍ਹਣ ਲਈ ਨਵੀਂ ਟੈਬ ਜੋੜੋ">
+<!ENTITY firstRunStar.label "ਸਫ਼ੇ ਨੂੰ ਬਾਅਦ ਵਿੱਚ ਵੇਖਣ ਲਈ ਬੁੱਕਮਾਰਕ ਵਰਤੋਂ">
+<!ENTITY firstRunPin.label "ਤੁਰੰਤ ਵਰਤੋਂ ਕਰਨ ਲਈ ਕਿਸੇ ਵੀ ਸਾਈਟ ਨੂੰ ਆਪਣੀ Windows Start ਸਕਰੀਨ ਵਿੱਚ ਪਿੰਨ ਕਰੋ">
+<!ENTITY firstRunGotIt.label "ਪਤਾ ਲੱਗ ਗਿਆ!">

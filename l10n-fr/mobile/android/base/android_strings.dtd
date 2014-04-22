@@ -17,7 +17,7 @@
 <!ENTITY  crash_reporter_title "Rapport de plantage de &brandShortName;">
 <!ENTITY  crash_message2 "&brandShortName; a rencontré un problème et a planté. Vos onglets devraient apparaître sur la page de démarrage de &brandShortName; à son prochain démarrage.">
 <!ENTITY  crash_send_report_message3 "Informer &vendorShortName; de ce problème pour qu\u0027il puisse être corrigé">
-<!ENTITY  crash_include_url2 "Inclure l\u0027URL de la page où vous vous trouviez">
+<!ENTITY  crash_include_url2 "Inclure l\u0027adresse de la page où vous vous trouviez">
 <!ENTITY  crash_sorry "Nous sommes désolés">
 <!ENTITY  crash_comment "Ajouter un commentaire (les commentaires sont visibles par tout le monde)">
 <!ENTITY  crash_allow_contact2 "Permettre à &vendorShortName; de vous contacter à propos de ce rapport">
@@ -66,13 +66,16 @@
 <!ENTITY settings_title "Paramètres">
 <!ENTITY pref_category_advanced "Avancé">
 <!ENTITY pref_category_customize "Personnalisation">
-<!ENTITY pref_category_search2 "Paramètres de recherche">
+<!ENTITY pref_category_search3 "Recherche">
 <!ENTITY pref_category_display "Affichage">
 <!ENTITY pref_category_privacy_short "Vie privée">
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Données collectées">
 <!ENTITY pref_category_installed_search_engines "Moteurs de recherche installés">
 <!ENTITY pref_category_add_search_providers "Ajouter des moteurs de recherche">
+<!ENTITY pref_category_search_restore_defaults "Restaurer les moteurs de recherche">
+<!ENTITY pref_search_restore_defaults "Restaurer moteurs par défaut">
+<!ENTITY pref_search_restore_defaults_summary "Restaurer les moteurs de recherche par défaut">
 <!-- Localization note (pref_search_tip) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
      search providers.-->
@@ -80,8 +83,10 @@
 <!ENTITY pref_category_devtools "Outils de développement">
 <!ENTITY pref_developer_remotedebugging "Débogage distant">
 <!ENTITY pref_developer_remotedebugging_docs "En savoir plus">
-
 <!ENTITY pref_remember_signons "Enreg. les mots de passe">
+
+<!ENTITY pref_category_home "Écran d\u0027accueil">
+<!ENTITY pref_category_home_panels "Panneaux">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Personnalisation">
@@ -149,10 +154,15 @@ size. -->
 <!ENTITY pref_about_firefox "À propos de &brandShortName;">
 <!ENTITY pref_vendor_faqs "FAQ">
 <!ENTITY pref_vendor_feedback "Donner votre avis">
-<!ENTITY pref_search_set_default "Définir par défaut">
-<!ENTITY pref_search_default "Par défaut">
-<!ENTITY pref_search_remove "Supprimer">
+
+<!ENTITY pref_dialog_set_default "Définir par défaut">
+<!ENTITY pref_dialog_default "Par défaut">
+<!ENTITY pref_dialog_remove "Supprimer">
+
 <!ENTITY pref_search_last_toast "Vous ne pouvez pas supprimer ou désactiver votre dernier moteur de recherche.">
+
+<!ENTITY pref_panels_show "Afficher">
+<!ENTITY pref_panels_hide "Masquer">
 
 <!ENTITY datareporting_notification_title "Stats et données de &brandShortName;">
 <!ENTITY datareporting_notification_action_long "choisir ce que j\u0027envoie">
@@ -189,7 +199,7 @@ size. -->
 
 <!ENTITY quit "Quitter">
 
-<!ENTITY addons "Modules complém.">
+<!ENTITY addons "Modules complémentaires">
 <!ENTITY downloads "Téléchargements">
 <!ENTITY apps "Applications">
 <!ENTITY char_encoding "Encodage caractères">
@@ -198,11 +208,11 @@ size. -->
 <!ENTITY share_title "Partager à l\u0027aide de">
 <!ENTITY share_image_failed "Impossible de partager cette image">
 <!ENTITY save_as_pdf "Enregistrer en PDF">
-<!ENTITY find_in_page "Rechercher sur la page">
+<!ENTITY find_in_page "Rechercher dans la page">
 <!ENTITY desktop_mode "Voir version ordinateur">
 <!ENTITY tools "Outils">
 <!ENTITY new_tab "Nouvel onglet">
-<!ENTITY new_private_tab "Onglet de nav. privée">
+<!ENTITY new_private_tab "Nouvel onglet nav. privée">
 <!ENTITY close_all_tabs "Fermer tous les onglets">
 <!ENTITY tabs_normal "Onglets">
 <!ENTITY tabs_private "Privés">
@@ -216,6 +226,13 @@ size. -->
 <!ENTITY find_prev "Précédent">
 <!ENTITY find_next "Suivant">
 <!ENTITY find_close "Fermer">
+
+<!-- Localization note (media_casting_to, media_play, media_pause, media_stop) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY media_casting_to "Diffuser sur l\u0027appareil">
+<!ENTITY media_play "Lire">
+<!ENTITY media_pause "Pause">
+<!ENTITY media_stop "Arrêter">
 
 <!ENTITY contextmenu_open_new_tab "Ouvrir dans un nouvel onglet">
 <!ENTITY contextmenu_open_private_tab "Ouvrir en navigation privée">
@@ -238,7 +255,9 @@ size. -->
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
 <!ENTITY pref_titlebar_mode_url "Afficher l\u0027adresse de la page">
 
-<!ENTITY pref_dynamic_toolbar "Barre de titre dynamique">
+<!-- Localization note (pref_scroll_title_bar): Label for setting that controls
+     whether or not the dynamic toolbar is enabled. -->
+<!ENTITY pref_scroll_title_bar "Barre de titre dynamique">
 
 <!ENTITY history_removed "Page supprimée">
 

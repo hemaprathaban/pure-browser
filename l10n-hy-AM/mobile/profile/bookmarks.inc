@@ -49,7 +49,7 @@
 
 
 
-#define bookmarks_addons Firefox. Կարգավորել հավելումներով
+#define bookmarks_addons Firefox. Հարմարեցնել հավելումներով
 
 
 
@@ -62,6 +62,18 @@
 
 
 #define bookmarks_support Firefox. Աջակցություն
+
+
+
+# LOCALIZATION NOTE (bookmarks_marketplace):
+
+
+
+# link title for https://marketplace.firefox.com
+
+
+
+#define bookmarks_marketplace Firefox Marketplace
 
 
 

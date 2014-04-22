@@ -24,7 +24,7 @@
 <!ENTITY launcher_shortcuts_title "Aplicaciones web de &brandShortName;">
 <!ENTITY launcher_shortcuts_empty "No se encontraron aplicaciones web">
 <!ENTITY choose_file "Elegir archivo">
-<!ENTITY url_bar_default_text "Introduzca dirección o términos de búsqueda">
+<!ENTITY url_bar_default_text "Introduzca dirección o búsqueda">
 <!ENTITY bookmark "Marcador">
 <!ENTITY bookmark_added "Marcador añadido">
 <!ENTITY bookmark_removed "Marcador eliminado">
@@ -45,32 +45,37 @@
 <!ENTITY close_tab "Cerrar pestaña">
 <!ENTITY one_tab "1 pestaña">
 <!ENTITY num_tabs2 "&formatD; pestañas">
-<!ENTITY new_tab_opened "Nueva pestaña abierta">
+<!ENTITY new_tab_opened "Pestaña nueva abierta">
 <!ENTITY settings "Configuración">
 <!ENTITY settings_title "Configuración">
 <!ENTITY pref_category_advanced "Avanzado">
 <!ENTITY pref_category_customize "Personalizar">
-<!ENTITY pref_category_search2 "Ajustes de búsqueda">
-<!ENTITY pref_category_display "Mostrar">
+<!ENTITY pref_category_search3 "Buscar">
+<!ENTITY pref_category_display "Visualización">
 <!ENTITY pref_category_privacy_short "Privacidad">
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Elección de datos">
 <!ENTITY pref_category_installed_search_engines "Buscadores instalados">
 <!ENTITY pref_category_add_search_providers "Añadir más proveedores de búsquedas">
+<!ENTITY pref_category_search_restore_defaults "Restaurar buscadores">
+<!ENTITY pref_search_restore_defaults "Restaurar predeterminados">
+<!ENTITY pref_search_restore_defaults_summary "Restaurar predeterminados">
 <!ENTITY pref_search_tip "CONSEJO: añada un sitio web a su lista de proveedores de búsqueda con una pulsación larga en su campo de búsqueda.">
 <!ENTITY pref_category_devtools "Herramientas de desarrolladores">
 <!ENTITY pref_developer_remotedebugging "Depuración remota">
 <!ENTITY pref_developer_remotedebugging_docs "Saber más">
 <!ENTITY pref_remember_signons "Recordar contraseñas">
+<!ENTITY pref_category_home "Inicio">
+<!ENTITY pref_category_home_panels "Paneles">
 <!ENTITY pref_header_customize "Personalizar">
-<!ENTITY pref_header_display "Mostrar">
+<!ENTITY pref_header_display "Visualización">
 <!ENTITY pref_header_privacy_short "Privacidad">
 <!ENTITY pref_header_help "Ayuda">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Herramientas de desarrolladores">
 <!ENTITY pref_cookies_menu "Cookies">
 <!ENTITY pref_cookies_accept_all "Activadas">
-<!ENTITY pref_cookies_not_accept_foreign "Activadas, excluyendo la de terceras partes">
+<!ENTITY pref_cookies_not_accept_foreign "Activadas, salvo las de terceras partes">
 <!ENTITY pref_cookies_disabled "Desactivadas">
 <!ENTITY pref_donottrack_menu "Rastreo">
 <!ENTITY pref_donottrack_disallow_tracking "Indicar a los sitios que no quiero ser rastreado">
@@ -94,7 +99,7 @@
 <!ENTITY pref_font_size_medium "Mediano">
 <!ENTITY pref_font_size_large "Grande">
 <!ENTITY pref_font_size_xlarge "Extra grande">
-<!ENTITY pref_font_size_set "Configurar">
+<!ENTITY pref_font_size_set "Usar">
 <!ENTITY pref_font_size_adjust_char "r">
 <!ENTITY pref_font_size_preview_text "El veloz zorro naranja supera sus expectativas con más velocidad, flexibilidad y seguridad. No tener ánimo de lucro nos hace libres de innovar para usted sin presiones ni compromisos. Esto quiere decir una mejor experiencia para usted y un mejor futuro para la web.">
 <!ENTITY pref_use_master_password "Usar contraseña maestra">
@@ -108,18 +113,20 @@
 <!ENTITY pref_private_data_passwords "Contraseñas guardadas">
 <!ENTITY pref_private_data_cache "Caché">
 <!ENTITY pref_private_data_offlineApps "Datos de sitios web sin conexión">
-<!ENTITY pref_private_data_siteSettings2 "Configuración del sitio…">
+<!ENTITY pref_private_data_siteSettings2 "Configuración de sitios">
 <!ENTITY pref_private_data_downloadFiles "Ficheros descargados">
 <!ENTITY pref_about_firefox "Acerca de &brandShortName;">
 <!ENTITY pref_vendor_faqs "FAQ">
 <!ENTITY pref_vendor_feedback "Enviar opinión">
-<!ENTITY pref_search_set_default "Usar como predeterminado">
-<!ENTITY pref_search_default "Predeterminado">
-<!ENTITY pref_search_remove "Eliminar">
+<!ENTITY pref_dialog_set_default "Configurar como predet.">
+<!ENTITY pref_dialog_default "Predeterminado">
+<!ENTITY pref_dialog_remove "Eliminar">
 <!ENTITY pref_search_last_toast "No puede eliminar ni desactivar su último buscador.">
+<!ENTITY pref_panels_show "Mostrar">
+<!ENTITY pref_panels_hide "Ocultar">
 <!ENTITY datareporting_notification_title "Estadísticas y datos de &brandShortName;">
 <!ENTITY datareporting_notification_action_long "Elegir qué información compartir">
-<!ENTITY datareporting_notification_action "Elegir qué compartir">
+<!ENTITY datareporting_notification_action "Elija qué compartir">
 <!ENTITY datareporting_notification_summary "Para mejorar su experiencia, &brandShortName; manda automáticamente alguna información a &vendorShortName;.">
 <!ENTITY datareporting_notification_summary_short "Para mejorar su experiencia, &brandShortName;…">
 <!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
@@ -130,7 +137,7 @@
 <!ENTITY datareporting_telemetry_summary "Comparte datos de rendimiento, uso, hardware y personalizaciones sobre su navegador con &vendorShortName; para ayudar a hacer &brandShortName; mejor">
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; envía informes de fallo para ayudar a &vendorShortName; a crear un navegador más estable y seguro">
 <!ENTITY datareporting_crashreporter_title_short "Informe de fallos">
-<!ENTITY datareporting_wifi_title "Servicios de localización de &vendorShortName;">
+<!ENTITY datareporting_wifi_title "Serv. localización de &vendorShortName;">
 <!ENTITY datareporting_wifi_summary "Ayude a mejorar los servicios de geolocalización para la web abierta permitiendo a &brandShortName; recopilar y enviar datos anónimos de las torres celulares">
 <!ENTITY pref_update_autodownload2 "Descargar actualizaciones automáticamente">
 <!ENTITY pref_update_autodownload_wifi "Sólo bajo Wi-Fi">
@@ -149,7 +156,7 @@
 <!ENTITY desktop_mode "Pedir sitio de escritorio">
 <!ENTITY tools "Herramientas">
 <!ENTITY new_tab "Pestaña nueva">
-<!ENTITY new_private_tab "Nueva pestaña privada">
+<!ENTITY new_private_tab "Pestaña privada nueva">
 <!ENTITY close_all_tabs "Cerrar todas las pestañas">
 <!ENTITY tabs_normal "Pestañas">
 <!ENTITY tabs_private "Privadas">
@@ -160,6 +167,10 @@
 <!ENTITY find_prev "Anterior">
 <!ENTITY find_next "Siguiente">
 <!ENTITY find_close "Cerrar">
+<!ENTITY media_casting_to "Asimilando a dispositivo">
+<!ENTITY media_play "Reproducir">
+<!ENTITY media_pause "Pausar">
+<!ENTITY media_stop "Detener">
 <!ENTITY contextmenu_open_new_tab "Abrir en una pestaña nueva">
 <!ENTITY contextmenu_open_private_tab "Abrir en una pestaña privada">
 <!ENTITY contextmenu_open_in_reader "Abrir en el modo de lectura">
@@ -179,7 +190,7 @@
 <!ENTITY pref_titlebar_mode "Barra de título">
 <!ENTITY pref_titlebar_mode_title "Mostrar el título de la página">
 <!ENTITY pref_titlebar_mode_url "Mostrar la dirección de la página">
-<!ENTITY pref_dynamic_toolbar "Ocultar barra del título al bajar por la página">
+<!ENTITY pref_scroll_title_bar "Desplazar barra de título">
 <!ENTITY history_removed "Página eliminada">
 <!ENTITY bookmark_edit_title "Editar marcador">
 <!ENTITY bookmark_edit_name "Nombre">
