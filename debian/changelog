@@ -1,3 +1,20 @@
+iceweasel (24.5.0esr-1~deb7u1) stable-security; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2014-{34,37-38,42-44,46}, also known as
+    CVE-2014-1518, CVE-2014-1523, CVE-2014-1524, CVE-2014-1529,
+    CVE-2014-1530, CVE-2014-1531, CVE-2014-1532.
+
+  * debian/control.in: Don't depend on nss and nspr dev and dbg packages when
+    building with LESS_SYSTEM_LIBS. Closes: #744187.
+  * debian/control*, debian/browser.mozconfig, debian/xulrunner.mozconfig.in:
+    Disable gstreamer support. Because the ffmpeg gstreamer 0.10 plugin is not
+    available in testing/unstable anymore, and gstreamer support is not
+    enabled by default anyways.
+  * debiab/control*: Build depend on iso-codes.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 29 Apr 2014 07:10:56 -0700
+
 iceweasel (24.4.0esr-1~deb7u2) stable-security; urgency=low
 
   * debian/rules: Disable the test suite.

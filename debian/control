@@ -30,8 +30,6 @@ Build-Depends: autotools-dev,
                libevent-dev (>= 1.4.1),
                libvpx-dev (>= 1.0.0),
                mesa-common-dev,
-               libgstreamer0.10-dev,
-               libgstreamer-plugins-base0.10-dev,
                yasm (>= 1.1),
                zip,
                unzip,
@@ -45,6 +43,7 @@ Build-Depends: autotools-dev,
                imagemagick,
                librsvg2-bin,
                xsltproc,
+               iso-codes
 Build-Conflicts: graphicsmagick-imagemagick-compat,
                  liboss4-salsa-dev,
                  libhildonmime-dev,
@@ -185,8 +184,6 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          python-ply,
          xulrunner-24.0 (= ${binary:Version}),
-         libnss3-dev,
-         libnspr4-dev,
          libmozjs-dev (= ${binary:Version})
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
@@ -210,8 +207,6 @@ Priority: extra
 Architecture: any
 Depends: xulrunner-24.0 (= ${binary:Version}),
          libmozjs24d-dbg (= ${binary:Version}),
-         libnss3-dbg | libnss3-1d-dbg,
-         libnspr4-dbg | libnspr4-0d-dbg,
          ${misc:Depends}
 Description: Debugging symbols for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
