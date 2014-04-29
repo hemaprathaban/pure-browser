@@ -621,7 +621,7 @@ NS_StringContainerInit(nsStringContainer &aStr)
 
 XPCOM_API(nsresult)
 NS_StringContainerInit2(nsStringContainer &aStr,
-                        const PRUnichar   *aData,
+                        const char16_t   *aData,
                         uint32_t           aDataLength,
                         uint32_t           aFlags)
 {
@@ -638,7 +638,7 @@ NS_StringContainerFinish(nsStringContainer &aStr)
 }
 
 XPCOM_API(uint32_t)
-NS_StringGetData(const nsAString &aStr, const PRUnichar **aBuf, bool *aTerm)
+NS_StringGetData(const nsAString &aStr, const char16_t **aBuf, bool *aTerm)
 {
     if (!xpcomFunctions.stringGetData) {
         *aBuf = nullptr;
@@ -648,7 +648,7 @@ NS_StringGetData(const nsAString &aStr, const PRUnichar **aBuf, bool *aTerm)
 }
 
 XPCOM_API(uint32_t)
-NS_StringGetMutableData(nsAString &aStr, uint32_t aLen, PRUnichar **aBuf)
+NS_StringGetMutableData(nsAString &aStr, uint32_t aLen, char16_t **aBuf)
 {
     if (!xpcomFunctions.stringGetMutableData) {
         *aBuf = nullptr;
@@ -657,7 +657,7 @@ NS_StringGetMutableData(nsAString &aStr, uint32_t aLen, PRUnichar **aBuf)
     return xpcomFunctions.stringGetMutableData(aStr, aLen, aBuf);
 }
 
-XPCOM_API(PRUnichar*)
+XPCOM_API(char16_t*)
 NS_StringCloneData(const nsAString &aStr)
 {
     if (!xpcomFunctions.stringCloneData)
@@ -666,7 +666,7 @@ NS_StringCloneData(const nsAString &aStr)
 }
 
 XPCOM_API(nsresult)
-NS_StringSetData(nsAString &aStr, const PRUnichar *aBuf, uint32_t aCount)
+NS_StringSetData(nsAString &aStr, const char16_t *aBuf, uint32_t aCount)
 {
     if (!xpcomFunctions.stringSetData)
         return NS_ERROR_NOT_INITIALIZED;
@@ -676,7 +676,7 @@ NS_StringSetData(nsAString &aStr, const PRUnichar *aBuf, uint32_t aCount)
 
 XPCOM_API(nsresult)
 NS_StringSetDataRange(nsAString &aStr, uint32_t aCutStart, uint32_t aCutLength,
-                      const PRUnichar *aBuf, uint32_t aCount)
+                      const char16_t *aBuf, uint32_t aCount)
 {
     if (!xpcomFunctions.stringSetDataRange)
         return NS_ERROR_NOT_INITIALIZED;

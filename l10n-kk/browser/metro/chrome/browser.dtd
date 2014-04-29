@@ -4,11 +4,12 @@
 <!-- NAVBAR AND AUTOCOMPLETE -->
 
 
-<!ENTITY urlbar.emptytext      "Іздеуді немесе адресті еңгізіңіз">
+<!ENTITY urlbar.emptytext      "Іздеуді немесе адресті енгізіңіз">
 
 <!ENTITY back.label            "Артқа">
 <!ENTITY forward.label         "Алға">
 <!ENTITY newtab.label          "Жаңа бет">
+<!ENTITY newPrivateTab.label   "Жаңа жекелік беті">
 <!ENTITY closetab.label        "Бетті жабу">
 
 <!ENTITY autocompleteResultsHeader.label  "Сіздің нәтиже">
@@ -92,7 +93,7 @@
 <!-- KEYBOARD SHORTCUTS -->
 
 <!ENTITY reload.key "r">
-
+<!ENTITY focusURL.key "л">
 <!ENTITY urlbar.accesskey "з">
 <!ENTITY openFile.key "а">
 <!ENTITY savePage.key "с">
@@ -101,12 +102,16 @@
 <!ENTITY quit.key "ш">
 <!ENTITY addBookmark.key "б">
 <!ENTITY newTab.key "ж">
-
-
+<!ENTITY newTab2.key "а">
+<!ENTITY closeTab.key "ж">
+<!-- Private browsing (control+shift+key) -->
+<!ENTITY newPrivateTab.key "е">
 <!-- DEVELOPER SHORTCUTS (control+shift+key) -->
 
-
-
+<!ENTITY jsConsole.key "н">
+<!ENTITY optionsFlyout.key "о">
+<!ENTITY syncFlyout.key "с">
+<!ENTITY aboutFlyout.key "а">
 <!-- FIRT RUN EXPERIENCE -->
 <!-- LOCALIZATION NOTE (firstRunTabs.label,
                         firstRunTopSites.label,
@@ -115,10 +120,7 @@
                         firstRunHistory.label )
      These strings appear on the Firefox Start page the first time
      Firefox for Windows 8 Touch (Metro) is launched.  Each one
-     has an arrow pointing toward the feature it references.  The code
-     to display these strings is not enabled yet, but will be soon.
-     For now, you can see this mockup for an example of how they are
-     used: https://bug941284.bugzilla.mozilla.org/attachment.cgi?id=8344046
+     has an arrow pointing toward the feature it references.
      -->
 
 <!ENTITY firstRunTabs.label "Беттерді іздедіңіз бе? Төмен тартыңыз, не оң жақпен шертіңіз">
@@ -128,3 +130,21 @@
 <!ENTITY firstRunHistory.label "Интернетте қайда болғаныңызды қараңыз">
 <!ENTITY firstRunWelcome.label "&brandShortName; өніміне қош келдіңіз">
 <!ENTITY firstRunDifferent.label "Құрылысы жағынан өзгеше">
+<!-- LOCALIZATION NOTE (firstRunBack.label,
+                          firstRunNewTab.label,
+                          firstRunStar.label,
+                          firstRunPin.label,
+                          firstRunGotIt.label )
+       These strings appear as a content overlay the first few times a page
+       is visited. Each one has an arrow pointing toward the feature it
+       references. The code to display these strings is not enabled yet,
+       but will be soon. For now, you can see this mockup for an example
+       of how they are used:
+       https://bug949213.bugzilla.mozilla.org/attachment.cgi?id=8363973
+       -->
+
+<!ENTITY firstRunBack.label "Алдыңғы бетке қайту үшін шертіңіз">
+<!ENTITY firstRunNewTab.label "Жаңа сайтты шолу үшін жаңа бетті қосыңыз">
+<!ENTITY firstRunStar.label "Беттерді кейінге сақтау үшін бетбелгілерді қолданыңыз">
+<!ENTITY firstRunPin.label "Жылдам қатынау үшін Windows Start экранына кез-келген сайтты бекітіңіз">
+<!ENTITY firstRunGotIt.label "Түсіндім!">

@@ -7,10 +7,13 @@ Subject: Use a variable for xulrunner base version in various places
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/config/baseconfig.mk b/config/baseconfig.mk
-index b7adc7a..69ce2b6 100644
+index b4723a9..7ca8e35 100644
 --- a/config/baseconfig.mk
 +++ b/config/baseconfig.mk
-@@ -1,7 +1,8 @@
+@@ -2,10 +2,11 @@
+ # directly in python/mozbuild/mozbuild/base.py for gmake validation.
+ # We thus use INCLUDED_AUTOCONF_MK to enable/disable some parts depending
+ # whether a normal build is happening or whether the check is running.
 -includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 -idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 -installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
@@ -20,6 +23,6 @@ index b7adc7a..69ce2b6 100644
 +idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_BASE_VERSION)
 +installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_BASE_VERSION)
 +sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_BASE_VERSION)
- DIST = $(DEPTH)/dist
- 
- # We do magic with OBJ_SUFFIX in config.mk, the following ensures we don't
+ ifndef TOP_DIST
+ TOP_DIST = dist
+ endif

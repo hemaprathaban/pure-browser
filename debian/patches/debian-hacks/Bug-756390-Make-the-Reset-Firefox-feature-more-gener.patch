@@ -48,26 +48,27 @@ Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
  .../chrome/browser/migration/migration.properties  | 12 ++---
  .../chrome/browser/migration/migration.properties  |  8 ++--
  .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 12 ++---
+ .../chrome/browser/migration/migration.properties  | 10 ++---
  .../chrome/browser/migration/migration.properties  |  8 ++--
  .../chrome/browser/migration/migration.properties  | 10 ++---
  .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  |  8 ++--
- .../chrome/browser/migration/migration.properties  | 10 ++---
  .../chrome/browser/migration/migration.properties  | 12 ++---
  .../chrome/browser/migration/migration.properties  | 12 ++---
  .../chrome/browser/migration/migration.properties  | 12 ++---
@@ -100,7 +101,7 @@ Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
  toolkit/content/resetProfile.js                    | 52 ++++++++++++++++++++++
  toolkit/profile/nsIProfileMigrator.idl             | 10 ++++-
  toolkit/xre/nsAppRunner.cpp                        |  2 +-
- 97 files changed, 589 insertions(+), 520 deletions(-)
+ 98 files changed, 597 insertions(+), 528 deletions(-)
 
 diff --git a/browser/components/migration/content/migration.js b/browser/components/migration/content/migration.js
 index 91c5c1c..2f8bd1a 100644
@@ -1704,10 +1705,10 @@ index 951d129..5ec09ea 100644
 +64_self=બીજી માહિતી
  
 diff --git a/l10n-he/browser/chrome/browser/migration/migration.properties b/l10n-he/browser/chrome/browser/migration/migration.properties
-index cb3ae41..38b6201 100644
+index 2147ea2..e0e7d4d 100644
 --- a/l10n-he/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-he/browser/chrome/browser/migration/migration.properties
-@@ -25,22 +25,22 @@ importedSafariReadingList=רשימת קריאה (מ־Safari)
+@@ -24,22 +24,22 @@ importedSafariReadingList=רשימת קריאה (מ־Safari)
  2_ie=עוגיות
  2_safari=עוגיות
  2_chrome=עוגיות
@@ -1734,6 +1735,15 @@ index cb3ae41..38b6201 100644
  
  32_ie=מועדפים
  32_safari=סימניות
+@@ -48,6 +48,6 @@ importedSafariReadingList=רשימת קריאה (מ־Safari)
+ 64_ie=מידע אחר
+ 64_safari=מידע אחר
+ 64_chrome=נתונים אחרים
+-64_firefox_other=נתונים אחרים
++64_self=נתונים אחרים
+ 
+-128_firefox=חלונות ולשוניות
++128_self=חלונות ולשוניות
 diff --git a/l10n-hi-IN/browser/chrome/browser/migration/migration.properties b/l10n-hi-IN/browser/chrome/browser/migration/migration.properties
 index bb8becc..670c221 100644
 --- a/l10n-hi-IN/browser/chrome/browser/migration/migration.properties
@@ -2510,6 +2520,46 @@ index 928ef97..c26e310 100644
  
 -128_firefox=चौकट व टॅब
 +128_self=चौकट व टॅब
+diff --git a/l10n-ms/browser/chrome/browser/migration/migration.properties b/l10n-ms/browser/chrome/browser/migration/migration.properties
+index 6693448..1256082 100644
+--- a/l10n-ms/browser/chrome/browser/migration/migration.properties
++++ b/l10n-ms/browser/chrome/browser/migration/migration.properties
+@@ -24,22 +24,22 @@ importedSafariReadingList=Senarai Membaca (Dari Safari)
+ 2_ie=Cookie
+ 2_safari=Cookie
+ 2_chrome=Cookie
+-2_firefox=Cookie
++2_self=Cookie
+ 
+ 4_ie=Sejarah Pelungsuran
+ 4_safari=Sejarah Pelungsuran
+ 4_chrome=Melungsur Sejarah
+-4_firefox_history_and_bookmarks=Sejarah Pelayar dan Penanda buku
++4_self=Sejarah Pelayar dan Penanda buku
+ 
+ 8_ie=Sejarah Borang Disimpan
+ 8_safari=Sejarah Borang Disimpan
+ 8_chrome=Borang Sejarah Disimpan
+-8_firefox=Borang Sejarah Disimpan
++8_self=Borang Sejarah Disimpan
+ 
+ 16_ie=Kata laluan Disimpan
+ 16_safari=Kata laluan Disimpan
+ 16_chrome=Kata laluan Disimpan
+-16_firefox=Kata laluan Disimpan
++16_self=Kata laluan Disimpan
+ 
+ 32_ie=Kegemaran
+ 32_safari=Penanda buku
+@@ -48,6 +48,6 @@ importedSafariReadingList=Senarai Membaca (Dari Safari)
+ 64_ie=Maklumat lain-lain
+ 64_safari=Maklumat lain-lain
+ 64_chrome=Data Lain
+-64_firefox_other=Maklumat lain
++64_self=Maklumat lain
+ 
+-128_firefox=Tetingkap dan Tab
++128_self=Tetingkap dan Tab
 diff --git a/l10n-nb-NO/browser/chrome/browser/migration/migration.properties b/l10n-nb-NO/browser/chrome/browser/migration/migration.properties
 index 31f85ba..57306cd 100644
 --- a/l10n-nb-NO/browser/chrome/browser/migration/migration.properties
@@ -3716,10 +3766,10 @@ index f35c227..7062886 100644
  
  %{C++
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index 90d6c51..c25a301 100644
+index fe66f3b..2ddcd3b 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3926,7 +3926,7 @@ XREMain::XRE_mainRun()
+@@ -3952,7 +3952,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

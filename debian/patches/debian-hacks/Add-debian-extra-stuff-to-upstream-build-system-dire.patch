@@ -7,13 +7,13 @@ Subject: Add debian/extra-stuff to upstream build system directory traversal
  1 file changed, 3 insertions(+)
 
 diff --git a/moz.build b/moz.build
-index 544509a..a876c68 100644
+index 6c32b2b..8ce9964 100644
 --- a/moz.build
 +++ b/moz.build
-@@ -32,3 +32,6 @@ add_tier_dir('precompile', 'xpcom/xpidl')
+@@ -47,3 +47,6 @@ else:
  
- # Bring in the configuration for the configured application.
- include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
+     # Bring in the configuration for the configured application.
+     include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
 +
-+if not CONFIG['LIBXUL_SDK']:
-+    add_tier_dir('platform', 'debian/extra-stuff')
++    if not CONFIG['LIBXUL_SDK']:
++        add_tier_dir('platform', 'debian/extra-stuff')

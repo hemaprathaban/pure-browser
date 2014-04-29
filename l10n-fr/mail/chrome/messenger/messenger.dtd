@@ -317,8 +317,6 @@
 <!ENTITY prevStarredMsgCmd.accesskey "v">
 <!ENTITY folderMenu.label "Dossier">
 <!ENTITY folderMenu.accesskey "o">
-<!ENTITY thisFolder.label "Ce dossier">
-<!ENTITY thisFolder.accesskey "C">
 <!ENTITY goRecentlyClosedTabs.label "Onglets récemment fermés">
 <!ENTITY goRecentlyClosedTabs.accesskey "r">
 <!ENTITY startPageCmd.label "Page de démarrage">
@@ -358,9 +356,9 @@
 <!ENTITY forwardAsInline.accesskey "I">
 <!ENTITY forwardAsAttachmentCmd.label "Pièce jointe">
 <!ENTITY forwardAsAttachmentCmd.accesskey "P">
-<!ENTITY editMsgAsNewCmd.label "Modifier comme un nouveau message">
-<!ENTITY editMsgAsNewCmd.accesskey "e">
-<!ENTITY editMsgAsNewCmd.key "e">
+<!ENTITY editAsNewMsgCmd.label "Modifier comme un nouveau message">
+<!ENTITY editAsNewMsgCmd.accesskey "e">
+<!ENTITY editAsNewMsgCmd.key "e">
 <!ENTITY createFilter.label "Créer un filtre à partir du message…">
 <!ENTITY createFilter.accesskey "i">
 <!ENTITY moveMsgToMenu.label "Déplacer le message vers">
@@ -383,10 +381,6 @@
 <!ENTITY watchThreadMenu.label "Surveiller la discussion">
 <!ENTITY watchThreadMenu.accesskey "S">
 <!ENTITY watchThreadMenu.key "w">
-<!ENTITY fileHereMenu.label "Classer ici">
-<!ENTITY fileHereMenu.accesskey "a">
-<!ENTITY copyHereMenu.label "Copier ici">
-<!ENTITY copyHereMenu.accesskey "C">
 <!ENTITY tagMenu.label "Étiquette">
 <!ENTITY tagMenu.accesskey "q">
 <!ENTITY tagCmd0.key "0">
@@ -579,8 +573,10 @@
 <!-- Phishing Button Popup -->
 <!ENTITY phishingOptionIgnore.label "Ignorer l'avertissement pour ce message">
 <!ENTITY phishingOptionIgnore.accesskey "n">
-<!ENTITY phishingOptionDisableDetection.label "Désactiver la détection de courrier frauduleux pour tous les messages">
-<!ENTITY phishingOptionDisableDetection.accesskey "s">
+<!ENTITY phishingOptionSettings.label "Modifier les options de détection des courriers frauduleux…">
+<!ENTITY phishingOptionSettings.accesskey "d">
+<!ENTITY phishingOptionSettingsUnix.label "Modifier les préférences de détection des courriers frauduleux…">
+<!ENTITY phishingOptionSettingsUnix.accesskey "d">
 
 <!-- AppMenu Popup -->
 <!ENTITY appmenuNewMsgCmd.label "Nouveau message">
@@ -677,26 +673,26 @@
 
 
 <!-- Thread Pane Tooltips -->
-<!ENTITY columnChooser.tooltip "Choisir les colonnes à afficher">
-<!ENTITY threadColumn.tooltip "Afficher les fils de discussion"> 
-<!ENTITY fromColumn.tooltip "Trier par expéditeur">
-<!ENTITY recipientColumn.tooltip "Trier par destinataire">
-<!ENTITY subjectColumn.tooltip "Trier par sujet">
-<!ENTITY dateColumn.tooltip "Trier par date">
-<!ENTITY priorityColumn.tooltip "Trier par priorité">
-<!ENTITY tagsColumn.tooltip "Trier par étiquettes">
-<!ENTITY accountColumn.tooltip "Trier par compte">
-<!ENTITY statusColumn.tooltip "Trier par statut">
-<!ENTITY sizeColumn.tooltip "Trier par taille">
-<!ENTITY junkStatusColumn.tooltip "Trier par statut indésirable">
-<!ENTITY unreadColumn.tooltip "Nombre de messages non lus dans le fil">
-<!ENTITY totalColumn.tooltip "Nombre total de messages dans le fil">
-<!ENTITY readColumn.tooltip "Trier par statut de lecture">
-<!ENTITY receivedColumn.tooltip "Trier par date de réception">
-<!ENTITY starredColumn.tooltip "Trier par suivi">
-<!ENTITY locationColumn.tooltip "Trier par adresse">
-<!ENTITY idColumn.tooltip "Trier par ordre de réception">
-<!ENTITY attachmentColumn.tooltip "Trier par pièces jointes">
+<!ENTITY columnChooser2.tooltip "Choisir les colonnes à afficher">
+<!ENTITY threadColumn2.tooltip "Afficher les fils de discussion"> 
+<!ENTITY fromColumn2.tooltip "Trier par expéditeur">
+<!ENTITY recipientColumn2.tooltip "Trier par destinataire">
+<!ENTITY subjectColumn2.tooltip "Trier par sujet">
+<!ENTITY dateColumn2.tooltip "Trier par date">
+<!ENTITY priorityColumn2.tooltip "Trier par priorité">
+<!ENTITY tagsColumn2.tooltip "Trier par étiquettes">
+<!ENTITY accountColumn2.tooltip "Trier par compte">
+<!ENTITY statusColumn2.tooltip "Trier par statut">
+<!ENTITY sizeColumn2.tooltip "Trier par taille">
+<!ENTITY junkStatusColumn2.tooltip "Trier par statut indésirable">
+<!ENTITY unreadColumn2.tooltip "Nombre de messages non lus dans le fil">
+<!ENTITY totalColumn2.tooltip "Nombre total de messages dans le fil">
+<!ENTITY readColumn2.tooltip "Trier par statut de lecture">
+<!ENTITY receivedColumn2.tooltip "Trier par date de réception">
+<!ENTITY starredColumn2.tooltip "Trier par suivi">
+<!ENTITY locationColumn2.tooltip "Trier par adresse">
+<!ENTITY idColumn2.tooltip "Trier par ordre de réception">
+<!ENTITY attachmentColumn2.tooltip "Trier par pièces jointes">
 
 <!-- Thread Pane Context Menu -->
 <!ENTITY contextOpenNewWindow.label "Ouvrir dans une nouvelle fenêtre">
@@ -705,8 +701,8 @@
 <!ENTITY contextOpenNewTab.accesskey "u">
 <!ENTITY contextOpenConversation.label "Ouvrir le message dans la discussion">
 <!ENTITY contextOpenConversation.accesskey "v">
-<!ENTITY contextEditAsNew.label "Modifier comme un nouveau message…">
-<!ENTITY contextEditAsNew.accesskey "e">
+<!ENTITY contextEditMsgAsNew.label "Modifier comme un nouveau message">
+<!ENTITY contextEditMsgAsNew.accesskey "e">
 <!ENTITY contextArchive.label "Archiver">
 <!ENTITY contextArchive.accesskey "h">
 <!ENTITY contextReplySender.label "Répondre à l'expéditeur">
@@ -833,8 +829,8 @@
 <!ENTITY AddToAddressBook.accesskey "j">
 <!ENTITY AddDirectlyToAddressBook.label "Ajouter au carnet d'adresses">
 <!ENTITY AddDirectlyToAddressBook.accesskey "o">
-<!ENTITY EditContact.label "Modifier le contact…">
-<!ENTITY EditContact.accesskey "M">
+<!ENTITY EditContact1.label "Modifier le contact">
+<!ENTITY EditContact1.accesskey "M">
 <!ENTITY ViewContact.label "Afficher le contact">
 <!ENTITY ViewContact.accesskey "A">
 <!ENTITY SubscribeToNewsgroup.label "S'abonner à un groupe de discussion">

@@ -10,10 +10,10 @@ Subject: Allow .js preference files to set locked prefs with lockPref()
  4 files changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index 2de0a68..8d368dc 100644
+index aa378e5..0263cd6 100644
 --- a/modules/libpref/src/prefapi.cpp
 +++ b/modules/libpref/src/prefapi.cpp
-@@ -988,7 +988,10 @@ void PREF_ReaderCallback(void       *closure,
+@@ -990,7 +990,10 @@ void PREF_ReaderCallback(void       *closure,
                           const char *pref,
                           PrefValue   value,
                           PrefType    type,
@@ -26,10 +26,10 @@ index 2de0a68..8d368dc 100644
 +        PREF_LockPref(pref, true);
  }
 diff --git a/modules/libpref/src/prefapi.h b/modules/libpref/src/prefapi.h
-index 76c8f6d..d5503c0 100644
+index 675b384..fe3f2da 100644
 --- a/modules/libpref/src/prefapi.h
 +++ b/modules/libpref/src/prefapi.h
-@@ -178,7 +178,8 @@ void PREF_ReaderCallback( void *closure,
+@@ -183,7 +183,8 @@ void PREF_ReaderCallback( void *closure,
                            const char *pref,
                            PrefValue   value,
                            PrefType    type,
@@ -90,7 +90,7 @@ index 01612ba..a119669 100644
                  ps->nextstate = PREF_PARSE_UNTIL_COMMA; /* return here when done */
                  state = PREF_PARSE_QUOTED_STRING;
 diff --git a/modules/libpref/src/prefread.h b/modules/libpref/src/prefread.h
-index 3e30f17..4492964 100644
+index 4d5ce1e..5b6a44f 100644
 --- a/modules/libpref/src/prefread.h
 +++ b/modules/libpref/src/prefread.h
 @@ -31,7 +31,8 @@ typedef void (*PrefReader)(void       *closure,
