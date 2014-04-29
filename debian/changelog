@@ -1,8 +1,25 @@
-iceweasel (29.0-1) UNRELEASED; urgency=medium
+iceweasel (29.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{34,36-39,41-44,46-47}, almost known as:
+    CVE-2014-1518, CVE-2014-1519, CVE-2014-1522, CVE-2014-1523,
+    CVE-2014-1525, CVE-2014-1528, CVE-2014-1529, CVE-2014-1530,
+    CVE-2014-1531, CVE-2014-1532, CVE-2014-1526.
 
- -- Mike Hommey <glandium@debian.org>  Mon, 28 Apr 2014 23:02:32 -0700
+  * debian/control*: Bump nspr and sqlite3 build dependencies.
+  * debian/rules: Adjust AUTOCONF_DIRS.
+  * debian/branding/moz.build, debian/branding/content/moz.build,
+    debian/branding/locales/moz.build: Add now necessary definition for jar.mn.
+  * debian/branding/configure.sh: Set MOZ_APP_NAME.
+  * debian/browser.install.in, debian/browser.mozconfig, debian/rules:
+    Use omnijar chrome format for browser.
+  * debian/control*: Build depend on iso-codes.
+
+  * config/makefiles/target_binaries.mk, config/rules.mk, js/src/Makefile.in:
+    Revert changes to add sonames, since the last library this was used for
+    is mozjs, and it was removed in 28.0-1.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 28 Apr 2014 23:21:57 -0700
 
 iceweasel (28.0-1) experimental; urgency=medium
 
