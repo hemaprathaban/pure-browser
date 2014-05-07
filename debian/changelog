@@ -1,3 +1,18 @@
+iceweasel (29.0-2) experimental; urgency=medium
+
+  * debian/rules: Don't use find to get the list of autoconf.mk and
+    emptyvars.mk files. This should fix the FTBFSes on i386 and armhf.
+  * debian/branding/content/Makefile.in, debian/branding/content/jar.mn,
+    debian/branding/locales/Makefile.in, debian/branding/locales/jar.mn:
+    Add missing icons to branding. Closes: #747049.
+  * debian/browser.links.in: Remove dangling /usr/lib/iceweasel/browser/modules.
+    Closes: #746529.
+
+  * gfx/src/nsDeviceContext.cpp: Backout bz#991767 for causing bz#1003707.
+    Closes: #746598.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 07 May 2014 10:30:20 +0900
+
 iceweasel (29.0-1) experimental; urgency=medium
 
   * New upstream release.
