@@ -187,7 +187,7 @@ stamps/configure-check-xulrunner:: stamps/configure-xulrunner
 # Ensure --{with,enable}-system options properly set expected variables
 # according to the definitions in the mozconfig file.
 	@awk -F' *# *| *$$' ' \
-	BEGIN { "find $(CURDIR)/build-xulrunner \\( -name autoconf.mk -o -name emptyvars.mk \\) -printf \"%p \"" | getline confs } \
+	BEGIN { confs="$(foreach d,config js/src/config,$(foreach f,autoconf.mk emptyvars.mk,$(CURDIR)/build-xulrunner/$(d)/$(f)))" } \
 	$$1 ~ /system/ { \
 		if (! $$2) { \
 			print FILENAME ": Missing variable for",$$1; \
