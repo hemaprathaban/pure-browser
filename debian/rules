@@ -375,8 +375,7 @@ override_dh_strip:
 	dh_strip -p$($(PRODUCT)) --dbg-package=$($(PRODUCT))-dbg
 
 override_dh_shlibdeps:
-	dh_shlibdeps -a -l$(CURDIR)/debian/tmp/usr/lib/xulrunner-$(GRE_VERSION) -Xlibdbusservice
-	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib/xulrunner-$(GRE_VERSION) dpkg-shlibdeps -Tdebian/xulrunner-$(GRE_VERSION).substvars -dDepends -pgnome $(foreach lib,dbusservice,debian/xulrunner-$(GRE_VERSION)/usr/lib/xulrunner-$(GRE_VERSION)/components/lib$(lib).so)
+	dh_shlibdeps -a -l$(CURDIR)/debian/tmp/usr/lib/xulrunner-$(GRE_VERSION)
 
 override_dh_gencontrol:
 	dh_gencontrol$(foreach pkg,$(L10N_PACKAGES) $($(PRODUCT))-l10n-all, -p$(pkg)) -- -v1:$(DEBIAN_VERSION)
