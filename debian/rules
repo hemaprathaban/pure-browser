@@ -317,7 +317,7 @@ stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
 		MOZ_PKG_FATAL_WARNINGS=0 \
 		MOZ_PKG_MANIFEST=$(CURDIR)/$<
 
-	-unzip -d debian/tmp/usr/lib/$($(PRODUCT))/browser debian/tmp/usr/lib/$($(PRODUCT))/browser/omni.ja 'defaults/*'
+	-unzip -d debian/tmp$(LIB_DIR)/browser debian/tmp$(LIB_DIR)/browser/omni.ja 'defaults/*'
 
 MPL-1.1: gfx/cairo/cairo/COPYING-MPL-1.1
 	cp -f $< $@
@@ -332,7 +332,7 @@ L10N_DH_INSTALL_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/dh_install-l10n-$(l
 stamps/dh_install-l10n:: $(L10N_DH_INSTALL_STAMPS)
 
 $(L10N_DH_INSTALL_STAMPS):: stamps/dh_install-l10n-%: stamps/build-l10n-%
-	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi/langpack-$*@$($(PRODUCT)).mozilla.org.xpi usr/lib/$($(PRODUCT))/browser/extensions/
+	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi/langpack-$*@$($(PRODUCT)).mozilla.org.xpi $(LIB_DIR)/browser/extensions/
 	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi-stage/locale-$*/browser/searchplugins/* /etc/$($(PRODUCT))/searchplugins/locale/$*/
 
 branding_icon = $(or $(wildcard $(BRANDING)/$(1)),$(wildcard build-$(PRODUCT)/$(BRANDING)/$(1)))
