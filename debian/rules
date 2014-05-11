@@ -242,12 +242,12 @@ stamps/configure-l10n:: stamps/prepare-configure
 	$(if $(wildcard build-l10n),,mkdir build-l10n)
 	$(if $(wildcard l10n),,mkdir -p l10n)
 	cd build-l10n && \
+	MOZCONFIG=$(CURDIR)/debian/$($(PRODUCT)).mozconfig \
 	$(CONFIGURE_ENV) \
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-l10n-base=$(CURDIR)/l10n \
 		$(BRANDING_CONFIGURE_FLAG) \
-		--disable-compile-environment \
-		--enable-application=$(PRODUCT)
+		--disable-compile-environment
 
 $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 	$(if $(wildcard l10n/$*),,ln -sf ../l10n-$* l10n/$*)
