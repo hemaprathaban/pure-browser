@@ -128,6 +128,9 @@ Depends: ${shlibs:Depends},
          libnss3-dev,
          libnspr4-dev,
          xulrunner-29 (= ${binary:Version})
+Conflicts: libmozjs-dev
+Provides: libmozjs-dev
+Replaces: libmozjs-dev
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as
