@@ -18,3 +18,7 @@ ac_add_options --disable-webm
 ac_add_options --disable-libjpeg-turbo
 ac_add_options --disable-webrtc
 ac_add_options --disable-dash
+%if !LESS_SYSTEM_LIBS
+ac_add_options --with-system-nspr # MOZ_NATIVE_NSPR=1
+ac_add_options --with-system-nss # MOZ_NATIVE_NSS=1
+%endif
