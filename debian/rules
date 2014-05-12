@@ -268,6 +268,7 @@ stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
 
 	# Fixup permissions
 	find debian/tmp/usr/share debian/tmp/usr/include -type f -print0 | xargs -0 chmod 644
+	chmod +x debian/tmp/usr/lib/$($(PRODUCT))-devel-$(GRE_VERSION)/sdk/bin/xpcshell
 
 	# Replace some installed files by symlinks
 	for d in lib bin; do \
