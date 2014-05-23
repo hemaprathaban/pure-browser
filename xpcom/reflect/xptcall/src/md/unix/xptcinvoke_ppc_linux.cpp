@@ -47,8 +47,8 @@ invoke_copy_to_stack(uint32_t* d,
     for(uint32_t i = 0; i < paramCount; i++, s++) {
         if(s->IsPtrData()) {
             if(s->type == nsXPTType::T_JSVAL)
-                tempu32 = &s->ptr;
-            else    
+                tempu32 = (uint32_t) &s->ptr;
+            else
                 tempu32 = (uint32_t) s->ptr;
         }
         else {
