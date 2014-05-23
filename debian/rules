@@ -43,12 +43,6 @@ endif
 
 else
 BRANDING := debian/branding
-
-# Betas and Releases need to get MOZ_UA_BUILDID from the official branding
-ifneq (,$(filter %-release %-beta,$(SOURCE_CHANNEL)))
-include $(OFFICIAL_BRANDING)/configure.sh
-export MOZ_UA_BUILDID
-endif
 endif
 
 include $(BRANDING)/configure.sh
