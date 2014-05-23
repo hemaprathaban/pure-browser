@@ -1,3 +1,20 @@
+iceweasel (29.0.1-2) unstable; urgency=medium
+
+  * debian/rules:
+    - Don't pull MOZ_UA_BUILDID from official branding, it's not there anymore
+      and not useful anyways since bz#728773.
+    - Properly create all stamp files.
+  * debian/control*: xulrunner-dev conflicts with libmozjs-dev. Closes: #747761
+  * debian/rules, debian/control*: Use GCC 4.9 on armhf to work around bug
+    #748422.
+
+  * js/xpconnect/src/XPCWrappedJSClass.cpp,
+    xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_*.cpp,
+    xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_*.cpp: Fixup ppc and
+    sparc xpconnect
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 24 May 2014 08:11:59 +0900
+
 iceweasel (29.0.1-1) unstable; urgency=medium
 
   * New upstream release.
