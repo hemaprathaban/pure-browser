@@ -1378,9 +1378,24 @@ pre_call_clean_up:
                 break;
         }
 
+// see bug #961488
+#if (defined(XP_UNIX) && !defined(XP_MACOSX)) && \
+    ((defined(__sparc__) && !defined(__sparc64__)) || \
+    (defined(__powerpc__) && !defined (__powerpc64__)))
+        if (type_tag == nsXPTType::T_JSVAL) {
+            if (!XPCConvert::JSData2Native(*(void**)(&pv->val), val, type,
+                                           !param.IsDipper(), &param_iid, nullptr))
+                break;
+        } else {
+            if (!XPCConvert::JSData2Native(&pv->val, val, type,
+                                           !param.IsDipper(), &param_iid, nullptr))
+                break;
+        }
+#else
         if (!XPCConvert::JSData2Native(&pv->val, val, type,
                                        !param.IsDipper(), &param_iid, nullptr))
             break;
+#endif
     }
 
     // if any params were dependent, then we must iterate again to convert them.

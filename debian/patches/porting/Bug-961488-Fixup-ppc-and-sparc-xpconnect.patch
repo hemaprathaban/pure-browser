@@ -1,0 +1,158 @@
+From: Landry Breuil <landry@openbsd.org>
+Date: Sat, 24 May 2014 08:05:52 +0900
+Subject: Bug 961488 - Fixup ppc and sparc xpconnect
+
+---
+ js/xpconnect/src/XPCWrappedJSClass.cpp                    | 15 +++++++++++++++
+ .../reflect/xptcall/src/md/unix/xptcinvoke_ppc_linux.cpp  |  4 ++--
+ .../reflect/xptcall/src/md/unix/xptcinvoke_ppc_netbsd.cpp |  9 ++++++---
+ .../xptcall/src/md/unix/xptcinvoke_ppc_openbsd.cpp        |  9 ++++++---
+ .../xptcall/src/md/unix/xptcinvoke_sparc_netbsd.cpp       |  9 ++++++++-
+ .../xptcall/src/md/unix/xptcinvoke_sparc_openbsd.cpp      |  9 ++++++++-
+ .../xptcall/src/md/unix/xptcinvoke_sparc_solaris.cpp      |  9 ++++++++-
+ 7 files changed, 53 insertions(+), 11 deletions(-)
+
+diff --git a/js/xpconnect/src/XPCWrappedJSClass.cpp b/js/xpconnect/src/XPCWrappedJSClass.cpp
+index d819860..b41216f 100644
+--- a/js/xpconnect/src/XPCWrappedJSClass.cpp
++++ b/js/xpconnect/src/XPCWrappedJSClass.cpp
+@@ -1378,9 +1378,24 @@ pre_call_clean_up:
+                 break;
+         }
+ 
++// see bug #961488
++#if (defined(XP_UNIX) && !defined(XP_MACOSX)) && \
++    ((defined(__sparc__) && !defined(__sparc64__)) || \
++    (defined(__powerpc__) && !defined (__powerpc64__)))
++        if (type_tag == nsXPTType::T_JSVAL) {
++            if (!XPCConvert::JSData2Native(*(void**)(&pv->val), val, type,
++                                           !param.IsDipper(), &param_iid, nullptr))
++                break;
++        } else {
++            if (!XPCConvert::JSData2Native(&pv->val, val, type,
++                                           !param.IsDipper(), &param_iid, nullptr))
++                break;
++        }
++#else
+         if (!XPCConvert::JSData2Native(&pv->val, val, type,
+                                        !param.IsDipper(), &param_iid, nullptr))
+             break;
++#endif
+     }
+ 
+     // if any params were dependent, then we must iterate again to convert them.
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_linux.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_linux.cpp
+index 5fa63a4..deb72db 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_linux.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_linux.cpp
+@@ -47,8 +47,8 @@ invoke_copy_to_stack(uint32_t* d,
+     for(uint32_t i = 0; i < paramCount; i++, s++) {
+         if(s->IsPtrData()) {
+             if(s->type == nsXPTType::T_JSVAL)
+-                tempu32 = &s->ptr;
+-            else    
++                tempu32 = (uint32_t) &s->ptr;
++            else
+                 tempu32 = (uint32_t) s->ptr;
+         }
+         else {
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_netbsd.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_netbsd.cpp
+index 069d608..515e8c5 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_netbsd.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_netbsd.cpp
+@@ -41,9 +41,12 @@ invoke_copy_to_stack(uint32_t* d,
+     uint64_t tempu64;
+     
+     for(uint32_t i = 0; i < paramCount; i++, s++) {
+-        if(s->IsPtrData())
+-            tempu32 = (uint32_t) s->ptr;
+-        else {
++        if(s->IsPtrData()) {
++            if(s->type == nsXPTType::T_JSVAL)
++               tempu32 = (uint32_t) &(s->ptr);
++            else
++               tempu32 = (uint32_t) s->ptr;
++        } else {
+             switch(s->type) {
+             case nsXPTType::T_FLOAT:                                  break;
+             case nsXPTType::T_DOUBLE:                                 break;
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_openbsd.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_openbsd.cpp
+index 70f40b3..5353220 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_openbsd.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_ppc_openbsd.cpp
+@@ -41,9 +41,12 @@ invoke_copy_to_stack(uint32_t* d,
+     uint64_t tempu64;
+     
+     for(uint32_t i = 0; i < paramCount; i++, s++) {
+-        if(s->IsPtrData())
+-            tempu32 = (uint32_t) s->ptr;
+-        else {
++        if(s->IsPtrData()) {
++            if(s->type == nsXPTType::T_JSVAL)
++               tempu32 = (uint32_t) &(s->ptr);
++            else
++               tempu32 = (uint32_t) s->ptr;
++        } else {
+             switch(s->type) {
+             case nsXPTType::T_FLOAT:                                  break;
+             case nsXPTType::T_DOUBLE:                                 break;
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_netbsd.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_netbsd.cpp
+index 2ed3d53..126ef1d 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_netbsd.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_netbsd.cpp
+@@ -92,7 +92,14 @@ invoke_copy_to_stack(uint32_t* d, uint32_t paramCount, nsXPTCVariant* s)
+ 	if (regCount < 5) regCount++;
+         if(l_s->IsPtrData())
+         {
+-            *((void**)l_d) = l_s->ptr;
++            if(l_s->type == nsXPTType::T_JSVAL)
++            {
++              // On SPARC, we need to pass a pointer to HandleValue
++              *((void**)l_d) = &l_s->ptr;
++            } else
++            {
++              *((void**)l_d) = l_s->ptr;
++            }
+             continue;
+         }
+         switch(l_s->type)
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_openbsd.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_openbsd.cpp
+index 6b9b09b..9b2e4f8 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_openbsd.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_openbsd.cpp
+@@ -89,7 +89,14 @@ invoke_copy_to_stack(uint32_t* d, uint32_t paramCount, nsXPTCVariant* s)
+ 	if (regCount < 5) regCount++;
+         if(l_s->IsPtrData())
+         {
+-            *((void**)l_d) = l_s->ptr;
++            if(l_s->type == nsXPTType::T_JSVAL)
++            {
++              // On SPARC, we need to pass a pointer to HandleValue
++              *((void**)l_d) = &l_s->ptr;
++            } else
++            {
++              *((void**)l_d) = l_s->ptr;
++            }
+             continue;
+         }
+         switch(l_s->type)
+diff --git a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_solaris.cpp b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_solaris.cpp
+index 2ed3d53..126ef1d 100644
+--- a/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_solaris.cpp
++++ b/xpcom/reflect/xptcall/src/md/unix/xptcinvoke_sparc_solaris.cpp
+@@ -92,7 +92,14 @@ invoke_copy_to_stack(uint32_t* d, uint32_t paramCount, nsXPTCVariant* s)
+ 	if (regCount < 5) regCount++;
+         if(l_s->IsPtrData())
+         {
+-            *((void**)l_d) = l_s->ptr;
++            if(l_s->type == nsXPTType::T_JSVAL)
++            {
++              // On SPARC, we need to pass a pointer to HandleValue
++              *((void**)l_d) = &l_s->ptr;
++            } else
++            {
++              *((void**)l_d) = l_s->ptr;
++            }
+             continue;
+         }
+         switch(l_s->type)
