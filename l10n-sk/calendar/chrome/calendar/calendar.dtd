@@ -26,35 +26,36 @@
 <!ENTITY calendar.events.filter.next31Days.label        "Udalosti za posledných 31 dní">
 <!ENTITY calendar.events.filter.thisCalendarMonth.label "Udalosti v aktuálnom mesačnom kalendári">
 
-<!ENTITY calendar.unifinder.tree.done.label             "Hotovo">
-<!ENTITY calendar.unifinder.tree.done.tooltip           "Kliknutím usporiadate podľa stĺpca Hotovo">
-<!ENTITY calendar.unifinder.tree.priority.label         "Priorita">
-<!ENTITY calendar.unifinder.tree.priority.tooltip        "Kliknutím usporiadate podľa stĺpca Priorita">
-<!ENTITY calendar.unifinder.tree.title.label            "Názov">
-<!ENTITY calendar.unifinder.tree.title.tooltip           "Kliknutím usporiadate podľa stĺpca Názov">
-<!ENTITY calendar.unifinder.tree.percentcomplete.label  "Hotovo">
-<!ENTITY calendar.unifinder.tree.percentcomplete.tooltip "Kliknutím usporiadate podľa stĺpca Hotovo">
-<!ENTITY calendar.unifinder.tree.startdate.label        "Začiatok">
-<!ENTITY calendar.unifinder.tree.startdate.tooltip       "Kliknutím usporiadate podľa stĺpca Začiatok">
-<!ENTITY calendar.unifinder.tree.enddate.label          "Koniec">
-<!ENTITY calendar.unifinder.tree.enddate.tooltip         "Kliknutím usporiadate podľa stĺpca Koniec">
-<!ENTITY calendar.unifinder.tree.duedate.label          "Splniť do">
-<!ENTITY calendar.unifinder.tree.duedate.tooltip         "Kliknutím usporiadate podľa stĺpca Splniť do">
-<!ENTITY calendar.unifinder.tree.completeddate.label    "Dokončené">
-<!ENTITY calendar.unifinder.tree.completeddate.tooltip   "Kliknutím usporiadate podľa stĺpca Dokončené">
-<!ENTITY calendar.unifinder.tree.categories.label       "Kategória">
-<!ENTITY calendar.unifinder.tree.categories.tooltip      "Kliknutím usporiadate podľa stĺpca Kategória">
-<!ENTITY calendar.unifinder.tree.location.label         "Miesto konania">
-<!ENTITY calendar.unifinder.tree.location.tooltip        "Kliknutím usporiadate podľa stĺpca Miesto konania">
-<!ENTITY calendarproperties.refreshInterval.label          "Obnoviť kalendár:">
-<!ENTITY calendarproperties.refreshInterval.manual.label   "Manuálne">
-<!ENTITY calendar.unifinder.tree.status.label           "Stav">
-<!ENTITY calendar.unifinder.tree.status.tooltip          "Kliknutím usporiadate podľa stĺpca Stav">
-<!ENTITY calendar.unifinder.tree.calendarname.label     "Názov kalendára">
-<!ENTITY calendar.unifinder.tree.calendarname.tooltip    "Kliknutím usporiadate podľa stĺpca Názov kalendára">
-<!ENTITY calendar.unifinder.tree.duration.label         "Termín o">
-<!ENTITY calendar.unifinder.tree.duration.tooltip        "Kliknutím usporiadate podľa stĺpca Termín">
-<!ENTITY calendar.unifinder.close.tooltip               "Zavrieť vyhľadávanie udalostí a zoznam udalostí">
+<!-- LOCALIZATION NOTE(calendar.unifinder.tree.done.tooltip)
+   - This label and tooltip is used for the column with the checkbox in the
+   - task tree view. -->
+<!ENTITY calendar.unifinder.tree.done.label                "Hotovo">
+<!ENTITY calendar.unifinder.tree.done.tooltip2             "Usporiadať podľa stĺpca Hotovo">
+<!ENTITY calendar.unifinder.tree.priority.label            "Priorita">
+<!ENTITY calendar.unifinder.tree.priority.tooltip2         "Usporiadať podľa stĺpca Priorita">
+<!ENTITY calendar.unifinder.tree.title.label               "Názov">
+<!ENTITY calendar.unifinder.tree.title.tooltip2            "Usporiadať podľa stĺpca Názov">
+<!ENTITY calendar.unifinder.tree.percentcomplete.label     "&#37; dokončenia">
+<!ENTITY calendar.unifinder.tree.percentcomplete.tooltip2  "Usporiadať podľa stĺpca &#37; dokončenia">
+<!ENTITY calendar.unifinder.tree.startdate.label           "Začiatok">
+<!ENTITY calendar.unifinder.tree.startdate.tooltip2        "Usporiadať podľa stĺpca Začiatok">
+<!ENTITY calendar.unifinder.tree.enddate.label             "Koniec">
+<!ENTITY calendar.unifinder.tree.enddate.tooltip2          "Usporiadať podľa stĺpca Koniec">
+<!ENTITY calendar.unifinder.tree.duedate.label             "Splniť do">
+<!ENTITY calendar.unifinder.tree.duedate.tooltip2          "Usporiadať podľa stĺpca Splniť do">
+<!ENTITY calendar.unifinder.tree.completeddate.label       "Dokončené">
+<!ENTITY calendar.unifinder.tree.completeddate.tooltip2    "Usporiadať podľa stĺpca Dokončené">
+<!ENTITY calendar.unifinder.tree.categories.label          "Kategória">
+<!ENTITY calendar.unifinder.tree.categories.tooltip2       "Usporiadať podľa stĺpca Kategória">
+<!ENTITY calendar.unifinder.tree.location.label            "Miesto konania">
+<!ENTITY calendar.unifinder.tree.location.tooltip2         "Usporiadať podľa stĺpca Miesto konania">
+<!ENTITY calendar.unifinder.tree.status.label              "Stav">
+<!ENTITY calendar.unifinder.tree.status.tooltip2           "Usporiadať podľa stĺpca Stav">
+<!ENTITY calendar.unifinder.tree.calendarname.label        "Názov kalendára">
+<!ENTITY calendar.unifinder.tree.calendarname.tooltip2     "Usporiadať podľa stĺpca Názov kalendára">
+<!ENTITY calendar.unifinder.tree.duration.label            "Termín o">
+<!ENTITY calendar.unifinder.tree.duration.tooltip2         "Usporiadať podľa stĺpca Termín o">
+<!ENTITY calendar.unifinder.close.tooltip                  "Zavrieť vyhľadávanie udalostí a zoznam udalostí">
 
 <!ENTITY calendar.today.button.tooltip            "Prejsť na dnešný deň" >
 <!ENTITY calendar.todaypane.button.tooltip        "Zobraziť panel Dnes" >
@@ -87,8 +88,7 @@
 <!ENTITY calendar.newevent.button.label         "Nová udalosť" >
 <!ENTITY calendar.newtask.button.label          "Nová úloha" >
 <!ENTITY calendar.print.button.label            "Tlačiť" >
-
-<!ENTITY calendar.export.calendar                "Export kalendára…" >
+<!ENTITY calendar.print.button.accesskey        "T">
 
 <!ENTITY calendar.day.button.label                 "Deň" >
 <!ENTITY calendar.week.button.label                "Týždeň" >
@@ -131,8 +131,6 @@
      before today (or the selected date, whichever is later). -->
 <!ENTITY calendar.task.filter.current.label         "Aktuálne úlohy">
 <!ENTITY calendar.task.filter.current.accesskey     "t">
-<!ENTITY calendar.task.filter.repeating.label       "Opakujúce sa úlohy">
-<!ENTITY calendar.task.filter.repeating.accesskey   "u">
 
 <!ENTITY calendar.task-details.title.label           "názov">
 <!ENTITY calendar.task-details.organizer.label       "od">
@@ -154,9 +152,6 @@
 <!ENTITY calendar.task.text-filter.textbox.emptytext.base            "Filtrovať úlohy… #1">
 <!ENTITY calendar.task.text-filter.textbox.emptytext.keylabel.nonmac "&lt;Ctrl+Shift+K&gt;">
 <!ENTITY calendar.task.text-filter.textbox.emptytext.keylabel.mac    "&lt;&#x21E7;&#x2318;K&gt;">
-
-<!-- Statusbar -->
-<!ENTITY statusText.label   "Dokument: Hotovo">
 
 <!-- Context Menu -->
 <!ENTITY calendar.context.modifyorviewitem.label      "Otvoriť">
@@ -231,7 +226,6 @@
 <!-- Note that the above *.context.* strings are currently used for the other
      task action buttons -->
 <!ENTITY calendar.taskview.delete.label     "Odstrániť">
-<!ENTITY calendar.taskview.delete.accesskey "d">
 
 <!-- Server Context Menu -->
 <!ENTITY calendar.context.newserver.label             "Nový kalendár…">
@@ -305,6 +299,8 @@
 <!ENTITY calendarproperties.wcap.label                     "Sun Java System Calendar Server (WCAP)">
 <!ENTITY calendarproperties.format.label                   "Formát:">
 <!ENTITY calendarproperties.location.label                 "Umiestnenie:">
+<!ENTITY calendarproperties.refreshInterval.label          "Obnoviť kalendár:">
+<!ENTITY calendarproperties.refreshInterval.manual.label   "Manuálne">
 <!ENTITY calendarproperties.name.label                     "Názov:">
 <!ENTITY calendarproperties.readonly.label                 "Len na čítanie">
 <!ENTITY calendarproperties.firealarms.label               "Zobraziť upozornenia">
@@ -334,7 +330,6 @@
 <!ENTITY calendar.print.selectedEventsAndTasks.label "Označené udalosti/úlohy">
 <!ENTITY calendar.print.tasks.label "Úlohy">
 <!ENTITY calendar.print.events.label "Udalosti">
-<!ENTITY calendar.print.selected.label "Označené udalosti">
 <!ENTITY calendar.print.custom.label "Vlastné:">
 <!ENTITY calendar.print.from.label "Od:">
 <!ENTITY calendar.print.to.label "Do:">

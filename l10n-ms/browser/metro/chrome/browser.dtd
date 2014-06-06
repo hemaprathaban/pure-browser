@@ -21,8 +21,8 @@
 <!ENTITY appbarMSMetaData2.label       "Dapatkan app untuk laman web ini">
 <!ENTITY appbarViewPageSource.label    "Lihat sumber laman">
 
-<!ENTITY topSitesHeader.label        "Laman Popular">
-<!ENTITY bookmarksHeader.label       "Penanda buku">
+<!ENTITY topSitesHeader.label        "Tapak Popular">
+<!ENTITY bookmarksHeader.label       "Penandabuku">
 <!ENTITY recentHistoryHeader.label   "Sejarah Kebelakangan">
 <!ENTITY remoteTabsHeader.label      "Tab dari peranti lain">
 <!-- LOCALIZATION NOTE (narrowTopSitesHeader.label,
@@ -33,8 +33,8 @@
      and remoteTabsHeader.label. Need to be two words or shorter to fit in narrow vertical space.
       -->
 
-<!ENTITY narrowTopSitesHeader.label      "Laman Popup">
-<!ENTITY narrowBookmarksHeader.label     "Penanda buku">
+<!ENTITY narrowTopSitesHeader.label      "Tapak Popup">
+<!ENTITY narrowBookmarksHeader.label     "Penandabuku">
 <!ENTITY narrowRecentHistoryHeader.label "Sejarah Kebelakangan">
 <!ENTITY narrowRemoteTabsHeader.label    "Remote Tabs">
 
@@ -50,7 +50,7 @@
 <!ENTITY downloadDelete.label      "Jeda">
 <!ENTITY downloadFailed.label      "Gagal">
 
-<!ENTITY allBookmarks.label        "Pamer semua penanda buku">
+<!ENTITY allBookmarks.label        "Pamer semua penandabuku">
 
 <!ENTITY consoleHeader.label       "Masalah Konsol">
 <!ENTITY consoleAll.label          "Semua">
@@ -59,10 +59,12 @@
 <!ENTITY consoleMessages.label     "Mesej">
 <!ENTITY consoleCodeEval.label     "Kod:">
 <!ENTITY consoleClear.label        "Kosongkan">
+<!ENTITY consoleCopyAll.label      "Salin">
 <!ENTITY consoleEvaluate.label     "…">
 <!ENTITY consoleErrFile.label      "Fail Sumber:">
 <!ENTITY consoleErrLine.label      "Baris:">
 <!ENTITY consoleErrColumn.label    "Kolum">
+<!ENTITY consoleFollowCheckbox.label "Ikut">
 <!--  TEXT CONTEXT MENU -->
 
 <!ENTITY contextTextCut.label              "Potong">
@@ -76,7 +78,7 @@
 
 <!ENTITY contextOpenLinkTab.label          "Buka pautan pada tab baru">
 <!ENTITY contextCopyLinkHref.label         "Salin pautan">
-<!ENTITY contextBookmarkLinkHref.label     "Penanda buku pautan ini">
+<!ENTITY contextBookmarkLinkHref.label     "Tandabuku pautan ini">
 <!-- IMAGE CONTEXT MENU -->
 <!-- LOCALIZATION NOTE (contextSaveImageLib.label): saves an image to the users "pictures library"
      (Explorer -> left hand side navigation pane -> Libraries -> Pictures) -->
@@ -135,12 +137,9 @@
                           firstRunStar.label,
                           firstRunPin.label,
                           firstRunGotIt.label )
-       These strings appear as a content overlay the first few times a page
+       These strings appear as a content overlay the first time a page
        is visited. Each one has an arrow pointing toward the feature it
-       references. The code to display these strings is not enabled yet,
-       but will be soon. For now, you can see this mockup for an example
-       of how they are used:
-       https://bug949213.bugzilla.mozilla.org/attachment.cgi?id=8363973
+       references.
        -->
 
 <!ENTITY firstRunBack.label "Tap untuk kembali kepada laman sebelum">

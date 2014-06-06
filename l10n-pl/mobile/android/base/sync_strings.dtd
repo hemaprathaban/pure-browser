@@ -107,13 +107,6 @@
 
 <!-- Firefox account strings -->
 
-<!-- Localization note: these describe icons and graphics, and are
-consumed by assistive devices. -->
-<!ENTITY fxaccount_checkbox_contentDescription2 'Grafika rubryki kont Firefox'>
-<!ENTITY fxaccount_icon_contentDescription2 'Ikona kont Firefox'>
-<!ENTITY fxaccount_intro_contentDescription2 'Grafika wprowadzająca konta Firefox'>
-<!ENTITY fxaccount_mail_contentDescription2 'Grafika koperty kont Firefox'>
-
 <!-- Localization note: these are shown in all screens that query the
 user for an email address and password. Hide and show are button
 labels. -->
@@ -127,6 +120,11 @@ created or signed in to an account, and take the user back to
 Firefox. -->
 <!ENTITY fxaccount_back_to_browsing 'Wróć do przeglądarki'>
 
+<!-- Localization note: the following two strings are interpolated
+into fxaccount_create_account_policy_text2; see note for that
+string as well.  Compare fxaccount_status_{linktos,linkprivacy}:
+these strings are separated to accommodate languages that decline
+the two uses differently. -->
 <!ENTITY fxaccount_policy_linktos 'Warunki użytkowania'>
 <!ENTITY fxaccount_policy_linkprivacy 'Polityka prywatności'>
 
@@ -138,11 +136,11 @@ Firefox. -->
 <!-- Localization note: the Firefox below should not change with the
  particular version of Firefox installed (Release, Beta, Aurora,
 etc).  The account remains a "Firefox" account. -->
-<!ENTITY fxaccount_create_account_header 'Utwórz konto Firefox'>
+<!ENTITY fxaccount_create_account_header2 'Utwórz konto Firefox'>
 <!ENTITY fxaccount_create_account_password_length_restriction 'Hasło musi mieć przynajmniej 8 znaków'>
 <!ENTITY fxaccount_create_account_year_of_birth 'Rok urodzenia'>
 <!-- Localization note: &formatS1; is fxaccount_policy_linktos, &formatS2; is fxaccount_policy_linkprivacy, both hyperlinked. -->
-<!ENTITY fxaccount_create_account_policy_text 'Przechodząc dalej, wyrażasz zgodę na warunki, które opisują &formatS1; oraz &formatS2; usług internetowych Firefoksa.'>
+<!ENTITY fxaccount_create_account_policy_text2 'Przechodząc dalej, wyrażasz zgodę na warunki, które opisują &formatS1; oraz &formatS2; usług przechowywania danych Firefoksa.'>
 <!ENTITY fxaccount_create_account_button 'Dalej'>
 <!ENTITY fxaccount_create_account_choose_what_to_sync 'Wybierz, co chcesz synchronizować'>
 <!ENTITY fxaccount_create_account_sign_in_instead 'Masz już konto? Zaloguj się'>
@@ -173,7 +171,8 @@ etc).  The account remains a "Firefox" account. -->
 <!ENTITY fxaccount_update_credentials_button_label 'Zaloguj się'>
 <!ENTITY fxaccount_update_credentials_unknown_error 'Logowanie nie powiodło się'>
 
-<!ENTITY fxaccount_status_header 'Konto Firefox'>
+<!ENTITY fxaccount_status_header2 'Konto Firefox'>
+<!ENTITY fxaccount_status_signed_in_as 'Zalogowano jako'>
 <!ENTITY fxaccount_status_sync '&syncBrand.shortName.label;'>
 <!ENTITY fxaccount_status_sync_enabled '&syncBrand.shortName.label;: włączone'>
 <!ENTITY fxaccount_status_needs_verification2 'Musisz zweryfikować swoje konto. Stuknij, aby wysłać nowy odnośnik weryfikujący.'>
@@ -183,7 +182,13 @@ etc).  The account remains a "Firefox" account. -->
 <!ENTITY fxaccount_status_history 'Historia'>
 <!ENTITY fxaccount_status_passwords 'Hasła'>
 <!ENTITY fxaccount_status_tabs 'Otwarte karty'>
-<!ENTITY fxaccount_status_legal 'Podstawa prawna' >
+<!ENTITY fxaccount_status_legal 'Podstawa prawna'>
+<!-- Localization note: when tapped, the following two strings link to
+external web pages.  Compare fxaccount_policy_{linktos,linkprivacy}:
+these strings are separated to accommodate languages that decline
+the two uses differently. -->
+<!ENTITY fxaccount_status_linktos 'Warunki użytkowania'>
+<!ENTITY fxaccount_status_linkprivacy 'Polityka prywatności'>
  
  <!-- Localization note: this is the name shown by the Android system
 itself for a Firefox account. Don't localize this. -->

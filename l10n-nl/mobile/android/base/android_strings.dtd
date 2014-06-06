@@ -54,6 +54,7 @@
 <!ENTITY back "Terug">
 <!ENTITY stop "Stoppen">
 <!ENTITY site_security "Websitebeveiliging">
+<!ENTITY save "Opslaan">
 
 <!ENTITY close_tab "Tabblad sluiten">
 <!ENTITY one_tab "1 tabblad">
@@ -67,6 +68,7 @@
 <!ENTITY pref_category_advanced "Geavanceerd">
 <!ENTITY pref_category_customize "Aanpassen">
 <!ENTITY pref_category_search3 "Zoeken">
+<!ENTITY pref_category_search_summary "Uw zoekproviders aanpassen">
 <!ENTITY pref_category_display "Weergave">
 <!ENTITY pref_category_privacy_short "Privacy">
 <!ENTITY pref_category_vendor "&vendorShortName;">
@@ -76,17 +78,31 @@
 <!ENTITY pref_category_search_restore_defaults "Zoekmachines herstellen">
 <!ENTITY pref_search_restore_defaults "Standaardwaarden herstellen">
 <!ENTITY pref_search_restore_defaults_summary "Standaardwaarden herstellen">
-<!-- Localization note (pref_search_tip) : "TIP" as in "hint", "clue" etc. Displayed as an
+<!-- Localization note (pref_search_hint) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
-     search providers.-->
-<!ENTITY pref_search_tip "TIP: voeg een website aan uw lijst met zoekproviders toe door uw vinger op het zoekveld ervan te houden.">
+     search providers.
+     The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
+     it is applicable. -->
+<!ENTITY pref_search_hint "TIP: voeg een website aan uw lijst met zoekproviders toe door uw vinger op het zoekveld ervan te houden en tik vervolgens de &formatI; pictogram.">
 <!ENTITY pref_category_devtools "Ontwikkelaarshulpmiddelen">
 <!ENTITY pref_developer_remotedebugging "Remote debugging">
 <!ENTITY pref_developer_remotedebugging_docs "Meer info">
 <!ENTITY pref_remember_signons "Wachtwoorden onthouden">
 
 <!ENTITY pref_category_home "Startpagina">
+<!ENTITY pref_category_home_summary "Uw startpagina aanpassen">
 <!ENTITY pref_category_home_panels "Panelen">
+<!ENTITY pref_home_add_panel "Paneel toevoegen">
+<!ENTITY home_add_panel_title "Nieuw paneel toevoegen">
+<!ENTITY home_add_panel_empty "Sorry, we kunnen geen panelen voor u vinden om toe te voegen.">
+<!-- Localization note (home_add_panel_installed):
+     The &formatS; will be replaced with the name of the new panel the user just
+     selected to be added to the home page. -->
+<!ENTITY home_add_panel_installed "\'&formatS;\' toegevoegd aan startpagina">
+<!ENTITY pref_category_home_content_settings "Inhoudsinstellingen">
+<!ENTITY pref_home_updates "Automatische updates">
+<!ENTITY pref_home_updates_enabled "Ingeschakeld">
+<!ENTITY pref_home_updates_wifi "Alleen via wifi">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Aanpassen">
@@ -210,6 +226,7 @@ size. -->
 <!ENTITY save_as_pdf "Opslaan als PDF">
 <!ENTITY find_in_page "Zoeken op pagina">
 <!ENTITY desktop_mode "Desktopwebsite opvragen">
+<!ENTITY page "Pagina">
 <!ENTITY tools "Extra">
 <!ENTITY new_tab "Nieuw tabblad">
 <!ENTITY new_private_tab "Nieuw privétabblad">
@@ -273,6 +290,7 @@ size. -->
 <!ENTITY site_settings_clear        "Wissen">
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
+<!ENTITY reading_list_add "Aan leeslijst toevoegen">
 <!ENTITY reading_list_added "Pagina aan uw leeslijst toegevoegd">
 <!ENTITY reading_list_removed "Pagina van uw leeslijst verwijderd">
 <!ENTITY reading_list_failed "Pagina aan uw leeslijst toevoegen mislukt">
@@ -310,12 +328,16 @@ size. -->
 <!ENTITY home_reading_list_empty "Artikelen die u voor later opslaat verschijnen hier.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
-     The "&#37;I" in the string will be replaced by a small image of the icon described, and can be moved to wherever
-     it is applicable. Please keep the spacing around the "&#37;I" string. -->
-<!ENTITY home_reading_list_hint "TIP: sla artikelen op naar uw leeslijst door uw vinger op het pictogram &#37;I te houden zodra dit in de titelbalk verschijnt.">
+     The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
+     it is applicable. -->
+<!ENTITY home_reading_list_hint2 "TIP: sla artikelen op naar uw leeslijst door uw vinger op het pictogram &formatI; te houden zodra dit in de titelbalk verschijnt.">
 <!-- Localization note (home_reading_list_hint_accessible): This string is used
      as alternate text for accessibility. It is not visible in the UI. -->
 <!ENTITY home_reading_list_hint_accessible "TIP: sla artikelen op naar uw leeslijst door uw vinger op de lezermodusknop te houden zodra deze in de titelbalk verschijnt.">
+
+<!-- Localization note (home_default_empty): This string is used as the default text when there
+     is no data to show in an about:home panel that was created by an add-on. -->
+<!ENTITY home_default_empty "Geen inhoud voor dit paneel gevonden.">
 
 <!ENTITY pin_site_dialog_hint "Voer een zoekterm in">
 
@@ -360,9 +382,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
                                          uit Android">
 <!ENTITY bookmarkhistory_import_wait "Een moment geduld…">
 
-<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
-     replaced with the name of the search engine. -->
-<!ENTITY suggestions_prompt2 "Wilt u &formatS;-zoeksuggesties aanzetten?">
+<!ENTITY suggestions_prompt3 "Wilt u zoeksuggesties aanzetten?">
 
 <!-- Localization note (suggestion_for_engine): The placeholder &formatS1; will be
      replaced with the name of the search engine. The placeholder &formatS2; will be
