@@ -258,6 +258,7 @@ pref("browser.customizemode.tip0.learnMoreUrl", "https://support.mozilla.org/1/f
 
 pref("keyword.enabled", true);
 
+pref("general.useragent.locale", "@AB_CD@");
 pref("general.skins.selectedSkin", "classic/1.0");
 
 pref("general.smoothScroll", true);
