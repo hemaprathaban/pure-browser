@@ -67,7 +67,7 @@ Depends: ${shlibs:Depends},
          fontconfig,
          procps,
          debianutils (>= 1.16),
-         xulrunner-29 (= ${binary:Version}),
+         xulrunner-30 (= ${binary:Version}),
          libsqlite3-0 (>= 3.7.12-1~)
 Suggests: fonts-stix | otf-stix,
           fonts-oflb-asana-math,
@@ -87,14 +87,14 @@ Priority: extra
 Section: debug
 Depends: ${misc:Depends},
          iceweasel (= ${binary:Version}),
-         xulrunner-29-dbg
+         xulrunner-30-dbg
 Description: Debugging symbols for Iceweasel
  Iceweasel is Firefox, rebranded. It is a powerful, extensible web browser
  with support for modern web application technologies.
  .
  This package contains the debugging symbols for iceweasel.
 
-Package: xulrunner-29
+Package: xulrunner-30
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
@@ -129,7 +129,7 @@ Depends: ${shlibs:Depends},
          python-ply,
          libnss3-dev,
          libnspr4-dev,
-         xulrunner-29 (= ${binary:Version})
+         xulrunner-30 (= ${binary:Version})
 Conflicts: libmozjs-dev
 Provides: libmozjs-dev
 Replaces: libmozjs-dev
@@ -149,11 +149,11 @@ Description: Development files for the Gecko engine library
  same form as the one you may find on mozilla.org in /usr/lib/xulrunner/sdk.
 Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 
-Package: xulrunner-29-dbg
+Package: xulrunner-30-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: xulrunner-29 (= ${binary:Version}),
+Depends: xulrunner-30 (= ${binary:Version}),
          libnss3-dbg | libnss3-1d-dbg,
          libnspr4-dbg | libnspr4-0d-dbg,
          ${misc:Depends}
@@ -166,7 +166,7 @@ Description: Debugging symbols for the Gecko engine library
  support, XBL, XUL, SVG, XSLT, XML Extras (XMLHttpRequest and DOMParser),
  Web Services (SOAP), accessibility support, IPC services, gtkmozembed, etc.
  .
- This package provides the debugging symbols for the xulrunner-29
+ This package provides the debugging symbols for the xulrunner-30
  package.
 Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 

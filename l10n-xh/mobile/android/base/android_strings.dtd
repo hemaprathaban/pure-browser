@@ -4,7 +4,7 @@
 
 
 <!ENTITY  no_space_to_start_error "Akukho ndawo yaneleyo ifumanekayo ye&brandShortName; ukuqalisa.">
-<!ENTITY  error_loading_file "Impazamo yenzekile xa bekuzanywa ukulayisha iifayile ezifunekayo ukuhambisa i-&brandShortName;">
+<!ENTITY  error_loading_file "Impazamo yenzekile xa bekuzanywa ukulayishwa iifayile ezifunekayo ukuhambisa i-&brandShortName;">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -23,7 +23,7 @@
 <!ENTITY  crash_allow_contact2 "Vumela i-&vendorShortName; ukuba iqhagamshelane nam ngale ngxelo">
 <!ENTITY  crash_email "I-imeyili yakho">
 <!ENTITY  crash_closing_alert "Ufuna ukuphuma ungayithumelanga ingxelo?">
-<!ENTITY  sending_crash_report "Ukuthumela ingxelo yokonakala\u2026">
+<!ENTITY  sending_crash_report "Ukuthumela ingxelo\u2026 yokonakala">
 <!ENTITY  crash_close_label "Vala">
 <!ENTITY  crash_restart_label "Qalisa ngokutsha i-&brandShortName;">
 <!ENTITY  exit_label "Phuma">
@@ -54,6 +54,7 @@
 <!ENTITY back "Emva">
 <!ENTITY stop "Yima">
 <!ENTITY site_security "Ukhuseleko lwesayithi">
+<!ENTITY save "Gcina">
 
 <!ENTITY close_tab "Vala Ithebhu">
 <!ENTITY one_tab "Ithebhu e-1">
@@ -66,21 +67,42 @@
 <!ENTITY settings_title "Iisetingi">
 <!ENTITY pref_category_advanced "Kwinqanaba Eseliphambili">
 <!ENTITY pref_category_customize "Lungiselela">
-<!ENTITY pref_category_search2 "Khangela iisetingi">
+<!ENTITY pref_category_search3 "Khangela">
+<!ENTITY pref_category_search_summary "Lungiselela izikhangeli zakho">
 <!ENTITY pref_category_display "Bonisa">
 <!ENTITY pref_category_privacy_short "Okwabucala">
 <!ENTITY pref_category_vendor "yi-&vendorShortName;">
 <!ENTITY pref_category_datareporting "Ukhetho lweenkcukacha">
 <!ENTITY pref_category_installed_search_engines "Izixhobo ezifakelweyo zokukhangela">
 <!ENTITY pref_category_add_search_providers "Yongeza iziboneleli zokukhangela ezingakumbi">
-<!-- Localization note (pref_search_tip) : "TIP" as in "hint", "clue" etc. Displayed as an
+<!ENTITY pref_category_search_restore_defaults "Buyisela iinjini zokukhangela">
+<!ENTITY pref_search_restore_defaults "Buyisela iziseko">
+<!ENTITY pref_search_restore_defaults_summary "Buyisela iziseko">
+<!-- Localization note (pref_search_hint) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
-     search providers.-->
-<!ENTITY pref_search_tip "ICEBISO: Yongeza nayiphi na iwebhusayithi kuluhlu lwakho lweziboneleli zokukhangela ngokucofa ixesha elide kwindawo yayo yokukhangela.">
+     search providers.
+     The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
+     it is applicable. -->
+<!ENTITY pref_search_hint "ICEBISO: Yongeza nayiphi na iwebhusayithi kuludwe lwakho lwezikhangeli ngokucinezela ixesha elide kwifildi yokukhangela uze uchwethe uphawu lo&formatI;.">
 <!ENTITY pref_category_devtools "Izixhobo zabaphuhlisi">
 <!ENTITY pref_developer_remotedebugging "Ukukhupha ibagi kude">
 <!ENTITY pref_developer_remotedebugging_docs "Funda okungakumbi">
 <!ENTITY pref_remember_signons "Khumbula iipasiwedi">
+
+<!ENTITY pref_category_home "Ekhaya">
+<!ENTITY pref_category_home_summary "Lungiselela ikhasi lekhaya lakho">
+<!ENTITY pref_category_home_panels "Iiphanele">
+<!ENTITY pref_home_add_panel "Yongeza iphaneli">
+<!ENTITY home_add_panel_title "Yongeza iphaneli entsha">
+<!ENTITY home_add_panel_empty "Uxolo, asibanga nakho ukufumana naziphi na iiphaneli onokuzongeza.">
+<!-- Localization note (home_add_panel_installed):
+     The &formatS; will be replaced with the name of the new panel the user just
+     selected to be added to the home page. -->
+<!ENTITY home_add_panel_installed "\u0027&formatS;\u0027 longeziwe kwikhasi lekhaya">
+<!ENTITY pref_category_home_content_settings "Iisethingi zesiqulatho">
+<!ENTITY pref_home_updates "Izihlaziyi ezizenzekelayo">
+<!ENTITY pref_home_updates_enabled "Ezivunyelweyo">
+<!ENTITY pref_home_updates_wifi "Phezu kwe-Wi-Fi kuphela">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "Lungiselela">
@@ -107,7 +129,7 @@
 <!ENTITY pref_plugins "Izifakelo">
 <!ENTITY pref_plugins_enabled "Ezivunyelweyo">
 <!ENTITY pref_plugins_tap_to_play "Cofa kancinci uze udlale">
-<!ENTITY pref_plugins_disabled "Kwaphulwe isakhono">
+<!ENTITY pref_plugins_disabled "Ivaliwe">
 <!ENTITY pref_text_size "Ubukhulu bombhalo">
 <!ENTITY pref_reflow_on_zoom4 "Ukulungelelanisa okubhaliweyo">
 <!ENTITY pref_restore "Iithebhu">
@@ -135,9 +157,9 @@ size. -->
 <!ENTITY pref_sync "Ungqamaniso">
 <!ENTITY pref_search_suggestions "Bonisa iingcamango zokukhangela">
 <!ENTITY pref_import_android "Ngenisa uthatha kwi-Android">
-<!ENTITY pref_private_data_history "Ibhrawuza &amp; imbali yokukhutshelwayo">
-<!ENTITY pref_private_data_formdata "Fomu &amp; imbali yokukhangela">
-<!ENTITY pref_private_data_cookies2 "Iikhukhi &amp; ukungena okusebenzayo">
+<!ENTITY pref_private_data_history "Ukubhrawuza nembali yokhuphelo">
+<!ENTITY pref_private_data_formdata "Ifom nembali yokukhangela">
+<!ENTITY pref_private_data_cookies2 "Iikhukhi nokungena okusebenzayo">
 <!ENTITY pref_private_data_passwords "Iipasiwedi ezigciniweyo">
 <!ENTITY pref_private_data_cache "Ikhatshe">
 <!ENTITY pref_private_data_offlineApps "Ngcombolo zewebhusayithi ezingekho kwinethiwekhi">
@@ -148,17 +170,22 @@ size. -->
 <!ENTITY pref_about_firefox "Malunga ne-&brandShortName;">
 <!ENTITY pref_vendor_faqs "Ii-FAQ">
 <!ENTITY pref_vendor_feedback "Nika ingxelo">
-<!ENTITY pref_search_set_default "Seta njengeyesiqhelo">
-<!ENTITY pref_search_default "Isiseko">
-<!ENTITY pref_search_remove "Susa">
+
+<!ENTITY pref_dialog_set_default "Seta njengeyesiqhelo">
+<!ENTITY pref_dialog_default "Isiseko">
+<!ENTITY pref_dialog_remove "Shenxisa">
+
 <!ENTITY pref_search_last_toast "Akunakushenxisa okanye uvale injini yakho yokukhangela ogqibele ngayo.">
 
-<!ENTITY datareporting_notification_title "&brandShortName; amanani &amp; neenkcukacha">
+<!ENTITY pref_panels_show "Bonisa">
+<!ENTITY pref_panels_hide "Fihla">
+
+<!ENTITY datareporting_notification_title "I-&brandShortName; amanani neengcombolo">
 <!ENTITY datareporting_notification_action_long "Khetha inkcazelo onokwabelana ngayo">
 <!ENTITY datareporting_notification_action "Khetha into ofuna ukwabelana ngayo">
 <!ENTITY datareporting_notification_summary "Ukuze siphucule amava akho, &brandShortName; sithumela ngokuzenzekelayo inkcazelo ethile kwi-&vendorShortName;.">
 <!ENTITY datareporting_notification_summary_short "Ukuze siphucule amava akho, i-&brandShortName;…">
-<!ENTITY datareporting_notification_ticker_text "datareporting_notification_title;: datareporting_notification_action_long;">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
 <!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
      reporting_telemetry_title, datareporting_telemetry_summary,
      datareporting_crashreporter_summary) : These match the strings in
@@ -199,6 +226,7 @@ size. -->
 <!ENTITY save_as_pdf "Gcina njenge-PDF">
 <!ENTITY find_in_page "Fumana kwiphepha">
 <!ENTITY desktop_mode "Cela isayithi yeDesktop">
+<!ENTITY page "Iphepha">
 <!ENTITY tools "Izixhobo zemiyalelo">
 <!ENTITY new_tab "Ithebhu Entsha">
 <!ENTITY new_private_tab "Iithebhu zangasese ezintsha">
@@ -215,14 +243,21 @@ size. -->
 <!ENTITY find_prev "Okwangaphambili">
 <!ENTITY find_next "Okulandelayo">
 <!ENTITY find_close "Vala">
+<!-- Localization note (media_casting_to, media_play, media_pause, media_stop) : These strings are used
+     as alternate text for accessibility. They are not visible in the UI. -->
+
+<!ENTITY media_casting_to "Ukulahlela kwisixhobo">
+<!ENTITY media_play "Dlala">
+<!ENTITY media_pause "Nqumama">
+<!ENTITY media_stop "Yima">
 
 <!ENTITY contextmenu_open_new_tab "Vula Kwisilungelelanisi Semigca Esitsha">
 <!ENTITY contextmenu_open_private_tab "Vula kwithebhu yangasese">
 <!ENTITY contextmenu_open_in_reader "Vula kumfundi">
-<!ENTITY contextmenu_remove "Susa">
-<!ENTITY contextmenu_add_to_launcher "Yongeza kwi-Home Screen">
+<!ENTITY contextmenu_remove "Shenxisa">
+<!ENTITY contextmenu_add_to_launcher "Yongeza kwiSkrini sasekhaya">
 <!ENTITY contextmenu_share "Yabelana">
-<!ENTITY contextmenu_pasteandgo "Ncamathisela &amp; Hamba">
+<!ENTITY contextmenu_pasteandgo "Ncamathisela  uhambe">
 <!ENTITY contextmenu_paste "Ncamathelisa">
 <!ENTITY contextmenu_copyurl "Kopa iDilesi">
 <!ENTITY contextmenu_edit_bookmark "Hlela">
@@ -236,8 +271,10 @@ size. -->
 <!ENTITY pref_titlebar_mode "Ibha yomxholo">
 <!ENTITY pref_titlebar_mode_title "Bonisa umxholo wephepha">
 <!ENTITY pref_titlebar_mode_url "Bonisa idilesi yephepha">
+<!-- Localization note (pref_scroll_title_bar): Label for setting that controls
+     whether or not the dynamic toolbar is enabled. -->
 
-<!ENTITY pref_dynamic_toolbar "Fihla ibha yetayitile xa uhambisa imibhalo">
+<!ENTITY pref_scroll_title_bar "Tyhutyha ibha yomxholo">
 
 <!ENTITY history_removed "Iphepha lisusiwe">
 
@@ -253,6 +290,7 @@ size. -->
 <!ENTITY site_settings_clear        "Sula">
 <!ENTITY site_settings_no_settings  "Akukho zisetingi zinokususwa.">
 
+<!ENTITY reading_list_add "Yongeza Kuluhlu Lokufunda">
 <!ENTITY reading_list_added "Iphepha longezwe kuludwe lwakho lokufunda">
 <!ENTITY reading_list_removed "Iphepha lisuswe kuludwe lwakho lokufunda">
 <!ENTITY reading_list_failed "Ayiphumelelanga ukongeza iphepha kuludwe lwakho lokufunda">
@@ -290,12 +328,16 @@ size. -->
 <!ENTITY home_reading_list_empty "Amanqaku owagcinele ukuwasebenzisa kamva abonakala apha.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
-     The "&#37;I" in the string will be replaced by a small image of the icon described, and can be moved to wherever
-     it is applicable. Please keep the spacing around the "&#37;I" string. -->
-<!ENTITY home_reading_list_hint "ICEBISO: Gcina amanqaku oluhlu lwakho lokufunda ngokucofa ixesha elide kwi-ayikhoni ye-&#037;I xa ibonakala kwibha yomxholo.">
+     The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
+     it is applicable. -->
+<!ENTITY home_reading_list_hint2 "ICEBISO: Gcina amanqaku kuluhlu lwakho lokufunda ngokucofa ixesha elide kuphawu lwe&formatI; xa lubonakala kwibha yesihloko.">
 <!-- Localization note (home_reading_list_hint_accessible): This string is used
      as alternate text for accessibility. It is not visible in the UI. -->
 <!ENTITY home_reading_list_hint_accessible "ICEBISO: Gcina amanqaku oluhlu lwakho lokufunda ngokucofa ixesha elide kwiqhosha lemo xa libonakala kwibha yomxholo.">
+<!-- Localization note (home_default_empty): This string is used as the default text when there
+     is no data to show in an about:home panel that was created by an add-on. -->
+
+<!ENTITY home_default_empty "Akukho mxholo ufumanekayo kule phaneli.">
 
 <!ENTITY pin_site_dialog_hint "Faka igama eliphambili olikhangelayo">
 
@@ -339,15 +381,13 @@ ezisuka kwi-Android">
 <!ENTITY bookmarkhistory_import_history "Ingenisa imbali 
 esuka kwi-Android">
 <!ENTITY bookmarkhistory_import_wait "Nceda linda...">
-<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
-     replaced with the name of the search engine. -->
 
-<!ENTITY suggestions_prompt2 "Ungathanda ukubuyela kwi&formatS; khangela amacebiso?">
+<!ENTITY suggestions_prompt3 "Ungathanda ukuvula iingcamango zokukhangela?">
 <!-- Localization note (suggestion_for_engine): The placeholder &formatS1; will be
      replaced with the name of the search engine. The placeholder &formatS2; will be
      replaced with the search query. -->
 
-<!ENTITY suggestion_for_engine "Khangela &formatS1; eye &formatS2;">
+<!ENTITY suggestion_for_engine "Khangela ii&formatS1; eye nee&formatS2;">
 
 <!ENTITY webapp_generic_name "I-app">
 
@@ -381,4 +421,4 @@ esuka kwi-Android">
      They are never shown to users -->
 
 <!ENTITY actionbar_menu "Imenyu">
-<!ENTITY actionbar_done "Kwenziwe">
+<!ENTITY actionbar_done "Ugqibile">

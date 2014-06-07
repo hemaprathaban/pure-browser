@@ -35,6 +35,8 @@ class AbstractMediaDecoder;
 
 class GStreamerReader : public MediaDecoderReader
 {
+  typedef gfx::IntRect IntRect;
+
 public:
   GStreamerReader(AbstractMediaDecoder* aDecoder);
   virtual ~GStreamerReader();
@@ -69,7 +71,6 @@ public:
 private:
 
   void ReadAndPushData(guint aLength);
-  int64_t QueryDuration();
   nsRefPtr<layers::PlanarYCbCrImage> GetImageFromBuffer(GstBuffer* aBuffer);
   void CopyIntoImageBuffer(GstBuffer *aBuffer, GstBuffer** aOutBuffer, nsRefPtr<layers::PlanarYCbCrImage> &image);
   GstCaps* BuildAudioSinkCaps();
@@ -152,7 +153,10 @@ private:
 
   /* Called at end of stream, when decoding has finished */
   static void EosCb(GstAppSink* aSink, gpointer aUserData);
-  void Eos();
+  /* Notifies that a sink will no longer receive any more data. If nullptr
+   * is passed to this, we'll assume all streams have reached EOS (for example
+   * an error has occurred). */
+  void Eos(GstAppSink* aSink = nullptr);
 
   /* Called when an element is added inside playbin. We use it to find the
    * decodebin instance.
@@ -174,8 +178,16 @@ private:
   // Try to find MP3 headers in this stream using our MP3 frame parser.
   nsresult ParseMP3Headers();
 
+  // Get the length of the stream, excluding any metadata we have ignored at the
+  // start of the stream: ID3 headers, for example.
+  int64_t GetDataLength();
+
   // Use our own MP3 parser here, largely for consistency with other platforms.
   MP3FrameParser mMP3FrameParser;
+
+  // The byte position in the stream where the actual media (ignoring, for
+  // example, ID3 tags) starts.
+  uint64_t mDataOffset;
 
   // We want to be able to decide in |ReadMetadata| whether or not we use the
   // duration from the MP3 frame parser, as this backend supports more than just
@@ -202,7 +214,7 @@ private:
   /* the actual audio app sink */
   GstAppSink* mAudioAppSink;
   GstVideoFormat mFormat;
-  nsIntRect mPicture;
+  IntRect mPicture;
   int mVideoSinkBufferCount;
   int mAudioSinkBufferCount;
   GstAppSrcCallbacks mSrcCallbacks;
@@ -219,7 +231,8 @@ private:
   /* bool used to signal when gst has detected the end of stream and
    * DecodeAudioData and DecodeVideoFrame should not expect any more data
    */
-  bool mReachedEos;
+  bool mReachedAudioEos;
+  bool mReachedVideoEos;
 #if GST_VERSION_MAJOR >= 1
   bool mConfigureAlignment;
 #endif

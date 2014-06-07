@@ -21,7 +21,7 @@ index eb3c30b..ea657ac 100644
  # build non-default locales to non-default dist/ locations. Be aware!
  
 diff --git a/browser/locales/en-US/chrome/overrides/appstrings.properties b/browser/locales/en-US/chrome/overrides/appstrings.properties
-index 1de0093..8c77825 100644
+index 7028131..e5f7107 100644
 --- a/browser/locales/en-US/chrome/overrides/appstrings.properties
 +++ b/browser/locales/en-US/chrome/overrides/appstrings.properties
 @@ -3,24 +3,24 @@
@@ -30,11 +30,11 @@ index 1de0093..8c77825 100644
  malformedURI=The URL is not valid and cannot be loaded.
 -fileNotFound=Firefox can't find the file at %S.
 -dnsNotFound=Firefox can't find the server at %S.
--protocolNotFound=Firefox doesn't know how to open this address, because the protocol (%S) isn't associated with any program.
+-unknownProtocolFound=Firefox doesn't know how to open this address, because one of the following protocols (%S) isn't associated with any program or is not allowed in this context.
 -connectionFailure=Firefox can't establish a connection to the server at %S.
 +#expand fileNotFound=__MOZ_APP_DISPLAYNAME__ can't find the file at %S.
 +#expand dnsNotFound=__MOZ_APP_DISPLAYNAME__ can't find the server at %S.
-+#expand protocolNotFound=__MOZ_APP_DISPLAYNAME__ doesn't know how to open this address, because the protocol (%S) isn't associated with any program.
++#expand unknownProtocolFound=__MOZ_APP_DISPLAYNAME__ doesn't know how to open this address, because one of the following protocols (%S) isn't associated with any program or is not allowed in this context.
 +#expand connectionFailure=__MOZ_APP_DISPLAYNAME__ can't establish a connection to the server at %S.
  netInterrupt=The connection to %S was interrupted while the page was loading.
  netTimeout=The server at %S is taking too long to respond.

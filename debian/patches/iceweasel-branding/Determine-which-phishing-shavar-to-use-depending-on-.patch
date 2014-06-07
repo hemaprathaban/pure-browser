@@ -4,38 +4,33 @@ Subject: Determine which phishing shavar to use depending on
  MOZ_OFFICIAL_BRANDING
 
 ---
- modules/libpref/src/Makefile.in | 4 ++++
  modules/libpref/src/init/all.js | 4 ++++
- 2 files changed, 8 insertions(+)
+ modules/libpref/src/moz.build   | 2 ++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/modules/libpref/src/Makefile.in b/modules/libpref/src/Makefile.in
-index 45ca3fa..f9aaa6f 100644
---- a/modules/libpref/src/Makefile.in
-+++ b/modules/libpref/src/Makefile.in
-@@ -3,6 +3,10 @@
- # License, v. 2.0. If a copy of the MPL was not distributed with this
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- 
-+ifdef MOZ_OFFICIAL_BRANDING
-+DEFINES += -DMOZ_OFFICIAL_BRANDING
-+endif
-+
- include $(topsrcdir)/config/rules.mk
- 
- GARBAGE		+= $(addprefix $(DIST)/bin/defaults/pref/, \
 diff --git a/modules/libpref/src/init/all.js b/modules/libpref/src/init/all.js
-index 67a0325..0bca3ec 100644
+index f14c7e0..a4a8afc 100644
 --- a/modules/libpref/src/init/all.js
 +++ b/modules/libpref/src/init/all.js
-@@ -4497,7 +4497,11 @@ pref("dom.inter-app-communication-api.enabled", false);
+@@ -4361,7 +4361,11 @@ pref("dom.inter-app-communication-api.enabled", false);
  
  // The tables used for Safebrowsing phishing and malware checks.
- pref("urlclassifier.malware_table", "goog-malware-shavar");
+ pref("urlclassifier.malware_table", "goog-malware-shavar,test-malware-simple");
 +#ifdef MOZ_OFFICIAL_BRANDING
- pref("urlclassifier.phish_table", "goog-phish-shavar");
+ pref("urlclassifier.phish_table", "goog-phish-shavar,test-phish-simple");
 +#else
-+pref("urlclassifier.phish_table", "googpub-phish-shavar");
++pref("urlclassifier.phish_table", "googpub-phish-shavar,test-phish-simple");
 +#endif
- pref("urlclassifier.download_block_table", "");
- pref("urlclassifier.download_allow_table", "");
+ pref("urlclassifier.downloadBlockTable", "");
+ pref("urlclassifier.downloadAllowTable", "");
+ pref("urlclassifier.disallow_completions", "test-malware-simple,test-phish-simple,goog-downloadwhite-digest256");
+diff --git a/modules/libpref/src/moz.build b/modules/libpref/src/moz.build
+index f863f76..c67679c 100644
+--- a/modules/libpref/src/moz.build
++++ b/modules/libpref/src/moz.build
+@@ -24,3 +24,5 @@ FINAL_LIBRARY = 'xul'
  
+ DEFINES['OS_ARCH'] = CONFIG['OS_ARCH']
+ DEFINES['MOZ_WIDGET_TOOLKIT'] = CONFIG['MOZ_WIDGET_TOOLKIT']
++if CONFIG['MOZ_OFFICIAL_BRANDING']:
++    DEFINES['MOZ_OFFICIAL_BRANDING'] = True

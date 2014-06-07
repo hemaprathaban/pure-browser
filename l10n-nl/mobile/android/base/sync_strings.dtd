@@ -105,14 +105,7 @@
 <!ENTITY sync.text.tab.sent.label 'Uw tabblad is verzonden!'>
 <!ENTITY sync.text.tab.not.sent.label 'Er is een probleem opgetreden bij het verzenden van uw tabblad.'>
 
-<!-- Firefox account strings. -->
-
-<!-- Localization note: these describe icons and graphics, and are
-     consumed by assistive devices. -->
-<!ENTITY fxaccount_checkbox_contentDescription2 'Afbeelding Firefox-accounts-selectievakje'>
-<!ENTITY fxaccount_icon_contentDescription2 'Pictogram Firefox-accounts'>
-<!ENTITY fxaccount_intro_contentDescription2 'Afbeeldingen Firefox-accounts-introductie'>
-<!ENTITY fxaccount_mail_contentDescription2 'Afbeelding Firefox-accounts-envelop'>
+<!-- Firefox Account strings. -->
 
 <!-- Localization note: these are shown in all screens that query the
      user for an email address and password. Hide and show are button
@@ -127,6 +120,11 @@
      Firefox. -->
 <!ENTITY fxaccount_back_to_browsing 'Terug naar navigeren'>
 
+<!-- Localization note: the following two strings are interpolated
+     into fxaccount_create_account_policy_text2; see note for that
+     string as well.  Compare fxaccount_status_{linktos,linkprivacy}:
+     these strings are separated to accommodate languages that decline
+     the two uses differently. -->
 <!ENTITY fxaccount_policy_linktos 'Servicevoorwaarden (en)'>
 <!ENTITY fxaccount_policy_linkprivacy 'Privacyverklaring (en)'>
 
@@ -138,11 +136,11 @@
 <!-- Localization note: the Firefox below should not change with the
      particular version of Firefox installed (Release, Beta, Aurora,
      etc).  The account remains a "Firefox" account. -->
-<!ENTITY fxaccount_create_account_header 'Firefox-account aanmaken'>
+<!ENTITY fxaccount_create_account_header2 'Firefox-account aanmaken'>
 <!ENTITY fxaccount_create_account_password_length_restriction 'Moet minstens 8 tekens zijn'>
 <!ENTITY fxaccount_create_account_year_of_birth 'Geboortejaar'>
 <!-- Localization note: &formatS1; is fxaccount_policy_linktos, &formatS2; is fxaccount_policy_linkprivacy, both hyperlinked. -->
-<!ENTITY fxaccount_create_account_policy_text 'Door verder te gaan accepteer ik de &formatS1; en &formatS2; van de Firefox-onlineservices.'>
+<!ENTITY fxaccount_create_account_policy_text2 'Door verder te gaan accepteer ik de &formatS1; en &formatS2; van de Firefox-cloudservices.'>
 <!ENTITY fxaccount_create_account_button 'Volgende'>
 <!ENTITY fxaccount_create_account_choose_what_to_sync 'Kies wat te synchroniseren'>
 <!ENTITY fxaccount_create_account_sign_in_instead 'Al een account? Aanmelden'>
@@ -154,7 +152,7 @@
 <!ENTITY fxaccount_account_create_not_allowed_learn_more 'Meer info'>
 
 <!ENTITY fxaccount_confirm_account_header 'Bevestig uw account'>
-<!-- Localization note: &formatS; is the Firefox account's email address. -->
+<!-- Localization note: &formatS; is the Firefox Account's email address. -->
 <!ENTITY fxaccount_confirm_account_verification_link 'Er is een verificatiekoppeling verzonden naar &formatS;'>
 <!ENTITY fxaccount_confirm_account_resend_email 'E-mail opnieuw verzenden'>
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 'Verificatie-e-mail verzonden'>
@@ -173,7 +171,8 @@
 <!ENTITY fxaccount_update_credentials_button_label 'Aanmelden'>
 <!ENTITY fxaccount_update_credentials_unknown_error 'Kan niet aanmelden'>
 
-<!ENTITY fxaccount_status_header 'Firefox-account'>
+<!ENTITY fxaccount_status_header2 'Firefox-account'>
+<!ENTITY fxaccount_status_signed_in_as 'Aangemeld als'>
 <!ENTITY fxaccount_status_sync '&syncBrand.shortName.label;'>
 <!ENTITY fxaccount_status_sync_enabled '&syncBrand.shortName.label;: ingeschakeld'>
 <!ENTITY fxaccount_status_needs_verification2 'Uw account moet worden geverifieerd. Tik om de verificatie-e-mail opnieuw te verzenden.'>
@@ -185,15 +184,22 @@
 <!ENTITY fxaccount_status_tabs 'Geopende tabbladen'>
 <!ENTITY fxaccount_status_legal 'Juridisch' >
 
+<!-- Localization note: when tapped, the following two strings link to
+     external web pages.  Compare fxaccount_policy_{linktos,linkprivacy}:
+     these strings are separated to accommodate languages that decline
+     the two uses differently. -->
+<!ENTITY fxaccount_status_linktos 'Servicevoorwaarden (en)'>
+<!ENTITY fxaccount_status_linkprivacy 'Privacyverklaring (en)'>
+
 <!-- Localization note: this is the name shown by the Android system
-     itself for a Firefox account. Don't localize this. -->
+     itself for a Firefox Account. Don't localize this. -->
 <!ENTITY fxaccount_account_type_label 'Firefox'>
 
 <!-- Localization note: these are shown by the Android system itself,
      when the user navigates to the Android > Accounts > [Firefox
-     Account] Screen. The link takes the user to the Firefox account
+     Account] Screen. The link takes the user to the Firefox Account
      status activity, which lets them manage their Firefox
-     account. -->
+     Account. -->
 <!ENTITY fxaccount_options_title '&syncBrand.shortName.label;-opties'>
 <!ENTITY fxaccount_options_configure_title '&syncBrand.shortName.label; configureren'>
 
@@ -214,5 +220,5 @@
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 '&syncBrand.shortName.label; is niet verbonden'>
 <!-- Note to translators: the format string below will be replaced
-     with the Firefox account's email address. -->
+     with the Firefox Account's email address. -->
 <!ENTITY fxaccount_sync_sign_in_error_notification_text2 'Tik om u aan te melden als &formatS;'>

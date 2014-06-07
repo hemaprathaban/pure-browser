@@ -3,105 +3,105 @@ Date: Tue, 5 Jun 2012 08:57:06 +0200
 Subject: Bug 756390 - Make the "Reset Firefox" feature more generic
 
 ---
- browser/components/migration/content/migration.js  | 13 ++++--
- browser/components/migration/content/migration.xul |  2 +-
- .../migration/src/BrowserProfileMigrators.manifest |  2 +-
- .../migration/src/FirefoxProfileMigrator.js        |  2 +-
- .../components/migration/src/MigrationUtils.jsm    | 17 ++++---
- .../components/migration/src/ProfileMigrator.js    |  1 +
- .../en-US/chrome/browser/migration/migration.dtd   |  2 -
- .../chrome/browser/migration/migration.properties  | 14 +++---
- .../chrome/browser/migration/migration.properties  |  8 ++--
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  |  8 ++--
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  |  8 ++--
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  |  8 ++--
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 12 ++---
- .../chrome/browser/migration/migration.properties  | 10 ++---
- toolkit/content/resetProfile.js                    | 52 ++++++++++++++++++++++
- toolkit/profile/nsIProfileMigrator.idl             | 10 ++++-
- toolkit/xre/nsAppRunner.cpp                        |  2 +-
- 98 files changed, 597 insertions(+), 528 deletions(-)
+ browser/components/migration/content/migration.js       | 13 +++++++++----
+ browser/components/migration/content/migration.xul      |  2 +-
+ .../migration/src/BrowserProfileMigrators.manifest      |  2 +-
+ .../components/migration/src/FirefoxProfileMigrator.js  |  2 +-
+ browser/components/migration/src/MigrationUtils.jsm     | 17 +++++++++++------
+ browser/components/migration/src/ProfileMigrator.js     |  1 +
+ .../en-US/chrome/browser/migration/migration.dtd        |  2 --
+ .../en-US/chrome/browser/migration/migration.properties | 14 +++++++-------
+ .../chrome/browser/migration/migration.properties       |  8 ++++----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       |  8 ++++----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       |  8 ++++----
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       |  8 ++++----
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 12 ++++++------
+ .../chrome/browser/migration/migration.properties       | 10 +++++-----
+ toolkit/modules/ResetProfile.jsm                        | 11 ++++++-----
+ toolkit/profile/nsIProfileMigrator.idl                  | 10 +++++++++-
+ toolkit/xre/nsAppRunner.cpp                             |  2 +-
+ 98 files changed, 552 insertions(+), 534 deletions(-)
 
 diff --git a/browser/components/migration/content/migration.js b/browser/components/migration/content/migration.js
 index 91c5c1c..2f8bd1a 100644
@@ -548,7 +548,7 @@ index 51381f4..c128018 100644
 +64_self = Іншыя здаткі
 +128_self = Вокны і ўстаўкі
 diff --git a/l10n-bg/browser/chrome/browser/migration/migration.properties b/l10n-bg/browser/chrome/browser/migration/migration.properties
-index dfda611..a744c5f 100644
+index a7edb94..7e6d5ea 100644
 --- a/l10n-bg/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-bg/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Списък за четене (от Safari)
@@ -578,12 +578,15 @@ index dfda611..a744c5f 100644
  
  32_ie=Favorites
  32_safari=Отметки
-@@ -48,4 +48,4 @@ importedSafariReadingList=Списък за четене (от Safari)
+@@ -48,6 +48,6 @@ importedSafariReadingList=Списък за четене (от Safari)
  64_ie=Други данни
  64_safari=Други данни
  64_chrome=Други данни
 -64_firefox_other=Други данни
 +64_self=Други данни
+ 
+-128_firefox=Прозорци и подпрозорци
++128_self=Прозорци и подпрозорци
 diff --git a/l10n-bn-BD/browser/chrome/browser/migration/migration.properties b/l10n-bn-BD/browser/chrome/browser/migration/migration.properties
 index fecfa7f..a34a787 100644
 --- a/l10n-bn-BD/browser/chrome/browser/migration/migration.properties
@@ -2521,7 +2524,7 @@ index 928ef97..c26e310 100644
 -128_firefox=चौकट व टॅब
 +128_self=चौकट व टॅब
 diff --git a/l10n-ms/browser/chrome/browser/migration/migration.properties b/l10n-ms/browser/chrome/browser/migration/migration.properties
-index 6693448..1256082 100644
+index 346047d..5aeeaef 100644
 --- a/l10n-ms/browser/chrome/browser/migration/migration.properties
 +++ b/l10n-ms/browser/chrome/browser/migration/migration.properties
 @@ -24,22 +24,22 @@ importedSafariReadingList=Senarai Membaca (Dari Safari)
@@ -2534,8 +2537,8 @@ index 6693448..1256082 100644
  4_ie=Sejarah Pelungsuran
  4_safari=Sejarah Pelungsuran
  4_chrome=Melungsur Sejarah
--4_firefox_history_and_bookmarks=Sejarah Pelayar dan Penanda buku
-+4_self=Sejarah Pelayar dan Penanda buku
+-4_firefox_history_and_bookmarks=Sejarah Pelayar dan Penanda
++4_self=Sejarah Pelayar dan Penanda
  
  8_ie=Sejarah Borang Disimpan
  8_safari=Sejarah Borang Disimpan
@@ -2550,7 +2553,7 @@ index 6693448..1256082 100644
 +16_self=Kata laluan Disimpan
  
  32_ie=Kegemaran
- 32_safari=Penanda buku
+ 32_safari=Penandabuku
 @@ -48,6 +48,6 @@ importedSafariReadingList=Senarai Membaca (Dari Safari)
  64_ie=Maklumat lain-lain
  64_safari=Maklumat lain-lain
@@ -3674,69 +3677,42 @@ index 11008e3..96ac218 100644
  64_chrome=Enye idatha
 -64_firefox_other=Enye idatha
 +64_self=Enye idatha
-diff --git a/toolkit/content/resetProfile.js b/toolkit/content/resetProfile.js
-index d46b43b..2253994 100644
---- a/toolkit/content/resetProfile.js
-+++ b/toolkit/content/resetProfile.js
-@@ -28,6 +28,58 @@ function onResetProfileLoad() {
-   populateResetPane("migratedItems");
- }
+diff --git a/toolkit/modules/ResetProfile.jsm b/toolkit/modules/ResetProfile.jsm
+index db57f2a..d618d08 100644
+--- a/toolkit/modules/ResetProfile.jsm
++++ b/toolkit/modules/ResetProfile.jsm
+@@ -7,8 +7,6 @@
+ this.EXPORTED_SYMBOLS = ["ResetProfile"];
  
-+<<<<<<< HEAD
-+=======
-+/**
-+ * Check if reset is supported for the currently running profile.
-+ *
-+ * @return boolean whether reset is supported.
-+ */
-+function resetSupported() {
-+  let profileService = Cc["@mozilla.org/toolkit/profile-service;1"].
-+                       getService(Ci.nsIToolkitProfileService);
-+  let currentProfileDir = Services.dirsvc.get("ProfD", Ci.nsIFile);
-+
-+  // Reset is only supported for the default profile if the self-migrator used for reset exists.
-+  try {
-+    if (currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
-+        "@mozilla.org/toolkit/profile-migrator;1" in Cc) {
-+      let pm = Cc["@mozilla.org/toolkit/profile-migrator;1"].createInstance(Ci.nsIProfileMigrator);
-+      return ("canMigrate" in pm) && pm.canMigrate("self");
-+    }
-+  } catch (e) {
-+    // Catch exception when there is no selected profile.
-+    Cu.reportError(e);
-+  }
-+  return false;
-+}
-+
-+function getMigratedData() {
-+  Components.utils.import("resource:///modules/MigrationUtils.jsm");
-+
-+  // From migration.properties
-+  const MIGRATED_TYPES = [
-+    4,  // History and Bookmarks
-+    16, // Passwords
-+    8,  // Form History
-+    2,  // Cookies
-+  ];
-+
-+  // Loop over possible data to migrate to give the user a list of what will be preserved.
-+  let dataTypes = [];
-+  for (let itemID of MIGRATED_TYPES) {
-+    try {
-+      let typeName = MigrationUtils.getLocalizedString(itemID + "_self");
-+      dataTypes.push(typeName);
-+    } catch (x) {
-+      // Catch exceptions when the string for a data type doesn't exist.
-+      Components.utils.reportError(x);
-+    }
-+  }
-+  return dataTypes;
-+}
-+
-+>>>>>>> Bug 756390 - Make the "Reset Firefox" feature more generic
- function onResetProfileAccepted() {
-   let retVals = window.arguments[0];
-   retVals.reset = true;
+ const {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
+-#expand const MOZ_APP_NAME = "__MOZ_APP_NAME__";
+-#expand const MOZ_BUILD_APP = "__MOZ_BUILD_APP__";
+ 
+ Cu.import("resource://gre/modules/Services.jsm");
+ 
+@@ -25,8 +23,11 @@ this.ResetProfile = {
+ 
+     // Reset is only supported for the default profile if the self-migrator used for reset exists.
+     try {
+-      return currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
+-        ("@mozilla.org/profile/migrator;1?app=" + MOZ_BUILD_APP + "&type=" + MOZ_APP_NAME in Cc);
++      if (currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
++          "@mozilla.org/toolkit/profile-migrator;1" in Cc) {
++        let pm = Cc["@mozilla.org/toolkit/profile-migrator;1"].createInstance(Ci.nsIProfileMigrator);
++        return ("canMigrate" in pm) && pm.canMigrate("self");
++      }
+     } catch (e) {
+       // Catch exception when there is no selected profile.
+       Cu.reportError(e);
+@@ -50,7 +51,7 @@ this.ResetProfile = {
+     let dataTypes = [];
+     for (let itemID of MIGRATED_TYPES) {
+       try {
+-        let typeName = MigrationUtils.getLocalizedString(itemID + "_" + MOZ_APP_NAME);
++        let typeName = MigrationUtils.getLocalizedString(itemID + "_self");
+         dataTypes.push(typeName);
+       } catch (x) {
+         // Catch exceptions when the string for a data type doesn't exist.
 diff --git a/toolkit/profile/nsIProfileMigrator.idl b/toolkit/profile/nsIProfileMigrator.idl
 index f35c227..7062886 100644
 --- a/toolkit/profile/nsIProfileMigrator.idl
@@ -3766,10 +3742,10 @@ index f35c227..7062886 100644
  
  %{C++
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index fe66f3b..2ddcd3b 100644
+index d87ac40..972cbca 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3952,7 +3952,7 @@ XREMain::XRE_mainRun()
+@@ -3877,7 +3877,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

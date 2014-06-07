@@ -9,6 +9,7 @@
 <!ENTITY back.label            "পূর্ববর্তী">
 <!ENTITY forward.label         "পরবর্তী">
 <!ENTITY newtab.label          "নতুন ট্যাব">
+<!ENTITY newPrivateTab.label   "নতুন ব্যক্তিগত ট্যাব">
 <!ENTITY closetab.label        "ট্যাব বন্ধ করুন">
 
 <!ENTITY autocompleteResultsHeader.label  "আপনার ফলাফল">
@@ -58,17 +59,19 @@
 <!ENTITY consoleMessages.label     "বার্তা">
 <!ENTITY consoleCodeEval.label     "কোড:">
 <!ENTITY consoleClear.label        "মুছে ফেলুন">
+<!ENTITY consoleCopyAll.label      "কপি করুন">
 <!ENTITY consoleEvaluate.label     "…">
 <!ENTITY consoleErrFile.label      "উৎস ফাইল:">
 <!ENTITY consoleErrLine.label      "লাইন:">
 <!ENTITY consoleErrColumn.label    "কলাম:">
+<!ENTITY consoleFollowCheckbox.label "অনুসরণ করুন">
 <!--  TEXT CONTEXT MENU -->
 
 <!ENTITY contextTextCut.label              "কাট করুন">
 <!ENTITY contextTextCopy.label             "কপি করুন">
 <!ENTITY contextTextPaste.label            "পেস্ট করুন">
 <!-- unique item that is only added to the url bar context menu -->
-<!ENTITY contextTextPasteAndGo.label       "পেস্ট করুন &amp; যান">
+<!ENTITY contextTextPasteAndGo.label       "পেস্ট ও পরিদর্শন করুন">
 <!ENTITY contextTextSelect.label           "নির্বাচন করুন">
 <!ENTITY contextTextSelectAll.label        "সমগ্র নির্বাচন করুন">
 <!-- LINK CONTEXT MENU -->
@@ -103,6 +106,8 @@
 <!ENTITY newTab.key "t">
 <!ENTITY newTab2.key "n">
 <!ENTITY closeTab.key "w">
+<!-- Private browsing (control+shift+key) -->
+<!ENTITY newPrivateTab.key "p">
 <!-- DEVELOPER SHORTCUTS (control+shift+key) -->
 
 <!ENTITY jsConsole.key "j">
@@ -117,10 +122,7 @@
                         firstRunHistory.label )
      These strings appear on the Firefox Start page the first time
      Firefox for Windows 8 Touch (Metro) is launched.  Each one
-     has an arrow pointing toward the feature it references.  The code
-     to display these strings is not enabled yet, but will be soon.
-     For now, you can see this mockup for an example of how they are
-     used: https://bug941284.bugzilla.mozilla.org/attachment.cgi?id=8344046
+     has an arrow pointing toward the feature it references.
      -->
 
 <!ENTITY firstRunTabs.label "আপনার ট্যাব খুঁজছেন? শুধু টেনে নামিয়ে আনুন বা রাইট ক্লিক করুন">
@@ -130,3 +132,18 @@
 <!ENTITY firstRunHistory.label "দেখুন আপনি ওয়েবে যেখানে অাছেন">
 <!ENTITY firstRunWelcome.label "স্বাগতম &brandShortName;">
 <!ENTITY firstRunDifferent.label "স্বাধীন চিন্তায় ভিন্ন">
+<!-- LOCALIZATION NOTE (firstRunBack.label,
+                          firstRunNewTab.label,
+                          firstRunStar.label,
+                          firstRunPin.label,
+                          firstRunGotIt.label )
+       These strings appear as a content overlay the first time a page
+       is visited. Each one has an arrow pointing toward the feature it
+       references.
+       -->
+
+<!ENTITY firstRunBack.label "আগের পেজে ফিরে যেতে টোকা মারুন">
+<!ENTITY firstRunNewTab.label "একটি নতুন সাইট ঘুরে দেখার জন্য একটি নতুন ট্যাব খুলুন">
+<!ENTITY firstRunStar.label "পরে দেখার জন্য বুকমার্ক ব্যবহার করুন">
+<!ENTITY firstRunPin.label "দ্রুত ব্যবহারের জন্য আপনার উইন্ডোজের স্টার্ট স্ক্রিনে যেকোনও সাইটকে পিন করুন">
+<!ENTITY firstRunGotIt.label "Got it!">

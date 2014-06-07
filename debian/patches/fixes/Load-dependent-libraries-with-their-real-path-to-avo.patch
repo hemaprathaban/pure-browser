@@ -8,10 +8,10 @@ Subject: Load dependent libraries with their real path to avoid confusing gdb
  1 file changed, 6 insertions(+)
 
 diff --git a/xpcom/glue/standalone/nsXPCOMGlue.cpp b/xpcom/glue/standalone/nsXPCOMGlue.cpp
-index 45ac98c..9abe6fd 100644
+index 5ff1ea1..cd6e99c 100644
 --- a/xpcom/glue/standalone/nsXPCOMGlue.cpp
 +++ b/xpcom/glue/standalone/nsXPCOMGlue.cpp
-@@ -299,6 +299,12 @@ AppendDependentLib(LibHandleType libHandle)
+@@ -265,6 +265,12 @@ AppendDependentLib(LibHandleType libHandle)
  static bool
  ReadDependentCB(pathstr_t aDependentLib, bool do_preload)
  {

@@ -54,6 +54,7 @@
 <!ENTITY back "Wstecz">
 <!ENTITY stop "Zatrzymaj">
 <!ENTITY site_security "Bezpieczeństwo strony">
+<!ENTITY save "Zapisz">
 
 <!ENTITY close_tab "Zamknij kartę">
 <!ENTITY new_tab "Nowa karta">
@@ -67,6 +68,7 @@
 <!ENTITY pref_category_advanced "Zaawansowane">
 <!ENTITY pref_category_customize "Dostosuj">
 <!ENTITY pref_category_search3 "Wyszukiwanie">
+<!ENTITY pref_category_search_summary "Dostosuj wyszukiwarki">
 <!ENTITY pref_category_display "Wyświetlanie">
 <!ENTITY pref_category_privacy_short "Prywatność">
 <!ENTITY pref_category_vendor "&vendorShortName;">
@@ -76,17 +78,31 @@
 <!ENTITY pref_category_search_restore_defaults "Przywróć wyszukiwarki">
 <!ENTITY pref_search_restore_defaults "Przywróć domyślne">
 <!ENTITY pref_search_restore_defaults_summary "Przywróć domyślne">
-<!-- Localization note (pref_search_tip) : "TIP" as in "hint", "clue" etc. Displayed as an
+<!-- Localization note (pref_search_hint) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
-     search providers.-->
-<!ENTITY pref_search_tip "RADA: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania.">
+     search providers.
+     The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
+     it is applicable. -->
+<!ENTITY pref_search_hint "RADA: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania, a następnie stukając ikonę &formatI;.">
 <!ENTITY pref_category_devtools "Narzędzia dla programistów">
 <!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
 <!ENTITY pref_developer_remotedebugging_docs "Dowiedz się więcej">
 <!ENTITY pref_remember_signons "Pamiętaj hasła">
 
 <!ENTITY pref_category_home "Strona domowa">
+<!ENTITY pref_category_home_summary "Dostosuj stronę domową">
 <!ENTITY pref_category_home_panels "Panele">
+<!ENTITY pref_home_add_panel "Dodaj panel">
+<!ENTITY home_add_panel_title "Dodaj nowy panel">
+<!ENTITY home_add_panel_empty "Niestety nie znaleźliśmy żadnych paneli do dodania.">
+<!-- Localization note (home_add_panel_installed):
+he &formatS; will be replaced with the name of the new panel the user just
+selected to be added to the home page. -->
+<!ENTITY home_add_panel_installed "Dodano „&formatS;” do strony domowej">
+<!ENTITY pref_category_home_content_settings "Ustawienia treści">
+<!ENTITY pref_home_updates "Automatyczne aktualizacje">
+<!ENTITY pref_home_updates_enabled "Włączone">
+<!ENTITY pref_home_updates_wifi "Tylko przez Wi-Fi">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Dostosuj">
@@ -202,6 +218,7 @@ size. -->
 <!ENTITY share_image_failed "Tego obrazka nie można udostępnić">
 <!ENTITY save_as_pdf "Zapisz jako PDF">
 <!ENTITY desktop_mode "Tryb stacjonarny">
+<!ENTITY page "Strona">
 <!ENTITY find_in_page "Znajdź na stronie">
 <!ENTITY tools "Narzędzia">
 
@@ -257,6 +274,7 @@ size. -->
 <!ENTITY site_settings_no_settings  "Brak ustawień">
 
 <!ENTITY reading_list_title "Do przeczytania">
+<!ENTITY reading_list_add "Zachowaj do przeczytania">
 <!ENTITY reading_list_added "Strona dodana do listy „Do przeczytania”">
 <!ENTITY reading_list_removed "Strona usunięta z listy „Do przeczytania”">
 <!ENTITY reading_list_failed "Nie udało się zapisać strony na liście „Do przeczytania”">
@@ -294,12 +312,15 @@ size. -->
 <!ENTITY home_reading_list_empty "Tutaj pojawiają się artykuły zachowane na później.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
-     The "&#37;I" in the string will be replaced by a small image of the icon described, and can be moved to wherever
-     it is applicable. Please keep the spacing around the "&#37;I" string. -->
-<!ENTITY home_reading_list_hint "RADA: Zachowaj artykuły do przeczytania później, przytrzymując ikonę &#37;I po jej pojawieniu się na pasku tytułu.">
+The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
+it is applicable. -->
+<!ENTITY home_reading_list_hint2 "RADA: Zachowaj artykuły do przeczytania później, przytrzymując ikonę &formatI; po jej pojawieniu się na pasku tytułu.">
 <!-- Localization note (home_reading_list_hint_accessible): This string is used
      as alternate text for accessibility. It is not visible in the UI. -->
 <!ENTITY home_reading_list_hint_accessible "RADA: Zachowaj artykuły do przeczytania później, przytrzymując przycisk trybu czytania po jego pojawieniu się na pasku tytułu.">
+
+<!-- Localization note (home_default_empty): This string is used as the default text when there is no data to show in an about:home panel that was created by an add-on. -->
+<!ENTITY home_default_empty "Nie znaleźliśmy treści do wyświetlenia na tym panelu.">
 
 <!ENTITY pin_site_dialog_hint "Wpisz słowo-klucz">
 
@@ -314,9 +335,7 @@ size. -->
 <!ENTITY set_image_fail "Nie można ustawić obrazu">
 <!ENTITY set_image_chooser_title "Ustaw obraz jako">
 
-<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
-     replaced with the name of the search engine. -->
-<!ENTITY suggestions_prompt2 "Włączyć podpowiedzi z wyszukiwarki &formatS;?">
+<!ENTITY suggestions_prompt3 "Włączyć podpowiedzi wyszukiwania?">
 
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
