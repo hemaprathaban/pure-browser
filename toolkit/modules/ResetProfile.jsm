@@ -7,6 +7,8 @@
 this.EXPORTED_SYMBOLS = ["ResetProfile"];
 
 const {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
+#expand const MOZ_APP_NAME = "__MOZ_APP_NAME__";
+#expand const MOZ_BUILD_APP = "__MOZ_BUILD_APP__";
 
 Cu.import("resource://gre/modules/Services.jsm");
 
@@ -23,11 +25,8 @@ this.ResetProfile = {
 
     // Reset is only supported for the default profile if the self-migrator used for reset exists.
     try {
-      if (currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
-          "@mozilla.org/toolkit/profile-migrator;1" in Cc) {
-        let pm = Cc["@mozilla.org/toolkit/profile-migrator;1"].createInstance(Ci.nsIProfileMigrator);
-        return ("canMigrate" in pm) && pm.canMigrate("self");
-      }
+      return currentProfileDir.equals(profileService.selectedProfile.rootDir) &&
+        ("@mozilla.org/profile/migrator;1?app=" + MOZ_BUILD_APP + "&type=" + MOZ_APP_NAME in Cc);
     } catch (e) {
       // Catch exception when there is no selected profile.
       Cu.reportError(e);
@@ -51,7 +50,7 @@ this.ResetProfile = {
     let dataTypes = [];
     for (let itemID of MIGRATED_TYPES) {
       try {
-        let typeName = MigrationUtils.getLocalizedString(itemID + "_self");
+        let typeName = MigrationUtils.getLocalizedString(itemID + "_" + MOZ_APP_NAME);
         dataTypes.push(typeName);
       } catch (x) {
         // Catch exceptions when the string for a data type doesn't exist.

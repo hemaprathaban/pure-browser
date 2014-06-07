@@ -7,8 +7,7 @@
 // We need to override the default values of these preferences since all.js
 // assumes these are in the navigator package, which for us is nonexistent.
 // XXX(darin): perhaps all.js should not be seamonkey specific
-pref("intl.locale.matchOS", true);
-pref("general.useragent.locale", "chrome://global/locale/intl.properties");
+pref("general.useragent.locale", "@AB_CD@");
 pref("xpinstall.dialog.confirm", "chrome://mozapps/content/xpinstall/xpinstallConfirm.xul");
 pref("xpinstall.dialog.progress.chrome", "chrome://mozapps/content/extensions/extensions.xul");
 pref("xpinstall.dialog.progress.skin", "chrome://mozapps/content/extensions/extensions.xul");

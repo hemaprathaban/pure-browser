@@ -265,12 +265,6 @@ AppendDependentLib(LibHandleType libHandle)
 static bool
 ReadDependentCB(pathstr_t aDependentLib, bool do_preload)
 {
-#ifdef XP_UNIX
-    char lib[MAXPATHLEN];
-    if (realpath(aDependentLib, lib))
-        aDependentLib = lib;
-#endif
-
     if (do_preload) {
         ReadAheadLib(aDependentLib);
     }
