@@ -27,13 +27,13 @@ OFFICIAL_BRANDING := browser/branding/official
 ifeq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
 MOZILLA_OFFICIAL := 1
 # ESR, Beta and Releases use the official branding
-ifneq (,$(filter %-release %-beta,$(SOURCE_CHANNEL))$(findstring -esr,$(SOURCE_CHANNEL)))
+ifneq (,$(filter release beta esr%,$(SHORT_SOURCE_CHANNEL)))
 BRANDING := $(OFFICIAL_BRANDING)
 else
-ifneq (,$(filter %-aurora,$(SOURCE_CHANNEL)))
+ifneq (,$(filter aurora,$(SHORT_SOURCE_CHANNEL)))
 BRANDING := browser/branding/aurora
 else
-ifneq (,$(filter %-central,$(SOURCE_CHANNEL)))
+ifneq (,$(filter central,$(SHORT_SOURCE_CHANNEL)))
 BRANDING := browser/branding/nightly
 else
 $(error $(PRODUCT_NAME) branding for $(SOURCE_CHANNEL) is unsupported)
@@ -150,7 +150,7 @@ debian/l10n/$(PRODUCT)-l10n.control: %: %.in
 
 DICT_DIR := /usr/share/hunspell
 
-$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION
+$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL
 debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@

@@ -59,34 +59,35 @@ REPO_PREFIX = mozilla
 endif
 ifneq (,$(findstring esr, $(VERSION)))
 SOURCE_TYPE := releases
-SOURCE_CHANNEL := $(REPO_PREFIX)-esr$(firstword $(subst ., ,$(VERSION)))
-L10N_CHANNEL := $(REPO_PREFIX)-release
+SHORT_SOURCE_CHANNEL := esr$(firstword $(subst ., ,$(VERSION)))
+SHORT_L10N_CHANNEL := release
 else
 ifneq (,$(findstring ~b, $(VERSION)))
 # Betas are under releases/
 SOURCE_TYPE := releases
-SOURCE_CHANNEL := $(REPO_PREFIX)-beta
+SHORT_SOURCE_CHANNEL := beta
 else
 ifneq (,$(filter %~a2, $(VERSION)))
 # Aurora
 SOURCE_TYPE := nightly
-SOURCE_CHANNEL := $(REPO_PREFIX)-aurora
+SHORT_SOURCE_CHANNEL := aurora
 else
 ifneq (,$(filter %~a1, $(VERSION)))
 # Nightly
 SOURCE_TYPE := nightly
-SOURCE_CHANNEL := $(REPO_PREFIX)-central
+SHORT_SOURCE_CHANNEL := central
 L10N_REPO := http://hg.mozilla.org/l10n-central
 else
 # Release
 SOURCE_TYPE := releases
-SOURCE_CHANNEL := $(REPO_PREFIX)-release
+SHORT_SOURCE_CHANNEL := release
 endif
 endif
 endif
 endif
-ifndef L10N_CHANNEL
-L10N_CHANNEL := $(SOURCE_CHANNEL)
+SOURCE_CHANNEL = $(REPO_PREFIX)-$(SHORT_SOURCE_CHANNEL)
+ifndef SHORT_L10N_CHANNEL
+SHORT_L10N_CHANNEL := $(SHORT_SOURCE_CHANNEL)
 endif
 
 BASE_URL = ftp://ftp.mozilla.org/pub/mozilla.org/$(PRODUCT_NAME)/$(SOURCE_TYPE)
@@ -110,11 +111,11 @@ endif
 endif
 
 ifndef L10N_REPO
-L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/$(L10N_CHANNEL:$(REPO_PREFIX)-%=mozilla-%),$(SOURCE_REPO))
+L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/mozilla-$(SHORT_L10N_CHANNEL),$(SOURCE_REPO))
 endif
 
 ifneq (,$(filter import download,$(MAKECMDGOALS)))
-ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),$(REPO_PREFIX)-aurora $(REPO_PREFIX)-central))
+ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),aurora central))
 $(call lazy,L10N_LANGS,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE_REV)/$(PRODUCT)/locales/shipped-locales | $$(L10N_FILTER)))
 endif
 L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-$(lang).tar.bz2))
