@@ -36,6 +36,11 @@ usr/lib/@browser@/libssl3.so
 usr/lib/@browser@/libreplace_jemalloc.so
 %endif
 
+%if GTK3
+usr/lib/@browser@/libmozgtk.so
+usr/lib/@browser@/libmozgtk2.so
+%endif
+
 usr/lib/@browser@/defaults/pref/channel-prefs.js
 
 usr/lib/@browser@/@browser@ usr/lib/@browser@

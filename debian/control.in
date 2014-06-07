@@ -8,6 +8,9 @@ Build-Depends: autotools-dev,
                autoconf2.13,
                libx11-dev,
                libxt-dev,
+%if GTK3
+               libgtk-3-dev,
+%endif
                libgtk2.0-dev (>= 2.10),
                libglib2.0-dev (>= 2.16.0),
                libstartup-notification0-dev,
