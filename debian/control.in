@@ -122,6 +122,10 @@ Depends: ${shlibs:Depends},
          libnspr4-dev,
 %endif
          @browser@ (= ${binary:Version})
+Conflicts: xulrunner-dev,
+%if browser != firefox
+           firefox-dev
+%endif
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as

@@ -258,7 +258,17 @@ override_dh_auto_clean::
 
 override_dh_auto_install: stamps/install-$(PRODUCT)
 
-stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
+debian/libxul.pc debian/mozilla-plugin.pc: VARS += GRE_MILESTONE
+PKG_CONFIG_FILES = debian/libxul.pc debian/mozilla-plugin.pc
+
+ifdef LESS_SYSTEM_LIBS
+NSPR_VERSION = $(shell awk -F' *= *' '/MOD_[A-Z]*_VERSION/ {v[$$1] = $$2} END {print v["MOD_MAJOR_VERSION"] "." v["MOD_MINOR_VERSION"] "." v["MOD_PATCH_VERSION"]}' build-$(PRODUCT)/nsprpub/config/autoconf.mk)
+debian/mozilla-nspr.pc: VARS += NSPR_VERSION
+debian/mozilla-nspr.pc: stamps/build-$(PRODUCT)
+PKG_CONFIG_FILES += debian/mozilla-nspr.pc
+endif
+
+stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest $(PKG_CONFIG_FILES)
 	dh_auto_install --builddirectory=build-$(PRODUCT) -- installdir=$(LIB_DIR) \
 		MOZ_APP_BASE_VERSION=$(GRE_VERSION) \
 		MOZ_PKG_MANIFEST=$(CURDIR)/$< \
@@ -279,6 +289,9 @@ stamps/install-$(PRODUCT):: build-$(PRODUCT)/debian/installer/package-manifest
 			fi; \
 		done; \
 	done
+
+	install -d -m 755 debian/tmp/usr/lib/pkgconfig
+	install -m 644 $(PKG_CONFIG_FILES) debian/tmp/usr/lib/pkgconfig
 
 ifndef LESS_SYSTEM_LIBS
 	for f in /usr/include/nspr/* /usr/include/nss/*; do \
@@ -347,7 +360,7 @@ override_dh_gencontrol:
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
 
-install binary binary-arch binary-indep: $(GENERATED_FILES)
+install binary binary-arch binary-indep: $(filter-out %.pc,$(GENERATED_FILES))
 
 binary binary-indep: stamps/dh_install-l10n
 
