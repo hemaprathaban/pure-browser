@@ -1,3 +1,14 @@
+iceweasel (30.0-2) unstable; urgency=medium
+
+  * debian/browser-dev.install.in, debian/control*, debian/libxul.pc.in,
+    debian/mozilla-nspr.pc.in, debian/mozilla-plugin.pc.in, debian/rules:
+    Add a few pkg-config files to the iceweasel-dev package. Closes: #751268.
+
+  * gfx/skia/trunk/src/opts/SkBlitRow_opts_arm.cpp: Re-apply patch from
+    bz#901208 that upstream dropped when updating skia.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 14 Jun 2014 09:30:39 +0900
+
 iceweasel (30.0-1) unstable; urgency=medium
 
   * New upstream release.
