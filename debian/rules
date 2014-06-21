@@ -166,6 +166,8 @@ stamps/prepare-configure:: stamps/dummy
 			sed -i '2!b;/^#/ i\exec "/usr/share/misc/'$$file'" "$$@"' $$dir/$$file; \
 		done; \
 	done
+	autoconf2.13
+	cd js/src && autoconf2.13
 	chmod 755 configure js/src/configure
 
 stamps/configure-check-$(PRODUCT):: stamps/configure-$(PRODUCT)
@@ -244,6 +246,7 @@ endif
 override_dh_auto_clean::
 	rm -f MPL
 	rm -f $(GENERATED_FILES)
+	rm -f configure js/src/configure
 	rm -rf stamps l10n
 	debian/rules debian/control TESTDIR=
 
