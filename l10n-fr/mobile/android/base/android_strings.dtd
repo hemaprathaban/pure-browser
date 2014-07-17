@@ -54,7 +54,7 @@
 <!ENTITY back "Retour">
 <!ENTITY stop "Arrêter">
 <!ENTITY site_security "Sécurité du site">
-<!ENTITY save "Enregistrer">
+<!ENTITY edit_mode_cancel "Annuler">
 
 <!ENTITY close_tab "Fermer l\u0027onglet">
 <!ENTITY one_tab "1 onglet">
@@ -73,6 +73,7 @@
 <!ENTITY pref_category_privacy_short "Vie privée">
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_datareporting "Données collectées">
+<!ENTITY pref_learn_more "En savoir plus">
 <!ENTITY pref_category_installed_search_engines "Moteurs de recherche installés">
 <!ENTITY pref_category_add_search_providers "Ajouter des moteurs de recherche">
 <!ENTITY pref_category_search_restore_defaults "Restaurer les moteurs de recherche">
@@ -86,7 +87,6 @@
 <!ENTITY pref_search_hint "ASTUCE : Ajoutez n\u0027importe quel site à votre liste de moteurs de recherche en effectuant un appui long sur leur champ de recherche puis en appuyant sur l\u0027icône &formatI;.">
 <!ENTITY pref_category_devtools "Outils de développement">
 <!ENTITY pref_developer_remotedebugging "Débogage distant">
-<!ENTITY pref_developer_remotedebugging_docs "En savoir plus">
 <!ENTITY pref_remember_signons "Enreg. les mots de passe">
 
 <!ENTITY pref_category_home "Écran d\u0027accueil">
@@ -157,14 +157,14 @@ size. -->
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Suggestions de recherche">
 <!ENTITY pref_import_android "Importer depuis Android">
-<!ENTITY pref_private_data_history "Historique de navigation et des téléchargements">
+<!ENTITY pref_private_data_history2 "Historique de navigation">
 <!ENTITY pref_private_data_formdata "Historique des formulaires et des recherches">
 <!ENTITY pref_private_data_cookies2 "Cookies et connexions actives">
 <!ENTITY pref_private_data_passwords "Mots de passe enregistrés">
 <!ENTITY pref_private_data_cache "Cache">
 <!ENTITY pref_private_data_offlineApps "Données de site web hors connexion">
 <!ENTITY pref_private_data_siteSettings2 "Paramètres de site">
-<!ENTITY pref_private_data_downloadFiles "Fichiers téléchargés">
+<!ENTITY pref_private_data_downloadFiles2 "Téléchargements">
 
 
 <!ENTITY pref_about_firefox "À propos de &brandShortName;">
@@ -179,6 +179,9 @@ size. -->
 
 <!ENTITY pref_panels_show "Afficher">
 <!ENTITY pref_panels_hide "Masquer">
+<!ENTITY pref_panels_reorder "Modifier l\u0027ordre">
+<!ENTITY pref_panels_move_up "Monter">
+<!ENTITY pref_panels_move_down "Descendre">
 
 <!ENTITY datareporting_notification_title "Stats et données de &brandShortName;">
 <!ENTITY datareporting_notification_action_long "choisir ce que j\u0027envoie">
@@ -202,8 +205,8 @@ size. -->
 <!-- Localization note (datareporting_crashreporter_title_short) : This string matches
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Rapports de plantage">
-<!ENTITY datareporting_wifi_title "Services de localisation de &vendorShortName;">
-<!ENTITY datareporting_wifi_summary "Aide à améliorer les services de géolocalisation pour le Web ouvert en permettant à &brandShortName; de collecter et d\u0027envoyer des données anonymes sur les antennes de téléphonie mobile">
+<!ENTITY datareporting_wifi_title2 "Service de localisation de &vendorShortName;">
+<!ENTITY datareporting_wifi_geolocation_summary "Enregistre les positions des réseaux Wi-Fi et cellulaires lorsqu\u0027exécuté en arrière-plan et les partage avec &vendorShortName; pour améliorer notre service de géolocalisation">
 
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
@@ -229,7 +232,7 @@ size. -->
 <!ENTITY page "Page">
 <!ENTITY tools "Outils">
 <!ENTITY new_tab "Nouvel onglet">
-<!ENTITY new_private_tab "Nouvel onglet nav. privée">
+<!ENTITY new_private_tab "Nouvel onglet de nav. privée">
 <!ENTITY close_all_tabs "Fermer tous les onglets">
 <!ENTITY tabs_normal "Onglets">
 <!ENTITY tabs_private "Privés">
@@ -262,11 +265,11 @@ size. -->
 <!ENTITY contextmenu_copyurl "Copier l\u0027adresse">
 <!ENTITY contextmenu_edit_bookmark "Modifier">
 <!ENTITY contextmenu_subscribe "S\u0027abonner à la page">
-<!ENTITY contextmenu_site_settings "Modifier paramètres de site">
+<!ENTITY contextmenu_site_settings "Modifier les paramètres de site">
 <!ENTITY contextmenu_top_sites_edit "Modifier">
 <!ENTITY contextmenu_top_sites_pin "Épingler ce site">
 <!ENTITY contextmenu_top_sites_unpin "Relâcher ce site">
-<!ENTITY contextmenu_add_search_engine "Ajouter moteur de recherche">
+<!ENTITY contextmenu_add_search_engine "Ajouter un moteur de recherche">
 
 <!ENTITY pref_titlebar_mode "Barre de titre">
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
@@ -290,7 +293,6 @@ size. -->
 <!ENTITY site_settings_clear        "Effacer">
 <!ENTITY site_settings_no_settings  "Aucun paramètre à effacer.">
 
-<!ENTITY reading_list_add "Ajouter à la liste de lecture">
 <!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
 <!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
 <!ENTITY reading_list_failed "Impossible d\u0027ajouter la page à votre liste de lecture">
@@ -341,6 +343,10 @@ size. -->
 
 <!ENTITY pin_site_dialog_hint "Saisir un mot-clé pour la recherche">
 
+<!-- Localization note (home_move_up_to_filter): The variable is replaced by the name of the
+     previous location in the navigation, such as the previous folder -->
+<!ENTITY home_move_up_to_filter "Revenir à &formatS;">
+
 <!ENTITY filepicker_title "Choisir un fichier">
 <!ENTITY filepicker_audio_title "Choisir ou enregistrer un son">
 <!ENTITY filepicker_image_title "Choisir une image ou faire une copie d\u0027écran">
@@ -367,7 +373,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY blocked_mixed_content_message_bottom "La plupart des sites web continueront de fonctionner correctement même si ce contenu est bloqué.">
 <!ENTITY learn_more "En savoir plus">
 <!ENTITY enable_protection "Activer la protection">
-<!ENTITY disable_protection "Désaciver la protection">
+<!ENTITY disable_protection "Désactiver la protection">
 <!ENTITY keep_blocking "Poursuivre le blocage">
 
 <!ENTITY private_data_success "Données personnelles effacées">
@@ -406,14 +412,20 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!-- Guest mode -->
 <!ENTITY new_guest_session "Nouvelle session invité">
-<!ENTITY exit_guest_session "Quitter session invité">
+<!ENTITY exit_guest_session "Quitter la session invité">
 <!ENTITY guest_session_dialog_continue "Continuer">
 <!ENTITY guest_session_dialog_cancel "Annuler">
 <!ENTITY new_guest_session_title "&brandShortName; va redémarrer">
-<!ENTITY new_guest_session_text "L\u0027utilisateur actuel ne pourra pas accéder à vos données personnelles de navigation (comme par exemple les mots de passe enregistrés, l\u0027historique ou les marque-pages).\n\nLorsque votre invité aura terminé, ses données de navigation seront supprimées et votre session sera restaurée.">
+<!ENTITY new_guest_session_text "L\u0027utilisateur invité ne pourra pas accéder à vos données personnelles de navigation (comme par exemple les mots de passe enregistrés, l\u0027historique ou les marque-pages).\n\nLorsque votre invité aura terminé, ses données de navigation seront supprimées et votre session sera restaurée.">
 
 <!ENTITY exit_guest_session_title "&brandShortName; va redémarrer">
 <!ENTITY exit_guest_session_text "Les données de navigation de cette session vont être supprimées.">
+
+<!-- Miscellaneous -->
+<!-- LOCALIZATION NOTE (ellipsis): This text is appended to a piece of text that does not fit in the
+     designated space. Use the unicode ellipsis char, \u2026, or use "..." if \u2026 doesn't suit
+     traditions in your locale. -->
+<!ENTITY ellipsis "…">
 
 <!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
