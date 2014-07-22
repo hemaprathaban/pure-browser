@@ -34,7 +34,7 @@ index f131ea6..357d42e 100644
  <SearchForm>http://www.answers.com/</SearchForm>
  </SearchPlugin>
 diff --git a/browser/locales/en-US/searchplugins/google.xml b/browser/locales/en-US/searchplugins/google.xml
-index 668643f..cd56936 100644
+index a913840..d197c8a 100644
 --- a/browser/locales/en-US/searchplugins/google.xml
 +++ b/browser/locales/en-US/searchplugins/google.xml
 @@ -2,6 +2,7 @@
@@ -45,7 +45,7 @@ index 668643f..cd56936 100644
  <SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
  <ShortName>Google</ShortName>
  <Description>Google Search</Description>
-@@ -14,6 +15,7 @@
+@@ -16,6 +17,7 @@
    <Param name="oe" value="utf-8"/>
    <Param name="aq" value="t"/>
    <Param name="rls" value="{moz:distributionID}:{moz:locale}:{moz:official}"/>
@@ -53,7 +53,7 @@ index 668643f..cd56936 100644
  #if MOZ_UPDATE_CHANNEL == beta
    <MozParam name="client" condition="defaultEngine" trueValue="firefox-beta" falseValue="firefox"/>
  #elif MOZ_UPDATE_CHANNEL == aurora
-@@ -23,6 +25,9 @@
+@@ -25,6 +27,9 @@
  #else
    <MozParam name="client" condition="defaultEngine" trueValue="firefox-a" falseValue="firefox"/>
  #endif

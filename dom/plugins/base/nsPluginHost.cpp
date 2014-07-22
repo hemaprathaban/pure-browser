@@ -40,7 +40,6 @@
 #include "nsNetUtil.h"
 #include "nsIProgressEventSink.h"
 #include "nsIDocument.h"
-#include "nsHashtable.h"
 #include "nsPluginLogging.h"
 #include "nsIScriptChannel.h"
 #include "nsIBlocklistService.h"
@@ -282,11 +281,11 @@ nsPluginHost::~nsPluginHost()
   sInst = nullptr;
 }
 
-NS_IMPL_ISUPPORTS4(nsPluginHost,
-                   nsIPluginHost,
-                   nsIObserver,
-                   nsITimerCallback,
-                   nsISupportsWeakReference)
+NS_IMPL_ISUPPORTS(nsPluginHost,
+                  nsIPluginHost,
+                  nsIObserver,
+                  nsITimerCallback,
+                  nsISupportsWeakReference)
 
 already_AddRefed<nsPluginHost>
 nsPluginHost::GetInst()
@@ -3459,9 +3458,7 @@ CheckForDisabledWindows()
         nsIWidget* child = widget->GetFirstChild();
         bool enable = true;
         while (child)  {
-          nsWindowType aType;
-          if (NS_SUCCEEDED(child->GetWindowType(aType)) &&
-              aType == eWindowType_dialog) {
+          if (child->WindowType() == eWindowType_dialog) {
             enable = false;
             break;
           }

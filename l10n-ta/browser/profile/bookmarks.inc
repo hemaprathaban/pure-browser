@@ -37,7 +37,7 @@
 # Firefox links folder name
 
 
-#define firefox_heading மோசில்லா பையர்பாக்ஸ்
+#define firefox_heading மோசில்லா பயர்பாக்ஸ்
 
 
 # LOCALIZATION NOTE (firefox_help):
@@ -55,7 +55,7 @@
 # link title for https://www.mozilla.org/en-US/firefox/customize/
 
 
-#define firefox_customize firefox தனிப்பயனாக்கம் 
+#define firefox_customize firefox தனிப்பயனாக்கம்\u0020
 
 
 # LOCALIZATION NOTE (firefox_community):

@@ -1,3 +1,6 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #filter emptyLines
 
 # LOCALIZATION NOTE: The 'en-US' strings in the URLs will be replaced with
@@ -11,24 +14,20 @@
 # title for the folder that will contains the default bookmarks
 #define bookmarks_title Мобилни
 
-# LOCALIZATION NOTE (bookmarks_welcome):
-# link title for about:firstrun
-#define bookmarks_welcome Фајерфокс: Добродошли
-
-# LOCALIZATION NOTE (bookmarks_about):
+# LOCALIZATION NOTE (bookmarks_aboutBrowser):
 # link title for about:fennec
-#define bookmarks_aboutBrowser Фајерфокс: О нама
-
-# LOCALIZATION NOTE (bookmarks_weave):
-# link title for https://www.mozilla.com/en-US/mobile/weave
-#define bookmarks_weave Фајерфокс: Синхронизујте уз Weave
+#define bookmarks_aboutBrowser Firefox: О прегледачу
 
 # LOCALIZATION NOTE (bookmarks_addons):
 # link title for https://addons.mozilla.org/en-US/mobile
-#define bookmarks_addons Фајерфокс: Прилагодите фајерфокс додацима
+#define bookmarks_addons Firefox: Прилагодите Firefox са додацима
 
 # LOCALIZATION NOTE (bookmarks_support):
-# link title for https://mobile.support.mozilla.com
-#define bookmarks_support Фајерфокс: Подршка
+# link title for https://support.mozilla.org/mobile
+#define bookmarks_support Firefox: Подршка
+
+# LOCALIZATION NOTE (bookmarks_marketplace):
+# link title for https://marketplace.firefox.com
+#define bookmarks_marketplace Firefox Marketplace
 
 #unfilter emptyLines

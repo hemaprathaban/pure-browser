@@ -1,3 +1,6 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #filter emptyLines
 
 # LOCALIZATION NOTE: The 'en-US' strings in the URLs will be replaced with
@@ -11,33 +14,32 @@
 #define bookmarks_toolbarfolder_description Додајте забелешке у овај директоријум како би биле приказане у алатној траци за забелешке
 
 # LOCALIZATION NOTE (getting_started):
-# link title for http://en-US.www.mozilla.com/en-US/firefox/central/
+# link title for https://www.mozilla.org/en-US/firefox/central/
 #define getting_started Како почети
-
-# LOCALIZATION NOTE (latest_headlines):
-# link title for the live bookmarks sample, a redirect on
-# http://en-US.fxfeeds.mozilla.com/en-US/firefox/headlines.xml
-# Changing the redirect is subject to approval of l10n-drivers.
-#define latest_headlines Последње вести
 
 # LOCALIZATION NOTE (firefox_heading):
 # Firefox links folder name
-#define firefox_heading Мозилин фајерфокс (Mozilla Firefox)
+#define firefox_heading Mozilla Firefox
 
 # LOCALIZATION NOTE (firefox_help):
-# link title for http://en-US.www.mozilla.com/en-US/firefox/help/
+# link title for https://www.mozilla.org/en-US/firefox/help/
 #define firefox_help Помоћ и упутства
 
 # LOCALIZATION NOTE (firefox_customize):
-# link title for http://en-US.www.mozilla.com/en-US/firefox/customize/
-#define firefox_customize Прилагодите фајерфокс
+# link title for https://www.mozilla.org/en-US/firefox/customize/
+#define firefox_customize Прилагодите Firefox
 
 # LOCALIZATION NOTE (firefox_community):
-# link title for http://en-US.www.mozilla.com/en-US/firefox/community/
-#define firefox_community Прикључите се
+# link title for https://www.mozilla.org/en-US/contribute/
+#define firefox_community Прикључи се
 
 # LOCALIZATION NOTE (firefox_about):
-# link title for http://en-US.www.mozilla.com/en-US/about/
+# link title for https://www.mozilla.org/en-US/about/
 #define firefox_about О нама
+
+# LOCALIZATION NOTE (firefox_feedback):
+# link title for browser feedback page
+# currently used by Metro only: https://input.mozilla.org/feedback/metrofirefox
+#define firefox_feedback Пошаљите повратне информације
 
 #unfilter emptyLines
