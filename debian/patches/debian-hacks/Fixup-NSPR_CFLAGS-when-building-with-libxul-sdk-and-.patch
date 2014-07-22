@@ -7,7 +7,7 @@ Subject: Fixup NSPR_CFLAGS when building with libxul-sdk and in-tree nspr
  1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index 2fa6cac..aeaa44e 100644
+index 90c5cd0..b39db38 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -3854,16 +3854,11 @@ if test -n "$MOZ_NATIVE_NSPR"; then

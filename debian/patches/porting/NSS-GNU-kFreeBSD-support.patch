@@ -3,20 +3,20 @@ Date: Mon, 13 Jan 2014 12:01:08 +0900
 Subject: [NSS] GNU/kFreeBSD support
 
 ---
- security/nss/coreconf/Linux.mk       | 17 +++++++++++++----
+ security/nss/coreconf/Linux.mk       | 22 ++++++++++++++++++----
  security/nss/coreconf/arch.mk        |  8 ++++++++
  security/nss/coreconf/config.mk      |  2 +-
  security/nss/lib/freebl/unix_rand.c  |  3 ++-
  security/nss/lib/softoken/softoken.h |  2 +-
  security/nss/lib/ssl/sslmutex.c      |  2 +-
  security/nss/lib/ssl/sslmutex.h      |  2 +-
- 7 files changed, 27 insertions(+), 9 deletions(-)
+ 7 files changed, 32 insertions(+), 9 deletions(-)
 
 diff --git a/security/nss/coreconf/Linux.mk b/security/nss/coreconf/Linux.mk
-index a586e5e..3d75956 100644
+index 6567f25..c381f57 100644
 --- a/security/nss/coreconf/Linux.mk
 +++ b/security/nss/coreconf/Linux.mk
-@@ -93,7 +93,7 @@ ifneq ($(OS_TARGET),Android)
+@@ -100,7 +100,7 @@ ifneq ($(OS_TARGET),Android)
  LIBC_TAG		= _glibc
  endif
  
@@ -25,12 +25,17 @@ index a586e5e..3d75956 100644
  	OS_REL_CFLAGS	+= -DLINUX2_0
  	MKSHLIB		= $(CC) -shared -Wl,-soname -Wl,$(@:$(OBJDIR)/%.so=%.so) $(RPATH)
  	ifdef MAPFILE
-@@ -128,14 +128,21 @@ endif
- # -ansi on platforms like Android where the system headers are C99 and do
- # not build with -ansi.
- STANDARDS_CFLAGS	= -D_POSIX_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE
--OS_CFLAGS		= $(STANDARDS_CFLAGS) $(DSO_CFLAGS) $(OS_REL_CFLAGS) $(ARCHFLAG) -Wall -Werror-implicit-function-declaration -Wno-switch -pipe -DLINUX -Dlinux -DHAVE_STRERROR
-+OS_CFLAGS		= $(STANDARDS_CFLAGS) $(DSO_CFLAGS) $(OS_REL_CFLAGS) $(ARCHFLAG) -Wall -Werror-implicit-function-declaration -Wno-switch -pipe -DHAVE_STRERROR
+@@ -130,14 +130,26 @@ ifeq ($(USE_PTHREADS),1)
+ OS_PTHREAD = -lpthread 
+ endif
+ 
+-OS_CFLAGS		= $(DSO_CFLAGS) $(OS_REL_CFLAGS) $(ARCHFLAG) -Wall -Werror-implicit-function-declaration -Wno-switch -pipe -ffunction-sections -fdata-sections -DLINUX -Dlinux -DHAVE_STRERROR
++# See bug 537829, in particular comment 23.
++# Place -ansi and *_SOURCE before $(DSO_CFLAGS) so DSO_CFLAGS can override
++# -ansi on platforms like Android where the system headers are C99 and do
++# not build with -ansi.
++STANDARDS_CFLAGS	= -D_POSIX_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE
++OS_CFLAGS		= $(STANDARDS_CFLAGS) $(DSO_CFLAGS) $(OS_REL_CFLAGS) $(ARCHFLAG) -Wall -Werror-implicit-function-declaration -Wno-switch -pipe -ffunction-sections -fdata-sections -DHAVE_STRERROR
 +ifeq ($(KERNEL),linux)
 +OS_CFLAGS		+= -DLINUX -Dlinux
 +endif
@@ -48,8 +53,8 @@ index a586e5e..3d75956 100644
 +endif
  
  DSO_CFLAGS		= -fPIC
- DSO_LDOPTS		= -shared $(ARCHFLAG)
-@@ -152,7 +159,7 @@ ifdef _SBOX_DIR
+ DSO_LDOPTS		= -shared $(ARCHFLAG) -Wl,--gc-sections
+@@ -154,7 +166,7 @@ ifdef _SBOX_DIR
  LDFLAGS			+= -Wl,-rpath-link,/usr/lib:/lib
  endif
  
@@ -58,7 +63,7 @@ index a586e5e..3d75956 100644
  G++INCLUDES		= -I/usr/include/g++
  
  #
-@@ -187,7 +194,9 @@ RPATH = -Wl,-rpath,'$$ORIGIN:/opt/sun/private/lib'
+@@ -189,7 +201,9 @@ RPATH = -Wl,-rpath,'$$ORIGIN:/opt/sun/private/lib'
  endif
  endif
  
@@ -88,7 +93,7 @@ index 782e6c0..521d265 100644
  
  #
 diff --git a/security/nss/coreconf/config.mk b/security/nss/coreconf/config.mk
-index ea1d04b..a2e8ce0 100644
+index 99c6ce6..9d619f1 100644
 --- a/security/nss/coreconf/config.mk
 +++ b/security/nss/coreconf/config.mk
 @@ -31,7 +31,7 @@ endif
@@ -115,10 +120,10 @@ index b4fef7a..20bfaa9 100644
  
  #define getdtablesize() sysconf(_SC_OPEN_MAX)
 diff --git a/security/nss/lib/softoken/softoken.h b/security/nss/lib/softoken/softoken.h
-index f8606da..dfc86d5 100644
+index fbd00b6..bb35af8 100644
 --- a/security/nss/lib/softoken/softoken.h
 +++ b/security/nss/lib/softoken/softoken.h
-@@ -197,7 +197,7 @@ extern PRBool sftk_fatalError;
+@@ -184,7 +184,7 @@ extern PRBool sftk_fatalError;
  
  #define CHECK_FORK_MIXED
  
