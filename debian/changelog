@@ -1,3 +1,14 @@
+iceweasel (31.0-2) unstable; urgency=high
+
+  * Urgency set to high to have a faster transition after armel FTBFS is
+    fixed (which is the only thing that prevented the transition).
+  * debian/control*: Remove forced gcc-4.9 build dependency for armhf.
+
+  * media/libopus/moz.build: Disable some libopus ARM features on < ARMv6.
+    bz#1025689.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 02 Aug 2014 09:28:53 +0900
+
 iceweasel (31.0-1) unstable; urgency=medium
 
   * New upstream release.
