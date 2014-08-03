@@ -1,3 +1,15 @@
+iceweasel (31.0-3) unstable; urgency=high
+
+  * The "this time it's going to build on armel" release.
+
+  * debian/rules, debian/control*: Update configure with autoconf2.13 every
+    time.
+
+  * configure.in: Use integers for audio when on Android, or when using ARM
+    on other OSes, and disable webm encoding. bz#1047791.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 03 Aug 2014 09:52:28 +0900
+
 iceweasel (31.0-2) unstable; urgency=high
 
   * Urgency set to high to have a faster transition after armel FTBFS is
