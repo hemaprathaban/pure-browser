@@ -65,7 +65,7 @@ debian/duckduckgo.xml etc/@browser@/searchplugins/common
 
 usr/lib/@browser@/browser/extensions/\{972ce4c6-7e08-4474-a285-3208198ce6fd\} usr/lib/@browser@/browser/extensions
 
-%if browser != firefox
+%if browser != OFFICIAL_NAME
 debian/firefox usr/bin
 %endif
 

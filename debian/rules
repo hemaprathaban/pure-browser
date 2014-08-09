@@ -16,7 +16,8 @@ $(call lazy,DEB_BUILD_ARCH,$$(shell dpkg-architecture -qDEB_BUILD_ARCH))
 PYTHON := python -B
 
 PRODUCT := browser
-PRODUCT_NAME := firefox
+PRODUCT_NAME ?= $(DEBIAN_SOURCE)
+OFFICIAL_NAME := firefox
 include debian/upstream.mk
 
 ifdef BACKPORT
@@ -24,7 +25,7 @@ LESS_SYSTEM_LIBS = 1
 endif
 
 OFFICIAL_BRANDING := browser/branding/official
-ifeq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
+ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 MOZILLA_OFFICIAL := 1
 # ESR, Beta and Releases use the official branding
 ifneq (,$(filter release beta esr%,$(SHORT_SOURCE_CHANNEL)))
@@ -36,7 +37,7 @@ else
 ifneq (,$(filter central,$(SHORT_SOURCE_CHANNEL)))
 BRANDING := browser/branding/nightly
 else
-$(error $(PRODUCT_NAME) branding for $(SOURCE_CHANNEL) is unsupported)
+$(error $(OFFICIAL_NAME) branding for $(SOURCE_CHANNEL) is unsupported)
 endif
 endif
 endif
@@ -53,7 +54,7 @@ GSTREAMER_VERSION = $(shell ( pkg-config gstreamer-1.0 && echo 1.0 ) || ( pkg-co
 
 # Define PRODUCT, product and Product variables (replacing product with the
 # actual value of $(PRODUCT))
-$(PRODUCT) := $(call lc,$(DEBIAN_SOURCE))
+$(PRODUCT) := $(call lc,$(PRODUCT_NAME))
 $(call uc,$(PRODUCT)) := $(call uc,$(subst ",,$(MOZ_APP_DISPLAYNAME)))
 Product := $(strip $(eval __tmp := $(PRODUCT))$(foreach l,$(letters),$(eval __tmp := $(subst $(l),$(l) ,$(__tmp))))$(call uc,$(firstword $(__tmp)))$(PRODUCT:$(firstword $(__tmp))%=%))
 $(Product) := $(subst ",,$(MOZ_APP_DISPLAYNAME))
@@ -129,7 +130,7 @@ debian/$($(PRODUCT)).xpm: stamps/build-$(PRODUCT)
 GENERATED_FILES += debian/$($(PRODUCT)).xpm
 
 IN_FILES := $(wildcard debian/*.in)
-ifeq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
+ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 IN_FILES := $(filter-out debian/$($(PRODUCT)).in,$(IN_FILES))
 endif
 preprocessed_filename = $(subst $(PRODUCT),$($(PRODUCT)),$(subst GRE_VERSION,$(GRE_VERSION),$(1:.in=)))
@@ -150,7 +151,7 @@ debian/l10n/$(PRODUCT)-l10n.control: %: %.in
 
 DICT_DIR := /usr/share/hunspell
 
-$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL
+$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL OFFICIAL_NAME
 debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
@@ -206,7 +207,7 @@ stamps/build-$(PRODUCT):: stamps/configure-check-$(PRODUCT)
 		_LEAKTEST_FILES=leaktest.py
 
 ifeq (1,)
-ifneq ($(DEBIAN_SOURCE),$(PRODUCT_NAME))
+ifneq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 build-$(PRODUCT)/%/filelist: stamps/build-$(PRODUCT) build-$(PRODUCT)/%/Makefile
 	rm -rf build-$(PRODUCT)/$*/dist
 	$(MAKE) -C build-$(PRODUCT)/$* MOZ_CHROME_FILE_FORMAT=flat DIST=$(CURDIR)/build-$(PRODUCT)/$*/dist BRANDING_TEST=1

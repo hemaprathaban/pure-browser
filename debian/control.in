@@ -1,4 +1,4 @@
-Source: @browser@
+Source: iceweasel
 Section: web
 Priority: optional
 Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lists.alioth.debian.org>
@@ -81,7 +81,7 @@ Conflicts: j2re1.4,
 Breaks: xul-ext-torbutton
 Provides: www-browser,
           gnome-www-browser
-%if browser == firefox
+%if browser == OFFICIAL_NAME
 %define DESCRIPTION Mozilla Firefox web browser
 %define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
 %define LONGDESC2 web application technologies.
@@ -122,7 +122,7 @@ Depends: ${shlibs:Depends},
 %endif
          @browser@ (= ${binary:Version})
 Conflicts: xulrunner-dev,
-%if browser != firefox
+%if browser != OFFICIAL_NAME
            firefox-dev
 %endif
 Description: Development files for the Gecko engine library

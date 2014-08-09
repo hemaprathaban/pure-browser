@@ -1,7 +1,7 @@
 # Generic rules to help download sources from ftp.mozilla.org.
 # Define the following variables before including this file:
 # PRODUCT - product codename (e.g. browser)
-# PRODUCT_NAME - name of the product (e.g. firefox)
+# OFFICIAL_NAME - name of the product (e.g. firefox)
 
 # The VERSION_FILTER transforms upstream version patterns to versions
 # used in debian/changelog. Versions are to be transformed as follows:
@@ -90,13 +90,13 @@ ifndef SHORT_L10N_CHANNEL
 SHORT_L10N_CHANNEL := $(SHORT_SOURCE_CHANNEL)
 endif
 
-BASE_URL = ftp://ftp.mozilla.org/pub/mozilla.org/$(PRODUCT_NAME)/$(SOURCE_TYPE)
+BASE_URL = ftp://ftp.mozilla.org/pub/mozilla.org/$(OFFICIAL_NAME)/$(SOURCE_TYPE)
 
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
 ifeq ($(SOURCE_TYPE),releases)
-SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(PRODUCT_NAME)-$(SOURCE_VERSION).source.tar.bz2
-SOURCE_REV = $(call uc,$(PRODUCT_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
+SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(OFFICIAL_NAME)-$(SOURCE_VERSION).source.tar.bz2
+SOURCE_REV = $(call uc,$(OFFICIAL_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
 L10N_REV = $(SOURCE_REV)
 SOURCE_REPO = http://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
 else
