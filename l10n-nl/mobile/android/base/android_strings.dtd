@@ -62,11 +62,29 @@
      We can't use android plural forms, sadly. See bug #753859. -->
 <!ENTITY num_tabs2 "&formatD; tabbladen">
 <!ENTITY new_tab_opened "Nieuw tabblad geopend">
+<!ENTITY new_private_tab_opened "Nieuw privétabblad geopend">
+
+<!-- Localization note (switch_button_message): This string should be as short
+     as possible because it's shown as a label in a toast.  Ideally, this string
+     is upper-case, to match Google and Android's convention. -->
+<!ENTITY switch_button_message "WISSEL">
 
 <!ENTITY settings "Instellingen">
 <!ENTITY settings_title "Instellingen">
 <!ENTITY pref_category_advanced "Geavanceerd">
 <!ENTITY pref_category_customize "Aanpassen">
+
+<!-- Localization note (pref_category_language) : This is the preferences
+     section in which the user picks the locale in which to display Firefox
+     UI. The locale includes both language and region concepts. -->
+<!ENTITY pref_category_language "Taal">
+<!ENTITY pref_browser_locale "Browsertaal">
+
+<!-- Localization note (locale_system_default) : This string indicates that
+     Firefox will use the locale currently selected in Android's settings
+     to display browser chrome. -->
+<!ENTITY locale_system_default "Standaardwaarde systeem">
+
 <!ENTITY pref_category_search3 "Zoeken">
 <!ENTITY pref_category_search_summary "Uw zoekproviders aanpassen">
 <!ENTITY pref_category_display "Weergave">
@@ -103,12 +121,15 @@
 <!ENTITY pref_home_updates "Automatische updates">
 <!ENTITY pref_home_updates_enabled "Ingeschakeld">
 <!ENTITY pref_home_updates_wifi "Alleen via wifi">
+<!ENTITY pref_home_suggested_sites "Websitesugesties tonen">
+<!ENTITY pref_home_suggested_sites_summary "Toont snelkoppelingen naar websites waarvan wij denken dat u ze interessant vind op uw startpagina">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Aanpassen">
 <!ENTITY pref_header_display "Weergave">
 <!ENTITY pref_header_privacy_short "Privacy">
 <!ENTITY pref_header_help "Help">
+<!ENTITY pref_header_language "Taal">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Ontwikkelaarshulpmiddelen">
 
@@ -217,6 +238,9 @@ size. -->
 <!ENTITY pref_update_autodownload_never "Nooit">
 <!ENTITY pref_update_autodownload_always "Altijd">
 
+<!-- Localization note (help_menu) : This string is used in the main menu-->
+<!ENTITY help_menu "Help">
+
 <!ENTITY quit "Afsluiten">
 
 <!ENTITY addons "Add-ons">
@@ -280,7 +304,10 @@ size. -->
      whether or not the dynamic toolbar is enabled. -->
 <!ENTITY pref_scroll_title_bar "Titelbalk scrollen">
 
-<!ENTITY history_removed "Pagina verwijderd">
+<!-- Localization note (page_removed): This string appears in a toast message when
+     any page is removed frome about:home. This includes pages that are in history,
+     bookmarks, or reading list. -->
+<!ENTITY page_removed "Pagina verwijderd">
 
 <!ENTITY bookmark_edit_title "Bladwijzer bewerken">
 <!ENTITY bookmark_edit_name "Naam">
@@ -295,7 +322,6 @@ size. -->
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
 <!ENTITY reading_list_added "Pagina aan uw leeslijst toegevoegd">
-<!ENTITY reading_list_removed "Pagina van uw leeslijst verwijderd">
 <!ENTITY reading_list_failed "Pagina aan uw leeslijst toevoegen mislukt">
 <!ENTITY reading_list_duplicate "Pagina staat al in uw leeslijst">
 
@@ -322,6 +348,8 @@ size. -->
 <!ENTITY home_top_sites_add "Een website toevoegen">
 
 <!ENTITY home_history_title "Geschiedenis">
+<!ENTITY home_clear_history_button "Geschiedenis wissen">
+<!ENTITY home_clear_history_confirm "Weet u zeker dat u uw geschiedenis wilt wissen?">
 <!ENTITY home_bookmarks_empty "Opgeslagen bladwijzers verschijnen hier.">
 <!ENTITY home_last_tabs_title "Tabbladen van de vorige keer">
 <!ENTITY home_last_tabs_open "Alle tabbladen van de vorige keer openen">
@@ -435,3 +463,11 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      They are never shown to users -->
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Klaar">
+
+<!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
+     "relative time span string" produced by Android.  This string describes the
+     time the tabs were last synced relative to the current time; examples
+     include "42 minutes ago", "4 days ago", "last week", etc. The subject of
+     "Last synced" is one of the user's other Sync clients, typically Firefox on
+     their desktop or laptop.-->
+<!ENTITY remote_tabs_last_synced "Laatst gesynchroniseerd: &formatS;">

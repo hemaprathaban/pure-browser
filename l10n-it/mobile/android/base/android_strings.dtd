@@ -32,8 +32,8 @@
 <!ENTITY bookmark_options "Opzioni">
 <!ENTITY history_today_section "Oggi">
 <!ENTITY history_yesterday_section "Ieri">
-<!ENTITY history_week_section "7 giorni fa">
-<!ENTITY history_older_section "Più vecchi di 7 giorni">
+<!ENTITY history_week_section "Ultima settimana">
+<!ENTITY history_older_section "Oltre una settimana fa">
 <!ENTITY go "Vai">
 <!ENTITY search "Cerca">
 <!ENTITY reload "Ricarica">
@@ -47,10 +47,15 @@
 <!ENTITY one_tab "1 scheda">
 <!ENTITY num_tabs2 "&formatD; schede">
 <!ENTITY new_tab_opened "Aperta nuova scheda">
+<!ENTITY new_private_tab_opened "Aperta nuova scheda anonima">
+<!ENTITY switch_button_message "PASSA A">
 <!ENTITY settings "Impostazioni">
 <!ENTITY settings_title "Impostazioni">
 <!ENTITY pref_category_advanced "Avanzate">
 <!ENTITY pref_category_customize "Personalizzazione">
+<!ENTITY pref_category_language "Lingua">
+<!ENTITY pref_browser_locale "Lingua del browser">
+<!ENTITY locale_system_default "Predefinita del sistema">
 <!ENTITY pref_category_search3 "Ricerca">
 <!ENTITY pref_category_search_summary "Personalizza i motori di ricerca">
 <!ENTITY pref_category_display "Visualizzazione">
@@ -78,10 +83,13 @@
 <!ENTITY pref_home_updates "Aggiornamento automatico">
 <!ENTITY pref_home_updates_enabled "Attivo">
 <!ENTITY pref_home_updates_wifi "Solo con Wi-Fi">
+<!ENTITY pref_home_suggested_sites "Visualizza siti consigliati">
+<!ENTITY pref_home_suggested_sites_summary "Visualizza nella pagina iniziale dei link a siti che riteniamo interessanti per gli utenti">
 <!ENTITY pref_header_customize "Personalizzazione">
 <!ENTITY pref_header_display "Visualizzazione">
 <!ENTITY pref_header_privacy_short "Privacy">
 <!ENTITY pref_header_help "Aiuto">
+<!ENTITY pref_header_language "Lingua">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Strumenti di sviluppo">
 <!ENTITY pref_cookies_menu "Cookie">
@@ -157,6 +165,7 @@
 <!ENTITY pref_update_autodownload_wifi "Solo con Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Mai">
 <!ENTITY pref_update_autodownload_always "Sempre">
+<!ENTITY help_menu "Guida">
 <!ENTITY quit "Esci">
 <!ENTITY addons "Componenti aggiuntivi">
 <!ENTITY downloads "Download">
@@ -190,7 +199,7 @@
 <!ENTITY contextmenu_open_private_tab "Apri in scheda anonima">
 <!ENTITY contextmenu_open_in_reader "Apri in Lettore">
 <!ENTITY contextmenu_remove "Elimina">
-<!ENTITY contextmenu_add_to_launcher "Aggiungi alla schermata principale">
+<!ENTITY contextmenu_add_to_launcher "Agg. a schermata principale">
 <!ENTITY contextmenu_share "Condividi">
 <!ENTITY contextmenu_pasteandgo "Incolla e vai">
 <!ENTITY contextmenu_paste "Incolla">
@@ -206,7 +215,7 @@
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
 <!ENTITY pref_scroll_title_bar "Barra del titolo dinamica">
-<!ENTITY history_removed "Pagina rimossa">
+<!ENTITY page_removed "Pagina rimossa">
 <!ENTITY bookmark_edit_title "Modifica segnalibro">
 <!ENTITY bookmark_edit_name "Nome">
 <!ENTITY bookmark_edit_location "Indirizzo">
@@ -216,7 +225,6 @@
 <!ENTITY site_settings_clear "Elimina">
 <!ENTITY site_settings_no_settings "Non ci sono impostazioni da eliminare.">
 <!ENTITY reading_list_added "Pagina aggiunta a Elenco lettura">
-<!ENTITY reading_list_removed "Pagina eliminata da Elenco lettura">
 <!ENTITY reading_list_failed "Impossibile aggiungere la pagina a Elenco lettura">
 <!ENTITY reading_list_duplicate "La pagina è già presente in Elenco lettura">
 <!ENTITY page_action_dropmarker_description "Azioni disponibili">
@@ -234,6 +242,8 @@
 <!ENTITY home_top_sites_title "Siti principali">
 <!ENTITY home_top_sites_add "Aggiungi un sito">
 <!ENTITY home_history_title "Cronologia">
+<!ENTITY home_clear_history_button "Elimina cronologia">
+<!ENTITY home_clear_history_confirm "Eliminare la cronologia di navigazione?">
 <!ENTITY home_bookmarks_empty "In questa sezione verranno visualizzati i segnalibri salvati.">
 <!ENTITY home_last_tabs_title "Schede dall’ultima esecuzione">
 <!ENTITY home_last_tabs_open "Apri tutte le schede dall’ultima esecuzione">
@@ -290,3 +300,4 @@
 <!ENTITY ellipsis "…">
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Fatto">
+<!ENTITY remote_tabs_last_synced "Ultima sinc.: &formatS;">

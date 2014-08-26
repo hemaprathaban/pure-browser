@@ -9,13 +9,14 @@
 <Image width="16" height="16" type="image/x-icon">http://www.ebay.com/favicon.ico</Image>
 <Image width="65" height="26" type="image/x-icon">http://www.ebay.com/favicon.ico</Image>
 <Image width="130" height="52" type="image/x-icon">http://www.ebay.com/favicon.ico</Image>
-<Url type="application/x-suggestions+json" method="GET" template="http://anywhere.ebay.com/services/suggest/">
-  <Param name="s" value="0"/>
-  <Param name="q" value="{searchTerms}"/>
+<Url type="application/x-suggestions+json" method="GET" template="http://autosug.ebay.com/autosug">
+  <Param name="sId" value="0" />
+  <Param name="kwd" value="{searchTerms}" />
+  <Param name="fmt" value="osr" />
 </Url>
 <Url type="text/html" method="GET" template="http://rover.ebay.com/rover/1/711-47294-18009-3/4" resultdomain="ebay.com">
-  <Param name="mpre" value="http://shop.ebay.com/?_nkw={searchTerms}"/>
+  <Param name="mfe"  value="search" />
+  <Param name="mpre" value="http://www.ebay.com/sch/i.html?_nkw={searchTerms}" />
 </Url>
 <SearchForm>http://search.ebay.com/</SearchForm>
 </SearchPlugin>
-

@@ -15,7 +15,7 @@
 <!ENTITY  switch_to_tab "K rajtarkej přepinać">
 
 <!ENTITY  crash_reporter_title "&brandShortName; - rozprawjak spadow">
-<!ENTITY  crash_message2 "&brandShortName; měješe problem a spadnył. Waše rajtarki měli so na startowej stronje &brandShortname; nalistować, hdyž znowa startujeće.">
+<!ENTITY  crash_message2 "&brandShortName; měješe problem a spadnył. Waše rajtarki měli so na startowej stronje &brandShortName; nalistować, hdyž znowa startujeće.">
 <!ENTITY  crash_send_report_message3 "Informujće &vendorShortName; wo tutym spadźe, zo by móhł jón wotstronił">
 <!ENTITY  crash_include_url2 "Adresu strony zapřijeć, kotruž sym wopytał">
 <!ENTITY  crash_sorry "Je nam žel">
@@ -62,11 +62,28 @@
      We can't use android plural forms, sadly. See bug #753859. -->
 <!ENTITY num_tabs2 "&formatD; rajtarkow">
 <!ENTITY new_tab_opened "Nowy rajtark je so wočinił">
+<!ENTITY new_private_tab_opened "Nowy priwatny rajtark je so wočinił">
+<!-- Localization note (switch_button_message): This string should be as short
+     as possible because it's shown as a label in a toast.  Ideally, this string
+     is upper-case, to match Google and Android's convention. -->
+<!ENTITY switch_button_message "PŘEPINAĆ">
 
 <!ENTITY settings "Nastajenja">
 <!ENTITY settings_title "Nastajenja">
 <!ENTITY pref_category_advanced "Rozšěrjene">
 <!ENTITY pref_category_customize "Přiměrić">
+<!-- Localization note (pref_category_language) : This is the preferences
+     section in which the user picks the locale in which to display Firefox
+     UI. The locale includes both language and region concepts. -->
+
+<!ENTITY pref_category_language "Rěč">
+<!ENTITY pref_browser_locale "Rěč wobhladowaka">
+<!-- Localization note (locale_system_default) : This string indicates that
+     Firefox will use the locale currently selected in Android's settings
+     to display browser chrome. -->
+
+<!ENTITY locale_system_default "Systemowy standard">
+
 <!ENTITY pref_category_search3 "Pytać">
 <!ENTITY pref_category_search_summary "Přiměrće swojich pytanskich poskićowarjow">
 <!ENTITY pref_category_display "Zwobraznić">
@@ -103,12 +120,15 @@
 <!ENTITY pref_home_updates "Awtomatiske aktualizacije">
 <!ENTITY pref_home_updates_enabled "Zmóžnjeny">
 <!ENTITY pref_home_updates_wifi "Jenož přez Wi-Fi">
+<!ENTITY pref_home_suggested_sites "Sydłowe namjety pokazać">
+<!ENTITY pref_home_suggested_sites_summary "Tastowe skrótšenki za sydła na wašej startowej stronje zwobraznić, wo kotrychž myslimy, zo wy maće je za zajimawe.">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "Přiměrić">
 <!ENTITY pref_header_display "Zwobraznić">
 <!ENTITY pref_header_privacy_short "Priwatnosć">
 <!ENTITY pref_header_help "Pomoc">
+<!ENTITY pref_header_language "Rěč">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Wuwiwarske nastroje">
 
@@ -215,6 +235,9 @@ size. -->
 <!ENTITY pref_update_autodownload_wifi "Jenož přez Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Ženje">
 <!ENTITY pref_update_autodownload_always "Přeco">
+<!-- Localization note (help_menu) : This string is used in the main menu-->
+
+<!ENTITY help_menu "Pomoc">
 
 <!ENTITY quit "Skónčić">
 
@@ -278,8 +301,11 @@ size. -->
      whether or not the dynamic toolbar is enabled. -->
 
 <!ENTITY pref_scroll_title_bar "Titulnu lajstu kulić">
+<!-- Localization note (page_removed): This string appears in a toast message when
+     any page is removed frome about:home. This includes pages that are in history,
+     bookmarks, or reading list. -->
 
-<!ENTITY history_removed "Strona je so wotstroniła">
+<!ENTITY page_removed "Strona je so wotstroniła">
 
 <!ENTITY bookmark_edit_title "Zapołožku wobdźěłać">
 <!ENTITY bookmark_edit_name "Mjeno">
@@ -294,7 +320,6 @@ size. -->
 <!ENTITY site_settings_no_settings  "Nastajenja za zhašenje njejsu.">
 
 <!ENTITY reading_list_added "Strona je so wašej čitanskej lisćinje přidała">
-<!ENTITY reading_list_removed "Strona je so z wašeje čitanskeje lisćiny zhašała">
 <!ENTITY reading_list_failed "Strona njeda so wašej čitanskej lisćinje přidać">
 <!ENTITY reading_list_duplicate "Strona je hižo we wašej čitanskej lisćinje">
 <!-- Localization note : These strings are used as alternate text for accessibility.
@@ -321,6 +346,8 @@ size. -->
 <!ENTITY home_top_sites_add "Sydło přidać">
 
 <!ENTITY home_history_title "Historija">
+<!ENTITY home_clear_history_button "Přehladowansku historiju wuprózdnić">
+<!ENTITY home_clear_history_confirm "Chceće woprawdźe historiju wuprózdnić?">
 <!ENTITY home_bookmarks_empty "Zapołožki, kotrež składujeće, so tu pokazuja.">
 <!ENTITY home_last_tabs_title "Rajtarki poslednjeho raza">
 <!ENTITY home_last_tabs_open "Wšě rajtarki poslednjeho raza wočinić">
@@ -434,3 +461,11 @@ z Androida">
 
 <!ENTITY actionbar_menu "Meni">
 <!ENTITY actionbar_done "Hotowo">
+<!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
+     "relative time span string" produced by Android.  This string describes the
+     time the tabs were last synced relative to the current time; examples
+     include "42 minutes ago", "4 days ago", "last week", etc. The subject of
+     "Last synced" is one of the user's other Sync clients, typically Firefox on
+     their desktop or laptop.-->
+
+<!ENTITY remote_tabs_last_synced "Posledni raz synchronizowany: &formatS;">
