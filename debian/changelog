@@ -1,3 +1,18 @@
+iceweasel (31.1.0esr-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2014-{67-70,72}, also known as:
+    CVE-2014-1562, CVE-2014-1553, CVE-2014-1563, CVE-2014-1564,
+    CVE-2014-1565, CVE-2014-1567.
+
+  * debian/browser.bug-script.in, debian/browser.install.in,
+    debian/extra-stuff/Makefile.in, debian/extra-stuff/reportbug-helper-script,
+    debian/installer/package-manifest.browser: Fix bug script.
+  * debian/branding/content/Makefile.in: Revert branding changes for SVG
+    wordmark, not used on ESR
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 03 Sep 2014 12:17:18 +0900
+
 iceweasel (31.0-3) unstable; urgency=high
 
   * The "this time it's going to build on armel" release.
