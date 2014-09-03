@@ -12,6 +12,3 @@ EXTRA_COMPONENTS := addonsInfo.js addonsInfo.manifest
 include $(topsrcdir)/config/rules.mk
 
 DEFINES += -DAPP_UA_NAME=a -DAPP_VERSION=0
-
-libs::
-	$(SYSINSTALL) $(IFLAGS2) $(srcdir)/reportbug-helper-script $(DIST)/bin
