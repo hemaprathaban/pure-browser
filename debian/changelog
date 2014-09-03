@@ -1,8 +1,18 @@
-iceweasel (32.0-1) UNRELEASED; urgency=medium
+iceweasel (32.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{67-70,72}, also known as:
+    CVE-2014-1562, CVE-2014-1553, CVE-2014-1554, CVE-2014-1563,
+    CVE-2014-1564, CVE-2014-1565, CVE-2014-1567.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 03 Sep 2014 15:02:18 +0900
+  * debian/browser.bug-script.in, debian/browser.install.in,
+    debian/extra-stuff/Makefile.in, debian/extra-stuff/reportbug-helper-script,
+    debian/installer/package-manifest.browser: Fix bug script.
+  * debian/browser.install.in, debian/rules, debian/upstream.mk: Install
+    libreplace_malloc.so when building a nightly.
+  * debian/control*: Bump nss and sqlite build dependencies.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 03 Sep 2014 15:08:17 +0900
 
 iceweasel (31.0-3) unstable; urgency=high
 
