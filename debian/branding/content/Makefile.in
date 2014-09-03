@@ -8,7 +8,7 @@ VPATH = @srcdir@
 
 include $(DEPTH)/config/autoconf.mk
 
-libs:: about-logo.png about-logo@2x.png about-wordmark.svg about.png icon16.png icon48.png icon64.png identity-icons-brand.png identity-icons-brand@2x.png
+libs:: about-logo.png about-logo@2x.png about-wordmark.png about.png icon16.png icon48.png icon64.png identity-icons-brand.png identity-icons-brand@2x.png
 GARBAGE += $(CHROME_DEPS)
 
 include $(topsrcdir)/config/rules.mk
@@ -23,8 +23,8 @@ about-logo.png: ../iceweasel_icon.svg
 about-logo@2x.png: ../iceweasel_icon.svg
 	rsvg-convert -w 420 -h 420 -o $@ $<
 
-about-wordmark.svg: wordmark.xsl ../iceweasel_logo.svg
-	xsltproc -o $@ $^
+about-wordmark.png: wordmark.xsl ../iceweasel_logo.svg
+	xsltproc $^ | rsvg-convert | convert - -trim -resize 180x38\> -size 180x38 xc:transparent +swap -gravity center -composite $@
 
 icon64.png: ../default64.png
 icon48.png: ../default48.png
