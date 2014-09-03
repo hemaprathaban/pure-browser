@@ -23,8 +23,8 @@
 # link title for https://support.mozilla.org/mobile
 #define bookmarks_support Firefox: આધાર
 
-# LOCALIZATION NOTE (bookmarks_aboutHome):
-# link title for about:home
-#define bookmarks_aboutHome Firefox શરૂઆત
+# LOCALIZATION NOTE (bookmarks_marketplace):
+# link title for https://marketplace.firefox.com
+#define bookmarks_marketplace Firefox બજાર
 
 #unfilter emptyLines

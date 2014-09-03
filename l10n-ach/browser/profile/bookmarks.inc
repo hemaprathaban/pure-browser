@@ -1,60 +1,91 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #filter emptyLines
+
 # LOCALIZATION NOTE: The 'en-US' strings in the URLs will be replaced with
-# your locale code, and link to your translated pages as soon as they're 
+
+# your locale code, and link to your translated pages as soon as they're
+
 # live.
 
-#define bookmarks_title Alama
+
+#define bookmarks_title Alama buk
 
 
-#define bookmarks_heading Alama Buk
+#define bookmarks_heading Alama buk
 
 
-#define bookmarks_toolbarfolder Ket alama me Boc pi bar me Gitic
+#define bookmarks_toolbarfolder Boc me gintic me alama buk
 
 
-#define bookmarks_toolbarfolder_description Med alama me pot buk i boc wek i nen ni guyaro i bar me Gitic pi Alama me Pot Buk
+#define bookmarks_toolbarfolder_description Med alama buk i bocman me neno gi ayara i gintic me alama buk
 
 
 # LOCALIZATION NOTE (getting_started):
 
-# link title for http://en-US.www.mozilla.com/en-US/firefox/central/
 
-#define getting_started Tye kacake
+# link title for https://www.mozilla.org/en-US/firefox/central/
+
+
+#define getting_started Cakone
 
 
 # LOCALIZATION NOTE (firefox_heading):
 
+
 # Firefox links folder name
+
 
 #define firefox_heading Mozilla Firefox
 
 
 # LOCALIZATION NOTE (firefox_help):
 
-# link title for http://en-US.www.mozilla.com/en-US/firefox/help/
 
-#define firefox_help Kony ki Tic cing
+# link title for https://www.mozilla.org/en-US/firefox/help/
+
+
+#define firefox_help Kony kadong kare me pwony
 
 
 # LOCALIZATION NOTE (firefox_customize):
 
-# link title for http://en-US.www.mozilla.com/en-US/firefox/customize/
 
-#define firefox_customize Yar Firefox
+# link title for https://www.mozilla.org/en-US/firefox/customize/
+
+
+#define firefox_customize Yik Firefox
 
 
 # LOCALIZATION NOTE (firefox_community):
 
-# link title for http://en-US.www.mozilla.com/en-US/firefox/community/
 
-#define firefox_community Bed Iye
+# link title for https://www.mozilla.org/en-US/contribute/
+
+
+#define firefox_community Dony iye
 
 
 # LOCALIZATION NOTE (firefox_about):
 
-# link title for http://en-US.www.mozilla.com/en-US/about/
 
-#define firefox_about Lok ikom Wa
+# link title for https://www.mozilla.org/en-US/about/
+
+
+#define firefox_about Lok ikom wa
+
+
+# LOCALIZATION NOTE (firefox_feedback):
+
+
+# link title for browser feedback page
+
+
+# currently used by Metro only: https://input.mozilla.org/feedback/metrofirefox
+
+
+#define firefox_feedback Mi adwogi
 
 
 #unfilter emptyLines

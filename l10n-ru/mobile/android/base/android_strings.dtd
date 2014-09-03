@@ -47,10 +47,15 @@
 <!ENTITY one_tab "1 вкладка">
 <!ENTITY num_tabs2 "&formatD; вкладок">
 <!ENTITY new_tab_opened "Открыта новая вкладка">
+<!ENTITY new_private_tab_opened "Открыта новая приватная вкладка">
+<!ENTITY switch_button_message "ПЕРЕЙТИ">
 <!ENTITY settings "Параметры">
 <!ENTITY settings_title "Параметры">
 <!ENTITY pref_category_advanced "Дополнительно">
 <!ENTITY pref_category_customize "Настройка">
+<!ENTITY pref_category_language "Язык">
+<!ENTITY pref_browser_locale "Язык браузера">
+<!ENTITY locale_system_default "Язык устройства">
 <!ENTITY pref_category_search3 "Поиск">
 <!ENTITY pref_category_search_summary "Настройка ваших поисковых систем">
 <!ENTITY pref_category_display "Отображение">
@@ -78,10 +83,13 @@
 <!ENTITY pref_home_updates "Автоматическое обновление">
 <!ENTITY pref_home_updates_enabled "Включено">
 <!ENTITY pref_home_updates_wifi "Только через Wi-Fi">
+<!ENTITY pref_home_suggested_sites "Показывать предложения сайтов">
+<!ENTITY pref_home_suggested_sites_summary "Отображать ярлыки на сайты на вашей домашней странице, которые, как мы думаем, вы можете найти интересными">
 <!ENTITY pref_header_customize "Настройка">
 <!ENTITY pref_header_display "Отображение">
 <!ENTITY pref_header_privacy_short "Приватность">
 <!ENTITY pref_header_help "Справка">
+<!ENTITY pref_header_language "Язык">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Инструменты разработки">
 <!ENTITY pref_cookies_menu "Куки">
@@ -157,6 +165,7 @@
 <!ENTITY pref_update_autodownload_wifi "Только через Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Никогда">
 <!ENTITY pref_update_autodownload_always "Всегда">
+<!ENTITY help_menu "Справка">
 <!ENTITY quit "Выход">
 <!ENTITY addons "Дополнения">
 <!ENTITY downloads "Загрузки">
@@ -206,7 +215,7 @@
 <!ENTITY pref_titlebar_mode_title "Отображать заголовок страницы">
 <!ENTITY pref_titlebar_mode_url "Отображать адрес страницы">
 <!ENTITY pref_scroll_title_bar "Прокручивать панель заголовка">
-<!ENTITY history_removed "Страница удалена">
+<!ENTITY page_removed "Страница удалена">
 <!ENTITY bookmark_edit_title "Изменение закладки">
 <!ENTITY bookmark_edit_name "Имя">
 <!ENTITY bookmark_edit_location "Расположение">
@@ -216,7 +225,6 @@
 <!ENTITY site_settings_clear "Очистить">
 <!ENTITY site_settings_no_settings "Нет настроек для очистки">
 <!ENTITY reading_list_added "Страница добавлена в ваш Список для чтения">
-<!ENTITY reading_list_removed "Страница удалена из вашего Списка для чтения">
 <!ENTITY reading_list_failed "Не удалось добавить страницу в ваш Список для чтения">
 <!ENTITY reading_list_duplicate "Страница уже в вашем Списке для чтения">
 <!ENTITY page_action_dropmarker_description "Дополнительные действия">
@@ -234,6 +242,8 @@
 <!ENTITY home_top_sites_title "Топ сайтов">
 <!ENTITY home_top_sites_add "Добавить сайт">
 <!ENTITY home_history_title "История">
+<!ENTITY home_clear_history_button "Удалить историю веб-сёрфинга">
+<!ENTITY home_clear_history_confirm "Вы уверены, что хотите удалить свою историю?">
 <!ENTITY home_bookmarks_empty "Сохраняемые вами закладки появятся здесь.">
 <!ENTITY home_last_tabs_title "Вкладки с прошлого раза">
 <!ENTITY home_last_tabs_open "Открыть все вкладки с прошлого раза">
@@ -290,3 +300,4 @@
 <!ENTITY ellipsis "…">
 <!ENTITY actionbar_menu "Меню">
 <!ENTITY actionbar_done "Готово">
+<!ENTITY remote_tabs_last_synced "Последняя синхронизация: &formatS;">

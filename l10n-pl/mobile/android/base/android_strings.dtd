@@ -60,13 +60,30 @@
 <!ENTITY new_tab "Nowa karta">
 <!ENTITY one_tab "Kart: 1">
 <!ENTITY new_tab_opened "Otwarto nową kartę">
+<!ENTITY new_private_tab_opened "Otwarto nową kartę prywatną">
 <!ENTITY new_private_tab "Nowa karta prywatna">
+<!-- Localization note (switch_button_message): This string should be as short
+as possible because it's shown as a label in a toast.  Ideally, this string
+is upper-case, to match Google and Android's convention. -->
+<!ENTITY switch_button_message "PRZEJDŹ">
 
 <!ENTITY settings "Ustawienia">
 <!ENTITY settings_title "Ustawienia">
 
 <!ENTITY pref_category_advanced "Zaawansowane">
 <!ENTITY pref_category_customize "Dostosuj">
+
+<!-- Localization note (pref_category_language) : This is the preferences
+section in which the user picks the locale in which to display Firefox UI.
+The locale includes both language and region concepts. -->
+<!ENTITY pref_category_language "Język">
+<!ENTITY pref_browser_locale "Język przeglądarki">
+
+<!-- Localization note (locale_system_default) : This string indicates that
+    Firefox will use the locale currently selected in Android's settings
+    to display browser chrome. -->
+<!ENTITY locale_system_default "Domyślny język systemu">
+
 <!ENTITY pref_category_search3 "Wyszukiwanie">
 <!ENTITY pref_category_search_summary "Dostosuj wyszukiwarki">
 <!ENTITY pref_category_display "Wyświetlanie">
@@ -104,11 +121,15 @@ selected to be added to the home page. -->
 <!ENTITY pref_home_updates_enabled "Włączone">
 <!ENTITY pref_home_updates_wifi "Tylko przez Wi-Fi">
 
+<!ENTITY pref_home_suggested_sites "Wyświetlaj sugerowane witryny">
+<!ENTITY pref_home_suggested_sites_summary "Wyświetlaj na stronie domowej skróty do witryn, które mogą cię zainteresować">
+
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Dostosuj">
 <!ENTITY pref_header_display "Wyświetlanie">
 <!ENTITY pref_header_privacy_short "Prywatność">
 <!ENTITY pref_header_help "Pomoc">
+<!ENTITY pref_header_language "Język">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Narzędzia dla programistów">
 
@@ -209,6 +230,9 @@ size. -->
 <!ENTITY pref_update_autodownload_never "Nigdy">
 <!ENTITY pref_update_autodownload_always "Zawsze">   
 
+<!-- Localization note (help_menu) : This string is used in the main menu-->
+<!ENTITY help_menu "Pomoc">
+
 <!ENTITY quit "Zakończ">
 
 <!ENTITY addons "Dodatki">
@@ -264,7 +288,7 @@ size. -->
 <!-- Localization note (pref_scroll_title_bar): Label for setting that controls whether or not the dynamic toolbar is enabled. -->
 <!ENTITY pref_scroll_title_bar "Przewijaj pasek tytułu">
 
-<!ENTITY history_removed "Stronę usunięto">
+<!ENTITY page_removed "Stronę usunięto">
 
 <!ENTITY bookmark_edit_title "Zmień zakładkę">
 <!ENTITY bookmark_edit_name "Nazwa">
@@ -278,7 +302,6 @@ size. -->
 
 <!ENTITY reading_list_title "Do przeczytania">
 <!ENTITY reading_list_added "Strona dodana do listy „Do przeczytania”">
-<!ENTITY reading_list_removed "Strona usunięta z listy „Do przeczytania”">
 <!ENTITY reading_list_failed "Nie udało się zapisać strony na liście „Do przeczytania”">
 <!ENTITY reading_list_duplicate "Strona już jest na liście „Do przeczytania”">
 
@@ -305,6 +328,8 @@ size. -->
 <!ENTITY home_top_sites_add "Dodaj stronę">
 
 <!ENTITY home_history_title "Historia">
+<!ENTITY home_clear_history_button "Wyczyść historię przeglądania">
+<!ENTITY home_clear_history_confirm "Czy na pewno chcesz wyczyścić historię przeglądania?">
 <!ENTITY home_bookmarks_empty "Tutaj pojawiają się zachowane zakładki.">
 <!ENTITY home_last_tabs_title "Karty z ostatniej sesji">
 <!ENTITY home_last_tabs_open "Otwórz wszystkie karty z ostatniej sesji">
@@ -415,3 +440,5 @@ it is applicable. -->
      They are never shown to users -->
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Gotowe">
+
+<!ENTITY remote_tabs_last_synced "Ostatnia synchronizacja: &formatS;">

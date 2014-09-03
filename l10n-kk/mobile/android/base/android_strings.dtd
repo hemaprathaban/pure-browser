@@ -62,11 +62,28 @@
      We can't use android plural forms, sadly. See bug #753859. -->
 <!ENTITY num_tabs2 "&formatD; бет">
 <!ENTITY new_tab_opened "Жаңа бет ашылды">
+<!ENTITY new_private_tab_opened "Жаңа жекелік беті ашылды">
+<!-- Localization note (switch_button_message): This string should be as short
+     as possible because it's shown as a label in a toast.  Ideally, this string
+     is upper-case, to match Google and Android's convention. -->
+<!ENTITY switch_button_message "АУЫСУ">
 
 <!ENTITY settings "Баптаулар">
 <!ENTITY settings_title "Баптаулар">
 <!ENTITY pref_category_advanced "Кеңейтілген">
 <!ENTITY pref_category_customize "Баптау">
+<!-- Localization note (pref_category_language) : This is the preferences
+     section in which the user picks the locale in which to display Firefox
+     UI. The locale includes both language and region concepts. -->
+
+<!ENTITY pref_category_language "Тіл">
+<!ENTITY pref_browser_locale "Браузер тілі">
+<!-- Localization note (locale_system_default) : This string indicates that
+     Firefox will use the locale currently selected in Android's settings
+     to display browser chrome. -->
+
+<!ENTITY locale_system_default "Жүйелік">
+
 <!ENTITY pref_category_search3 "Іздеу">
 <!ENTITY pref_category_search_summary "Іздеу қызметтерін баптаңыз">
 <!ENTITY pref_category_display "Көрсету">
@@ -103,12 +120,15 @@
 <!ENTITY pref_home_updates "Автожаңартулар">
 <!ENTITY pref_home_updates_enabled "Іске қосулы">
 <!ENTITY pref_home_updates_wifi "Тек Wi-Fi арқылы">
+<!ENTITY pref_home_suggested_sites "Сайттар ұсыныстарын көрсету">
+<!ENTITY pref_home_suggested_sites_summary "Біз сізге қызық болып көрінеді деп ойлайтын сайттарды үй парағыңызда көрсету">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "Баптау">
 <!ENTITY pref_header_display "Көрсету">
 <!ENTITY pref_header_privacy_short "Жекелік">
 <!ENTITY pref_header_help "Көмек">
+<!ENTITY pref_header_language "Тіл">
 <!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Өндеуші саймандары">
 
@@ -215,6 +235,9 @@ size. -->
 <!ENTITY pref_update_autodownload_wifi "Тек Wi-Fi арқылы">
 <!ENTITY pref_update_autodownload_never "Ешқашан">
 <!ENTITY pref_update_autodownload_always "Әрқашан">
+<!-- Localization note (help_menu) : This string is used in the main menu-->
+
+<!ENTITY help_menu "Көмек">
 
 <!ENTITY quit "Шығу">
 
@@ -278,8 +301,11 @@ size. -->
      whether or not the dynamic toolbar is enabled. -->
 
 <!ENTITY pref_scroll_title_bar "Атау жолағын айналдыру">
+<!-- Localization note (page_removed): This string appears in a toast message when
+     any page is removed frome about:home. This includes pages that are in history,
+     bookmarks, or reading list. -->
 
-<!ENTITY history_removed "Парақ өшірілді">
+<!ENTITY page_removed "Парақ өшірілді">
 
 <!ENTITY bookmark_edit_title "Бетбелгіні түзету">
 <!ENTITY bookmark_edit_name "Аты">
@@ -294,7 +320,6 @@ size. -->
 <!ENTITY site_settings_no_settings  "Тазарту үшін баптаулар жоқ.">
 
 <!ENTITY reading_list_added "Парақ сіздің Оқу тізіміңізге қосылды">
-<!ENTITY reading_list_removed "Парақ сіздің Оқу тізіміңізден өшірілді">
 <!ENTITY reading_list_failed "Парақты сіздің Оқу тізіміңізге қосу сәтсіз аяқталды">
 <!ENTITY reading_list_duplicate "Парақ сіздің Оқу тізіміңізде бар болып тұр">
 <!-- Localization note : These strings are used as alternate text for accessibility.
@@ -321,6 +346,8 @@ size. -->
 <!ENTITY home_top_sites_add "Сайтты қосу">
 
 <!ENTITY home_history_title "Тарихы">
+<!ENTITY home_clear_history_button "Шолу тарихын тазарту">
+<!ENTITY home_clear_history_confirm "Тарихты өшіруді шынымен қалайсыз ба?">
 <!ENTITY home_bookmarks_empty "Сіз сақтаған бетбелгілер осында көрсетіледі.">
 <!ENTITY home_last_tabs_title "Алдыңғы реттен қалған беттер">
 <!ENTITY home_last_tabs_open "Алдыңғы реттен барлық бетті ашу">
@@ -432,3 +459,11 @@ Android-тан импорттау">
 
 <!ENTITY actionbar_menu "Мәзір">
 <!ENTITY actionbar_done "Дайын">
+<!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
+     "relative time span string" produced by Android.  This string describes the
+     time the tabs were last synced relative to the current time; examples
+     include "42 minutes ago", "4 days ago", "last week", etc. The subject of
+     "Last synced" is one of the user's other Sync clients, typically Firefox on
+     their desktop or laptop.-->
+
+<!ENTITY remote_tabs_last_synced "Соңғы синхрондау: &formatS;">

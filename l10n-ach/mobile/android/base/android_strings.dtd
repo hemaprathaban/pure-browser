@@ -12,18 +12,21 @@
 <!ENTITY  awesomebar_all_pages_title "Kakube maloyo">
 <!ENTITY  awesomebar_bookmarks_title "Alama me buk">
 <!ENTITY  awesomebar_history_title "Lok Mukato">
-<!ENTITY  awesomebar_search_engine "Yeny pi \&quot;&#037;s\&quot;">
+<!ENTITY  awesomebar_switch_to_tab "Switch to tab">
 
-<!ENTITY  crash_reporter_title "&brandShortName; Lami ngec me Bal ma time atura">
-<!ENTITY  crash_message "&brandShortName; opoto woko. Myero ki mi lanyik megi ikom &brandShortName; Cak pot buk ka ce i nwoyo cako.">
-<!ENTITY  crash_help_message "Tim ber i kony wa cobo peko ma eni ni!">
-<!ENTITY  crash_send_report_message "Cwal ngec me poto atura pa Mozilla">
-<!ENTITY  crash_include_url "Med ie kanonge me pot buk">
+<!ENTITY  crash_reporter_title "&brandShortName; Crash Reporter">
+<!ENTITY  crash_message2 "&brandShortName; had a problem and crashed. Your tabs should be listed on the &brandShortName; Start page when you restart.">
+<!ENTITY  crash_send_report_message2 "Tell Mozilla about this crash so they can fix it">
+<!ENTITY  crash_include_url2 "Include the address of the page I was on">
+<!ENTITY  crash_sorry "We\'re sorry">
+<!ENTITY  crash_comment "Add a comment (comments are publicly visible)">
+<!ENTITY  crash_allow_contact "Allow Mozilla to contact me about this report">
+<!ENTITY  crash_email "Your email">
+<!ENTITY  crash_closing_alert "Exit without sending a crash report?">
+<!ENTITY  sending_crash_report "Cwalo ngec ma opoto aturat\u2026">
 <!ENTITY  crash_close_label "Lor">
 <!ENTITY  crash_restart_label "Cak &brandShortName;">
-<!ENTITY  sending_crash_report "Cwalo ngec ma opoto aturat\u2026">
 <!ENTITY  exit_label "Kat woko">
-<!ENTITY  continue_label "Mede anyim">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName; Tic me Web">
 <!ENTITY  launcher_shortcuts_empty "Tic me kakube me web pe ononge">
@@ -45,6 +48,8 @@
 <!ENTITY history_week_section "Nino 7 mukato angec">
 <!ENTITY history_older_section "Muti loyo nino 7">
 
+<!ENTITY go "Ceti">
+<!ENTITY search "Yeny">
 <!ENTITY reload "Nwo pango">
 <!ENTITY forward "Cwal anyim">
 <!ENTITY menu "Nying Jami">
@@ -53,50 +58,105 @@
 <!ENTITY site_security "Ber bedo me Dyer bar">
 
 <!ENTITY close_tab "Lor Dirica matidi">
-<!ENTITY new_tab "Tab Manyen">
 <!ENTITY one_tab "dirica matidi 1">
-<!-- Localization note (num_tabs) : Number of tabs is always more than one. 
+<!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
-<!ENTITY num_tabs "&#037;d dirica matidi">
+<!ENTITY num_tabs2 "&formatD; tabs">
 <!ENTITY new_tab_opened "Kiyabo Tab manyen">
 
 <!ENTITY settings "Tero">
 <!ENTITY settings_title "Tero">
-<!ENTITY pref_category_general "Kacel">
-<!ENTITY pref_category_privacy "I mung pa dano &amp; Gwoko kuc">
-<!ENTITY pref_category_content "Gin manonge iye">
-<!ENTITY pref_category_importexport "Kel ki woko &amp; Cwal woko">
+<!ENTITY pref_category_general "General">
+<!ENTITY pref_category_privacy "Privacy &amp; Security">
+<!ENTITY pref_category_content "Content">
+<!-- Localization note (datareporting_title) : This string matches
+     (dataChoicesTab.label) in chrome/browser/preferences/advanced.dtd except in
+     capitalization. -->
+<!ENTITY pref_category_datareporting "Data choices">
 <!ENTITY pref_about_firefox "Makwako &brandShortName;">
-<!ENTITY pref_do_not_track "Waci kakube pe maka">
-<!ENTITY pref_telemetry "Cwal tic me jami">
 <!ENTITY pref_remember_signons "Poyo I cwil me donyo">
-<!ENTITY pref_cookies "Mii kakube tii">
+<!-- Localization note: These are shown in the left sidebar on tablets -->
+
+<!ENTITY pref_header_general "General">
+<!ENTITY pref_header_privacy "Privacy &amp; Security">
+<!ENTITY pref_header_content "Content">
+
+<!ENTITY pref_cookies_menu "Kakube me intanet">
+<!ENTITY pref_cookies_accept_all "Enabled">
+<!ENTITY pref_cookies_not_accept_foreign "Enabled, excluding 3rd party">
+<!ENTITY pref_cookies_disabled "Disabled">
+
+<!ENTITY pref_donottrack_menu "Tracking">
+<!ENTITY pref_donottrack_disallow_tracking "Tell sites that I do not want to be tracked">
+<!ENTITY pref_donottrack_allow_tracking "Tell sites that I want to be tracked">
+<!ENTITY pref_donottrack_no_pref "Do not tell sites anything about my tracking preferences">
+
 <!ENTITY pref_char_encoding "Kit ma Kicoyo Kwede">
 <!ENTITY pref_char_encoding_on "Nyut acaki">
-<!ENTITY pref_char_encoding_off "Pe\ i nyut cako">
+<!ENTITY pref_char_encoding_off "Don\'t show menu">
 <!ENTITY pref_clear_private_data "Ywe tic pa dano">
 <!ENTITY pref_plugins "Rwaki iyie">
-<!ENTITY pref_plugins_enabled "Mi tii">
+<!ENTITY pref_plugins_enabled "Enabled">
 <!ENTITY pref_plugins_tap_to_play "Gwet wek tuki">
-<!ENTITY pref_plugins_disabled "Kijuko woko">
+<!ENTITY pref_plugins_disabled "Disabled">
 <!ENTITY pref_text_size "Dit pa nyig Coc">
+<!ENTITY pref_reflow_on_zoom2 "Pinch to reflow text">
 <!ENTITY pref_font_size_tiny "Tino">
 <!ENTITY pref_font_size_small "Tidi">
 <!ENTITY pref_font_size_medium "Dyere dyere">
 <!ENTITY pref_font_size_large "Lac">
 <!ENTITY pref_font_size_xlarge "Madit loyo">
+<!ENTITY pref_font_size_set "Ter">
+<!-- Localization note (pref_font_size_adjust_char): A button with a small version of this character
+(or combination of characters) is used to decrease the preview font size; a larger version of the
+same character/combination is used to increase the preview font size. It should be a concise
+representation of the language it is used in that will help show the text in the preview will change
+size. -->
+<!ENTITY pref_font_size_adjust_char "A">
+<!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
+    demonstrate the font size setting.  It is meant to be whimsical and fun. -->
+
+<!ENTITY pref_font_size_preview_text "The quick orange fox jumps over your expectations with more speed, more flexibility and more security. As a non-profit, we\'re free to innovate on your behalf without any pressure to compromise. That means a better experience for you and a brighter future for the Web.">
+
 <!ENTITY pref_use_master_password "Tii ki i cwil me donyo ma dit">
+<!ENTITY pref_show_product_announcements "Nyut kwena me jami ma kato">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Nyut byek me yeny maplo">
 <!ENTITY pref_import_android "Kel ki woko ki Android">
 <!ENTITY pref_private_data_history "Tye ka yabo &amp; Gol Mukato">
 <!ENTITY pref_private_data_formdata "Fom &amp; yeny mukato">
-<!ENTITY pref_private_data_cookies "Kakube me intanet">
+<!ENTITY pref_private_data_cookies2 "Layab intanet &amp; donyo iyie me oyoto">
 <!ENTITY pref_private_data_passwords "Saved passwords">
 <!ENTITY pref_private_data_cache "Kagwoko">
-<!ENTITY pref_private_data_sessions "Tye ka tic Dony iyie">
 <!ENTITY pref_private_data_offlineApps "Coc kakube me web ma pe iwi yamo">
-<!ENTITY pref_private_data_siteSettings "Gin ma imito i di bar">
+<!ENTITY pref_private_data_siteSettings2 "Site settings">
+<!ENTITY pref_private_data_downloadFiles "Downloaded files">
+
+<!ENTITY datareporting_notification_title "&brandShortName; stats &amp; data">
+<!ENTITY datareporting_notification_action "Choose what to share">
+<!ENTITY datareporting_notification_summary "To improve your experience, &brandShortName; automatically sends some information to &vendorShortName;.">
+<!ENTITY datareporting_notification_summary_short "To improve your experience, &brandShortName;…">
+<!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary,
+     reporting_telemetry_title, datareporting_telemetry_summary,
+     datareporting_crashreporter_summary) : These match the strings in
+     chrome/browser/preferences/advanced.dtd (healthReportSection.label,
+     healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
+     crashReporterDesc.label). -->
+
+<!ENTITY datareporting_fhr_title "&brandShortName; Health Report">
+<!ENTITY datareporting_fhr_summary "Helps you understand your browser performance and shares data with &vendorShortName; about your browser health">
+<!ENTITY datareporting_telemetry_title "Telemetry">
+<!ENTITY datareporting_telemetry_summary "Shares performance, usage, hardware and customization data about your browser with &vendorShortName; to help us make &brandShortName; better">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName; submits crash reports to help &vendorShortName; make your browser more stable and secure">
+<!-- Localization note (datareporting_crashreporter_title) : This string matches
+     (crashReporterSection.label) in chrome/browser/preferences/advanced.dtd
+     except in branding. -->
+<!ENTITY datareporting_crashreporter_title "&brandShortName; Crash Reporter">
+
+<!ENTITY pref_update_autodownload "Automatic updates">
+<!ENTITY pref_update_autodownload_wifi "Only over Wi-Fi">
+<!ENTITY pref_update_autodownload_disabled "Disabled">
+<!ENTITY pref_update_autodownload_enabled "Enabled">
 
 <!ENTITY quit "Wek woko">
 
@@ -111,6 +171,16 @@
 <!ENTITY save_as_pdf "Gwok Calo PDF">
 <!ENTITY find_in_page "Find in Page">
 <!ENTITY desktop_mode "Kwa Di bar me cal ma i kompiuta">
+<!ENTITY tools "Gitic">
+<!ENTITY new_tab "Tab Manyen">
+<!ENTITY new_private_tab "New Private Tab">
+<!ENTITY close_all_tabs "Close All Tabs">
+<!ENTITY tabs_normal "Tabs">
+<!ENTITY tabs_private "Private">
+<!ENTITY tabs_synced "Synced">
+<!ENTITY wallpaper_success "Wallpaper updated">
+<!ENTITY wallpaper_progress "Setting wallpaper">
+<!ENTITY wallpaper_fail "Unable to set wallpaper">
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
 
@@ -120,6 +190,8 @@
 <!ENTITY find_close "Close">
 
 <!ENTITY contextmenu_open_new_tab "Yab ki iyi Tab Manyen">
+<!ENTITY contextmenu_open_private_tab "Open in Private Tab">
+<!ENTITY contextmenu_open_in_reader "Yab ki I gin kwano">
 <!ENTITY contextmenu_remove_history "Remove">
 <!ENTITY contextmenu_remove_bookmark "Remove">
 <!ENTITY contextmenu_add_to_launcher "Med I gang Kio ma neno">
@@ -127,9 +199,13 @@
 <!ENTITY contextmenu_pasteandgo "Dac &amp; Ceti">
 <!ENTITY contextmenu_paste "Dani">
 <!ENTITY contextmenu_copyurl "Lok Address">
-<!ENTITY contextmenu_edit_bookmark "Yubi">
-<!-- Localization note (history_removed) : Shown in a toast notificaion
-	 after a page is removed from browser history. -->
+<!ENTITY contextmenu_edit_bookmark "Edit">
+<!ENTITY contextmenu_subscribe "Subscribe to Page">
+<!ENTITY contextmenu_site_settings "Edit Site Settings">
+
+<!ENTITY pref_titlebar_mode "Title bar">
+<!ENTITY pref_titlebar_mode_title "Show page title">
+<!ENTITY pref_titlebar_mode_url "Show page address">
 
 <!ENTITY history_removed "Kikwanyo woko pot buk">
 
@@ -137,17 +213,20 @@
 <!ENTITY bookmark_edit_name "Nying">
 <!ENTITY bookmark_edit_location "Kabedo">
 <!ENTITY bookmark_edit_keyword "Lok mapire tek">
+<!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
+     dialog that appears after selecting the "Edit Site Settings" context menu item. -->
 
-<!ENTITY site_settings_title        "Jwa woko Tero Kakube">
+<!ENTITY site_settings_title3       "Site Settings">
 <!ENTITY site_settings_cancel       "Jwik">
-<!ENTITY site_settings_clear        "Jwa">
+<!ENTITY site_settings_clear        "Clear">
 <!ENTITY site_settings_no_settings  "Ter mo peke me ajwa.">
 
 <!ENTITY reading_list "Nying jami me kwan">
 <!ENTITY reading_list_added "Kimedo woko pot buk ii Nying jami me Akwan mamegi">
 <!ENTITY reading_list_removed "Kikwanyo woko pot nuk ki Nying jami me akwani ni">
 <!ENTITY reading_list_failed "Medo pot buk pe olare ki Nying Jami me kwani">
-<!ENTITY reader_mode "Reader Mode">
+<!ENTITY reading_list_duplicate "Page already in your Reading List">
+<!ENTITY reader "Reader">
 
 <!ENTITY masterpassword_create_title "Ket I cwil me donyo Madit">
 <!ENTITY masterpassword_remove_title "Kwany woko i cwil me donyo pa Ladit">
@@ -156,17 +235,34 @@
 
 <!ENTITY button_ok "Kakare">
 <!ENTITY button_cancel "Jwik">
+<!ENTITY button_yes "Eyo">
+<!ENTITY button_no "Pe/Ku">
 <!ENTITY button_clear_data "Ywe tic">
+<!ENTITY button_set "Ter">
+<!ENTITY button_clear "Clear">
 
 <!ENTITY abouthome_addons_title "Med iwiye pi &brandShortName; megi">
 <!ENTITY abouthome_addons_browse "Yeny &brandShortName; weng pi med iwiye">
 <!ENTITY abouthome_last_tabs_title "Lanyik megi ki kare mukato angec">
 <!ENTITY abouthome_last_tabs_open "Yab Tab weng ki i kare mukato">
 <!ENTITY abouthome_top_sites_title "Kakube maloyo">
-<!ENTITY abouthome_top_sites_browse "Yeny kakube megi lung maloyo">
-<!ENTITY abouthome_no_top_sites "I pe ki kakube maloyo kombedi. Gwet Bao me Nying wek ocak yenyo.">
-<!ENTITY abouthome_about_sync "Ter kit ma Firefox neno kwede pi donyo i alama buk mapol, lok mukato ki tab ki jami me tic megi mapatpat">
+<!ENTITY abouthome_topsites_edit "Edit">
+<!ENTITY abouthome_topsites_pin "Pin Site">
+<!ENTITY abouthome_topsites_unpin "Unpin Site">
+<!-- Localization note (abouthome_about_sync3, abouthome_about_apps2): The
+     chevron (ex: "»"; unicode= U+00BB) is used as an arrow to show that
+     clicking this text in the promotions box will perform some action. Note
+     that a non-breaking space (unicode= U+00A0) should be used between this
+     character and the remainder of the string to prevent word wrap. -->
+
+<!ENTITY abouthome_about_sync3 "Set up Firefox Sync to access bookmarks, history and tabs from your other devices&#x00A0;»">
+<!ENTITY abouthome_about_apps3 "Get apps from the Firefox Marketplace and discover the best the Web has to offer&#x00A0;»">
+<!-- Localization note (abouthome_sync_bold_name, abouthome_apps_bold_name):
+     These strings are accentuated as bold text in the "abouthome_about_..."
+     strings above. These strings should be a subset of the strings above and
+     generally be the name of the product the string describes. -->
 <!ENTITY abouthome_sync_bold_name "Firefox Sync">
+<!ENTITY abouthome_apps_bold_name2 "Firefox Marketplace">
 
 <!ENTITY filepicker_title "Yer Pwail">
 <!ENTITY filepicker_audio_title "Yer onyo ket tekod me dwon">
@@ -199,5 +295,23 @@ ki Android">
 <!ENTITY bookmarkhistory_import_history "Kelo kiwoko lok mukato 
 ki Android">
 <!ENTITY bookmarkhistory_import_wait "Tim ber i kur...">
+<!-- Localization note (suggestions_prompt2): The placeholder &formatS; will be
+     replaced with the name of the search engine. -->
+
+<!ENTITY suggestions_prompt2 "Would you like to turn on &formatS; search suggestions?">
 
 <!ENTITY webapp_generic_name "Purugram">
+
+<!ENTITY searchable_description "Alama buk ki lok mukato angec">
+<!-- Updater notifications --> 
+
+<!ENTITY updater_start_title2 "Update available for &brandShortName;">
+<!ENTITY updater_start_select2 "Touch to download">
+
+<!ENTITY updater_downloading_title2 "Golo &brandShortName;">
+<!ENTITY updater_downloading_title_failed2 "Download failed">
+<!ENTITY updater_downloading_select2 "Gud wek ket ngec ka dong gikwanyo oko">
+<!ENTITY updater_downloading_retry2 "Gudi wek tem doki">
+
+<!ENTITY updater_apply_title2 "Update available for &brandShortName;">
+<!ENTITY updater_apply_select2 "Gudi wek imi ngec">

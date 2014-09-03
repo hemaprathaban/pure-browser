@@ -89,6 +89,11 @@
 %define L10N_RECOMMENDS myspell-de-de | myspell-de-at | myspell-de-ch
 %include @PRODUCT@-l10n.control.in
 
+%define L10N_LANG dsb
+%define L10N_LANGUAGE Lower Sorbian
+%undef L10N_RECOMMENDS
+%include @PRODUCT@-l10n.control.in
+
 %define L10N_LANG el
 %define L10N_LANGUAGE Modern Greek
 %define L10N_RECOMMENDS myspell-el-gr

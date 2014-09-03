@@ -7,10 +7,10 @@ Subject: Bug 1025689 - Disable some libopus ARM features on < ARMv6
  1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/media/libopus/moz.build b/media/libopus/moz.build
-index 4a0bb59..e56f626 100644
+index 2761e9e..2607a19 100644
 --- a/media/libopus/moz.build
 +++ b/media/libopus/moz.build
-@@ -23,10 +23,11 @@ if CONFIG['CPU_ARCH'] == 'arm' and CONFIG['GNU_AS']:
+@@ -28,10 +28,11 @@ if CONFIG['CPU_ARCH'] == 'arm' and CONFIG['GNU_AS']:
      DEFINES['OPUS_ARM_ASM'] = True
      DEFINES['OPUS_ARM_EXTERNAL_ASM'] = True
      DEFINES['OPUS_ARM_INLINE_ASM'] = True
