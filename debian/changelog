@@ -1,8 +1,13 @@
-iceweasel (32.0.3-1) UNRELEASED; urgency=medium
+iceweasel (32.0.3-1) experimental; urgency=medium
 
   * New upstream release.
 
- -- Mike Hommey <glandium@debian.org>  Thu, 25 Sep 2014 14:56:24 +0900
+  * toolkit/components/search/nsSearchService.js: Bump search engine max icon
+    size to 35kB. Closes: #749084.
+  * build/autoconf/compiler-opts.m4, config/rules.mk: Build target programs as
+    position independent executable when supported by gcc/clang. bz#857628.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 25 Sep 2014 15:27:37 +0900
 
 iceweasel (32.0-1) experimental; urgency=medium
 
