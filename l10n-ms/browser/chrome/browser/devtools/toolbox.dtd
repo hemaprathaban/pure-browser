@@ -17,6 +17,8 @@
 <!ENTITY toolboxZoomIn.key2            "="> 
 <!ENTITY toolboxZoomOut.key            "-">
 <!ENTITY toolboxZoomReset.key          "0">
+
+<!ENTITY toolboxReload.key             "r">
 <!-- LOCALIZATION NOTE (options.context.advancedSettings): This is the label for
   -  the heading of the advanced settings group in the options panel. -->
 
@@ -25,6 +27,12 @@
   -  the heading of the Inspector group in the options panel. -->
 
 <!ENTITY options.context.inspector "Pemeriksa">
+<!-- LOCALIZATION NOTE (options.showUserAgentStyles.label): This is the label
+  -  for the checkbox option to show user agent styles in the Inspector
+  -  panel. -->
+
+<!ENTITY options.showUserAgentStyles.label "Tunjuk Gaya Pelayar">
+<!ENTITY options.showUserAgentStyles.tooltip "Menghidupkannya akan dapat memperlihatkan gaya lalai yang dimuatkan oleh pelayar.">
 <!-- LOCALIZATION NOTE (options.defaultColorUnit.label): This is the label for a
   -  dropdown list that controls the default color unit used in the inspector.
   -  This label is visible in the options panel. -->
@@ -57,12 +65,12 @@
   -  options panel and is used for settings that trigger page reload. -->
 
 <!ENTITY options.context.triggersPageRefresh  "* Sesi semasa sahaja, ulang muat laman">
-<!-- LOCALIZATION NOTE (options.enableChrome.label3): This is the label for the
+<!-- LOCALIZATION NOTE (options.enableChrome.label4): This is the label for the
   -  checkbox that toggles chrome debugging, i.e. devtools.chrome.enabled
   -  boolean preference in about:config, in the options panel. -->
 
-<!ENTITY options.enableChrome.label3    "Bolehkan menyahpepijat chrome">
-<!ENTITY options.enableChrome.tooltip   "Menghidupkan pilihan ini akan membenarkan anda untuk menggunakan pelbagai alatan pembangun dalam konteks pelayar">
+<!ENTITY options.enableChrome.label4    "Bolehkan menyahpepijat chrome dan add-on">
+<!ENTITY options.enableChrome.tooltip2  "Menghidupkan pilihan ini membolehkan anda untuk menggunakan pelbagai alatan pembangun dalam konteks pelayar dan penyahpepijat add-on daripada Pengurus Add-on">
 <!-- LOCALIZATION NOTE (options.enableRemote.label3): This is the label for the
   -  checkbox that toggles remote debugging, i.e. devtools.debugger.remote-enabled
   -  boolean preference in about:config, in the options panel. -->
@@ -75,12 +83,12 @@
 
 <!ENTITY options.disableJavaScript.label     "Lumpuhkan JavaScript *">
 <!ENTITY options.disableJavaScript.tooltip   "Menghidupkan pilihan ini akan melumpuhkan JavaScript untuk tab semasa. Jika tab atau kekotak alatan ditutup maka tetapan akan dilupakan.">
-<!-- LOCALIZATION NOTE (options.disableCache.label,
-  -  options.disableCache.tooltip): This is the options panel label and
+<!-- LOCALIZATION NOTE (options.disableCache.label2,
+  -  options.disableCache.tooltip2): This is the options panel label and
   -  tooltip for the checkbox that toggles the cache on or off. -->
 
-<!ENTITY options.disableCache.label     "Lumpuhkan Cache *">
-<!ENTITY options.disableCache.tooltip   "Menghidupkan pilihan ini akan melumpuhkan cache untuk tab semasa. Jika tab atau kotak peralatan ditutup maka tetapan ini akan dilupakan.">
+<!ENTITY options.disableCache.label2     "Lumpuhkan Cache (ketika kekotak alat dibuka)">
+<!ENTITY options.disableCache.tooltip2   "Menghidupkan pilihan ini akan melumpuhkan cache untuk semua tab yang kekotak alatannya terbuka.">
 <!-- LOCALIZATION NOTE (options.selectDefaultTools.label): This is the label for
   -  the heading of group of checkboxes corresponding to the default developer
   -  tools. -->
@@ -113,13 +121,6 @@
   -  heading of the group of Web Console preferences in the options panel. -->
 
 <!ENTITY options.webconsole.label            "Konsol Web">
-<!-- LOCALIZATION NOTE (options.enablePersistentLogging.label): This is the
-  -  label for the checkbox that toggles persistent logs in the Web Console,
-  -  i.e. devtools.webconsole.persistlog a boolean preference in about:config,
-  -  in the options panel. -->
-
-<!ENTITY options.enablePersistentLogging.label    "Bolehkan log kekal">
-<!ENTITY options.enablePersistentLogging.tooltip  "Jika anda membolehkan pilihan ini Konsol Web tidak akan melapangkan output setiap kali anda melayari laman baru">
 <!-- LOCALIZATION NOTE (options.timestampMessages.label): This is the
    - label for the checkbox that toggles timestamps in the Web Console -->
 
@@ -134,7 +135,7 @@
    - label for the checkbox that toggles showing original sources in the Style Editor -->
 
 <!ENTITY options.stylesheetSourceMaps.label      "Tunjukkan sumber-sumber asal">
-<!ENTITY options.stylesheetSourceMaps.tooltip    "Tunjuk kod sumber (cth. fail Sass) di dalam Editor Gaya dan Inspektor">
+<!ENTITY options.stylesheetSourceMaps.tooltip    "Tunjuk sumber asal (iaitu fail Sass) di dalam Editor Gaya dan Inspektor">
 <!-- LOCALIZATION NOTE (options.stylesheetAutocompletion.label): This is the
    - label for the checkbox that toggles autocompletion of css in the Style Editor -->
 
@@ -145,6 +146,18 @@
   -  panel. -->
 
 <!ENTITY options.profiler.label            "Pemprofil JavaScript">
+<!-- LOCALICATION NOTE (options.commonprefs): This is the label for the heading
+      of all preferences that affect both the Web Console and the Network
+      Monitor -->
+
+<!ENTITY options.commonPrefs.label           "Keutamaan Kebiasaan">
+<!-- LOCALIZATION NOTE (options.enablePersistentLogs.label): This is the
+  -  label for the checkbox that toggles persistent logs in the Web Console and
+  -  network monitor,  i.e. devtools.webconsole.persistlog a boolean preference in
+  -  about:config, in the options panel. -->
+
+<!ENTITY options.enablePersistentLogs.label    "Bolehkan log kekal">
+<!ENTITY options.enablePersistentLogs.tooltip  "Jika anda membolehkan pilihan ini Konsol Web dan Pemantau Rangkaian tidak akan melapangkan output setiap kali anda melayari laman baru">
 <!-- LOCALIZATION NOTE (options.showPlatformData.label): This is the
   -  label for the checkbox that toggles the display of the platform data in the,
   -  Profiler i.e. devtools.profiler.ui.show-platform-data a boolean preference
@@ -153,3 +166,19 @@
 <!ENTITY options.showPlatformData.label    "Tunjuk data platform Gecko">
 <!ENTITY options.showPlatformData.tooltip  "Jika anda bolehkan pilihan ini laporan Pemprofil JavaScript akan 
 memasukkan simbol platform Gecko">
+<!-- LOCALIZATION NOTE (options.sourceeditor.*): Options under the editor
+  -  section. -->
+
+
+<!ENTITY options.sourceeditor.label                     "Keutamaan Editor">
+<!ENTITY options.sourceeditor.detectindentation.label   "Mengesan inden">
+<!ENTITY options.sourceeditor.detectindentation.tooltip "Mengandai berasaskan inden pada konteks sumber">
+<!ENTITY options.sourceeditor.autoclosebrackets.label   "Auto tutup pendakap">
+<!ENTITY options.sourceeditor.autoclosebrackets.tooltip "Menyelitkan tutup pendakap secara automatik">
+<!ENTITY options.sourceeditor.expandtab.label           "Inden menggunakan ruang">
+<!ENTITY options.sourceeditor.expandtab.tooltip         "Gunakan ruang dan bukannya aksara tab">
+<!ENTITY options.sourceeditor.tabsize.label             "Saiz tab">
+<!ENTITY options.sourceeditor.tabsize.accesskey         "t">
+<!ENTITY options.sourceeditor.keybinding.label          "Keybindings">
+<!ENTITY options.sourceeditor.keybinding.accesskey      "K">
+<!ENTITY options.sourceeditor.keybinding.default.label  "Lalai">

@@ -7,6 +7,7 @@
 <!ENTITY bookmarks_title "Закладки">
 <!ENTITY history_title "История">
 <!ENTITY reading_list_title "Список для чтения">
+<!ENTITY recent_tabs_title "Последние вкладки">
 <!ENTITY switch_to_tab "Перейти на вкладку">
 <!ENTITY crash_reporter_title "Сообщение о падении &brandShortName;">
 <!ENTITY crash_message2 "&brandShortName; столкнулся с проблемой и упал. После перезапуска список ваших вкладок будет показан на начальной странице &brandShortName;.">
@@ -32,8 +33,8 @@
 <!ENTITY bookmark_options "Настройки">
 <!ENTITY history_today_section "Сегодня">
 <!ENTITY history_yesterday_section "Вчера">
-<!ENTITY history_week_section "7 дней назад">
-<!ENTITY history_older_section "Более 7 дней назад">
+<!ENTITY history_week_section2 "Прошлая неделя">
+<!ENTITY history_older_section2 "Прошлый месяц">
 <!ENTITY go "Перейти">
 <!ENTITY search "Поиск">
 <!ENTITY reload "Обновить">
@@ -70,12 +71,12 @@
 <!ENTITY pref_search_restore_defaults_summary "Восстановить по умолчанию">
 <!ENTITY pref_search_hint "СОВЕТ: Добавьте любой веб-сайт в ваш список поисковых систем, произведя долгое нажатие на его поле поиска и затем нажав на значок &formatI;.">
 <!ENTITY pref_category_devtools "Инструменты разработки">
+<!ENTITY pref_developer_paint_flashing "Paint flashing">
 <!ENTITY pref_developer_remotedebugging "Удалённый отладчик">
 <!ENTITY pref_remember_signons "Запоминать пароли">
 <!ENTITY pref_category_home "Дом">
 <!ENTITY pref_category_home_summary "Настройка вашей домашней страницы">
 <!ENTITY pref_category_home_panels "Панели">
-<!ENTITY pref_home_add_panel "Добавить панель">
 <!ENTITY home_add_panel_title "Добавить новую панель">
 <!ENTITY home_add_panel_empty "К сожалению, мы не смогли найти ни одной панели для добавления.">
 <!ENTITY home_add_panel_installed "\'&formatS;\' добавлено на домашнюю страницу">
@@ -103,7 +104,11 @@
 <!ENTITY pref_char_encoding "Кодировка">
 <!ENTITY pref_char_encoding_on "Показывать меню">
 <!ENTITY pref_char_encoding_off "Скрывать меню">
-<!ENTITY pref_clear_private_data "Удалить мои данные">
+<!ENTITY pref_clear_private_data2 "Удалить сейчас">
+<!ENTITY pref_clear_private_data_category "Удаление моих данных">
+<!ENTITY pref_clear_on_exit_title "Всегда удалять при выходе">
+<!ENTITY pref_clear_on_exit_summary "&brandShortName; будет автоматически удалять ваши данные при нажатии вами «Выход» в главном меню">
+<!ENTITY pref_clear_on_exit_dialog_title "Выберите данные для удаления">
 <!ENTITY pref_plugins "Плагины">
 <!ENTITY pref_plugins_enabled "Включены">
 <!ENTITY pref_plugins_tap_to_play "По нажатию">
@@ -182,6 +187,7 @@
 <!ENTITY new_tab "Новая вкладка">
 <!ENTITY new_private_tab "Приватная вкладка">
 <!ENTITY close_all_tabs "Закрыть все вкладки">
+<!ENTITY close_private_tabs "Закрыть приватные вкладки">
 <!ENTITY tabs_normal "Вкладки">
 <!ENTITY tabs_private "Приватные">
 <!ENTITY tabs_synced "Синхронизированные">
@@ -191,13 +197,12 @@
 <!ENTITY find_prev "Назад">
 <!ENTITY find_next "Далее">
 <!ENTITY find_close "Закрыть">
-<!ENTITY media_casting_to "Перевод на устройство">
+<!ENTITY media_casting_to "Транслировать на устройство">
 <!ENTITY media_play "Воспроизвести">
 <!ENTITY media_pause "Приостановить">
 <!ENTITY media_stop "Остановить">
 <!ENTITY contextmenu_open_new_tab "Открыть в новой вкладке">
 <!ENTITY contextmenu_open_private_tab "Открыть в приватной вкладке">
-<!ENTITY contextmenu_open_in_reader "Открыть для чтения">
 <!ENTITY contextmenu_remove "Удалить">
 <!ENTITY contextmenu_add_to_launcher "Добавить на домашний экран">
 <!ENTITY contextmenu_share "Поделиться">
@@ -245,16 +250,19 @@
 <!ENTITY home_clear_history_button "Удалить историю веб-сёрфинга">
 <!ENTITY home_clear_history_confirm "Вы уверены, что хотите удалить свою историю?">
 <!ENTITY home_bookmarks_empty "Сохраняемые вами закладки появятся здесь.">
+<!ENTITY home_closed_tabs_title "Недавно закрытые вкладки">
 <!ENTITY home_last_tabs_title "Вкладки с прошлого раза">
-<!ENTITY home_last_tabs_open "Открыть все вкладки с прошлого раза">
 <!ENTITY home_last_tabs_empty "Ваши недавние вкладки появятся здесь.">
-<!ENTITY home_most_recent_title "Недавно посещённые">
+<!ENTITY home_open_all "Открыть все">
 <!ENTITY home_most_recent_empty "Недавно посещённые вами веб-сайты появятся здесь.">
 <!ENTITY home_reading_list_empty "Статьи, сохранённые вами для последующего чтения, появятся здесь.">
 <!ENTITY home_reading_list_hint2 "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на значок &formatI;, когда он появится в строке заголовка.">
 <!ENTITY home_reading_list_hint_accessible "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на кнопку режима чтения, когда она появится в строке заголовка.">
 <!ENTITY home_default_empty "Для этой панели не удалось найти содержимого.">
 <!ENTITY home_move_up_to_filter "Назад в &formatS;">
+<!ENTITY private_browsing_title "Приватный просмотр">
+<!ENTITY private_tabs_panel_empty_desc "Ваши приватные вкладки будут показаны здесь. Мы не будем вести журнал посещений или хранить куки, но загруженные файлы и сделанные закладки будут сохранены на вашем устройстве.">
+<!ENTITY private_tabs_panel_learn_more "Хотите узнать больше?">
 <!ENTITY pin_site_dialog_hint "Введите поисковый запрос">
 <!ENTITY filepicker_title "Выбрать файл">
 <!ENTITY filepicker_audio_title "Выбрать или записать звук">

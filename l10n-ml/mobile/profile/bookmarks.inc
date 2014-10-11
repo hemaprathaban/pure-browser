@@ -25,7 +25,7 @@
 
 
 
-#define bookmarks_title Mobile
+#define bookmarks_title മൊബൈല്‍
 
 
 
@@ -37,7 +37,7 @@
 
 
 
-#define bookmarks_aboutBrowser Firefox: About your browser
+#define bookmarks_aboutBrowser ഫയര്‍ഫോക്സ്: നിങ്ങളുടെ ബ്രൌസറിനെപ്പറ്റി
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-#define bookmarks_addons Firefox: Customize with add-ons
+#define bookmarks_addons ഫയര്‍ഫോക്സ്: ആഡ്-ഓണുകള്‍ ചേര്‍ക്കൂ
 
 
 
@@ -57,23 +57,23 @@
 
 
 
-# link title for https://support.mozilla.org/mobile
+# link title for https://support.mozilla.org/
 
 
 
-#define bookmarks_support Firefox: Support
+#define bookmarks_support ഫയര്‍ഫോക്സ്: പിന്തുണ
 
 
 
-# LOCALIZATION NOTE (bookmarks_aboutHome):
+# LOCALIZATION NOTE (bookmarks_marketplace):
 
 
 
-# link title for about:home
+# link title for https://marketplace.firefox.com
 
 
 
-#define bookmarks_aboutHome Firefox Start
+#define bookmarks_marketplace ഫയര്‍ഫോക്സ് മാര്‍ക്കറ്റ്
 
 
 

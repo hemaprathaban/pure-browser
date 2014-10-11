@@ -1,0 +1,111 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+%brandDTD;
+
+<!ENTITY loadError.label "Səhifə yüklənmə xətası">
+<!ENTITY retry.label "Yenidən yoxla">
+<!-- Specific error messages -->
+
+
+<!ENTITY connectionFailure.title "Əlaqə cəhdi uğursuz oldu">
+
+
+<!ENTITY deniedPortAccess.title "Təhlükəsizlik üçün bağlantı nöqtəsi bağlıdır">
+<!ENTITY deniedPortAccess.longDesc "">
+
+<!ENTITY dnsNotFound.title "Ünvan tapılmadı">
+
+
+<!ENTITY fileNotFound.title "Fayla tapılmadı">
+
+
+
+<!ENTITY generic.title "İstək yerinə yetirilə bilmir">
+
+
+<!ENTITY malformedURI.title "Yanlış ünvan">
+
+
+<!ENTITY netInterrupt.title "Məlumat ötürmə xətası">
+<!ENTITY netInterrupt.longDesc "&sharedLongDesc2;">
+
+<!ENTITY notCached.title "Sənədin vaxtı çıxıb">
+<!ENTITY notCached.longDesc "<p>İstədiyiniz sənəd brauzerin yaddaşında mövcud deyil.</p><ul><li>Təhlükəsizlik tədbiri olaraq, brauzeriniz həssas sənədləri avtomatik olaraq yenidən istəmir.</li><li>Sənədi web saytdan yenidən istəmək üçün, Təkrar yoxla düyməsinə vurun.</li></ul>">
+
+<!ENTITY netOffline.title "Offline bağlantı səhvi">
+
+
+<!ENTITY contentEncodingError.title "Məzmun kodlama səhvi">
+<!ENTITY contentEncodingError.longDesc "<ul> 
+<li>Sayt sahibləri ilə əlaqə yaradıb bu problemi onlara bildirin.</li> 
+</ul>">
+
+<!ENTITY unsafeContentType.title "Etibarsız fayl növü">
+<!ENTITY unsafeContentType.longDesc "<ul> 
+<li>Sayt sahibləri ilə əlaqə yaradıb bu problemi onlara bildirin.</li> 
+</ul>">
+
+<!ENTITY netReset.title "Bağlantı kəsildi">
+<!ENTITY netReset.longDesc "&sharedLongDesc2;">
+
+<!ENTITY netTimeout.title "Şəbəkə gözləmə müddəti">
+<!ENTITY netTimeout.longDesc "&sharedLongDesc2;">
+
+<!ENTITY unknownProtocolFound.title "Baməlum əlaqə protokolu">
+<!ENTITY unknownProtocolFound.longDesc "<ul> 
+<li>Bü ünvanı açmaq üçün əlavə proqram tələb olunur</li> 
+</ul>">
+
+<!ENTITY proxyConnectFailure.title "Proxy server bağlantını rədd etdi">
+<!ENTITY proxyConnectFailure.longDesc "<ul> 
+<li>Proxy-server seçimləri düzgün qurulmamış ola bilər. Seçimləri yoxlayıb yenidən 
+cəhd edin.</li> 
+<li>Problem hələ də qalırsa,  internet provayderinizlə və ya bağlantı idarəçinizlə əlaqə 
+saxlayın.</li>
+</ul>">
+
+<!ENTITY proxyResolveFailure.title "Proxy-server tapılmadı">
+
+
+<!ENTITY redirectLoop.title "Yönlendirmə dövrəsi">
+<!ENTITY redirectLoop.longDesc "<ul> 
+<li>aytın saxlamaq istədiyi cookielərə qadağa qoymuş ya da söndürmüş ola bilərsiniz.</li> 
+</ul>">
+
+<!ENTITY unknownSocketType.title "Şəbəkədən gələn cavab yanlışdır">
+<!ENTITY unknownSocketType.longDesc "<ul> 
+<li>Sizin sistemə şəxsi təhlükəsizlik menegeri quraşdırıldığıa əmin olun .</li> 
+<li>Buna serverin standart olmayan konfiqurasiyada səbəb  ola bilər.</li> 
+</ul>">
+
+<!ENTITY nssFailure2.title "Təhlükəsiz bağlantı qurulmadı">
+
+
+<!ENTITY nssBadCert.title "Təhlükəsiz bağlantı qurulmadı">
+
+
+
+<!ENTITY cspFrameAncestorBlocked.title "Məzmun təhlükəsizlik qaydaları xəbərdar etdiyi üçün bloklandı">
+<!ENTITY cspFrameAncestorBlocked.longDesc "<p>Brauzer bu səhfənin yüklənməsini blokladı; çünki səhifə, yüklənməsinə icazə verməyən bir məzmun məzmun təhlükəsizlik qanuna sahibdir.</p>">
+
+<!ENTITY corruptedContentError.title "Zədəli Məzmun Xətası">
+<!ENTITY corruptedContentError.longDesc "<p>Baxmaq istədiyiniz səhifə açıla bilmir, çünki fayl ötürülməsi zamanı bir xəta baş verdi.</p><ul><li>Lütfən sayt sahibləri ilə əlaqə yaradıb bu problemi onlara bildirin.</li></ul>">
+
+<!ENTITY securityOverride.linkText "İstəsəniz istisnalıq verin…">
+<!ENTITY securityOverride.getMeOutOfHereButton "Məni burdan xilas et!">
+<!ENTITY securityOverride.exceptionButtonLabel "İstisnalıq ver…">
+<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
+contents of the <xul:button> tags.  The only language content is the label= field,
+which uses strings already defined above. The button is included here (instead of
+netError.xhtml) because it exposes functionality specific to firefox. -->
+
+
+<!ENTITY securityOverride.warningContent "<p>Tam güvənmədiyiniz bir internet şəbəkəsi istifadə edirsinizsə və ya bu serverdən xəbərdarlıq almağa alışmamısınızsa istisnalıq verməməlisiniz.</p> 
+<button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button> <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>">
+
+<!ENTITY remoteXUL.title "Uzaq XUL">
+
+
