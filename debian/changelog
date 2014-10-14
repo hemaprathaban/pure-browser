@@ -1,8 +1,23 @@
-iceweasel (31.2.0esr-1) UNRELEASED; urgency=medium
+iceweasel (31.2.0esr-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{74-76,79,81-82}, also known as:
+    CVE-2014-1574, CVE-2014-1576, CVE-2014-1577, CVE-2014-1581,
+    CVE-2014-1585, CVE-2014-1586, CVE-2014-1583.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 15 Oct 2014 08:36:41 +0900
+  * debian/browser.install.in, debian/rules, debian/upstream.mk: Install
+    libreplace_malloc.so when building a nightly.
+  * debian/browser.install.in, debian/control.in, debian/rules,
+    debian/upstream.mk, debian/vendor.js.in: Change how official branding is
+    handled.
+  * debian/rules: Disable tests on stable-security.
+
+  * toolkit/components/search/nsSearchService.js: Bump search engine max icon
+    size to 35kB. Closes: #749084.
+  * build/autoconf/compiler-opts.m4, config/rules.mk: Build target programs as
+    position independent executable when supported by gcc/clang. bz#857628.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 15 Oct 2014 08:53:18 +0900
 
 iceweasel (31.1.0esr-1) unstable; urgency=medium
 
