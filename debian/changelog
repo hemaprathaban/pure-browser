@@ -1,6 +1,19 @@
-iceweasel (33.0-1) UNRELEASED; urgency=medium
+iceweasel (33.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{74-76,78-82}, also known as:
+    CVE-2014-1574, CVE-2014-1575, CVE-2014-1576, CVE-2014-1577,
+    CVE-2014-1580, CVE-2014-1581, CVE-2014-1582, CVE-2014-1584,
+    CVE-2014-1585, CVE-2014-1586, CVE-2014-1583.
+
+  * debian/control*: Bump nss and sqlite build dependencies.
+  * debian/browser.install.in, debian/control.in, debian/rules,
+    debian/upstream.mk, debian/vendor.js.in: Change how official branding is
+    handled.
+  * debian/rules: Disable tests on stable-security.
+  * debian/browser.install.in, debian/browser.mozconfig.in, debian/control.in,
+    debian/rules: Allow to build against Gtk+3 by setting the GTK3 environment
+    variable while building.
 
  -- Mike Hommey <glandium@debian.org>  Wed, 15 Oct 2014 09:40:22 +0900
 
