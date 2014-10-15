@@ -7,13 +7,13 @@ Subject: Disable Firefox Health Report
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/browser/confvars.sh b/browser/confvars.sh
-index 03161f2..b965b9f 100644
+index dc34331..801ccdb 100755
 --- a/browser/confvars.sh
 +++ b/browser/confvars.sh
-@@ -29,7 +29,7 @@ MOZ_SAFE_BROWSING=1
+@@ -28,7 +28,7 @@ MOZ_DISABLE_EXPORT_JS=1
+ MOZ_SAFE_BROWSING=1
  MOZ_SERVICES_COMMON=1
  MOZ_SERVICES_CRYPTO=1
- MOZ_SERVICES_FXACCOUNTS=1
 -MOZ_SERVICES_HEALTHREPORT=1
 +MOZ_SERVICES_HEALTHREPORT=
  MOZ_SERVICES_METRICS=1

@@ -9,10 +9,10 @@ Subject: Bug 857628 - Build target programs as position independent executable
  2 files changed, 20 insertions(+), 4 deletions(-)
 
 diff --git a/build/autoconf/compiler-opts.m4 b/build/autoconf/compiler-opts.m4
-index 76effb4..39cff4c 100644
+index 3322c63..55e97ee 100644
 --- a/build/autoconf/compiler-opts.m4
 +++ b/build/autoconf/compiler-opts.m4
-@@ -338,6 +338,20 @@ if test "$GNU_CC" -a "$GCC_USE_GNU_LD" -a -z "$DEVELOPER_OPTIONS"; then
+@@ -326,6 +326,20 @@ if test "$GNU_CC" -a "$GCC_USE_GNU_LD" -a -z "$DEVELOPER_OPTIONS"; then
          DSO_LDOPTS="$DSO_LDOPTS -Wl,--gc-sections"
      fi
  fi
@@ -34,10 +34,10 @@ index 76effb4..39cff4c 100644
  
  dnl GCC and clang will fail if given an unknown warning option like -Wfoobar. 
 diff --git a/config/rules.mk b/config/rules.mk
-index 1cdd43a..cd6cdad 100644
+index 1dee8c3..3950ced 100644
 --- a/config/rules.mk
 +++ b/config/rules.mk
-@@ -690,6 +690,8 @@ endif
+@@ -680,6 +680,8 @@ endif
  
  endif # NO_PROFILE_GUIDED_OPTIMIZE
  
@@ -46,7 +46,7 @@ index 1cdd43a..cd6cdad 100644
  ##############################################
  
  checkout:
-@@ -729,7 +731,7 @@ $(PROGRAM): $(PROGOBJS) $(EXTRA_DEPS) $(EXE_DEF_FILE) $(RESFILE) $(GLOBAL_DEPS)
+@@ -719,7 +721,7 @@ $(PROGRAM): $(PROGOBJS) $(EXTRA_DEPS) $(EXE_DEF_FILE) $(RESFILE) $(GLOBAL_DEPS)
  	$(REPORT_BUILD)
  	@$(RM) $@.manifest
  ifeq (_WINNT,$(GNU_CC)_$(OS_ARCH))
@@ -55,16 +55,16 @@ index 1cdd43a..cd6cdad 100644
  ifdef MSMANIFEST_TOOL
  	@if test -f $@.manifest; then \
  		if test -f '$(srcdir)/$@.manifest'; then \
-@@ -750,7 +752,7 @@ ifdef MOZ_PROFILE_GENERATE
+@@ -740,7 +742,7 @@ ifdef MOZ_PROFILE_GENERATE
  	touch -t `date +%Y%m%d%H%M.%S -d 'now+5seconds'` pgo.relink
  endif
  else # !WINNT || GNU_CC
--	$(EXPAND_CCC) -o $@ $(CXXFLAGS) $(PROGOBJS) $(RESFILE) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS_DIR) $(LIBS) $(MOZ_GLUE_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(EXE_DEF_FILE) $(STLPORT_LIBS)
-+	$(EXPAND_CCC) -o $@ $(CXXFLAGS) $(PROGOBJS) $(RESFILE) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS_DIR) $(LIBS) $(MOZ_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(EXE_DEF_FILE) $(STLPORT_LIBS)
+-	$(EXPAND_CCC) -o $@ $(CXXFLAGS) $(PROGOBJS) $(RESFILE) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS) $(MOZ_GLUE_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(EXE_DEF_FILE) $(STLPORT_LIBS)
++	$(EXPAND_CCC) -o $@ $(CXXFLAGS) $(PROGOBJS) $(RESFILE) $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS) $(MOZ_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(EXE_DEF_FILE) $(STLPORT_LIBS)
  	$(call CHECK_BINARY,$@)
  endif # WINNT && !GNU_CC
  
-@@ -798,7 +800,7 @@ endif
+@@ -788,7 +790,7 @@ endif
  $(SIMPLE_PROGRAMS): %$(BIN_SUFFIX): %.$(OBJ_SUFFIX) $(EXTRA_DEPS) $(GLOBAL_DEPS)
  	$(REPORT_BUILD)
  ifeq (_WINNT,$(GNU_CC)_$(OS_ARCH))
@@ -73,12 +73,12 @@ index 1cdd43a..cd6cdad 100644
  ifdef MSMANIFEST_TOOL
  	@if test -f $@.manifest; then \
  		mt.exe -NOLOGO -MANIFEST $@.manifest -OUTPUTRESOURCE:$@\;1; \
-@@ -806,7 +808,7 @@ ifdef MSMANIFEST_TOOL
+@@ -796,7 +798,7 @@ ifdef MSMANIFEST_TOOL
  	fi
  endif	# MSVC with manifest tool
  else
--	$(EXPAND_CCC) $(CXXFLAGS) -o $@ $< $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS_DIR) $(LIBS) $(MOZ_GLUE_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(STLPORT_LIBS)
-+	$(EXPAND_CCC) $(CXXFLAGS) -o $@ $< $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS_DIR) $(LIBS) $(MOZ_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(STLPORT_LIBS)
+-	$(EXPAND_CCC) $(CXXFLAGS) -o $@ $< $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS) $(MOZ_GLUE_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(STLPORT_LIBS)
++	$(EXPAND_CCC) $(CXXFLAGS) -o $@ $< $(WIN32_EXE_LDFLAGS) $(LDFLAGS) $(WRAP_LDFLAGS) $(LIBS) $(MOZ_PROGRAM_LDFLAGS) $(OS_LIBS) $(EXTRA_LIBS) $(BIN_FLAGS) $(STLPORT_LIBS)
  	$(call CHECK_BINARY,$@)
  endif # WINNT && !GNU_CC
  

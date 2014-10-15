@@ -8,7 +8,7 @@ Closes: #666675.
  1 file changed, 30 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/components/search/nsSearchService.js b/toolkit/components/search/nsSearchService.js
-index 98ea75d..20406e7 100644
+index a1f1192..76f8126 100644
 --- a/toolkit/components/search/nsSearchService.js
 +++ b/toolkit/components/search/nsSearchService.js
 @@ -699,6 +699,7 @@ function getMozParamPref(prefName)
@@ -62,7 +62,7 @@ index 98ea75d..20406e7 100644
      }
  
      return this.__installLocation;
-@@ -2786,6 +2812,8 @@ function SearchService() {
+@@ -2820,6 +2846,8 @@ function SearchService() {
      LOG = DO_LOG;
  
    this._initObservers = Promise.defer();
