@@ -241,7 +241,10 @@ $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 override_dh_auto_build: stamps/build-$(PRODUCT) stamps/build-check-branding
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+# Disable tests on stable-security
+ifeq (,$(findstring ~deb,$(DEBIAN_RELEASE)))
 include debian/test.mk
+endif
 endif
 
 override_dh_auto_clean::
