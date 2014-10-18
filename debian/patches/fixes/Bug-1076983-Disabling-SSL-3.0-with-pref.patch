@@ -1,0 +1,44 @@
+From: Martin Thomson <martin.thomson@gmail.com>
+Date: Tue, 14 Oct 2014 17:17:35 -0700
+Subject: Bug 1076983 - Disabling SSL 3.0 with pref
+
+---
+ netwerk/base/public/security-prefs.js       | 2 +-
+ security/manager/ssl/src/nsNSSComponent.cpp | 7 +++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/netwerk/base/public/security-prefs.js b/netwerk/base/public/security-prefs.js
+index d754a0a..df2bb83 100644
+--- a/netwerk/base/public/security-prefs.js
++++ b/netwerk/base/public/security-prefs.js
+@@ -2,7 +2,7 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+-pref("security.tls.version.min", 0);
++pref("security.tls.version.min", 1);
+ pref("security.tls.version.max", 3);
+ 
+ pref("security.ssl.allow_unrestricted_renego_everywhere__temporarily_available_pref", false);
+diff --git a/security/manager/ssl/src/nsNSSComponent.cpp b/security/manager/ssl/src/nsNSSComponent.cpp
+index 8f95a9b..1945e61 100644
+--- a/security/manager/ssl/src/nsNSSComponent.cpp
++++ b/security/manager/ssl/src/nsNSSComponent.cpp
+@@ -999,14 +999,13 @@ void nsNSSComponent::setValidationOptions(bool isInitialSetting,
+                                                 pinningEnforcementLevel);
+ }
+ 
+-// Enable the TLS versions given in the prefs, defaulting to SSL 3.0 (min
+-// version) and TLS 1.2 (max version) when the prefs aren't set or set to
+-// invalid values.
++// Enable the TLS versions given in the prefs, defaulting to TLS 1.0 (min) and
++// TLS 1.2 (max) when the prefs aren't set or set to invalid values.
+ nsresult
+ nsNSSComponent::setEnabledTLSVersions()
+ {
+   // keep these values in sync with security-prefs.js
+-  static const int32_t PSM_DEFAULT_MIN_TLS_VERSION = 0;
++  static const int32_t PSM_DEFAULT_MIN_TLS_VERSION = 1;
+   static const int32_t PSM_DEFAULT_MAX_TLS_VERSION = 3;
+ 
+   int32_t minVersion = Preferences::GetInt("security.tls.version.min",
