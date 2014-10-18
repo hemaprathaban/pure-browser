@@ -225,8 +225,8 @@ stamps/configure-l10n:: stamps/prepare-configure
 	$(CONFIGURE_ENV) \
 	../configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-l10n-base=$(CURDIR)/l10n \
-		$(BRANDING_CONFIGURE_FLAG) \
-		--disable-compile-environment
+		$(BRANDING_CONFIGURE_FLAG)
+	$(MAKE) -C build-l10n config/host CURRENT_TIER=compile
 
 $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 	$(if $(wildcard l10n/$*),,ln -sf ../l10n-$* l10n/$*)
