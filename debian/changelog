@@ -1,3 +1,14 @@
+iceweasel (31.2.0esr-2) unstable; urgency=medium
+
+  * debian/control*, debian/rules: Do not build depend on gstreamer 1.0 when
+    building a backport.
+
+  * netwerk/base/public/security-prefs.js,
+    security/manager/ssl/src/nsNSSComponent.cpp: Disable SSLv3 to address
+    CVE-2014-3566. bz#1076983.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 18 Oct 2014 10:32:34 +0900
+
 iceweasel (31.2.0esr-1) unstable; urgency=medium
 
   * New upstream release.
