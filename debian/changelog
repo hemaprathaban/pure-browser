@@ -1,3 +1,17 @@
+xulrunner (24.8.1esr-2~deb7u1) stable-security; urgency=medium
+
+  * debian/control*, debian/extra-stuff/Makefile.in,
+    debian/installer/Makefile.in, debian/rules, debian/upstream.mk,
+    debian/noinstall.in: Only build xulrunner.
+  * debian/branding/*, debian/browser.*, debian/debsearch.xml,
+    debian/duckduckgo.xml, debian/firefox.in,
+    debian/installer/package-manifest.browser, debian/l10n.filter,
+    debian/l10n/*, debian/source/include-binaries, debian/vendor.js.in:
+    Removed.
+  * debian/patches: Unapplied and removed iceweasel-specific patches.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 25 Oct 2014 15:08:25 +0900
+
 iceweasel (24.8.1esr-1~deb7u1) stable-security; urgency=medium
 
   * New upstream release.
