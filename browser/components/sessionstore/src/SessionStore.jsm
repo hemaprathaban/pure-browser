@@ -3545,7 +3545,7 @@ let SessionStoreInternal = {
       aWindow.resizeTo(aWidth, aHeight);
     }
     if (!isNaN(aLeft) && !isNaN(aTop) && (aLeft != win_("screenX") || aTop != win_("screenY"))) {
-      aWindow.moveTo((aLeft < -aWidth) ? 0 : aLeft, (aTop < -aHeight) ? 0 : aTop);
+      aWindow.moveTo(aLeft, aTop);
     }
     if (aSizeMode && win_("sizemode") != aSizeMode)
     {
@@ -3555,6 +3555,8 @@ let SessionStoreInternal = {
         aWindow.maximize();
         break;
       case "minimized":
+        aWindow.minimize();
+        break;
       case "normal":
         aWindow.restore();
         break;

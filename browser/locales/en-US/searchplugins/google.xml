@@ -2,7 +2,6 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-#filter substitution
 <SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
 <ShortName>Google</ShortName>
 <Description>Google Search</Description>
@@ -15,7 +14,6 @@
   <Param name="oe" value="utf-8"/>
   <Param name="aq" value="t"/>
   <Param name="rls" value="{moz:distributionID}:{moz:locale}:{moz:official}"/>
-#if MOZ_APP_NAME==firefox
 #if MOZ_UPDATE_CHANNEL == beta
   <MozParam name="client" condition="defaultEngine" trueValue="firefox-beta" falseValue="firefox"/>
 #elif MOZ_UPDATE_CHANNEL == aurora
@@ -24,9 +22,6 @@
   <MozParam name="client" condition="defaultEngine" trueValue="firefox-nightly" falseValue="firefox"/>
 #else
   <MozParam name="client" condition="defaultEngine" trueValue="firefox-a" falseValue="firefox"/>
-#endif
-#else
-  <MozParam name="client" condition="defaultEngine" trueValue="@MOZ_APP_NAME@-a" falseValue="@MOZ_APP_NAME@"/>
 #endif
   <MozParam name="channel" condition="purpose" purpose="contextmenu" value="rcs"/>
   <MozParam name="channel" condition="purpose" purpose="keyword" value="fflb"/>

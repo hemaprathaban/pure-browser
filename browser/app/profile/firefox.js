@@ -62,7 +62,7 @@ pref("extensions.hotfix.certs.1.sha1Fingerprint", "91:53:98:0C:C1:86:DF:47:8F:35
 
 // Disable add-ons that are not installed by the user in all scopes by default.
 // See the SCOPE constants in AddonManager.jsm for values to use here.
-pref("extensions.autoDisableScopes", 3);
+pref("extensions.autoDisableScopes", 15);
 
 // Dictionary download preference
 pref("browser.dictionaries.download.url", "https://addons.mozilla.org/%LOCALE%/firefox/dictionaries/");
@@ -214,6 +214,7 @@ pref("lightweightThemes.update.enabled", true);
 
 pref("keyword.enabled", true);
 
+pref("general.useragent.locale", "@AB_CD@");
 pref("general.skins.selectedSkin", "classic/1.0");
 
 pref("general.smoothScroll", true);
@@ -778,11 +779,7 @@ pref("urlclassifier.alternate_error_page", "blocked");
 pref("urlclassifier.gethashnoise", 4);
 
 // The list of tables that use the gethash request to confirm partial results.
-#ifdef MOZ_OFFICIAL_BRANDING
 pref("urlclassifier.gethashtables", "goog-phish-shavar,goog-malware-shavar");
-#else
-pref("urlclassifier.gethashtables", "googpub-phish-shavar,goog-malware-shavar");
-#endif
 
 // If an urlclassifier table has not been updated in this number of seconds,
 // a gethash request will be forced to check that the result is still in
