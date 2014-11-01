@@ -280,6 +280,14 @@ iceweasel (27.0.1-1) experimental; urgency=medium
 
   * New upstream release.
 
+  * debian/copyright, debian/rules: Update copyright info. Closes: #735297.
+  * debian/source.filter:
+    - Remove build/pgo/blueprint/valid.png from the source archive.
+      Closes: #736592
+    - Remove minified jquery from source archive. Closes: #736725.
+  * debian/control*: Bump nspr and nss build dependencies.
+  * debian/rules: Work around build failure following the removal of valid.png.
+
  -- Mike Hommey <glandium@debian.org>  Sat, 22 Feb 2014 12:15:46 +0900
 
 iceweasel (27.0-2) experimental; urgency=medium
