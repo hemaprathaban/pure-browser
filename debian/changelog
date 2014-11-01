@@ -1,3 +1,27 @@
+iceweasel (31.2.0esr-3) unstable; urgency=medium
+
+  * debian/changelog: Add missing entries for 27.0.1-1.
+  * debian/rules: Don't force to build with GCC 4.9 on armhf anymore.
+  * debian/browser.mozconfig.in: Don't build with --enable-unified-compilation.
+    It may be causing build problems on architectures with limited resources.
+
+  * Import patches from the nss source package that are relevant to building
+    iceweasel against the in-tree nss source, for backports:
+    - security/nss/lib/freebl/unix_rand.c,
+      security/nss/cmd/shlibsign/shlibsign.c: Fix FTBFS on Hurd because of
+      MAXPATHLEN
+    - security/nss/coreconf/Linux.mk,
+      security/nss/coreconf/arch.mk, security/nss/coreconf/config.mk,
+      security/nss/lib/freebl/unix_rand.c, security/nss/lib/softoken/softoken.h,
+      security/nss/lib/ssl/sslmutex.*: GNU/kFreeBSD support.
+    - security/nss/lib/ckfw/builtins/certdata.txt: Adds the SPI Inc. and
+      CAcert.org CA certificates.
+    Those patches were applied on the esr24 branch, but were forgotten on the
+    release branch at the time.
+  * media/libcubeb/tests/moz.build: Work around binutils assertion on mips.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 02 Nov 2014 10:29:42 +0900
+
 iceweasel (31.2.0esr-2) unstable; urgency=medium
 
   * debian/control*, debian/rules: Do not build depend on gstreamer 1.0 when
