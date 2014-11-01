@@ -115,11 +115,6 @@ ifeq (default,$(origin CXX))
 CXX := g++
 endif
 
-ifneq (,$(filter armhf,$(DEB_BUILD_ARCH)))
-CC := gcc-4.9
-CXX := g++-4.9
-endif
-
 CXXFLAGS = $(CFLAGS)
 
 EXPORTS := CC CXX CFLAGS CXXFLAGS CPPFLAGS LDFLAGS MOZILLA_OFFICIAL
