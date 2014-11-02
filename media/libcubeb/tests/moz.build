@@ -4,16 +4,17 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-CppUnitTests([
-  'test_tone'
-])
+if CONFIG['CPU_ARCH'] != 'mips':
+    CppUnitTests([
+      'test_tone'
+    ])
 
-if CONFIG['OS_TARGET'] != 'Android':
-  CppUnitTests([
-    'test_audio',
-    'test_latency',
-    'test_sanity'
-  ])
+    if CONFIG['OS_TARGET'] != 'Android':
+      CppUnitTests([
+        'test_audio',
+        'test_latency',
+        'test_sanity'
+      ])
 
 LOCAL_INCLUDES += [
     '../include'
