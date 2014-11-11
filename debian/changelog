@@ -1,8 +1,34 @@
-iceweasel (33.1-1) UNRELEASED; urgency=medium
+iceweasel (33.1-1) experimental; urgency=medium
 
   * New upstream release.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 11 Nov 2014 09:37:45 +0900
+  * debian/changelog: Add missing entries for 27.0.1-1.
+  * debian/rules: Don't force to build with GCC 4.9 on armhf anymore.
+  * debian/browser.mozconfig.in: Don't build with --enable-unified-compilation.
+    It may be causing build problems on architectures with limited resources.
+  * debian/browser.install.in, debian/browser.postinst.in,
+    debian/browser.postrm.in, debian/browser.preinst.in, debian/duckduckgo.xml:
+    Remove duckduckgo search engine, since upstream now has it included.
+  * debian/branding/firefox-branding.js:
+    - Set browser.startup.homepage_override.mstone to "ignore".
+    - Set browser.aboutHomeSnippets.updateUrl to nothing. Closes: #721689.
+
+  * Import patches from the nss source package that are relevant to building
+    iceweasel against the in-tree nss source, for backports:
+    - security/nss/lib/freebl/unix_rand.c,
+      security/nss/cmd/shlibsign/shlibsign.c: Fix FTBFS on Hurd because of
+      MAXPATHLEN
+    - security/nss/coreconf/Linux.mk,
+      security/nss/coreconf/arch.mk, security/nss/coreconf/config.mk,
+      security/nss/lib/freebl/unix_rand.c, security/nss/lib/softoken/softoken.h,
+      security/nss/lib/ssl/sslmutex.*: GNU/kFreeBSD support.
+    - security/nss/lib/ckfw/builtins/certdata.txt: Adds the SPI Inc. and
+      CAcert.org CA certificates.
+    Those patches were applied on the esr24 branch, but were forgotten on the
+    release branch at the time.
+  * media/libcubeb/tests/moz.build: Work around binutils assertion on mips.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 11 Nov 2014 12:08:34 +0900
 
 iceweasel (33.0-2) experimental; urgency=medium
 
