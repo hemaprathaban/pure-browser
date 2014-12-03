@@ -1,8 +1,22 @@
-iceweasel (34.0-1) UNRELEASED; urgency=medium
+iceweasel (34.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2014-{83-89,91}, also known as:
+    CVE-2014-1587, CVE-2014-1588, CVE-2014-1589, CVE-2014-1590,
+    CVE-2014-1591, CVE-2014-1592, CVE-2014-1593, CVE-2014-1594,
+    CVE-2014-8631, CVE-2014-8632.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 03 Dec 2014 00:59:20 -0800
+  * debian/branding/firefox-branding.js: Set browser.aboutHomeSnippets.updateUrl
+    to "data:text/html,", which resets previously downloaded snippets after a
+    day.
+  * debian/browser.js.in: Avoid openh264 being downloaded and disable it if it
+    is already there. Closes: #769716.
+  * debian/control*: Bump nss and sqlite build dependencies.
+  * debian/rules: Remove --disable-compile-environment for l10n builds because
+    of bz#1063880.
+  * debian/browser.install.in: Add sandbox library.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 03 Dec 2014 01:11:24 -0800
 
 iceweasel (33.1-1) experimental; urgency=medium
 
