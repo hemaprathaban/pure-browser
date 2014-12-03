@@ -268,6 +268,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY devAppMgrMenu.accesskey           "a">
 <!ENTITY webide.label                      "WebIDE">
 <!ENTITY webide.accesskey                  "W">
+<!ENTITY webide.keycode                    "VK_F8">
+<!ENTITY webide.keytext                    "F8">
 <!ENTITY devToolbar.keycode                "VK_F2">
 <!ENTITY devToolbar.keytext                "F2">
 <!ENTITY devToolboxMenuItem.label          "Kanjari goyjinawey">
@@ -698,6 +700,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY customizeMode.restoreDefaults "Taka jina tilasu">
 <!ENTITY customizeMode.toolbars "Goyjinay zuu cebe / tugu">
 <!ENTITY customizeMode.titlebar "Maa zuu">
+<!ENTITY customizeMode.lwthemes "Furarey">
+<!ENTITY customizeMode.lwthemes.myThemes "Ay furarey">
+<!ENTITY customizeMode.lwthemes.recommended "Yaamarante">
+<!ENTITY customizeMode.lwthemes.menuManage "Juwal">
+<!ENTITY customizeMode.lwthemes.menuManage.accessKey "M">
+<!ENTITY customizeMode.lwthemes.menuGetMore "Furari tontoney guna">
+<!ENTITY customizeMode.lwthemes.menuGetMore.accessKey "G">
 
 <!ENTITY social.chatBar.commandkey "c">
 <!ENTITY social.chatBar.label "Faakaarawey suuba">
@@ -710,18 +719,30 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY getUserMedia.selectCamera.label "Biizaahaya žemna:">
 <!ENTITY getUserMedia.selectCamera.accesskey "z">
-<!ENTITY getUserMedia.selectWindowOrScreen.label "Zanfun wala diji ka žemna:">
-<!ENTITY getUserMedia.selectWindowOrScreen.accesskey "Z">
 <!ENTITY getUserMedia.selectMicrophone.label "Jindezaahaya kaŋ ka žemna:">
 <!ENTITY getUserMedia.selectMicrophone.accesskey "m">
 <!ENTITY getUserMedia.allWindowsShared.message "Zanfun kaŋ ga banga war dijoo ga kul ga žemnandi.">
+<!-- Bad Content Blocker Doorhanger Notification -->
 
-<!ENTITY webrtcIndicatorButton.label "Biizaahaya / Jindezaahaya toodoo">
-<!ENTITY webrtcIndicatorButton.tooltip "Cebe Interneti dogey kaŋ war goo m'i žemni nda bii- wala jindezaahaya sohõda">
+<!ENTITY badContentBlocked.moreinfo "Interneti doo boobey ga goy boryo ba nda gundekunaa woo gagayandi.">
 
-<!ENTITY loopCallButton.tooltip "Boro foo cee ka šelaŋ">
+<!ENTITY mixedContentBlocked2.message "Gundekuna kaŋ ga naanay šii">
+<!ENTITY mixedContentBlocked2.moreinfo "Na hayi-ize fooyaŋ kaŋ mana kufalandi nungoo woo ga gagay.">
+<!ENTITY mixedContentBlocked2.learnMore "Bay ka tonton">
+<!ENTITY mixedContentBlocked2.options "Suubarey">
+<!ENTITY mixedContentBlocked2.unblock.label "Jejebu kaa sohõ se">
+<!ENTITY mixedContentBlocked2.unblock.accesskey "D">
+<!ENTITY mixedContentBlocked2.block.label "Jejebu šintin">
+<!ENTITY mixedContentBlocked2.block.accesskey "b">
+<!ENTITY mixedContentBlocked2.disabled.message "Jejeboo kayandi">
 
-<!ENTITY mixedContentBlocked.moreinfo "Interneti doo boobey ga koy boryo ba nda gundekunaa woo gagayandi.">
+<!ENTITY trackingContentBlocked.message "Kuryan">
+<!ENTITY trackingContentBlocked.moreinfo "Ir na moo-kunawey kaŋyaŋ ga war monno interneti bande gagay.">
+<!ENTITY trackingContentBlocked.learnMore "Bay ka tonton">
+<!ENTITY trackingContentBlocked.options "Suubarey">
+<!ENTITY trackingContentBlocked.unblock.label2 "Jejeboo kaa moɲoo woo se">
+<!ENTITY trackingContentBlocked.block.label "Bataga jejebuyan">
+<!ENTITY trackingContentBlocked.disabled.message "Monnoyan jejebu n' ka kay">
 
 <!ENTITY pointerLock.notification.message "ESC naagu waati kul k'a cebe koyne.">
 
@@ -750,4 +771,29 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY appMenuSidebars.label         "Cerawžeerey">
 
 <!ENTITY switchToMetroCmd2.label       "&brandShortName; tunandi taaga Windows 8 Touch se">
+<!-- LOCALIZATION NOTE: (panicButton.view.mainTimeframeDesc, panicButton.view.5min, panicButton.view.2hr, panicButton.view.day):
+     The .mainTimeframeDesc string combined with any of the 3 others is meant to form a complete sentence, e.g. "Forget the last: Five minutes".
+     Please ensure that this remains the case in the translation. -->
+
+<!ENTITY panicButton.view.mainTimeframeDesc       "Dirŋa ikoraa:">
+<!ENTITY panicButton.view.5min                    "Miniti guu">
+<!ENTITY panicButton.view.2hr                     "Guuru hinka">
+<!ENTITY panicButton.view.day                     "Guuru 24">
+<!-- LOCALIZATION NOTE: (panicButton.view.mainLabel, panicButton.view.deleteCookies, panicButton.view.deleteHistory, panicButton.view.deleteTabsAndWindows, panicButton.view.openNewWindow):
+     The .mainActionDesc string combined with any of the 4 others is meant to form a complete sentence, e.g. "Proceeding will: Delete Recent Cookies".
+     Note also that the deleteCookies, deleteHistory and deleteTabsAndWindows strings include <html:strong> tags for emphasis on the words "Cookies", "History", "Tabs" and "Windows".
+     The translation should do the same. -->
+
+<!ENTITY panicButton.view.mainActionDesc          "Koyjineyan ga:">
+<!ENTITY panicButton.view.deleteCookies           "<html:strong>Aleewa</html:strong> korawey tuusu">
+<!ENTITY panicButton.view.deleteHistory           " <html:strong>Taariki</html:strong> koraa tuusu">
+<!ENTITY panicButton.view.deleteTabsAndWindows    "<html:strong>Nor lokey</html:strong> nda <html:strong>Zanfuney</html:strong> kul tuusu">
+<!ENTITY panicButton.view.openNewWindow           "Zanfun henanante taaga feeri">
+
+<!ENTITY panicButton.view.undoWarning             "Teeraa woo ši hin ka taafeeri.">
+<!ENTITY panicButton.view.forgetButton            "Dirŋa!">
+
+<!ENTITY panicButton.thankyou.msg1                "War taariki koraa n' ka tuusandi.">
+<!ENTITY panicButton.thankyou.msg2                "Ceeciyan saajante!">
+<!ENTITY panicButton.thankyou.buttonlabel         "Foo nda goy!">
 

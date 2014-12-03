@@ -6,6 +6,11 @@
 <!ENTITY  no_space_to_start_error "Na dysku jest za mało wolnego miejsca aby uruchomić program &brandShortName;">
 <!ENTITY  error_loading_file "Podczas wczytywania plików wymaganych do uruchomienia programu &brandShortName; wystąpił błąd.">
 
+<!ENTITY  onboard_start_message "Witaj w przeglądarce &brandShortName;!">
+<!ENTITY  onboard_start_subtext "Z myślą o Tobie, Twojej prywatności i otwartej Sieci.">
+<!ENTITY  onboard_start_button_account "Zaloguj się do przeglądarki &brandShortName;">
+<!ENTITY  onboard_start_button_browser "Zacznij przeglądać Internet">
+
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 <!ENTITY  bookmarks_title "Zakładki">
@@ -34,7 +39,7 @@
 
 <!ENTITY choose_file "Wybierz plik">
 
-<!ENTITY url_bar_default_text "Wpisz zapytanie lub adres">
+<!ENTITY url_bar_default_text2 "Wpisz zapytanie lub adres">
 
 <!ENTITY bookmark "Zakładka">
 <!ENTITY bookmark_added "Zakładka dodana">
@@ -84,6 +89,16 @@ The locale includes both language and region concepts. -->
     Firefox will use the locale currently selected in Android's settings
     to display browser chrome. -->
 <!ENTITY locale_system_default "Domyślny język systemu">
+
+<!ENTITY overlay_share_bookmark_btn_label "Dodaj zakładkę">
+<!ENTITY overlay_share_reading_list_btn_label "Dodaj do listy „Do przeczytania”">
+<!ENTITY overlay_share_label "Przekaż do przeglądarki &brandShortName;">
+<!ENTITY overlay_share_send_other "Przekaż do innych urządzeń">
+
+<!ENTITY overlay_share_send_tab_btn_label "Przekaż do innego urządzenia">
+<!ENTITY overlay_share_no_url "Nie znaleziono odnośnika do udostępnienia">
+<!ENTITY overlay_share_retry "Spróbuj ponownie">
+<!ENTITY overlay_share_select_device "Wybierz urządzenie">
 
 <!ENTITY pref_category_search3 "Wyszukiwanie">
 <!ENTITY pref_category_search_summary "Dostosuj wyszukiwarki">
@@ -150,7 +165,7 @@ selected to be added to the home page. -->
 <!ENTITY pref_clear_private_data2 "Wyczyść teraz">
 <!ENTITY pref_clear_private_data_category "Wyczyść prywatne dane">
 <!ENTITY pref_clear_on_exit_title "Czyść zawsze przy wyłączaniu">
-<!ENTITY pref_clear_on_exit_summary "Przeglądarka &brandShortName; zawsze będzie czyściła prywatne dane po wybraniu opcji \u201eZakończ\u201d z głównego menu">
+<!ENTITY pref_clear_on_exit_summary2 "Przeglądarka &brandShortName; zawsze będzie czyściła prywatne dane po wybraniu opcji \u201eZakończ\u201d z głównego menu">
 <!ENTITY pref_clear_on_exit_dialog_title "Wybierz dane, które chcesz czyścić">
 <!ENTITY pref_plugins "Wtyczki">
 <!ENTITY pref_plugins_enabled "Włączone">
@@ -177,7 +192,6 @@ size. -->
 <!ENTITY pref_font_size_preview_text "Chyży ryży lisek skacze przez wysoko postawioną poprzeczkę dzięki szybkości, łatwości w dostosowywaniu go do potrzeb użytkownika i zwiększonym bezpieczeństwie. Jesteśmy organizacją non-profit, dzięki czemu możemy pracować nad innowacjami służącymi Twojemu dobru bez potrzeby pójścia na żaden kompromis. To oznacza przyjemniejsze użytkowanie dla ciebie i lepszą przyszłość dla Sieci.">
 
 <!ENTITY pref_use_master_password "Używaj hasła głównego">
-<!ENTITY pref_show_product_announcements "Pokaż informacje o produktach">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Podpowiedzi wyszukiwania">
 <!ENTITY pref_import_android "Importuj z Androida">
@@ -262,7 +276,7 @@ size. -->
 <!ENTITY find_close "Zamknij">
 
 <!-- Localization note (media_casting_to, media_play, media_pause, media_stop) : These strings are used as alternate text for accessibility. They are not visible in the UI. -->
-<!ENTITY media_casting_to "Przekazywanie do urządzenia">
+<!ENTITY media_sending_to "Przekazywanie do urządzenia">
 <!ENTITY media_play "Odtwórz">
 <!ENTITY media_pause "Pauza">
 <!ENTITY media_stop "Zatrzymaj">
@@ -290,8 +304,8 @@ size. -->
 <!ENTITY pref_titlebar_mode_title "Pokazuj tytuły stron">
 <!ENTITY pref_titlebar_mode_url "Pokazuj adresy stron">
 
-<!-- Localization note (pref_scroll_title_bar): Label for setting that controls whether or not the dynamic toolbar is enabled. -->
-<!ENTITY pref_scroll_title_bar "Przewijaj pasek tytułu">
+<!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
+<!ENTITY pref_scroll_title_bar_summary "Ukryj pasek tytułu przeglądarki &brandShortName; przy przewijaniu stron">
 
 <!ENTITY page_removed "Stronę usunięto">
 
@@ -444,6 +458,8 @@ it is applicable. -->
      designated space. Use the unicode ellipsis char, \u2026, or use "..." if \u2026 doesn't suit
      traditions in your locale. -->
 <!ENTITY ellipsis "…">
+
+<!ENTITY colon ":">
 
 <!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->

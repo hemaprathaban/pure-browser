@@ -3,16 +3,16 @@ Date: Sat, 21 Jun 2008 02:48:46 +0200
 Subject: Allow .js preference files to set locked prefs with lockPref()
 
 ---
- modules/libpref/src/prefapi.cpp  |  5 ++++-
- modules/libpref/src/prefapi.h    |  3 ++-
- modules/libpref/src/prefread.cpp | 11 ++++++++---
- modules/libpref/src/prefread.h   |  6 ++++--
+ modules/libpref/prefapi.cpp  |  5 ++++-
+ modules/libpref/prefapi.h    |  3 ++-
+ modules/libpref/prefread.cpp | 11 ++++++++---
+ modules/libpref/prefread.h   |  6 ++++--
  4 files changed, 18 insertions(+), 7 deletions(-)
 
-diff --git a/modules/libpref/src/prefapi.cpp b/modules/libpref/src/prefapi.cpp
-index 3cc95a1..b4e9a73 100644
---- a/modules/libpref/src/prefapi.cpp
-+++ b/modules/libpref/src/prefapi.cpp
+diff --git a/modules/libpref/prefapi.cpp b/modules/libpref/prefapi.cpp
+index 2dbe64e..378238e 100644
+--- a/modules/libpref/prefapi.cpp
++++ b/modules/libpref/prefapi.cpp
 @@ -1005,7 +1005,10 @@ void PREF_ReaderCallback(void       *closure,
                           const char *pref,
                           PrefValue   value,
@@ -25,10 +25,10 @@ index 3cc95a1..b4e9a73 100644
 +    if (isLocked)
 +        PREF_LockPref(pref, true);
  }
-diff --git a/modules/libpref/src/prefapi.h b/modules/libpref/src/prefapi.h
+diff --git a/modules/libpref/prefapi.h b/modules/libpref/prefapi.h
 index 675b384..fe3f2da 100644
---- a/modules/libpref/src/prefapi.h
-+++ b/modules/libpref/src/prefapi.h
+--- a/modules/libpref/prefapi.h
++++ b/modules/libpref/prefapi.h
 @@ -183,7 +183,8 @@ void PREF_ReaderCallback( void *closure,
                            const char *pref,
                            PrefValue   value,
@@ -39,10 +39,10 @@ index 675b384..fe3f2da 100644
  
  #ifdef __cplusplus
  }
-diff --git a/modules/libpref/src/prefread.cpp b/modules/libpref/src/prefread.cpp
+diff --git a/modules/libpref/prefread.cpp b/modules/libpref/prefread.cpp
 index 01612ba..a119669 100644
---- a/modules/libpref/src/prefread.cpp
-+++ b/modules/libpref/src/prefread.cpp
+--- a/modules/libpref/prefread.cpp
++++ b/modules/libpref/prefread.cpp
 @@ -43,6 +43,7 @@ enum {
  #define BITS_PER_HEX_DIGIT      4
  
@@ -89,10 +89,10 @@ index 01612ba..a119669 100644
                  ps->quotechar = c;
                  ps->nextstate = PREF_PARSE_UNTIL_COMMA; /* return here when done */
                  state = PREF_PARSE_QUOTED_STRING;
-diff --git a/modules/libpref/src/prefread.h b/modules/libpref/src/prefread.h
+diff --git a/modules/libpref/prefread.h b/modules/libpref/prefread.h
 index 4d5ce1e..5b6a44f 100644
---- a/modules/libpref/src/prefread.h
-+++ b/modules/libpref/src/prefread.h
+--- a/modules/libpref/prefread.h
++++ b/modules/libpref/prefread.h
 @@ -31,7 +31,8 @@ typedef void (*PrefReader)(void       *closure,
                             const char *pref,
                             PrefValue   val,

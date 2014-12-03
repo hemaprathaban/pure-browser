@@ -4,10 +4,14 @@
 
 <!ENTITY no_space_to_start_error "Spazio libero insufficiente per avviare &brandShortName;.">
 <!ENTITY error_loading_file "Si è verificato un errore durante il caricamento di un file necessario per l’esecuzione di &brandShortName;">
+<!ENTITY onboard_start_message "Benvenuto in &brandShortName;">
+<!ENTITY onboard_start_subtext "Impegnato a favore delle persone, della privacy e dell’open Web.">
+<!ENTITY onboard_start_button_account "Accedi a &brandShortName;">
+<!ENTITY onboard_start_button_browser "Inizia a navigare">
 <!ENTITY bookmarks_title "Segnalibri">
 <!ENTITY history_title "Cronologia">
 <!ENTITY reading_list_title "Elenco lettura">
-<!ENTITY  recent_tabs_title "Schede recenti">
+<!ENTITY recent_tabs_title "Schede recenti">
 <!ENTITY switch_to_tab "Passa alla scheda">
 <!ENTITY crash_reporter_title "Crash Reporter &brandShortName;">
 <!ENTITY crash_message2 "&brandShortName; ha riscontrato un problema e si è bloccato. Le schede aperte dovrebbero essere visibili nella pagina iniziale di &brandShortName; dopo il riavvio.">
@@ -15,7 +19,7 @@
 <!ENTITY crash_include_url2 "Includi l’indirizzo della pagina che si stava visitando">
 <!ENTITY crash_sorry "Siamo spiacenti">
 <!ENTITY crash_comment "Aggiungi un commento (i commenti sono visibili pubblicamente)">
-<!ENTITY crash_allow_contact2 "Permetti a &vendorShortName; di contattarmi in riferimento a questa segnalazione">
+<!ENTITY crash_allow_contact2 "Consentire a &vendorShortName; di contattarmi in riferimento a questa segnalazione">
 <!ENTITY crash_email "Email">
 <!ENTITY crash_closing_alert "Uscire senza inviare una segnalazione?">
 <!ENTITY sending_crash_report "Invio segnalazione\u2026">
@@ -25,7 +29,7 @@
 <!ENTITY launcher_shortcuts_title "&brandShortName; web app">
 <!ENTITY launcher_shortcuts_empty "Nessuna web app trovata">
 <!ENTITY choose_file "Scelta file">
-<!ENTITY url_bar_default_text "Cerca o inserisci un indirizzo">
+<!ENTITY url_bar_default_text2 "Cerca o inserisci un indirizzo">
 <!ENTITY bookmark "Segnalibro">
 <!ENTITY bookmark_added "Aggiunto segnalibro">
 <!ENTITY bookmark_removed "Segnalibro eliminato">
@@ -57,6 +61,14 @@
 <!ENTITY pref_category_language "Lingua">
 <!ENTITY pref_browser_locale "Lingua del browser">
 <!ENTITY locale_system_default "Predefinita del sistema">
+<!ENTITY overlay_share_label "Aggiungi a &brandShortName;">
+<!ENTITY overlay_share_bookmark_btn_label "Aggiungi ai segnalibri">
+<!ENTITY overlay_share_reading_list_btn_label "Aggiungi a Elenco lettura">
+<!ENTITY overlay_share_send_other "Invia a altri dispositivi">
+<!ENTITY overlay_share_send_tab_btn_label "Invia a un altro dispositivo">
+<!ENTITY overlay_share_no_url "Nessun link disponibile in questa condivisione">
+<!ENTITY overlay_share_retry "Riprova">
+<!ENTITY overlay_share_select_device "Seleziona dispositivo">
 <!ENTITY pref_category_search3 "Ricerca">
 <!ENTITY pref_category_search_summary "Personalizza i motori di ricerca">
 <!ENTITY pref_category_display "Visualizzazione">
@@ -107,7 +119,7 @@
 <!ENTITY pref_clear_private_data2 "Elimina adesso">
 <!ENTITY pref_clear_private_data_category "Eliminazione dati personali">
 <!ENTITY pref_clear_on_exit_title "Elimina sempre alla chiusura">
-<!ENTITY pref_clear_on_exit_summary "I dati personali in &brandShortName; verranno eliminati automaticamente quando si seleziona “Esci” nel menu principale">
+<!ENTITY pref_clear_on_exit_summary2 "I dati personali in &brandShortName; verranno eliminati automaticamente quando si seleziona “Esci” nel menu principale">
 <!ENTITY pref_clear_on_exit_dialog_title "Selezionare i dati da eliminare">
 <!ENTITY pref_plugins "Plugin">
 <!ENTITY pref_plugins_enabled "Attivati">
@@ -127,7 +139,6 @@
 <!ENTITY pref_font_size_adjust_char "A">
 <!ENTITY pref_font_size_preview_text "La volpe arancio oltrepassa ogni ostacolo con sempre maggiore velocità, flessibilità e sicurezza. In quanto organizzazione non profit siamo in grado di creare innovazione per il bene degli utenti senza cedere a pressioni o compromessi. Questo significa una migliore esperienza per tutti e un futuro migliore per il Web.">
 <!ENTITY pref_use_master_password "Usa password principale">
-<!ENTITY pref_show_product_announcements "Annunci sul prodotto">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_search_suggestions "Mostra suggerimenti di ricerca">
 <!ENTITY pref_import_android "Importa da Android">
@@ -197,7 +208,7 @@
 <!ENTITY find_prev "Precedente">
 <!ENTITY find_next "Successivo">
 <!ENTITY find_close "Chiudi">
-<!ENTITY media_casting_to "Trasmissione a dispositivo">
+<!ENTITY media_sending_to "Invio a dispositivo">
 <!ENTITY media_play "Riproduci">
 <!ENTITY media_pause "Pausa">
 <!ENTITY media_stop "Interrompi">
@@ -219,7 +230,8 @@
 <!ENTITY pref_titlebar_mode "Barra del titolo">
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
-<!ENTITY pref_scroll_title_bar "Barra del titolo dinamica">
+<!ENTITY pref_scroll_title_bar2 "Navigazione a schermo intero">
+<!ENTITY pref_scroll_title_bar_summary "Nascondi la barra del titolo di &brandShortName; quando si scorre una pagina verso il basso">
 <!ENTITY page_removed "Pagina rimossa">
 <!ENTITY bookmark_edit_title "Modifica segnalibro">
 <!ENTITY bookmark_edit_name "Nome">
@@ -306,6 +318,7 @@
 <!ENTITY exit_guest_session_title "&brandShortName; verrà riavviato">
 <!ENTITY exit_guest_session_text "I dati relativi a questa sessione di navigazione verranno eliminati.">
 <!ENTITY ellipsis "…">
+<!ENTITY colon ":">
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Fatto">
 <!ENTITY remote_tabs_last_synced "Ultima sinc.: &formatS;">
