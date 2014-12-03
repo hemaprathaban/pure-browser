@@ -1,3 +1,20 @@
+iceweasel (31.3.0esr-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2014-{83,85,87-88}, also known as:
+    CVE-2014-1587, CVE-2014-1590, CVE-2014-1592, CVE-2014-1593,
+    CVE-2014-1594.
+
+  * debian/browser.mozconfig.in: Revert change from release 31.2.0esr-3,
+    because it made no difference.
+  * debian/branding/firefox-branding.js:
+    - Set browser.startup.homepage_override.mstone to "ignore".
+    - Set browser.aboutHomeSnippets.updateUrl to "data:text/html,", which
+      disables downloading snippets from Mozilla servers and resets previously
+      downloaded snippets after a day. Closes: #721689.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 02 Dec 2014 22:46:00 -0800
+
 iceweasel (31.2.0esr-3) unstable; urgency=medium
 
   * debian/changelog: Add missing entries for 27.0.1-1.
