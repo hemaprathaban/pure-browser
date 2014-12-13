@@ -3,18 +3,9 @@
 #  - copies artwork to appropriate places in objdir for bundling into app 
 #    resources
 
-DEPTH = ../..
-topsrcdir = @top_srcdir@
-srcdir = @srcdir@
-VPATH = @srcdir@
-
-include $(DEPTH)/config/autoconf.mk
-
 PREF_JS_EXPORTS += $(srcdir)/firefox-branding.js
 
-ifndef BRANDING_TEST
-EXTRA_COMPONENTS := aboutIce.js aboutIce.manifest
-else
+ifdef BRANDING_TEST
 DEFINES += -DBRANDING_TEST
 endif
 
