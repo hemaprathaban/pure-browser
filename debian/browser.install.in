@@ -30,8 +30,6 @@ usr/lib/@browser@/libsoftokn3.chk
 usr/lib/@browser@/libsoftokn3.so
 usr/lib/@browser@/libssl3.so
 %endif
-%if DEB_BUILD_ARCH == i386 || DEB_BUILD_ARCH == amd64
-usr/lib/@browser@/libmozsandbox.so
 
 %if SHORT_SOURCE_CHANNEL == central
 usr/lib/@browser@/libreplace_jemalloc.so
