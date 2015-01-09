@@ -17,12 +17,19 @@
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "Netþjónn finnst ekki">
-<!ENTITY dnsNotFound.longDesc3 "<ul> 
-<li>Athugaði hvort það séu innsláttar villu í vistfanginu eins og 
-<strong>ww</strong>.daemi.is í staðinn fyrir 
+<!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
+<!ENTITY dnsNotFound.longDesc4 "<ul> 
+<li>Leitaðu í vistfanginu eftir villum eins og 
+<strong>ww</strong>.daemi.is í stað 
 <strong>www</strong>.daemi.is</li> 
-<li>Ef þú getur ekki hlaðið inn neinum síðum, athugaðu þá gagna- eða WiFi tenginguna á tækinu þínu. 
-</li>  
+<div id='searchbox'> 
+<input id='searchtext' type='search'></input> 
+<button id='searchbutton'>Leit</button> 
+</div> 
+<li>Ef þú getur ekki vafrað á neina síðu, skoðaðu þá gagnateninguna eða Wi-Fi tenginguna á tækinu þínu. 
+<button id='wifi'>Virkja Wi-Fi</button> 
+</li> 
 </ul>">
 
 <!ENTITY fileNotFound.title "Skrá fannst ekki">
@@ -36,10 +43,16 @@
 <!ENTITY generic.longDesc "<p>&brandShortName; gat af einhverri ástæðu ekki hlaðið inn þessa síðu.</p>">
 
 <!ENTITY malformedURI.title "Vistfang er ógilt">
-<!ENTITY malformedURI.longDesc "<ul> 
-<li>Vef vistföng eru vanalega skrifuð svona 
+<!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY malformedURI.longDesc2 "<ul> 
+<li>Vistföng eru vanalega rituð svona 
 <strong>http://www.daemi.is/</strong></li> 
-<li>Gátu hvort þú sért að nota rétt skástrik (sem sagt 
+<div id='searchbox'> 
+<input id='searchtext' type='search'></input> 
+<button id='searchbutton'>Leit</button> 
+</div> 
+<li>Vertu viss að þú sért að nota rétta gerð af skástriki (i.e. 
 <strong>/</strong>).</li> 
 </ul>">
 
@@ -50,6 +63,8 @@
 <!ENTITY notCached.longDesc "<p>Umbeðið skjal er ekki fáanlegt í &brandShortName;'s skyniminninu.</p><ul><li>Sem hluti af varúðarráðstöfun þá biður &brandShortName; ekki sjálfkrafa aftur um viðkvæm skjöl.</li><li>Smellið á Reynið aftur til að biðja aftur um skjalið frá vefsvæðinu.</li></ul>">
 
 <!ENTITY netOffline.title "Aftengdur hamur">
+<!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 <!ENTITY netOffline.longDesc3 "<ul> 
 <li>Reyndu aftur. &brandShortName; mun reyna að opna tengingu og enduhlaða síðuna.  
 <button id='wifi'>Virkja Wi-Fi</button> 
@@ -85,6 +100,8 @@ að virka rétt.</li>
 </ul>">
 
 <!ENTITY proxyResolveFailure.title "Gat ekki fundið milliþjón">
+<!-- LOCALIZATION NOTE (proxyResolveFailure.longDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 <!ENTITY proxyResolveFailure.longDesc3 "<ul> 
 <li>Athugaðu hvort milliþjóna stillingarnar séu réttar.</li> 
 <li>Athugaðu hvort tækið þitt sé með gagna- eða WiFi tengingu sem virkar. 
@@ -118,6 +135,8 @@ einhver að reyna að þykjast vera þessi netþjónn.</li>
 <li>Ef þú hefur náð að tengjast þessum netþjón áður þá gæti villan verið 
 tímabundin og þú getur reynt aftur síðar.</li> 
 </ul>">
+<!-- LOCALIZATION NOTE (sharedLongDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 
 <!ENTITY sharedLongDesc3 "<ul> 
 <li>Svæðið gæti verið ótiltækt tímabundið eða of upptekið til að svara. Reyndu aftur eftir smá tíma.</li> 

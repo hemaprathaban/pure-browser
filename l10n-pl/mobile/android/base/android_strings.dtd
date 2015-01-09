@@ -78,11 +78,13 @@ is upper-case, to match Google and Android's convention. -->
 
 <!ENTITY pref_category_advanced "Zaawansowane">
 <!ENTITY pref_category_customize "Dostosuj">
+<!ENTITY pref_category_customize_summary "Strona domowa, wyszukiwanie, karty, importowanie">
 
 <!-- Localization note (pref_category_language) : This is the preferences
 section in which the user picks the locale in which to display Firefox UI.
 The locale includes both language and region concepts. -->
 <!ENTITY pref_category_language "Język">
+<!ENTITY pref_category_language_summary "Zmień język przeglądarki">
 <!ENTITY pref_browser_locale "Język przeglądarki">
 
 <!-- Localization note (locale_system_default) : This string indicates that
@@ -93,6 +95,8 @@ The locale includes both language and region concepts. -->
 <!ENTITY overlay_share_bookmark_btn_label "Dodaj zakładkę">
 <!ENTITY overlay_share_reading_list_btn_label "Dodaj do listy „Do przeczytania”">
 <!ENTITY overlay_share_label "Przekaż do przeglądarki &brandShortName;">
+<!ENTITY overlay_share_bookmark_btn_label_already "Zakładka już istnieje">
+<!ENTITY overlay_share_reading_list_btn_label_already "Strona jest już zachowana na później">
 <!ENTITY overlay_share_send_other "Przekaż do innych urządzeń">
 
 <!ENTITY overlay_share_send_tab_btn_label "Przekaż do innego urządzenia">
@@ -103,8 +107,11 @@ The locale includes both language and region concepts. -->
 <!ENTITY pref_category_search3 "Wyszukiwanie">
 <!ENTITY pref_category_search_summary "Dostosuj wyszukiwarki">
 <!ENTITY pref_category_display "Wyświetlanie">
+<!ENTITY pref_category_display_summary "Tekst, pasek tytułowy, przeglądanie pełnoekranowe">
 <!ENTITY pref_category_privacy_short "Prywatność">
+<!ENTITY pref_category_privacy_summary "Kontrola nad hasłami, ciasteczkami, śledzeniem i innymi danymi">
 <!ENTITY pref_category_vendor "&vendorShortName;">
+<!ENTITY pref_category_vendor_summary "O programie &brandShortName;, najczęściej zadawane pytania, zarządzanie danymi">
 <!ENTITY pref_category_datareporting "Udostępnianie danych">
 <!ENTITY pref_learn_more "Dowiedz się więcej">
 <!ENTITY pref_category_installed_search_engines "Zainstalowane silniki wyszukiwania">
@@ -119,6 +126,7 @@ The locale includes both language and region concepts. -->
      it is applicable. -->
 <!ENTITY pref_search_hint "RADA: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania, a następnie stukając ikonę &formatI;.">
 <!ENTITY pref_category_devtools "Narzędzia dla programistów">
+<!ENTITY pref_category_devtools_summary "Zdalne debugowanie, migotanie malowania">
 <!ENTITY pref_developer_paint_flashing "Migotanie malowania">
 <!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
 <!ENTITY pref_remember_signons "Pamiętaj hasła">
@@ -164,7 +172,7 @@ selected to be added to the home page. -->
 <!ENTITY pref_char_encoding_off "Nie pokazuj">
 <!ENTITY pref_clear_private_data2 "Wyczyść teraz">
 <!ENTITY pref_clear_private_data_category "Wyczyść prywatne dane">
-<!ENTITY pref_clear_on_exit_title "Czyść zawsze przy wyłączaniu">
+<!ENTITY pref_clear_on_exit_title2 "Czyść przy wyłączaniu">
 <!ENTITY pref_clear_on_exit_summary2 "Przeglądarka &brandShortName; zawsze będzie czyściła prywatne dane po wybraniu opcji \u201eZakończ\u201d z głównego menu">
 <!ENTITY pref_clear_on_exit_dialog_title "Wybierz dane, które chcesz czyścić">
 <!ENTITY pref_plugins "Wtyczki">
@@ -193,8 +201,10 @@ size. -->
 
 <!ENTITY pref_use_master_password "Używaj hasła głównego">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_sync_summary "Synchronizuj karty, zakładki, hasła, historię">
 <!ENTITY pref_search_suggestions "Podpowiedzi wyszukiwania">
 <!ENTITY pref_import_android "Importuj z Androida">
+<!ENTITY pref_import_android_summary "Importuj zakładki i historię z domyślnej przeglądarki systemu Android">
 <!ENTITY pref_private_data_history2 "Historia przeglądania">
 <!ENTITY pref_private_data_formdata "Historia wyszukiwania i formularzy">
 <!ENTITY pref_private_data_cookies2 "Ciasteczka i aktywne zalogowania">
@@ -242,7 +252,7 @@ size. -->
      except in branding. -->
 <!ENTITY datareporting_crashreporter_title_short "Zgłaszanie awarii">
 <!ENTITY datareporting_wifi_title2 "Usługi lokalizacji organizacji &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary "Działając w tle, odbiera informacje o lokalizacji przez Wi-Fi i dane komórkowe, a następnie udostępnia je organizacji &vendorShortName;, aby pomóc nam ulepszyć usługi geolokalizacyjne">
+<!ENTITY datareporting_wifi_geolocation_summary2 "Udostępnia organizacji &vendorShortName; przybliżone informacje o lokalizacji urządzenia przez Wi-Fi i dane komórkowe, aby pomóc nam ulepszyć usługi geolokalizacyjne">
 
 <!ENTITY pref_update_autodownload2 "Automatyczne aktualizacje">
 <!ENTITY pref_update_autodownload_wifi "Tylko przez Wi-Fi">
@@ -372,9 +382,25 @@ it is applicable. -->
     previous location in the navigation, such as the previous folder -->
 <!ENTITY home_move_up_to_filter "Wróć do &formatS;">
 
+<!ENTITY home_remote_tabs_one_hidden_device "Liczba ukrytych urządzeń: 1">
+<!ENTITY home_remote_tabs_many_hidden_devices "Liczba ukrytych urządzeń: &formatD;">
+<!ENTITY home_remote_tabs_hidden_devices_title "Ukryte urządzenia">
+<!ENTITY home_remote_tabs_unhide_selected_devices "Ujawnij wybrane urządzenia">
+
+<!ENTITY home_remote_tabs_title "Zsynchronizowane">
+<!ENTITY home_remote_tabs_empty "Tutaj pojawią się twoje karty zsynchronizowane z innymi urządzeniami.">
+<!ENTITY home_remote_tabs_unable_to_connect "Nie udało się nawiązać połączenia">
+<!ENTITY home_remote_tabs_need_to_sign_in "Zaloguj się na konto Firefox, aby kontynuować synchronizację.">
+<!ENTITY home_remote_tabs_trouble_verifying "Masz problem z weryfikacją konta?">
+<!ENTITY home_remote_tabs_need_to_verify "Przed synchronizacją musisz zweryfikować konto Firefox.">
+
 <!ENTITY private_browsing_title "Tryb prywatny">
 <!ENTITY private_tabs_panel_empty_desc "Tu wyświetlą się twoje prywatne karty. Nie zachowamy historii przeglądania ani ciasteczek z tej sesji, ale zachowane zakładki i pobrane pliki zostaną na twoim urządzeniu.">
 <!ENTITY private_tabs_panel_learn_more "Chcesz dowiedzieć się więcej?">
+
+<!ENTITY remote_tabs_panel_moved_title "Gdzie zniknęły moje karty?">
+<!ENTITY remote_tabs_panel_moved_desc "Przenieśliśmy twoje karty z innych urządzeń do panelu na stronie domowej, gdzie możesz je łatwo znaleźć przy otwieraniu nowej karty.">
+<!ENTITY remote_tabs_panel_moved_link "Pokaż mi ten nowy panel.">
 
 <!ENTITY pin_site_dialog_hint "Wpisz słowo-klucz">
 
@@ -387,6 +413,7 @@ it is applicable. -->
 <!ENTITY tabs_private "Prywatne">
 <!ENTITY tabs_synced "Z Sync">
 <!ENTITY set_image_fail "Nie można ustawić obrazu">
+<!ENTITY set_image_path_fail "Nie można zapisać obrazu">
 <!ENTITY set_image_chooser_title "Ustaw obraz jako">
 
 <!ENTITY suggestions_prompt3 "Włączyć podpowiedzi wyszukiwania?">
@@ -442,6 +469,9 @@ it is applicable. -->
 <!ENTITY updater_apply_title2 "&brandShortName;: dostępne są nowe aktualizacje">
 <!ENTITY updater_apply_select2 "Dotknij, aby zaktualizować">
 
+<!ENTITY new_tablet_restart "Uruchom ponownie przeglądarkę, aby zmiany weszły w życie">
+<!ENTITY new_tablet_pref "Włącz nowy interfejs dla tabletów">
+
 <!-- Guest mode -->
 <!ENTITY new_guest_session "Nowa sesja gościnna">
 <!ENTITY exit_guest_session "Zakończ sesję gościnną">
@@ -449,6 +479,8 @@ it is applicable. -->
 <!ENTITY guest_session_dialog_cancel "Anuluj">
 <!ENTITY new_guest_session_title "Program &brandShortName; zostanie uruchomiony ponownie">
 <!ENTITY new_guest_session_text "Osoba korzystająca z przeglądarki nie będzie widziała Twoich prywatnych informacji (takich, jak zapisane hasła, historia przeglądania czy zakładki). Kiedy gość skończy korzystać z przeglądarki, dane o sesji zostaną usunięte, a Twoja sesja zostanie przywrócona.">
+<!ENTITY guest_browsing_notification_title "Włączono tryb gościnny">
+<!ENTITY guest_browsing_notification_text "Stuknij, żeby wyjść">
 
 <!ENTITY exit_guest_session_title "Program &brandShortName; zostanie uruchomiony ponownie">
 <!ENTITY exit_guest_session_text "Dane o tej sesji zostaną usunięte.">

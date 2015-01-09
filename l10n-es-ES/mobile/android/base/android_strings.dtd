@@ -58,12 +58,16 @@
 <!ENTITY settings_title "Configuración">
 <!ENTITY pref_category_advanced "Avanzado">
 <!ENTITY pref_category_customize "Personalizar">
+<!ENTITY pref_category_customize_summary "Inicio, búsqueda, pestañas, importar">
 <!ENTITY pref_category_language "Idioma">
+<!ENTITY pref_category_language_summary "Cambiar el idioma de su navegador">
 <!ENTITY pref_browser_locale "Idioma del navegador">
 <!ENTITY locale_system_default "Predeterminado del sistema">
 <!ENTITY overlay_share_label "Añadir a &brandShortName;">
 <!ENTITY overlay_share_bookmark_btn_label "Marcador">
 <!ENTITY overlay_share_reading_list_btn_label "Añadir a la lista de lectura">
+<!ENTITY overlay_share_bookmark_btn_label_already "Ya está en los marcadores">
+<!ENTITY overlay_share_reading_list_btn_label_already "Ya está en la lista de lectura">
 <!ENTITY overlay_share_send_other "Enviar a otros dispositivos">
 <!ENTITY overlay_share_send_tab_btn_label "Enviar a otro dispositivo">
 <!ENTITY overlay_share_no_url "No se ha encontrado enlace en esta compartición">
@@ -72,8 +76,11 @@
 <!ENTITY pref_category_search3 "Buscar">
 <!ENTITY pref_category_search_summary "Personalizar sus buscadores">
 <!ENTITY pref_category_display "Visualización">
+<!ENTITY pref_category_display_summary "Texto, barra de título, navegación en pantalla completa">
 <!ENTITY pref_category_privacy_short "Privacidad">
+<!ENTITY pref_category_privacy_summary "Controlar contraseñas, cookies, rastreo, datos">
 <!ENTITY pref_category_vendor "&vendorShortName;">
+<!ENTITY pref_category_vendor_summary "Acerca de &brandShortName;, FAQ, elección de datos">
 <!ENTITY pref_category_datareporting "Elección de datos">
 <!ENTITY pref_learn_more "Saber más">
 <!ENTITY pref_category_installed_search_engines "Buscadores instalados">
@@ -83,6 +90,7 @@
 <!ENTITY pref_search_restore_defaults_summary "Restaurar predeterminados">
 <!ENTITY pref_search_hint "TRUCO: añada cualquier sitio web a su lista de buscadores con una pulsación larga en su campo de búsqueda y luego pulsando el icono &formatI;.">
 <!ENTITY pref_category_devtools "Herramientas de desarrolladores">
+<!ENTITY pref_category_devtools_summary "Depuración remota, parpadear dibujado">
 <!ENTITY pref_developer_paint_flashing "Parpadeo al dibujar">
 <!ENTITY pref_developer_remotedebugging "Depuración remota">
 <!ENTITY pref_remember_signons "Recordar contraseñas">
@@ -118,7 +126,7 @@
 <!ENTITY pref_char_encoding_off "No mostrar el menú">
 <!ENTITY pref_clear_private_data2 "Limpiar ahora">
 <!ENTITY pref_clear_private_data_category "Limpiar datos privados">
-<!ENTITY pref_clear_on_exit_title "Eliminar siempre al salir">
+<!ENTITY pref_clear_on_exit_title2 "Limpiar al salir">
 <!ENTITY pref_clear_on_exit_summary2 "&brandShortName; limpiará automáticamente sus datos cada vez que seleccione \u0022Salir\u0022 desde el menú principal">
 <!ENTITY pref_clear_on_exit_dialog_title "Seleccione qué datos quiere eliminar">
 <!ENTITY pref_plugins "Plugins">
@@ -140,8 +148,10 @@
 <!ENTITY pref_font_size_preview_text "El veloz zorro naranja supera sus expectativas con más velocidad, flexibilidad y seguridad. No tener ánimo de lucro nos hace libres de innovar para usted sin presiones ni compromisos. Esto quiere decir una mejor experiencia para usted y un mejor futuro para la web.">
 <!ENTITY pref_use_master_password "Usar contraseña maestra">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_sync_summary "Sincronizar sus pestañas, marcadores, contraseñas, historial">
 <!ENTITY pref_search_suggestions "Mostrar sugerencias de búsqueda">
 <!ENTITY pref_import_android "Importar desde Android">
+<!ENTITY pref_import_android_summary "Importar marcadores e historial del navegador nativo">
 <!ENTITY pref_private_data_history2 "Historial de navegación">
 <!ENTITY pref_private_data_formdata "Formularios e historial de búsquedas">
 <!ENTITY pref_private_data_cookies2 "Cookies y sesiones activas">
@@ -176,7 +186,7 @@
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; envía informes de fallo para ayudar a &vendorShortName; a crear un navegador más estable y seguro">
 <!ENTITY datareporting_crashreporter_title_short "Informe de fallos">
 <!ENTITY datareporting_wifi_title2 "Servicio de localización de &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary "Recibe datos de localización wifi y de la red móvil mientras se ejecuta en fondo y lo comparte con &vendorShortName; para mejorar nuestro servicio de geolocalización">
+<!ENTITY datareporting_wifi_geolocation_summary2 "Comparte la ubicación aproximada en redes wifi y móviles de su dispositivo con &vendorShortName; para mejorar su servicio de geolocalización">
 <!ENTITY pref_update_autodownload2 "Descargar actualizaciones automáticamente">
 <!ENTITY pref_update_autodownload_wifi "Sólo bajo Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Nunca">
@@ -203,6 +213,7 @@
 <!ENTITY tabs_private "Privadas">
 <!ENTITY tabs_synced "Sincr.">
 <!ENTITY set_image_fail "No se puede establecer la imagen">
+<!ENTITY set_image_path_fail "No se puede guardar la imagen">
 <!ENTITY set_image_chooser_title "Usar imagen como">
 <!ENTITY find_text "Buscar en la página">
 <!ENTITY find_prev "Anterior">
@@ -272,9 +283,22 @@
 <!ENTITY home_reading_list_hint_accessible "TRUCO: guarde artículos en su lista de lectura con una pulsación larga sobre el botón del modo de lectura cuando aparezca en la barra de título.">
 <!ENTITY home_default_empty "No se ha podido encontrar contenido para este panel.">
 <!ENTITY home_move_up_to_filter "Volver a &formatS;">
+<!ENTITY home_remote_tabs_title "Pestañas sincronizadas">
+<!ENTITY home_remote_tabs_empty "Sus pestañas de otros dispositivos se muestran aquí.">
+<!ENTITY home_remote_tabs_unable_to_connect "No se puede conectar">
+<!ENTITY home_remote_tabs_need_to_sign_in "Regístrese para reconectar su cuenta Firefox y continuar sincronizando.">
+<!ENTITY home_remote_tabs_trouble_verifying "¿Tiene problemas para verificar su cuenta?">
+<!ENTITY home_remote_tabs_need_to_verify "Verifique su cuenta Firefox para comenzar a sincronizar.">
+<!ENTITY home_remote_tabs_one_hidden_device "1 dispositivo oculto">
+<!ENTITY home_remote_tabs_many_hidden_devices "&formatD; dispositivos ocultos">
+<!ENTITY home_remote_tabs_hidden_devices_title "Dispositivos ocultos">
+<!ENTITY home_remote_tabs_unhide_selected_devices "Desocultar dispositivos seleccionados">
 <!ENTITY private_browsing_title "Navegación privada">
 <!ENTITY private_tabs_panel_empty_desc "Sus pestañas privadas se mostrarán aquí. Aunque no conservamos su historial de navegación ni sus cookies, los marcadores y archivos que descargue seguirán siendo guardados en su dispositivo.">
 <!ENTITY private_tabs_panel_learn_more "¿Desea saber más?">
+<!ENTITY remote_tabs_panel_moved_title "¿Dónde han ido mis pestañas?">
+<!ENTITY remote_tabs_panel_moved_desc "Hemos movido sus pestañas de otros dispositivos a un panel en su página de inicio al que se puede acceder fácilmente cada vez que abra una pestaña nueva.">
+<!ENTITY remote_tabs_panel_moved_link "Llevarme a mi nuevo panel.">
 <!ENTITY pin_site_dialog_hint "Introduzca una palabra clave de búsqueda">
 <!ENTITY filepicker_title "Elegir archivo">
 <!ENTITY filepicker_audio_title "Elegir o grabar un sonido">
@@ -312,12 +336,16 @@
 <!ENTITY updater_downloading_retry2 "Pulse para reintentar">
 <!ENTITY updater_apply_title2 "Actualización disponible para &brandShortName;">
 <!ENTITY updater_apply_select2 "Pulse para actualizar">
+<!ENTITY new_tablet_restart "Reinicie el navegador para que los cambios surtan efecto">
+<!ENTITY new_tablet_pref "Activar nueva IU de tableta">
 <!ENTITY new_guest_session "Abrir sesión invitado">
 <!ENTITY exit_guest_session "Cerrar sesión invitado">
 <!ENTITY guest_session_dialog_continue "Continuar">
 <!ENTITY guest_session_dialog_cancel "Cancelar">
 <!ENTITY new_guest_session_title "&brandShortName; se reiniciará ahora">
 <!ENTITY new_guest_session_text "La persona que lo use no podrá ver ninguno de sus datos de navegación personales (como contraseñas, historial y marcadores guardados).\n\nCuando su invitado acabe, sus datos de navegación serán eliminados y se restaurará su sesión.">
+<!ENTITY guest_browsing_notification_title "La navegación de invitado está activada">
+<!ENTITY guest_browsing_notification_text "Toque para salir">
 <!ENTITY exit_guest_session_title "&brandShortName; se reiniciará ahora">
 <!ENTITY exit_guest_session_text "Los datos de navegación de esta sesión serán eliminados.">
 <!ENTITY ellipsis "…">
