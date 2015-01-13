@@ -4,11 +4,11 @@
 <!-- Don't localize these. They're here until they have
      a better place to live. -->
 
-<!ENTITY syncBrand.fullName.label "Firefox Sync">
+<!ENTITY syncBrand.fullName.label "Ungqamaniso lweFirefox">
 <!ENTITY syncBrand.shortName.label "Ungqamaniso">
 <!-- Main titles. -->
 
-<!ENTITY sync.app.name.label "i-&syncBrand.fullName.label;">
+<!ENTITY sync.app.name.label "I-&syncBrand.fullName.label;">
 <!ENTITY sync.title.connect.label "Nxibelelana kwi-&syncBrand.shortName.label;">
 <!ENTITY sync.title.adddevice.label "Yongeza i-&syncBrand.fullName.label; Account">
 <!ENTITY sync.title.pair.label "Hambisa ngambini iSixhobo">
@@ -35,7 +35,7 @@
 <!ENTITY sync.checkbox.server.label "Sebenzisa iseva yekhastom">
 <!ENTITY sync.input.server.label "Iseva URL">
 <!-- Setup Fail -->
-  
+
 <!ENTITY sync.title.fail.label "Ayinakuseta i-&syncBrand.shortName.label;">
 <!ENTITY sync.subtitle.fail.label "I-&syncBrand.fullName.label; ayikwazanga ukunxibelela kwiseva. Ungathanda ukuzama kwakhona?">
 <!ENTITY sync.button.tryagain.label "Zama kwakhona">
@@ -44,7 +44,7 @@
 <!ENTITY sync.subtitle.failaccount.label "Uyilo lweakhawunti kwisixhobo sakho aluphumelelanga.">
 <!ENTITY sync.subtitle.failmultiple.label "Ingaba une-Firefox engaphaya kwenye efakelweyo? Ngokunje, i-&syncBrand.fullName.label; ixhasa kuphela ufakelo lwe-Firefox enye ngexesha. Nceda ukhuphe ufakelo lwezinye iimeko usebenzise i-&syncBrand.shortName.label;.">
 <!-- Setup Success -->
-  
+
 <!ENTITY sync.title.success.label "Useto lugqityiwe">
 <!ENTITY sync.subtitle.success.label1 "Iingcombolo zakho ziyakhutshelwa ngoku ngemva. Ungaya kwiisetingi ukulawula iakhawunti yakho okanye uqalise ukubhrawuza nge-&brandShortName;.">
 <!ENTITY sync.settings.label "Iisetingi">
@@ -73,10 +73,17 @@
 <!-- Account strings -->
 
 <!ENTITY sync.account.label "&syncBrand.fullName.label; (kwaliwe)">
+<!-- Localization note (sync.default.client.name): Default string of the "Device
+     name" menu item upon setting up Firefox Sync.  The placeholder &formatS1
+     will be replaced by the name of the Firefox release channel and &formatS2
+     by the model name of the Android device. Examples look like "Aurora on
+     GT-I1950" and "Fennec on MI 2S". -->
+
+<!ENTITY sync.default.client.name "&formatS1; kwi &formatS2;">
 <!-- Bookmark folder strings -->
 
-<!ENTITY bookmarks.folder.menu.label "Imenyu yeZalathisi eziphawulayo">
-<!ENTITY bookmarks.folder.places.label "&brandShortName; Home ">
+<!ENTITY bookmarks.folder.menu.label "Imenyu yezalathisi eziphawulayo">
+<!ENTITY bookmarks.folder.places.label ''>
 <!ENTITY bookmarks.folder.tags.label "Iithegi">
 <!ENTITY bookmarks.folder.toolbar.label "Isixwexwe Sezixhobo Zezalathisi Eziphawulayo">
 <!ENTITY bookmarks.folder.unfiled.label "IZalathisi eziphawulayo ezingalungiswanga">
@@ -105,10 +112,15 @@
 <!ENTITY sync.text.tab.sent.label "Ithebhu yakho ithunyelwe!">
 <!ENTITY sync.text.tab.not.sent.label "Kubekho ingxaki ekuthumeleni ithebhu yakho.">
 <!-- Firefox Account strings. -->
+
+
+<!ENTITY fxaccount_full_label "Iiakhawunti zeFirefox">
+
+<!ENTITY fxaccount_custom_server_account_title "Ukusebenzisa iakhawunti kwiseva">
+<!ENTITY fxaccount_custom_server_sync_title "Ukugcina ingcombolo yongqamaniso kwiseva">
 <!-- Localization note: these are shown in all screens that query the
      user for an email address and password. Hide and show are button
      labels. -->
-
 
 <!ENTITY fxaccount_email_hint "I-imeyili">
 <!ENTITY fxaccount_password_hint "Ipasiwedi">
@@ -173,6 +185,9 @@
 
 <!ENTITY fxaccount_status_header2 "I-akhawunti yeFirefox">
 <!ENTITY fxaccount_status_signed_in_as "Ungene njenge">
+<!ENTITY fxaccount_status_auth_server "Iseva yeakhawunti">
+<!ENTITY fxaccount_status_device_name "Igama lesixhobo">
+<!ENTITY fxaccount_status_sync_server "Iseva yongqamaniso">
 <!ENTITY fxaccount_status_sync "&syncBrand.shortName.label;">
 <!ENTITY fxaccount_status_sync_enabled "I-&syncBrand.shortName.label;: iyasebenza">
 <!ENTITY fxaccount_status_needs_verification2 "I-akhawunti yakho idinga ukuqinisekiswa. Cofa ukuze uphinde uthunyelelwe i-imeyili yokuqinisekisa.">
@@ -191,13 +206,22 @@
      the two uses differently. -->
 <!ENTITY fxaccount_status_linktos "Imiqathango yenkonzo">
 <!ENTITY fxaccount_status_linkprivacy "Isaziso sabucala">
+<!ENTITY fxaccount_status_more "Yongeza&ellipsis;">
+
+<!ENTITY fxaccount_remove_account_dialog_title "Susa i-Akhawunti ye-Firefox?">
+<!ENTITY fxaccount_remove_account_dialog_message "&brandShortName; izakuyeka ukusynka ne-akhawunti yakho, kodwa ayizokucima ukubhrawuza kwakho">
+<!-- Localization note: format string below will be replaced
+     with the Firefox Account's email address. -->
+<!ENTITY fxaccount_remove_account_toast "I-Akhawunti yeFirefox &formatS; isusiwe.">
+
+<!ENTITY fxaccount_remove_account_menu_item "Susa i-Akhawunti">
 <!-- Localization note: this is the name shown by the Android system
      itself for a Firefox Account. Don't localize this. -->
 
 <!ENTITY fxaccount_account_type_label "IFirefox">
 <!-- Localization note: these are shown by the Android system itself,
-     when the user navigates to the Android > Accounts > [Firefox
-     Account] Screen. The link takes the user to the Firefox Account
+     when the user navigates to the Android > Accounts > {Firefox
+     Account} Screen. The link takes the user to the Firefox Account
      status activity, which lets them manage their Firefox
      Account. -->
 
@@ -220,6 +244,6 @@
 <!ENTITY fxaccount_remote_error_COULD_NOT_CONNECT "Ayikwazi ukunxibelelana nenethiweki">
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 "I-&syncBrand.shortName.label; ayinxityelelaniswanga">
-<!-- Note to translators: the format string below will be replaced
+<!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
 <!ENTITY fxaccount_sync_sign_in_error_notification_text2 "Cofa ukuze ungene njenge-&formatS;">

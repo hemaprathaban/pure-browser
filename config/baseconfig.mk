@@ -102,7 +102,6 @@ _MOZBUILD_EXTERNAL_VARIABLES := \
   SONAME \
   STATIC_LIBRARY_NAME \
   TEST_DIRS \
-  TIERS \
   TOOL_DIRS \
   XPCSHELL_TESTS \
   XPIDL_MODULE \
@@ -125,6 +124,7 @@ _DEPRECATED_VARIABLES := \
   SHORT_LIBNAME \
   TESTING_JS_MODULES \
   TESTING_JS_MODULE_DIR \
+  TIERS \
   $(NULL)
 
 # Freeze the values specified by moz.build to catch them if they fail.

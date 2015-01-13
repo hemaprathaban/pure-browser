@@ -5,18 +5,16 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 if CONFIG['CPU_ARCH'] != 'mips':
-    CPP_UNIT_TESTS += [
+    CppUnitTests([
       'test_tone'
-    ]
+    ])
 
     if CONFIG['OS_TARGET'] != 'Android':
-      CPP_UNIT_TESTS += [
+      CppUnitTests([
         'test_audio',
         'test_latency',
         'test_sanity'
-      ]
-
-SOURCES += sorted('%s.cpp' % t for t in CPP_UNIT_TESTS)
+      ])
 
 LOCAL_INCLUDES += [
     '../include'

@@ -10,11 +10,10 @@
 <Image width="65" height="26" type="image/x-icon">http://www.amazon.com/favicon.ico</Image>
 <Image width="130" height="52" type="image/x-icon">http://www.amazon.com/favicon.ico</Image>
 <Url type="application/x-suggestions+json" method="GET" template="https://completion.amazon.com/search/complete?q={searchTerms}&amp;search-alias=aps&amp;mkt=1"/>
-<Url type="text/html" method="GET" template="http://www.amazon.com/exec/obidos/external-search/">
+<Url type="text/html" method="GET" template="http://www.amazon.com/exec/obidos/external-search/" rel="searchform">
   <Param name="field-keywords" value="{searchTerms}"/>
   <Param name="mode" value="blended"/>
   <Param name="tag" value="mozilla-20"/>
   <Param name="sourceid" value="Mozilla-search"/>
 </Url>
-<SearchForm>http://www.amazon.com/</SearchForm>
 </SearchPlugin>

@@ -58,12 +58,16 @@
 <!ENTITY settings_title "Impostazioni">
 <!ENTITY pref_category_advanced "Avanzate">
 <!ENTITY pref_category_customize "Personalizzazione">
+<!ENTITY pref_category_customize_summary "Pagina iniziale, ricerca, schede, importazione">
 <!ENTITY pref_category_language "Lingua">
+<!ENTITY pref_category_language_summary "Cambia la lingua del browser">
 <!ENTITY pref_browser_locale "Lingua del browser">
 <!ENTITY locale_system_default "Predefinita del sistema">
 <!ENTITY overlay_share_label "Aggiungi a &brandShortName;">
 <!ENTITY overlay_share_bookmark_btn_label "Aggiungi ai segnalibri">
 <!ENTITY overlay_share_reading_list_btn_label "Aggiungi a Elenco lettura">
+<!ENTITY overlay_share_bookmark_btn_label_already "Già presente nei segnalibri">
+<!ENTITY overlay_share_reading_list_btn_label_already "Già presente in Elenco lettura">
 <!ENTITY overlay_share_send_other "Invia a altri dispositivi">
 <!ENTITY overlay_share_send_tab_btn_label "Invia a un altro dispositivo">
 <!ENTITY overlay_share_no_url "Nessun link disponibile in questa condivisione">
@@ -72,8 +76,11 @@
 <!ENTITY pref_category_search3 "Ricerca">
 <!ENTITY pref_category_search_summary "Personalizza i motori di ricerca">
 <!ENTITY pref_category_display "Visualizzazione">
+<!ENTITY pref_category_display_summary "Testo, barra del titolo, navigazione a schermo intero">
+<!ENTITY pref_category_privacy_summary "Gestisci password, cookie, tracciamento, dati">
 <!ENTITY pref_category_privacy_short "Privacy">
 <!ENTITY pref_category_vendor "&vendorShortName;">
+<!ENTITY pref_category_vendor_summary "Informazioni su &brandShortName;, FAQ, condivisione dati">
 <!ENTITY pref_category_datareporting "Condivisione dati">
 <!ENTITY pref_learn_more "Ulteriori informazioni">
 <!ENTITY pref_category_installed_search_engines "Motori di ricerca installati">
@@ -83,6 +90,7 @@
 <!ENTITY pref_search_restore_defaults_summary "Ripristina predefiniti">
 <!ENTITY pref_search_hint "Suggerimento: è possibile aggiungere qualunque sito tenendo premuto a lungo sul campo di ricerca e poi toccando l’icona &formatI;.">
 <!ENTITY pref_category_devtools "Strumenti di sviluppo">
+<!ENTITY pref_category_devtools_summary "Debug remoto, evidenziazione aree disegnate">
 <!ENTITY pref_developer_paint_flashing "Evidenzia aree disegnate">
 <!ENTITY pref_developer_remotedebugging "Debug remoto">
 <!ENTITY pref_remember_signons "Ricorda password">
@@ -118,7 +126,7 @@
 <!ENTITY pref_char_encoding_off "Non visualizzare menu">
 <!ENTITY pref_clear_private_data2 "Elimina adesso">
 <!ENTITY pref_clear_private_data_category "Eliminazione dati personali">
-<!ENTITY pref_clear_on_exit_title "Elimina sempre alla chiusura">
+<!ENTITY pref_clear_on_exit_title2 "Elimina alla chiusura">
 <!ENTITY pref_clear_on_exit_summary2 "I dati personali in &brandShortName; verranno eliminati automaticamente quando si seleziona “Esci” nel menu principale">
 <!ENTITY pref_clear_on_exit_dialog_title "Selezionare i dati da eliminare">
 <!ENTITY pref_plugins "Plugin">
@@ -140,8 +148,10 @@
 <!ENTITY pref_font_size_preview_text "La volpe arancio oltrepassa ogni ostacolo con sempre maggiore velocità, flessibilità e sicurezza. In quanto organizzazione non profit siamo in grado di creare innovazione per il bene degli utenti senza cedere a pressioni o compromessi. Questo significa una migliore esperienza per tutti e un futuro migliore per il Web.">
 <!ENTITY pref_use_master_password "Usa password principale">
 <!ENTITY pref_sync "Sync">
+<!ENTITY pref_sync_summary "Sincronizza schede, segnalibri, password, cronologia">
 <!ENTITY pref_search_suggestions "Mostra suggerimenti di ricerca">
 <!ENTITY pref_import_android "Importa da Android">
+<!ENTITY pref_import_android_summary "Importa segnalibri e cronologia dal browser di sistema">
 <!ENTITY pref_private_data_history2 "Cronologia di navigazione">
 <!ENTITY pref_private_data_formdata "Moduli e ricerche">
 <!ENTITY pref_private_data_cookies2 "Cookie e accessi attivi">
@@ -176,7 +186,7 @@
 <!ENTITY datareporting_crashreporter_summary "Invia a &vendorShortName; segnalazioni relative ad arresti anomali di &brandShortName; per migliorarne la stabilità e la sicurezza">
 <!ENTITY datareporting_crashreporter_title_short "Crash Reporter">
 <!ENTITY datareporting_wifi_title2 "Georilevazione di &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary "Registra informazioni su Wi-Fi e posizione nella rete cellulare quando aperto in background, condividi questi dati con &vendorShortName; per migliorare i servizi di georilevazione.">
+<!ENTITY datareporting_wifi_geolocation_summary2 "Condividi con &vendorShortName; la posizione approssimativa all’interno delle reti Wi-Fi e cellulare per migliorare i servizi di georilevazione.">
 <!ENTITY pref_update_autodownload2 "Scarica aggiornamenti">
 <!ENTITY pref_update_autodownload_wifi "Solo con Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Mai">
@@ -203,6 +213,7 @@
 <!ENTITY tabs_private "Anonime">
 <!ENTITY tabs_synced "Sincronizzate">
 <!ENTITY set_image_fail "Impossibile impostare immagine">
+<!ENTITY set_image_path_fail "Impossibile salvare l’immagine">
 <!ENTITY set_image_chooser_title "Imposta immagine come">
 <!ENTITY find_text "Trova nella pagina">
 <!ENTITY find_prev "Precedente">
@@ -272,9 +283,22 @@
 <!ENTITY home_reading_list_hint_accessible "Suggerimento: è possibile salvare articoli in questo elenco premendo a lungo l’icona modalità lettura che appare nella barra del titolo.">
 <!ENTITY home_default_empty "Nessun contenuto disponibile per questo pannello.">
 <!ENTITY home_move_up_to_filter "Vai a &formatS;">
+<!ENTITY home_remote_tabs_title "Schede sincronizzate">
+<!ENTITY home_remote_tabs_empty "In questa sezione verranno visualizzate le schede provenienti da altri dispositivi.">
+<!ENTITY home_remote_tabs_unable_to_connect "Impossibile connettersi">
+<!ENTITY home_remote_tabs_need_to_sign_in "Effettuare l’accesso per riconnettersi al proprio Firefox Account e proseguire la sincronizzazione.">
+<!ENTITY home_remote_tabs_trouble_verifying "Problemi con la verifica dell’account?">
+<!ENTITY home_remote_tabs_need_to_verify "Verificare il proprio Firefox Account per avviare la sincronizzazione.">
+<!ENTITY home_remote_tabs_one_hidden_device "1 dispositivo nascosto">
+<!ENTITY home_remote_tabs_many_hidden_devices "&formatD; dispositivi nascosti">
+<!ENTITY home_remote_tabs_hidden_devices_title "Dispositivi nascosti">
+<!ENTITY home_remote_tabs_unhide_selected_devices "Mostra dispositivi nascosti">
 <!ENTITY private_browsing_title "Navigazione anonima">
 <!ENTITY private_tabs_panel_empty_desc "Le schede anonime verranno visualizzate in questa sezione. Mentre la cronologia di navigazione e i cookie non vengono conservati, i file scaricati e i segnalibri rimangono salvati sul dispositivo.">
 <!ENTITY private_tabs_panel_learn_more "Ulteriori informazioni.">
+<!ENTITY remote_tabs_panel_moved_title "Dove sono finite le schede?">
+<!ENTITY remote_tabs_panel_moved_desc "Le schede provenienti da altri dispositivi sono disponibili in un pannello della pagina principale, facilmente accessibile ogni volta che si apre una nuova scheda.">
+<!ENTITY remote_tabs_panel_moved_link "Apri il nuovo pannello.">
 <!ENTITY pin_site_dialog_hint "Inserire una chiave di ricerca">
 <!ENTITY filepicker_title "Seleziona un file">
 <!ENTITY filepicker_audio_title "Seleziona o registra un suono">
@@ -309,12 +333,16 @@
 <!ENTITY updater_downloading_retry2 "Tocca per riprovare">
 <!ENTITY updater_apply_title2 "Aggiornamento disponibile per &brandShortName;">
 <!ENTITY updater_apply_select2 "Tocca per aggiornare">
+<!ENTITY new_tablet_restart "Riavvia il browser per applicare le modifiche">
+<!ENTITY new_tablet_pref "Attiva nuova interfaccia per tablet">
 <!ENTITY new_guest_session "Nuova sessione ospite">
 <!ENTITY exit_guest_session "Termina sessione ospite">
 <!ENTITY guest_session_dialog_continue "Continua">
 <!ENTITY guest_session_dialog_cancel "Annulla">
 <!ENTITY new_guest_session_title "&brandShortName; verrà riavviato">
 <!ENTITY new_guest_session_text "La persona che utilizza il browser non potrà visualizzare alcun dato personale già presente, come ad esempio password salvate, cronologia o segnalibri.\n\nAl termine i dati relativi a questa sessione di navigazione verranno eliminati e la sessione precedente verrà ripristinata.">
+<!ENTITY guest_browsing_notification_title "Navigazione in mod. ospite attiva">
+<!ENTITY guest_browsing_notification_text "Tocca per uscire">
 <!ENTITY exit_guest_session_title "&brandShortName; verrà riavviato">
 <!ENTITY exit_guest_session_text "I dati relativi a questa sessione di navigazione verranno eliminati.">
 <!ENTITY ellipsis "…">

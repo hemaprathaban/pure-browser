@@ -1,7 +1,10 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #filter emptyLines
 
 # LOCALIZATION NOTE: The 'en-US' strings in the URLs will be replaced with
-# your locale code, and link to your translated pages as soon as they're 
+# your locale code, and link to your translated pages as soon as they're
 # live.
 
 # LOCALIZATION NOTE: Some of these URLs are currently 404s, but should be coming
@@ -23,8 +26,8 @@
 # link title for https://mobile.support.mozilla.com
 #define bookmarks_support Firefox: Asistencia
 
-# LOCALIZATION NOTE (bookmarks_aboutHome):
-# link title for about:home
-#define bookmarks_aboutHome Inicio de Firefox
+# LOCALIZATION NOTE (bookmarks_marketplace):
+# link title for https://marketplace.firefox.com
+#define bookmarks_marketplace Firefox Marketplace
 
 #unfilter emptyLines
