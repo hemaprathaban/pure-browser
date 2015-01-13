@@ -1,8 +1,18 @@
-iceweasel (35.0-1) UNRELEASED; urgency=medium
+iceweasel (35.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{01-06,08-09}, also known as:
+    CVE-2014-8634, CVE-2014-8635, CVE-2014-8637, CVE-2014-8637,
+    CVE-2014-8639, CVE-2014-8640, CVE-2014-8641, CVE-2014-8642,
+    CVE-2014-8636.
 
- -- Mike Hommey <glandium@debian.org>  Tue, 13 Jan 2015 19:39:07 +0900
+  * debian/browser.mozconfig.in: Build with --enable-pie instead of our own
+    patch to the build system.
+
+  * moz.build: Fix how debian/extra-stuff is added to upstream build system
+    directory traversal after upstream changes.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 14 Jan 2015 11:46:37 +0900
 
 iceweasel (34.0-1) experimental; urgency=medium
 
