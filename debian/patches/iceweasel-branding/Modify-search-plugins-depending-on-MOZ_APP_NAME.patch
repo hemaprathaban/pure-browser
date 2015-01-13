@@ -5,8 +5,7 @@ Subject: Modify search plugins depending on MOZ_APP_NAME
 ---
  browser/locales/Makefile.in                     | 2 ++
  browser/locales/en-US/searchplugins/answers.xml | 2 +-
- browser/locales/en-US/searchplugins/google.xml  | 5 +++++
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
 index ea657ac..af7efb9 100644
@@ -33,33 +32,3 @@ index f131ea6..357d42e 100644
 +#expand     template="http://www.answers.com/main/startswith?output=json&amp;client=__MOZ_APP_NAME__&amp;s={searchTerms}"/>
  <SearchForm>http://www.answers.com/</SearchForm>
  </SearchPlugin>
-diff --git a/browser/locales/en-US/searchplugins/google.xml b/browser/locales/en-US/searchplugins/google.xml
-index a913840..d197c8a 100644
---- a/browser/locales/en-US/searchplugins/google.xml
-+++ b/browser/locales/en-US/searchplugins/google.xml
-@@ -2,6 +2,7 @@
-    - License, v. 2.0. If a copy of the MPL was not distributed with this
-    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
- 
-+#filter substitution
- <SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
- <ShortName>Google</ShortName>
- <Description>Google Search</Description>
-@@ -16,6 +17,7 @@
-   <Param name="oe" value="utf-8"/>
-   <Param name="aq" value="t"/>
-   <Param name="rls" value="{moz:distributionID}:{moz:locale}:{moz:official}"/>
-+#if MOZ_APP_NAME==firefox
- #if MOZ_UPDATE_CHANNEL == beta
-   <MozParam name="client" condition="defaultEngine" trueValue="firefox-beta" falseValue="firefox"/>
- #elif MOZ_UPDATE_CHANNEL == aurora
-@@ -25,6 +27,9 @@
- #else
-   <MozParam name="client" condition="defaultEngine" trueValue="firefox-a" falseValue="firefox"/>
- #endif
-+#else
-+  <MozParam name="client" condition="defaultEngine" trueValue="@MOZ_APP_NAME@-a" falseValue="@MOZ_APP_NAME@"/>
-+#endif
-   <MozParam name="channel" condition="purpose" purpose="contextmenu" value="rcs"/>
-   <MozParam name="channel" condition="purpose" purpose="keyword" value="fflb"/>
-   <MozParam name="channel" condition="purpose" purpose="searchbar" value="sb"/>
