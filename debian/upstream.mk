@@ -11,11 +11,11 @@
 # That should ensure the proper ordering
 VERSION_FILTER := sed 's/\([0-9]\)\([ab]\)/\1~\2/g'
 $(call lazy,UPSTREAM_VERSION,$$(shell cat $(PRODUCT)/config/version.txt))
-GRE_SRCDIR := $(strip $(foreach dir,. mozilla,$(if $(wildcard $(dir)/config/milestone.pl),$(dir))))
+GRE_SRCDIR := $(strip $(foreach dir,. mozilla,$(if $(wildcard $(dir)/python/mozbuild/mozbuild/milestone.py),$(dir))))
 ifndef GRE_SRCDIR
 $(error Could not determine the top directory for GRE codebase)
 endif
-GRE_MILESTONE := $(shell $(GRE_SRCDIR)/config/milestone.pl --topsrcdir $(GRE_SRCDIR) --uaversion | $(VERSION_FILTER))
+GRE_MILESTONE := $(shell $(PYTHON) $(GRE_SRCDIR)/python/mozbuild/mozbuild/milestone.py --topsrcdir $(GRE_SRCDIR) --uaversion | $(VERSION_FILTER))
 
 # Construct GRE_VERSION from the first digit in GRE_MILESTONE
 GRE_VERSION := $(subst ~, ,$(subst ., ,$(GRE_MILESTONE)))
