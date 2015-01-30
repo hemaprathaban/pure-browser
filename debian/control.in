@@ -40,13 +40,12 @@ Build-Depends: autotools-dev,
                libevent-dev (>= 1.4.1),
                mesa-common-dev,
 %if !BACKPORT
-               libgstreamer1.0-dev |
-%endif
+               libgstreamer1.0-dev,
+               libgstreamer-plugins-base1.0-dev,
+%else
                libgstreamer0.10-dev,
-%if !BACKPORT
-               libgstreamer-plugins-base1.0-dev |
-%endif
                libgstreamer-plugins-base0.10-dev,
+%endif
                libpulse-dev,
                yasm (>= 1.1),
                zip,
@@ -85,6 +84,13 @@ Suggests: fonts-stix | otf-stix,
           libgssapi-krb5-2 | libkrb53,
           libgnomeui-0,
           libcanberra0
+%if !BACKPORT
+Recommends: gstreamer1.0-libav,
+            gstreamer1.0-plugins-good
+%else
+Recommends: gstreamer0.10-ffmpeg,
+            gstreamer0.10-plugins-good
+%endif
 Conflicts: j2re1.4,
            pango-graphite (<< 0.9.3)
 Breaks: xul-ext-torbutton
