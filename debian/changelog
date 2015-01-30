@@ -1,8 +1,14 @@
-iceweasel (35.0.1-1) UNRELEASED; urgency=medium
+iceweasel (35.0.1-1) experimental; urgency=medium
 
   * New upstream release.
 
- -- Mike Hommey <glandium@debian.org>  Fri, 30 Jan 2015 10:18:33 +0900
+  * debian/browser.install.in, debian/rules: Only install libmozsandbox.so on
+    i386 and amd64.
+  * debian/control: Recommend gstreamer packages for video playing capabilities.
+    Closes: #737092. Also change the gstreamer build dependencies not to use
+    alternatives.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 30 Jan 2015 10:31:28 +0900
 
 iceweasel (35.0-1) experimental; urgency=medium
 
