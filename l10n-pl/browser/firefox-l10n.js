@@ -4,5 +4,4 @@
 
 #filter substitution
 
-pref("browser.search.showOneOffButtons", true);
 pref("general.useragent.locale", "@AB_CD@");

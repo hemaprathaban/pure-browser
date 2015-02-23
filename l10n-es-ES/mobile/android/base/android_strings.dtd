@@ -117,10 +117,8 @@
 <!ENTITY pref_cookies_accept_all "Activadas">
 <!ENTITY pref_cookies_not_accept_foreign "Activadas, salvo las de terceras partes">
 <!ENTITY pref_cookies_disabled "Desactivadas">
-<!ENTITY pref_donottrack_menu "Rastreo">
-<!ENTITY pref_donottrack_disallow_tracking "Indicar a los sitios que no quiero ser rastreado">
-<!ENTITY pref_donottrack_allow_tracking "Indicar a los sitios que quiero ser rastreado">
-<!ENTITY pref_donottrack_no_pref "No indicar a los sitios nada sobre mis preferencias de rastreo">
+<!ENTITY pref_donottrack_title "No rastrear">
+<!ENTITY pref_donottrack_summary "&brandShortName; indicará a los sitios que no quiere ser rastreado">
 <!ENTITY pref_char_encoding "Mostrar cod. de caract.">
 <!ENTITY pref_char_encoding_on "Mostrar el menú">
 <!ENTITY pref_char_encoding_off "No mostrar el menú">
@@ -146,6 +144,8 @@
 <!ENTITY pref_font_size_set "Usar">
 <!ENTITY pref_font_size_adjust_char "r">
 <!ENTITY pref_font_size_preview_text "El veloz zorro naranja supera sus expectativas con más velocidad, flexibilidad y seguridad. No tener ánimo de lucro nos hace libres de innovar para usted sin presiones ni compromisos. Esto quiere decir una mejor experiencia para usted y un mejor futuro para la web.">
+<!ENTITY pref_media_autoplay_enabled "Permitir autorreproducción">
+<!ENTITY pref_media_autoplay_enabled_summary "Controla si los sitios web pueden autorreproducir vídeos y otro contenido de medios">
 <!ENTITY pref_use_master_password "Usar contraseña maestra">
 <!ENTITY pref_sync "Sync">
 <!ENTITY pref_sync_summary "Sincronizar sus pestañas, marcadores, contraseñas, historial">
@@ -226,14 +226,14 @@
 <!ENTITY contextmenu_open_new_tab "Abrir en una pestaña nueva">
 <!ENTITY contextmenu_open_private_tab "Abrir en una pestaña privada">
 <!ENTITY contextmenu_remove "Eliminar">
-<!ENTITY contextmenu_add_to_launcher "Añadir a la pantalla de inicio">
+<!ENTITY contextmenu_add_to_launcher "Añadir a pantalla inicio">
 <!ENTITY contextmenu_share "Compartir">
 <!ENTITY contextmenu_pasteandgo "Pegar e ir">
 <!ENTITY contextmenu_paste "Pegar">
 <!ENTITY contextmenu_copyurl "Copiar dirección">
 <!ENTITY contextmenu_edit_bookmark "Editar">
 <!ENTITY contextmenu_subscribe "Suscribirse a la página">
-<!ENTITY contextmenu_site_settings "Editar configuración del sitio">
+<!ENTITY contextmenu_site_settings "Editar ajustes del sitio">
 <!ENTITY contextmenu_top_sites_edit "Editar">
 <!ENTITY contextmenu_top_sites_pin "Fijar sitio">
 <!ENTITY contextmenu_top_sites_unpin "Soltar sitio">
@@ -253,8 +253,9 @@
 <!ENTITY site_settings_clear "Limpiar">
 <!ENTITY site_settings_no_settings "No hay configuraciones para limpiar.">
 <!ENTITY reading_list_added "Página añadida a su lista de lectura">
-<!ENTITY reading_list_failed "Ha fallado la adición de esta página a su Lista de lectura">
 <!ENTITY reading_list_duplicate "Página ya está en su lista de lectura">
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Más de una hora">
 <!ENTITY page_action_dropmarker_description "Acciones adicionales">
 <!ENTITY masterpassword_create_title "Crear contraseña maestra">
 <!ENTITY masterpassword_remove_title "Eliminar contraseña maestra">
@@ -269,6 +270,7 @@
 <!ENTITY button_clear "Limpiar">
 <!ENTITY home_top_sites_title "Frecuentes">
 <!ENTITY home_top_sites_add "Añadir un sitio">
+<!ENTITY home_title "Página de inicio de &brandShortName;">
 <!ENTITY home_history_title "Historial">
 <!ENTITY home_clear_history_button "Limpiar historial de navegación">
 <!ENTITY home_clear_history_confirm "¿Está seguro de que quiere limpiar su historial?">
@@ -278,6 +280,7 @@
 <!ENTITY home_last_tabs_empty "Sus pestañas recientes se mostrarán aquí.">
 <!ENTITY home_open_all "Abrir todo">
 <!ENTITY home_most_recent_empty "Los sitios web que ha visitado recientemente se mostrarán aquí.">
+<!ENTITY home_most_recent_emptyhint2 "Psst: usar una &formatS1;pestaña privada nueva&formatS2; no guardará su historial.">
 <!ENTITY home_reading_list_empty "Los artículos que guarde para verlos más tarde aparecerán aquí.">
 <!ENTITY home_reading_list_hint2 "TRUCO: guarde artículos en su lista de lectura con una pulsación larga sobre el icono &formatI; cuando aparezca en la barra de título.">
 <!ENTITY home_reading_list_hint_accessible "TRUCO: guarde artículos en su lista de lectura con una pulsación larga sobre el botón del modo de lectura cuando aparezca en la barra de título.">
@@ -286,9 +289,9 @@
 <!ENTITY home_remote_tabs_title "Pestañas sincronizadas">
 <!ENTITY home_remote_tabs_empty "Sus pestañas de otros dispositivos se muestran aquí.">
 <!ENTITY home_remote_tabs_unable_to_connect "No se puede conectar">
-<!ENTITY home_remote_tabs_need_to_sign_in "Regístrese para reconectar su cuenta Firefox y continuar sincronizando.">
+<!ENTITY home_remote_tabs_need_to_sign_in "Regístrese para reconectar su cuenta de Firefox y continuar sincronizando.">
 <!ENTITY home_remote_tabs_trouble_verifying "¿Tiene problemas para verificar su cuenta?">
-<!ENTITY home_remote_tabs_need_to_verify "Verifique su cuenta Firefox para comenzar a sincronizar.">
+<!ENTITY home_remote_tabs_need_to_verify "Verifique su cuenta de Firefox para comenzar a sincronizar.">
 <!ENTITY home_remote_tabs_one_hidden_device "1 dispositivo oculto">
 <!ENTITY home_remote_tabs_many_hidden_devices "&formatD; dispositivos ocultos">
 <!ENTITY home_remote_tabs_hidden_devices_title "Dispositivos ocultos">
@@ -306,9 +309,15 @@
 <!ENTITY filepicker_video_title "Elegir o grabar un vídeo">
 <!ENTITY identity_connected_to "Está conectado a">
 <!ENTITY identity_run_by "que pertenece a">
+<!ENTITY identity_no_info "Este sitio web no proporciona información de identidad.">
+<!ENTITY identity_not_encrypted "La conexión a este sitio web no está cifrada.">
 <!ENTITY loaded_mixed_content_message "Esta página está mostrando contenido que no es seguro.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; ha bloqueado contenido que no es seguro.">
 <!ENTITY blocked_mixed_content_message_bottom "La mayoría de los sitios web funcionan correctamente incluso con este contenido bloqueado.">
+<!ENTITY loaded_tracking_content_message_top "Protección contra rastreo desactivada.">
+<!ENTITY loaded_tracking_content_message_bottom "Algunas partes de esta página pueden rastrear su actividad en Internet.">
+<!ENTITY blocked_tracking_content_message_top2 "La protección contra rastreo está activada.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Las partes de esta página que rastrean su actividad en línea han sido bloqueadas.">
 <!ENTITY learn_more "Saber más">
 <!ENTITY enable_protection "Activar protección">
 <!ENTITY disable_protection "Desactivar protección">
@@ -327,7 +336,6 @@
 <!ENTITY suggestion_for_engine "Buscar &formatS2; en &formatS1;">
 <!ENTITY webapp_generic_name "Aplicaciones">
 <!ENTITY searchable_description "Marcadores e historial">
-<!ENTITY devtools_remote_debugging_forward "¡No olvide configurar el desvío de puerto (port forwarding)!">
 <!ENTITY updater_start_title2 "Actualización disponible para &brandShortName;">
 <!ENTITY updater_start_select2 "Pulse para descargar">
 <!ENTITY updater_downloading_title2 "Descargando &brandShortName;">
@@ -353,3 +361,4 @@
 <!ENTITY actionbar_menu "Menú">
 <!ENTITY actionbar_done "Terminar">
 <!ENTITY remote_tabs_last_synced "Última sincr.: &formatS;">
+<!ENTITY find_matchcase "Aa">

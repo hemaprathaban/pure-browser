@@ -5,7 +5,6 @@
 #filter substitution
 
 pref("general.useragent.locale", "@AB_CD@");
-pref("browser.search.showOneOffButtons", true);
 
 #ifdef XP_WIN
 

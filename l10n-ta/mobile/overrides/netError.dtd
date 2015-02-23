@@ -11,17 +11,25 @@
 
 
 <!ENTITY connectionFailure.title "இணைக்க முடியவில்லை">
-<!ENTITY connectionFailure.longDesc "&sharedLongDesc2;">
+<!ENTITY connectionFailure.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY deniedPortAccess.title "இந்த முகவரி தடுக்கப்பட்டுள்ளது">
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "சேவையகத்தை காண முடியவில்லை">
-<!ENTITY dnsNotFound.longDesc2 "<ul> 
-<li>எழுத்து பிழையுடன் நீங்கள் உள்ளிட்டு இருக்கலாம்
-<strong>www</strong>.infitt.org என்பதற்கு பதிலாக 
-<strong>ww</strong>.infitt.org என்று</li> 
-<li>உங்களால் எந்த பக்கத்தையும் ஏற்றமுடியாவிட்டால் உங்கள் கைபேசி இணையம் அல்லது வைபை இணைப்பை சரிபார்க்கவும்.</li> 
+<!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
+<!ENTITY dnsNotFound.longDesc4 "<ul> 
+<li>தட்டச்சு பிழைகளைக் காண முகவரியைச் சரிபார்க்கவும் 
+<strong>www</strong>.thamizha.org விற்கு பதிலாக 
+<strong>ww</strong>.thamizha.org</li> 
+<div id='searchbox'> 
+<input id='searchtext' type='search'></input> 
+<button id='searchbutton'>தேடவும்</button> 
+</div> 
+<li>உங்களால் பக்கங்களை ஏற்ற முடிவில்லை எனில், உங்கள் சாதனத்தின் தரவு அல்லது வை-பை இணைப்பைச் சரிபார்க்கவும். 
+<button id='wifi'>வை-பை செயல்படுத்து</button> 
+</li> 
 </ul>">
 
 <!ENTITY fileNotFound.title "கோப்பினை காணவில்லை">
@@ -35,22 +43,32 @@
 <!ENTITY generic.longDesc "<p>சில காரணங்களால் &brandShortName; ஆல் இந்த பக்கத்தை ஏற்ற முடியாது.</p>">
 
 <!ENTITY malformedURI.title "இந்த முகவரி தவறானது">
-<!ENTITY malformedURI.longDesc "<ul> 
-<li>இணைய முகவரி கீழ் பண்ட மாதிரி இருக்கும் 
-<strong>http://www.infitt.org/</strong></li> 
-<li>நீங்க / பயன்படுத்தினீர்களா என பார்க்கவும் (i.e. 
-<strong>/</strong>).</li> 
+<!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY malformedURI.longDesc2 "<ul> 
+<li>இணைய முகவரிகள் பொதுவாக பின்வருமாறு எழுதப்படும் 
+<strong>http://www.thamizha.org/</strong></li> 
+<div id='searchbox'> 
+<input id='searchtext' type='search'></input> 
+<button id='searchbutton'>தேடவும்</button> 
+</div> 
+<li>முன்னோக்கிய சாய்வுக் கோடுகளை பயன்படுத்துவதை உறுதிச்செய்யவும் (அதாவது, 
+<strong>/</strong>).</li> 
 </ul>">
 
 <!ENTITY netInterrupt.title "இணைப்பில் தடங்கல் உள்ளது">
-<!ENTITY netInterrupt.longDesc "&sharedLongDesc2;">
+<!ENTITY netInterrupt.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY notCached.title "ஆவணம் காலாவதியாகிவிட்டது">
 <!ENTITY notCached.longDesc "<p>கோரப்பட்ட ஆவணம் &brandShortName; இன் தேக்ககத்தில் கிடைக்கவில்லை.</p><ul><li>பாதுகாப்பு எச்சரிக்கைக்காக, &brandShortName; ஆனது முக்கியமான ஆவணங்களை மறுமுறை கோராதபடி அமைக்கப்பட்டுள்ளது.</li><li>வலைத்தளத்திலிருந்து ஆவணத்தை மீண்டும் கோர மீண்டும் முயற்சிக்கவும் என்பதைக் கிளிக் செய்யவும்.</li></ul>">
 
 <!ENTITY netOffline.title "இணைப்பில்லாத முறைமை">
-<!ENTITY netOffline.longDesc2 "<ul> 
-<li>மிண்டும் முயற்சிசெய்யவும். &brandShortName; ஒரு இணைப்பை ஏற்படுத்தமுயன்று பக்கத்தை மீளேற்றும்.</li> 
+<!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY netOffline.longDesc3 "<ul> 
+<li>மீண்டும் முயற்சி. &brandShortName; இணைப்பைத் திறக்க முயற்சித்து பக்கத்தை மீளேற்றும். 
+<button id='wifi'>வை-பையை செயல்படுத்து</button> 
+</li> 
 </ul>">
 
 <!ENTITY contentEncodingError.title "உள்ளடக்க குறிமுறை பிழை">
@@ -64,10 +82,10 @@
 </ul>">
 
 <!ENTITY netReset.title "இணைப்பு மறுஅமைக்கப்பட்டது">
-<!ENTITY netReset.longDesc "&sharedLongDesc2;">
+<!ENTITY netReset.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY netTimeout.title "இணைப்பு நேரம் முடிந்தது">
-<!ENTITY netTimeout.longDesc "&sharedLongDesc2;">
+<!ENTITY netTimeout.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY unknownProtocolFound.title "முகவரியை புரிந்து கொள்ள முடியவில்லை">
 <!ENTITY unknownProtocolFound.longDesc "<ul> 
@@ -82,9 +100,13 @@
 </ul>">
 
 <!ENTITY proxyResolveFailure.title "பதிலி சேவையகத்தைக் கண்டறிய முடியவில்லை">
-<!ENTITY proxyResolveFailure.longDesc2 "<ul> 
-<li>பதிலி அமைப்புகள் சரியா என சரிபார்க்கவும்.</li> 
-<li>உங்கள் சாதனத்தில் கைபேசி இணையம் அல்லது வைபை இணைப்பு உள்ளதா என உறுதிசெய்யவும்.</li> 
+<!-- LOCALIZATION NOTE (proxyResolveFailure.longDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY proxyResolveFailure.longDesc3 "<ul> 
+<li>பதிலாளின் அமைவுகள் சரியா என சரிபார்க்கவும்.</li> 
+<li>உங்கள் சாதனத்தில் கைப்பேசி இணையம் அல்லது வை-பை இணைப்பு உள்ளதா என உறுதிசெய்யவும். 
+<button id='wifi'>வை-பையை செயல்படுத்து</button> 
+</li> 
 </ul>">
 
 <!ENTITY redirectLoop.title "பக்கம் ஒழுங்காக திருப்பிவிடவில்லை">
@@ -113,14 +135,18 @@
 <li>வெற்றிகரமாக இந்த சேவையகத்துடன் இணைந்து இருந்தால், இந்த பிழை 
 தற்காலிகமானதாக இருக்கும், மேலும் நீங்கள் பின்னர் மீண்டும் முயற்சி செய்யலாம்.</li> 
 </ul>">
+<!-- LOCALIZATION NOTE (sharedLongDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 
-<!ENTITY sharedLongDesc2 "<ul> 
-<li>இந்த தளம் தற்சமயம் கிடைக்காமலோ அல்லது மிகவும் மும்முரமாகவோ இருக்கலாம். சில நிமிடங்களில் மீண்டும் முயற்சி செய்யவும்.</li> 
-<li>உங்களால் எந்த பக்கத்தையும் ஏற்றமுடியாவிட்டால், உங்கள் சாதனத்தில் கைபேசி இணையம் அல்லது வைபை இணைப்பு உள்ளதா என உறுதிசெய்யவும்.</li> 
+<!ENTITY sharedLongDesc3 "<ul> 
+<li>இந்த தளம் தற்சமயம் கிடைக்காமலோ அல்லது மிகவும் மும்முரமாகவோ இருக்கலாம். சில நிமிடங்களில் மீண்டும் முயற்சிக்கவும்.</li> 
+<li>உங்களால் எந்த பக்கத்தையும் ஏற்றமுடியாவிட்டால், உங்கள் சாதனத்தில் கைபேசி இணையம் அல்லது வைபை இணைப்பு உள்ளதா என உறுதிசெய்யவும். 
+<button id='wifi'>வை-பையை செயல்படுத்து</button> 
+</li> 
 </ul>">
 
-<!ENTITY cspFrameAncestorBlocked.title "உள்ளடக்க பாதுகாப்பு கொள்கையால் தடுக்கப்பட்டது">
-<!ENTITY cspFrameAncestorBlocked.longDesc "<p>&brandShortName; இந்த பக்கம் இந்த வழியில் ஏற்றப்படுவதை தடுத்தது ஏனெனில் இந்த பக்கத்தின் ஒரு உள்ளடக்க பாதுகாப்பு கொள்கை அதை தடுக்கிறது.</p>">
+<!ENTITY cspBlocked.title "உள்ளடக்க பாதுகாப்பு கொள்கையால் தடுக்கப்பட்டது">
+<!ENTITY cspBlocked.longDesc "<p>&brandShortName; இந்த பக்கம் இந்த வழியில் ஏற்றப்படுவதை தடுத்தது ஏனெனில் இந்த பக்கத்தின் ஒரு உள்ளடக்க பாதுகாப்பு கொள்கை அதை தடுக்கிறது.</p>">
 
 <!ENTITY corruptedContentError.title "சிதைந்த உள்ளடக்கப் பிழை">
 <!ENTITY corruptedContentError.longDesc "<p>தரவுப் பரிமாற்றத்தில் ஒரு பிழை கண்டறியப்பட்டுள்ளதால், நீங்கள் காண முயற்சிக்கும் பக்கத்தைக் காண்பிக்க முடியாது.</p><ul><li>இணைய உரிமையாளர்களைத் தொடர்பு கொண்டு இந்த பிரச்சனை குறித்து தெரிவிக்கவும்.</li></ul>">
