@@ -58,14 +58,14 @@ class TarFilterList(object):
                 patterns['*'] = []
             patterns['*'].append([os.sep.join(pat), cmd, False])
         else:
-            if not pat[0] in patterns:
-                patterns[pat[0]] = {}
-            if len(pat) > 2:
+            if len(pat) >= 2:
+                if not pat[0] in patterns:
+                    patterns[pat[0]] = {}
                 self.add_pattern(pat[1:], patterns[pat[0]], cmd)
             else:
-                if not '*' in patterns[pat[0]]:
-                    patterns[pat[0]]['*'] = []
-                patterns[pat[0]]['*'].append([os.sep.join(pat[1:]), cmd, False])
+                if not '*' in patterns:
+                    patterns['*'] = []
+                patterns['*'].append([pat[0], cmd, False])
 
     def match(self, name):
         name = name.split(os.sep)[1:]
