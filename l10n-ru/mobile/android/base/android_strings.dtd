@@ -117,10 +117,8 @@
 <!ENTITY pref_cookies_accept_all "Включены">
 <!ENTITY pref_cookies_not_accept_foreign "Включены, кроме сторонних сайтов">
 <!ENTITY pref_cookies_disabled "Отключены">
-<!ENTITY pref_donottrack_menu "Отслеживание">
-<!ENTITY pref_donottrack_disallow_tracking "Сообщать сайтам, что я не хочу, чтобы меня отслеживали">
-<!ENTITY pref_donottrack_allow_tracking "Сообщать сайтам, что я хочу, чтобы меня отслеживали">
-<!ENTITY pref_donottrack_no_pref "Не сообщать сайтам ничего о моих настройках отслеживания">
+<!ENTITY pref_donottrack_title "Не отслеживать">
+<!ENTITY pref_donottrack_summary "&brandShortName; будет сообщать сайтам, что вы не хотите, чтобы вас отслеживали">
 <!ENTITY pref_char_encoding "Кодировка">
 <!ENTITY pref_char_encoding_on "Показывать меню">
 <!ENTITY pref_char_encoding_off "Скрывать меню">
@@ -146,6 +144,8 @@
 <!ENTITY pref_font_size_set "Установить">
 <!ENTITY pref_font_size_adjust_char "A">
 <!ENTITY pref_font_size_preview_text "Быстрый оранжевый лис перепрыгивает через ваши ожидания с высокой скоростью, большей гибкостью и повышенной безопасностью. Будучи некоммерческой организацией, мы свободны в своём развитии и нам не нужно идти на компромиссы. Мы улучшим для вас работу в Интернете и сделаем его будущее более светлым.">
+<!ENTITY pref_media_autoplay_enabled "Разрешить автозапуск">
+<!ENTITY pref_media_autoplay_enabled_summary "Контролирует, могут ли веб-сайты автоматически запускать видео и другой медиаконтент">
 <!ENTITY pref_use_master_password "Задать мастер-пароль">
 <!ENTITY pref_sync "Синхронизация">
 <!ENTITY pref_sync_summary "Синхронизация вкладок, закладок, паролей, истории">
@@ -253,8 +253,9 @@
 <!ENTITY site_settings_clear "Очистить">
 <!ENTITY site_settings_no_settings "Нет настроек для очистки">
 <!ENTITY reading_list_added "Страница добавлена в ваш Список для чтения">
-<!ENTITY reading_list_failed "Не удалось добавить страницу в ваш Список для чтения">
-<!ENTITY reading_list_duplicate "Страница уже в вашем Списке для чтения">
+<!ENTITY reading_list_duplicate "Страница уже находится в вашем Списке для чтения">
+<!ENTITY reading_list_time_minutes2 "&formatD; мин">
+<!ENTITY reading_list_time_over_an_hour "Более часа">
 <!ENTITY page_action_dropmarker_description "Дополнительные действия">
 <!ENTITY masterpassword_create_title "Создать мастер-пароль">
 <!ENTITY masterpassword_remove_title "Удалить мастер-пароль">
@@ -269,6 +270,7 @@
 <!ENTITY button_clear "Очистить">
 <!ENTITY home_top_sites_title "Топ сайтов">
 <!ENTITY home_top_sites_add "Добавить сайт">
+<!ENTITY home_title "Дом &brandShortName;">
 <!ENTITY home_history_title "История">
 <!ENTITY home_clear_history_button "Удалить историю веб-сёрфинга">
 <!ENTITY home_clear_history_confirm "Вы уверены, что хотите удалить свою историю?">
@@ -278,6 +280,7 @@
 <!ENTITY home_last_tabs_empty "Ваши недавние вкладки появятся здесь.">
 <!ENTITY home_open_all "Открыть все">
 <!ENTITY home_most_recent_empty "Недавно посещённые вами веб-сайты появятся здесь.">
+<!ENTITY home_most_recent_emptyhint2 "Псс: при использовании &formatS1;Новой приватной вкладки&formatS2; ваша история сохраняться не будет.">
 <!ENTITY home_reading_list_empty "Статьи, сохранённые вами для последующего чтения, появятся здесь.">
 <!ENTITY home_reading_list_hint2 "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на значок &formatI;, когда он появится в строке заголовка.">
 <!ENTITY home_reading_list_hint_accessible "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на кнопку режима чтения, когда она появится в строке заголовка.">
@@ -306,9 +309,15 @@
 <!ENTITY filepicker_video_title "Выбрать или записать видео">
 <!ENTITY identity_connected_to "Вы соединены с">
 <!ENTITY identity_run_by "который управляется">
+<!ENTITY identity_no_info "Информация о подлинности этого веб-сайта отсутствует.">
+<!ENTITY identity_not_encrypted "Ваше соединение с этим веб-сайтом не зашифровано.">
 <!ENTITY loaded_mixed_content_message "Эта страница отображает содержимое, не являющееся безопасным.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; заблокировал содержимое, не являющееся безопасным.">
 <!ENTITY blocked_mixed_content_message_bottom "Большинство веб-сайтов будут продолжать нормально работать, даже когда это содержимое заблокировано.">
+<!ENTITY loaded_tracking_content_message_top "Защита от отслеживания отключена.">
+<!ENTITY loaded_tracking_content_message_bottom "Части этой страницы могут отслеживать ваши действия в Интернете.">
+<!ENTITY blocked_tracking_content_message_top2 "Защита от отслеживания включена.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Части страницы, которые отслеживали ваши действия в Интернете, были заблокированы.">
 <!ENTITY learn_more "Подробнее">
 <!ENTITY enable_protection "Включить защиту">
 <!ENTITY disable_protection "Отключить защиту">
@@ -324,7 +333,6 @@
 <!ENTITY suggestion_for_engine "Искать &formatS2; в &formatS1;">
 <!ENTITY webapp_generic_name "Приложение">
 <!ENTITY searchable_description "Закладки и история">
-<!ENTITY devtools_remote_debugging_forward "Не забудьте настроить перенаправление портов!">
 <!ENTITY updater_start_title2 "Доступно обновление &brandShortName;">
 <!ENTITY updater_start_select2 "Нажмите для загрузки">
 <!ENTITY updater_downloading_title2 "Загрузка &brandShortName;">
@@ -350,3 +358,4 @@
 <!ENTITY actionbar_menu "Меню">
 <!ENTITY actionbar_done "Готово">
 <!ENTITY remote_tabs_last_synced "Последняя синхронизация: &formatS;">
+<!ENTITY find_matchcase "Аа">

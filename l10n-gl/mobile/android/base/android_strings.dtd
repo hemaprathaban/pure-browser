@@ -172,17 +172,15 @@
 <!ENTITY pref_cookies_not_accept_foreign "Activadas, excluíndo as de terceiros">
 <!ENTITY pref_cookies_disabled "Desactivadas">
 
-<!ENTITY pref_donottrack_menu "Seguimento">
-<!ENTITY pref_donottrack_disallow_tracking "Indicarlle aos sitios que non quero ser seguido">
-<!ENTITY pref_donottrack_allow_tracking "Indicarlle aos sitios que quero ser seguido">
-<!ENTITY pref_donottrack_no_pref "Non indicarlle nada aos sitios sobre as miñas preferencias de seguimento">
+<!ENTITY pref_donottrack_title "Do not track">
+<!ENTITY pref_donottrack_summary "&brandShortName; indicaralle aos sitios que non quere ser seguido">
 
 <!ENTITY pref_char_encoding "Codificación de caracteres">
 <!ENTITY pref_char_encoding_on "Amosar o menú">
 <!ENTITY pref_char_encoding_off "Non amosar o menú">
-<!ENTITY pref_clear_private_data2 "Limpar agora">
-<!ENTITY pref_clear_private_data_category "Limpar os datos privados">
-<!ENTITY pref_clear_on_exit_title2 "Limpar ao saír">
+<!ENTITY pref_clear_private_data2 "Borrar agora">
+<!ENTITY pref_clear_private_data_category "Borrar os datos privados">
+<!ENTITY pref_clear_on_exit_title2 "Borrar ao saír">
 <!ENTITY pref_clear_on_exit_summary2 "&brandShortName; borrará automaticamente os seus datos sempre que seleccione \u0022Saír\u0022 dende o menú principal">
 <!ENTITY pref_clear_on_exit_dialog_title "Seleccione que datos quere borrar">
 <!ENTITY pref_plugins "Engadidos">
@@ -210,6 +208,9 @@ size. -->
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_font_size_preview_text "O panda laranxa máis veloz salta máis alá das súas expectativas con máis velocidade, máis flexibilidade e máis seguridade. Como unha organización sen ánimo de lucro, somos libres para innovar por vostede sen ningún tipo de presión e sen compromiso. Isto resulta nunha mellor experiencia para vostede e nun mellor futuro para a Web.">
+
+<!ENTITY pref_media_autoplay_enabled "Permitir reprodución automática">
+<!ENTITY pref_media_autoplay_enabled_summary "Controla se os sitios web poden reproducir automaticamente os vídeos e outro contido multimedia">
 
 <!ENTITY pref_use_master_password "Usar contrasinal principal">
 <!ENTITY pref_sync "Sync">
@@ -351,18 +352,23 @@ size. -->
 <!ENTITY bookmark_edit_title "Editar marcador">
 <!ENTITY bookmark_edit_name "Nome">
 <!ENTITY bookmark_edit_location "Localización">
-<!ENTITY bookmark_edit_keyword "Palabra chave">
+<!ENTITY bookmark_edit_keyword "Palabra clave">
 
 <!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
      dialog that appears after selecting the "Edit Site Settings" context menu item. -->
 <!ENTITY site_settings_title3       "Configuración do sitio">
 <!ENTITY site_settings_cancel       "Cancelar">
-<!ENTITY site_settings_clear        "Limpar">
-<!ENTITY site_settings_no_settings  "Non hai configuracións para limpar.">
+<!ENTITY site_settings_clear        "Borrar">
+<!ENTITY site_settings_no_settings  "Non hai configuracións para borrar.">
 
 <!ENTITY reading_list_added "Engadiuse a páxina á lista de lectura">
-<!ENTITY reading_list_failed "Produciuse un fallo ao engadir a páxina á lista de lectura">
 <!ENTITY reading_list_duplicate "A páxina xa está na lista de lectura">
+
+<!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
+     panel on the home page to give the user an estimate of how many minutes it will take to
+     read an article. The word "minute" should be abbreviated if possible. -->
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Máis dunha hora">
 
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
@@ -377,15 +383,18 @@ size. -->
 <!ENTITY button_cancel "Cancelar">
 <!ENTITY button_yes "Si">
 <!ENTITY button_no "Non">
-<!ENTITY button_clear_data "Limpar datos">
+<!ENTITY button_clear_data "Borrar datos">
 <!ENTITY button_set "Estabelecer">
-<!ENTITY button_clear "Limpar">
+<!ENTITY button_clear "Borrar">
 
 <!ENTITY home_top_sites_title "Sitios favoritos">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Engadir un sitio">
 
+<!-- Localization note (home_title): This string should be kept in sync
+     with the page title defined in aboutHome.dtd -->
+<!ENTITY home_title "Páxina de inicio do &brandShortName;">
 <!ENTITY home_history_title "Historial">
 <!ENTITY home_clear_history_button "Borrar o historial de navegación">
 <!ENTITY home_clear_history_confirm "Confirma que quere borrar o historial?">
@@ -395,6 +404,9 @@ size. -->
 <!ENTITY home_last_tabs_empty "Aquí amósanse as lapelas recentes.">
 <!ENTITY home_open_all "Abrir todo">
 <!ENTITY home_most_recent_empty "Aquí amósanse os sitios web que visitou recentemente.">
+<!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
+     The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
+<!ENTITY home_most_recent_emptyhint2 "Psst: usando unha &formatS1;nova lapela privada&formatS2; non gardará o seu historial.">
 <!ENTITY home_reading_list_empty "Aquí amósanse os artigos que garda para ver máis tarde.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
@@ -462,18 +474,28 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "que pertence a">
+<!ENTITY identity_no_info "Este sitio web non fornece información de identidade.">
+<!ENTITY identity_not_encrypted "A conexión con este sitio web non está cifrada.">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY loaded_mixed_content_message "Esta páxina está amosando contido que non é seguro.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; bloqueou contido que non é seguro.">
 <!ENTITY blocked_mixed_content_message_bottom "A maioría dos sitios web seguirá traballando correctamente, incluso cando este contido está bloqueado.">
+
+<!-- Tracking content notifications in site identity popup -->
+<!ENTITY loaded_tracking_content_message_top "Protección contra o seguimento desactivada.">
+<!ENTITY loaded_tracking_content_message_bottom "Partes desta páxina poden seguir a súa actividade en liña.">
+<!ENTITY blocked_tracking_content_message_top2 "Protección contra o seguimento activada.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Bloqueáronse partes da páxina que seguen a súa actividade en liña.">
+
+<!-- Common mixed and tracking content strings in site identity popup -->
 <!ENTITY learn_more "Obter máis información">
 <!ENTITY enable_protection "Activar protección">
 <!ENTITY disable_protection "Desactivar a protección">
 <!ENTITY keep_blocking "Continuar o bloqueo">
 
-<!ENTITY private_data_success "Limpáronse os datos privados">
-<!ENTITY private_data_fail "Non foi posíbel limpar algúns datos privados">
+<!ENTITY private_data_success "Borráronse os datos privados">
+<!ENTITY private_data_fail "Non foi posíbel borrar algúns datos privados">
 
 <!ENTITY bookmarkhistory_button_import "Importar">
 <!ENTITY bookmarkhistory_import_both "Importando marcadores e historial desde Android">
@@ -491,8 +513,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY webapp_generic_name "Aplicativo">
 
 <!ENTITY searchable_description "Marcadores e historial">
-
-<!ENTITY devtools_remote_debugging_forward "Non esqueza configurar o desvío do porto!">
 
  <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Actualización dispoñíbel para o &brandShortName;">
@@ -533,7 +553,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY colon ":">
 
-<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+<!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
 <!ENTITY actionbar_menu "Menú">
 <!ENTITY actionbar_done "Feito">
@@ -545,3 +565,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Última sincronización: &formatS;">
+
+<!-- Find-In-Page strings -->
+<!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
+     if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
+<!ENTITY find_matchcase "Aa">

@@ -173,10 +173,8 @@
 <!ENTITY pref_cookies_not_accept_foreign "Autorisés, sauf cookies tiers">
 <!ENTITY pref_cookies_disabled "Non autorisés">
 
-<!ENTITY pref_donottrack_menu "Pistage">
-<!ENTITY pref_donottrack_disallow_tracking "Indiquer aux sites que je ne souhaite pas être pisté">
-<!ENTITY pref_donottrack_allow_tracking "Indiquer aux sites que je souhaite être pisté">
-<!ENTITY pref_donottrack_no_pref "Ne rien indiquer aux sites concernant mes préférences de pistage">
+<!ENTITY pref_donottrack_title "Ne pas me pister">
+<!ENTITY pref_donottrack_summary "&brandShortName; indiquera aux sites que vous ne souhaitez pas être pisté">
 
 <!ENTITY pref_char_encoding "Encodage de caractères">
 <!ENTITY pref_char_encoding_on "Afficher le menu">
@@ -211,6 +209,9 @@ size. -->
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_font_size_preview_text "Le panda roux, rapide comme l\u0027éclair, bondit au-delà de vos attentes avec plus de vitesse, plus de souplesse et plus de sécurité. En tant que fondation à but non lucratif, nous sommes libres d\u0027innover pour vous sans aucune pression ni aucun compromis. Cela signifie une meilleure expérience pour vous et un meilleur avenir pour le Web.">
+
+<!ENTITY pref_media_autoplay_enabled "Lecture automatique">
+<!ENTITY pref_media_autoplay_enabled_summary "Décider si les sites peuvent lancer automatiquement la lecture des vidéos et d\u0027autres contenus multimédia">
 
 <!ENTITY pref_use_master_password "Mot de passe principal">
 <!ENTITY pref_sync "Sync">
@@ -363,8 +364,13 @@ size. -->
 <!ENTITY site_settings_no_settings  "Aucun paramètre à effacer.">
 
 <!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
-<!ENTITY reading_list_failed "Impossible d\u0027ajouter la page à votre liste de lecture">
-<!ENTITY reading_list_duplicate "Page déjà dans votre liste de lecture">
+<!ENTITY reading_list_duplicate "La page se trouve déjà dans votre liste de lecture">
+
+<!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
+     panel on the home page to give the user an estimate of how many minutes it will take to
+     read an article. The word "minute" should be abbreviated if possible. -->
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Plus d\u0027une heure">
 
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
@@ -388,6 +394,9 @@ size. -->
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Ajouter un site">
 
+<!-- Localization note (home_title): This string should be kept in sync
+     with the page title defined in aboutHome.dtd -->
+<!ENTITY home_title "Accueil de &brandShortName;">
 <!ENTITY home_history_title "Historique">
 <!ENTITY home_clear_history_button "Effacer l\u0027historique de navigation">
 <!ENTITY home_clear_history_confirm "Voulez-vous vraiment effacer votre historique ?">
@@ -397,6 +406,9 @@ size. -->
 <!ENTITY home_last_tabs_empty "Les onglets de la session précédente s\u0027affichent ici.">
 <!ENTITY home_open_all "Tout ouvrir">
 <!ENTITY home_most_recent_empty "Les sites récemment visités s\u0027affichent ici.">
+<!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
+     The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
+<!ENTITY home_most_recent_emptyhint2 "Psst, utiliser un &formatS1;nouvel onglet de navigation privée&formatS2; ne conservera pas votre historique.">
 <!ENTITY home_reading_list_empty "Les articles enregistrés pour plus tard s\u0027affichent ici.">
 <!-- Localization note (home_reading_list_hint2): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
@@ -464,11 +476,21 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "dont le détenteur est">
+<!ENTITY identity_no_info "Ce site web ne fournit aucune information sur son identité.">
+<!ENTITY identity_not_encrypted "La connexion vers ce site n\u0027est pas chiffrée.">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY loaded_mixed_content_message "Cette page affiche du contenu non sécurisé.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; a bloqué du contenu non sécurisé.">
 <!ENTITY blocked_mixed_content_message_bottom "La plupart des sites web continueront de fonctionner correctement même si ce contenu est bloqué.">
+
+<!-- Tracking content notifications in site identity popup -->
+<!ENTITY loaded_tracking_content_message_top "La protection contre le pistage est désactivée.">
+<!ENTITY loaded_tracking_content_message_bottom "Certaines parties de cette page pourraient pister votre activité en ligne.">
+<!ENTITY blocked_tracking_content_message_top2 "La protection contre le pistage est activée.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Les parties de la page qui pistent votre activité en ligne ont été bloquées.">
+
+<!-- Common mixed and tracking content strings in site identity popup -->
 <!ENTITY learn_more "En savoir plus">
 <!ENTITY enable_protection "Activer la protection">
 <!ENTITY disable_protection "Désactiver la protection">
@@ -493,8 +515,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY webapp_generic_name "Application">
 
 <!ENTITY searchable_description "Marque-pages et historique">
-
-<!ENTITY devtools_remote_debugging_forward "N\u0027oubliez pas de configurer la redirection de port !">
 
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Mise à jour de &brandShortName; disponible">
@@ -547,3 +567,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Dernière synchronisation : &formatS;">
+
+<!-- Find-In-Page strings -->
+<!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
+     if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
+<!ENTITY find_matchcase "Aa">

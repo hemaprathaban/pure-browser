@@ -3,11 +3,11 @@ Date: Mon, 27 Dec 2010 10:44:28 +0100
 Subject: Add a 2 minutes timeout on xpcshell tests
 
 ---
- testing/xpcshell/runxpcshelltests.py | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+ testing/xpcshell/runxpcshelltests.py | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/testing/xpcshell/runxpcshelltests.py b/testing/xpcshell/runxpcshelltests.py
-index f078fb2..998a6dc 100755
+index 9bc0d7f..2919668 100755
 --- a/testing/xpcshell/runxpcshelltests.py
 +++ b/testing/xpcshell/runxpcshelltests.py
 @@ -13,6 +13,7 @@ import os
@@ -17,27 +17,31 @@ index f078fb2..998a6dc 100755
 +import select
  import shutil
  import signal
- import socket
-@@ -651,7 +652,21 @@ class XPCShellTestThread(Thread):
+ import sys
+@@ -656,9 +657,23 @@ class XPCShellTestThread(Thread):
              if self.interactive:
-                 self.log.info("TEST-INFO | %s | Process ID: %d" % (name, proc.pid))
+                 self.log.info("%s | Process ID: %d" % (name, self.proc_ident))
  
--            stdout, stderr = self.communicate(proc)
+-            # Communicate returns a tuple of (stdout, stderr), however we always
+-            # redirect stderr to stdout, so the second element is ignored.
+-            process_output, _ = self.communicate(proc)
 +            if self.pStdout == PIPE:
-+                stdout = ""
++                process_stdout = ""
 +                while True:
 +                    (r, w, e) = select.select([proc.stdout], [], [], 120)
 +                    if len(r) == 0:
-+                        stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
++                        process_stdout += "TEST-UNEXPECTED-FAIL | %s | application timed out after 120 seconds with no output" % (test)
 +                        proc.kill()
 +                        break
 +                    line = proc.stdout.read(1)
 +                    if line == "":
 +                        break
-+                    stdout += line
++                    process_stdout += line
 +                proc.wait()
 +            else:
-+                stdout, stderr = self.communicate(proc)
++                # Communicate returns a tuple of (stdout, stderr), however we always
++                # redirect stderr to stdout, so the second element is ignored.
++                process_output, _ = self.communicate(proc)
  
              if self.interactive:
                  # Not sure what else to do here...

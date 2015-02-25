@@ -7,7 +7,7 @@ Subject: Add debian/extra-stuff to upstream build system directory traversal
  1 file changed, 3 insertions(+)
 
 diff --git a/moz.build b/moz.build
-index d109c39..31b560a 100644
+index d5d7cf3..90244e9 100644
 --- a/moz.build
 +++ b/moz.build
 @@ -68,4 +68,7 @@ if not CONFIG['JS_STANDALONE']:
@@ -15,6 +15,6 @@ index d109c39..31b560a 100644
      include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
  
 +if not CONFIG['LIBXUL_SDK']:
-+    add_tier_dir('platform', 'debian/extra-stuff')
++    DIRS += ['debian/extra-stuff']
 +
  include('build/templates.mozbuild')

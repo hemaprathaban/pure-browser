@@ -414,6 +414,11 @@
 %define L10N_RECOMMENDS myspell-uk
 %include @PRODUCT@-l10n.control.in
 
+%define L10N_LANG uz
+%define L10N_LANGUAGE Uzbek
+%undef L10N_RECOMMENDS
+%include @PRODUCT@-l10n.control.in
+
 %define L10N_LANG vi
 %define L10N_LANGUAGE Vietnamese
 %undef L10N_RECOMMENDS

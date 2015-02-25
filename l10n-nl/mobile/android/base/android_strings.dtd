@@ -172,10 +172,8 @@
 <!ENTITY pref_cookies_not_accept_foreign "Ingeschakeld, behalve van derden">
 <!ENTITY pref_cookies_disabled "Uitgeschakeld">
 
-<!ENTITY pref_donottrack_menu "Volgen">
-<!ENTITY pref_donottrack_disallow_tracking "Websites laten weten dat ik niet gevolgd wil worden">
-<!ENTITY pref_donottrack_allow_tracking "Websites laten weten dat ik gevolgd wil worden">
-<!ENTITY pref_donottrack_no_pref "Websites niets vertellen over mijn volginstellingen">
+<!ENTITY pref_donottrack_title "Niet volgen">
+<!ENTITY pref_donottrack_summary "&brandShortName; zal websites laten weten dat u niet gevolgd wilt worden">
 
 <!ENTITY pref_char_encoding "Tekenset">
 <!ENTITY pref_char_encoding_on "Menu tonen">
@@ -210,6 +208,9 @@ size. -->
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
      demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_font_size_preview_text "De snelle oranje vos springt over uw verwachtingen met meer snelheid, meer flexibiliteit en meer veiligheid. Als stichting zijn we vrij om in uw belang en zonder druk voor compromissen te innoveren. Dat betekent een betere ervaring voor u en een stralende toekomst voor het internet.">
+
+<!ENTITY pref_media_autoplay_enabled "Automatisch afspelen toestaan">
+<!ENTITY pref_media_autoplay_enabled_summary "Automatisch afspelen van video’s en andere media-inhoud door websites beheren">
 
 <!ENTITY pref_use_master_password "Hoofdwachtwoord gebruiken">
 <!ENTITY pref_sync "Sync">
@@ -361,8 +362,13 @@ size. -->
 <!ENTITY site_settings_no_settings  "Er zijn geen instellingen om te wissen.">
 
 <!ENTITY reading_list_added "Pagina aan uw leeslijst toegevoegd">
-<!ENTITY reading_list_failed "Pagina aan uw leeslijst toevoegen mislukt">
 <!ENTITY reading_list_duplicate "Pagina staat al in uw leeslijst">
+
+<!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
+     panel on the home page to give the user an estimate of how many minutes it will take to
+     read an article. The word "minute" should be abbreviated if possible. -->
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Meer dan een uur">
 
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
@@ -386,6 +392,9 @@ size. -->
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Een website toevoegen">
 
+<!-- Localization note (home_title): This string should be kept in sync
+     with the page title defined in aboutHome.dtd -->
+<!ENTITY home_title "&brandShortName;-startpagina">
 <!ENTITY home_history_title "Geschiedenis">
 <!ENTITY home_clear_history_button "Geschiedenis wissen">
 <!ENTITY home_clear_history_confirm "Weet u zeker dat u uw geschiedenis wilt wissen?">
@@ -395,6 +404,9 @@ size. -->
 <!ENTITY home_last_tabs_empty "Hier verschijnen uw recente tabbladen.">
 <!ENTITY home_open_all "Alle openen">
 <!ENTITY home_most_recent_empty "Hier verschijnen uw meest recent bezochte websites.">
+<!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
+     The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
+<!ENTITY home_most_recent_emptyhint2 "Psst: een &formatS1;Nieuw privétabblad&formatS2; openen zal uw geschiedenis niet opslaan.">
 <!ENTITY home_reading_list_empty "Hier verschijnen artikelen die u voor later opslaat.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
@@ -462,11 +474,21 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "Deze website wordt beheerd door">
+<!ENTITY identity_no_info "Deze website verstrekt geen identiteitsinformatie.">
+<!ENTITY identity_not_encrypted "Uw verbinding met deze website is niet versleuteld.">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY loaded_mixed_content_message "Deze pagina geeft inhoud weer die niet is beveiligd.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; heeft inhoud die niet is beveiligd geblokkeerd.">
 <!ENTITY blocked_mixed_content_message_bottom "De meeste websites zullen nog gewoon werken, zelfs wanneer deze inhoud wordt geblokkeerd.">
+
+<!-- Tracking content notifications in site identity popup -->
+<!ENTITY loaded_tracking_content_message_top "Volgbescherming uitgeschakeld.">
+<!ENTITY loaded_tracking_content_message_bottom "Delen van deze pagina kunnen wellicht uw online-activiteit volgen.">
+<!ENTITY blocked_tracking_content_message_top2 "Volgbescherming ingeschakeld.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Delen van de pagina die uw online-activiteit volgen zijn geblokkeerd.">
+
+<!-- Common mixed and tracking content strings in site identity popup -->
 <!ENTITY learn_more "Meer info">
 <!ENTITY enable_protection "Bescherming inschakelen">
 <!ENTITY disable_protection "Bescherming uitschakelen">
@@ -494,8 +516,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY webapp_generic_name "App">
 
 <!ENTITY searchable_description "Bladwijzers en geschiedenis">
-
-<!ENTITY devtools_remote_debugging_forward "Vergeet niet om port forwarding in te stellen!">
 
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Update voor &brandShortName; beschikbaar">
@@ -536,10 +556,10 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY colon ":">
 
-<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+<!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
 <!ENTITY actionbar_menu "Menu">
-<!ENTITY actionbar_done "Klaar">
+<!ENTITY actionbar_done "Gereed">
 
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
@@ -548,3 +568,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Laatst gesynchroniseerd: &formatS;">
+
+<!-- Find-In-Page strings -->
+<!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
+     if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
+<!ENTITY find_matchcase "Aa">

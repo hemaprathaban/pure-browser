@@ -172,10 +172,8 @@
 <!ENTITY pref_cookies_not_accept_foreign "An comas, as aonais feadhainn o threas-phàrtaidh">
 <!ENTITY pref_cookies_disabled "À comas">
 
-<!ENTITY pref_donottrack_menu "Tracadh">
-<!ENTITY pref_donottrack_disallow_tracking "Innis do làraichean-lìn nach bu toigh leam gun dèan iad tracadh orm">
-<!ENTITY pref_donottrack_allow_tracking "Innis do làraichean-lìn gum faod iad mo thracadh">
-<!ENTITY pref_donottrack_no_pref "Na innis dad do làraichean mu na roghainnean tracaidh agam">
+<!ENTITY pref_donottrack_title "Na tracaich">
+<!ENTITY pref_donottrack_summary "Innsidh &brandShortName; do làraichean nach eil thu ag iarraidh gun tracaich iad thu">
 
 <!ENTITY pref_char_encoding "Còdachadh charactaran">
 <!ENTITY pref_char_encoding_on "Seall an clàr-taice">
@@ -210,6 +208,9 @@ size. -->
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 
 <!ENTITY pref_font_size_preview_text "Tha am madadh-ruadh seo luath, sùbailte \u0027s tèarainte. Leis nach ann a chum prothaid a tha sinn, tha saoirse againn bathar a dhealbhadh as do leth \u0027s gun luaidh air brùthadh eaconamach. \u0027S ciall dha sinn gum faigh thusa goireas nas fhearr agus gum fàs an lìon nas fhearr cuideachd ri linn.">
+
+<!ENTITY pref_media_autoplay_enabled "Ceadaich fèin-chluich">
+<!ENTITY pref_media_autoplay_enabled_summary "Cum smachd air dè na làraichean aig a bheil videothan is meadhanan eile a chluich gu fèin-obrachail">
 
 <!ENTITY pref_use_master_password "Cleachd facal-faire maighstir">
 <!ENTITY pref_sync "Co-shioncronachadh">
@@ -361,8 +362,13 @@ size. -->
 <!ENTITY site_settings_no_settings  "Chan eil roghainnean ann a ghabhas an glanadh.">
 
 <!ENTITY reading_list_added "Chaidh an duilleag a chur ris an liosta leughaidh agad">
-<!ENTITY reading_list_failed "Cha b\u0027 urrainn dhuinn an duilleag a chur ris an liosta leughadh agad">
 <!ENTITY reading_list_duplicate "Tha an duilleag air an liosta leughaidh agad mu thràth">
+<!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
+     panel on the home page to give the user an estimate of how many minutes it will take to
+     read an article. The word "minute" should be abbreviated if possible. -->
+
+<!ENTITY reading_list_time_minutes2 "&formatD; mion">
+<!ENTITY reading_list_time_over_an_hour "Barrachd air uair a thìde">
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
 
@@ -385,7 +391,10 @@ size. -->
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Cuir làrach ris">
+<!-- Localization note (home_title): This string should be kept in sync
+     with the page title defined in aboutHome.dtd -->
 
+<!ENTITY home_title "Dachaigh &brandShortName;">
 <!ENTITY home_history_title "Eachdraidh">
 <!ENTITY home_clear_history_button "Falamhaich an eachdraidh brabhsaidh">
 <!ENTITY home_clear_history_confirm "A bheil thu cinnteach gu bheil thu airson an eachdraidh agad fhalamhadh?">
@@ -395,6 +404,9 @@ size. -->
 <!ENTITY home_last_tabs_empty "Nochdaidh tabaichean a bha agad o chionn goirid an-seo.">
 <!ENTITY home_open_all "Fosgail a h-uile">
 <!ENTITY home_most_recent_empty "Nochdaidh làraichean-lìn air an do thadhail thu o chionn goirid an-seo.">
+<!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
+     The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
+<!ENTITY home_most_recent_emptyhint2 "Cagar: ma chleachdas tu &formatS1;taba prìobhaideach ùr&formatS2;, cha dèid an eachdraidh agad a shàbhaladh.">
 <!ENTITY home_reading_list_empty "Nochdaidh artaigealan a shàbhaileas tu airson uaireigin eile an-seo.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
@@ -462,11 +474,21 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "a tha \u0027ga ruith le">
+<!ENTITY identity_no_info "Chan eil an làrach seo a\u0027 nochdadh fiosrachadh dearbh-aithne.">
+<!ENTITY identity_not_encrypted "Chan eil an ceangal agad ris an làrach-lìn seo air a dhubh-cheileadh.">
 <!-- Mixed content notifications in site identity popup -->
 
 <!ENTITY loaded_mixed_content_message "Tha an duilleag seo a\u0027 sealltainn susbaint nach eil tèarainte.">
 <!ENTITY blocked_mixed_content_message_top "Bhac &brandShortName; susbaint nach eil tèarainte.">
 <!ENTITY blocked_mixed_content_message_bottom "Obraichidh a\u0027 mhòrchuid dhe na làraichean-lìn fhathast fiù ma tha bacadh air an t-susbaint seo.">
+<!-- Tracking content notifications in site identity popup -->
+
+<!ENTITY loaded_tracking_content_message_top "Tha dìon o thracadh à comas.">
+<!ENTITY loaded_tracking_content_message_bottom "Faodaidh gun tracaich cuid dhen duilleag seo na nì thu air loidhne.">
+<!ENTITY blocked_tracking_content_message_top2 "Tha dìon o thracadh an comas.">
+<!ENTITY blocked_tracking_content_message_bottom2 "Chaidh na pìosan dhen duilleag seo a nì tracadh air na nì thu air loidhne a bhacadh.">
+<!-- Common mixed and tracking content strings in site identity popup -->
+
 <!ENTITY learn_more "Faigh tuilleadh eòlais">
 <!ENTITY enable_protection "Cuir an comas an dìon">
 <!ENTITY disable_protection "Cuir an dìon à comas">
@@ -494,8 +516,6 @@ o Android">
 <!ENTITY webapp_generic_name "Aplacaid">
 
 <!ENTITY searchable_description "Comharran-lìn is an eachdraidh">
-
-<!ENTITY devtools_remote_debugging_forward "Na dìochuimhnich suidheachadh sìneadh air adhart nam port!">
 <!-- Updater notifications --> 
 
 <!ENTITY updater_start_title2 "Tha ùrachadh ri fhaighinn airson &brandShortName;">
@@ -535,7 +555,7 @@ o Android">
 <!ENTITY ellipsis "…">
 
 <!ENTITY colon ":">
-<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+<!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
 
 <!ENTITY actionbar_menu "Clàr-taice">
@@ -548,3 +568,8 @@ o Android">
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Sioncronachadh mu dheireadh: &formatS;">
+<!-- Find-In-Page strings -->
+<!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
+     if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
+
+<!ENTITY find_matchcase "Àà">

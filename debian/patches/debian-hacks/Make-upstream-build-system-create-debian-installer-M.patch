@@ -7,12 +7,12 @@ Subject: Make upstream build system create debian/installer/Makefile
  1 file changed, 2 insertions(+)
 
 diff --git a/moz.build b/moz.build
-index 31b560a..7ac3894 100644
+index 90244e9..03d4984 100644
 --- a/moz.build
 +++ b/moz.build
 @@ -71,4 +71,6 @@ if not CONFIG['JS_STANDALONE']:
  if not CONFIG['LIBXUL_SDK']:
-     add_tier_dir('platform', 'debian/extra-stuff')
+     DIRS += ['debian/extra-stuff']
  
 +CONFIGURE_SUBST_FILES += ['debian/installer/Makefile']
 +
