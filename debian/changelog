@@ -1,8 +1,17 @@
-iceweasel (31.5.0esr-1) UNRELEASED; urgency=medium
+iceweasel (31.5.0esr-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{11,16,19,24}, also known as:
+    CVE-2015-0836, CVE-2015-0831, CVE-2015-0827, CVE-2015-0822.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 25 Feb 2015 10:43:00 +0900
+  * debian/source.filter: Remove files that were mistakenly added to upstream
+    source tarballs. bz#1136240.
+  * debian/repack.py: Fix to support those new filters.
+
+  * memory/mozjemalloc/jemalloc.c: Make powerpc not use static page sizes.
+    Closes: #763900
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 25 Feb 2015 10:47:23 +0900
 
 iceweasel (31.4.0esr-1) unstable; urgency=medium
 
