@@ -1,8 +1,23 @@
-iceweasel (36.0-1) UNRELEASED; urgency=medium
+iceweasel (36.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{11,13-17,19-27}, also known as:
+    CVE-2015-0836, CVE-2015-0835, CVE-2015-0832, CVE-2015-0830,
+    CVE-2015-0834, CVE-2015-0831, CVE-2015-0829, CVE-2015-0827,
+    CVE-2015-0826, CVE-2015-0825, CVE-2015-0824, CVE-2015-0823,
+    CVE-2015-0822, CVE-2015-0821, CVE-2015-0819, CVE-2015-0820.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 25 Feb 2015 16:11:08 +0900
+  * debian/control*: Bump nss and sqlite build dependencies.
+  * debian/branding/Makefile.in, debian/branding/moz.build,
+    debian/extra-stuff/Makefile.in, debian/extra-stuff/moz.build: Update and
+    cleanup.
+  * debian/browser.install.in: Remove mozilla-xremote-client, it was removed
+    upstream.
+  * debian/browser.install.in, debian/rules: Remove libmozsandbox.so, it's
+    not a shared library anymore.
+  * debian/browser.mozconfig.in: Build with --disable-eme for now,
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 25 Feb 2015 16:16:40 +0900
 
 iceweasel (35.0.1-1) experimental; urgency=medium
 
