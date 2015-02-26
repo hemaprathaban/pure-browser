@@ -1,3 +1,13 @@
+iceweasel (36.0-2) experimental; urgency=medium
+
+  * debian/browser.mozconfig.in: Force enable skia, to possibly fix FTBFS
+    on non-x86/amd64/arm architectures.
+
+  * gfx/skia/moz.build: Remove duplicate SkDiscardableMemory_none.cpp.
+    bz#1136958.
+
+ -- Mike Hommey <glandium@debian.org>  Thu, 26 Feb 2015 18:12:45 +0900
+
 iceweasel (36.0-1) experimental; urgency=medium
 
   * New upstream release.
