@@ -3,8 +3,6 @@
 #  - copies artwork to appropriate places in objdir for bundling into app 
 #    resources
 
-PREF_JS_EXPORTS += $(srcdir)/firefox-branding.js
-
 ifdef BRANDING_TEST
 DEFINES += -DBRANDING_TEST
 endif
