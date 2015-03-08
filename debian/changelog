@@ -1,3 +1,13 @@
+iceweasel (36.0.1-1) experimental; urgency=medium
+
+  * New upstream release.
+
+  * gfx/layers/basic/BasicCompositor.cpp,
+    gfx/layers/basic/BasicLayerManager.cpp: Reintroduce pixman code path
+    removed in bz#1097776 for --disable-skia builds. bz#1136958.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 09 Mar 2015 08:45:03 +0900
+
 iceweasel (36.0-2) experimental; urgency=medium
 
   * debian/browser.mozconfig.in: Force enable skia, to possibly fix FTBFS
