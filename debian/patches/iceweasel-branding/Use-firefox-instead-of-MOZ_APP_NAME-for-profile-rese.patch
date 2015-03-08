@@ -21,10 +21,10 @@ index db57f2a..cdb0922 100644
  
  Cu.import("resource://gre/modules/Services.jsm");
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index db8667c..ff71e15 100644
+index 8d840ed..f74cc76 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -4017,7 +4017,7 @@ XREMain::XRE_mainRun()
+@@ -4087,7 +4087,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.
