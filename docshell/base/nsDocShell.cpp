@@ -1322,9 +1322,10 @@ nsDocShell::LoadURI(nsIURI * aURI,
     
     // Note: we allow loads to get through here even if mFiredUnloadEvent is
     // true; that case will get handled in LoadInternal or LoadHistoryEntry.
-    if (IsPrintingOrPP()) {
+    if (IsPrintingOrPP() || mBlockNavigation) {
       return NS_OK; // JS may not handle returning of an error code
     }
+
     nsCOMPtr<nsIURI> referrer;
     nsCOMPtr<nsIInputStream> postStream;
     nsCOMPtr<nsIInputStream> headersStream;
@@ -8900,6 +8901,8 @@ nsDocShell::InternalLoad(nsIURI * aURI,
 
     NS_ENSURE_TRUE(!mIsBeingDestroyed, NS_ERROR_NOT_AVAILABLE);
 
+    NS_ENSURE_TRUE(!mBlockNavigation, NS_ERROR_UNEXPECTED);
+
     // wyciwyg urls can only be loaded through history. Any normal load of
     // wyciwyg through docshell is  illegal. Disallow such loads.
     if (aLoadType & LOAD_CMD_NORMAL) {
@@ -12570,7 +12573,7 @@ nsDocShell::OnLinkClick(nsIContent* aContent,
 {
   NS_ASSERTION(NS_IsMainThread(), "wrong thread");
 
-  if (!IsOKToLoadURI(aURI)) {
+  if (!IsOKToLoadURI(aURI) || mBlockNavigation) {
     return NS_OK;
   }
 
@@ -12626,7 +12629,7 @@ nsDocShell::OnLinkClickSync(nsIContent *aContent,
     *aRequest = nullptr;
   }
 
-  if (!IsOKToLoadURI(aURI)) {
+  if (!IsOKToLoadURI(aURI) || mBlockNavigation) {
     return NS_OK;
   }
 
