@@ -35,7 +35,7 @@
 <!ENTITY  exit_label "Chiqish">
 
 <!ENTITY  launcher_shortcuts_title "&brandShortName; veb dasturlari">
-<!ENTITY  launcher_shortcuts_empty "Birorta ham veb dasturlar topilmadi">
+<!ENTITY  launcher_shortcuts_empty "Birorta ham veb dastur topilmadi">
 
 <!ENTITY choose_file "Faynli tanlash">
 
@@ -63,7 +63,7 @@
 <!ENTITY edit_mode_cancel "Bekor qilish">
 
 <!ENTITY close_tab "Ichki oynani yopish">
-<!ENTITY one_tab "1 ichki oyna">
+<!ENTITY one_tab "1 ta ichki oyna">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
 <!ENTITY num_tabs2 "&formatD; ichki oynalar">
@@ -137,16 +137,16 @@
      it is applicable. -->
 <!ENTITY pref_search_hint "TIP: birorta veb sahifani izlash xizmatlariga ro‘yxatiga qo‘shmoqchi bo‘lsangiz, o‘sha saytning izlash maydonchasiga barmog‘ingizni bosib turing va so‘ngra &formatI; nishonchasiga bosing.">
 <!ENTITY pref_category_devtools "Dasturlash asboblari">
-<!ENTITY pref_category_devtools_summary "Masofadan tuzatish, yarqiratib bo‘yash">
-<!ENTITY pref_developer_paint_flashing "Charaqlatib bo‘yash">
-<!ENTITY pref_developer_remotedebugging "Masofadan turib nosozliklarni hal qilish">
-<!ENTITY pref_remember_signons "Parolni eslab qolish">
+<!ENTITY pref_category_devtools_summary "Masofadan tuzatish, bo‘yash">
+<!ENTITY pref_developer_paint_flashing "Bo‘yash">
+<!ENTITY pref_developer_remotedebugging "Masofadan tuzatish">
+<!ENTITY pref_remember_signons "Parollarni eslab qolish">
 
 <!ENTITY pref_category_home "Uy sahifasi">
 <!ENTITY pref_category_home_summary "Uy sahifangizni moslash">
 <!ENTITY pref_category_home_panels "Panellar">
 <!ENTITY home_add_panel_title "Yangi panel qo‘shish">
-<!ENTITY home_add_panel_empty "Uzr, qo‘shishingiz uchun birorta ham panelni topa olmadik.">
+<!ENTITY home_add_panel_empty "Uzr, siz uchun qo‘shish maqsadida birorta ham panelni topa olmadik.">
 <!-- Localization note (home_add_panel_installed):
      The &formatS; will be replaced with the name of the new panel the user just
      selected to be added to the home page. -->
@@ -169,9 +169,11 @@
 
 <!ENTITY pref_cookies_menu "Kukilar">
 <!ENTITY pref_cookies_accept_all "Yoqib qo‘yilgan">
-<!ENTITY pref_cookies_not_accept_foreign "Yoqib qo‘yildi (3-tomon aralashuvisiz)">
+<!ENTITY pref_cookies_not_accept_foreign "Begona saytlardan boshqalari yoqib qo‘yildi">
 <!ENTITY pref_cookies_disabled "O‘chirib qo‘yilgan">
 
+<!ENTITY pref_tracking_protection_title "Kuzatishdan himoyalanish">
+<!ENTITY pref_tracking_protection_summary "&brandShortName; sizni kuzatmoqchi bo‘lgan saytlarni to‘sib qo‘ymoqda">
 <!ENTITY pref_donottrack_title "Kuzatmang">
 <!ENTITY pref_donottrack_summary "&brandShortName; saytlarga sizni kuzatishlarini xohlamsaligingiz aytiladi.">
 
@@ -207,7 +209,7 @@ size. -->
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 
-<!ENTITY pref_font_size_preview_text "Tezkor qizil tulki siz kutganingizdek katta tezlik, o‘ta chaqqonlik va xavfsiz ravishda sakraydi. Notijorat tashkilot sifatida biz sizning tashabbuslaringizni erkin qo‘llab-quvvatlaymiz. Bu degani, siz zo‘r tajribaga ega bo‘lasiz, internet esa yorqin kelajakka ega bo‘ladi.">
+<!ENTITY pref_font_size_preview_text "Tezkor qizil tulki siz kutganingizdek katta tezlik va o‘ta chaqqonlik  bilan hamda xavfsiz ravishda sakraydi. Notijorat tashkilot sifatida biz sizning tashabbuslaringizni erkin qo‘llab-quvvatlaymiz. Bu degani, siz zo‘r tajribaga ega bo‘lasiz, internet esa yorqin kelajakka ega bo‘ladi.">
 
 <!ENTITY pref_media_autoplay_enabled "Avto ijro etishga ruxsat berish">
 <!ENTITY pref_media_autoplay_enabled_summary "Agar vebsaytlar videolar va boshqa media tarkiblarni avto ijro etilsa, boshqarilsin">
@@ -258,7 +260,7 @@ size. -->
      crashReporterDesc.label). -->
 
 <!ENTITY datareporting_fhr_title "&brandShortName; yaroqlilik ma’lumotlari">
-<!ENTITY datareporting_fhr_summary2 "Brauzeringiz yaroqlilig va uning ishlash samaraodorligini tushunishingizda yordam berish uchun &vendorShortName; bilan ma’lumotlarni bo‘lishish">
+<!ENTITY datareporting_fhr_summary2 "Brauzeringiz mustahkamligi va uning ishlash unumdorligini tushunishingizda yordam berish uchun &vendorShortName; bilan ma’lumotlarni bo‘lishadi">
 <!ENTITY datareporting_abouthr_title "Mening yaroqlilik ma’lumotlarimni ko‘rsatish">
 <!ENTITY datareporting_telemetry_title "Telemetriya">
 <!ENTITY datareporting_telemetry_summary "&vendorShortName; bilan ishlashi, qurilma va brauzeringizni qanday moslanganligi ma’lumotlarini &brandShortName;ni yaxshilash uchun bo‘lishadi">
@@ -291,7 +293,7 @@ size. -->
 <!ENTITY share_image_failed "Rasm bo‘lishiilmadi">
 <!ENTITY save_as_pdf "PDF sifatida saqlash">
 <!ENTITY find_in_page "Sahifadan topish">
-<!ENTITY desktop_mode "So‘ralgan stol kompyuteri sayti">
+<!ENTITY desktop_mode "Saytning to‘liq versiyasi">
 <!ENTITY page "Sahifa">
 <!ENTITY tools "Asboblar">
 <!ENTITY new_tab "Yangi ichki oyna">
@@ -387,7 +389,7 @@ size. -->
 <!ENTITY button_set "O‘rnatish">
 <!ENTITY button_clear "Tozalash">
 
-<!ENTITY home_top_sites_title "Yuqor reytingli saytlar">
+<!ENTITY home_top_sites_title "Yuqori reytingli saytlar">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Sayt qo‘shish">
@@ -398,7 +400,7 @@ size. -->
 <!ENTITY home_history_title "Tarix">
 <!ENTITY home_clear_history_button "Brauzer tarixini tozalash">
 <!ENTITY home_clear_history_confirm "Haqiqatan ham brauzer tarixini tozalamoqchimisiz?">
-<!ENTITY home_bookmarks_empty "Bu yerda keyinroq ko‘rsatish uchun saqlangan xatcho‘plar">
+<!ENTITY home_bookmarks_empty "Bu yerda ko‘rinishi uchun siz saqlagan xatcho‘plar.">
 <!ENTITY home_closed_tabs_title "Yaqinda yopilgan ichki oynalar">
 <!ENTITY home_last_tabs_title "So‘nggi ochilgan ichki oynalar">
 <!ENTITY home_last_tabs_empty "So‘nggi ichki oynalaringiz bu yerda ko‘rsatiladi.">
@@ -407,7 +409,7 @@ size. -->
 <!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
      The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
 <!ENTITY home_most_recent_emptyhint2 "Psst: &formatS1;Yangi maxfiy ichki oyna&formatS2;dan foydalanish tarixingizni saqlamaydi.">
-<!ENTITY home_reading_list_empty "Bu yerda keyinroq ko‘rsatish uchun saqlangan maqolalar">
+<!ENTITY home_reading_list_empty "Keyinroq o‘qish uchun saqlagan maqolalaringiz bu yerda.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
      The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
@@ -419,7 +421,7 @@ size. -->
 <!-- Localization note (home_default_empty): This string is used as the default text when there
      is no data to show in an about:home panel that was created by an add-on. -->
 
-<!ENTITY home_default_empty "Ushbu panel uchun birorta ham tarkib topilmadi">
+<!ENTITY home_default_empty "Ushbu panel uchun birorta ham kontent topilmadi.">
 <!-- Localization note (home_move_up_to_filter): The variable is replaced by the name of the
      previous location in the navigation, such as the previous folder -->
 
@@ -429,6 +431,8 @@ size. -->
 <!ENTITY home_remote_tabs_empty "Boshqa qurilmalaringizdagi ichki oynalar bu yerda ko‘rsatiladi.">
 <!ENTITY home_remote_tabs_unable_to_connect "Ulana olmadi">
 <!ENTITY home_remote_tabs_need_to_sign_in "Firefox hisobingizga qayta ulanish va sinxornlashni davom ettirish uchun kiring.">
+<!ENTITY home_remote_tabs_need_to_finish_migrating "Sizning yangi \&quot;Firefox hisobi\&quot;ngiz tayyor!">
+
 <!ENTITY home_remote_tabs_trouble_verifying "Hisobingizni tasdiqlashda muammo yuz berdimi?">
 <!ENTITY home_remote_tabs_need_to_verify "Sinxronlashni boshlash uchun Firefox hisobingizni tasdiqlang.">
 
@@ -446,7 +450,7 @@ size. -->
 <!ENTITY home_remote_tabs_unhide_selected_devices "Tanlangan qurilmalarni ko‘rsatish">
 
 <!ENTITY private_browsing_title "Maxfiy ko‘rish">
-<!ENTITY private_tabs_panel_empty_desc "Maxfiy ichki oynalaringiz bu yerda ko‘rinadi. Biz ko‘rish tarixi yoki kukilar, xatcho‘plar va faylllarni saqlamasak ham, yuklab olgan narsalaringiz qurilmada saqlanib qoladi.">
+<!ENTITY private_tabs_panel_empty_desc "Maxfiy ichki oynalaringiz bu yerda ko‘rinadi. Biz ko‘rish tarixi yoki kukilar, xatcho‘plar va fayllarni saqlamasak ham, yuklab olgan narsalaringiz qurilmada saqlanib qoladi.">
 <!ENTITY private_tabs_panel_learn_more "Ko‘proq o‘rganishni xohlaysizmi?">
 
 <!ENTITY remote_tabs_panel_moved_title "Ichki oynalarim qayerga ketdi?">
@@ -480,7 +484,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY loaded_mixed_content_message "Ushbu sahifa xavfsiz bo‘lmagan tarkibni ko‘rsatmoqda.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; saytni xavfsiz bo‘lmagani uchun to‘sib qo‘ydi">
-<!ENTITY blocked_mixed_content_message_bottom "Ko‘pgina saytlar tarkibi bloklangandan so‘ng ham yaxshi ishlayveradi.">
+<!ENTITY blocked_mixed_content_message_bottom "Ko‘pgina saytlar bloklangandan so‘ng ham yaxshi ishlayveradi.">
 <!-- Tracking content notifications in site identity popup -->
 
 <!ENTITY loaded_tracking_content_message_top "Kuzatishdan himoya o‘chirildi.">
@@ -528,12 +532,6 @@ import qilinmoqda">
 
 <!ENTITY updater_apply_title2 "&brandShortName; uchun yangilanishlar mavjud">
 <!ENTITY updater_apply_select2 "Yangilash uchun bosing">
-<!-- New tablet UI -->
-<!-- LOCALIZATION NOTE (new_tablet_restart): Notification displayed after the user toggles the new tablet UI in the settings screen.-->
-
-
-<!ENTITY new_tablet_restart "O‘zgarishlar kuchga kirishi uchun brauzerni qaytadan ishga tushiring">
-<!ENTITY new_tablet_pref "Yangi planshet grafik muhitini yoqish">
 <!-- Guest mode -->
 
 <!ENTITY new_guest_session "Yangi mehmon seansi">
@@ -541,7 +539,7 @@ import qilinmoqda">
 <!ENTITY guest_session_dialog_continue "Davom etish">
 <!ENTITY guest_session_dialog_cancel "Bekor qilish">
 <!ENTITY new_guest_session_title "&brandShortName; hozir qayta ishga tushiriladi">
-<!ENTITY new_guest_session_text "Foydalanayotgan inson sizning birorta ham shaxsiy ko‘rish ma’lumotlaringizni (saqlangan parollar, tarix va xatcho‘plar kabi) ko‘ra olmaydi.\n\n Mehmoningiz ishini tugatgandan so‘ng, uning ko‘rish ma’lumotlari o‘chiriladi va sizning seansingiz tiklanadi.">
+<!ENTITY new_guest_session_text "Foydalanayotgan inson sizning birorta ham shaxsiy ko‘rish ma’lumotlaringizni (saqlangan parollar, tarix va xatcho‘plar kabilarni) ko‘ra olmaydi.\n\n Mehmoningiz ishini tugatgandan so‘ng, uning ko‘rish ma’lumotlari o‘chiriladi va sizning seansingiz tiklanadi.">
 <!ENTITY guest_browsing_notification_title "Mehmon sifatida kirish yoqilgan">
 <!ENTITY guest_browsing_notification_text "Chiqish uchun bosing">
 

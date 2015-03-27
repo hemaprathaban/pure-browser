@@ -67,12 +67,12 @@
 <!ENTITY sync.configure.engines.title.tabs 'langetojn'>
 
 <!-- Common text -->
-<!ENTITY sync.button.cancel.label 'Nuligi'>
-<!ENTITY sync.button.connect.label 'Konekti'>
-<!ENTITY sync.button.ok.label 'Akcepti'>
+<!ENTITY sync.button.cancel.label 'Cancel'>
+<!ENTITY sync.button.connect.label 'Connect'>
+<!ENTITY sync.button.ok.label 'OK'>
 
 <!-- Account strings -->
-<!ENTITY sync.account.label '&syncBrand.fullName.label; (evitinda)'>
+<!ENTITY sync.account.label '&syncBrand.fullName.label; (deprecated)'>
 
 <!-- Localization note (sync.default.client.name): Default string of the "Device
      name" menu item upon setting up Firefox Sync.  The placeholder &formatS1
@@ -142,7 +142,7 @@
 
 <!ENTITY fxaccount_getting_started_welcome_to_sync 'Bonvenon al &syncBrand.shortName.label;'>
 <!ENTITY fxaccount_getting_started_description 'Komenci seancon por speguli viajn langetojn, legosignojn, pasvortojn kaj pli.'>
-<!ENTITY fxaccount_getting_started_get_started 'Unua paŝoj'>
+<!ENTITY fxaccount_getting_started_get_started 'Unuaj paŝoj'>
 <!ENTITY fxaccount_getting_started_old_firefox 'Ĉu vi nun uzas malnovan version de &syncBrand.shortName.label;?'>
 
 <!-- Localization note: the Firefox below should not change with the
@@ -167,8 +167,12 @@
 <!-- Localization note: &formatS; is the Firefox Account's email address. -->
 <!ENTITY fxaccount_confirm_account_verification_link 'Konfirma ligilo estis sendita al &formatS;'>
 <!ENTITY fxaccount_confirm_account_resend_email 'Resendi retpoŝton'>
+<!ENTITY fxaccount_confirm_account_change_email 'Ĉu forgesi tiun ĉi retpoŝtan adreson?'>
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 'Konfirma retpoŝto sendita'>
 <!ENTITY fxaccount_confirm_account_verification_link_not_sent2 'Ne eblis sendi konfirman retpoŝton'>
+<!ENTITY fxaccount_resend_unlock_code_button_label 'Resendi malblokan retpoŝton'>
+<!ENTITY fxaccount_unlock_code_sent 'Retpoŝto por malbloki konton sendita'>
+<!ENTITY fxaccount_unlock_code_not_sent 'Ne eblis sendi retpoŝton por malbloki konton'>
 
 <!ENTITY fxaccount_sign_in_sub_header 'Komenci seancon'>
 <!ENTITY fxaccount_sign_in_button_label 'Komenci seancon'>
@@ -179,13 +183,21 @@
 <!ENTITY fxaccount_account_verified_sub_header 'Konto kontrolita'>
 <!ENTITY fxaccount_account_verified_description2 'La spegulado de viaj datumoj komenciĝos tre baldaŭ.'>
 
+<!ENTITY fxaccount_migration_finished_header 'Ĝisdatigo finita'>
+
 <!ENTITY fxaccount_update_credentials_header 'Komenci seancon'>
 <!ENTITY fxaccount_update_credentials_button_label 'Komenci seancon'>
 <!ENTITY fxaccount_update_credentials_unknown_error 'Ne eblis komenci seancon'>
 
+<!ENTITY fxaccount_finish_migrating_header 'Komenci seancon por fini la ĝisdatigon'>
+<!ENTITY fxaccount_finish_migrating_button_label 'Fini ĝisdatigon'>
+<!ENTITY fxaccount_finish_migrating_description 'Ĝisdatigo povas transmeti multe da datumoj. Estas plej bone fari tion en sendrata reto.'>
+
 <!ENTITY fxaccount_status_header2 'Konto de Firefox'>
 <!ENTITY fxaccount_status_signed_in_as 'Seanco komencita kiel'>
 <!ENTITY fxaccount_status_auth_server 'Konta servilo'>
+<!ENTITY fxaccount_status_sync_now 'Speguli nun'>
+<!ENTITY fxaccount_status_syncing2 'Spegulado…'>
 <!ENTITY fxaccount_status_device_name 'Nomo de aparato'>
 <!ENTITY fxaccount_status_sync_server 'Spegula servilo'>
 <!ENTITY fxaccount_status_sync '&syncBrand.shortName.label;'>
@@ -196,7 +208,7 @@
 <!ENTITY fxaccount_status_needs_master_sync_automatically_enabled '&syncBrand.shortName.label; estas agordita, sed ĝi ne spegulas aŭtomate. Ŝaltu “Aŭtomate speguli datumojn“ en la Agordoj de Android &gt; Uzo de datumoj.'>
 <!ENTITY fxaccount_status_needs_account_enabled '&syncBrand.shortName.label; estas agordita, sed ĝi ne spegulas aŭtomate. Tuŝetu por komenci speguli.'>
 <!ENTITY fxaccount_status_bookmarks 'Legosignoj'>
-<!ENTITY fxaccount_status_history 'Hisotrio'>
+<!ENTITY fxaccount_status_history 'Historio'>
 <!ENTITY fxaccount_status_passwords 'Pasvortoj'>
 <!ENTITY fxaccount_status_tabs 'Malfermitaj langetoj'>
 <!ENTITY fxaccount_status_legal 'Leĝaj informoj' >
@@ -233,8 +245,7 @@
      been returned. -->
 <!ENTITY fxaccount_remote_error_UPGRADE_REQUIRED 'Vi bezonas ĝisdatigi Firefox'>
 
-<!-- Localization note: the format string will be fxaccount_sign_in_button_label, linkified. -->
-<!ENTITY fxaccount_remote_error_ATTEMPT_TO_CREATE_AN_ACCOUNT_THAT_ALREADY_EXISTS_2 'Konto jam ekzistas. &formatS1;'>
+<!-- Localization note: the format string will be <!ENTITY fxaccount_remote_error_ATTEMPT_TO_CREATE_AN_ACCOUNT_THAT_ALREADY_EXISTS_2 'Konto jam ekzistas. &formatS1;'>
 <!ENTITY fxaccount_remote_error_ATTEMPT_TO_ACCESS_AN_ACCOUNT_THAT_DOES_NOT_EXIST 'Nevalida retpoŝto aŭ pasvorto'>
 <!ENTITY fxaccount_remote_error_INCORRECT_PASSWORD 'Nevalida retpoŝto aŭ pasvorto'>
 <!ENTITY fxaccount_remote_error_ATTEMPT_TO_OPERATE_ON_AN_UNVERIFIED_ACCOUNT 'Ne kontrolita konto'>
@@ -242,8 +253,14 @@
 <!ENTITY fxaccount_remote_error_SERVICE_TEMPORARILY_UNAVAILABLE_TO_DUE_HIGH_LOAD 'Servilo okupata, klopodu denove baldaŭ'>
 <!ENTITY fxaccount_remote_error_UNKNOWN_ERROR 'Problemo okazis'>
 <!ENTITY fxaccount_remote_error_COULD_NOT_CONNECT 'Ne eblis konektiĝi al reto'>
+<!ENTITY fxaccount_remote_error_ACCOUNT_LOCKED 'Konto blokita. &formatS1;'>
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 '&syncBrand.shortName.label; ne estas konektita'>
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
 <!ENTITY fxaccount_sync_sign_in_error_notification_text2 'Tuŝetu por komenci seancon kiel &formatS;'>
+
+<!ENTITY fxaccount_sync_finish_migrating_notification_title 'Ĉu fini la ĝisdatigon de &syncBrand.shortName.label;?'>
+<!-- Localization note: the format string below will be replaced
+     with the Firefox Account's email address. -->
+<!ENTITY fxaccount_sync_finish_migrating_notification_text 'Tuŝetu por komenci seancon kiel &formatS;'>
