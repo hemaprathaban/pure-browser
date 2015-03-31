@@ -74,11 +74,20 @@ BasicCompositor::BasicCompositor(nsIWidget *aWidget)
 {
   MOZ_COUNT_CTOR(BasicCompositor);
   SetBackend(LayersBackend::LAYERS_BASIC);
+
+  mMaxTextureSize =
+    Factory::GetMaxSurfaceSize(gfxPlatform::GetPlatform()->GetContentBackend());
 }
 
 BasicCompositor::~BasicCompositor()
 {
   MOZ_COUNT_DTOR(BasicCompositor);
+}
+
+int32_t
+BasicCompositor::GetMaxTextureSize() const
+{
+  return mMaxTextureSize;
 }
 
 void
@@ -579,15 +588,6 @@ BasicCompositor::EndFrame()
     mWidget->EndRemoteDrawing();
   }
 
-  mDrawTarget = nullptr;
-  mRenderTarget = nullptr;
-}
-
-void
-BasicCompositor::AbortFrame()
-{
-  mRenderTarget->mDrawTarget->PopClip();
-  mRenderTarget->mDrawTarget->PopClip();
   mDrawTarget = nullptr;
   mRenderTarget = nullptr;
 }

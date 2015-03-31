@@ -20,7 +20,7 @@ import sys
 import time
 import traceback
 
-from collections import deque
+from collections import deque, namedtuple
 from distutils import dir_util
 from multiprocessing import cpu_count
 from optparse import OptionParser
@@ -36,7 +36,7 @@ from threading import (
 try:
     import psutil
     HAVE_PSUTIL = True
-except ImportError:
+except Exception:
     HAVE_PSUTIL = False
 
 from automation import Automation
@@ -112,6 +112,7 @@ class XPCShellTestThread(Thread):
         self.xrePath = kwargs.get('xrePath')
         self.testingModulesDir = kwargs.get('testingModulesDir')
         self.debuggerInfo = kwargs.get('debuggerInfo')
+        self.jsDebuggerInfo = kwargs.get('jsDebuggerInfo')
         self.pluginsPath = kwargs.get('pluginsPath')
         self.httpdManifest = kwargs.get('httpdManifest')
         self.httpdJSPath = kwargs.get('httpdJSPath')
@@ -367,10 +368,15 @@ class XPCShellTestThread(Thread):
                        for f in headfiles])
         cmdT = ", ".join(['"' + f.replace('\\', '/') + '"'
                        for f in tailfiles])
+
+        dbgport = 0 if self.jsDebuggerInfo is None else self.jsDebuggerInfo.port
+
         return xpcscmd + \
                 ['-e', 'const _SERVER_ADDR = "localhost"',
                  '-e', 'const _HEAD_FILES = [%s];' % cmdH,
-                 '-e', 'const _TAIL_FILES = [%s];' % cmdT]
+                 '-e', 'const _TAIL_FILES = [%s];' % cmdT,
+                 '-e', 'const _JSDEBUGGER_PORT = %d;' % dbgport,
+                ]
 
     def getHeadAndTailFiles(self, test_object):
         """Obtain the list of head and tail files.
@@ -633,7 +639,7 @@ class XPCShellTestThread(Thread):
             testTimeoutInterval *= int(self.test_object['requesttimeoutfactor'])
 
         testTimer = None
-        if not self.interactive and not self.debuggerInfo:
+        if not self.interactive and not self.debuggerInfo and not self.jsDebuggerInfo:
             testTimer = Timer(testTimeoutInterval, lambda: self.testTimeout(proc))
             testTimer.start()
 
@@ -845,9 +851,6 @@ class XPCShellTests(object):
             self.env["MOZ_CRASHREPORTER"] = "1"
         # Don't launch the crash reporter client
         self.env["MOZ_CRASHREPORTER_NO_REPORT"] = "1"
-        # Capturing backtraces is very slow on some platforms, and it's
-        # disabled by automation.py too
-        self.env["NS_TRACE_MALLOC_DISABLE_STACKS"] = "1"
         # Don't permit remote connections by default.
         # MOZ_DISABLE_NONLOCAL_CONNECTIONS can be set to "0" to temporarily
         # enable non-local connections for the purposes of local testing.
@@ -1006,7 +1009,9 @@ class XPCShellTests(object):
     def makeTestId(self, test_object):
         """Calculate an identifier for a test based on its path or a combination of
         its path and the source manifest."""
-        path = test_object['path'].replace('\\', '/');
+
+        relpath_key = 'file_relpath' if 'file_relpath' in test_object else 'relpath'
+        path = test_object[relpath_key].replace('\\', '/');
         if 'dupe-manifest' in test_object and 'ancestor-manifest' in test_object:
             return '%s:%s' % (os.path.basename(test_object['ancestor-manifest']), path)
         return path
@@ -1019,7 +1024,8 @@ class XPCShellTests(object):
                  profileName=None, mozInfo=None, sequential=False, shuffle=False,
                  testsRootDir=None, testingModulesDir=None, pluginsPath=None,
                  testClass=XPCShellTestThread, failureManifest=None,
-                 log=None, stream=None, **otherOptions):
+                 log=None, stream=None, jsDebugger=False, jsDebuggerPort=0,
+                 **otherOptions):
         """Run xpcshell tests.
 
         |xpcshell|, is the xpcshell executable to use to run the tests.
@@ -1089,6 +1095,12 @@ class XPCShellTests(object):
 
         if debugger:
             self.debuggerInfo = mozdebug.get_debugger_info(debugger, debuggerArgs, debuggerInteractive)
+
+        self.jsDebuggerInfo = None
+        if jsDebugger:
+            # A namedtuple let's us keep .port instead of ['port']
+            JSDebuggerInfo = namedtuple('JSDebuggerInfo', ['port'])
+            self.jsDebuggerInfo = JSDebuggerInfo(port=jsDebuggerPort)
 
         self.xpcshell = xpcshell
         self.xrePath = xrePath
@@ -1176,6 +1188,7 @@ class XPCShellTests(object):
             'xrePath': self.xrePath,
             'testingModulesDir': self.testingModulesDir,
             'debuggerInfo': self.debuggerInfo,
+            'jsDebuggerInfo': self.jsDebuggerInfo,
             'pluginsPath': self.pluginsPath,
             'httpdManifest': self.httpdManifest,
             'httpdJSPath': self.httpdJSPath,
@@ -1204,6 +1217,13 @@ class XPCShellTests(object):
             # If we have an interactive debugger, disable SIGINT entirely.
             if self.debuggerInfo.interactive:
                 signal.signal(signal.SIGINT, lambda signum, frame: None)
+
+        if self.jsDebuggerInfo:
+            # The js debugger magic needs more work to do the right thing
+            # if debugging multiple files.
+            if len(self.alltests) != 1:
+                self.log.error("Error: --jsdebugger can only be used with a single test!")
+                return False
 
         # create a queue of all tests that will run
         tests_queue = deque()
@@ -1449,6 +1469,13 @@ class XPCShellOptions(OptionParser):
                         action = "store_true", dest = "debuggerInteractive",
                         help = "prevents the test harness from redirecting "
                           "stdout and stderr for interactive debuggers")
+        self.add_option("--jsdebugger", dest="jsDebugger", action="store_true",
+                        help="Waits for a devtools JS debugger to connect before "
+                             "starting the test.")
+        self.add_option("--jsdebugger-port", type="int", dest="jsDebuggerPort",
+                        default=6000,
+                        help="The port to listen on for a debugger connection if "
+                             "--jsdebugger is specified.")
 
 def main():
     parser = XPCShellOptions()

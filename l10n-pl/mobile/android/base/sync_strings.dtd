@@ -169,8 +169,12 @@ etc).  The account remains a "Firefox" account. -->
 <!-- Localization note: &formatS; is the Firefox account's email address. -->
 <!ENTITY fxaccount_confirm_account_verification_link 'Odnośnik weryfikujący wysłano na &formatS;'>
 <!ENTITY fxaccount_confirm_account_resend_email 'Wyślij ponownie'>
+<!ENTITY fxaccount_confirm_account_change_email "Usunąć konfigurację konta przypisanego do tego adresu?">
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 'Wysłano odnośnik weryfikujący'>
 <!ENTITY fxaccount_confirm_account_verification_link_not_sent2 'Nie udało się wysłać odnośnika weryfikującego'>
+<!ENTITY fxaccount_resend_unlock_code_button_label "Wyślij ponownie odnośnik weryfikacyjny">
+<!ENTITY fxaccount_unlock_code_sent "Wiadomość z odnośnikiem weryfikacyjnym została wysłana">
+<!ENTITY fxaccount_unlock_code_not_sent "Nie można było wysłać wiadomości z odnośnikiem weryfikacyjnym">
 
 <!ENTITY fxaccount_sign_in_sub_header 'Zaloguj się'>
 <!ENTITY fxaccount_sign_in_button_label 'Zaloguj się'>
@@ -181,13 +185,21 @@ etc).  The account remains a "Firefox" account. -->
 <!ENTITY fxaccount_account_verified_sub_header 'Konto zweryfikowano'>
 <!ENTITY fxaccount_account_verified_description2 'Za chwilę rozpocznie się synchronizacja twoich danych'>
 
+<!ENTITY fxaccount_migration_finished_header "Aktualizacja zakończona">
+
 <!ENTITY fxaccount_update_credentials_header 'Zaloguj się'>
 <!ENTITY fxaccount_update_credentials_button_label 'Zaloguj się'>
 <!ENTITY fxaccount_update_credentials_unknown_error 'Logowanie nie powiodło się'>
 
+<!ENTITY fxaccount_finish_migrating_header "Zaloguj się, aby dokończyć aktualizację">
+<!ENTITY fxaccount_finish_migrating_button_label "Dokończ aktualizację">
+<!ENTITY fxaccount_finish_migrating_description "Akutalizacja może spowodować przesłanie dużej ilości danych. Najlepiej zrobić to poprzez sieć Wi-FI.">
+
 <!ENTITY fxaccount_status_header2 'Konto Firefox'>
 <!ENTITY fxaccount_status_signed_in_as 'Zalogowano jako'>
 <!ENTITY fxaccount_status_auth_server 'Serwer konta'>
+<!ENTITY fxaccount_status_sync_now "Synchronizuj">
+<!ENTITY fxaccount_status_syncing2 "Synchronizowanie…">
 <!ENTITY fxaccount_status_device_name 'Nazwa urządzenia'>
 <!ENTITY fxaccount_status_sync_server 'Serwer synchronizacji'>
 <!ENTITY fxaccount_status_sync '&syncBrand.shortName.label;'>
@@ -196,7 +208,9 @@ etc).  The account remains a "Firefox" account. -->
 <!ENTITY fxaccount_status_needs_credentials 'Nie udało się nawiązać połączenia. Stuknij, aby się zalogować'>
 <!ENTITY fxaccount_status_needs_upgrade '&brandShortName; wymaga aktualizacji, aby umożliwić logowanie.'>
 <!ENTITY fxaccount_status_needs_master_sync_automatically_enabled 'Program &syncBrand.shortName.label; jest skonfigurowany, ale nie synchronizuje się automatycznie. Włącz automatyczną synchronizację danych w ustawieniach systemu Android.'>
+<!ENTITY fxaccount_status_needs_master_sync_automatically_enabled_v21 "&syncBrand.shortName.label; jest skonfigurowany ale nie został ustawiony na automatyczną synchronizację. Włącz automatyczną synchronizację danych w menu ustawień i kont Androida.">
 <!ENTITY fxaccount_status_needs_account_enabled 'Program &syncBrand.shortName.label; jest skonfigurowany, ale nie synchronizuje się automatycznie. Stuknij, aby rozpocząć synchronizację.'>
+<!ENTITY fxaccount_status_needs_finish_migrating "Stuknij, aby zalogować do Twojego nowego konta Firefoksa.">
 <!ENTITY fxaccount_status_bookmarks 'Zakładki'>
 <!ENTITY fxaccount_status_history 'Historia'>
 <!ENTITY fxaccount_status_passwords 'Hasła'>
@@ -234,8 +248,12 @@ been returned. -->
 <!ENTITY fxaccount_remote_error_SERVICE_TEMPORARILY_UNAVAILABLE_TO_DUE_HIGH_LOAD 'Serwer jest zajęty, spróbuj ponownie później'>
 <!ENTITY fxaccount_remote_error_UNKNOWN_ERROR 'Wystąpił problem'>
 <!ENTITY fxaccount_remote_error_COULD_NOT_CONNECT 'Brak połączenia z siecią'>
+<!ENTITY fxaccount_remote_error_ACCOUNT_LOCKED "Niezweryfikowane konto. &formatS1;">
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 '&syncBrand.shortName.label; nie może nawiązać połączenia'>
 <!-- Note to translators: the format string below will be replaced
 with the Firefox account's email address. -->
 <!ENTITY fxaccount_sync_sign_in_error_notification_text2 'Stuknij, aby zalogować się jako &formatS;'>
+
+<!ENTITY fxaccount_sync_finish_migrating_notification_title "Dokończ aktualizację &syncBrand.shortName.label;?">
+<!ENTITY fxaccount_sync_finish_migrating_notification_text "Stuknij, aby zalogować się jako &formatS;">

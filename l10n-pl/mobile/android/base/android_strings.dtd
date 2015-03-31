@@ -162,10 +162,10 @@ selected to be added to the home page. -->
 <!ENTITY pref_cookies_not_accept_foreign "Akceptuj, z wyjątkiem ciasteczek zewnętrznych dostawców">
 <!ENTITY pref_cookies_disabled "Nie akceptuj">
 
-<!ENTITY pref_donottrack_menu "Śledzenie">
-<!ENTITY pref_donottrack_disallow_tracking "Informuj witryny, że nie chcę, by mnie śledziły">
-<!ENTITY pref_donottrack_allow_tracking "Informuj witryny, że chcę, by mnie śledziły">
-<!ENTITY pref_donottrack_no_pref "Nie informuj witryn o tym, czy chcę, by mnie śledziły">
+<!ENTITY pref_tracking_protection_title "Ochrona przed śledzeniem">
+<!ENTITY pref_tracking_protection_summary "Blokowanie przez program &brandShortName; prób śledzenia aktywności użytkownika przez strony">
+<!ENTITY pref_donottrack_title "Ograniczanie śledzenia">
+<!ENTITY pref_donottrack_summary "Informuj witryny, że użytkownik nie chce być śledzony">
 
 <!ENTITY pref_char_encoding "Kodowanie znaków">
 <!ENTITY pref_char_encoding_on "Pokazuj">
@@ -198,6 +198,9 @@ size. -->
 <!ENTITY pref_font_size_adjust_char "Aa">
 
 <!ENTITY pref_font_size_preview_text "Chyży ryży lisek skacze przez wysoko postawioną poprzeczkę dzięki szybkości, łatwości w dostosowywaniu go do potrzeb użytkownika i zwiększonym bezpieczeństwie. Jesteśmy organizacją non-profit, dzięki czemu możemy pracować nad innowacjami służącymi Twojemu dobru bez potrzeby pójścia na żaden kompromis. To oznacza przyjemniejsze użytkowanie dla ciebie i lepszą przyszłość dla Sieci.">
+
+<!ENTITY pref_media_autoplay_enabled "Automatyczne odtwarzanie">
+<!ENTITY pref_media_autoplay_enabled_summary "Kontroluje, czy strony mogą automatycznie odtwarzać filmy i inne treści">
 
 <!ENTITY pref_use_master_password "Używaj hasła głównego">
 <!ENTITY pref_sync "Sync">
@@ -311,8 +314,8 @@ size. -->
 <!ENTITY contextmenu_add_search_engine "Dodaj wyszukiwarkę">
 
 <!ENTITY pref_titlebar_mode "Pasek tytułu">
-<!ENTITY pref_titlebar_mode_title "Pokazuj tytuły stron">
-<!ENTITY pref_titlebar_mode_url "Pokazuj adresy stron">
+<!ENTITY pref_titlebar_mode_title "Pokazywanie tytuł strony">
+<!ENTITY pref_titlebar_mode_url "Pokazywanie adres strony">
 
 <!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
 <!ENTITY pref_scroll_title_bar_summary "Ukryj pasek tytułu przeglądarki &brandShortName; przy przewijaniu stron">
@@ -331,8 +334,9 @@ size. -->
 
 <!ENTITY reading_list_title "Do przeczytania">
 <!ENTITY reading_list_added "Strona dodana do listy „Do przeczytania”">
-<!ENTITY reading_list_failed "Nie udało się zapisać strony na liście „Do przeczytania”">
-<!ENTITY reading_list_duplicate "Strona już jest na liście „Do przeczytania”">
+<!ENTITY reading_list_duplicate "Strona jest już na liście „Do przeczytania”">
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Ponad godzinę">
 
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
@@ -356,6 +360,7 @@ size. -->
      text underneath empty thumbnails in the Top Sites page on about:home. -->
 <!ENTITY home_top_sites_add "Dodaj stronę">
 
+<!ENTITY home_title "&brandShortName;: Strona domowa">
 <!ENTITY home_history_title "Historia">
 <!ENTITY home_clear_history_button "Wyczyść historię przeglądania">
 <!ENTITY home_clear_history_confirm "Czy na pewno chcesz wyczyścić historię przeglądania?">
@@ -365,6 +370,7 @@ size. -->
 <!ENTITY home_last_tabs_empty "Tutaj pojawiają się ostatnio otwarte karty.">
 <!ENTITY home_open_all "Otwórz wszystkie">
 <!ENTITY home_most_recent_empty "Tutaj pojawiają się ostatnio odwiedzone witryny.">
+<!ENTITY home_most_recent_emptyhint2 "Psst: W &formatS1;nowej karcie prywatnej&formatS2; historia nie jest zapisywana.">
 <!ENTITY home_reading_list_empty "Tutaj pojawiają się artykuły zachowane na później.">
 <!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
@@ -391,6 +397,7 @@ it is applicable. -->
 <!ENTITY home_remote_tabs_empty "Tutaj pojawią się twoje karty zsynchronizowane z innymi urządzeniami.">
 <!ENTITY home_remote_tabs_unable_to_connect "Nie udało się nawiązać połączenia">
 <!ENTITY home_remote_tabs_need_to_sign_in "Zaloguj się na konto Firefox, aby kontynuować synchronizację.">
+<!ENTITY home_remote_tabs_need_to_finish_migrating "Twoje nowe konto Firefoksa jest gotowe!">
 <!ENTITY home_remote_tabs_trouble_verifying "Masz problem z weryfikacją konta?">
 <!ENTITY home_remote_tabs_need_to_verify "Przed synchronizacją musisz zweryfikować konto Firefox.">
 
@@ -424,11 +431,16 @@ it is applicable. -->
 
 <!ENTITY identity_connected_to "Połączono z">
 <!ENTITY identity_run_by "Witrynę prowadzi:">
+<!ENTITY identity_no_info "Ta witryna nie dostarcza informacji o swej tożsamości">
+<!ENTITY identity_not_encrypted "Połączenie z tą witryną nie jest szyfrowane.">
 
-<!-- Mixed content notifications in site identity popup -->
 <!ENTITY loaded_mixed_content_message "Na tej stronie znajdują się niebezpieczne treści">
 <!ENTITY blocked_mixed_content_message_top "Przeglądarka &brandShortName; zablokowała niebezpieczne treści.">
 <!ENTITY blocked_mixed_content_message_bottom "Większość witryn działa poprawnie nawet po zablokowaniu tych treści.">
+<!ENTITY loaded_tracking_content_message_top "Ochrona przed śledzeniem jest wyłączona">
+<!ENTITY loaded_tracking_content_message_bottom "Części tej strony mogą śledzić aktywność użytkownika.">
+<!ENTITY blocked_tracking_content_message_top2 "Ochrona przed śledzeniem jest włączona">
+<!ENTITY blocked_tracking_content_message_bottom2 "Części tej strony mogące śledzić aktywność użytkownika zostały zablokowane.">
 <!ENTITY learn_more "Dowiedz się więcej">
 <!ENTITY enable_protection "Włącz ochronę">
 <!ENTITY disable_protection "Wyłącz ochronę">
@@ -455,8 +467,6 @@ it is applicable. -->
 
 <!ENTITY searchable_description "Zakładki i historia">
 
-<!ENTITY devtools_remote_debugging_forward "Nie zapomnij skonfigurować przekierowania portów!">
-
 <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "&brandShortName;: dostępne są nowe aktualizacje">
 <!ENTITY updater_start_select2 "Dotknij, aby zaktualizować">
@@ -468,9 +478,6 @@ it is applicable. -->
 
 <!ENTITY updater_apply_title2 "&brandShortName;: dostępne są nowe aktualizacje">
 <!ENTITY updater_apply_select2 "Dotknij, aby zaktualizować">
-
-<!ENTITY new_tablet_restart "Uruchom ponownie przeglądarkę, aby zmiany weszły w życie">
-<!ENTITY new_tablet_pref "Włącz nowy interfejs dla tabletów">
 
 <!-- Guest mode -->
 <!ENTITY new_guest_session "Nowa sesja gościnna">
@@ -499,3 +506,5 @@ it is applicable. -->
 <!ENTITY actionbar_done "Gotowe">
 
 <!ENTITY remote_tabs_last_synced "Ostatnia synchronizacja: &formatS;">
+
+<!ENTITY find_matchcase "Aa">

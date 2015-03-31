@@ -155,7 +155,7 @@ public:
   bool Setup2DTransform()
   {
     // Will return an identity matrix for 3d transforms.
-    return mLayer->GetEffectiveTransform().CanDraw2D(&mTransform);
+    return mLayer->GetEffectiveTransformForBuffer().CanDraw2D(&mTransform);
   }
 
   // Applies the effective transform if it's 2D. If it's a 3D transform then
@@ -548,6 +548,11 @@ BasicLayerManager::EndTransactionInternal(DrawPaintedLayerCallback aCallback,
       // Clear out target if we have a complete transaction.
       mTarget = nullptr;
     }
+  }
+
+  if (mRoot) {
+    mAnimationReadyTime = TimeStamp::Now();
+    mRoot->StartPendingAnimations(mAnimationReadyTime);
   }
 
 #ifdef MOZ_LAYERS_HAVE_LOG
@@ -953,7 +958,8 @@ BasicLayerManager::PaintLayer(gfxContext* aTarget,
       temp->Paint();
     }
 #endif
-    gfx3DMatrix effectiveTransform = gfx::To3DMatrix(aLayer->GetEffectiveTransform());
+    gfx3DMatrix effectiveTransform;
+    effectiveTransform = gfx::To3DMatrix(aLayer->GetEffectiveTransform());
     nsRefPtr<gfxASurface> result =
       Transform3D(untransformedDT->Snapshot(), aTarget, bounds,
                   effectiveTransform, destRect);

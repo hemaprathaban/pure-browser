@@ -9,7 +9,7 @@ Subject: Bug 1136958 - Reintroduce pixman code path removed in bug 1097776 for
  2 files changed, 171 insertions(+), 11 deletions(-)
 
 diff --git a/gfx/layers/basic/BasicCompositor.cpp b/gfx/layers/basic/BasicCompositor.cpp
-index 0bef076..000b591 100644
+index a16b949..48bb83a 100644
 --- a/gfx/layers/basic/BasicCompositor.cpp
 +++ b/gfx/layers/basic/BasicCompositor.cpp
 @@ -17,8 +17,13 @@
@@ -26,7 +26,7 @@ index 0bef076..000b591 100644
  
  namespace mozilla {
  using namespace mozilla::gfx;
-@@ -168,6 +173,7 @@ DrawSurfaceWithTextureCoords(DrawTarget *aDest,
+@@ -177,6 +182,7 @@ DrawSurfaceWithTextureCoords(DrawTarget *aDest,
                     mode, aMask, aMaskTransform, &matrix);
  }
  
@@ -34,7 +34,7 @@ index 0bef076..000b591 100644
  static SkMatrix
  Matrix3DToSkia(const gfx3DMatrix& aMatrix)
  {
-@@ -186,10 +192,10 @@ Matrix3DToSkia(const gfx3DMatrix& aMatrix)
+@@ -195,10 +201,10 @@ Matrix3DToSkia(const gfx3DMatrix& aMatrix)
  }
  
  static void
@@ -49,7 +49,7 @@ index 0bef076..000b591 100644
  {
    if (aTransform.IsSingular()) {
      return;
-@@ -225,6 +231,78 @@ SkiaTransform(DataSourceSurface* aDest,
+@@ -234,6 +240,78 @@ SkiaTransform(DataSourceSurface* aDest,
    SkRect destRect = SkRect::MakeXYWH(0, 0, srcSize.width, srcSize.height);
    destCanvas.drawBitmapRectToRect(src, nullptr, destRect, &paint);
  }
@@ -128,7 +128,7 @@ index 0bef076..000b591 100644
  
  static inline IntRect
  RoundOut(Rect r)
-@@ -364,12 +442,16 @@ BasicCompositor::DrawQuad(const gfx::Rect& aRect,
+@@ -373,12 +451,16 @@ BasicCompositor::DrawQuad(const gfx::Rect& aRect,
      RefPtr<SourceSurface> snapshot = dest->Snapshot();
      RefPtr<DataSourceSurface> source = snapshot->GetDataSurface();
      RefPtr<DataSourceSurface> temp =
@@ -148,7 +148,7 @@ index 0bef076..000b591 100644
      transformBounds.MoveTo(0, 0);
      buffer->DrawSurface(temp, transformBounds, transformBounds);
 diff --git a/gfx/layers/basic/BasicLayerManager.cpp b/gfx/layers/basic/BasicLayerManager.cpp
-index f4ec9e4..c849c27 100644
+index 657316a..fde5554 100644
 --- a/gfx/layers/basic/BasicLayerManager.cpp
 +++ b/gfx/layers/basic/BasicLayerManager.cpp
 @@ -46,8 +46,13 @@
@@ -165,7 +165,7 @@ index f4ec9e4..c849c27 100644
  class nsIWidget;
  
  namespace mozilla {
-@@ -601,6 +606,7 @@ BasicLayerManager::SetRoot(Layer* aLayer)
+@@ -606,6 +611,7 @@ BasicLayerManager::SetRoot(Layer* aLayer)
    mRoot = aLayer;
  }
  
@@ -173,7 +173,7 @@ index f4ec9e4..c849c27 100644
  static SkMatrix
  BasicLayerManager_Matrix3DToSkia(const gfx3DMatrix& aMatrix)
  {
-@@ -619,10 +625,10 @@ BasicLayerManager_Matrix3DToSkia(const gfx3DMatrix& aMatrix)
+@@ -624,10 +630,10 @@ BasicLayerManager_Matrix3DToSkia(const gfx3DMatrix& aMatrix)
  }
  
  static void
@@ -188,7 +188,7 @@ index f4ec9e4..c849c27 100644
  {
    if (aTransform.IsSingular()) {
      return;
-@@ -658,6 +664,78 @@ SkiaTransform(const gfxImageSurface* aDest,
+@@ -663,6 +669,78 @@ SkiaTransform(const gfxImageSurface* aDest,
    SkRect destRect = SkRect::MakeXYWH(0, 0, srcSize.width, srcSize.height);
    destCanvas.drawBitmapRectToRect(src, nullptr, destRect, &paint);
  }
@@ -267,7 +267,7 @@ index f4ec9e4..c849c27 100644
  
  /**
   * Transform a surface using a gfx3DMatrix and blit to the destination if
-@@ -699,7 +777,7 @@ Transform3D(RefPtr<SourceSurface> aSource,
+@@ -704,7 +782,7 @@ Transform3D(RefPtr<SourceSurface> aSource,
    gfx3DMatrix translation = gfx3DMatrix::Translation(aBounds.x, aBounds.y, 0);
  
    // Transform the content and offset it such that the content begins at the origin.
