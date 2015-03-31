@@ -8,7 +8,7 @@
 /*****************************************************************************/
 
 #include <stdint.h>
-const PRTime gPreloadListExpirationTime = INT64_C(1434798530136000);
+const PRTime gPreloadListExpirationTime = INT64_C(1437214217313000);
 
 class nsSTSPreload
 {
@@ -48,6 +48,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "archlinux.de", true },
   { "arivo.com.br", true },
   { "auf-feindgebiet.de", true },
+  { "baer.im", true },
   { "bank.simple.com", false },
   { "baruch.me", true },
   { "bassh.net", true },
@@ -138,6 +139,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "dropbox.com", true },
   { "ebanking.indovinabank.com.vn", false },
   { "ecosystem.atlassian.net", true },
+  { "ed.gs", true },
   { "edyou.eu", true },
   { "eff.org", true },
   { "emailprivacytester.com", true },
@@ -147,7 +149,6 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "entropia.de", false },
   { "errors.zenpayroll.com", false },
   { "espra.com", true },
-  { "ethitter.com", true },
   { "eurotramp.com", true },
   { "explodie.org", true },
   { "f-droid.org", true },
@@ -212,8 +213,8 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "irische-segenswuensche.info", true },
   { "isitchristmas.com", true },
   { "it-schwerin.de", true },
+  { "itriskltd.com", true },
   { "jackyyf.com", false },
-  { "janoberst.com", true },
   { "janus-engineering.de", true },
   { "jelmer.co.uk", true },
   { "jelmer.uk", true },
@@ -248,6 +249,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "ledgerscope.net", false },
   { "linode.com", false },
   { "linx.net", true },
+  { "lists.mayfirst.org", false },
   { "lockify.com", true },
   { "loenshotel.de", true },
   { "loftboard.eu", true },
@@ -357,6 +359,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "riccy.org", true },
   { "riesenmagnete.de", true },
   { "rippleunion.com", true },
+  { "robteix.com", true },
   { "romab.com", true },
   { "rosenkeller.org", true },
   { "roundcube.mayfirst.org", false },
@@ -375,7 +378,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "securityheaders.com", true },
   { "secuvera.de", true },
   { "seifried.org", true },
-  { "servethecity-karlsruhe.de", true },
+  { "servethecity-karlsruhe.de", false },
   { "sherbers.de", true },
   { "shodan.io", true },
   { "silentcircle.com", false },
@@ -411,7 +414,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "tent.io", true },
   { "texte-zur-taufe.de", true },
   { "thepaymentscompany.com", true },
-  { "therapynotes.com", false },
+  { "therapynotes.com", true },
   { "tinfoilsecurity.com", false },
   { "tinte24.de", true },
   { "tintenfix.net", true },
@@ -469,6 +472,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "wf-training-hrd.appspot.com", true },
   { "wf-training-master.appspot.com", true },
   { "wf-trial-hrd.appspot.com", true },
+  { "whonix.org", true },
   { "wiki.python.org", true },
   { "wildbee.org", true },
   { "winhistory-forum.net", true },
@@ -510,7 +514,7 @@ static const nsSTSPreload kSTSPreloadList[] = {
   { "www.schokokeks.org", false },
   { "www.simbolo.co.uk", false },
   { "www.simple.com", false },
-  { "www.therapynotes.com", false },
+  { "www.therapynotes.com", true },
   { "www.tinfoilsecurity.com", false },
   { "www.torproject.org", false },
   { "www.twitter.com", false },
