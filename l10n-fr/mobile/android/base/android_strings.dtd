@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Il n\u0027y a pas assez d\u0027espace disponible pour permettre à &brandShortName; de démarrer.">
 <!ENTITY  error_loading_file "Une erreur est survenue en essayant de charger des fichiers nécessaires pour lancer &brandShortName;">
 
-<!ENTITY  onboard_start_message "Bienvenue dans &brandShortName; !">
-<!ENTITY  onboard_start_subtext "Engagé pour vous, votre vie privée et un Web ouvert">
+<!ENTITY  onboard_start_message2 "Bienvenue dans &brandShortName;">
+<!ENTITY  onboard_start_subtext2 "Davantage de protections pour votre vie privée et une personnalisation plus aisée que jamais.">
 <!ENTITY  onboard_start_button_account "Se connecter à &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Commencer la navigation">
 
@@ -215,6 +215,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Lecture automatique">
 <!ENTITY pref_media_autoplay_enabled_summary "Décider si les sites peuvent lancer automatiquement la lecture des vidéos et d\u0027autres contenus multimédia">
+<!ENTITY pref_zoom_force_enabled "Toujours activer le zoom">
+<!ENTITY pref_zoom_force_enabled_summary "Forcer les pages à toujours vous permettre de zoomer">
 
 <!ENTITY pref_use_master_password "Mot de passe principal">
 <!ENTITY pref_sync "Sync">
@@ -271,7 +273,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Rapports de plantage">
 <!ENTITY datareporting_wifi_title2 "Service de localisation de &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Enregistre les positions approximatives des réseaux Wi-Fi et cellulaires détectés et les partage avec &vendorShortName; pour améliorer notre service de géolocalisation">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Aide &vendorShortName; à cartographier le monde. Les positions approximatives des réseaux Wi-Fi et cellulaires détectés sont envoyées à &vendorShortName; pour améliorer notre service de géolocalisation">
 
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
@@ -367,6 +369,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Aucun paramètre à effacer.">
 
 <!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
+<!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Retirer de la liste de lecture">
 <!ENTITY reading_list_duplicate "La page se trouve déjà dans votre liste de lecture">
 
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
@@ -559,6 +565,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Terminé">
 
+<!-- Voice search in the awesome bar -->
+<!ENTITY voicesearch_prompt "Vous pouvez parler">
+<!ENTITY voicesearch_failed_title "Recherche vocale &brandShortName;">
+<!ENTITY voicesearch_failed_message "La recherche vocale rencontre un problème. Veuillez réessayer plus tard.">
+<!ENTITY voicesearch_failed_message_recoverable "Désolé, nous n\u0027avons pas pu reconnaître vos mots. Veuillez réessayer.">
+<!ENTITY voicesearch_failed_retry "Réessayer">
+
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -566,6 +579,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Dernière synchronisation : &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Dernière synchronisation : jamais">
 
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color

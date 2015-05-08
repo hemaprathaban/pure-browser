@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "No hi ha prou espai lliure per poder iniciar el &brandShortName;.">
 <!ENTITY  error_loading_file "S\u0027ha produït un error en intentar carregar els fitxers necessaris per executar el &brandShortName;">
 
-<!ENTITY  onboard_start_message "Benvingut al &brandShortName;">
-<!ENTITY  onboard_start_subtext "Compromès amb l\u0027usuari, la privadesa i un web obert">
+<!ENTITY  onboard_start_message2 "Benvingut al &brandShortName;">
+<!ENTITY  onboard_start_subtext2 "Més característiques de privadesa i possibilitats de personalització que mai.">
 <!ENTITY  onboard_start_button_account "Inicia la sessió al &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Comença a navegar">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
@@ -213,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Permet reproduir automàticament">
 <!ENTITY pref_media_autoplay_enabled_summary "Controla si els llocs web poden reproduir automàticament vídeos i altres continguts multimèdia">
+<!ENTITY pref_zoom_force_enabled "Habilita sempre el zoom">
+<!ENTITY pref_zoom_force_enabled_summary "Fes que es pugui aplicar el zoom en qualsevol pàgina">
 
 <!ENTITY pref_use_master_password "Contrasenya mestra">
 <!ENTITY pref_sync "Sync">
@@ -268,8 +270,8 @@ size. -->
 <!-- Localization note (datareporting_crashreporter_title_short) : This string matches
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Informes de fallada">
-<!ENTITY datareporting_wifi_title2 "Serveis d\u0027ubicació de &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Comparteix les dades d\u0027ubicació aproximada de xarxes Wi-Fi i mòbils del vostre dispositiu amb &vendorShortName; per millorar el nostre servei de geolocalització">
+<!ENTITY datareporting_wifi_title2 "Servei d\u0027ubicació de &vendorShortName;">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Ajudeu a &vendorShortName; a mapar el món! Compartiu les dades d\u0027ubicació aproximada de xarxes Wi-Fi i mòbils del vostre dispositiu per millorar el nostre servei de geolocalització">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -363,7 +365,11 @@ size. -->
 <!ENTITY site_settings_clear        "Neteja">
 <!ENTITY site_settings_no_settings  "No hi ha cap paràmetre per netejar.">
 
-<!ENTITY reading_list_added "La pàgina s\u0027ha afegit a la vostra llista de lectura">
+<!ENTITY reading_list_added "S\u0027ha afegit la pàgina a la llista de lectura">
+<!ENTITY reading_list_removed "S\u0027ha eliminat la pàgina de la llista de lectura">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Elimina de la llista de lectura">
 <!ENTITY reading_list_duplicate "La pàgina ja és a la llista de lectura">
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
@@ -558,6 +564,13 @@ de l\u0027Android">
 
 <!ENTITY actionbar_menu "Menú">
 <!ENTITY actionbar_done "Fet">
+<!-- Voice search in the awesome bar -->
+
+<!ENTITY voicesearch_prompt "Parleu ara">
+<!ENTITY voicesearch_failed_title "Cerca per veu del &brandShortName;">
+<!ENTITY voicesearch_failed_message "S\u0027ha produït un problema amb la cerca per veu. Proveu-ho més tard.">
+<!ENTITY voicesearch_failed_message_recoverable "No s\u0027han reconegut les vostres paraules. Torneu-ho a provar.">
+<!ENTITY voicesearch_failed_retry "Torna-ho a provar">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -566,6 +579,8 @@ de l\u0027Android">
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Última sinc.: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Última sinc.: mai">
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->

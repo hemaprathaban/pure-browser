@@ -78,11 +78,13 @@
      will be replaced by the name of the Firefox release channel and &formatS2
      by the model name of the Android device. Examples look like "Aurora on
      GT-I1950" and "Fennec on MI 2S". -->
+
+<!ENTITY sync.default.client.name "&formatS1; บน &formatS2;">
 <!-- Bookmark folder strings -->
 
 <!ENTITY bookmarks.folder.menu.label "เมนูที่คั่นหน้า">
 <!ENTITY bookmarks.folder.places.label ''>
-<!ENTITY bookmarks.folder.tags.label "ป้าย">
+<!ENTITY bookmarks.folder.tags.label "ป้ายกำกับ">
 <!ENTITY bookmarks.folder.toolbar.label "แถบเครื่องมือที่คั่นหน้า">
 <!ENTITY bookmarks.folder.unfiled.label "ที่คั่นหน้าไม่แยกประเภท">
 <!ENTITY bookmarks.folder.desktop.label "ที่คั่นหน้าจากคอมพิวเตอร์">
@@ -112,6 +114,10 @@
 <!-- Firefox Account strings. -->
 
 
+<!ENTITY fxaccount_full_label "บัญชี Firefox">
+
+<!ENTITY fxaccount_custom_server_account_title "ใช้บัญชีบนเซิร์ฟเวอร์">
+<!ENTITY fxaccount_custom_server_sync_title "จัดเก็บข้อมูลที่ซิงค์บนเซิร์ฟเวอร์">
 <!-- Localization note: these are shown in all screens that query the
      user for an email address and password. Hide and show are button
      labels. -->
@@ -131,17 +137,24 @@
      these strings are separated to accommodate languages that decline
      the two uses differently. -->
 
+<!ENTITY fxaccount_policy_linktos "เงื่อนไขการให้บริการ">
+<!ENTITY fxaccount_policy_linkprivacy "ประกาศความเป็นส่วนตัว">
 
 <!ENTITY fxaccount_getting_started_welcome_to_sync "ยินดีต้อนรับสู่ &syncBrand.shortName.label;">
-
+<!ENTITY fxaccount_getting_started_description "เข้าสู่ระบบเพื่อซิงค์แท็บ ที่คั่นหน้า รหัสผ่าน และอื่นๆ ของคุณ">
 <!ENTITY fxaccount_getting_started_get_started "เริ่มต้น">
 <!ENTITY fxaccount_getting_started_old_firefox "ใช้งาน &syncBrand.shortName.label; รุ่นเก่าอยู่?">
 <!-- Localization note: the Firefox below should not change with the
      particular version of Firefox installed (Release, Beta, Aurora,
      etc).  The account remains a "Firefox Account". -->
+
+<!ENTITY fxaccount_create_account_header2 "สร้างบัญชี Firefox">
 <!ENTITY fxaccount_create_account_password_length_restriction "ต้องมีความยาวอย่างน้อย 8 ตัวอักษร">
+
+
 <!ENTITY fxaccount_create_account_year_of_birth "ปีเกิด">
 <!-- Localization note: &formatS1; is fxaccount_policy_linktos, &formatS2; is fxaccount_policy_linkprivacy, both hyperlinked. -->
+<!ENTITY fxaccount_create_account_policy_text2 "เพื่อดำเนินการต่อ ฉันยอมรับ &formatS1; และ &formatS2; ของบริการกลุ่มเมฆ Firefox">
 <!ENTITY fxaccount_create_account_button "ถัดไป">
 <!ENTITY fxaccount_create_account_choose_what_to_sync "เลือกข้อมูลที่จะผสาน">
 <!ENTITY fxaccount_create_account_sign_in_instead "มีบัญชีอยู่แล้ว? เข้าสู่ระบบ">
@@ -156,9 +169,12 @@
 <!-- Localization note: &formatS; is the Firefox Account's email address. -->
 <!ENTITY fxaccount_confirm_account_verification_link "ส่งลิงก์สำหรับยืนยันไปที่ &formatS; แล้ว">
 <!ENTITY fxaccount_confirm_account_resend_email "ส่งอีเมลยืนยันอีกครั้ง">
-
+<!ENTITY fxaccount_confirm_account_change_email "ลืมที่อยู่อีเมล?">
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 "ส่งอีเมลยืนยันแล้ว">
 <!ENTITY fxaccount_confirm_account_verification_link_not_sent2 "ไม่สามารถส่งอีเมลยืนยันได้">
+<!ENTITY fxaccount_resend_unlock_code_button_label "ส่งอีเมลปลดล็อคใหม่">
+<!ENTITY fxaccount_unlock_code_sent "ส่งอีเมลสำหรับปลดล็อคบัญชีแล้ว">
+<!ENTITY fxaccount_unlock_code_not_sent "ไม่สามารถส่งอีเมลสำหรับปลดล็อคบัญชี">
 
 <!ENTITY fxaccount_sign_in_sub_header "เข้าสู่ระบบ">
 <!ENTITY fxaccount_sign_in_button_label "เข้าสู่ระบบ">
@@ -169,16 +185,23 @@
 <!ENTITY fxaccount_account_verified_sub_header "ยืนยันบัญชีแล้ว">
 <!ENTITY fxaccount_account_verified_description2 "ข้อมูลของคุณจะเริ่มการผสานในอีกสักครู่">
 
+<!ENTITY fxaccount_migration_finished_header "การอัพเกรดเสร็จสิ้น">
+
 <!ENTITY fxaccount_update_credentials_header "เข้าสู่ระบบ">
 <!ENTITY fxaccount_update_credentials_button_label "เข้าสู่ระบบ">
 <!ENTITY fxaccount_update_credentials_unknown_error "ไม่สามารถเข้าสู่ระบบ">
 
+<!ENTITY fxaccount_finish_migrating_header "ลงชื่อเข้าใช้เพื่อทำการอัพเกรดให้เสร็จ">
+<!ENTITY fxaccount_finish_migrating_button_label "เสร็จสิ้นการปรับรุ่น">
 
 
-
-
-
-
+<!ENTITY fxaccount_status_header2 "บัญชี Firefox">
+<!ENTITY fxaccount_status_signed_in_as "ลงชื่อเข้าใช้เป็น">
+<!ENTITY fxaccount_status_auth_server "เซิร์ฟเวอร์บัญชี">
+<!ENTITY fxaccount_status_sync_now "ผสานข้อมูลทันที">
+<!ENTITY fxaccount_status_syncing2 "กำลังผสานข้อมูล…">
+<!ENTITY fxaccount_status_device_name "ชื่ออุปกรณ์">
+<!ENTITY fxaccount_status_sync_server "เซิร์ฟเวอร์การผสานข้อมูล">
 <!ENTITY fxaccount_status_sync "&syncBrand.shortName.label;">
 <!ENTITY fxaccount_status_sync_enabled "&syncBrand.shortName.label; : เปิดใช้อยู่">
 <!ENTITY fxaccount_status_needs_verification2 "จำเป็นต้องยืนยันบัญชีของคุณ แตะเพื่อส่งอีเมลยืนยันอีกครั้ง">
@@ -186,6 +209,7 @@
 <!ENTITY fxaccount_status_needs_upgrade "คุณจำเป็นต้องปรับรุ่นของ &brandShortName; เพื่อเข้าสู่ระบบ">
 
 
+<!ENTITY fxaccount_status_needs_finish_migrating "แตะเพื่อลงชื่อเข้าใช้บัญชี Firefox ใหม่ของคุณ">
 <!ENTITY fxaccount_status_bookmarks "ที่คั่นหน้า">
 <!ENTITY fxaccount_status_history "ประวัติการท่องเว็บ">
 <!ENTITY fxaccount_status_passwords "รหัสผ่าน">
@@ -195,13 +219,17 @@
      external web pages.  Compare fxaccount_policy_{linktos,linkprivacy}:
      these strings are separated to accommodate languages that decline
      the two uses differently. -->
+<!ENTITY fxaccount_status_linktos "เงื่อนไขการให้บริการ">
+<!ENTITY fxaccount_status_linkprivacy "ประกาศความเป็นส่วนตัว">
+<!ENTITY fxaccount_status_more "เพิ่มเติม&ellipsis;">
 
-
-
-
+<!ENTITY fxaccount_remove_account_dialog_title "ลบบัญชี Firefox?">
+<!ENTITY fxaccount_remove_account_dialog_message "&brandShortName; จะหยุดการซิงค์กับบัญชีของคุณ แต่จะไม่ลบข้อมูลการเข้าเว็บบนอุปกรณ์นี้">
 <!-- Localization note: format string below will be replaced
      with the Firefox Account's email address. -->
+<!ENTITY fxaccount_remove_account_toast "บัญชี Firefox &formatS; ถูกลบแล้ว">
 
+<!ENTITY fxaccount_remove_account_menu_item "ลบบัญชี">
 <!-- Localization note: this is the name shown by the Android system
      itself for a Firefox Account. Don't localize this. -->
 
@@ -229,8 +257,14 @@
 <!ENTITY fxaccount_remote_error_SERVICE_TEMPORARILY_UNAVAILABLE_TO_DUE_HIGH_LOAD "เซิร์ฟเวอร์กำลังทำงานหนัก รอสักพักแล้วลองใหม่">
 <!ENTITY fxaccount_remote_error_UNKNOWN_ERROR "พบปัญหา">
 <!ENTITY fxaccount_remote_error_COULD_NOT_CONNECT "ไม่สามารถเชื่อมต่อกับเครือข่าย">
+<!ENTITY fxaccount_remote_error_ACCOUNT_LOCKED "บัญชีถูกล็อค &formatS1;">
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 "ไม่สามารถเชื่อมต่อกับ &syncBrand.shortName.label; ได้">
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
-<!ENTITY fxaccount_sync_sign_in_error_notification_text2 "แตะเพื่อเข้าระบบเป็น &formatS;">
+<!ENTITY fxaccount_sync_sign_in_error_notification_text2 "แตะเพื่อเข้าสู่ระบบเป็น &formatS;">
+
+<!ENTITY fxaccount_sync_finish_migrating_notification_title "เสร็จสิ้นการปรับรุ่น &syncBrand.shortName.label;?">
+<!-- Localization note: the format string below will be replaced
+     with the Firefox Account's email address. -->
+<!ENTITY fxaccount_sync_finish_migrating_notification_text "แตะเพื่อเข้าสู่ระบบเป็น &formatS;">

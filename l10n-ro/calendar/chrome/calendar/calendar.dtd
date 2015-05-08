@@ -12,9 +12,9 @@
 <!ENTITY calendar.unifinder.todoitems.label       "Sarcini" >
 <!ENTITY calendar.unifinder.showcompletedtodos.label "Arată sarcinile îndeplinite">
 
-<!ENTITY calendar.today.button.label       "Astăzi">
+<!ENTITY calendar.today.button.label          "Astăzi">
 <!ENTITY calendar.tomorrow.button.label       "Mâine">
-<!ENTITY calendar.soon.button.label           "În curând">
+<!ENTITY calendar.upcoming.button.label       "Eveniment viitor">
 
 <!ENTITY calendar.events.filter.all.label "Toate evenimentele">
 <!ENTITY calendar.events.filter.today.label "Evenimentele de astăzi">
@@ -38,7 +38,7 @@
 <!ENTITY calendar.unifinder.tree.percentcomplete.label     "&#037; completată">
 <!ENTITY calendar.unifinder.tree.percentcomplete.tooltip2  "Sortare după &#037; completat">
 <!ENTITY calendar.unifinder.tree.startdate.label           "Început">
-<!ENTITY calendar.unifinder.tree.startdate.tooltip2        "Sortare după data de începere">
+<!ENTITY calendar.unifinder.tree.startdate.tooltip2        "Sortează după data de începere">
 <!ENTITY calendar.unifinder.tree.enddate.label             "Sfârșit">
 <!ENTITY calendar.unifinder.tree.enddate.tooltip2          "Sortare după data finalizării">
 <!ENTITY calendar.unifinder.tree.duedate.label             "Sfârșit">
@@ -104,7 +104,7 @@
 <!ENTITY calendar.orientation.label "Rotește vizualizarea" >
 <!ENTITY calendar.orientation.accesskey "o" >
 
-<!ENTITY calendar.search.options.searchfor " care conține">
+<!ENTITY calendar.search.options.searchfor " care conține">
 
 <!ENTITY calendar.list.header.label                 "Calendar">
 
@@ -141,8 +141,8 @@
 <!ENTITY calendar.task-details.status.label          "stare">
 <!ENTITY calendar.task-details.category.label        "categorie">
 <!ENTITY calendar.task-details.repeat.label          "repetă">
-<!ENTITY calendar.task-details.attachments.label     "anexe">
-<!ENTITY calendar.task-details.start.label           "data de început">
+<!ENTITY calendar.task-details.attachments.label     "atașamente">
+<!ENTITY calendar.task-details.start.label           "data de începere">
 <!ENTITY calendar.task-details.due.label             "data de sfârșit">
 
 <!ENTITY calendar.task.category.button.tooltip  "Categorisiți sarcinile">
@@ -233,8 +233,17 @@
 <!ENTITY calendar.context.newserver.accesskey          "n">
 <!ENTITY calendar.context.findcalendar.label           "Caută calendar…" >
 <!ENTITY calendar.context.findcalendar.accesskey       "C" >
-<!ENTITY calendar.context.deleteserver.label           "Șterge calendarul">
-<!ENTITY calendar.context.deleteserver.accesskey       "d">
+<!ENTITY calendar.context.deleteserver2.label          "Șterge calendarul…">
+<!ENTITY calendar.context.deleteserver2.accesskey      "d">
+<!-- LOCALIZATION NOTE (calendar.context.removeserver.label): Removing the
+      calendar is the general action of removing it, while deleting means to
+      clear the data and unsubscribing means just taking it out of the calendar
+      list. -->
+
+<!ENTITY calendar.context.removeserver.label           "Înlătură calendarul…">
+<!ENTITY calendar.context.removeserver.accesskey       "r">
+<!ENTITY calendar.context.unsubscribeserver.label      "Dezabonare de la calendar…">
+<!ENTITY calendar.context.unsubscribeserver.accesskey  "o">
 <!ENTITY calendar.context.synccalendars.label          "Sincronizare Calendare">
 <!ENTITY calendar.context.synccalendars.accesskey      "S">
 <!ENTITY calendar.context.publish.label                "Publică calendarul…">

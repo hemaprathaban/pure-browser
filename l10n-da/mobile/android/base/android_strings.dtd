@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Der er ikke nok tilgængelig plads til at &brandShortName; kan starte.">
 <!ENTITY  error_loading_file "En fejl opstod under indlæsning af filer nødvendige for at kunne køre &brandShortName;">
 
-<!ENTITY  onboard_start_message "Velkommen til &brandShortName;!">
-<!ENTITY  onboard_start_subtext "Forpligtet til at beskytte dit privatliv og et åbent internet.">
+<!ENTITY  onboard_start_message2 "Velkommen til &brandShortName;">
+<!ENTITY  onboard_start_subtext2 "Flere funktioner til at beskytte dit privatliv og flere muligheder for tilpasning end nogensinde før.">
 <!ENTITY  onboard_start_button_account "Log ind på &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Start surfing">
 
@@ -21,7 +21,7 @@
 <!ENTITY  switch_to_tab "Skift til faneblad">
 
 <!ENTITY  crash_reporter_title "&brandShortName; Fejlrapportør">
-<!ENTITY  crash_message2 "&brandShortName; stødte på en fejl og gik ned. Dine åbne faneblade bør blive vist på startsiden, når du genstarter.">
+<!ENTITY  crash_message2 "&brandShortName; stødte på en fejl og gik ned. Dine åbne faneblade bør blive vist på startskærmen, når du genstarter.">
 <!ENTITY  crash_send_report_message3 "Fortæl &vendorShortName; om nedbruddet, så de kan rette fejlen">
 <!ENTITY  crash_include_url2 "Inkluder webadressen til den besøgte side">
 <!ENTITY  crash_sorry "Vi beklager!">
@@ -143,20 +143,20 @@
 <!ENTITY pref_remember_signons "Husk adgangskoder">
 
 <!ENTITY pref_category_home "Hjem">
-<!ENTITY pref_category_home_summary "Tilpas din startside">
+<!ENTITY pref_category_home_summary "Tilpas din startskærm">
 <!ENTITY pref_category_home_panels "Paneler">
 <!ENTITY home_add_panel_title "Tilføj et nyt panel">
 <!ENTITY home_add_panel_empty "Der var ingen paneler, der kan tilføjes.">
 <!-- Localization note (home_add_panel_installed):
      The &formatS; will be replaced with the name of the new panel the user just
      selected to be added to the home page. -->
-<!ENTITY home_add_panel_installed "\'&formatS;\' blev føjet til startsiden">
+<!ENTITY home_add_panel_installed "\'&formatS;\' blev føjet til startskærmen">
 <!ENTITY pref_category_home_content_settings "Indstillinger for indhold">
 <!ENTITY pref_home_updates "Automatiske opdateringer">
 <!ENTITY pref_home_updates_enabled "Aktiveret">
 <!ENTITY pref_home_updates_wifi "Kun via wi-fi">
 <!ENTITY pref_home_suggested_sites "Vis webstedsforslag">
-<!ENTITY pref_home_suggested_sites_summary "Vis genveje på din startside til websteder, som vi tror, du vil kunne lide">
+<!ENTITY pref_home_suggested_sites_summary "Vis genveje på din startskærm til websteder, som vi tror, du vil kunne lide">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Tilpas">
@@ -212,8 +212,10 @@ size. -->
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
 <!ENTITY pref_font_size_preview_text "Den hurtige orange ræv springer over dine forventninger med større hastighed, mere fleksibilitet og mere sikkerhed. Som en non-profit-organisation, kan vi udvikle på dine vegne uden at blive presset til at gå på kompromis. Det betyder en bedre oplevelse for dig og en lysere fremtid for internettet.">
 
-<!ENTITY pref_media_autoplay_enabled "Tillad automatisk sfspilning">
+<!ENTITY pref_media_autoplay_enabled "Tillad automatisk afspilning">
 <!ENTITY pref_media_autoplay_enabled_summary "Bestemmer om websteder kan starte afspilning af video og andet medieindhold automatisk">
+<!ENTITY pref_zoom_force_enabled "Aktiver altid zoom">
+<!ENTITY pref_zoom_force_enabled_summary "Gennemtving zoom, så du kan zoome på alle websider">
 
 <!ENTITY pref_use_master_password "Brug hovedadgangskode">
 <!ENTITY pref_sync "Sync">
@@ -270,7 +272,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Fejlrapportering">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; Positionstjeneste">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Deler tilnærmelsesvis position ud fra wi-fi og mobilmaster med &vendorShortName; for at forbedre vores positionstjeneste">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Hjælp &vendorShortName; med at kortlægge hele verden! Del din enheds tilnærmelsesvise position ud fra wi-fi og mobilmaster, så vi kan forbedre vores positionstjeneste">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -334,8 +336,8 @@ size. -->
 <!ENTITY contextmenu_subscribe "Abonner på siden">
 <!ENTITY contextmenu_site_settings "Rediger webstedets indstillinger">
 <!ENTITY contextmenu_top_sites_edit "Rediger">
-<!ENTITY contextmenu_top_sites_pin "Fastgør websted">
-<!ENTITY contextmenu_top_sites_unpin "Frigør websted">
+<!ENTITY contextmenu_top_sites_pin "Fastgør webside">
+<!ENTITY contextmenu_top_sites_unpin "Frigør webside">
 <!ENTITY contextmenu_add_search_engine "Tilføj en søgetjeneste">
 
 <!ENTITY pref_titlebar_mode "Titellinje">
@@ -365,6 +367,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Der er ingen indstillinger at rydde.">
 
 <!ENTITY reading_list_added "Siden er føjet til din læseliste">
+<!ENTITY reading_list_removed "Siden er fjernet fra din læseliste">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Fjern fra læseliste">
 <!ENTITY reading_list_duplicate "Siden er allerede på din læseliste">
 
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
@@ -390,10 +396,10 @@ size. -->
 <!ENTITY button_set "Indstil">
 <!ENTITY button_clear "Ryd">
 
-<!ENTITY home_top_sites_title "Mest besøgte websteder">
+<!ENTITY home_top_sites_title "Mest besøgte websider">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
-<!ENTITY home_top_sites_add "Tilføj et websted">
+<!ENTITY home_top_sites_add "Tilføj en webside">
 
 <!-- Localization note (home_title): This string should be kept in sync
      with the page title defined in aboutHome.dtd -->
@@ -456,8 +462,8 @@ size. -->
 <!ENTITY private_tabs_panel_learn_more "Vil du vide mere?">
 
 <!ENTITY remote_tabs_panel_moved_title "Hvor blev mine faneblade af?">
-<!ENTITY remote_tabs_panel_moved_desc "Vi har flyttet dine faneblade fra andre enheder ind på din startside, så du nemt kan få adgang til dem, hver gang du åbner et nyt faneblad.">
-<!ENTITY remote_tabs_panel_moved_link "Åbn min startside.">
+<!ENTITY remote_tabs_panel_moved_desc "Vi har flyttet dine faneblade fra andre enheder ind på din startskærm, så du nemt kan få adgang til dem, hver gang du åbner et nyt faneblad.">
+<!ENTITY remote_tabs_panel_moved_link "Åbn min startskærm.">
 
 <!ENTITY pin_site_dialog_hint "Indtast søgeterm">
 
@@ -561,6 +567,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Færdig">
 
+<!-- Voice search in the awesome bar -->
+<!ENTITY voicesearch_prompt "Tal nu">
+<!ENTITY voicesearch_failed_title "&brandShortName; Stemmesøgning">
+<!ENTITY voicesearch_failed_message "Der er midlertidigt et problem med stemmesøgning. Prøv igen senere.">
+<!ENTITY voicesearch_failed_message_recoverable "Vi kunne desværre ikke genkende dine ord. Prøv igen.">
+<!ENTITY voicesearch_failed_retry "Prøv igen">
+
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -568,6 +581,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Sidst synkroniseret: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Sidst synkroniseret: aldrig">
 
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color

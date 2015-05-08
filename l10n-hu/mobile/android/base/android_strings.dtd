@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Nincs elég hely a &brandShortName; elindításához.">
 <!ENTITY  error_loading_file "Hiba történt a &brandShortName; futtatásához szükséges fájlok betöltésekor.">
 
-<!ENTITY  onboard_start_message "Üdvözli a &brandShortName;!">
-<!ENTITY  onboard_start_subtext "Elkötelezve Ön, az adatai védelme és a nyílt internet iránt">
+<!ENTITY  onboard_start_message2 "Üdvözli a &brandShortName;!">
+<!ENTITY  onboard_start_subtext2 "Több adatvédelmi funkció és testreszabható beállítás, mint bármikor.">
 <!ENTITY  onboard_start_button_account "Bejelentkezés &brandShortName;ba">
 <!ENTITY  onboard_start_button_browser "Böngészés megkezdése">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
@@ -100,7 +100,7 @@
      used in the share overlay menu to select an action. It is the verb
      "to bookmark", not the noun "a bookmark". -->
 
-<!ENTITY overlay_share_bookmark_btn_label "Könyvjelző">
+<!ENTITY overlay_share_bookmark_btn_label "Könyvjelzőzés">
 <!ENTITY overlay_share_reading_list_btn_label "Olvasási listához adás">
 <!ENTITY overlay_share_bookmark_btn_label_already "Már könyvjelzőzve">
 <!ENTITY overlay_share_reading_list_btn_label_already "Már az olvasási listán van">
@@ -122,9 +122,9 @@
 <!ENTITY pref_category_privacy_short "Adatvédelem">
 <!ENTITY pref_category_privacy_summary "Jelszavak, sütik, követési adatok felügyelete">
 <!ENTITY pref_category_vendor "&vendorShortName;nak,">
-<!ENTITY pref_category_vendor_summary "A &brandShortName; névjegye, GyIK, adatválasztások">
-<!ENTITY pref_category_datareporting "Adatválasztások">
-<!ENTITY pref_learn_more "További információ">
+<!ENTITY pref_category_vendor_summary "A &brandShortName; névjegye, GyIK, adatküldések">
+<!ENTITY pref_category_datareporting "Adatküldések">
+<!ENTITY pref_learn_more "További tudnivalók">
 <!ENTITY pref_category_installed_search_engines "Telepített keresőszolgáltatások">
 <!ENTITY pref_category_add_search_providers "További keresők hozzáadása">
 <!ENTITY pref_category_search_restore_defaults "Keresők visszaállítása">
@@ -163,8 +163,8 @@
 <!ENTITY pref_header_display "Megjelenítés">
 <!ENTITY pref_header_privacy_short "Adatvédelem">
 <!ENTITY pref_header_help "Súgó">
-<!ENTITY pref_header_language "nyelv">
-<!ENTITY pref_header_vendor "&vendorShortName;nak,">
+<!ENTITY pref_header_language "Nyelv">
+<!ENTITY pref_header_vendor "&vendorShortName;">
 <!ENTITY pref_header_devtools "Fejlesztői eszközök">
 
 <!ENTITY pref_cookies_menu "Sütik">
@@ -172,7 +172,8 @@
 <!ENTITY pref_cookies_not_accept_foreign "Engedélyezve, kivéve harmadik féltől származó">
 <!ENTITY pref_cookies_disabled "Tiltva">
 
-
+<!ENTITY pref_tracking_protection_title "Védelem követés ellen">
+<!ENTITY pref_tracking_protection_summary "A &brandShortName; megakadályozza, hogy a weboldalak kövessék">
 <!ENTITY pref_donottrack_title "Ne kövessenek">
 <!ENTITY pref_donottrack_summary "A &brandShortName; közli a webhelyekkel, hogy Ön nem szeretné, ha követnék">
 
@@ -212,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Automatikus lejátszás">
 <!ENTITY pref_media_autoplay_enabled_summary "A webhelyek automatikusan lejátszhatnak-e videókat és más médiatartalmakat">
+<!ENTITY pref_zoom_force_enabled "Nagyítás engedélyezése mindig">
+<!ENTITY pref_zoom_force_enabled_summary "Felülbírálás kényszerítése, hogy bármely oldalt nagyíthasson">
 
 <!ENTITY pref_use_master_password "Mesterjelszó használata">
 <!ENTITY pref_sync "Sync">
@@ -268,7 +271,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Hibajelentő">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; földrajzihely-szolgáltatás">
-<!ENTITY datareporting_wifi_geolocation_summary2 "A készülék hozzávetőleges Wi-Fi és mobilhálózati helyének megosztása a &vendorShortName;val a helymeghatározási szolgáltatásunk fejlesztéséhez">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Segítsen a &vendorShortName;nak feltérképezni a világot! A készülék hozzávetőleges Wi-Fi és mobilhálózati helyének megosztásával hozzájárulhat a helymeghatározási szolgáltatásunk fejlesztéséhez">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -299,7 +302,7 @@ size. -->
 <!ENTITY new_private_tab "Új privát lap">
 <!ENTITY close_all_tabs "Minden lap bezárása">
 <!ENTITY close_private_tabs "Privát lapok bezárása">
-<!ENTITY tabs_normal "Lap">
+<!ENTITY tabs_normal "Lapok">
 <!ENTITY tabs_private "Privát">
 <!ENTITY tabs_synced "Szinkronban">
 <!ENTITY set_image_fail "Nem állítható be kép">
@@ -363,6 +366,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Nincsenek törölhető beállítások.">
 
 <!ENTITY reading_list_added "Az oldal hozzáadva az olvasási listához">
+<!ENTITY reading_list_removed "Az oldal eltávolítva az olvasási listából">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Eltávolítás az olvasási listából">
 <!ENTITY reading_list_duplicate "Az oldal már szerepel az Olvasási listában">
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
@@ -430,7 +437,7 @@ size. -->
 <!ENTITY home_remote_tabs_empty "A lapok más készülékekről itt jelennek meg.">
 <!ENTITY home_remote_tabs_unable_to_connect "A kapcsolódás sikertelen">
 <!ENTITY home_remote_tabs_need_to_sign_in "Jelentkezzen be a Firefox fiókja újracsatlakoztatásához és a szinkronizálás folytatásához.">
-
+<!ENTITY home_remote_tabs_need_to_finish_migrating "Az új Firefox fiókja készen áll!">
 
 <!ENTITY home_remote_tabs_trouble_verifying "Probléma a fiók ellenőrzésekor?">
 <!ENTITY home_remote_tabs_need_to_verify "Ellenőrizze Firefox fiókját a szinkronizálás megkezdéséhez.">
@@ -458,7 +465,7 @@ size. -->
 
 <!ENTITY pin_site_dialog_hint "Írjon be egy keresőkifejezést">
 
-<!ENTITY filepicker_title "Fájlválasztás">
+<!ENTITY filepicker_title "Válasszon fájlt">
 <!ENTITY filepicker_audio_title "Válasszon vagy vegyen fel egy hangot">
 <!ENTITY filepicker_image_title "Válasszon vagy készítsen egy képet">
 <!ENTITY filepicker_video_title "Válasszon vagy vegyen fel egy videót">
@@ -492,7 +499,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY blocked_tracking_content_message_bottom2 "Az oldal azon részei, amelyek követhetik az online tevékenységét, blokkolva vannak.">
 <!-- Common mixed and tracking content strings in site identity popup -->
 
-<!ENTITY learn_more "További információ">
+<!ENTITY learn_more "További tudnivalók">
 <!ENTITY enable_protection "Védelem be">
 <!ENTITY disable_protection "Védelem ki">
 <!ENTITY keep_blocking "Blokkolás fenntartása">
@@ -557,6 +564,13 @@ Androidról">
 
 <!ENTITY actionbar_menu "Menü">
 <!ENTITY actionbar_done "Kész">
+<!-- Voice search in the awesome bar -->
+
+<!ENTITY voicesearch_prompt "Beszéljen most">
+<!ENTITY voicesearch_failed_title "&brandShortName; hangos keresés">
+<!ENTITY voicesearch_failed_message "Hiba történt a hangos kereséssel. Próbálja meg később.">
+<!ENTITY voicesearch_failed_message_recoverable "Elnézést! Nem sikerült felismerni a szavait. Próbálja újra.">
+<!ENTITY voicesearch_failed_retry "Újra">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -565,6 +579,8 @@ Androidról">
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Utolsó szinkronizálás: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Utolsó szinkronizálás: soha">
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->

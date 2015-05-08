@@ -12,19 +12,37 @@
 <!ENTITY update.updateButton.accesskey            "A">
 <!ENTITY update.applyButtonBillboard.label        "Gosod Diweddariad…">
 <!ENTITY update.applyButtonBillboard.accesskey    "G">
+<!-- LOCALIZATION NOTE (warningDesc.version): This is a warning about the experimental nature of Nightly and Aurora builds. It is only shown in those versions. -->
+
+
+<!ENTITY warningDesc.version        "Mae &brandShortName; yn arbrofol a gall fod yn ansad.">
+<!-- LOCALIZATION NOTE (warningDesc.telemetryDesc): This is a notification that Nightly/Aurora builds automatically send Telemetry data back to Mozilla. It is only shown in those versions. "It" refers to brandShortName. -->
+<!ENTITY warningDesc.telemetryDesc  "Mae'n anfon gwybodaeth yn awtomatig am berfformiad, caledwedd, defnydd a chyfaddasu nôl i &vendorShortName; i helpu i wneud &brandShortName; yn well.">
+<!-- LOCALIZATION NOTE (community.exp.*) This paragraph is shown in "experimental" builds, i.e. Nightly and Aurora builds, instead of the other "community.*" strings below. -->
+
+<!ENTITY community.exp.start        "">
+<!-- LOCALIZATION NOTE (community.exp.mozillaLink): This is a link title that links to http://www.mozilla.org/. -->
+<!ENTITY community.exp.mozillaLink  "Mae &vendorShortName;">
+<!ENTITY community.exp.middle       " yn ">
+<!-- LOCALIZATION NOTE (community.exp.creditslink): This is a link title that links to about:credits. -->
+<!ENTITY community.exp.creditsLink  "gymuned fyd-eang">
+<!ENTITY community.exp.end          " sy'n cydweithio i gadw'r We yn agored, cyhoeddus ac ar gael i bawb.">
 
 <!ENTITY community.start2           "Cynlluniwyd &brandShortName; gan ">
 <!-- LOCALIZATION NOTE (community.mozillaLink): This is a link title that links to http://www.mozilla.org/. -->
-<!ENTITY community.mozillaLink      "Mae &vendorShortName;">
+<!ENTITY community.mozillaLink      "&vendorShortName;">
 <!ENTITY community.middle2          ", a ">
 <!-- LOCALIZATION NOTE (community.creditsLink): This is a link title that links to about:credits. -->
-<!ENTITY community.creditsLink      "gymuned fyd-eang">
-<!ENTITY community.end2             " yn gweithio gyda'n gilydd i wneud y Rhyngrwyd yn well. Rydym yn credu y dylai'r Rhyngrwyd fod yn agored, cyhoeddus, gyda mynediad di lyffethair i bawb.">
+<!ENTITY community.creditsLink      "cymuned fyd-eang">
+<!ENTITY community.end3             " sy'n cydweithio i gadw'r We yn agored, cyhoeddus ac ar gael i bawb.">
 
-<!ENTITY contribute.start           "Diddorol? ">
-<!-- LOCALIZATION NOTE (contribute.getInvolvedLink): This is a link title that links to http://www.mozilla.org/contribute/. -->
-<!ENTITY contribute.getInvolvedLink "Ymuno!">
-<!ENTITY contribute.end             "">
+<!ENTITY helpus.start               "Hoffech chi helpu? ">
+<!-- LOCALIZATION NOTE (helpus.donateLink): This is a link title that links to the thunderbird donation page -->
+<!ENTITY helpus.donateLink          "Gwnewch gyfraniad">
+<!ENTITY helpus.middle              " neu ">
+<!-- LOCALIZATION NOTE (helpus.getInvolvedLink): This is a link title that links to http://www.mozilla.org/contribute/. -->
+<!ENTITY helpus.getInvolvedLink     "beth am ymuno â ni!">
+<!ENTITY helpus.end                 "">
 <!-- LOCALIZATION NOTE (bottomLinks.license): This is a link title that links to about:license. -->
 
 <!ENTITY bottomLinks.license        "Gwybodaeth Trwyddedu">
@@ -41,6 +59,8 @@
 <!ENTITY update.noUpdatesFound      "Mae &brandShortName; yn gyfredol">
 <!-- LOCALIZATION NOTE (update.adminDisabled): try to make the localized text short (see bug 596813 for screenshots). -->
 <!ENTITY update.adminDisabled       "Mae'r diweddariad wedi'i analluogi gan eich gweinyddwr">
+<!-- LOCALIZATION NOTE (update.otherInstanceHandlingUpdates): try to make the localized text short -->
+<!ENTITY update.otherInstanceHandlingUpdates "Mae &brandShortName; yn cael ei ddiweddaru gan enghraifft arall">
 <!-- LOCALIZATION NOTE (update.failed.start,update.failed.linkText,update.failed.end):
      update.failed.start, update.failed.linkText, and update.failed.end all go into
      one line with linkText being wrapped in an anchor that links to a site to download
@@ -83,6 +103,6 @@
      example: You are currently on the _Stable_ update channel. -->
 
 <!ENTITY channel.description.start  "Ar hyn o bryd rydych ar sianel diweddaru ">
-<!ENTITY channel.description.end    " sianel diweddaru. ">
+<!ENTITY channel.description.end    ".">
 
 <!ENTITY cmdCloseMac.commandKey "w">

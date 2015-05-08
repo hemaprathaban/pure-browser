@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "&brandShortName; uygulamasının başlaması için yeterli boş alan yok.">
 <!ENTITY  error_loading_file "&brandShortName; uygulamasını başlatmak için gereken dosyalar yüklenmeye çalışılırken bir sorun meydana geldi.">
 
-<!ENTITY  onboard_start_message "&brandShortName; tarayıcısına hoş geldiniz!">
-<!ENTITY  onboard_start_subtext "Sizin için, gizliliğiniz için ve Açık Web için varız">
+<!ENTITY  onboard_start_message2 "&brandShortName; tarayıcısına hoş geldiniz">
+<!ENTITY  onboard_start_subtext2 "Daha fazla gizlilik özelliği ve eskisinden çok daha fazla özelleştirme olanağı.">
 <!ENTITY  onboard_start_button_account "&brandShortName; oturumu aç">
 <!ENTITY  onboard_start_button_browser "Gezinmeye başla">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
@@ -100,7 +100,7 @@
      used in the share overlay menu to select an action. It is the verb
      "to bookmark", not the noun "a bookmark". -->
 
-<!ENTITY overlay_share_bookmark_btn_label "Yer imi">
+<!ENTITY overlay_share_bookmark_btn_label "Yer imlerine ekle">
 <!ENTITY overlay_share_reading_list_btn_label "Okuma Listesi\u0027ne ekle">
 <!ENTITY overlay_share_bookmark_btn_label_already "Zaten imlenmiş">
 <!ENTITY overlay_share_reading_list_btn_label_already "Zaten Okuma Listesi\u0027nde">
@@ -213,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Otomatik oynatmaya izin ver">
 <!ENTITY pref_media_autoplay_enabled_summary "Web sitelerinin videoları ve diğer ortam içeriklerini otomatik oynatıp oynatamayacağını kontrol et">
+<!ENTITY pref_zoom_force_enabled "Yakınlaştırmayı her zaman etkinleştir">
+<!ENTITY pref_zoom_force_enabled_summary "Her sayfayı yakınlaştırabilmeniz için sayfa tercihini zorla değiştirir">
 
 <!ENTITY pref_use_master_password "Ana parolayı kullan">
 <!ENTITY pref_sync "Sync">
@@ -269,7 +271,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Çökme Habercisi">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; konum servisi">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Coğrafi konum servisimizi geliştirmek için cihazınızın yaklaşık Wi-Fi ve hücresel konumunu &vendorShortName; ile paylaşır">
+<!ENTITY datareporting_wifi_geolocation_summary3 "&vendorShortName;\u0027nın dünyayı keşfetmesine yardım edin! Coğrafi konum hizmetimizi geliştirmek için aygıtınızın yaklaşık Wi-Fi ve hücresel konumunu paylaşın">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -364,6 +366,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Temizlenecek ayar yok.">
 
 <!ENTITY reading_list_added "Sayfa, okuma listenize eklendi">
+<!ENTITY reading_list_removed "Sayfa, okuma listenizden silindi">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Okuma listesinden kaldır">
 <!ENTITY reading_list_duplicate "Sayfa zaten Okuma Listenizde">
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
@@ -459,7 +465,7 @@ size. -->
 
 <!ENTITY pin_site_dialog_hint "Aranacak anahtar kelimeyi girin">
 
-<!ENTITY filepicker_title "Dosya seç">
+<!ENTITY filepicker_title "Dosya Seç">
 <!ENTITY filepicker_audio_title "Bir ses seçin veya kaydedin">
 <!ENTITY filepicker_image_title "Bir resim seçin veya çekin">
 <!ENTITY filepicker_video_title "Bir video seçin veya kaydedin">
@@ -555,6 +561,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY actionbar_menu "Menü">
 <!ENTITY actionbar_done "Bitti">
+<!-- Voice search in the awesome bar -->
+
+<!ENTITY voicesearch_prompt "Şimdi konuşun">
+<!ENTITY voicesearch_failed_title "&brandShortName; Sesle Arama">
+<!ENTITY voicesearch_failed_message "Şu anda sesle aramada bir sorun var. Lütfen daha sonra deneyin.">
+<!ENTITY voicesearch_failed_message_recoverable "Özür dileriz! Sözlerinizi tanıyamadık. Lütfen yeniden deneyin.">
+<!ENTITY voicesearch_failed_retry "Yeniden dene">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -563,6 +576,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Son eşitleme: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Son eşitleme: hiç">
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->

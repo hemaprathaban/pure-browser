@@ -11,20 +11,14 @@
 
 
 <!ENTITY connectionFailure.title "قادر به اتصال نیست">
-<!ENTITY connectionFailure.longDesc "&sharedLongDesc2;">
+
 
 <!ENTITY deniedPortAccess.title "این نشانی ممنوع است">
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "کارگزار پیدا نشد">
-<!ENTITY dnsNotFound.longDesc2 "
-<ul>
-  <li>Check the address for typing errors such as
-    <strong>ww</strong>.example.com instead of
-    <strong>www</strong>.example.com</li>
-  <li>If you are unable to load any pages, check your device's data or Wi-Fi connection.</li>
-</ul>
-">
+<!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
 
 <!ENTITY fileNotFound.title "پرونده پیدا نشد">
 <!ENTITY fileNotFound.longDesc "<ul> <li>صحتِ نام پرونده را بررسی کنید.</li> <li>بررسی کنید که آیا پرونده جابه‌جا شده، تغییر نما یافته، یا پاک شده است.</li> </ul>">
@@ -34,20 +28,18 @@
 <!ENTITY generic.longDesc "<p>&brandShortName; به دلایلی نمی‌تواند این صفحه را نمایش دهد.</p>">
 
 <!ENTITY malformedURI.title "این نشانی معتبر نمی‌باشد">
-<!ENTITY malformedURI.longDesc "<ul> <li>نشانی‌های وب به طور معمول به صورت <span dir='ltr'><strong>http://www.example.com/</strong></span>نوشته می‌شوند</li> <li>مطمئن شوید که از ممیز درست استفاده می‌کنید (یعنی <strong>/</strong>).</li> </ul>">
+<!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
+     or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
 
 <!ENTITY netInterrupt.title "اتصال مختل شد">
-<!ENTITY netInterrupt.longDesc "&sharedLongDesc2;">
 
-<!ENTITY notCached.title "Document Expired">
-<!ENTITY notCached.longDesc "<p>The requested document is not available in &brandShortName;'s cache.</p><ul><li>As a security precaution, &brandShortName; does not automatically re-request sensitive documents.</li><li>Click Try Again to re-request the document from the website.</li></ul>">
+
+<!ENTITY notCached.title "نوشتار منقضی شده">
+<!ENTITY notCached.longDesc "<p>پرونده درخواستی در حافظه &brandShortName; موجود نیست.</p><ul><li>به عنوان یک احتیاط امنیتی، &brandShortName; به‌طور خودکار نوشتارهای حساس را مجددا درخواست نمی‌کند.</li><li>بر روی تلاش مجدد کلیک کنید تا نوشتار از پایگاه‌وب مجددا درخواست شود.</li></ul>">
 
 <!ENTITY netOffline.title "حالت منفصل">
-<!ENTITY netOffline.longDesc2 "
-<ul>
-  <li>Try again. &brandShortName; will attempt to open a connection and reload the page.</li>
-</ul>
-">
+<!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 
 <!ENTITY contentEncodingError.title "خطای کدگذاری محتوا">
 <!ENTITY contentEncodingError.longDesc "<ul> 
@@ -60,24 +52,20 @@
 </ul>">
 
 <!ENTITY netReset.title "اتصال قطع شد">
-<!ENTITY netReset.longDesc "&sharedLongDesc2;">
+
 
 <!ENTITY netTimeout.title "وقت اتصال تمام شد">
-<!ENTITY netTimeout.longDesc "&sharedLongDesc2;">
 
-<!ENTITY protocolNotFound.title "نشانی قابل فهم نبود">
-<!ENTITY protocolNotFound.longDesc "<ul> <li>شاید نیاز به نصب برنامهٔ دیگری برای باز نمودن این نشانی دارید.</li> </ul>">
+
+<!ENTITY unknownProtocolFound.title "نشانی قابل فهم نبود">
+<!ENTITY unknownProtocolFound.longDesc "<ul> <li>شاید نیاز به نصب برنامهٔ دیگری برای باز نمودن این نشانی دارید.</li> </ul>">
 
 <!ENTITY proxyConnectFailure.title "کارگزار پیشکار از اتصال خودداری می‌کند.">
 <!ENTITY proxyConnectFailure.longDesc "<ul> <li>تنظیمات پیشکار را بررسی کنید که صحیح باشند.</li> <li>با مدیر شبکه تماس بگیرید تا مطمئن شوید که کارگزار پیشکار عمل می‌کند.</li> </ul>">
 
 <!ENTITY proxyResolveFailure.title "کارگزار پیشکار پیدا نمی‌شود">
-<!ENTITY proxyResolveFailure.longDesc2 "
-<ul>
-  <li>Check the proxy settings to make sure that they are correct.</li>
-  <li>Check to make sure your device has a working data or Wi-Fi connection.</li>
-</ul>
-">
+<!-- LOCALIZATION NOTE (proxyResolveFailure.longDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 
 <!ENTITY redirectLoop.title "این صفحه درست تغییر مسیر نمی‌دهد">
 <!ENTITY redirectLoop.longDesc "<ul> <li>گاهی ممکن است این اشکال به دلیل غیر فعال بودن یا خودداری کردن از قبول کوکی باشد.</li> </ul>">
@@ -86,29 +74,21 @@
 <!ENTITY unknownSocketType.longDesc "<ul> <li>مطمئن شوید که «مدیریت امنیت شخصی» (Personal Security Manager) بر روی سیستم شما نصب شده است.</li> <li>این اشکال ممکن است از پیکربندی غیر استاندارد کارگزار باشد.</li> </ul>">
 
 <!ENTITY nssFailure2.title "برقراری اتصال ایمن شکست خورد">
-<!ENTITY nssFailure2.longDesc "<ul> 
-<li>صفحه‌ای که تلاش می‌کنید از آن بازدید کنید قابل نمایش نیست زیرا صحت اطلاعات دریافتی قابل بررسی نیست.</li> 
-<li>لطفاً با صاحبان وب‌گاه تماس بگیرید و آنها را در جریان این مشکل قرار دهید.  همچنین می‌توانید با استفاده از فرمان موجود در منوی راهنما این وب‌گاه ناهموار را گزارش دهید.</li> 
-</ul>">
+
 
 <!ENTITY nssBadCert.title "برقراری اتصال ایمن شکست خورد">
 <!ENTITY nssBadCert.longDesc2 "<ul> 
 <li>علت می‌تواند اشکالی در تنظیم کارگزار، یا تلاش شخصی برای وانمود کردن خود به جای این کارگزار باشد.</li> 
 <li>اگر در گذشته با موفقیت به این وب‌گاه متصل شده‌اید، امکان دارد این اشکال موقتی باشد، و می‌توانید بعداً دوباره تلاش کنید.</li> 
 </ul>">
+<!-- LOCALIZATION NOTE (sharedLongDesc3) This string contains markup including widgets for enabling wifi connections.
+     The text inside the tags should be localized. Do not touch the ids. -->
 
-<!ENTITY sharedLongDesc2 "
-<ul>
-  <li>The site could be temporarily unavailable or too busy. Try again in a few moments.</li>
-  <li>If you are unable to load any pages, check your mobile device's data or Wi-Fi connection.</li>
-</ul>
-">
-
-<!ENTITY cspFrameAncestorBlocked.title "بازداشته شده بنا بر سیاست امنیتی محتوا">
-<!ENTITY cspFrameAncestorBlocked.longDesc "<p>&brandShortName; از بارگیری این صفحه به این شیوه جلوگیری کرد، زیرا این صفحه دارای یک سیاست امنیتی است که این کار در تضاد با آن قرار دارد.</p>">
+<!ENTITY cspBlocked.title "بلوکه شده بنا بر سیاست امنیتی محتوا">
+<!ENTITY cspBlocked.longDesc "<p>&brandShortName; از بارگذاری این صفحه به این شکل جلوگیری کرد، زیرا که صفحه محتوایی دارد که سیاست امنیتی مانع آن می‌شود</p>">
 
 <!ENTITY corruptedContentError.title "خطای خرابی محتوا">
-<!ENTITY corruptedContentError.longDesc "<p>The page you are trying to view cannot be shown because an error in the data transmission was detected.</p><ul><li>Please contact the website owners to inform them of this problem.</li></ul>">
+<!ENTITY corruptedContentError.longDesc "<p>صفحه‌ای که تلاش می‌کنید ببینید به دلیل وجود یک خطا در انتقال داده، نمی‌تواند نمایش داده شود.</p><ul><li> لطفا با مسئولین سایت تماس بگیرید و آنها را از این مشکل مطلع سازید.</li></ul>">
 
 <!ENTITY securityOverride.linkText "یا می‌توانید یک استثنا اضافه کنید…">
 <!ENTITY securityOverride.getMeOutOfHereButton "ترک این مکان!">
@@ -125,5 +105,5 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>">
 
 <!ENTITY remoteXUL.title "XUL راه دور">
-<!ENTITY remoteXUL.longDesc "<p><ul><li>Please contact the website owners to inform them of this problem.</li></ul></p>">
+<!ENTITY remoteXUL.longDesc "<p><ul><li>لطفا با مسئولین سایت جهت مطلع کردن آنها از این مشکل تماس بگیرید.</li></ul></p>">
 

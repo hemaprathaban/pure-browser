@@ -218,6 +218,9 @@ const GfxDeviceFamily* GfxDriverInfo::GetDeviceFamily(DeviceFamily id)
     case Nvidia310M:
       APPEND_DEVICE(0x0A70);
       break;
+    case Nvidia8800GTS:
+      APPEND_DEVICE(0x0193);
+      break;
     case Bug1137716:
       APPEND_DEVICE(0x0a29);
       APPEND_DEVICE(0x0a2b);
@@ -253,6 +256,13 @@ const GfxDeviceFamily* GfxDriverInfo::GetDeviceFamily(DeviceFamily id)
       APPEND_DEVICE(0x1052);
       APPEND_DEVICE(0x1054);
       APPEND_DEVICE(0x1055);
+      break;
+    case Bug1116812:
+      APPEND_DEVICE(0x2e32);
+      APPEND_DEVICE(0x2a02);
+      break;
+    case Bug1155608:
+      APPEND_DEVICE(0x2e22); /* IntelG45_1 */
       break;
     case AMDRadeonHD5800:
       APPEND_DEVICE(0x6899);

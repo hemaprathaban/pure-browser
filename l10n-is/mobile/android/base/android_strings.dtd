@@ -6,9 +6,9 @@
 <!ENTITY  no_space_to_start_error "Ekki er nægjanleg rýmd til að ræsa &brandShortName;.">
 <!ENTITY  error_loading_file "Villa átti sér stað við keyrslu skráa sem tengjast &brandShortName;">
 
-<!ENTITY  onboard_start_message "Vertu velkomin í &brandShortName;!">
-<!ENTITY  onboard_start_subtext "Fyrir þig, þína friðhelgi og netfrelsi">
-<!ENTITY  onboard_start_button_account "Innskráning á &brandShortName;">
+<!ENTITY  onboard_start_message2 "Vertu velkomin í &brandShortName;!">
+<!ENTITY  onboard_start_subtext2 "Fleiri möguleikar og leiðir til að sérsníða en áður.">
+<!ENTITY  onboard_start_button_account "Innskráning í &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Fara að vafra">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
@@ -115,7 +115,7 @@
 <!ENTITY overlay_share_retry "Reyndu aftur">
 <!ENTITY overlay_share_select_device "Veldu tæki">
 
-<!ENTITY pref_category_search3 "Leit">
+<!ENTITY pref_category_search3 "Leita">
 <!ENTITY pref_category_search_summary "Stilla leitarvélar">
 <!ENTITY pref_category_display "Birting">
 <!ENTITY pref_category_display_summary "Texti, titil slá, vafra með fullan skjá">
@@ -129,7 +129,7 @@
 <!ENTITY pref_category_add_search_providers "Bæta við fleiri leitarvélum">
 <!ENTITY pref_category_search_restore_defaults "Enduruppsetja leitarvélar">
 <!ENTITY pref_search_restore_defaults "Upphaflegar stillingar">
-<!ENTITY pref_search_restore_defaults_summary "Endurheimta sjálfgefnar stillingar">
+<!ENTITY pref_search_restore_defaults_summary "Upphaflegar stillingar">
 <!-- Localization note (pref_search_hint) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
      search providers.
@@ -160,15 +160,15 @@
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "Sérsníða">
-<!ENTITY pref_header_display "Birting">
+<!ENTITY pref_header_display "Skjár">
 <!ENTITY pref_header_privacy_short "Gagnaleynd">
 <!ENTITY pref_header_help "Hjálp">
 <!ENTITY pref_header_language "Tungumál">
 <!ENTITY pref_header_vendor "&vendorShortName;">
-<!ENTITY pref_header_devtools "Verkfærakista forritarans ">
+<!ENTITY pref_header_devtools "Verkfærakista forritarans">
 
 <!ENTITY pref_cookies_menu "Smákökur">
-<!ENTITY pref_cookies_accept_all "Virkar">
+<!ENTITY pref_cookies_accept_all "Virkt">
 <!ENTITY pref_cookies_not_accept_foreign "Virkar fyrir utan þriðja aðila">
 <!ENTITY pref_cookies_disabled "Óvirkar">
 
@@ -188,7 +188,7 @@
 <!ENTITY pref_plugins "Tengiforrit">
 <!ENTITY pref_plugins_enabled "Virkt">
 <!ENTITY pref_plugins_tap_to_play "Snerta til að spila">
-<!ENTITY pref_plugins_disabled "Óvirk">
+<!ENTITY pref_plugins_disabled "Óvirkt">
 <!ENTITY pref_text_size "Stærð texta">
 <!ENTITY pref_reflow_on_zoom4 "Sjálfvirk endurstilling texta">
 <!ENTITY pref_restore "Flipar">
@@ -213,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Leyfa sjálfvirka afspilun">
 <!ENTITY pref_media_autoplay_enabled_summary "Stjórna hvort vefsvæði geta sjálfvirkt spilað myndbönd og aðra miðla">
+<!ENTITY pref_zoom_force_enabled "Alltaf virkja stækkun">
+<!ENTITY pref_zoom_force_enabled_summary "Neyða yfirtöku svo þú getir stækkað allar síður">
 
 <!ENTITY pref_use_master_password "Nota aðal lykilorð">
 <!ENTITY pref_sync "Sync">
@@ -269,12 +271,12 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Hrunaskýrsla">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; Staðsetningar þjónusta">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Deila grófri Wi-Fi og GSM staðsetningu á tækinu þínu með &vendorShortName; til að bæta landfræðilega staðsetningar þjónustuna okkar">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Hjálpa &vendorShortName; teikna heiminn! Deildi grófri WiFi og GSM staðsetningu þinni til að bæta staðsetningarþjónustu okkar">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
 <!ENTITY pref_update_autodownload2 "Hlaða niður uppfærslur sjálfvirkt">
-<!ENTITY pref_update_autodownload_wifi "Eingöngu með Wi-Fi">
+<!ENTITY pref_update_autodownload_wifi "Eingöngu á Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Aldrei">
 <!ENTITY pref_update_autodownload_always "Alltaf">
 <!-- Localization note (help_menu) : This string is used in the main menu-->
@@ -364,6 +366,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Engar stillingar til að hreinsa.">
 
 <!ENTITY reading_list_added "Síðunni bætt við leslistann þinn">
+<!ENTITY reading_list_removed "Síða tekin af leslistanum þínum">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Fjarlæga af leslista">
 <!ENTITY reading_list_duplicate "Síðan er nú þegar á leslistanum þínum">
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
@@ -386,7 +392,7 @@ size. -->
 <!ENTITY button_yes "Já">
 <!ENTITY button_no "Nei">
 <!ENTITY button_clear_data "Hreinsa gögn">
-<!ENTITY button_set "Festa">
+<!ENTITY button_set "Stilla">
 <!ENTITY button_clear "Hreinsa">
 
 <!ENTITY home_top_sites_title "Vinsælustu svæðin">
@@ -530,7 +536,7 @@ frá Android">
 <!ENTITY updater_downloading_select2 "Snertu til að virkja uppfærsluna eftir að niðurhali loknu">
 <!ENTITY updater_downloading_retry2 "Snertu til að reyna aftur">
 
-<!ENTITY updater_apply_title2 "Uppfærsla fáanleg fyrir &brandShortName;">
+<!ENTITY updater_apply_title2 "Uppfærsla tiltæk fyrir &brandShortName;">
 <!ENTITY updater_apply_select2 "Snertu til að uppfæra">
 <!-- Guest mode -->
 
@@ -550,7 +556,7 @@ frá Android">
      designated space. Use the unicode ellipsis char, \u2026, or use "..." if \u2026 doesn't suit
      traditions in your locale. -->
 
-<!ENTITY ellipsis "...">
+<!ENTITY ellipsis "…">
 
 <!ENTITY colon ":">
 <!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
@@ -558,6 +564,13 @@ frá Android">
 
 <!ENTITY actionbar_menu "Valmynd">
 <!ENTITY actionbar_done "Lokið">
+<!-- Voice search in the awesome bar -->
+
+<!ENTITY voicesearch_prompt "Talaðu núna">
+<!ENTITY voicesearch_failed_title "&brandShortName; tal leit">
+<!ENTITY voicesearch_failed_message "Tal leitin virkar ekki núna. Vinsamlega reyndu síðar.">
+<!ENTITY voicesearch_failed_message_recoverable "Fyrirgefðu! Við skildum ekki það sem þú sagðir. Vinsamlega reyndu aftur.">
+<!ENTITY voicesearch_failed_retry "Reyndu aftur">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -566,6 +579,8 @@ frá Android">
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Síðasta sync: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Síðasta sync: aldrei">
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
