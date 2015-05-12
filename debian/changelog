@@ -1,3 +1,16 @@
+iceweasel (31.7.0esr-1~deb8u1) stable-security; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2015-{46-48,51,54,57}, also known as:
+    CVE-2015-2708, CVE-2015-0797, CVE-2015-2710, CVE-2015-2713,
+    CVE-2015-2716, CVE-2011-3079.
+
+  * debian/control.in, debian/rules, debian/upstream.mk: Change backport rules.
+    - Only set LESS_SYSTEM_LIBS on wheezy (for now).
+    - Only exclude gstreamer 1.0 on wheezy.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 13 May 2015 10:37:05 +0900
+
 iceweasel (31.6.0esr-1) unstable; urgency=medium
 
   * New upstream release.
