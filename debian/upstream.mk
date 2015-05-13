@@ -34,8 +34,16 @@ UPSTREAM_RELEASE := $(DEBIAN_VERSION:%-$(DEBIAN_RELEASE)=%)
 export MOZ_BUILD_DATE := $(word 2,$(subst +, ,$(UPSTREAM_RELEASE)))
 UPSTREAM_RELEASE := $(firstword $(subst +, ,$(UPSTREAM_RELEASE)))
 # If the debian part of the version contains ~bpo or ~deb, it's a backport
-ifneq (,$(filter bpo% deb%,$(word 2,$(subst ~, ,$(DEBIAN_RELEASE)))))
+DEBIAN_RELEASE_EXTRA := $(word 2,$(subst ~, ,$(DEBIAN_RELEASE)))
+ifneq (,$(filter bpo% deb%,$(DEBIAN_RELEASE_EXTRA)))
 BACKPORT = 1
+DEBIAN_TARGET := $(subst bpo,,$(subst deb,,$(DEBIAN_RELEASE_EXTRA)))
+ifneq (,$(filter 7%,$(DEBIAN_TARGET)))
+BACKPORT = wheezy
+endif
+ifneq (,$(filter 8%,$(DEBIAN_TARGET)))
+BACKPORT = jessie
+endif
 endif
 
 # Check if the version in debian/changelog matches actual upstream version
