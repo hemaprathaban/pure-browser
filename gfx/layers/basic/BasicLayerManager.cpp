@@ -711,7 +711,7 @@ Transform(const gfxImageSurface* aDest,
                                                  (uint32_t*)aSrc->GetData(),
                                                  aSrc->Stride());
 
-  NS_ABORT_IF_FALSE(src && dest, "Failed to create pixman images?");
+  MOZ_ASSERT(src != 0 && dest !=0, "Failed to create pixman images?");
 
   pixman_transform pixTransform = BasicLayerManager_Matrix3DToPixman(aTransform);
   pixman_transform pixTransformInverted;
@@ -883,7 +883,7 @@ BasicLayerManager::PaintLayer(gfxContext* aTarget,
   gfxMatrix transform;
   // Will return an identity matrix for 3d transforms, and is handled separately below.
   bool is2D = paintLayerContext.Setup2DTransform();
-  NS_ABORT_IF_FALSE(is2D || needsGroup || !container, "Must PushGroup for 3d transforms!");
+  MOZ_ASSERT(is2D || needsGroup || !container, "Must PushGroup for 3d transforms!");
 
   bool needsSaveRestore =
     needsGroup || clipRect || needsClipToVisibleRegion || !is2D;
@@ -943,8 +943,8 @@ BasicLayerManager::PaintLayer(gfxContext* aTarget,
 
     // Temporary fast fix for bug 725886
     // Revert these changes when 725886 is ready
-    NS_ABORT_IF_FALSE(untransformedDT,
-                      "We should always allocate an untransformed surface with 3d transforms!");
+    MOZ_ASSERT(untransformedDT,
+               "We should always allocate an untransformed surface with 3d transforms!");
     gfxRect destRect;
 #ifdef DEBUG
     if (aLayer->GetDebugColorIndex() != 0) {

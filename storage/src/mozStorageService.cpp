@@ -665,7 +665,7 @@ Service::OpenSpecialDatabase(const char *aStorageKey,
 
 namespace {
 
-class AsyncInitDatabase MOZ_FINAL : public nsRunnable
+class AsyncInitDatabase final : public nsRunnable
 {
 public:
   AsyncInitDatabase(Connection* aConnection,
@@ -686,6 +686,14 @@ public:
     nsresult rv = mStorageFile ? mConnection->initialize(mStorageFile)
                                : mConnection->initialize();
     if (NS_FAILED(rv)) {
+      nsCOMPtr<nsIRunnable> closeRunnable =
+        NS_NewRunnableMethodWithArg<mozIStorageCompletionCallback*>(
+          mConnection.get(),
+          &Connection::AsyncClose,
+          nullptr);
+      MOZ_ASSERT(closeRunnable);
+      MOZ_ALWAYS_TRUE(NS_SUCCEEDED(NS_DispatchToMainThread(closeRunnable)));
+
       return DispatchResult(rv, nullptr);
     }
 

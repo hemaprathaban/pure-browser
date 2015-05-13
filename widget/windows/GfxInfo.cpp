@@ -823,7 +823,7 @@ GfxInfo::GetCountryCode()
   }
   // Now get the string for real
   mCountryCode.SetLength(numChars);
-  numChars = GetGeoInfoW(geoid, GEO_ISO2, mCountryCode.BeginWriting(),
+  numChars = GetGeoInfoW(geoid, GEO_ISO2, wwc(mCountryCode.BeginWriting()),
                          mCountryCode.Length(), 0);
   if (numChars) {
     // numChars includes null terminator
@@ -899,6 +899,12 @@ GfxInfo::GetGfxDriverInfo()
       (nsAString&) GfxDriverInfo::GetDeviceVendor(VendorATI), GfxDriverInfo::allDevices,
       GfxDriverInfo::allFeatures, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
       DRIVER_EQUAL, V(8,832,0,0));
+
+    // Bug 1118695
+    APPEND_TO_DRIVER_BLOCKLIST2( DRIVER_OS_WINDOWS_7,
+      (nsAString&) GfxDriverInfo::GetDeviceVendor(VendorATI), GfxDriverInfo::allDevices,
+      GfxDriverInfo::allFeatures, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
+      DRIVER_EQUAL, V(8,783,2,2000));
 
     /*
      * Bug 783517 - crashes in AMD driver on Windows 8
@@ -1040,6 +1046,14 @@ GfxInfo::GetGfxDriverInfo()
       nsIGfxInfo::FEATURE_DIRECT2D, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
       DRIVER_LESS_THAN_OR_EQUAL, V(8,15,10,2302) );
 
+    /* Disable D3D11 layers on Intel G41 express graphics and Intel GM965, Intel X3100, for causing device resets.
+     * See bug 1116812.
+     */
+    APPEND_TO_DRIVER_BLOCKLIST2(DRIVER_OS_ALL,
+        (nsAString&) GfxDriverInfo::GetDeviceVendor(VendorIntel), (GfxDeviceFamily*) GfxDriverInfo::GetDeviceFamily(Bug1116812),
+      nsIGfxInfo::FEATURE_DIRECT3D_11_LAYERS, nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
+      DRIVER_LESS_THAN, GfxDriverInfo::allDriverVersions );
+
     /* Disable D2D on AMD Catalyst 14.4 until 14.6
      * See bug 984488
      */
@@ -1088,6 +1102,16 @@ GfxInfo::GetGfxDriverInfo()
       (nsAString&)GfxDriverInfo::GetDeviceVendor(VendorIntel), GfxDriverInfo::allDevices,
       nsIGfxInfo::FEATURE_DXVA, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
       DRIVER_LESS_THAN, V(8,15,10,2622));
+
+    APPEND_TO_DRIVER_BLOCKLIST2(DRIVER_OS_WINDOWS_7,
+      (nsAString&)GfxDriverInfo::GetDeviceVendor(VendorIntel), (GfxDeviceFamily*)GfxDriverInfo::GetDeviceFamily(Bug1155608),
+      nsIGfxInfo::FEATURE_DXVA, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
+      DRIVER_LESS_THAN_OR_EQUAL, V(8,15,10,2869));
+
+    APPEND_TO_DRIVER_BLOCKLIST2(DRIVER_OS_ALL,
+      (nsAString&)GfxDriverInfo::GetDeviceVendor(VendorNVIDIA), (GfxDeviceFamily*)GfxDriverInfo::GetDeviceFamily(Nvidia8800GTS),
+      nsIGfxInfo::FEATURE_DXVA, nsIGfxInfo::FEATURE_BLOCKED_DRIVER_VERSION,
+      DRIVER_EQUAL, V(9,18,13,4052));
 
     /* Bug 1137716: XXX this should really check for the matching Intel piece as well.
      * Unfortunately, we don't have the infrastructure to do that */

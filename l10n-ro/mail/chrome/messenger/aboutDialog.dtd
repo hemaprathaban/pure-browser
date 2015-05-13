@@ -12,6 +12,21 @@
 <!ENTITY update.updateButton.accesskey            "R">
 <!ENTITY update.applyButtonBillboard.label        "Aplică actualizarea…">
 <!ENTITY update.applyButtonBillboard.accesskey    "A">
+<!-- LOCALIZATION NOTE (warningDesc.version): This is a warning about the experimental nature of Nightly and Aurora builds. It is only shown in those versions. -->
+
+
+<!ENTITY warningDesc.version        "&brandShortName; este experimental și poate fi instabil.">
+<!-- LOCALIZATION NOTE (warningDesc.telemetryDesc): This is a notification that Nightly/Aurora builds automatically send Telemetry data back to Mozilla. It is only shown in those versions. "It" refers to brandShortName. -->
+<!ENTITY warningDesc.telemetryDesc  "Trimite automat informații despre performanță, hardware, utilizare și personalizări înapoi către &vendorShortName; pentru a ajuta la crearea unui &brandShortName; mai bun.">
+<!-- LOCALIZATION NOTE (community.exp.*) This paragraph is shown in "experimental" builds, i.e. Nightly and Aurora builds, instead of the other "community.*" strings below. -->
+
+<!ENTITY community.exp.start        "">
+<!-- LOCALIZATION NOTE (community.exp.mozillaLink): This is a link title that links to http://www.mozilla.org/. -->
+<!ENTITY community.exp.mozillaLink  "&vendorShortName;">
+<!ENTITY community.exp.middle       " este o ">
+<!-- LOCALIZATION NOTE (community.exp.creditslink): This is a link title that links to about:credits. -->
+<!ENTITY community.exp.creditsLink  "comunitate globală">
+<!ENTITY community.exp.end          " care lucrează împreună pentru a păstra internetul deschis, public și accesibil tuturor.">
 
 <!ENTITY community.start2           "&brandShortName; este proiectat de ">
 <!-- LOCALIZATION NOTE (community.mozillaLink): This is a link title that links to http://www.mozilla.org/. -->
@@ -19,12 +34,15 @@
 <!ENTITY community.middle2          ", o ">
 <!-- LOCALIZATION NOTE (community.creditsLink): This is a link title that links to about:credits. -->
 <!ENTITY community.creditsLink      "comunitate globală">
-<!ENTITY community.end2             " care lucrează împreună pentru a face internetul mai bun. Noi credem că internetul ar trebui să fie deschis, public și accesibil tuturor, fără nici o restricție.">
+<!ENTITY community.end3             " care lucrează împreună pentru a păstra internetul deschis, public și accesibil tuturor.">
 
-<!ENTITY contribute.start           "Sună interesant?">
-<!-- LOCALIZATION NOTE (contribute.getInvolvedLink): This is a link title that links to http://www.mozilla.org/contribute/. -->
-<!ENTITY contribute.getInvolvedLink "Implicați-vă!">
-<!ENTITY contribute.end             "">
+<!ENTITY helpus.start               "Doriți să ajutați? ">
+<!-- LOCALIZATION NOTE (helpus.donateLink): This is a link title that links to the thunderbird donation page -->
+<!ENTITY helpus.donateLink          "Faceți o donație">
+<!ENTITY helpus.middle              " sau ">
+<!-- LOCALIZATION NOTE (helpus.getInvolvedLink): This is a link title that links to http://www.mozilla.org/contribute/. -->
+<!ENTITY helpus.getInvolvedLink     "implicați-vă!">
+<!ENTITY helpus.end                 "">
 <!-- LOCALIZATION NOTE (bottomLinks.license): This is a link title that links to about:license. -->
 
 <!ENTITY bottomLinks.license        "Informații despre licențiere">
@@ -41,6 +59,8 @@
 <!ENTITY update.noUpdatesFound      "&brandShortName; este actualizat">
 <!-- LOCALIZATION NOTE (update.adminDisabled): try to make the localized text short (see bug 596813 for screenshots). -->
 <!ENTITY update.adminDisabled       "Actualizările sunt dezactivate de către administratorul de sistem">
+<!-- LOCALIZATION NOTE (update.otherInstanceHandlingUpdates): try to make the localized text short -->
+<!ENTITY update.otherInstanceHandlingUpdates "&brandShortName; este actualizat de către o altă instanță">
 <!-- LOCALIZATION NOTE (update.failed.start,update.failed.linkText,update.failed.end):
      update.failed.start, update.failed.linkText, and update.failed.end all go into
      one line with linkText being wrapped in an anchor that links to a site to download
@@ -55,7 +75,7 @@
      to download the latest version of Firefox (e.g. http://www.firefox.com). As this is all in one line,
      try to make the localized text short (see bug 596813 for screenshots). -->
 
-<!ENTITY update.manual.start        "Descarcă">
+<!ENTITY update.manual.start        "Descarcă ">
 <!ENTITY update.manual.linkText     "ultima versiune">
 <!ENTITY update.manual.end          "">
 <!-- LOCALIZATION NOTE (update.unsupported.start,update.unsupported.linkText,update.unsupported.end):

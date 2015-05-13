@@ -150,6 +150,8 @@
 
 <!ENTITY fxaccount_create_account_header2 "បង្កើត​គណនី Firefox">
 <!ENTITY fxaccount_create_account_password_length_restriction "ត្រូវតែ​មាន​យ៉ាងហោចណាស់ ៨ តួ​អក្សរ">
+<!ENTITY fxaccount_create_account_day_of_birth "ថ្ងៃ">
+<!ENTITY fxaccount_create_account_month_of_birth "ខែ">
 <!ENTITY fxaccount_create_account_year_of_birth "ឆ្នាំ​កំណើត">
 <!-- Localization note: &formatS1; is fxaccount_policy_linktos, &formatS2; is fxaccount_policy_linkprivacy, both hyperlinked. -->
 <!ENTITY fxaccount_create_account_policy_text2 "ដោយ​ការ​ធ្វើ​បន្ត, ខ្ញុំ​យល់​ព្រម​ចំពោះ &formatS1; និង &formatS2; នៃ​សេវាកម្ម​នៅ​លើ​បណ្ដាញ​សម្រាប់ Firefox ។">
@@ -167,12 +169,12 @@
 <!-- Localization note: &formatS; is the Firefox Account's email address. -->
 <!ENTITY fxaccount_confirm_account_verification_link "តំណ​ការ​ផ្ទៀងផ្ទាត់​ត្រូវ​បាន​ផ្ញើ​ទៅ &formatS;">
 <!ENTITY fxaccount_confirm_account_resend_email "ផ្ញើ​អ៊ីមែល​ម្ដង​ទៀត">
-
+<!ENTITY fxaccount_confirm_account_change_email "ភ្លេច​អាសយដ្ឋាន​អ៊ីមែល​នេះ​ឬ?">
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 "ផ្ញើ​អ៊ីមែល​ម្ដងទៀត">
 <!ENTITY fxaccount_confirm_account_verification_link_not_sent2 "មិន​អាច​ផ្ញើ​អ៊ីមែល​ការ​ផ្ទៀងផ្ទាត់">
-
-
-
+<!ENTITY fxaccount_resend_unlock_code_button_label "ផ្ញើ​អ៊ីមែល​ដោះ​សោ​ម្ដងទៀត">
+<!ENTITY fxaccount_unlock_code_sent "បាន​ផ្ញើ​អ៊ីមែល​ដោះ​សោ​គណនី">
+<!ENTITY fxaccount_unlock_code_not_sent "មិន​អាច​ផ្ញើ​អ៊ីមែល​ដោះ​សោ​គណនី">
 
 <!ENTITY fxaccount_sign_in_sub_header "ចូល">
 <!ENTITY fxaccount_sign_in_button_label "ចូល">
@@ -183,19 +185,21 @@
 <!ENTITY fxaccount_account_verified_sub_header "បាន​ផ្ទៀងផ្ទាត់​គណនី">
 <!ENTITY fxaccount_account_verified_description2 "ទិន្នន័យ​របស់​អ្នក​នឹង​កំពុង​ត្រូវ​បាន​ធ្វើ​សមកាលកម្ម​នៅ​ពេល​នេះ។">
 
+<!ENTITY fxaccount_migration_finished_header "បាន​បញ្ចប់​បច្ចុប្បន្នភាព">
 
 <!ENTITY fxaccount_update_credentials_header "ចូល">
 <!ENTITY fxaccount_update_credentials_button_label "ចូល">
 <!ENTITY fxaccount_update_credentials_unknown_error "មិន​អាច​ចូល">
 
-
-
+<!ENTITY fxaccount_finish_migrating_header "ចូល ដើម្បី​បញ្ចប់​បច្ចុប្បន្នភាព">
+<!ENTITY fxaccount_finish_migrating_button_label "បញ្ចប់​បច្ចុប្បន្នភាព">
+<!ENTITY fxaccount_finish_migrating_description "ការ​ធ្វើ​បច្ចុប្បន្នភាព​អាច​ផ្ទេរ​ទិន្នន័យ​បាន​ច្រើន។ វា​ដំណើរការ​ល្អ​នៅ​បណ្ដាញ​វ៉ាយហ្វាយ។">
 
 <!ENTITY fxaccount_status_header2 "គណនី Firefox">
 <!ENTITY fxaccount_status_signed_in_as "បាន​ចូល​ជា">
 <!ENTITY fxaccount_status_auth_server "ម៉ាស៊ីន​មេ​គណនី">
-
-
+<!ENTITY fxaccount_status_sync_now "ធ្វើ​សមកាលកម្ម​ឥឡូវ">
+<!ENTITY fxaccount_status_syncing2 "កំពុង​ធ្វើ​សមាកលកម្ម...">
 <!ENTITY fxaccount_status_device_name "ឈ្មោះ​ឧបករណ៍">
 <!ENTITY fxaccount_status_sync_server "ធ្វើ​សមកាលកម្មម៉ាស៊ីន​មេ">
 <!ENTITY fxaccount_status_sync "&syncBrand.shortName.label;">
@@ -204,9 +208,8 @@
 <!ENTITY fxaccount_status_needs_credentials "មិន​អាច​តភ្ជាប់។ ប៉ះ​ដើម្បី​ចូល។">
 <!ENTITY fxaccount_status_needs_upgrade "អ្នក​ត្រូវ​ធ្វើ​បច្ចុប្បន្នភាព &brandShortName; ដើម្បី​ចូល។">
 <!ENTITY fxaccount_status_needs_master_sync_automatically_enabled "បាន​ដំឡើង &syncBrand.shortName.label; ប៉ុន្តែ​មិន​បាន​ធ្វើ​សមកាលកម្ម​​ដោយ​ស្វ័យប្រវត្តិ​ទេ។ បិទ/បើក \&quot;ការ​​ធ្វើ​សមកាលកម្ម​​ទិន្នន័យ​ស្វ័យប្រវត្តិ\&quot; នៅ​ក្នុង​ការ​កំណត់ Android &gt; ការ​ប្រើប្រាស់​ទិន្នន័យ។">
-
-<!ENTITY fxaccount_status_needs_account_enabled "បាន​ដំឡើង &syncBrand.shortName.label; ប៉ុន្តែ​មិន​បាន​ធ្វើ​សមកាលកម្ម​ដោយ​ស្វ័យប្រវត្តិ​នោះ​ទេ។ ចុច​ដើម្បី​ចាប់ផ្ដើម​ធ្វើ​សមកាលកម្ម។">
-
+<!ENTITY fxaccount_status_needs_master_sync_automatically_enabled_v21 "បាន​ដំឡើង &syncBrand.shortName.label; ប៉ុន្តែ​មិន​បាន​ធ្វើ​សមកាលកម្ម​​ដោយ​ស្វ័យប្រវត្តិ​ទេ។ បិទ/បើក \&quot;ការ​​ធ្វើ​សមកាលកម្ម​​ទិន្នន័យ​ស្វ័យប្រវត្តិ\&quot; នៅ​ក្នុង​ម៉ឺនុយ​ការ​កំណត់​គណនី Android &gt; ។">
+<!ENTITY fxaccount_status_needs_finish_migrating "ប៉ះ​ដើម្បី​ចូល​គណនី Firefox ថ្មី​របស់​អ្នក។">
 <!ENTITY fxaccount_status_bookmarks "ចំណាំ">
 <!ENTITY fxaccount_status_history "ប្រវត្តិ">
 <!ENTITY fxaccount_status_passwords "ពាក្យ​សម្ងាត់">
@@ -254,11 +257,14 @@
 <!ENTITY fxaccount_remote_error_SERVICE_TEMPORARILY_UNAVAILABLE_TO_DUE_HIGH_LOAD "ម៉ាស៊ីន​មេ​ជាប់​រវល់, ព្យាយាម​ម្ដងទៀត​ឆាប់ៗ​នេះ">
 <!ENTITY fxaccount_remote_error_UNKNOWN_ERROR "មាន​បញ្ហា">
 <!ENTITY fxaccount_remote_error_COULD_NOT_CONNECT "មិន​អាច​តភ្ជាប់​ទៅ​បណ្ដាញ">
-
+<!ENTITY fxaccount_remote_error_ACCOUNT_LOCKED "គណនី​ត្រូវ​បាន​ចាក់សោ។ &formatS1;">
 
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 "&syncBrand.shortName.label; ត្រូវ​បាន​តភ្ជាប់">
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
+<!ENTITY fxaccount_sync_sign_in_error_notification_text2 "ប៉ះ​ដើម្បី​ចូល​ជា &formatS;">
 
+<!ENTITY fxaccount_sync_finish_migrating_notification_title "បញ្ចប់​ការ​ធ្វើ​បច្ចុប្បន្នភាព &syncBrand.shortName.label;?">
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
+<!ENTITY fxaccount_sync_finish_migrating_notification_text "ប៉ះ​ដើម្បី​ចូល​ជា &formatS;">

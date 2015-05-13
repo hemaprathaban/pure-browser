@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Ez dago toki libre nahikorik &brandShortName; hasteko.">
 <!ENTITY  error_loading_file "Errorea gertatu da &brandShortName; exekutatzeko behar diren fitxategiak kargatzean">
 
-<!ENTITY  onboard_start_message "Ongi etorri &brandShortName;(e)ra!">
-<!ENTITY  onboard_start_subtext "Zurekin, zure pribatutasunarekin eta Web irekiarekin konprometituta">
+<!ENTITY  onboard_start_message2 "Ongi etorri &brandShortName;(e)ra">
+<!ENTITY  onboard_start_subtext2 "Inoiz baino pribatutasun-eginbide eta pertsonalizatzeko modu gehiago.">
 <!ENTITY  onboard_start_button_account "Hasi saioa &brandShortName;(e)n">
 <!ENTITY  onboard_start_button_browser "Hasi nabigatzen">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
@@ -100,8 +100,8 @@
      used in the share overlay menu to select an action. It is the verb
      "to bookmark", not the noun "a bookmark". -->
 
-<!ENTITY overlay_share_bookmark_btn_label "Laster-marka">
-<!ENTITY overlay_share_reading_list_btn_label "Gehitu irakurketa-zerrendara">
+<!ENTITY overlay_share_bookmark_btn_label "Egin laster-marka">
+<!ENTITY overlay_share_reading_list_btn_label "Gehitu irakurketa-zerrendan">
 <!ENTITY overlay_share_bookmark_btn_label_already "Dagoeneko laster-marketan">
 <!ENTITY overlay_share_reading_list_btn_label_already "Dagoeneko irakurketa-zerrendan">
 <!ENTITY overlay_share_send_other "Bidali beste gailuetara">
@@ -115,7 +115,7 @@
 <!ENTITY overlay_share_retry "Saiatu berriro">
 <!ENTITY overlay_share_select_device "Hautatu gailua">
 
-<!ENTITY pref_category_search3 "Bilatu">
+<!ENTITY pref_category_search3 "Bilaketa">
 <!ENTITY pref_category_search_summary "Pertsonalizatu bilaketa-hornitzaileak">
 <!ENTITY pref_category_display "Bistaratzea">
 <!ENTITY pref_category_display_summary "Testua, titulu-barra, pantaila osoko nabigatzea">
@@ -135,7 +135,7 @@
      search providers.
      The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
      it is applicable. -->
-<!ENTITY pref_search_hint "Aholkua: Gehitu edozein webgune bilaketa-hornitzaileen zerrendara denbora luzez bere bilaketa-eremua sakatuz eta ondoren &formatI; ikonoan sakatuz.">
+<!ENTITY pref_search_hint "Aholkua: Gehitu edozein webgune bilaketa-hornitzaileen zerrendan denbora luzez bere bilaketa-eremua sakatuz eta ondoren &formatI; ikonoan sakatuz.">
 <!ENTITY pref_category_devtools "Garatzaile-tresnak">
 <!ENTITY pref_category_devtools_summary "Urruneko arazketa, margoketa distiratzea">
 <!ENTITY pref_developer_paint_flashing "Margoketa keinukaria">
@@ -159,7 +159,7 @@
 <!ENTITY pref_home_suggested_sites_summary "Bistaratu hasiera-orrian interesgarriak izan daitezkeen guneetarako lasterbideak">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
-<!ENTITY pref_header_customize "Pertsonalizazioa">
+<!ENTITY pref_header_customize "Pertsonalizatu">
 <!ENTITY pref_header_display "Bistaratzea">
 <!ENTITY pref_header_privacy_short "Pribatutasuna">
 <!ENTITY pref_header_help "Laguntza">
@@ -213,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Baimendu auto-erreprodukzioa">
 <!ENTITY pref_media_autoplay_enabled_summary "Kontrolatu webguneek bideoak eta bestelako multimedia-edukiak automatikoki erreproduzi ditzaketen ala ez">
+<!ENTITY pref_zoom_force_enabled "Gaitu beti zooma">
+<!ENTITY pref_zoom_force_enabled_summary "Behartu gainidazketa edozein orritan zooma erabili ahal izateko">
 
 <!ENTITY pref_use_master_password "Erabili pasahitz nagusia">
 <!ENTITY pref_sync "Sync">
@@ -269,7 +271,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Hutsegiteen berriemailea">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; kokapen-zerbitzuak">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Wi-Fi eta sare mugikorretan zure gailuaren gutxi gorabeherako kokapena partekatzen du &vendorShortName;(r)ekin gure geokokapen-zerbitzua hobetzeko.">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Lagundu &vendorShortName;(r)i mundua mapeatzen! Partekatu zure gailuaren Wi-Fi eta mugikorraren kokapena gure geokokapen-zerbitzua hobetzeko">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -300,7 +302,7 @@ size. -->
 <!ENTITY new_private_tab "Fitxa pribatu berria">
 <!ENTITY close_all_tabs "Itxi fitxa guztiak">
 <!ENTITY close_private_tabs "Itxi fitxa pribatuak">
-<!ENTITY tabs_normal "Etiketak">
+<!ENTITY tabs_normal "Fitxak">
 <!ENTITY tabs_private "Pribatua">
 <!ENTITY tabs_synced "Sinkronizatuak">
 <!ENTITY set_image_fail "Ezin da irudia ezarri">
@@ -363,7 +365,11 @@ size. -->
 <!ENTITY site_settings_clear        "Garbitu">
 <!ENTITY site_settings_no_settings  "Ez dago garbitzeko ezarpenik.">
 
-<!ENTITY reading_list_added "Orria irakurketa-zerrendara gehituta">
+<!ENTITY reading_list_added "Orria irakurketa-zerrendan gehituta">
+<!ENTITY reading_list_removed "Orria irakurketa-zerrendatik kendu da">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Kendu irakurketa-zerrendatik">
 <!ENTITY reading_list_duplicate "Orria badago lehendik irakurketa-zerrendan">
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
@@ -558,6 +564,13 @@ Android-etik">
 
 <!ENTITY actionbar_menu "Menua">
 <!ENTITY actionbar_done "Eginda">
+<!-- Voice search in the awesome bar -->
+
+<!ENTITY voicesearch_prompt "Hitz egin orain">
+<!ENTITY voicesearch_failed_title "&brandShortName; ahots bidezko bilaketa">
+<!ENTITY voicesearch_failed_message "Arazo bat dago ahots bidezko bilaketarekin une honetan. Saiatu geroago mesedez.">
+<!ENTITY voicesearch_failed_message_recoverable "Barkatu! Ezin izan ditugu zure hitzak ezagutu. Saiatu berriro mesedez.">
+<!ENTITY voicesearch_failed_retry "Saiatu berriro">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -566,6 +579,8 @@ Android-etik">
      their desktop or laptop.-->
 
 <!ENTITY remote_tabs_last_synced "Azken sinkronizazioa: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Azken sinkronizazioa: inoiz ez">
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->

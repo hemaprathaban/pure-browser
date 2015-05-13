@@ -8,7 +8,7 @@ Subject: Use "firefox" instead of MOZ_APP_NAME for profile reset
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/modules/ResetProfile.jsm b/toolkit/modules/ResetProfile.jsm
-index db57f2a..cdb0922 100644
+index c4c2567..3ba756f 100644
 --- a/toolkit/modules/ResetProfile.jsm
 +++ b/toolkit/modules/ResetProfile.jsm
 @@ -7,7 +7,7 @@
@@ -21,10 +21,10 @@ index db57f2a..cdb0922 100644
  
  Cu.import("resource://gre/modules/Services.jsm");
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index 6fa95f0..81517b1 100644
+index 8857992..9228694 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -4078,7 +4078,7 @@ XREMain::XRE_mainRun()
+@@ -4095,7 +4095,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

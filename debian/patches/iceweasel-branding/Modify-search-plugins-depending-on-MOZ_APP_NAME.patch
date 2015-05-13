@@ -8,10 +8,10 @@ Subject: Modify search plugins depending on MOZ_APP_NAME
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index 84ed8b5..7ea7299 100644
+index d1f3b6e..fbbdd86 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -85,6 +85,8 @@ SEARCHPLUGINS := $(foreach plugin,$(addsuffix .xml,$(SEARCHPLUGINS_NAMES)),$(or
+@@ -88,6 +88,8 @@ SEARCHPLUGINS := $(foreach plugin,$(addsuffix .xml,$(SEARCHPLUGINS_NAMES)),$(or
  SEARCHPLUGINS_FLAGS := --silence-missing-directive-warnings
  PP_TARGETS += SEARCHPLUGINS
  
