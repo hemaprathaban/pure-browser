@@ -1,8 +1,23 @@
-iceweasel (38.0-1) UNRELEASED; urgency=medium
+iceweasel (38.0-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{46,48-51,53-56}, also know as:
+    CVE-2015-2708, CVE-2015-2709, CVE-2015-2710, CVE-2015-2711,
+    CVE-2015-2712, CVE-2015-2713, CVE-2015-2715, CVE-2015-2716,
+    CVE-2015-2717, CVE-2015-2718.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 13 May 2015 09:48:27 +0900
+  * debian/branding/Makefile.in, debian/branding/moz.build: Adapt build rules
+    to upstream changes 
+  * debian/branding/locales/en-US/brand.*: Add brandShorterName to Iceweasel
+    branding.
+  * debian/branding/content/Makefile.in: Add silhouette-40.svg from the
+    unofficial branding to iceweasel branding
+  * debian/control*: Bump nss and sqlite build dependencies.
+  * debian/control.in, debian/upstream.mk: Change backport rules.
+    - Set LESS_SYSTEM_LIBS on wheezy and jessie.
+    - Only use gstreamer 0.10 on wheezy.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 13 May 2015 09:59:33 +0900
 
 iceweasel (37.0.2-1) experimental; urgency=medium
 
