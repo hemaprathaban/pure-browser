@@ -1,3 +1,15 @@
+iceweasel (38.0-2) unstable; urgency=medium
+
+  * debian/repack.py: Fix to support filter patterns excluding a top-level
+    directory.
+
+  * configure.in: Cleanup how libjpeg-turbo assembly build variables are set.
+    bz#1165654. This should fix FTBFSes on arm64 and mips*.
+  * memory/mozjemalloc/jemalloc.c: Make powerpc not use static page sizes.
+    Closes: #763900.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 17 May 2015 10:48:06 +0900
+
 iceweasel (38.0-1) unstable; urgency=medium
 
   * New upstream release.
