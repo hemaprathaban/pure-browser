@@ -93,6 +93,10 @@ ifneq (,$(filter kfreebsd-% hurd-%,$(DEB_BUILD_ARCH)))
 	CONFIGURE_FLAGS += --disable-necko-wifi
 endif
 
+ifneq (,$(filter mips,$(DEB_BUILD_ARCH)))
+	CONFIGURE_FLAGS += --disable-ion
+endif
+
 ifneq (,$(filter armel,$(DEB_BUILD_ARCH)))
 	CFLAGS += -D__ARM_PCS
 endif
