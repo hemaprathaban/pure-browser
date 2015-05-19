@@ -1,3 +1,20 @@
+iceweasel (38.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+  * debian/vendor.js.in: Disable auto-installing webide related addons.
+    Closes: #785595.
+  * debian/rules: Disable jit on mips. Only mipsel is supported by the jit
+    code currently.
+
+  * configure.in, media/libjpeg/moz.build: Fixup libjpeg-turbo assembly
+    cleanup.
+  * security/manager/ssl/src/SSLServerCertVerification.cpp: Add a NULL-check
+    for extensions on the end entity certificate when gathering EKU telemetry.
+    Closes: #782772.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 19 May 2015 13:56:45 +0900
+
 iceweasel (38.0-2) unstable; urgency=medium
 
   * debian/repack.py: Fix to support filter patterns excluding a top-level
