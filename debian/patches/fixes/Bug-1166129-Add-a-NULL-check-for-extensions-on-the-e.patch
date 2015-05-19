@@ -1,0 +1,32 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Tue, 19 May 2015 11:06:56 +0900
+Subject: Bug 1166129 - Add a NULL-check for extensions on the end entity
+ certificate when gathering EKU telemetry
+
+---
+ security/manager/ssl/src/SSLServerCertVerification.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/security/manager/ssl/src/SSLServerCertVerification.cpp b/security/manager/ssl/src/SSLServerCertVerification.cpp
+index f810c92..11f8e4f 100644
+--- a/security/manager/ssl/src/SSLServerCertVerification.cpp
++++ b/security/manager/ssl/src/SSLServerCertVerification.cpp
+@@ -1044,11 +1044,13 @@ GatherEKUTelemetry(const ScopedCERTCertList& certList)
+   bool foundEKU = false;
+   SECOidTag oidTag;
+   CERTCertExtension* ekuExtension = nullptr;
+-  for (size_t i = 0; endEntityCert->extensions[i]; i++) {
+-    oidTag = SECOID_FindOIDTag(&endEntityCert->extensions[i]->id);
+-    if (oidTag == SEC_OID_X509_EXT_KEY_USAGE) {
+-      foundEKU = true;
+-      ekuExtension = endEntityCert->extensions[i];
++  if (endEntityCert->extensions) {
++    for (size_t i = 0; endEntityCert->extensions[i]; i++) {
++      oidTag = SECOID_FindOIDTag(&endEntityCert->extensions[i]->id);
++      if (oidTag == SEC_OID_X509_EXT_KEY_USAGE) {
++        foundEKU = true;
++        ekuExtension = endEntityCert->extensions[i];
++      }
+     }
+   }
+ 
