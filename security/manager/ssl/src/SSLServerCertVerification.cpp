@@ -1044,11 +1044,13 @@ GatherEKUTelemetry(const ScopedCERTCertList& certList)
   bool foundEKU = false;
   SECOidTag oidTag;
   CERTCertExtension* ekuExtension = nullptr;
-  for (size_t i = 0; endEntityCert->extensions[i]; i++) {
-    oidTag = SECOID_FindOIDTag(&endEntityCert->extensions[i]->id);
-    if (oidTag == SEC_OID_X509_EXT_KEY_USAGE) {
-      foundEKU = true;
-      ekuExtension = endEntityCert->extensions[i];
+  if (endEntityCert->extensions) {
+    for (size_t i = 0; endEntityCert->extensions[i]; i++) {
+      oidTag = SECOID_FindOIDTag(&endEntityCert->extensions[i]->id);
+      if (oidTag == SEC_OID_X509_EXT_KEY_USAGE) {
+        foundEKU = true;
+        ekuExtension = endEntityCert->extensions[i];
+      }
     }
   }
 
