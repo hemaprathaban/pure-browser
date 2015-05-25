@@ -33,7 +33,7 @@ UPSTREAM_RELEASE := $(DEBIAN_VERSION:%-$(DEBIAN_RELEASE)=%)
 # Aurora builds have the build id in the upstream part of the debian/changelog version
 export MOZ_BUILD_DATE := $(word 2,$(subst +, ,$(UPSTREAM_RELEASE)))
 ifndef MOZ_BUILD_DATE
-export MOZ_BUILD_DATE := $(shell date -d "$(shell dpkg-parsechangelog -S Date)" +%Y%m%d%H%M%S)
+export MOZ_BUILD_DATE := $(shell TZ=UTC date -d "$(shell dpkg-parsechangelog -S Date)" +%Y%m%d%H%M%S)
 endif
 UPSTREAM_RELEASE := $(firstword $(subst +, ,$(UPSTREAM_RELEASE)))
 # If the debian part of the version contains ~bpo or ~deb, it's a backport
