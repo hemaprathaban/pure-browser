@@ -1,3 +1,25 @@
+iceweasel (38.0.1-2) unstable; urgency=medium
+
+  * debian/upstream.mk: Set MOZ_BUILD_DATE to the date of the last
+    debian/changelog entry for non-Aurora builds.
+  * debian/branding/content/Makefile.in: Add a dummy conversion for about.png
+    to remove timestamps.
+  * debian/browser.js.in: Default to classic view for about:newtab.
+  * debian/copyright: Update copyright file to some degree.
+  * debian/control*: Bump Standards-Version to 3.9.6.0.
+    - debian/rules: Add build-arch and build-indep targets to debian/rules.
+  * debian/control*: Switch Vcs-* urls to anonscm.debian.org.
+
+  * ipc/testshell/XPCShellEnvironment.cpp, js/src/shell/js.cpp,
+    js/xpconnect/src/XPCShellImpl.cpp: Remove build() function from js and
+    xpc shells. bz#1166243.
+  * toolkit/locales/l10n.mk. Use dozip.py for langpacks. bz#1166538.
+  * browser/app/profile/firefox.js, browser/base/content/newtab/intro.js
+    browser/modules/DirectoryLinksProvider.jsm: Set browser.newtabpage.enhanced
+    default in prefs. bz#1094324.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 25 May 2015 13:25:40 +0900
+
 iceweasel (38.0.1-1) unstable; urgency=medium
 
   * New upstream release.
