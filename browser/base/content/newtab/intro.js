@@ -64,6 +64,9 @@ let gIntro = {
   },
 
   showIfNecessary: function() {
+    if (!Services.prefs.getBoolPref(PREF_NEWTAB_ENHANCED)) {
+      return;
+    }
     if (!Services.prefs.getBoolPref(PREF_INTRO_SHOWN)) {
       this.showPanel();
       Services.prefs.setBoolPref(PREF_INTRO_SHOWN, true);
