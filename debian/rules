@@ -237,7 +237,9 @@ $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 	$(PYTHON) config/pythonpath.py -I$(CURDIR)/compare-locales/lib $(CURDIR)/compare-locales/scripts/compare-locales -m $(CURDIR)/build-l10n/l10n-$* $(PRODUCT)/locales/l10n.ini $(CURDIR)/l10n $*
 	$(MAKE) -C build-l10n/$(PRODUCT)/locales langpack-$* MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-l10n/l10n-$*
 
-override_dh_auto_build: stamps/build-$(PRODUCT) stamps/build-check-branding
+override_dh_auto_build override_dh_auto_build-arch: stamps/build-$(PRODUCT) stamps/build-check-branding
+
+override_dh_auto_build-indep: stamps/build-l10n
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 # Disable tests on stable-security
@@ -370,7 +372,7 @@ install binary binary-arch binary-indep: $(filter-out %.pc,$(GENERATED_FILES))
 
 binary binary-indep: stamps/dh_install-l10n
 
-binary binary-arch binary-indep build clean install:
+binary binary-arch binary-indep build build-arch build-indep clean install:
 	dh $@
 
 .PHONY: build clean binary-indep binary-arch binary install
