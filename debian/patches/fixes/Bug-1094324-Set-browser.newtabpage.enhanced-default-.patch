@@ -1,0 +1,67 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Mon, 25 May 2015 10:50:01 +0900
+Subject: Bug 1094324 - Set browser.newtabpage.enhanced default in prefs
+
+---
+ browser/app/profile/firefox.js             | 3 +++
+ browser/base/content/newtab/intro.js       | 4 ++++
+ browser/modules/DirectoryLinksProvider.jsm | 4 +---
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index a1a7fca..e8b8fca 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -1634,6 +1634,9 @@ pref("browser.newtabpage.introShown", false);
+ // Toggles the content of 'about:newtab'. Shows the grid when enabled.
+ pref("browser.newtabpage.enabled", true);
+ 
++// Toggles the enhanced content of 'about:newtab'. Shows sponsored tiles.
++pref("browser.newtabpage.enhanced", true);
++
+ // number of rows of newtab grid
+ pref("browser.newtabpage.rows", 3);
+ 
+diff --git a/browser/base/content/newtab/intro.js b/browser/base/content/newtab/intro.js
+index f94c255..727d6e6 100644
+--- a/browser/base/content/newtab/intro.js
++++ b/browser/base/content/newtab/intro.js
+@@ -5,6 +5,7 @@
+ #endif
+ 
+ const PREF_INTRO_SHOWN = "browser.newtabpage.introShown";
++const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
+ 
+ let gIntro = {
+   _nodeIDSuffixes: [
+@@ -25,6 +26,9 @@ let gIntro = {
+   },
+ 
+   showIfNecessary: function() {
++    if (!Services.get.getBoolPref(PREF_NEWTAB_ENHANCED)) {
++      return;
++    }
+     if (!Services.prefs.getBoolPref(PREF_INTRO_SHOWN)) {
+       Services.prefs.setBoolPref(PREF_INTRO_SHOWN, true);
+       this.showPanel();
+diff --git a/browser/modules/DirectoryLinksProvider.jsm b/browser/modules/DirectoryLinksProvider.jsm
+index 9385c09..0f24f59 100644
+--- a/browser/modules/DirectoryLinksProvider.jsm
++++ b/browser/modules/DirectoryLinksProvider.jsm
+@@ -140,15 +140,13 @@ let DirectoryLinksProvider = {
+    */
+   _setDefaultEnhanced: function DirectoryLinksProvider_setDefaultEnhanced() {
+     if (!Services.prefs.prefHasUserValue(PREF_NEWTAB_ENHANCED)) {
+-      let enhanced = true;
+       try {
+         // Default to not enhanced if DNT is set to tell websites to not track
+         if (Services.prefs.getBoolPref("privacy.donottrackheader.enabled")) {
+-          enhanced = false;
++          Services.prefs.setBoolPref(PREF_NEWTAB_ENHANCED, false);
+         }
+       }
+       catch(ex) {}
+-      Services.prefs.setBoolPref(PREF_NEWTAB_ENHANCED, enhanced);
+     }
+   },
+ 
