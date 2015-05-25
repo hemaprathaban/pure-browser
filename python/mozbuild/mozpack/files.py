@@ -212,7 +212,14 @@ class File(BaseFile):
         if platform.system() == 'Windows':
             return None
         assert self.path is not None
-        return os.stat(self.path).st_mode
+        mode = os.stat(self.path).st_mode
+        # Normalize file mode:
+        # - take the user bits only
+        # - expand them to group and other
+        # - apply a standard umask
+        mode = mode & 0700;
+        mode = mode | (mode >> 3) | (mode >> 6)
+        return mode & 0755;
 
 class ExecutableFile(File):
     '''
