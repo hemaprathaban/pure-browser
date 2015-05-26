@@ -311,7 +311,7 @@ endif
 		rm -rf debian/tmp/usr/include/$($(PRODUCT))-$(GRE_VERSION)/$$h; \
 	done
 
-	-unzip -d debian/tmp$(LIB_DIR)/browser debian/tmp$(LIB_DIR)/browser/omni.ja 'defaults/*'
+	-TZ=UTC unzip -d debian/tmp$(LIB_DIR)/browser debian/tmp$(LIB_DIR)/browser/omni.ja 'defaults/*'
 
 MPL-1.1: gfx/cairo/cairo/COPYING-MPL-1.1
 	cp -f $< $@
