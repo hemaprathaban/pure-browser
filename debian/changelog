@@ -1,3 +1,11 @@
+iceweasel (38.0.1-4) unstable; urgency=medium
+
+  * python/mozbuild/mozpack/files.py: Fixup to keep file type.
+  * toolkit/content/Makefile.in, toolkit/content/buildconfig.html: Remove build
+    machine name from about:buildconfig. bz#1168316.
+
+ -- Mike Hommey <glandium@debian.org>  Tue, 26 May 2015 21:39:38 +0900
+
 iceweasel (38.0.1-3) unstable; urgency=medium
 
   * debian/upstream.mk: Force a timezone when setting MOZ_BUILD_DATE.
