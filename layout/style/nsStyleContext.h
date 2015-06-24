@@ -305,7 +305,7 @@ public:
    */
   #define STYLE_STRUCT(name_, checkdata_cb_)              \
     const nsStyle##name_ * Style##name_() {               \
-      return DoGetStyle##name_<true>();                   \
+      return DoGetStyle##name_(true);                     \
     }
   #include "nsStyleStructList.h"
   #undef STYLE_STRUCT
@@ -319,7 +319,7 @@ public:
    */
   #define STYLE_STRUCT(name_, checkdata_cb_)              \
     const nsStyle##name_ * PeekStyle##name_() {           \
-      return DoGetStyle##name_<false>();                  \
+      return DoGetStyle##name_(false);                    \
     }
   #include "nsStyleStructList.h"
   #undef STYLE_STRUCT
@@ -477,8 +477,7 @@ private:
 
   // Helper functions for GetStyle* and PeekStyle*
   #define STYLE_STRUCT_INHERITED(name_, checkdata_cb_)                  \
-    template<bool aComputeData>                                         \
-    const nsStyle##name_ * DoGetStyle##name_() {                        \
+    const nsStyle##name_ * DoGetStyle##name_(bool aComputeData) {       \
       const nsStyle##name_ * cachedData =                               \
         static_cast<nsStyle##name_*>(                                   \
           mCachedInheritedData.mStyleStructs[eStyleStruct_##name_]);    \
@@ -486,21 +485,19 @@ private:
         return cachedData;                                              \
       /* Have the rulenode deal */                                      \
       AUTO_CHECK_DEPENDENCY(eStyleStruct_##name_);                      \
-      return mRuleNode->GetStyle##name_<aComputeData>(this);            \
+      return mRuleNode->GetStyle##name_(this, aComputeData);            \
     }
   #define STYLE_STRUCT_RESET(name_, checkdata_cb_)                      \
-    template<bool aComputeData>                                         \
-    const nsStyle##name_ * DoGetStyle##name_() {                        \
-      if (mCachedResetData) {                                           \
-        const nsStyle##name_ * cachedData =                             \
-          static_cast<nsStyle##name_*>(                                 \
-            mCachedResetData->mStyleStructs[eStyleStruct_##name_]);     \
-        if (cachedData) /* Have it cached already, yay */               \
-          return cachedData;                                            \
-      }                                                                 \
+    const nsStyle##name_ * DoGetStyle##name_(bool aComputeData) {       \
+      const nsStyle##name_ * cachedData = mCachedResetData              \
+        ? static_cast<nsStyle##name_*>(                                 \
+            mCachedResetData->mStyleStructs[eStyleStruct_##name_])      \
+        : nullptr;                                                      \
+      if (cachedData) /* Have it cached already, yay */                 \
+        return cachedData;                                              \
       /* Have the rulenode deal */                                      \
       AUTO_CHECK_DEPENDENCY(eStyleStruct_##name_);                      \
-      return mRuleNode->GetStyle##name_<aComputeData>(this);            \
+      return mRuleNode->GetStyle##name_(this, aComputeData);            \
     }
   #include "nsStyleStructList.h"
   #undef STYLE_STRUCT_RESET
