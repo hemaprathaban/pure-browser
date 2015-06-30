@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Det er ikke nok ledig plass for at &brandShortName; kan starte.">
 <!ENTITY  error_loading_file "En feil oppstod ved forsøk på å laste nødvendige filer for å kjøre &brandShortName;">
 
-<!ENTITY  onboard_start_message "Velkommen til &brandShortName;!">
-<!ENTITY  onboard_start_subtext "Forpliktet til deg, ditt personvern og en åpen web">
+<!ENTITY  onboard_start_message2 "Velkommen til &brandShortName;">
+<!ENTITY  onboard_start_subtext2 "Flere personvernfunksjoner og tilpassingsmuligheter enn før.">
 <!ENTITY  onboard_start_button_account "Logg inn på &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Start nettlesing">
 
@@ -28,7 +28,7 @@
 <!ENTITY  crash_comment "Legg til en kommentar (kommentarer er offentlig synlige)">
 <!ENTITY  crash_allow_contact2 "Tillat &vendorShortName; å kontakte meg om denne rapporten">
 <!ENTITY  crash_email "Din e-postadresse">
-<!ENTITY  crash_closing_alert "Avslutt uten å sende krasjrapport?">
+<!ENTITY  crash_closing_alert "Avslutte uten å sende krasjrapport?">
 <!ENTITY  sending_crash_report "Send krasjrapport \u2026">
 <!ENTITY  crash_close_label "Lukk">
 <!ENTITY  crash_restart_label "Start &brandShortName; på nytt">
@@ -213,6 +213,8 @@ size. -->
 
 <!ENTITY pref_media_autoplay_enabled "Tillat autoavspilling">
 <!ENTITY pref_media_autoplay_enabled_summary "Velg om nettsider kan automatisk spille av videoer og annet medieinnhold">
+<!ENTITY pref_zoom_force_enabled "Alltid slå på zoom">
+<!ENTITY pref_zoom_force_enabled_summary "Tving overstyring slik at du kan zoome på alle sider">
 
 <!ENTITY pref_use_master_password "Bruk et hovedpassord">
 <!ENTITY pref_sync "Sync">
@@ -269,7 +271,7 @@ size. -->
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
 <!ENTITY datareporting_crashreporter_title_short "Krasjrapportering">
 <!ENTITY datareporting_wifi_title2 "&vendorShortName; stedstjeneste">
-<!ENTITY datareporting_wifi_geolocation_summary2 "Deler omtrentlig Wi-Fi og mobilnett-posisjon for enheten din med &vendorShortName; for å forbedre vår geolokasjon-tjeneste">
+<!ENTITY datareporting_wifi_geolocation_summary3 "Hjelp &vendorShortName; med å kartlegge verden! Del omtrentlig Wi-Fi og mobilnett-posisjon for enheten din for å forbedre vår geolokasjon-tjeneste">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
@@ -341,7 +343,7 @@ size. -->
 <!ENTITY pref_titlebar_mode_title "Vis sidetittel">
 <!ENTITY pref_titlebar_mode_url "Vis sideadresse">
 
-<!-- Localization note (pref_scroll_title_bar): Label for setting that controls
+<!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
 <!ENTITY pref_scroll_title_bar2 "Nettlesing i fullskjerm">
 <!ENTITY pref_scroll_title_bar_summary "Skjul tittellinjen i &brandShortName; ved rulling nedover på en side">
@@ -364,6 +366,10 @@ size. -->
 <!ENTITY site_settings_no_settings  "Ingen innstillinger å fjerne.">
 
 <!ENTITY reading_list_added "Siden er lagt til i leselisten">
+<!ENTITY reading_list_removed "Siden er fjernet fra leselisten">
+<!-- Localization note (reading_list_remove) : Used to remove the currently open page from
+     the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Fjern fra leselisten">
 <!ENTITY reading_list_duplicate "Siden er allerede i leselisten">
 
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
@@ -521,7 +527,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY searchable_description "Bokmerker og historikk">
 
-<!-- Updater notifications -->
+ <!-- Updater notifications -->
 <!ENTITY updater_start_title2 "Oppdateringer er tilgjengelige for &brandShortName;">
 <!ENTITY updater_start_select2 "Trykk for å laste ned">
 
@@ -554,10 +560,17 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY colon ":">
 
-<!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
+<!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
 <!ENTITY actionbar_menu "Meny">
 <!ENTITY actionbar_done "Ferdig">
+
+<!-- Voice search in the awesome bar -->
+<!ENTITY voicesearch_prompt "Snakk nå">
+<!ENTITY voicesearch_failed_title "&brandShortName; stemmesøk">
+<!ENTITY voicesearch_failed_message "Det er et problem med stemmesøk akkurat nå. Prøv igjen senere">
+<!ENTITY voicesearch_failed_message_recoverable "Beklager! Vi klarte ikke gjenkjenne ordene. Prøv igjen.">
+<!ENTITY voicesearch_failed_retry "Prøv igjen">
 
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
@@ -566,6 +579,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
 <!ENTITY remote_tabs_last_synced "Sist synkronisert: &formatS;">
+<!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "Sist synkronisert: aldri">
 
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color

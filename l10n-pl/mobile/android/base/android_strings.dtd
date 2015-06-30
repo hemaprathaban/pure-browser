@@ -41,6 +41,7 @@
 <!ENTITY url_bar_default_text2 "Wpisz zapytanie lub adres">
 
 <!ENTITY bookmark "Zakładka">
+<!ENTITY bookmark_remove "Usuń zakładkę">
 <!ENTITY bookmark_added "Zakładka dodana">
 <!ENTITY bookmark_removed "Zakładka usunięta">
 <!ENTITY bookmark_updated "Zakładka uaktualniona">
@@ -78,6 +79,7 @@ is upper-case, to match Google and Android's convention. -->
 <!ENTITY pref_category_advanced "Zaawansowane">
 <!ENTITY pref_category_customize "Dostosuj">
 <!ENTITY pref_category_customize_summary "Strona domowa, wyszukiwanie, karty, importowanie">
+<!ENTITY pref_category_customize_alt_summary "Strona domowa, wyszukiwanie, karty, kolejkowanie kart, importowanie">
 
 <!-- Localization note (pref_category_language) : This is the preferences
 section in which the user picks the locale in which to display Firefox UI.
@@ -102,6 +104,8 @@ The locale includes both language and region concepts. -->
 <!ENTITY overlay_share_no_url "Nie znaleziono odnośnika do udostępnienia">
 <!ENTITY overlay_share_retry "Spróbuj ponownie">
 <!ENTITY overlay_share_select_device "Wybierz urządzenie">
+<!ENTITY overlay_no_synced_devices "Brak urządzeń połączonych z kontem Firefoksa">
+<!ENTITY overlay_share_tab_not_sent "Karta nie mogła zostać wysłana.\nProszę spróbować ponownie później.">
 
 <!ENTITY pref_category_search3 "Wyszukiwanie">
 <!ENTITY pref_category_search_summary "Dostosuj wyszukiwarki">
@@ -128,7 +132,9 @@ The locale includes both language and region concepts. -->
 <!ENTITY pref_category_devtools_summary "Zdalne debugowanie, migotanie malowania">
 <!ENTITY pref_developer_paint_flashing "Migotanie malowania">
 <!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
+<!ENTITY pref_category_logins "Dane logowania">
 <!ENTITY pref_remember_signons "Pamiętaj hasła">
+<!ENTITY pref_manage_logins "Zarządzanie danymi logowania">
 
 <!ENTITY pref_category_home "Strona domowa">
 <!ENTITY pref_category_home_summary "Dostosuj stronę domową">
@@ -165,6 +171,13 @@ selected to be added to the home page. -->
 <!ENTITY pref_tracking_protection_summary "Blokowanie przez program &brandShortName; prób śledzenia aktywności użytkownika przez strony">
 <!ENTITY pref_donottrack_title "Ograniczanie śledzenia">
 <!ENTITY pref_donottrack_summary "Informuj witryny, że użytkownik nie chce być śledzony">
+
+<!ENTITY tab_queue_toast_message "Otwórz później">
+<!ENTITY tab_queue_toast_action "Otwórz teraz">
+<!ENTITY tab_queue_notification_text_plural "Skolejkowanych kart: &formatD;">
+<!ENTITY tab_queue_notification_title_plural "Skolejkowane karty">
+<!ENTITY tab_queue_notification_title_singular "Skolejkowana karta">
+<!ENTITY tab_queue_notification_text_singular "Jedna skolejkowana karta">
 
 <!ENTITY pref_char_encoding "Kodowanie znaków">
 <!ENTITY pref_char_encoding_on "Pokazuj">
@@ -247,12 +260,12 @@ size. -->
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; może przesyłać zgłoszenia awarii, aby ułatwić organizacji &vendorShortName; poprawianie stabilności i bezpieczeństwa przeglądarki."><!-- check crashReporterDesc.label -->
 <!ENTITY datareporting_crashreporter_title_short "Awarie"><!-- check crashReporterSection.label -->
 <!ENTITY datareporting_wifi_title2 "Usługi lokalizacji organizacji &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary3 "Pomóż organizacji &vendorShortName; mapować świat! Udostępniaj przybliżone informacje o lokalizacji urządzenia poprzez Wi-Fi i dane sieci komórkowej, aby pomóc ulepszać usługi geolokalizacyjne">
+<!ENTITY datareporting_wifi_geolocation_summary4 "Pomóż organizacji &vendorShortName; mapować świat! Udostępniaj przybliżone informacje o lokalizacji urządzenia poprzez Wi-Fi i dane sieci komórkowej, aby pomóc ulepszać usługi geolokalizacyjne">
 
 <!ENTITY pref_update_autodownload2 "Automatyczne aktualizacje">
 <!ENTITY pref_update_autodownload_wifi "Tylko przez Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Nigdy">
-<!ENTITY pref_update_autodownload_always "Zawsze">   
+<!ENTITY pref_update_autodownload_always "Zawsze">
 
 <!-- Localization note (help_menu) : This string is used in the main menu-->
 <!ENTITY help_menu "Pomoc">
@@ -260,6 +273,7 @@ size. -->
 <!ENTITY quit "Zakończ">
 
 <!ENTITY addons "Dodatki">
+<!ENTITY logins "Dane logowania">
 <!ENTITY downloads "Pobrane pliki">
 <!ENTITY apps "Aplikacje">
 <!ENTITY char_encoding "Kodowanie znaków">
@@ -305,12 +319,21 @@ size. -->
 <!ENTITY contextmenu_top_sites_unpin "Odepnij stronę">
 <!ENTITY contextmenu_add_search_engine "Dodaj wyszukiwarkę">
 
+<!ENTITY doorhanger_login_no_username "[brak nazwy użytkownika]">
+<!ENTITY doorhanger_login_edit_title "Edycja danych logowania">
+<!ENTITY doorhanger_login_edit_username_hint "Nazwa użytkownika">
+<!ENTITY doorhanger_login_edit_password_hint "Hasło">
+<!ENTITY doorhanger_login_edit_toggle "Widoczne hasło">
+
 <!ENTITY pref_titlebar_mode "Pasek tytułu">
 <!ENTITY pref_titlebar_mode_title "Pokazywanie tytułu strony">
 <!ENTITY pref_titlebar_mode_url "Pokazywanie adresu strony">
 
 <!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
 <!ENTITY pref_scroll_title_bar_summary "Ukryj pasek tytułu przeglądarki &brandShortName; przy przewijaniu stron">
+
+<!ENTITY pref_tab_queue_title "Kolejkowanie kart">
+<!ENTITY pref_tab_queue_summary "Kolejkowanie kart i otwieranie ich przy następnym uruchomieniu programu &brandShortName; zamiast otwierania natychmiast.">
 
 <!ENTITY page_removed "Stronę usunięto">
 
@@ -347,6 +370,7 @@ size. -->
 <!ENTITY button_clear_data "Usuń dane">
 <!ENTITY button_set "Ustaw">
 <!ENTITY button_clear "Usuń">
+<!ENTITY button_remember "Zachowaj">
 
 <!ENTITY home_top_sites_title "Popularne">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
@@ -417,6 +441,7 @@ it is applicable. -->
 <!ENTITY set_image_chooser_title "Ustaw obraz jako">
 
 <!ENTITY suggestions_prompt3 "Włączyć podpowiedzi wyszukiwania?">
+<!ENTITY search_bar_item_desc "Szukaj w serwisie &formatS;">
 
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->

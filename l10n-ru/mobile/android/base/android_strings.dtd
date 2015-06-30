@@ -31,6 +31,7 @@
 <!ENTITY choose_file "Выбор файла">
 <!ENTITY url_bar_default_text2 "Введите запрос или адрес">
 <!ENTITY bookmark "Закладка">
+<!ENTITY bookmark_remove "Удалить закладку">
 <!ENTITY bookmark_added "Закладка добавлена">
 <!ENTITY bookmark_removed "Закладка удалена">
 <!ENTITY bookmark_updated "Закладка обновлена">
@@ -59,6 +60,7 @@
 <!ENTITY pref_category_advanced "Дополнительно">
 <!ENTITY pref_category_customize "Настройка">
 <!ENTITY pref_category_customize_summary "Домашняя, поиск, вкладки, импорт">
+<!ENTITY pref_category_customize_alt_summary "Домашняя, поиск, вкладки, открывать позже, импорт">
 <!ENTITY pref_category_language "Язык">
 <!ENTITY pref_category_language_summary "Изменение языка вашего браузера">
 <!ENTITY pref_browser_locale "Язык браузера">
@@ -73,6 +75,8 @@
 <!ENTITY overlay_share_no_url "В отправляемых данных ссылки не найдено">
 <!ENTITY overlay_share_retry "Попробовать снова">
 <!ENTITY overlay_share_select_device "Выбрать устройство">
+<!ENTITY overlay_no_synced_devices "Не найдено устройств, подключенных к Аккаунту Firefox">
+<!ENTITY overlay_share_tab_not_sent "Вкладка не может быть отправлена.\nПожалуйста, повторите попытку позже.">
 <!ENTITY pref_category_search3 "Поиск">
 <!ENTITY pref_category_search_summary "Настройка ваших поисковых систем">
 <!ENTITY pref_category_display "Отображение">
@@ -93,7 +97,9 @@
 <!ENTITY pref_category_devtools_summary "Удалённый отладчик, подсветка прорисовки">
 <!ENTITY pref_developer_paint_flashing "Подсветка прорисовки">
 <!ENTITY pref_developer_remotedebugging "Удалённый отладчик">
+<!ENTITY pref_category_logins "Пароли">
 <!ENTITY pref_remember_signons "Запоминать пароли">
+<!ENTITY pref_manage_logins "Управление паролями">
 <!ENTITY pref_category_home "Дом">
 <!ENTITY pref_category_home_summary "Настройка вашей домашней страницы">
 <!ENTITY pref_category_home_panels "Панели">
@@ -121,6 +127,12 @@
 <!ENTITY pref_tracking_protection_summary "&brandShortName; будет не давать сайтам вас отслеживать">
 <!ENTITY pref_donottrack_title "Не отслеживать">
 <!ENTITY pref_donottrack_summary "&brandShortName; будет сообщать сайтам, что вы не хотите, чтобы вас отслеживали">
+<!ENTITY tab_queue_toast_message "Открыть позже">
+<!ENTITY tab_queue_toast_action "Открыть сейчас">
+<!ENTITY tab_queue_notification_text_plural "В очереди &formatD; вкладки(ок)">
+<!ENTITY tab_queue_notification_title_plural "Вкладки в очереди">
+<!ENTITY tab_queue_notification_title_singular "Вкладка в очереди">
+<!ENTITY tab_queue_notification_text_singular "В очереди 1 вкладка">
 <!ENTITY pref_char_encoding "Кодировка">
 <!ENTITY pref_char_encoding_on "Показывать меню">
 <!ENTITY pref_char_encoding_off "Скрывать меню">
@@ -190,7 +202,7 @@
 <!ENTITY datareporting_crashreporter_summary "&brandShortName; отправляет сообщения о падениях, чтобы помочь &vendorShortName; сделать ваш браузер более стабильным и безопасным">
 <!ENTITY datareporting_crashreporter_title_short "Сообщения о падениях">
 <!ENTITY datareporting_wifi_title2 "Служба местоположения &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary3 "Помогите &vendorShortName; составить карту мира! Поделитесь приблизительным местоположением Wi-Fi и сотовой сети вашего устройства, чтобы улучшить нашу службу геолокации">
+<!ENTITY datareporting_wifi_geolocation_summary4 "Помогите &vendorShortName; составить карту мира! Поделитесь приблизительным местоположением Wi-Fi и сотовой сети вашего устройства, чтобы улучшить нашу службу геолокации.">
 <!ENTITY pref_update_autodownload2 "Автоматически загружать обновления">
 <!ENTITY pref_update_autodownload_wifi "Только через Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Никогда">
@@ -198,6 +210,7 @@
 <!ENTITY help_menu "Справка">
 <!ENTITY quit "Выход">
 <!ENTITY addons "Дополнения">
+<!ENTITY logins "Пароли">
 <!ENTITY downloads "Загрузки">
 <!ENTITY apps "Приложения">
 <!ENTITY char_encoding "Кодировка">
@@ -242,11 +255,18 @@
 <!ENTITY contextmenu_top_sites_pin "Закрепить сайт">
 <!ENTITY contextmenu_top_sites_unpin "Открепить сайт">
 <!ENTITY contextmenu_add_search_engine "Добавить поисковую систему">
+<!ENTITY doorhanger_login_no_username "[Нет имени пользователя]">
+<!ENTITY doorhanger_login_edit_title "Изменить логин">
+<!ENTITY doorhanger_login_edit_username_hint "Имя пользователя">
+<!ENTITY doorhanger_login_edit_password_hint "Пароль">
+<!ENTITY doorhanger_login_edit_toggle "Показать пароль">
 <!ENTITY pref_titlebar_mode "Панель заголовка">
 <!ENTITY pref_titlebar_mode_title "Отображать заголовок страницы">
 <!ENTITY pref_titlebar_mode_url "Отображать адрес страницы">
 <!ENTITY pref_scroll_title_bar2 "Полноэкранный веб-серфинг">
 <!ENTITY pref_scroll_title_bar_summary "Скрывать панель заголовка &brandShortName; при прокрутке страницы вниз">
+<!ENTITY pref_tab_queue_title "Открывать позже">
+<!ENTITY pref_tab_queue_summary "Не давать вкладкам открываться сразу. Все вкладки из очереди будут открыты при следующем запуске &brandShortName;.">
 <!ENTITY page_removed "Страница удалена">
 <!ENTITY bookmark_edit_title "Изменение закладки">
 <!ENTITY bookmark_edit_name "Имя">
@@ -274,6 +294,7 @@
 <!ENTITY button_clear_data "Удалить данные">
 <!ENTITY button_set "Установить">
 <!ENTITY button_clear "Очистить">
+<!ENTITY button_remember "Запомнить">
 <!ENTITY home_top_sites_title "Топ сайтов">
 <!ENTITY home_top_sites_add "Добавить сайт">
 <!ENTITY home_title "Дом &brandShortName;">
@@ -337,6 +358,7 @@
 <!ENTITY bookmarkhistory_import_history "Импорт истории из Android">
 <!ENTITY bookmarkhistory_import_wait "Пожалуйста, подождите…">
 <!ENTITY suggestions_prompt3 "Вы хотите включить поисковые предложения?">
+<!ENTITY search_bar_item_desc "Поиск через &formatS;">
 <!ENTITY suggestion_for_engine "Искать &formatS2; в &formatS1;">
 <!ENTITY webapp_generic_name "Приложение">
 <!ENTITY searchable_description "Закладки и история">
