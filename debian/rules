@@ -20,7 +20,7 @@ PRODUCT_NAME ?= $(DEBIAN_SOURCE)
 OFFICIAL_NAME := firefox
 include debian/upstream.mk
 
-ifeq ($(BACKPORT),wheezy)
+ifneq (,$(filter wheezy jessie,$(BACKPORT)))
 LESS_SYSTEM_LIBS = 1
 endif
 
