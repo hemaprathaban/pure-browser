@@ -1,0 +1,71 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 3 Jul 2015 08:49:08 +0900
+Subject: Update patch from bug 1094324 to fit what landed upstream in newer
+ versions.
+
+---
+ browser/app/profile/firefox.js             | 2 +-
+ browser/base/content/newtab/intro.js       | 2 +-
+ browser/base/content/newtab/page.js        | 1 +
+ browser/modules/DirectoryLinksProvider.jsm | 4 +++-
+ 4 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+index 63eef5f..35fbb8b 100644
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -1635,7 +1635,7 @@ pref("browser.newtabpage.introShown", false);
+ pref("browser.newtabpage.enabled", true);
+ 
+ // Toggles the enhanced content of 'about:newtab'. Shows sponsored tiles.
+-pref("browser.newtabpage.enhanced", true);
++sticky_pref("browser.newtabpage.enhanced", true);
+ 
+ // number of rows of newtab grid
+ pref("browser.newtabpage.rows", 3);
+diff --git a/browser/base/content/newtab/intro.js b/browser/base/content/newtab/intro.js
+index 727d6e6..f3e4097 100644
+--- a/browser/base/content/newtab/intro.js
++++ b/browser/base/content/newtab/intro.js
+@@ -26,7 +26,7 @@ let gIntro = {
+   },
+ 
+   showIfNecessary: function() {
+-    if (!Services.get.getBoolPref(PREF_NEWTAB_ENHANCED)) {
++    if (!Services.prefs.getBoolPref(PREF_NEWTAB_ENHANCED)) {
+       return;
+     }
+     if (!Services.prefs.getBoolPref(PREF_INTRO_SHOWN)) {
+diff --git a/browser/base/content/newtab/page.js b/browser/base/content/newtab/page.js
+index aa4ba92..d916fbe 100644
+--- a/browser/base/content/newtab/page.js
++++ b/browser/base/content/newtab/page.js
+@@ -54,6 +54,7 @@ let gPage = {
+       // Update thumbnails to the new enhanced setting
+       if (aData == "browser.newtabpage.enhanced") {
+         this.update();
++        gIntro.showIfNecessary();
+       }
+ 
+       // Initialize the whole page if we haven't done that, yet.
+diff --git a/browser/modules/DirectoryLinksProvider.jsm b/browser/modules/DirectoryLinksProvider.jsm
+index 0f24f59..43a27c7 100644
+--- a/browser/modules/DirectoryLinksProvider.jsm
++++ b/browser/modules/DirectoryLinksProvider.jsm
+@@ -140,13 +140,15 @@ let DirectoryLinksProvider = {
+    */
+   _setDefaultEnhanced: function DirectoryLinksProvider_setDefaultEnhanced() {
+     if (!Services.prefs.prefHasUserValue(PREF_NEWTAB_ENHANCED)) {
++      let enhanced = Services.prefs.getBoolPref(PREF_NEWTAB_ENHANCED);
+       try {
+         // Default to not enhanced if DNT is set to tell websites to not track
+         if (Services.prefs.getBoolPref("privacy.donottrackheader.enabled")) {
+-          Services.prefs.setBoolPref(PREF_NEWTAB_ENHANCED, false);
++          enhanced = false;
+         }
+       }
+       catch(ex) {}
++      Services.prefs.setBoolPref(PREF_NEWTAB_ENHANCED, enhanced);
+     }
+   },
+ 
