@@ -1635,7 +1635,7 @@ pref("browser.newtabpage.introShown", false);
 pref("browser.newtabpage.enabled", true);
 
 // Toggles the enhanced content of 'about:newtab'. Shows sponsored tiles.
-pref("browser.newtabpage.enhanced", true);
+sticky_pref("browser.newtabpage.enhanced", true);
 
 // number of rows of newtab grid
 pref("browser.newtabpage.rows", 3);
