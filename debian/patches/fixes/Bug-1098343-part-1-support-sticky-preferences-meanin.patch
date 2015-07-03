@@ -18,10 +18,10 @@ Subject: Bug 1098343 (part 1) - support 'sticky' preferences, meaning a user
  create mode 100644 modules/libpref/test/unit/test_stickyprefs.js
 
 diff --git a/modules/libpref/prefapi.cpp b/modules/libpref/prefapi.cpp
-index 19d2d31..fa617f9 100644
+index d5b716f..fd221c3 100644
 --- a/modules/libpref/prefapi.cpp
 +++ b/modules/libpref/prefapi.cpp
-@@ -137,7 +137,8 @@ static nsresult pref_DoCallback(const char* changed_pref);
+@@ -140,7 +140,8 @@ static nsresult pref_DoCallback(const char* changed_pref);
  
  enum {
      kPrefSetDefault = 1,
@@ -31,7 +31,7 @@ index 19d2d31..fa617f9 100644
  };
  static nsresult pref_HashPref(const char *key, PrefValue value, PrefType type, uint32_t flags);
  
-@@ -337,7 +338,8 @@ pref_savePref(PLDHashTable *table, PLDHashEntryHdr *heh, uint32_t i, void *arg)
+@@ -340,7 +341,8 @@ pref_savePref(PLDHashTable *table, PLDHashEntryHdr *heh, uint32_t i, void *arg)
          (pref_ValueChanged(pref->defaultPref,
                             pref->userPref,
                             (PrefType) PREF_TYPE(pref)) ||
@@ -41,7 +41,7 @@ index 19d2d31..fa617f9 100644
          sourcePref = &pref->userPref;
      } else {
          if (argData->saveTypes == SAVE_ALL_AND_DEFAULTS) {
-@@ -771,6 +773,8 @@ nsresult pref_HashPref(const char *key, PrefValue value, PrefType type, uint32_t
+@@ -778,6 +780,8 @@ nsresult pref_HashPref(const char *key, PrefValue value, PrefType type, uint32_t
              {
                  pref_SetValue(&pref->defaultPref, &pref->flags, value, type);
                  pref->flags |= PREF_HAS_DEFAULT;
@@ -50,7 +50,7 @@ index 19d2d31..fa617f9 100644
                  if (!PREF_HAS_USER_VALUE(pref))
                      valueChanged = true;
              }
-@@ -780,9 +784,11 @@ nsresult pref_HashPref(const char *key, PrefValue value, PrefType type, uint32_t
+@@ -787,9 +791,11 @@ nsresult pref_HashPref(const char *key, PrefValue value, PrefType type, uint32_t
      }
      else
      {
@@ -63,7 +63,7 @@ index 19d2d31..fa617f9 100644
              !pref_ValueChanged(pref->defaultPref, value, type) &&
              !(flags & kPrefForceSet))
          {
-@@ -996,9 +1002,14 @@ void PREF_ReaderCallback(void       *closure,
+@@ -1003,9 +1009,14 @@ void PREF_ReaderCallback(void       *closure,
                           PrefValue   value,
                           PrefType    type,
                           bool        isDefault,

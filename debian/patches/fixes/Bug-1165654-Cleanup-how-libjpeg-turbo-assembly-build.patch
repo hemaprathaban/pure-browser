@@ -10,10 +10,10 @@ Most notably, always set LIBJPEG_TURBO_AS if LIBJPEG_TURBO_ASFLAGS is set.
  2 files changed, 87 insertions(+), 121 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index dcf7db6..a4349e0 100644
+index 8203cda..2ec63b6 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -3911,11 +3911,6 @@ VPX_X86_ASM=
+@@ -3914,11 +3914,6 @@ VPX_X86_ASM=
  VPX_ARM_ASM=
  LIBJPEG_TURBO_AS=
  LIBJPEG_TURBO_ASFLAGS=
@@ -25,7 +25,7 @@ index dcf7db6..a4349e0 100644
  MOZ_PERMISSIONS=1
  MOZ_PLACES=1
  MOZ_SOCIAL=1
-@@ -6156,55 +6151,47 @@ dnl files.
+@@ -6164,55 +6159,47 @@ dnl files.
  if test -n "$MOZ_LIBJPEG_TURBO"; then
  
    dnl Do we support libjpeg-turbo on this platform?
@@ -91,7 +91,7 @@ index dcf7db6..a4349e0 100644
      LIBJPEG_TURBO_AS=$YASM
  
      if test -z "$LIBJPEG_TURBO_AS" ; then
-@@ -6222,21 +6209,12 @@ if test -n "$LIBJPEG_TURBO_X86_ASM" -o -n "$LIBJPEG_TURBO_X64_ASM" ; then
+@@ -6230,21 +6217,12 @@ if test -n "$LIBJPEG_TURBO_X86_ASM" -o -n "$LIBJPEG_TURBO_X64_ASM" ; then
              AC_MSG_ERROR([Yasm 1.1 or greater is required to build with libjpeg-turbo's optimized JPEG decoding routines, but you appear to have version $_YASM_MAJOR_VERSION.$_YASM_MINOR_VERSION.  Upgrade to the newest version or configure with --disable-libjpeg-turbo to use the pure C JPEG decoder.  See https://developer.mozilla.org/en/YASM for more details.])
          fi
      fi
@@ -118,7 +118,7 @@ index dcf7db6..a4349e0 100644
  elif test -n "$MOZ_LIBJPEG_TURBO"; then
      dnl Warn if we're not building the optimized routines, even though the user
      dnl didn't specify --disable-libjpeg-turbo.
-@@ -8888,11 +8866,6 @@ AC_SUBST(MOZ_INSTRUMENT_EVENT_LOOP)
+@@ -8895,11 +8873,6 @@ AC_SUBST(MOZ_INSTRUMENT_EVENT_LOOP)
  AC_SUBST(MOZ_CODE_COVERAGE)
  AC_SUBST(LIBJPEG_TURBO_AS)
  AC_SUBST(LIBJPEG_TURBO_ASFLAGS)

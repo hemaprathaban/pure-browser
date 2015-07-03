@@ -926,7 +926,7 @@ CCGraph::RemoveNodeFromMap(void* aPtr)
 static nsISupports*
 CanonicalizeXPCOMParticipant(nsISupports* aIn)
 {
-  nsISupports* out;
+  nsISupports* out = nullptr;
   aIn->QueryInterface(NS_GET_IID(nsCycleCollectionISupports),
                       reinterpret_cast<void**>(&out));
   return out;
@@ -1325,9 +1325,7 @@ private:
   void CheckThreadSafety();
   void ShutdownCollect();
 
-  void FixGrayBits(bool aForceGC, TimeLog& aTimeLog);
-  bool IsIncrementalGCInProgress();
-  void FinishAnyIncrementalGCInProgress();
+  void FixGrayBits(bool aForceGC);
   bool ShouldMergeZones(ccType aCCType);
 
   void BeginCollection(ccType aCCType, nsICycleCollectorListener* aManualListener);
@@ -1423,6 +1421,7 @@ ToParticipant(nsISupports* aPtr, nsXPCOMCycleCollectionParticipant** aCp)
   // nsXPCOMCycleCollectionParticipant, which is a per-class singleton helper
   // object that implements traversal and unlinking logic for the nsISupports
   // in question.
+  *aCp = nullptr;
   CallQueryInterface(aPtr, aCp);
 }
 
@@ -3485,7 +3484,7 @@ nsCycleCollector::CheckThreadSafety()
 // and also when UnmarkGray has run out of stack.  We also force GCs on shut
 // down to collect cycles involving both DOM and JS.
 void
-nsCycleCollector::FixGrayBits(bool aForceGC, TimeLog& aTimeLog)
+nsCycleCollector::FixGrayBits(bool aForceGC)
 {
   CheckThreadSafety();
 
@@ -3495,7 +3494,6 @@ nsCycleCollector::FixGrayBits(bool aForceGC, TimeLog& aTimeLog)
 
   if (!aForceGC) {
     mJSRuntime->FixWeakMappingGrayBits();
-    aTimeLog.Checkpoint("FixWeakMappingGrayBits");
 
     bool needGC = !mJSRuntime->AreGCGrayBitsValid();
     // Only do a telemetry ping for non-shutdown CCs.
@@ -3506,25 +3504,10 @@ nsCycleCollector::FixGrayBits(bool aForceGC, TimeLog& aTimeLog)
     mResults.mForcedGC = true;
   }
 
+  TimeLog timeLog;
   mJSRuntime->GarbageCollect(aForceGC ? JS::gcreason::SHUTDOWN_CC :
                                         JS::gcreason::CC_FORCED);
-  aTimeLog.Checkpoint("FixGrayBits GC");
-}
-
-bool
-nsCycleCollector::IsIncrementalGCInProgress()
-{
-  return mJSRuntime && JS::IsIncrementalGCInProgress(mJSRuntime->Runtime());
-}
-
-void
-nsCycleCollector::FinishAnyIncrementalGCInProgress()
-{
-  if (IsIncrementalGCInProgress()) {
-    NS_WARNING("Finishing incremental GC in progress during CC");
-    JS::PrepareForIncrementalGC(mJSRuntime->Runtime());
-    JS::FinishIncrementalGC(mJSRuntime->Runtime(), JS::gcreason::CC_FORCED);
-  }
+  timeLog.Checkpoint("GC()");
 }
 
 void
@@ -3567,8 +3550,6 @@ nsCycleCollector::CleanupAfterCollection()
 void
 nsCycleCollector::ShutdownCollect()
 {
-  FinishAnyIncrementalGCInProgress();
-
   SliceBudget unlimitedBudget;
   uint32_t i;
   for (i = 0; i < DEFAULT_SHUTDOWN_COLLECTIONS; ++i) {
@@ -3601,8 +3582,6 @@ nsCycleCollector::Collect(ccType aCCType,
     return false;
   }
   mActivelyCollecting = true;
-
-  MOZ_ASSERT(!IsIncrementalGCInProgress());
 
   bool startedIdle = (mIncrementalPhase == IdlePhase);
   bool collectedAny = false;
@@ -3789,25 +3768,13 @@ nsCycleCollector::BeginCollection(ccType aCCType,
     // hijinks from ForgetSkippable and compartmental GCs.
     mListener->GetWantAllTraces(&forceGC);
   }
-
-  // BeginCycleCollectionCallback() might have started an IGC, and we need
-  // to finish it before we run FixGrayBits.
-  FinishAnyIncrementalGCInProgress();
-  timeLog.Checkpoint("Pre-FixGrayBits finish IGC");
-
-  FixGrayBits(forceGC, timeLog);
+  FixGrayBits(forceGC);
 
   FreeSnowWhite(true);
-  timeLog.Checkpoint("BeginCollection FreeSnowWhite");
 
   if (mListener && NS_FAILED(mListener->Begin())) {
     mListener = nullptr;
   }
-
-  // FreeSnowWhite could potentially have started an IGC, which we need
-  // to finish before we look at any JS roots.
-  FinishAnyIncrementalGCInProgress();
-  timeLog.Checkpoint("Post-FreeSnowWhite finish IGC");
 
   // Set up the data structures for building the graph.
   mGraph.Init();
@@ -3818,7 +3785,6 @@ nsCycleCollector::BeginCollection(ccType aCCType,
   MOZ_ASSERT(!mBuilder, "Forgot to clear mBuilder");
   mBuilder = new CCGraphBuilder(mGraph, mResults, mJSRuntime, mListener,
                                 mergeZones);
-  timeLog.Checkpoint("BeginCollection prepare graph builder");
 
   if (mJSRuntime) {
     mJSRuntime->TraverseRoots(*mBuilder);
@@ -3958,113 +3924,6 @@ CycleCollectedJSRuntime::Get()
   return nullptr;
 }
 
-
-namespace mozilla {
-namespace cyclecollector {
-
-void
-HoldJSObjectsImpl(void* aHolder, nsScriptObjectTracer* aTracer)
-{
-  CollectorData* data = sCollectorData.get();
-
-  // We should have started the cycle collector by now.
-  MOZ_ASSERT(data);
-  MOZ_ASSERT(data->mCollector);
-  // And we should have a runtime.
-  MOZ_ASSERT(data->mRuntime);
-
-  data->mRuntime->AddJSHolder(aHolder, aTracer);
-}
-
-void
-HoldJSObjectsImpl(nsISupports* aHolder)
-{
-  nsXPCOMCycleCollectionParticipant* participant;
-  CallQueryInterface(aHolder, &participant);
-  MOZ_ASSERT(participant, "Failed to QI to nsXPCOMCycleCollectionParticipant!");
-  MOZ_ASSERT(participant->CheckForRightISupports(aHolder),
-             "The result of QIing a JS holder should be the same as ToSupports");
-
-  HoldJSObjectsImpl(aHolder, participant);
-}
-
-void
-DropJSObjectsImpl(void* aHolder)
-{
-  CollectorData* data = sCollectorData.get();
-
-  // We should have started the cycle collector by now, and not completely
-  // shut down.
-  MOZ_ASSERT(data);
-  // And we should have a runtime.
-  MOZ_ASSERT(data->mRuntime);
-
-  data->mRuntime->RemoveJSHolder(aHolder);
-}
-
-void
-DropJSObjectsImpl(nsISupports* aHolder)
-{
-#ifdef DEBUG
-  nsXPCOMCycleCollectionParticipant* participant;
-  CallQueryInterface(aHolder, &participant);
-  MOZ_ASSERT(participant, "Failed to QI to nsXPCOMCycleCollectionParticipant!");
-  MOZ_ASSERT(participant->CheckForRightISupports(aHolder),
-             "The result of QIing a JS holder should be the same as ToSupports");
-#endif
-  DropJSObjectsImpl(static_cast<void*>(aHolder));
-}
-
-#ifdef DEBUG
-bool
-IsJSHolder(void* aHolder)
-{
-  CollectorData* data = sCollectorData.get();
-
-  // We should have started the cycle collector by now, and not completely
-  // shut down.
-  MOZ_ASSERT(data);
-  // And we should have a runtime.
-  MOZ_ASSERT(data->mRuntime);
-
-  return data->mRuntime->IsJSHolder(aHolder);
-}
-#endif
-
-void
-DeferredFinalize(nsISupports* aSupports)
-{
-  CollectorData* data = sCollectorData.get();
-
-  // We should have started the cycle collector by now, and not completely
-  // shut down.
-  MOZ_ASSERT(data);
-  // And we should have a runtime.
-  MOZ_ASSERT(data->mRuntime);
-
-  data->mRuntime->DeferredFinalize(aSupports);
-}
-
-void
-DeferredFinalize(DeferredFinalizeAppendFunction aAppendFunc,
-                 DeferredFinalizeFunction aFunc,
-                 void* aThing)
-{
-  CollectorData* data = sCollectorData.get();
-
-  // We should have started the cycle collector by now, and not completely
-  // shut down.
-  MOZ_ASSERT(data);
-  // And we should have a runtime.
-  MOZ_ASSERT(data->mRuntime);
-
-  data->mRuntime->DeferredFinalize(aAppendFunc, aFunc, aThing);
-}
-
-} // namespace cyclecollector
-} // namespace mozilla
-
-
 MOZ_NEVER_INLINE static void
 SuspectAfterShutdown(void* aPtr, nsCycleCollectionParticipant* aCp,
                      nsCycleCollectingAutoRefCnt* aRefCnt,
@@ -4188,13 +4047,10 @@ nsCycleCollector_forgetSkippable(bool aRemoveChildlessNodes,
 void
 nsCycleCollector_dispatchDeferredDeletion(bool aContinuation)
 {
-  CollectorData* data = sCollectorData.get();
-
-  if (!data || !data->mRuntime) {
-    return;
+  CycleCollectedJSRuntime* rt = CycleCollectedJSRuntime::Get();
+  if (rt) {
+    rt->DispatchDeferredDeletion(aContinuation);
   }
-
-  data->mRuntime->DispatchDeferredDeletion(aContinuation);
 }
 
 bool

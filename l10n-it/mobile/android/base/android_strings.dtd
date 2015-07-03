@@ -32,6 +32,7 @@
 <!ENTITY choose_file "Scelta file">
 <!ENTITY url_bar_default_text2 "Cerca o inserisci un indirizzo">
 <!ENTITY bookmark "Segnalibro">
+<!ENTITY bookmark_remove "Elimina segnalibro">
 <!ENTITY bookmark_added "Aggiunto segnalibro">
 <!ENTITY bookmark_removed "Segnalibro eliminato">
 <!ENTITY bookmark_updated "Segnalibro aggiornato">
@@ -60,6 +61,7 @@
 <!ENTITY pref_category_advanced "Avanzate">
 <!ENTITY pref_category_customize "Personalizzazione">
 <!ENTITY pref_category_customize_summary "Pagina iniziale, ricerca, schede, importazione">
+<!ENTITY pref_category_customize_alt_summary "Pagina iniziale, ricerca, schede, apertura ritardata, importazione">
 <!ENTITY pref_category_language "Lingua">
 <!ENTITY pref_category_language_summary "Cambia la lingua del browser">
 <!ENTITY pref_browser_locale "Lingua del browser">
@@ -74,6 +76,8 @@
 <!ENTITY overlay_share_no_url "Nessun link disponibile in questa condivisione">
 <!ENTITY overlay_share_retry "Riprova">
 <!ENTITY overlay_share_select_device "Seleziona dispositivo">
+<!ENTITY overlay_no_synced_devices "Non è disponibile alcun dispositivo connesso a Firefox Account">
+<!ENTITY overlay_share_tab_not_sent "Impossibile inviare la scheda.\nRiprovare più tardi.">
 <!ENTITY pref_category_search3 "Ricerca">
 <!ENTITY pref_category_search_summary "Personalizza i motori di ricerca">
 <!ENTITY pref_category_display "Visualizzazione">
@@ -94,7 +98,9 @@
 <!ENTITY pref_category_devtools_summary "Debug remoto, evidenziazione aree disegnate">
 <!ENTITY pref_developer_paint_flashing "Evidenzia aree disegnate">
 <!ENTITY pref_developer_remotedebugging "Debug remoto">
+<!ENTITY pref_category_logins "Accessi">
 <!ENTITY pref_remember_signons "Ricorda password">
+<!ENTITY pref_manage_logins "Gestione accessi">
 <!ENTITY pref_category_home "Home">
 <!ENTITY pref_category_home_summary "Personalizza la pagina iniziale">
 <!ENTITY pref_category_home_panels "Pannelli">
@@ -122,6 +128,12 @@
 <!ENTITY pref_tracking_protection_summary "Impedisci ai siti di tracciare gli utenti">
 <!ENTITY pref_donottrack_title "Antitracciamento">
 <!ENTITY pref_donottrack_summary "Richiedi ai siti di non effettuare alcun tracciamento">
+<!ENTITY tab_queue_toast_message "Apri più tardi">
+<!ENTITY tab_queue_toast_action "Apri adesso">
+<!ENTITY tab_queue_notification_text_plural "&formatD; schede in coda">
+<!ENTITY tab_queue_notification_title_plural "Schede in coda">
+<!ENTITY tab_queue_notification_title_singular "Scheda in coda">
+<!ENTITY tab_queue_notification_text_singular "1 scheda in coda">
 <!ENTITY pref_char_encoding "Codifica caratteri">
 <!ENTITY pref_char_encoding_on "Visualizza menu">
 <!ENTITY pref_char_encoding_off "Non visualizzare menu">
@@ -191,7 +203,7 @@
 <!ENTITY datareporting_crashreporter_summary "Invia a &vendorShortName; segnalazioni relative ad arresti anomali di &brandShortName; per migliorarne la stabilità e la sicurezza">
 <!ENTITY datareporting_crashreporter_title_short "Crash Reporter">
 <!ENTITY datareporting_wifi_title2 "Georilevazione di &vendorShortName;">
-<!ENTITY datareporting_wifi_geolocation_summary3 "Aiuta &vendorShortName; a creare una mappa del mondo. Condividi la posizione approssimativa del tuo dispositivo all’interno delle reti Wi-Fi e cellulare per migliorare i nostri servizi di georilevazione.">
+<!ENTITY datareporting_wifi_geolocation_summary4 "Aiuta &vendorShortName; a creare una mappa del mondo. Condividi la posizione approssimativa del tuo dispositivo all’interno delle reti Wi-Fi e cellulare per migliorare i nostri servizi di georilevazione.">
 <!ENTITY pref_update_autodownload2 "Scarica aggiornamenti">
 <!ENTITY pref_update_autodownload_wifi "Solo con Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Mai">
@@ -199,6 +211,7 @@
 <!ENTITY help_menu "Guida">
 <!ENTITY quit "Esci">
 <!ENTITY addons "Componenti aggiuntivi">
+<!ENTITY logins "Accessi">
 <!ENTITY downloads "Download">
 <!ENTITY apps "App">
 <!ENTITY char_encoding "Codifica caratteri">
@@ -243,11 +256,18 @@
 <!ENTITY contextmenu_top_sites_pin "Blocca sito">
 <!ENTITY contextmenu_top_sites_unpin "Sblocca sito">
 <!ENTITY contextmenu_add_search_engine "Aggiungi motore di ricerca">
+<!ENTITY doorhanger_login_no_username "[nessun nome utente]">
+<!ENTITY doorhanger_login_edit_title "Modifica accesso">
+<!ENTITY doorhanger_login_edit_username_hint "Nome utente">
+<!ENTITY doorhanger_login_edit_password_hint "Password">
+<!ENTITY doorhanger_login_edit_toggle "Mostra password">
 <!ENTITY pref_titlebar_mode "Barra del titolo">
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
 <!ENTITY pref_scroll_title_bar2 "Navigazione a schermo intero">
 <!ENTITY pref_scroll_title_bar_summary "Nascondi la barra del titolo di &brandShortName; quando si scorre una pagina verso il basso">
+<!ENTITY pref_tab_queue_title "Apertura ritardata">
+<!ENTITY pref_tab_queue_summary "Non aprire immediatamente le schede ma apri tutte le schede in coda al successivo caricamento di &brandShortName;.">
 <!ENTITY page_removed "Pagina rimossa">
 <!ENTITY bookmark_edit_title "Modifica segnalibro">
 <!ENTITY bookmark_edit_name "Nome">
@@ -275,6 +295,7 @@
 <!ENTITY button_clear_data "Elimina dati">
 <!ENTITY button_set "Imposta">
 <!ENTITY button_clear "Cancella">
+<!ENTITY button_remember "Ricorda">
 <!ENTITY home_top_sites_title "Siti principali">
 <!ENTITY home_top_sites_add "Aggiungi un sito">
 <!ENTITY home_history_title "Cronologia">
@@ -336,6 +357,7 @@
 <!ENTITY bookmarkhistory_import_bookmarks "Importazione segnalibri da Android">
 <!ENTITY bookmarkhistory_import_history "Importazione cronologia da Android">
 <!ENTITY bookmarkhistory_import_wait "Attendere…">
+<!ENTITY search_bar_item_desc "Cerca con &formatS;">
 <!ENTITY suggestions_prompt3 "Attivare i suggerimenti di ricerca?">
 <!ENTITY suggestion_for_engine "Cerca &formatS2; in &formatS1;">
 <!ENTITY webapp_generic_name "App">
