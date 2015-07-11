@@ -327,7 +327,6 @@ stamps/dh_install-l10n:: $(L10N_DH_INSTALL_STAMPS)
 
 $(L10N_DH_INSTALL_STAMPS):: stamps/dh_install-l10n-%: stamps/build-l10n-%
 	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi/langpack-$*@$($(PRODUCT)).mozilla.org.xpi $(LIB_DIR)/browser/extensions/
-	dh_install -p$($(PRODUCT))-l10n-$(call lc,$*) build-l10n/dist/xpi-stage/locale-$*/browser/searchplugins/* /etc/$($(PRODUCT))/searchplugins/locale/$*/
 
 branding_icon = $(or $(wildcard $(BRANDING)/$(1)),$(wildcard build-$(PRODUCT)/$(BRANDING)/$(1)))
 
