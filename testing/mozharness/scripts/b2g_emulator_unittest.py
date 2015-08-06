@@ -143,6 +143,7 @@ class B2GEmulatorTest(TestingMixin, VCSMixin, BaseScript, BlobUploadMixin):
         self.installer_url = c.get('installer_url')
         self.installer_path = c.get('installer_path')
         self.test_url = c.get('test_url')
+        self.test_packages_url = c.get('test_packages_url')
         self.test_manifest = c.get('test_manifest')
         self.busybox_path = None
 
@@ -180,7 +181,7 @@ class B2GEmulatorTest(TestingMixin, VCSMixin, BaseScript, BlobUploadMixin):
         dirs['abs_xpcshell_dir'] = os.path.join(
             dirs['abs_test_install_dir'], 'xpcshell')
         dirs['abs_cppunittest_dir'] = os.path.join(
-            dirs['abs_test_install_dir'], 'cppunittests')
+            dirs['abs_test_install_dir'], 'cppunittest')
         for key in dirs.keys():
             if key not in abs_dirs:
                 abs_dirs[key] = dirs[key]

@@ -7,7 +7,6 @@
 
 import copy
 import os
-import re
 import sys
 
 # load modules from parent dir
@@ -133,6 +132,8 @@ class LuciddreamTest(TestingMixin, MercurialScript, MozbaseMixin, BaseScript,
             return self.abs_dirs
         abs_dirs = super(LuciddreamTest, self).query_abs_dirs()
         dirs = {}
+        dirs['abs_blob_upload_dir'] = os.path.join(
+            abs_dirs['abs_work_dir'], 'logs')
         dirs['abs_test_install_dir'] = os.path.join(
             abs_dirs['abs_work_dir'], 'tests')
         dirs['abs_emulator_dir'] = os.path.join(
@@ -227,31 +228,38 @@ class LuciddreamTest(TestingMixin, MercurialScript, MozbaseMixin, BaseScript,
         ld_parser = self.parser_class(config=self.config,
                                       log_obj=self.log_obj,
                                       error_list=BaseErrorList)
-
-        raw_log = os.path.join(dirs['abs_work_dir'], 'luciddream_raw.log')
+ 
         cmd = [self.query_python_path('python'),
-               os.path.join(ld_dir, 'luciddream', 'runluciddream.py'),
-               '--log-raw=%s' % raw_log
+               os.path.join(ld_dir, 'luciddream', 'runluciddream.py')
                ]
+
+        str_format_values = {
+            'browser_path': self.binary_path,
+            'raw_log_file': os.path.join(dirs['abs_work_dir'], 'luciddream_raw.log'),
+            'test_manifest': os.path.join(ld_dir, 'example-tests', 'luciddream.ini')
+        }
+
         if self.config.get('emulator_url'):
-            cmd += ['--b2gpath', dirs['abs_b2g-distro_dir'],
-                    '--browser-path', self.binary_path,
-                    ]
+            str_format_values['emulator_path'] = dirs['abs_b2g-distro_dir']
         else:
             if self.config.get('b2gdesktop_url'):
-                bin_path = os.path.join(dirs['abs_b2g_desktop'], 'b2g', 'b2g')
+                str_format_values['fxos_desktop_path'] = os.path.join(dirs['abs_b2g_desktop'], 'b2g', 'b2g')
             else:
-                bin_path = self.config.get('b2gdesktop_path')
-            cmd += ['--b2g-desktop-path', bin_path,
-                    '--browser-path', self.binary_path,
-                    '--gaia-profile', os.path.join(dirs['abs_gaia_dir'], 'profile'),
-                    ]
-        cmd += [os.path.join(ld_dir, 'example-tests', 'luciddream.ini')]
+                str_format_values['fxos_desktop_path'] = self.config.get('b2gdesktop_path')
+            str_format_values['gaia_profile'] = os.path.join(dirs['abs_gaia_dir'], 'profile')
+
+        suite = 'luciddream-emulator' if self.config.get('emulator_url') else 'luciddream-b2gdt'
+        options = self.tree_config['suite_definitions'][suite]['options']
+        for option in options:
+            option = option % str_format_values
+            if not option.endswith('None'):
+                cmd.append(option)
 
         code = self.run_command(cmd, env=env,
                                 output_timeout=1000,
                                 output_parser=ld_parser,
-                                success_codes=[0])
+                                success_codes=[0],
+                                cwd=dirs['abs_work_dir'])
 
         level = INFO
         if code == 0 and ld_parser.passed > 0 and ld_parser.failed == 0:
@@ -270,6 +278,14 @@ class LuciddreamTest(TestingMixin, MercurialScript, MozbaseMixin, BaseScript,
         self.log("Luciddream exited with return code %s: %s" % (code, status),
                  level=level)
         self.buildbot_status(tbpl_status)
+
+        if not os.path.exists(dirs['abs_blob_upload_dir']):
+            self.mkdir_p(dirs['abs_blob_upload_dir'])
+        for filename in os.listdir(dirs['abs_work_dir']):
+            if filename.endswith('.log'):
+                self.copyfile(os.path.join(dirs['abs_work_dir'], filename),
+                              os.path.join(dirs['abs_blob_upload_dir'], filename))
+
 
 if __name__ == '__main__':
     luciddreamTest = LuciddreamTest()

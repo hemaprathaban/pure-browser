@@ -33,6 +33,7 @@ class FirefoxUITests(VCSToolsScript, VirtualenvMixin):
         }],
     ] + copy.deepcopy(virtualenv_config_options)
 
+
     def __init__(self, config_options=[], all_actions=[], **kwargs):
         self.config_options += config_options
 
@@ -52,12 +53,12 @@ class FirefoxUITests(VCSToolsScript, VirtualenvMixin):
         )
 
         self.firefox_ui_repo = self.config['firefox_ui_repo']
+        self.firefox_ui_branch = self.config.get('firefox_ui_branch')
 
-        if 'checkout' in self.actions:
-            try:
-                self.firefox_ui_branch = self.config['firefox_ui_branch']
-            except:
-                self.fatal('Please specify --firefox-ui-branch')
+        if not self.firefox_ui_branch:
+            self.fatal(
+                'Please specify --firefox-ui-branch. Valid values can be found '
+                'in here https://github.com/mozilla/firefox-ui-tests/branches')
 
     def query_abs_dirs(self):
         if self.abs_dirs:
