@@ -1,4 +1,4 @@
-# Generic rules to help download sources from ftp.mozilla.org.
+# Generic rules to help download sources from archive.mozilla.org.
 # Define the following variables before including this file:
 # PRODUCT - product codename (e.g. browser)
 # OFFICIAL_NAME - name of the product (e.g. firefox)
@@ -82,11 +82,13 @@ ifneq (,$(filter %~a2, $(VERSION)))
 # Aurora
 SOURCE_TYPE := nightly
 SHORT_SOURCE_CHANNEL := aurora
+DOWNLOAD_SOURCE := aurora
 else
 ifneq (,$(filter %~a1, $(VERSION)))
 # Nightly
 SOURCE_TYPE := nightly
 SHORT_SOURCE_CHANNEL := central
+DOWNLOAD_SOURCE := nightly
 L10N_REPO := http://hg.mozilla.org/l10n-central
 else
 # Release
@@ -101,7 +103,7 @@ ifndef SHORT_L10N_CHANNEL
 SHORT_L10N_CHANNEL := $(SHORT_SOURCE_CHANNEL)
 endif
 
-BASE_URL = ftp://ftp.mozilla.org/pub/mozilla.org/$(OFFICIAL_NAME)/$(SOURCE_TYPE)
+BASE_URL = https://archive.mozilla.org/pub/mozilla.org/$(OFFICIAL_NAME)/$(SOURCE_TYPE)
 
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
@@ -112,7 +114,7 @@ L10N_REV = $(SOURCE_REV)
 SOURCE_REPO = http://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
 else
 ifeq ($(SOURCE_TYPE),nightly)
-$(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(BASE_URL)/latest-$(SOURCE_CHANNEL)))
+$(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(OFFICIAL_NAME)-$(DOWNLOAD_SOURCE)))
 SOURCE_BUILD_DATE = $(firstword $(LATEST_NIGHTLY))
 SOURCE_URL = $(subst /rev/,/archive/,$(word 2, $(LATEST_NIGHTLY))).tar.bz2
 SOURCE_REV = $(patsubst %.tar.bz2,%,$(notdir $(SOURCE_URL)))
