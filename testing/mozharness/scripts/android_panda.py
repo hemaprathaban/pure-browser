@@ -414,7 +414,7 @@ class PandaTest(TestingMixin, MercurialScript, BlobUploadMixin, MozpoolMixin, Bu
         dirs['abs_jittest_dir'] = os.path.join(dirs['abs_test_install_dir'], "jit-test", "jit-test")
         dirs['shutdown_dir'] = abs_dirs['abs_work_dir'].rsplit("/", 2)[0]
         dirs['abs_cppunittest_dir'] = os.path.join(
-            dirs['abs_test_install_dir'], 'cppunittests')
+            dirs['abs_test_install_dir'], 'cppunittest')
         for key in dirs.keys():
             if key not in abs_dirs:
                 abs_dirs[key] = dirs[key]
@@ -432,7 +432,7 @@ class PandaTest(TestingMixin, MercurialScript, BlobUploadMixin, MozpoolMixin, Bu
         c = self.config
         dirs = self.query_abs_dirs()
         options = []
-        run_file = c['run_file_names'][suite_category]
+        run_file = self.tree_config["suite_definitions"][suite_category]["run_filename"]
         base_cmd = ['python', '-u']
         base_cmd.append(os.path.join((dirs["abs_%s_dir" % suite_category]), run_file))
         self.device_ip = socket.gethostbyname(self.mozpool_device)

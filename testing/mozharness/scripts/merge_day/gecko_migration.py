@@ -267,13 +267,17 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
                     if len(changeset) != 40:
                         continue
                     fh.write("%s\n" % line)
-                fh.close()
+            out = self.get_output_from_command(['hg', 'status', '.hgtags'],
+                                               cwd=cwd)
+            if out:
                 self.hg_commit(
                     cwd,
                     message="Preserve old tags after debugsetparents. "
                     "CLOSED TREE DONTBUILD a=release",
                     user=user,
                 )
+            else:
+                self.info(".hgtags file is identical, no need to commit")
 
     def replace(self, file_name, from_, to_):
         """ Replace text in a file.
@@ -319,9 +323,16 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
         next_weave_version = str(int(curr_weave_version) + 1)
         version_files = ["browser/config/version.txt", "config/milestone.txt",
                          "mobile/android/confvars.sh", "b2g/confvars.sh"]
+        # TODO: remove the following block when version_about.txt is all way to
+        # ESR (45?)
+        version_about = "browser/config/version_about.txt"
+        if os.path.exists(os.path.join(cwd, version_about)):
+            version_files.append(version_about)
+        # TODO: end of remove block
         for f in version_files:
             self.replace(os.path.join(cwd, f), "%s.0%s" % (curr_version, curr_suffix),
                          "%s.0%s" % (next_version, next_suffix))
+
         # only applicable for m-c
         if bump_major:
             self.replace(
@@ -356,43 +367,7 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
             )
         next_ma_version = self.get_fx_major_version(dirs['abs_to_dir'])
         self.bump_version(dirs['abs_to_dir'], next_ma_version, next_ma_version, "a1", "a2")
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MOZ_BRANDING_DIRECTORY=browser/branding/nightly",
-            "MOZ_BRANDING_DIRECTORY=browser/branding/aurora"
-        )
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-central",
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-aurora"
-        )
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MAR_CHANNEL_ID=firefox-mozilla-central",
-            "MAR_CHANNEL_ID=firefox-mozilla-aurora"
-        )
-        for d in self.config["branding_dirs"]:
-            for f in self.config["branding_files"]:
-                self.replace(
-                    os.path.join(dirs['abs_to_dir'], d, f),
-                    "ac_add_options --with-branding=mobile/android/branding/nightly",
-                    "ac_add_options --with-branding=mobile/android/branding/aurora"
-                )
-                if f == "l10n-nightly":
-                    self.replace(
-                        os.path.join(dirs['abs_to_dir'], d, f),
-                        "ac_add_options --with-l10n-base=../../l10n-central",
-                        "ac_add_options --with-l10n-base=.."
-                    )
-        for f in self.config["profiling_files"]:
-            self.replace(
-                os.path.join(dirs['abs_to_dir'], f),
-                "ac_add_options --enable-profiling", ""
-            )
-        for f in self.config["elf_hack_files"]:
-            self.replace(
-                os.path.join(dirs['abs_to_dir'], f),
-                "ac_add_options --disable-elf-hack # --enable-elf-hack conflicts with --enable-profiling", "")
+        self.apply_replacements()
         # bump m-c version
         curr_mc_version = self.get_fx_major_version(dirs['abs_from_dir'])
         next_mc_version = str(int(curr_mc_version) + 1)
@@ -415,24 +390,7 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
         dirs = self.query_abs_dirs()
         mb_version = self.get_fx_major_version(dirs['abs_to_dir'])
         self.bump_version(dirs['abs_to_dir'], mb_version, mb_version, "a2", "")
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MOZ_BRANDING_DIRECTORY=browser/branding/aurora",
-            "MOZ_BRANDING_DIRECTORY=browser/branding/nightly")
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-aurora",
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-beta,firefox-mozilla-release")
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MAR_CHANNEL_ID=firefox-mozilla-aurora",
-            "MAR_CHANNEL_ID=firefox-mozilla-beta")
-        for d in self.config['branding_dirs']:
-            for f in self.config['branding_files']:
-                self.replace(
-                    os.path.join(dirs['abs_to_dir'], d, f),
-                    "ac_add_options --with-branding=mobile/android/branding/aurora",
-                    "ac_add_options --with-branding=mobile/android/branding/beta")
+        self.apply_replacements()
         self.touch_clobber_file(dirs['abs_to_dir'])
         # TODO mozconfig diffing
         # The build/tools version only checks the mozconfigs from hgweb, so
@@ -450,23 +408,7 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
             staging beta user repo migrations.
             """
         dirs = self.query_abs_dirs()
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-beta,firefox-mozilla-release",
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-release"
-        )
-        self.replace(
-            os.path.join(
-                dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MAR_CHANNEL_ID=firefox-mozilla-beta",
-            "MAR_CHANNEL_ID=firefox-mozilla-release"
-        )
-        for d in self.config['branding_dirs']:
-            for f in self.config['branding_files']:
-                self.replace(
-                    os.path.join(dirs['abs_to_dir'], d, f),
-                    "ac_add_options --with-branding=mobile/android/branding/beta",
-                    "ac_add_options --with-branding=mobile/android/branding/official")
+        self.apply_replacements()
         if self.config.get("remove_locales"):
             self.remove_locales(
                 os.path.join(dirs['abs_to_dir'], "browser/locales/shipped-locales"),
@@ -481,18 +423,13 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
             self.transplant(repo=to_transplant["repo"],
                             changeset=to_transplant["changeset"],
                             cwd=dirs['abs_to_dir'])
-        self.replace(
-            os.path.join(dirs['abs_to_dir'], "browser/confvars.sh"),
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-release",
-            "ACCEPTED_MAR_CHANNEL_IDS=firefox-mozilla-esr"
-        )
-        self.replace(
-            os.path.join(
-                dirs['abs_to_dir'], "browser/confvars.sh"),
-            "MAR_CHANNEL_ID=firefox-mozilla-release",
-            "MAR_CHANNEL_ID=firefox-mozilla-esr"
-        )
+        self.apply_replacements()
         self.touch_clobber_file(dirs['abs_to_dir'])
+
+    def apply_replacements(self):
+        dirs = self.query_abs_dirs()
+        for f, from_, to in self.config["replacements"]:
+            self.replace(os.path.join(dirs['abs_to_dir'], f), from_, to)
 
     def transplant(self, repo, changeset, cwd):
         """Transplant a Mercurial changeset from a remote repository."""
@@ -631,7 +568,7 @@ class GeckoMigration(MercurialScript, BalrogMixin, VirtualenvMixin, SelfServeMix
             dirs['abs_to_dir'], end_tag, user=self.config['hg_user'],
             message="Added %s tag for changeset %s. IGNORE BROKEN CHANGESETS DONTBUILD CLOSED TREE NO BUG a=release" %
                     (end_tag, base_to_rev),
-            revision=base_to_rev,
+            revision=base_to_rev, force=True,
         )
         # Call beta_to_release etc.
         if not hasattr(self, self.config['migration_behavior']):
