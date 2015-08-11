@@ -89,7 +89,7 @@ ifneq (,$(filter %~a1, $(VERSION)))
 SOURCE_TYPE := nightly
 SHORT_SOURCE_CHANNEL := central
 DOWNLOAD_SOURCE := nightly
-L10N_REPO := http://hg.mozilla.org/l10n-central
+L10N_REPO := https://hg.mozilla.org/l10n-central
 else
 # Release
 SOURCE_TYPE := releases
@@ -111,7 +111,7 @@ ifeq ($(SOURCE_TYPE),releases)
 SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(OFFICIAL_NAME)-$(SOURCE_VERSION).source.tar.bz2
 SOURCE_REV = $(call uc,$(OFFICIAL_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
 L10N_REV = $(SOURCE_REV)
-SOURCE_REPO = http://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
+SOURCE_REPO = https://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
 else
 ifeq ($(SOURCE_TYPE),nightly)
 $(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(OFFICIAL_NAME)-$(DOWNLOAD_SOURCE)))
@@ -147,7 +147,7 @@ $(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.o
 	$(PYTHON) debian/repack.py -o $@ -t $* -f debian/l10n.filter $(L10N_REPO)/$*/archive/$(L10N_REV).tar.bz2
 
 $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2): debian/l10n.filter
-	$(PYTHON) debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter http://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
+	$(PYTHON) debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter https://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
 
 endif
 .PHONY: download
