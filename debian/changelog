@@ -1,3 +1,21 @@
+iceweasel (38.2.0esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2015-{79-80,82-83,87-88,90,92}, also known as:
+    CVE-2015-4473, CVE-2015-4475, CVE-2015-4478, CVE-2015-4479,
+    CVE-2015-4480, CVE-2015-4493, CVE-2015-4484, CVE-2015-4491,
+    CVE-2015-4487, CVE-2015-4488, CVE-2015-4489, CVE-2015-4492.
+
+  * debian/latest_nightly.py, debian/upstream.mk: Modify latest_nightly.py to
+    work without ftp now that it's gone.
+  * debian/upstream.mk: Switch to HTTPS for all hg.mozilla.org urls.
+
+  * toolkit/components/search/nsSearchService.js: Revert change from 32.0.3-1
+    that bumped the search engine max icon size to 35kB because it's not
+    needed anymore.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 12 Aug 2015 06:31:23 +0900
+
 iceweasel (38.1.1esr-1) unstable; urgency=high
 
   * New upstream release.
@@ -24,7 +42,7 @@ iceweasel (38.1.0esr-2) unstable; urgency=medium
 iceweasel (38.1.0esr-1) unstable; urgency=medium
 
   * New upstream release.
-  * Fixes for mfsa2015-{59-67,69}, also know as:
+  * Fixes for mfsa2015-{59-67,69}, also known as:
     CVE-2015-2724, CVE-2015-2725, CVE-2015-2727, CVE-2015-2728,
     CVE-2015-2729, CVE-2015-2731, CVE-2015-2730, CVE-2015-2722,
     CVE-2015-2733, CVE-2015-2734, CVE-2015-2735, CVE-2015-2736,
