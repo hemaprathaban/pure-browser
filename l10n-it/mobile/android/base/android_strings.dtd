@@ -4,8 +4,8 @@
 
 <!ENTITY no_space_to_start_error "Spazio libero insufficiente per avviare &brandShortName;.">
 <!ENTITY error_loading_file "Si è verificato un errore durante il caricamento di un file necessario per l’esecuzione di &brandShortName;">
-<!ENTITY onboard_start_message2 "Benvenuto in &brandShortName;">
-<!ENTITY onboard_start_subtext2 "Più strumenti per la privacy e possibilità di personalizzazione che mai.">
+<!ENTITY onboard_start_message3 "Naviga con &brandShortName;">
+<!ENTITY onboard_start_subtext3 "Un’esperienza di navigazione che si adatta alle tue esigenze.">
 <!ENTITY onboard_start_button_account "Accedi a &brandShortName;">
 <!ENTITY onboard_start_button_browser "Inizia a navigare">
 <!ENTITY bookmarks_title "Segnalibri">
@@ -74,7 +74,6 @@
 <!ENTITY overlay_share_send_other "Invia a altri dispositivi">
 <!ENTITY overlay_share_send_tab_btn_label "Invia a un altro dispositivo">
 <!ENTITY overlay_share_no_url "Nessun link disponibile in questa condivisione">
-<!ENTITY overlay_share_retry "Riprova">
 <!ENTITY overlay_share_select_device "Seleziona dispositivo">
 <!ENTITY overlay_no_synced_devices "Non è disponibile alcun dispositivo connesso a Firefox Account">
 <!ENTITY overlay_share_tab_not_sent "Impossibile inviare la scheda.\nRiprovare più tardi.">
@@ -95,8 +94,6 @@
 <!ENTITY pref_search_restore_defaults_summary "Ripristina predefiniti">
 <!ENTITY pref_search_hint "Suggerimento: è possibile aggiungere qualunque sito tenendo premuto a lungo sul campo di ricerca e poi toccando l’icona &formatI;.">
 <!ENTITY pref_category_devtools "Strumenti di sviluppo">
-<!ENTITY pref_category_devtools_summary "Debug remoto, evidenziazione aree disegnate">
-<!ENTITY pref_developer_paint_flashing "Evidenzia aree disegnate">
 <!ENTITY pref_developer_remotedebugging "Debug remoto">
 <!ENTITY pref_category_logins "Accessi">
 <!ENTITY pref_remember_signons "Ricorda password">
@@ -128,12 +125,16 @@
 <!ENTITY pref_tracking_protection_summary "Impedisci ai siti di tracciare gli utenti">
 <!ENTITY pref_donottrack_title "Antitracciamento">
 <!ENTITY pref_donottrack_summary "Richiedi ai siti di non effettuare alcun tracciamento">
-<!ENTITY tab_queue_toast_message "Apri più tardi">
+<!ENTITY tab_queue_toast_message2 "&brandShortName; – Schede in coda">
 <!ENTITY tab_queue_toast_action "Apri adesso">
-<!ENTITY tab_queue_notification_text_plural "&formatD; schede in coda">
-<!ENTITY tab_queue_notification_title_plural "Schede in coda">
-<!ENTITY tab_queue_notification_title_singular "Scheda in coda">
-<!ENTITY tab_queue_notification_text_singular "1 scheda in coda">
+<!ENTITY tab_queue_prompt_title "Apertura di più link">
+<!ENTITY tab_queue_prompt_text2 "Apri i link senza passare ogni volta a &brandShortName;.">
+<!ENTITY tab_queue_prompt_tip_text "È possibile modificare questa scelta in Impostazioni">
+<!ENTITY tab_queue_prompt_positive_action_button "Attiva">
+<!ENTITY tab_queue_prompt_negative_action_button "Non adesso">
+<!ENTITY tab_queue_notification_title "&brandShortName;">
+<!ENTITY tab_queue_notification_text_plural2 "&formatD; schede in attesa">
+<!ENTITY tab_queue_notification_text_singular2 "1 scheda in attesa">
 <!ENTITY pref_char_encoding "Codifica caratteri">
 <!ENTITY pref_char_encoding_on "Visualizza menu">
 <!ENTITY pref_char_encoding_off "Non visualizzare menu">
@@ -170,7 +171,8 @@
 <!ENTITY pref_import_android "Importa da Android">
 <!ENTITY pref_import_android_summary "Importa segnalibri e cronologia dal browser di sistema">
 <!ENTITY pref_private_data_history2 "Cronologia di navigazione">
-<!ENTITY pref_private_data_formdata "Moduli e ricerche">
+<!ENTITY pref_private_data_searchHistory "Cronologia ricerche">
+<!ENTITY pref_private_data_formdata2 "Cronologia moduli">
 <!ENTITY pref_private_data_cookies2 "Cookie e accessi attivi">
 <!ENTITY pref_private_data_passwords "Password salvate">
 <!ENTITY pref_private_data_cache "Cache">
@@ -261,13 +263,14 @@
 <!ENTITY doorhanger_login_edit_username_hint "Nome utente">
 <!ENTITY doorhanger_login_edit_password_hint "Password">
 <!ENTITY doorhanger_login_edit_toggle "Mostra password">
+<!ENTITY doorhanger_login_edit_toast_error "Impossibile salvare accesso">
 <!ENTITY pref_titlebar_mode "Barra del titolo">
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
 <!ENTITY pref_scroll_title_bar2 "Navigazione a schermo intero">
 <!ENTITY pref_scroll_title_bar_summary "Nascondi la barra del titolo di &brandShortName; quando si scorre una pagina verso il basso">
-<!ENTITY pref_tab_queue_title "Apertura ritardata">
-<!ENTITY pref_tab_queue_summary "Non aprire immediatamente le schede ma apri tutte le schede in coda al successivo caricamento di &brandShortName;.">
+<!ENTITY pref_tab_queue_title2 "Apertura di più link">
+<!ENTITY pref_tab_queue_summary2 "Metti in coda i link aprendoli più tardi invece di passare ogni volta a &brandShortName;.">
 <!ENTITY page_removed "Pagina rimossa">
 <!ENTITY bookmark_edit_title "Modifica segnalibro">
 <!ENTITY bookmark_edit_name "Nome">
@@ -296,6 +299,7 @@
 <!ENTITY button_set "Imposta">
 <!ENTITY button_clear "Cancella">
 <!ENTITY button_remember "Ricorda">
+<!ENTITY firstrun_panel_title_welcome "Benvenuto">
 <!ENTITY home_top_sites_title "Siti principali">
 <!ENTITY home_top_sites_add "Aggiungi un sito">
 <!ENTITY home_history_title "Cronologia">
@@ -382,6 +386,7 @@
 <!ENTITY exit_guest_session_text "I dati relativi a questa sessione di navigazione verranno eliminati.">
 <!ENTITY ellipsis "…">
 <!ENTITY colon ":">
+<!ENTITY percent "&formatS;&#37;&#37;">
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Fatto">
 <!ENTITY voicesearch_prompt "Parla ora">

@@ -37,10 +37,10 @@ index 4b79683..df990d9 100644
      JS_FS("dump",            Dump,           1,0),
      JS_FS("gc",              GC,             0,0),
 diff --git a/js/src/shell/js.cpp b/js/src/shell/js.cpp
-index a2cfeb9..9726d52 100644
+index 4e9a589..032bfa3 100644
 --- a/js/src/shell/js.cpp
 +++ b/js/src/shell/js.cpp
-@@ -2498,15 +2498,6 @@ DisassWithSrc(JSContext* cx, unsigned argc, jsval* vp)
+@@ -2521,15 +2521,6 @@ DisassWithSrc(JSContext* cx, unsigned argc, jsval* vp)
  #endif /* DEBUG */
  
  static bool
@@ -56,7 +56,7 @@ index a2cfeb9..9726d52 100644
  Intern(JSContext* cx, unsigned argc, jsval* vp)
  {
      CallArgs args = CallArgsFromVp(argc, vp);
-@@ -4642,10 +4633,6 @@ static const JSFunctionSpecWithHelp shell_functions[] = {
+@@ -4857,10 +4848,6 @@ static const JSFunctionSpecWithHelp shell_functions[] = {
  "  Similar to the DumpJSStack() function in the browser."),
  
  #endif
@@ -68,10 +68,10 @@ index a2cfeb9..9726d52 100644
  "intern(str)",
  "  Internalize str in the atom table."),
 diff --git a/js/xpconnect/src/XPCShellImpl.cpp b/js/xpconnect/src/XPCShellImpl.cpp
-index eebd084..b8a94ee 100644
+index fc13929..14b9a80 100644
 --- a/js/xpconnect/src/XPCShellImpl.cpp
 +++ b/js/xpconnect/src/XPCShellImpl.cpp
-@@ -372,15 +372,6 @@ Version(JSContext* cx, unsigned argc, jsval* vp)
+@@ -373,15 +373,6 @@ Version(JSContext* cx, unsigned argc, jsval* vp)
  }
  
  static bool
@@ -87,7 +87,7 @@ index eebd084..b8a94ee 100644
  Quit(JSContext* cx, unsigned argc, jsval* vp)
  {
      CallArgs args = CallArgsFromVp(argc, vp);
-@@ -639,7 +630,6 @@ static const JSFunctionSpec glob_functions[] = {
+@@ -669,7 +660,6 @@ static const JSFunctionSpec glob_functions[] = {
      JS_FS("quit",            Quit,           0,0),
      JS_FS("ignoreReportedErrors", IgnoreReportedErrors, 1,0),
      JS_FS("version",         Version,        1,0),

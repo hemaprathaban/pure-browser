@@ -6,8 +6,8 @@
 <!ENTITY  no_space_to_start_error "Il n\u0027y a pas assez d\u0027espace disponible pour permettre à &brandShortName; de démarrer.">
 <!ENTITY  error_loading_file "Une erreur est survenue en essayant de charger des fichiers nécessaires pour lancer &brandShortName;">
 
-<!ENTITY  onboard_start_message2 "Bienvenue dans &brandShortName;">
-<!ENTITY  onboard_start_subtext2 "Davantage de protections pour votre vie privée et une personnalisation plus aisée que jamais.">
+<!ENTITY  onboard_start_message3 "Naviguez avec &brandShortName;">
+<!ENTITY  onboard_start_subtext3 "Personnalisez facilement votre navigation web mobile.">
 <!ENTITY  onboard_start_button_account "Se connecter à &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Commencer la navigation">
 
@@ -29,7 +29,7 @@
 <!ENTITY  crash_comment "Ajouter un commentaire (les commentaires sont visibles par tout le monde)">
 <!ENTITY  crash_allow_contact2 "Permettre à &vendorShortName; de vous contacter à propos de ce rapport">
 <!ENTITY  crash_email "Votre adresse électronique">
-<!ENTITY  crash_closing_alert "Quitter sans envoyer de rapport de plantage ?">
+<!ENTITY  crash_closing_alert "Quitter sans envoyer de rapport de plantage ?">
 <!ENTITY  sending_crash_report "Envoi du rapport de plantage\u2026">
 <!ENTITY  crash_close_label "Fermer">
 <!ENTITY  crash_restart_label "Redémarrer &brandShortName;">
@@ -114,7 +114,6 @@
      to. -->
 <!ENTITY overlay_share_send_tab_btn_label "Envoyer à un autre appareil">
 <!ENTITY overlay_share_no_url "Aucun lien à partager n\u0027a été trouvé">
-<!ENTITY overlay_share_retry "Réessayer">
 <!ENTITY overlay_share_select_device "Sélectionner l\u0027appareil">
 <!-- Localization note (overlay_no_synced_devices) : Used when the menu option
      to send a tab to a synced device is pressed and no other synced devices
@@ -151,8 +150,6 @@
      it is applicable. -->
 <!ENTITY pref_search_hint "ASTUCE : Ajoutez n\u0027importe quel site à votre liste de moteurs de recherche en effectuant un appui long sur leur champ de recherche puis en appuyant sur l\u0027icône &formatI;.">
 <!ENTITY pref_category_devtools "Outils de développement">
-<!ENTITY pref_category_devtools_summary "Débogage distant, zones repeintes">
-<!ENTITY pref_developer_paint_flashing "Mise en surbrillance des zones repeintes">
 <!ENTITY pref_developer_remotedebugging "Débogage distant">
 <!ENTITY pref_category_logins "Identifiants">
 <!ENTITY pref_remember_signons "Enreg. les mots de passe">
@@ -194,22 +191,22 @@
 <!ENTITY pref_donottrack_title "Ne pas me pister">
 <!ENTITY pref_donottrack_summary "&brandShortName; indiquera aux sites que vous ne souhaitez pas être pisté">
 
-<!ENTITY tab_queue_toast_message "Ouvrir plus tard">
-<!ENTITY tab_queue_toast_action "Ouvrir maintenant">
-<!-- Localization note (tab_queue_notification_text_plural) : The
+<!ENTITY tab_queue_toast_message2 "Onglet mis en attente dans &brandShortName;">
+<!ENTITY tab_queue_toast_action "Ouvrir">
+<!ENTITY tab_queue_prompt_title "Ouvrir plusieurs liens ?">
+<!ENTITY tab_queue_prompt_text2 "Ils seront ouverts sans avoir à rebasculer sur &brandShortName; à chaque fois.">
+<!ENTITY tab_queue_prompt_tip_text "Vous pouvez modifier ce choix depuis les paramètres">
+<!ENTITY tab_queue_prompt_positive_action_button "Activer">
+<!ENTITY tab_queue_prompt_negative_action_button "Plus tard">
+<!ENTITY tab_queue_notification_title "&brandShortName;">
+<!-- Localization note (tab_queue_notification_text_plural2) : The
      formatD is replaced with the number of tabs queued.  The
      number of tabs queued is always more than one.  We can't use
      Android plural forms, sadly. See Bug #753859. -->
-<!ENTITY tab_queue_notification_text_plural "&formatD; onglets dans la file d\u0027attente">
-<!-- Localization note (tab_queue_notification_title_plural) : This is the
-     title of a notification; we expect more than one tab queued. -->
-<!ENTITY tab_queue_notification_title_plural "Onglets en attente">
-<!-- Localization note (tab_queue_notification_title_singular) : This is the
-     title of a notification; we expect only one tab queued. -->
-<!ENTITY tab_queue_notification_title_singular "Onglet en attente">
-<!-- Localization note (tab_queue_notification_text_singular) : This is the
+<!ENTITY tab_queue_notification_text_plural2 "&formatD; onglets en attente">
+<!-- Localization note (tab_queue_notification_text_singular2) : This is the
      text of a notification; we expect only one tab queued. -->
-<!ENTITY tab_queue_notification_text_singular "1 onglet dans la file d\u0027attente">
+<!ENTITY tab_queue_notification_text_singular2 "1 onglet en attente">
 
 <!ENTITY pref_char_encoding "Encodage du texte">
 <!ENTITY pref_char_encoding_on "Afficher le menu">
@@ -257,7 +254,8 @@ size. -->
 <!ENTITY pref_import_android "Importer depuis Android">
 <!ENTITY pref_import_android_summary "Importer les marque-pages et l\u0027historique du navigateur d\u0027origine">
 <!ENTITY pref_private_data_history2 "Historique de navigation">
-<!ENTITY pref_private_data_formdata "Historique des formulaires et des recherches">
+<!ENTITY pref_private_data_searchHistory "Historique des recherches">
+<!ENTITY pref_private_data_formdata2 "Historique des formulaires">
 <!ENTITY pref_private_data_cookies2 "Cookies et connexions actives">
 <!ENTITY pref_private_data_passwords "Mots de passe enregistrés">
 <!ENTITY pref_private_data_cache "Cache">
@@ -383,6 +381,7 @@ size. -->
 <!ENTITY doorhanger_login_edit_username_hint "Nom d\u0027utilisateur">
 <!ENTITY doorhanger_login_edit_password_hint "Mot de passe">
 <!ENTITY doorhanger_login_edit_toggle "Afficher le mot de passe">
+<!ENTITY doorhanger_login_edit_toast_error "Échec de l\u0027enregistrement du nom d\u0027utilisateur">
 
 <!ENTITY pref_titlebar_mode "Barre de titre">
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
@@ -393,8 +392,8 @@ size. -->
 <!ENTITY pref_scroll_title_bar2 "Navigation plein écran">
 <!ENTITY pref_scroll_title_bar_summary "Masquer la barre de titre de &brandShortName; lors du défilement de la page">
 
-<!ENTITY pref_tab_queue_title "Ouverture différée">
-<!ENTITY pref_tab_queue_summary "Empêcher les onglets de s\u0027ouvrir immédiatement. Les onglets dans la file d\u0027attente seront ouverts au prochain démarrage de &brandShortName;.">
+<!ENTITY pref_tab_queue_title2 "Ouvrir plusieurs liens">
+<!ENTITY pref_tab_queue_summary2 "Mettre les liens en attente au lieu de rebasculer sur &brandShortName; à chaque fois.">
 
 <!-- Localization note (page_removed): This string appears in a toast message when
      any page is removed frome about:home. This includes pages that are in history,
@@ -444,6 +443,8 @@ size. -->
 <!ENTITY button_clear "Effacer">
 <!ENTITY button_remember "Retenir">
 
+<!ENTITY firstrun_panel_title_welcome "Bienvenue">
+
 <!ENTITY home_top_sites_title "Les plus visités">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
@@ -454,7 +455,7 @@ size. -->
 <!ENTITY home_title "Accueil de &brandShortName;">
 <!ENTITY home_history_title "Historique">
 <!ENTITY home_clear_history_button "Effacer l\u0027historique de navigation">
-<!ENTITY home_clear_history_confirm "Voulez-vous vraiment effacer votre historique ?">
+<!ENTITY home_clear_history_confirm "Voulez-vous vraiment effacer votre historique ?">
 <!ENTITY home_bookmarks_empty "Les marque-pages enregistrés s\u0027affichent ici.">
 <!ENTITY home_closed_tabs_title "Onglets récemment fermés">
 <!ENTITY home_last_tabs_title "Onglets de la session précédente">
@@ -562,7 +563,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarkhistory_import_history "Importation de l\u0027historique depuis Android">
 <!ENTITY bookmarkhistory_import_wait "Veuillez patienter…">
 
-<!ENTITY suggestions_prompt3 "Voulez-vous activer les suggestions de recherche ?">
+<!ENTITY suggestions_prompt3 "Voulez-vous activer les suggestions de recherche ?">
 <!--  Localization note (search_bar_item_desc): When the user clicks the url bar
       and starts typing, a list of icons of search engines appears at the bottom
       of the screen. When a user clicks an icon, the entered text will be searched
@@ -612,6 +613,14 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY ellipsis "…">
 
 <!ENTITY colon " :">
+
+<!-- LOCALIZATION NOTE (percent): The percent sign is appended after a number to
+     display a percentage value. formatS is the number, #37 is the code to display a percent sign.
+     This format string is typically used by getString method, in such method the percent sign
+     is a reserved caracter. In order to display one percent sign in the result of getString,
+     double percent signs must be inserted in the format string.
+     This entity is used in the zoomed view to display the zoom factor-->
+<!ENTITY percent "&formatS; &#37;&#37;">
 
 <!-- These are only used for accessiblity for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->

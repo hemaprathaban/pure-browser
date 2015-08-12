@@ -856,7 +856,8 @@ class ScriptMixin(PlatformMixin):
 
     def query_env(self, partial_env=None, replace_dict=None,
                   purge_env=(),
-                  set_self_env=None, log_level=DEBUG):
+                  set_self_env=None, log_level=DEBUG,
+                  avoid_host_env=False):
         """ Environment query/generation method.
         The default, self.query_env(), will look for self.config['env']
         and replace any special strings in there ( %(PATH)s ).
@@ -878,6 +879,9 @@ class ScriptMixin(PlatformMixin):
                 Defaults to True.
             log_level (str, optional): log level name to use on normal operation.
                 Defaults to `DEBUG`.
+            avoid_host_env (boolean, optional): if set to True, we will not use
+                any environment variables set on the host except PATH.
+                Defaults to False.
 
         Returns:
             dict: environment variables names with their values.
@@ -890,7 +894,9 @@ class ScriptMixin(PlatformMixin):
                 partial_env = {}
             if set_self_env is None:
                 set_self_env = True
-        env = os.environ.copy()
+
+        env = {'PATH': os.environ['PATH']} if avoid_host_env else os.environ.copy()
+
         default_replace_dict = self.query_abs_dirs()
         default_replace_dict['PATH'] = os.environ['PATH']
         if not replace_dict:
@@ -945,12 +951,35 @@ class ScriptMixin(PlatformMixin):
             # allow for 'make': '%(abs_work_dir)s/...' etc.
             dirs = self.script_obj.query_abs_dirs()
             repl_dict.update(dirs)
-        if isinstance(exe, list) or isinstance(exe, tuple):
+        if isinstance(exe, dict):
+            found = False
+            # allow for searchable paths of the buildbot exe
+            for name, path in exe.iteritems():
+                if isinstance(path, list) or isinstance(path, tuple):
+                    path = [x % repl_dict for x in path]
+                    if all([os.path.exists(section) for section in path]):
+                        found = True
+                elif isinstance(path, str):
+                    path = path % repl_dict
+                    if os.path.exists(path):
+                        found = True
+                else:
+                    self.log("a exes %s dict's value is not a string, list, or tuple. Got key "
+                             "%s and value %s" % (exe_name, name, str(path)), level=error_level)
+                if found:
+                    exe = path
+                    break
+            else:
+                self.log("query_exe was a searchable dict but an existing path could not be "
+                         "determined. Tried searching in paths: %s" % (str(exe)), level=error_level)
+                return None
+        elif isinstance(exe, list) or isinstance(exe, tuple):
             exe = [x % repl_dict for x in exe]
         elif isinstance(exe, str):
             exe = exe % repl_dict
         else:
-            self.log("query_exe: %s is not a list, tuple or string: %s!" % (exe_name, str(exe)), level=error_level)
+            self.log("query_exe: %s is not a list, tuple, dict, or string: "
+                     "%s!" % (exe_name, str(exe)), level=error_level)
             return exe
         if return_type == "list":
             if isinstance(exe, str):

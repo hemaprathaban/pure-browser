@@ -4,16 +4,16 @@ Subject: Bug 1094324 - Set browser.newtabpage.enhanced default in prefs
 
 ---
  browser/app/profile/firefox.js             | 3 +++
- browser/base/content/newtab/intro.js       | 4 ++++
+ browser/base/content/newtab/intro.js       | 3 +++
  browser/base/content/newtab/page.js        | 1 +
  browser/modules/DirectoryLinksProvider.jsm | 2 +-
- 4 files changed, 9 insertions(+), 1 deletion(-)
+ 4 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 269ac6b..23af1ae 100644
+index 705f0dc..6dad7fe 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -1651,6 +1651,9 @@ pref("browser.newtabpage.introShown", false);
+@@ -1660,6 +1660,9 @@ pref("browser.newtabpage.introShown", false);
  // Toggles the content of 'about:newtab'. Shows the grid when enabled.
  pref("browser.newtabpage.enabled", true);
  
@@ -24,18 +24,10 @@ index 269ac6b..23af1ae 100644
  pref("browser.newtabpage.rows", 3);
  
 diff --git a/browser/base/content/newtab/intro.js b/browser/base/content/newtab/intro.js
-index f94c255..f3e4097 100644
+index 2b9989f..5046a2f 100644
 --- a/browser/base/content/newtab/intro.js
 +++ b/browser/base/content/newtab/intro.js
-@@ -5,6 +5,7 @@
- #endif
- 
- const PREF_INTRO_SHOWN = "browser.newtabpage.introShown";
-+const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
- 
- let gIntro = {
-   _nodeIDSuffixes: [
-@@ -25,6 +26,9 @@ let gIntro = {
+@@ -64,6 +64,9 @@ let gIntro = {
    },
  
    showIfNecessary: function() {
@@ -43,10 +35,10 @@ index f94c255..f3e4097 100644
 +      return;
 +    }
      if (!Services.prefs.getBoolPref(PREF_INTRO_SHOWN)) {
-       Services.prefs.setBoolPref(PREF_INTRO_SHOWN, true);
        this.showPanel();
+       Services.prefs.setBoolPref(PREF_INTRO_SHOWN, true);
 diff --git a/browser/base/content/newtab/page.js b/browser/base/content/newtab/page.js
-index aa4ba92..d916fbe 100644
+index 7c02289..4ba3fb1 100644
 --- a/browser/base/content/newtab/page.js
 +++ b/browser/base/content/newtab/page.js
 @@ -54,6 +54,7 @@ let gPage = {
@@ -58,10 +50,10 @@ index aa4ba92..d916fbe 100644
  
        // Initialize the whole page if we haven't done that, yet.
 diff --git a/browser/modules/DirectoryLinksProvider.jsm b/browser/modules/DirectoryLinksProvider.jsm
-index 5d2519d..e805927 100644
+index a8f1131..5811211 100644
 --- a/browser/modules/DirectoryLinksProvider.jsm
 +++ b/browser/modules/DirectoryLinksProvider.jsm
-@@ -195,7 +195,7 @@ let DirectoryLinksProvider = {
+@@ -384,7 +384,7 @@ let DirectoryLinksProvider = {
     */
    _setDefaultEnhanced: function DirectoryLinksProvider_setDefaultEnhanced() {
      if (!Services.prefs.prefHasUserValue(PREF_NEWTAB_ENHANCED)) {

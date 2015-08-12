@@ -7,10 +7,10 @@ Subject: Add debian/extra-stuff to upstream build system directory traversal
  1 file changed, 3 insertions(+)
 
 diff --git a/moz.build b/moz.build
-index 7df9f4a..f0e50b2 100644
+index 81c563f..e1197c7 100644
 --- a/moz.build
 +++ b/moz.build
-@@ -74,4 +74,7 @@ if not CONFIG['JS_STANDALONE'] and CONFIG['MOZ_BUILD_APP']:
+@@ -65,4 +65,7 @@ if not CONFIG['JS_STANDALONE'] and CONFIG['MOZ_BUILD_APP']:
      # Bring in the configuration for the configured application.
      include('/' + CONFIG['MOZ_BUILD_APP'] + '/app.mozbuild')
  

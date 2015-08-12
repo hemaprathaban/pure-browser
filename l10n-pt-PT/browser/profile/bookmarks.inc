@@ -19,7 +19,7 @@
 #define bookmarks_toolbarfolder Pasta da barra de ferramentas de marcadores
 
 
-#define bookmarks_toolbarfolder_description Adicione os marcadores a esta pasta se os quiser mostrar na barra de marcadores.
+#define bookmarks_toolbarfolder_description Adicione os marcadores a esta pasta se os quiser mostrar na barra de marcadores
 
 
 # LOCALIZATION NOTE (getting_started):
@@ -74,18 +74,6 @@
 
 
 #define firefox_about Sobre nós
-
-
-# LOCALIZATION NOTE (firefox_feedback):
-
-
-# link title for browser feedback page
-
-
-# currently used by Metro only: https://input.mozilla.org/feedback/metrofirefox
-
-
-#define firefox_feedback Dar Feedback
 
 
 #unfilter emptyLines

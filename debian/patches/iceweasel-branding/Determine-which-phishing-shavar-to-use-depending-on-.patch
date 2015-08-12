@@ -9,13 +9,13 @@ Subject: Determine which phishing shavar to use depending on
  2 files changed, 7 insertions(+)
 
 diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
-index 9354bd9..0ac5223 100644
+index a3f1f5e..cb2585d 100644
 --- a/modules/libpref/init/all.js
 +++ b/modules/libpref/init/all.js
-@@ -4441,7 +4441,11 @@ pref("dom.mapped_arraybuffer.enabled", false);
+@@ -4525,7 +4525,11 @@ pref("dom.mapped_arraybuffer.enabled", false);
  
  // The tables used for Safebrowsing phishing and malware checks.
- pref("urlclassifier.malwareTable", "goog-malware-shavar,test-malware-simple");
+ pref("urlclassifier.malwareTable", "goog-malware-shavar,goog-unwanted-shavar,test-malware-simple,test-unwanted-simple");
 +#ifdef MOZ_OFFICIAL_BRANDING
  pref("urlclassifier.phishTable", "goog-phish-shavar,test-phish-simple");
 +#else
@@ -23,12 +23,12 @@ index 9354bd9..0ac5223 100644
 +#endif
  pref("urlclassifier.downloadBlockTable", "");
  pref("urlclassifier.downloadAllowTable", "");
- pref("urlclassifier.disallow_completions", "test-malware-simple,test-phish-simple,goog-downloadwhite-digest256,mozpub-track-digest256");
+ pref("urlclassifier.disallow_completions", "test-malware-simple,test-phish-simple,test-unwanted-simple,goog-downloadwhite-digest256,mozpub-track-digest256");
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index 54a921d..6f3270f 100644
+index 650bff0..bc69b29 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -46,3 +46,6 @@ DEFINES['OS_ARCH'] = CONFIG['OS_ARCH']
+@@ -44,3 +44,6 @@ DEFINES['OS_ARCH'] = CONFIG['OS_ARCH']
  DEFINES['MOZ_WIDGET_TOOLKIT'] = CONFIG['MOZ_WIDGET_TOOLKIT']
  
  FAIL_ON_WARNINGS = True

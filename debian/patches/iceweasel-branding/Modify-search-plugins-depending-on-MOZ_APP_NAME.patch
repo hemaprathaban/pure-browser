@@ -3,25 +3,26 @@ Date: Sat, 19 Feb 2011 11:04:53 +0100
 Subject: Modify search plugins depending on MOZ_APP_NAME
 
 ---
- browser/locales/Makefile.in                     | 2 ++
+ browser/locales/Makefile.in                     | 3 +++
  browser/locales/en-US/searchplugins/answers.xml | 2 +-
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index d1f3b6e..fbbdd86 100644
+index b71de26..74bc21f 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -88,6 +88,8 @@ SEARCHPLUGINS := $(foreach plugin,$(addsuffix .xml,$(SEARCHPLUGINS_NAMES)),$(or
- SEARCHPLUGINS_FLAGS := --silence-missing-directive-warnings
- PP_TARGETS += SEARCHPLUGINS
+@@ -84,6 +84,9 @@ GARBAGE += $(list-txt)
+ 
+ libs:: searchplugins
  
 +DEFINES += -DMOZ_APP_NAME=$(MOZ_APP_NAME)
 +
++
  # Required for l10n.mk - defines a list of app sub dirs that should
  # be included in langpack xpis.
- ifdef MOZ_METRO
+ DIST_SUBDIRS = $(DIST_SUBDIR)
 diff --git a/browser/locales/en-US/searchplugins/answers.xml b/browser/locales/en-US/searchplugins/answers.xml
-index f131ea6..357d42e 100644
+index 4bd2fbf..e0fcec6 100644
 --- a/browser/locales/en-US/searchplugins/answers.xml
 +++ b/browser/locales/en-US/searchplugins/answers.xml
 @@ -12,6 +12,6 @@

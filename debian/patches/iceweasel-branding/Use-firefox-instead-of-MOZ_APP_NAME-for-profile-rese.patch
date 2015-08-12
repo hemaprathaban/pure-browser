@@ -8,23 +8,23 @@ Subject: Use "firefox" instead of MOZ_APP_NAME for profile reset
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/modules/ResetProfile.jsm b/toolkit/modules/ResetProfile.jsm
-index c4c2567..3ba756f 100644
+index 52c35c7..af2c0cf 100644
 --- a/toolkit/modules/ResetProfile.jsm
 +++ b/toolkit/modules/ResetProfile.jsm
-@@ -7,7 +7,7 @@
- this.EXPORTED_SYMBOLS = ["ResetProfile"];
- 
- const {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
--#expand const MOZ_APP_NAME = "__MOZ_APP_NAME__";
-+const MOZ_APP_NAME = "firefox";
- #expand const MOZ_BUILD_APP = "__MOZ_BUILD_APP__";
- 
+@@ -11,7 +11,7 @@ const {classes: Cc, interfaces: Ci, utils: Cu, results: Cr} = Components;
  Cu.import("resource://gre/modules/Services.jsm");
+ Cu.import("resource://gre/modules/AppConstants.jsm");
+ 
+-const MOZ_APP_NAME = AppConstants.MOZ_APP_NAME;
++const MOZ_APP_NAME = "firefox";
+ const MOZ_BUILD_APP = AppConstants.MOZ_BUILD_APP;
+ 
+ this.ResetProfile = {
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index b287d01..f97effc 100644
+index 36c1ebf..aa87fb4 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -4037,7 +4037,7 @@ XREMain::XRE_mainRun()
+@@ -3946,7 +3946,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

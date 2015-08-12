@@ -64,7 +64,7 @@
 # link title for https://www.mozilla.org/en-US/contribute/
 
 
-#define firefox_community \u0020Ընդգրկվի՛ր:\u0020
+#define firefox_community Միացեք մեր համայնքին:
 
 
 # LOCALIZATION NOTE (firefox_about):
@@ -74,18 +74,6 @@
 
 
 #define firefox_about Մեր Մասին
-
-
-# LOCALIZATION NOTE (firefox_feedback):
-
-
-# link title for browser feedback page
-
-
-# currently used by Metro only: https://input.mozilla.org/feedback/metrofirefox
-
-
-#define firefox_feedback Ձեր Արձագանքը
 
 
 #unfilter emptyLines

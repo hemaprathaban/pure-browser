@@ -8,10 +8,10 @@ Subject: Use MOZ_APP_DISPLAYNAME to fill appstrings.properties
  2 files changed, 12 insertions(+), 10 deletions(-)
 
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index f6b43cc..d1f3b6e 100644
+index b0801ec..b71de26 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -29,6 +29,8 @@ SUBMAKEFILES += \
+@@ -26,6 +26,8 @@ SUBMAKEFILES += \
  	$(DEPTH)/$(MOZ_BRANDING_DIRECTORY)/locales/Makefile \
  	$(NULL)
  
@@ -21,7 +21,7 @@ index f6b43cc..d1f3b6e 100644
  # build non-default locales to non-default dist/ locations. Be aware!
  
 diff --git a/browser/locales/en-US/chrome/overrides/appstrings.properties b/browser/locales/en-US/chrome/overrides/appstrings.properties
-index 14fad72..f1b396f 100644
+index 7ed699d..23348d1 100644
 --- a/browser/locales/en-US/chrome/overrides/appstrings.properties
 +++ b/browser/locales/en-US/chrome/overrides/appstrings.properties
 @@ -3,24 +3,24 @@
