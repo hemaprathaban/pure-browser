@@ -1,9 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import glob
 import tarfile
 import sys
-import StringIO
 from optparse import OptionParser
 import os
 
@@ -25,11 +24,11 @@ class GitImportTar(object):
         if info.issym():
             self.git.write("data %d\n" % len(info.linkname) +
                            info.linkname)
-            mode = 0120000
+            mode = 0o120000
         elif file:
-            file = StringIO.StringIO(file.read(info.size))
-            self.git.write("data %d\n" % (info.size) +
-                           file.getvalue())
+            self.git.write("data %d\n" % (info.size))
+            self.git.flush()
+            self.git.buffer.write(file.read(info.size))
 
         self.git.write("\n")
         if not prefix in self.files:
@@ -48,12 +47,12 @@ class GitImportTar(object):
                        "EOM\n\n" +
                        "from refs/heads/%s^0\n" % (self.head) +
                        "deleteall\n")
-        for prefix, fileset in self.files.iteritems():
+        for prefix, fileset in self.files.items():
             basedir = os.path.commonprefix(fileset)
-            for path, info in fileset.iteritems():
+            for path, info in fileset.items():
                 (mark, mode) = info
-                if mode != 0120000:
-                    mode = 0755 if (mode & 0111) else 0644
+                if mode != 0o120000:
+                    mode = 0o755 if (mode & 0o111) else 0o644
                 path = path[len(basedir):]
                 if prefix != '':
                     path = prefix + '/' + path
@@ -70,12 +69,15 @@ def main():
 
     (name, ext) = os.path.splitext(args[0])
     if ext[0:2] != '.t':
-        (name, ext2) = os.path.splitext(name)
-        ext = ext2 + ext
+        (name, ext) = os.path.splitext(name)
 
     git_import = GitImportTar(os.path.basename(args[0]), options.head)
-    for file in [args[0]] + glob.glob(name + "-*" + ext):
-        prefix = file[len(name)+1:-len(ext)]
+    for file in [args[0]] + glob.glob(name + "-*" + ext + "*"):
+        (_, this_ext) = os.path.splitext(file)
+        if this_ext == ext:
+            prefix = file[len(name)+1:-len(this_ext)]
+        else:
+            prefix = file[len(name)+1:-len(this_ext) - len(ext)]
         tar = tarfile.open(file, "r:*")
 
         while True:

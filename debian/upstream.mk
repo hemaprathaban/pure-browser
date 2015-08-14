@@ -57,7 +57,8 @@ $(error Upstream version in debian/changelog ($(UPSTREAM_RELEASE)) does not matc
 endif
 
 VERSION = $(UPSTREAM_RELEASE)
-SOURCE_TARBALL = $(DEBIAN_SOURCE)_$(VERSION)$(SOURCE_BUILD_DATE:%=+%).orig.tar.bz2
+$(call lazy,SOURCE_TARBALL_EXT,$$(shell sed -n '/^SOURCE_TAR/s/.*\.tar\.//p' toolkit/mozapps/installer/upload-files.mk))
+SOURCE_TARBALL = $(DEBIAN_SOURCE)_$(VERSION)$(SOURCE_BUILD_DATE:%=+%).orig.tar.$(SOURCE_TARBALL_EXT)
 SOURCE_TARBALL_LOCATION = ..
 
 SOURCE_VERSION = $(subst ~,,$(VERSION))
@@ -108,12 +109,13 @@ BASE_URL = https://archive.mozilla.org/pub/mozilla.org/$(OFFICIAL_NAME)/$(SOURCE
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
 ifeq ($(SOURCE_TYPE),releases)
-SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(OFFICIAL_NAME)-$(SOURCE_VERSION).source.tar.bz2
+SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(OFFICIAL_NAME)-$(SOURCE_VERSION).source.tar.$(SOURCE_TARBALL_EXT)
 SOURCE_REV = $(call uc,$(OFFICIAL_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
 L10N_REV = $(SOURCE_REV)
 SOURCE_REPO = https://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
 else
 ifeq ($(SOURCE_TYPE),nightly)
+SOURCE_TARBALL_EXT = bz2
 $(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(OFFICIAL_NAME)-$(DOWNLOAD_SOURCE)))
 SOURCE_BUILD_DATE = $(firstword $(LATEST_NIGHTLY))
 SOURCE_URL = $(subst /rev/,/archive/,$(word 2, $(LATEST_NIGHTLY))).tar.bz2
@@ -127,27 +129,28 @@ ifndef L10N_REPO
 L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/mozilla-$(SHORT_L10N_CHANNEL),$(SOURCE_REPO))
 endif
 
-ifneq (,$(filter import download,$(MAKECMDGOALS)))
+ifneq (,$(filter dump dump-% import download,$(MAKECMDGOALS)))
 ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),aurora central))
 $(call lazy,L10N_LANGS,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE_REV)/$(PRODUCT)/locales/shipped-locales | $$(L10N_FILTER)))
+$(call lazy,SOURCE_TARBALL_EXT,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE_REV)/toolkit/mozapps/installer/upload-files.mk | sed -n '/^SOURCE_TAR/s/.*\.tar\.//p'))
 endif
-L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-$(lang).tar.bz2))
+L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-l10n-$(lang).tar.bz2))
 
-ALL_TARBALLS = $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2)
+ALL_TARBALLS = $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-compare-locales.tar.bz2)
 
 download: $(ALL_TARBALLS)
 
 import: $(ALL_TARBALLS)
-	$(PYTHON) debian/import-tar.py $(addprefix -H ,$(BRANCH)) $< | git fast-import
+	debian/import-tar.py $(addprefix -H ,$(BRANCH)) $< | git fast-import
 
 $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL): debian/source.filter
-	$(PYTHON) debian/repack.py -o $@ $(SOURCE_URL)
+	debian/repack.py -o $@ $(SOURCE_URL)
 
-$(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-l10n-%.tar.bz2): debian/l10n.filter
-	$(PYTHON) debian/repack.py -o $@ -t $* -f debian/l10n.filter $(L10N_REPO)/$*/archive/$(L10N_REV).tar.bz2
+$(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-l10n-%.tar.bz2): debian/l10n.filter
+	debian/repack.py -o $@ -t $* -f debian/l10n.filter $(L10N_REPO)/$*/archive/$(L10N_REV).tar.bz2
 
-$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.bz2=%.orig-compare-locales.tar.bz2): debian/l10n.filter
-	$(PYTHON) debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter https://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
+$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-compare-locales.tar.bz2): debian/l10n.filter
+	debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter https://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
 
 endif
 .PHONY: download
