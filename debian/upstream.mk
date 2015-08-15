@@ -47,6 +47,9 @@ endif
 ifneq (,$(filter 8%,$(DEBIAN_TARGET)))
 BACKPORT = jessie
 endif
+ifneq (,$(filter 9%,$(DEBIAN_TARGET)))
+BACKPORT = stretch
+endif
 endif
 
 # Check if the version in debian/changelog matches actual upstream version
