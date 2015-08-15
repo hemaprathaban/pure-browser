@@ -128,9 +128,7 @@ SOURCE_REPO = $(patsubst %/,%,$(dir $(patsubst %/,%,$(dir $(SOURCE_URL)))))
 endif
 endif
 
-ifndef L10N_REPO
-L10N_REPO := $(subst $(SOURCE_CHANNEL),l10n/mozilla-$(SHORT_L10N_CHANNEL),$(SOURCE_REPO))
-endif
+L10N_REPO ?= $(subst $(SOURCE_CHANNEL),l10n/mozilla-$(SHORT_L10N_CHANNEL),$(SOURCE_REPO))
 
 ifneq (,$(filter dump dump-% import download,$(MAKECMDGOALS)))
 ifneq (,$(filter-out $(VERSION),$(UPSTREAM_RELEASE))$(filter $(SOURCE_CHANNEL),aurora central))
