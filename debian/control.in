@@ -5,6 +5,10 @@ Maintainer: Maintainers of Mozilla-related packages <pkg-mozilla-maintainers@lis
 Uploaders: Mike Hommey <glandium@debian.org>
 Build-Depends: autotools-dev,
                debhelper (>= 7.2.3),
+%if BACKPORT == wheezy
+               gcc-4.7,
+               g++-4.7,
+%endif
                autoconf2.13,
                libx11-dev,
                libxt-dev,
