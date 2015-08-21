@@ -24,6 +24,11 @@ ifneq (,$(filter wheezy jessie,$(BACKPORT)))
 LESS_SYSTEM_LIBS = 1
 endif
 
+ifeq ($(BACKPORT),wheezy)
+CC := gcc-4.7
+CXX := g++-4.7
+endif
+
 OFFICIAL_BRANDING := browser/branding/official
 ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 MOZILLA_OFFICIAL := 1
