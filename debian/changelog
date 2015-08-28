@@ -1,3 +1,15 @@
+iceweasel (38.2.1esr-1) unstable; urgency=high
+
+  * New upstream release.
+  * Fixes for mfsa2015-{94-95}, also known as:
+    CVE-2015-4497, CVE-2015-4498.
+
+  * configure.in: Build libvpx neon code with -mfloat-abi=softfp on armel.
+  * media/libjpeg/simd/jsimd_mips_dspr2.S: Fix build error in MIPS SIMD
+    when compiling with -mfpxx.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 28 Aug 2015 18:04:03 +0900
+
 iceweasel (38.2.0esr-2) UNRELEASED; urgency=medium
 
   * debian/rules, debian/upstream.mk: Don't set LESS_SYSTEM_LIBS when
@@ -6,7 +18,7 @@ iceweasel (38.2.0esr-2) UNRELEASED; urgency=medium
     backporting to wheezy.
 
   * media/libvpx/moz.build: Build libvpx neon code without -mthumb and
-    -mfloat-abi=softfp.
+    -mfloat-abi=softfp. Closes: #795337.
 
  -- Mike Hommey <glandium@debian.org>  Sat, 22 Aug 2015 08:20:35 +0900
 
