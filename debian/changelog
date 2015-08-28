@@ -1,3 +1,32 @@
+iceweasel (40.0.3-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2015-{94-95}, also known as:
+    CVE-2015-4497, CVE-2015-4498.
+
+  * debian/import-tar.py, debian/repack.py, debian/upstream.mk:
+    Adjust debian/upstream.mk, debian/repack.py and debian/import-tar.py
+    to cope with xz source tarballs.
+  * debian/control*: Suggest Latin Modern Math instead of MathJax TeX fonts
+    for MathML rendering, and remove suggestion for Asana Math. Thanks
+    Frédéric Wang. Closes: #792012.
+  * debian/rules, debian/upstream.mk: Don't set LESS_SYSTEM_LIBS when
+    building a backport for stretch. Closes: #795331.
+  * debian/copyright: Fix typo in MPL 1.1 license version number.
+    Closes: #755802.
+  * debian/upstream.mk: Avoid latest_nightly.py being run every time
+    debian/rules is invoked for aurora builds.
+  * debian/rules, debian/control.in: Force build with GCC 4.7 when
+    backporting to wheezy.
+
+  * media/libvpx/moz.build: Build libvpx neon code without -mthumb and
+    -mfloat-abi=softfp. Closes: #795337.
+  * configure.in: Build libvpx neon code with -mfloat-abi=softfp on armel.
+  * media/libjpeg/simd/jsimd_mips_dspr2.S: Fix build error in MIPS SIMD
+    when compiling with -mfpxx.
+
+ -- Mike Hommey <glandium@debian.org>  Fri, 28 Aug 2015 18:49:49 +0900
+
 iceweasel (40.0-1) experimental; urgency=medium
 
   * New upstream release.
