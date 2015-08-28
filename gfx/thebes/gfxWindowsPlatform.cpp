@@ -1704,7 +1704,7 @@ gfxWindowsPlatform::GetDXGIAdapter()
   return mAdapter;
 }
 
-bool DoesD3D11DeviceWork(ID3D11Device *device)
+bool CouldD3D11DeviceWork()
 {
   static bool checked = false;
   static bool result = false;
@@ -1720,19 +1720,29 @@ bool DoesD3D11DeviceWork(ID3D11Device *device)
     return true;
   }
 
-  if (GetModuleHandleW(L"dlumd32.dll") && GetModuleHandleW(L"igd10umd32.dll")) {
-    nsString displayLinkModuleVersionString;
-    gfxWindowsPlatform::GetDLLVersion(L"dlumd32.dll", displayLinkModuleVersionString);
-    uint64_t displayLinkModuleVersion;
-    if (!ParseDriverVersion(displayLinkModuleVersionString, &displayLinkModuleVersion)) {
-      gfxCriticalError() << "DisplayLink: could not parse version";
-      gANGLESupportsD3D11 = false;
-      return false;
-    }
-    if (displayLinkModuleVersion <= V(8,6,1,36484)) {
-      gfxCriticalError(CriticalLog::DefaultOptions(false)) << "DisplayLink: too old version";
-      gANGLESupportsD3D11 = false;
-      return false;
+  if (GetModuleHandleW(L"igd10umd32.dll")) {
+    const wchar_t* checkModules[] = {L"dlumd32.dll",
+                                     L"dlumd11.dll",
+                                     L"dlumd10.dll"};
+    for (int i=0; i<PR_ARRAY_SIZE(checkModules); i+=1) {
+      if (GetModuleHandleW(checkModules[i])) {
+        nsString displayLinkModuleVersionString;
+        gfxWindowsPlatform::GetDLLVersion(checkModules[i],
+                                          displayLinkModuleVersionString);
+        uint64_t displayLinkModuleVersion;
+        if (!ParseDriverVersion(displayLinkModuleVersionString,
+                                &displayLinkModuleVersion)) {
+          gfxCriticalError() << "DisplayLink: could not parse version "
+                             << checkModules[i];
+          gANGLESupportsD3D11 = false;
+          return false;
+        }
+        if (displayLinkModuleVersion <= V(8,6,1,36484)) {
+          gfxCriticalError(CriticalLog::DefaultOptions(false)) << "DisplayLink: too old version " << displayLinkModuleVersionString.get();
+          gANGLESupportsD3D11 = false;
+          return false;
+        }
+      }
     }
   }
   result = true;
@@ -1875,6 +1885,10 @@ gfxWindowsPlatform::InitD3D11Devices()
     return;
   }
 
+  if (!CouldD3D11DeviceWork()) {
+    return;
+  }
+
   bool useWARP = false;
   bool allowWARP = false;
 
@@ -1960,7 +1974,7 @@ gfxWindowsPlatform::InitD3D11Devices()
       adapter = nullptr;
     }
 
-    if (FAILED(hr) || !DoesD3D11DeviceWork(mD3D11Device)) {
+    if (FAILED(hr)) {
       gfxCriticalError() << "D3D11 device creation failed" << hexa(hr);
       if (gfxPrefs::LayersD3D11DisableWARP()) {
         return;
@@ -2068,6 +2082,10 @@ gfxWindowsPlatform::InitD3D11Devices()
 TemporaryRef<ID3D11Device>
 gfxWindowsPlatform::CreateD3D11DecoderDevice()
 {
+  if (!CouldD3D11DeviceWork()) {
+    return nullptr;
+  }
+
   nsModuleHandle d3d11Module(LoadLibrarySystem32(L"d3d11.dll"));
   decltype(D3D11CreateDevice)* d3d11CreateDevice = (decltype(D3D11CreateDevice)*)
     GetProcAddress(d3d11Module, "D3D11CreateDevice");
@@ -2105,7 +2123,7 @@ gfxWindowsPlatform::CreateD3D11DecoderDevice()
     return nullptr;
   }
 
-  if (FAILED(hr) || !DoesD3D11DeviceWork(device)) {
+  if (FAILED(hr)) {
     return nullptr;
   }
 
