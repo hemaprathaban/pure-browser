@@ -124,3 +124,6 @@ DISABLE_STL_WRAPPING = True
 if CONFIG['GNU_CXX']:
     # TODO: Remove this LZ4 warning suppression after bug 993267 is fixed.
     SOURCES['Compression.cpp'].flags += ['-Wno-unused-function']
+
+if CONFIG['MOZ_NEEDS_LIBATOMIC']:
+    OS_LIBS += ['atomic']
