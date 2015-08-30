@@ -232,15 +232,15 @@ if test "$GNU_CXX"; then
              #include <atomic>],
             [ std::atomic<uint64_t> foo; foo = 1; ],
             ac_cv_needs_atomic=no,
-            _SAVE_LDFLAGS="$LDFLAGS"
-            LDFLAGS="$LDFLAGS -latomic"
+            _SAVE_LIBS="$LIBS"
+            LIBS="$LIBS -latomic"
             AC_TRY_LINK(
                 [#include <cstdint>
                  #include <atomic>],
                 [ std::atomic<uint64_t> foo; foo = 1; ],
                 ac_cv_needs_atomic=yes,
                 ac_cv_needs_atomic="do not know; assuming no")
-            LDFLAGS="$_SAVE_LDFLAGS"
+            LIBS="$_SAVE_LIBS"
         )
     )
     if test "$ac_cv_needs_atomic" = yes; then
