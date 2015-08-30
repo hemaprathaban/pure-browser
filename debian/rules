@@ -160,6 +160,16 @@ debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
 
+MAINTSCRIPTS := $(addprefix debian/,$(addsuffix .maintscript,$(shell awk -F/ '$$1 != "searchplugins" { next } $$2 == "locale" && $$3 != "en-US" { p="$($(PRODUCT))-l10n-" $$3 } $$2 == "common" || ($$2 "/" $$3 == "locale/en-US") { p="$($(PRODUCT))" } !done[p] { print p; done[p] = 1 }' debian/removed_conffiles)))
+
+GENERATED_FILES += $(MAINTSCRIPTS)
+
+debian/$($(PRODUCT)).maintscript: debian/removed_conffiles
+	(grep -v searchplugins/locale $<; grep searchplugins/locale/en-US $<) | sed 's,^,rm_conffile /etc/$($(PRODUCT))/,' > $@
+
+debian/$($(PRODUCT))-l10n-%.maintscript: debian/removed_conffiles
+	grep -i searchplugins/locale/$* $< | sed 's,^,rm_conffile /etc/$($(PRODUCT))/,' > $@
+
 %/package-manifest:
 	$(MAKE) -C $*
 

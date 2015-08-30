@@ -6,7 +6,4 @@ if [ "$1" = "upgrade" ] || [ "$1" = "install" ] ; then
 fi
 %endif
 
-dpkg-maintscript-helper rm_conffile \
-    /etc/@browser@/searchplugins/common/duckduckgo.xml 33.1-1~ @browser@ -- "$@"
-
 #DEBHELPER#
