@@ -19,7 +19,4 @@ if [ "$1" = "configure" ] ; then
     rm -rf /usr/lib/@browser@/updates
 fi
 
-dpkg-maintscript-helper rm_conffile \
-    /etc/@browser@/searchplugins/common/duckduckgo.xml 33.1-1~ @browser@ -- "$@"
-
 #DEBHELPER#
