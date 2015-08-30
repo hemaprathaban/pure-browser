@@ -1,3 +1,14 @@
+iceweasel (40.0.3-2) experimental; urgency=medium
+
+  * debian/rules, debian/removed_conffiles, debian/browser.postinst.in,
+    debian/browser.postrm.in, debian/browser.preinst.in: Remove past conffiles.
+    Closes: #795353.
+
+  * build/autoconf/toolchain.m4, mfbt/moz.build: Link against libatomic
+    when necessary to fix FTBFS on powerpc and mips.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 30 Aug 2015 20:08:08 +0900
+
 iceweasel (40.0.3-1) experimental; urgency=medium
 
   * New upstream release.
