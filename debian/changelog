@@ -1,3 +1,20 @@
+iceweasel (40.0.3-3) experimental; urgency=medium
+
+  * debian/browser.js.in: Disable Health Report upload.
+
+  * build/autoconf/toolchain.m4: Fixup for libatomic detection.
+  * browser/components/preferences/applications.js,
+    uriloader/exthandler/nsHandlerService.js: Revert patch from 3.0.1-1
+    that doesn't seem useful anymore.
+  * browser/confvars.sh: Stop not building Health Report.
+  * l10n-ru/browser/chrome/browser-region/region.properties: Revert reordering
+    of mailto handlers.
+  * toolkit/components/search/nsSearchService.js: Revert change from 12.0-1 that
+    handled the transition to /etc/<appname>/searchplugins more gracefully
+    because that's not doing anything useful anymore.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 31 Aug 2015 11:32:14 +0900
+
 iceweasel (40.0.3-2) experimental; urgency=medium
 
   * debian/rules, debian/removed_conffiles, debian/browser.postinst.in,
