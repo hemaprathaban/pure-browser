@@ -11,14 +11,23 @@
 <!-- LOCALIZATION NOTE (profilerUI.emptyNotice1/2): This is the label shown
   -  in the call list view when empty. -->
 <!-- TODO remove -->
+
+
+
+<!ENTITY profilerUI.emptyNotice1    "انقر زرّ">
 <!-- TODO remove -->
+<!ENTITY profilerUI.emptyNotice2    "لبدء تسجيل نداءات دوال جافاسكرِبت">
 <!-- LOCALIZATION NOTE (profilerUI.stopNotice1/2): This is the label shown
   -  in the call list view while recording a profile. -->
 <!-- TODO remove -->
+
+<!ENTITY profilerUI.stopNotice1    "انقر زرّ">
 <!-- TODO remove -->
 <!-- LOCALIZATION NOTE (profilerUI.startRecording/profilerUI.stopRecording): These are
   -  the labels shown on the main recording buttons to start/stop recording. -->
 
+<!ENTITY profilerUI.startRecording "ابدأ تسجيل الأداء">
+<!ENTITY profilerUI.stopRecording  "أوقف تسجيل الأداء">
 <!-- LOCALIZATION NOTE (profilerUI.bufferStatusTooltip): This string
   -  is displayed as the tooltip for the buffer capacity during a recording. -->
 <!-- LOCALIZATION NOTE (profilerUI.bufferStatusFull): This string
@@ -30,6 +39,8 @@
 <!-- LOCALIZATION NOTE (profilerUI.recordButton): This string is displayed
   -  on a button that starts a new profile. -->
 <!-- TODO remove -->
+
+<!ENTITY profilerUI.recordButton.tooltip "سجّل نداءات دوال جافاسكرِبت.">
 <!-- LOCALIZATION NOTE (profilerUI.recordButton2): This string is displayed
   -  on a button that starts a new profile. -->
 <!-- LOCALIZATION NOTE (profilerUI.importButton): This string is displayed
@@ -46,6 +57,8 @@
 <!ENTITY profilerUI.clearButton "امسح">
 <!-- LOCALIZATION NOTE (profilerUI.toolbar.*): These strings are displayed
   -  in the toolbar on buttons that select which view is currently shown. -->
+
+<!ENTITY profilerUI.toolbar.waterfall "الخط الزمني">
 <!ENTITY profilerUI.toolbar.js-calltree "جافاسكربت">
 
 
@@ -91,13 +104,17 @@
   -  is displayed next to a checkbox determining whether or not memory
   -  measurements are enabled. -->
 
+<!-- LOCALIZATION NOTE (profilerUI.enableAllocations): This string
+  -  is displayed next to a checkbox determining whether or not allocation
+  -  measurements are enabled. -->
+
 <!-- LOCALIZATION NOTE (profilerUI.enableFramerate): This string
   -  is displayed next to a checkbox determining whether or not framerate
   -  is recorded. -->
 
-<!-- LOCALIZATION NOTE (profilerUI.showJITOptimizations): This string
+<!-- LOCALIZATION NOTE (profilerUI.enableJITOptimizations): This string
   -  is displayed next to a checkbox determining whether or not JIT optimization data
-  -  should be shown. -->
+  -  should be recorded. -->
 
 <!-- LOCALIZATION NOTE (profilerUI.JITOptimizationsTitle): This string
   -  is displayed as the title of the JIT Optimizations panel. -->
