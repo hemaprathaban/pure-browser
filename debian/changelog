@@ -1,3 +1,19 @@
+iceweasel (38.3.0esr-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Fixes for mfsa2015-{96,105-106,110-112}, also known as:
+    CVE-2015-4500, CVE-2015-4511, CVE-2015-4509, CVE-2015-4519,
+    CVE-2015-4520, CVE-2015-7174.
+
+  * debian/rules, debian/removed_conffiles, debian/browser.postinst.in,
+    debian/browser.postrm.in, debian/browser.preinst.in: Remove past conffiles.
+    Closes: #795353.
+
+  * config/system-headers: Fix build against latest freetype code. bz#1143411,
+    bz#1194520.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 23 Sep 2015 07:53:47 +0900
+
 iceweasel (38.2.1esr-1) unstable; urgency=high
 
   * New upstream release.
