@@ -44,6 +44,10 @@
 
 <!ENTITY bookmark "Marquer cette page">
 <!ENTITY bookmark_added "Marque-page ajouté">
+<!-- Localization note (bookmark_already_added) : This string is
+     used as a label in a toast. It is the verb "to bookmark", not
+     the noun "a bookmark". -->
+<!ENTITY bookmark_already_added "Déjà dans les marque-pages">
 <!ENTITY bookmark_removed "Marque-page supprimé">
 <!ENTITY bookmark_updated "Marque-page mis à jour">
 <!ENTITY bookmark_options "Options">
@@ -77,6 +81,7 @@
 
 <!ENTITY settings "Paramètres">
 <!ENTITY settings_title "Paramètres">
+<!ENTITY pref_category_input_options "Options de saisie">
 <!ENTITY pref_category_advanced "Avancé">
 <!ENTITY pref_category_customize "Personnalisation">
 <!ENTITY pref_category_customize_summary "Accueil, recherche, onglets, importation">
@@ -133,7 +138,7 @@
 <!ENTITY pref_category_display "Affichage">
 <!ENTITY pref_category_display_summary "Texte, barre de titre, navigation plein écran">
 <!ENTITY pref_category_privacy_short "Vie privée">
-<!ENTITY pref_category_privacy_summary "Contrôler mots de passe, cookies, pistage, données">
+<!ENTITY pref_category_privacy_summary2 "Contrôler identifiants, cookies, pistage, données">
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_vendor_summary "À propos de &brandShortName;, FAQ, données collectées">
 <!ENTITY pref_category_datareporting "Données collectées">
@@ -152,7 +157,9 @@
 <!ENTITY pref_category_devtools "Outils de développement">
 <!ENTITY pref_developer_remotedebugging "Débogage distant">
 <!ENTITY pref_category_logins "Identifiants">
-<!ENTITY pref_remember_signons "Enreg. les mots de passe">
+<!ENTITY pref_remember_signons2 "Enreg. les identifiants">
+<!ENTITY pref_open_external_urls_privately_title "Ouvrir les liens en navigation privée">
+<!ENTITY pref_open_external_urls_privately_summary "Pour tous les liens externes ouverts avec &brandShortName;">
 <!ENTITY pref_manage_logins "Gérer les identifiants">
 
 <!ENTITY pref_category_home "Écran d\u0027accueil">
@@ -191,10 +198,10 @@
 <!ENTITY pref_donottrack_title "Ne pas me pister">
 <!ENTITY pref_donottrack_summary "&brandShortName; indiquera aux sites que vous ne souhaitez pas être pisté">
 
-<!ENTITY tab_queue_toast_message2 "Onglet mis en attente dans &brandShortName;">
+<!ENTITY tab_queue_toast_message3 "Onglet enregistré dans &brandShortName;">
 <!ENTITY tab_queue_toast_action "Ouvrir">
 <!ENTITY tab_queue_prompt_title "Ouvrir plusieurs liens ?">
-<!ENTITY tab_queue_prompt_text2 "Ils seront ouverts sans avoir à rebasculer sur &brandShortName; à chaque fois.">
+<!ENTITY tab_queue_prompt_text3 "Enregistrer les liens jusqu\u0027à la prochaine ouverture de &brandShortName;">
 <!ENTITY tab_queue_prompt_tip_text "Vous pouvez modifier ce choix depuis les paramètres">
 <!ENTITY tab_queue_prompt_positive_action_button "Activer">
 <!ENTITY tab_queue_prompt_negative_action_button "Plus tard">
@@ -246,10 +253,14 @@ size. -->
 <!ENTITY pref_media_autoplay_enabled_summary "Décider si les sites peuvent lancer automatiquement la lecture des vidéos et d\u0027autres contenus multimédia">
 <!ENTITY pref_zoom_force_enabled "Toujours activer le zoom">
 <!ENTITY pref_zoom_force_enabled_summary "Forcer les pages à toujours vous permettre de zoomer">
+<!ENTITY pref_voice_input "Saisie vocale">
+<!ENTITY pref_voice_input_summary "Permettre la saisie vocale dans la barre de titre">
+<!ENTITY pref_qrcode_enabled "Lecteur de QR codes">
+<!ENTITY pref_qrcode_enabled_summary "Permettre la lecture des QR codes depuis la barre de titre">
 
 <!ENTITY pref_use_master_password "Mot de passe principal">
 <!ENTITY pref_sync "Sync">
-<!ENTITY pref_sync_summary "Synchroniser onglets, marque-pages, mots de passe, historique">
+<!ENTITY pref_sync_summary2 "Synchroniser onglets, marque-pages, identifiants, historique">
 <!ENTITY pref_search_suggestions "Suggestions de recherche">
 <!ENTITY pref_import_android "Importer depuis Android">
 <!ENTITY pref_import_android_summary "Importer les marque-pages et l\u0027historique du navigateur d\u0027origine">
@@ -257,11 +268,12 @@ size. -->
 <!ENTITY pref_private_data_searchHistory "Historique des recherches">
 <!ENTITY pref_private_data_formdata2 "Historique des formulaires">
 <!ENTITY pref_private_data_cookies2 "Cookies et connexions actives">
-<!ENTITY pref_private_data_passwords "Mots de passe enregistrés">
+<!ENTITY pref_private_data_passwords2 "Identifiants enregistrés">
 <!ENTITY pref_private_data_cache "Cache">
 <!ENTITY pref_private_data_offlineApps "Données de site web hors connexion">
 <!ENTITY pref_private_data_siteSettings2 "Paramètres de site">
 <!ENTITY pref_private_data_downloadFiles2 "Téléchargements">
+<!ENTITY pref_private_data_syncedTabs "Onglets synchronisés">
 
 
 <!ENTITY pref_about_firefox "À propos de &brandShortName;">
@@ -382,6 +394,11 @@ size. -->
 <!ENTITY doorhanger_login_edit_password_hint "Mot de passe">
 <!ENTITY doorhanger_login_edit_toggle "Afficher le mot de passe">
 <!ENTITY doorhanger_login_edit_toast_error "Échec de l\u0027enregistrement du nom d\u0027utilisateur">
+<!ENTITY doorhanger_login_select_message "Copier le mot de passe depuis &formatS; ?">
+<!ENTITY doorhanger_login_select_toast_copy "Mot de passe copié dans le presse-papiers">
+<!ENTITY doorhanger_login_select_toast_copy_error "Impossible de copier le mot de passe">
+<!ENTITY doorhanger_login_select_action_text "Sélectionner un autre nom d\u0027utilisateur">
+<!ENTITY doorhanger_login_select_title "Copier le mot de passe depuis">
 
 <!ENTITY pref_titlebar_mode "Barre de titre">
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
@@ -393,7 +410,7 @@ size. -->
 <!ENTITY pref_scroll_title_bar_summary "Masquer la barre de titre de &brandShortName; lors du défilement de la page">
 
 <!ENTITY pref_tab_queue_title2 "Ouvrir plusieurs liens">
-<!ENTITY pref_tab_queue_summary2 "Mettre les liens en attente au lieu de rebasculer sur &brandShortName; à chaque fois.">
+<!ENTITY pref_tab_queue_summary3 "Enregistrer les liens jusqu\u0027à la prochaine ouverture de &brandShortName;">
 
 <!-- Localization note (page_removed): This string appears in a toast message when
      any page is removed frome about:home. This includes pages that are in history,
@@ -412,7 +429,9 @@ size. -->
 <!ENTITY site_settings_clear        "Effacer">
 <!ENTITY site_settings_no_settings  "Aucun paramètre à effacer.">
 
-<!ENTITY reading_list_added "Page ajoutée à votre liste de lecture">
+<!-- Localization note (reading_list_added2) : Used in a toast, please keep as short
+     as possible. -->
+<!ENTITY reading_list_added2 "Page ajoutée">
 <!ENTITY reading_list_removed "Page retirée de votre liste de lecture">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
@@ -441,7 +460,7 @@ size. -->
 <!ENTITY button_clear_data "Effacer mes traces">
 <!ENTITY button_set "Valider">
 <!ENTITY button_clear "Effacer">
-<!ENTITY button_remember "Retenir">
+<!ENTITY button_copy "Copier">
 
 <!ENTITY firstrun_panel_title_welcome "Bienvenue">
 
@@ -478,10 +497,6 @@ size. -->
 <!-- Localization note (home_default_empty): This string is used as the default text when there
      is no data to show in an about:home panel that was created by an add-on. -->
 <!ENTITY home_default_empty "Pas de contenu disponible pour ce panneau.">
-
-<!ENTITY private_browsing_title "Navigation privée">
-<!ENTITY private_tabs_panel_empty_desc "Vos onglets de navigation privée apparaîtront ici. Bien que nous ne conservions aucun historique de navigation ni aucun cookie, les marque-pages et fichiers téléchargés seront conservés sur votre appareil.">
-<!ENTITY private_tabs_panel_learn_more "En savoir plus.">
 
 <!ENTITY remote_tabs_panel_moved_title "Où mes onglets sont-ils passés ?">
 <!ENTITY remote_tabs_panel_moved_desc "Nous avons déplacé les onglets de vos autres appareils au sein d\u0027un panneau de votre écran d\u0027accueil pour que vous puissiez y accéder facilement à chaque ouverture d\u0027un nouvel onglet.">
@@ -536,6 +551,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_run_by "dont le détenteur est">
 <!ENTITY identity_no_info "Ce site web ne fournit aucune information sur son identité.">
 <!ENTITY identity_not_encrypted "La connexion vers ce site n\u0027est pas chiffrée.">
+<!ENTITY identity_encrypted "Connexion chiffrée">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY loaded_mixed_content_message "Cette page affiche du contenu non sécurisé.">
@@ -599,7 +615,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY guest_session_dialog_continue "Continuer">
 <!ENTITY guest_session_dialog_cancel "Annuler">
 <!ENTITY new_guest_session_title "&brandShortName; va redémarrer">
-<!ENTITY new_guest_session_text "L\u0027utilisateur invité ne pourra pas accéder à vos données personnelles de navigation (comme par exemple les mots de passe enregistrés, l\u0027historique ou les marque-pages).\n\nLorsque votre invité aura terminé, ses données de navigation seront supprimées et votre session sera restaurée.">
+<!ENTITY new_guest_session_text2 "L\u0027utilisateur invité ne pourra pas accéder à vos données personnelles de navigation (comme par exemple les identifiants enregistrés, l\u0027historique ou les marque-pages).\n\nLorsque votre invité aura terminé, ses données de navigation seront supprimées et votre session sera restaurée.">
 <!ENTITY guest_browsing_notification_title "Navigation invité activée">
 <!ENTITY guest_browsing_notification_text "Appuyez pour quitter">
 
@@ -648,3 +664,5 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
 <!ENTITY find_matchcase "Aa">
+
+<!ENTITY intent_uri_cannot_open "Impossible d\u0027ouvrir le lien">

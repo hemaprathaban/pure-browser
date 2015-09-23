@@ -21,10 +21,10 @@ index 52c35c7..af2c0cf 100644
  
  this.ResetProfile = {
 diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
-index 36c1ebf..aa87fb4 100644
+index 4b6b028..b008ece 100644
 --- a/toolkit/xre/nsAppRunner.cpp
 +++ b/toolkit/xre/nsAppRunner.cpp
-@@ -3946,7 +3946,7 @@ XREMain::XRE_mainRun()
+@@ -4120,7 +4120,7 @@ XREMain::XRE_mainRun()
          if (gDoProfileReset) {
            // Automatically migrate from the current application if we just
            // reset the profile.

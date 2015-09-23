@@ -5,7 +5,7 @@
 <!-- LOCALIZATION NOTE : FILE This file contains the Toolbox strings -->
 <!-- LOCALIZATION NOTE : FILE Do not translate key -->
 
-<!ENTITY closeCmd.key  "U">
+<!ENTITY closeCmd.key  "W">
 <!ENTITY toggleToolbox.key  "I">
 <!ENTITY toggleToolboxF12.keycode          "VK_F12">
 <!ENTITY toggleToolboxF12.keytext          "F12">
@@ -21,6 +21,10 @@
 <!ENTITY toolboxZoomReset.key          "0">
 
 <!ENTITY toolboxReload.key             "g">
+<!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
+<!ENTITY toolboxToggleMinimize.key     "U">
+
+<!ENTITY toolboxToggle.key             "d">
 <!-- LOCALIZATION NOTE (toolboxFramesButton): This is the label for
   -  the iframes menu list that appears only when the document has some.
   -  It allows you to switch the context of the whole toolbox. -->
@@ -87,6 +91,12 @@
   -  boolean preference in about:config, in the options panel. -->
 <!ENTITY options.enableRemote.label3    "Slå remote debugging til">
 <!ENTITY options.enableRemote.tooltip  "Tillader at udviklerværktøjerne kan debugge eksterne Firefox-instanser som fx Firefox OS">
+
+<!-- LOCALIZATION NOTE (options.enableWorkers.label): This is the label for the
+  -  checkbox that toggles worker debugging, i.e. devtools.debugger.workers
+  -  boolean preference in about:config, in the options panel. -->
+<!ENTITY options.enableWorkers.label    "Aktivér worker debugging (under udvikling)">
+<!ENTITY options.enableWorkers.tooltip  "Hvis du aktiverer denne indstilling, kan du debugge workers i udviklerværktøjerne">
 
 <!-- LOCALIZATION NOTE (options.disableJavaScript.label,
   -  options.disableJavaScript.tooltip): This is the options panel label and

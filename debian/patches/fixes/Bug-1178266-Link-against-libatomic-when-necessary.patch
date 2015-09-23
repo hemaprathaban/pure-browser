@@ -8,7 +8,7 @@ Subject: Bug 1178266 - Link against libatomic when necessary
  2 files changed, 29 insertions(+)
 
 diff --git a/build/autoconf/toolchain.m4 b/build/autoconf/toolchain.m4
-index 120a63c..85a5847 100644
+index 120a63c..90d8528 100644
 --- a/build/autoconf/toolchain.m4
 +++ b/build/autoconf/toolchain.m4
 @@ -224,7 +224,33 @@ if test "$GNU_CXX"; then
@@ -23,15 +23,15 @@ index 120a63c..85a5847 100644
 +             #include <atomic>],
 +            [ std::atomic<uint64_t> foo; foo = 1; ],
 +            ac_cv_needs_atomic=no,
-+            _SAVE_LDFLAGS="$LDFLAGS"
-+            LDFLAGS="$LDFLAGS -latomic"
++            _SAVE_LIBS="$LIBS"
++            LIBS="$LIBS -latomic"
 +            AC_TRY_LINK(
 +                [#include <cstdint>
 +                 #include <atomic>],
 +                [ std::atomic<uint64_t> foo; foo = 1; ],
 +                ac_cv_needs_atomic=yes,
 +                ac_cv_needs_atomic="do not know; assuming no")
-+            LDFLAGS="$_SAVE_LDFLAGS"
++            LIBS="$_SAVE_LIBS"
 +        )
 +    )
 +    if test "$ac_cv_needs_atomic" = yes; then
@@ -46,13 +46,13 @@ index 120a63c..85a5847 100644
      dnl When cross compile, we have no variable telling us what the host compiler is. Figure it out.
      cat > conftest.C <<EOF
 diff --git a/mfbt/moz.build b/mfbt/moz.build
-index eef7852d..b5c6a5b 100644
+index 4cb0797..304fb7f 100644
 --- a/mfbt/moz.build
 +++ b/mfbt/moz.build
-@@ -124,3 +124,6 @@ DISABLE_STL_WRAPPING = True
+@@ -114,3 +114,6 @@ DISABLE_STL_WRAPPING = True
  if CONFIG['GNU_CXX']:
      # TODO: Remove this LZ4 warning suppression after bug 993267 is fixed.
-     SOURCES['Compression.cpp'].flags += ['-Wno-unused-function']
+     SOURCES['/mfbt/Compression.cpp'].flags += ['-Wno-unused-function']
 +
 +if CONFIG['MOZ_NEEDS_LIBATOMIC']:
 +    OS_LIBS += ['atomic']

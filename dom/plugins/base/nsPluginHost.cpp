@@ -288,9 +288,9 @@ nsPluginHost::nsPluginHost()
   nsPluginLogging::gNPPLog = PR_NewLogModule(NPP_LOG_NAME);
   nsPluginLogging::gPluginLog = PR_NewLogModule(PLUGIN_LOG_NAME);
 
-  PR_LOG(nsPluginLogging::gNPNLog, PLUGIN_LOG_ALWAYS,("NPN Logging Active!\n"));
-  PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_ALWAYS,("General Plugin Logging Active! (nsPluginHost::ctor)\n"));
-  PR_LOG(nsPluginLogging::gNPPLog, PLUGIN_LOG_ALWAYS,("NPP Logging Active!\n"));
+  MOZ_LOG(nsPluginLogging::gNPNLog, PLUGIN_LOG_ALWAYS,("NPN Logging Active!\n"));
+  MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_ALWAYS,("General Plugin Logging Active! (nsPluginHost::ctor)\n"));
+  MOZ_LOG(nsPluginLogging::gNPPLog, PLUGIN_LOG_ALWAYS,("NPP Logging Active!\n"));
 
   PLUGIN_LOG(PLUGIN_LOG_ALWAYS,("nsPluginHost::ctor\n"));
   PR_LogFlush();
@@ -793,7 +793,7 @@ nsPluginHost::InstantiatePluginInstance(const nsACString& aMimeType, nsIURI* aUR
   if (aURL)
     aURL->GetAsciiSpec(urlSpec);
 
-  PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
+  MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
         ("nsPluginHost::InstantiatePlugin Begin mime=%s, url=%s\n",
          PromiseFlatCString(aMimeType).get(), urlSpec.get()));
 
@@ -856,7 +856,7 @@ nsPluginHost::InstantiatePluginInstance(const nsACString& aMimeType, nsIURI* aUR
   nsAutoCString urlSpec2;
   if (aURL != nullptr) aURL->GetAsciiSpec(urlSpec2);
 
-  PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
+  MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
         ("nsPluginHost::InstantiatePlugin Finished mime=%s, rv=%d, url=%s\n",
          PromiseFlatCString(aMimeType).get(), rv, urlSpec2.get()));
 
@@ -934,7 +934,7 @@ nsPluginHost::TrySetUpPluginInstance(const nsACString &aMimeType,
   nsAutoCString urlSpec;
   if (aURL != nullptr) aURL->GetSpec(urlSpec);
 
-  PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
+  MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_NORMAL,
         ("nsPluginHost::TrySetupPluginInstance Begin mime=%s, owner=%p, url=%s\n",
          PromiseFlatCString(aMimeType).get(), aOwner, urlSpec.get()));
 
@@ -958,6 +958,8 @@ nsPluginHost::TrySetUpPluginInstance(const nsACString &aMimeType,
   nsPluginTag* pluginTag = FindNativePluginForType(aMimeType, true);
 
   NS_ASSERTION(pluginTag, "Must have plugin tag here!");
+
+  plugin->GetLibrary()->SetHasLocalInstance();
 
 #if defined(MOZ_WIDGET_ANDROID) && defined(MOZ_CRASHREPORTER)
   if (pluginTag->mIsFlashPlugin) {
@@ -997,7 +999,7 @@ nsPluginHost::TrySetUpPluginInstance(const nsACString &aMimeType,
   if (aURL)
     aURL->GetSpec(urlSpec2);
 
-  PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_BASIC,
+  MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_BASIC,
         ("nsPluginHost::TrySetupPluginInstance Finished mime=%s, rv=%d, owner=%p, url=%s\n",
          PromiseFlatCString(aMimeType).get(), rv, aOwner, urlSpec2.get()));
 
@@ -1820,9 +1822,39 @@ struct CompareFilesByTime
 
 } // anonymous namespace
 
+bool
+nsPluginHost::ShouldAddPlugin(nsPluginTag* aPluginTag)
+{
+#if defined(XP_WIN) && (defined(__x86_64__) || defined(_M_X64))
+  // On 64-bit windows, the only plugin we should load is flash. Use library
+  // filename and MIME type to check.
+  if (StringBeginsWith(aPluginTag->mFileName, NS_LITERAL_CSTRING("NPSWF"), nsCaseInsensitiveCStringComparator()) &&
+      (aPluginTag->HasMimeType(NS_LITERAL_CSTRING("application/x-shockwave-flash")) ||
+       aPluginTag->HasMimeType(NS_LITERAL_CSTRING("application/x-shockwave-flash-test")))) {
+    return true;
+  }
+  // Accept the test plugin MIME types, so mochitests still work.
+  if (aPluginTag->HasMimeType(NS_LITERAL_CSTRING("application/x-test")) ||
+      aPluginTag->HasMimeType(NS_LITERAL_CSTRING("application/x-Second-Test")) ||
+      aPluginTag->HasMimeType(NS_LITERAL_CSTRING("application/x-java-test"))) {
+    return true;
+  }
+#ifdef PLUGIN_LOGGING
+  PLUGIN_LOG(PLUGIN_LOG_NORMAL,
+             ("ShouldAddPlugin : Ignoring non-flash plugin library %s\n", aPluginTag->mFileName.get()));
+#endif // PLUGIN_LOGGING
+  return false;
+#else
+  return true;
+#endif // defined(XP_WIN) && (defined(__x86_64__) || defined(_M_X64))
+}
+
 void
 nsPluginHost::AddPluginTag(nsPluginTag* aPluginTag)
 {
+  if (!ShouldAddPlugin(aPluginTag)) {
+    return;
+  }
   aPluginTag->mNext = mPlugins;
   mPlugins = aPluginTag;
 
@@ -2975,8 +3007,13 @@ nsPluginHost::ReadPluginInfo()
       tag->ImportFlagsToPrefs(tagflag);
     }
 
-    PR_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_BASIC,
+    MOZ_LOG(nsPluginLogging::gPluginLog, PLUGIN_LOG_BASIC,
       ("LoadCachedPluginsInfo : Loading Cached plugininfo for %s\n", tag->mFileName.get()));
+
+    if (!ShouldAddPlugin(tag)) {
+      continue;
+    }
+
     tag->mNext = mCachedPlugins;
     mCachedPlugins = tag;
   }

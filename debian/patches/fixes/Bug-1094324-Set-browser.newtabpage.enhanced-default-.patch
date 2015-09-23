@@ -10,10 +10,10 @@ Subject: Bug 1094324 - Set browser.newtabpage.enhanced default in prefs
  4 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 705f0dc..6dad7fe 100644
+index 575b39c..fc4cb61 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -1660,6 +1660,9 @@ pref("browser.newtabpage.introShown", false);
+@@ -1692,6 +1692,9 @@ pref("browser.newtabpage.introShown", false);
  // Toggles the content of 'about:newtab'. Shows the grid when enabled.
  pref("browser.newtabpage.enabled", true);
  
@@ -24,7 +24,7 @@ index 705f0dc..6dad7fe 100644
  pref("browser.newtabpage.rows", 3);
  
 diff --git a/browser/base/content/newtab/intro.js b/browser/base/content/newtab/intro.js
-index 2b9989f..5046a2f 100644
+index f67e085..3c0620c 100644
 --- a/browser/base/content/newtab/intro.js
 +++ b/browser/base/content/newtab/intro.js
 @@ -64,6 +64,9 @@ let gIntro = {
@@ -50,10 +50,10 @@ index 7c02289..4ba3fb1 100644
  
        // Initialize the whole page if we haven't done that, yet.
 diff --git a/browser/modules/DirectoryLinksProvider.jsm b/browser/modules/DirectoryLinksProvider.jsm
-index a8f1131..5811211 100644
+index 2e65073..70815bd 100644
 --- a/browser/modules/DirectoryLinksProvider.jsm
 +++ b/browser/modules/DirectoryLinksProvider.jsm
-@@ -384,7 +384,7 @@ let DirectoryLinksProvider = {
+@@ -216,7 +216,7 @@ let DirectoryLinksProvider = {
     */
    _setDefaultEnhanced: function DirectoryLinksProvider_setDefaultEnhanced() {
      if (!Services.prefs.prefHasUserValue(PREF_NEWTAB_ENHANCED)) {
