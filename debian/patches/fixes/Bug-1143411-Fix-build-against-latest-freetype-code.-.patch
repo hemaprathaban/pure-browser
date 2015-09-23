@@ -1,0 +1,20 @@
+From: NiLuJe <ninuje@gmail.com>
+Date: Wed, 18 Mar 2015 19:32:53 -0400
+Subject: Bug 1143411 - Fix build against latest freetype code. r=glandium
+
+---
+ config/system-headers | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/system-headers b/config/system-headers
+index 2c94a7d..4ab45e1 100644
+--- a/config/system-headers
++++ b/config/system-headers
+@@ -471,6 +471,7 @@ freetype/ftbitmap.h
+ freetype/ftxf86.h
+ freetype.h
+ ftcache.h
++ftfntfmt.h
+ ftglyph.h
+ ftsynth.h
+ ftoutln.h
