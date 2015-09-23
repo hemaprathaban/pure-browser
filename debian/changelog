@@ -1,8 +1,19 @@
-iceweasel (41.0-1) UNRELEASED; urgency=medium
+iceweasel (41.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{96,98,102-112}, also known as:
+    CVE-2015-4500, CVE-2015-4501, CVE-2015-4504, CVE-2015-4507,
+    CVE-2015-4508, CVE-2015-4510, CVE-2015-4511, CVE-2015-4509,
+    CVE-2015-4512, CVE-2015-4502, CVE-2015-4516, CVE-2015-4519,
+    CVE-2015-4520, CVE-2015-4521, CVE-2015-4522, CVE-2015-7174,
+    CVE-2015-7175, CVE-2015-7177.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 23 Sep 2015 11:31:21 +0900
+  * debian/control*: Bump sqlite build dependency.
+
+  * config/system-headers: Add a system header wrapper for
+    <freetype/ftfntfmt.h>. bz#1194520.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 23 Sep 2015 11:34:28 +0900
 
 iceweasel (40.0.3-3) experimental; urgency=medium
 
