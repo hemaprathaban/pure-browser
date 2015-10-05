@@ -1,8 +1,14 @@
-iceweasel (41.0.1-1) UNRELEASED; urgency=medium
+iceweasel (41.0.1-1) experimental; urgency=medium
 
   * New upstream release.
 
- -- Mike Hommey <glandium@debian.org>  Mon, 05 Oct 2015 07:42:58 +0900
+  * debian/watch: Update watch file to use https://archive.mozilla.org/ and xz
+    archives.
+
+  * toolkit/library/moz.build: Link libxul against libatomic when necessary.
+    bz#1178266.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 05 Oct 2015 09:38:16 +0900
 
 iceweasel (41.0-1) experimental; urgency=medium
 
