@@ -7,6 +7,9 @@
 
 <!ENTITY closeCmd.key  "W">
 
+<!ENTITY toggleToolboxF12.keycode          "VK_F12">
+<!ENTITY toggleToolboxF12.keytext          "F12">
+
 <!ENTITY toolboxCloseButton.tooltip    "ഡവലപ്പര്‍ പ്രയോഗങ്ങള്‍ അടയ്ക്കുക">
 <!ENTITY toolboxOptionsButton.key      "O">
 <!ENTITY toolboxNextTool.key           "]">
@@ -19,6 +22,13 @@
 <!ENTITY toolboxZoomReset.key          "0">
 
 <!ENTITY toolboxReload.key             "r">
+<!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
+
+<!-- LOCALIZATION NOTE (toolboxFramesButton): This is the label for
+  -  the iframes menu list that appears only when the document has some.
+  -  It allows you to switch the context of the whole toolbox. -->
+<!-- LOCALIZATION NOTE (browserToolboxErrorMessage): This is the label
+  -  shown next to error details when the Browser Toolbox is unable to open. -->
 <!-- LOCALIZATION NOTE (options.context.advancedSettings): This is the label for
   -  the heading of the advanced settings group in the options panel. -->
 
@@ -69,14 +79,16 @@
   -  checkbox that toggles chrome debugging, i.e. devtools.chrome.enabled
   -  boolean preference in about:config, in the options panel. -->
 
-<!ENTITY options.enableChrome.label4    "chrome പ്രവര്‍ത്തന സജ്ജമാക്കി ഡീബഗ്ഗിങ് ചേര്‍ക്കുന്നു">
-<!ENTITY options.enableChrome.tooltip2  "ഈ ഐച്ഛികം ഓണ്‍ ചെയ്താല്‍ ബ്രൌസര്‍ കോണ്ടെക്സ്റ്റില്‍ അനവധി തരത്തിലുള്ള ഡവലപ്പര്‍ ഉപകരണങ്ങള്‍ ഉപയോഗിയ്ക്കാന്‍ അനുവദിയ്ക്കുകയും ആഡ്-ഓണ്‍ മാനേജറില്‍ നിന്നുള്ള ആഡ്-ഓണുകള്‍ ഡീബഗ്ഗും ചെയ്യുന്നു.">
 <!-- LOCALIZATION NOTE (options.enableRemote.label3): This is the label for the
   -  checkbox that toggles remote debugging, i.e. devtools.debugger.remote-enabled
   -  boolean preference in about:config, in the options panel. -->
 
 <!ENTITY options.enableRemote.label3    "വിദൂര ഡീബഗ്ഗിങ് പ്രവര്‍ത്തന സജ്ജമാക്കുക">
 <!ENTITY options.enableRemote.tooltip   "വിദൂര ഫയര്‍ഫോക്സ് ഇന്‍സ്റ്റന്‍സ് ഡീബഗ് ചെയ്യുന്നതിനു് ഡവലപ്പര്‍ പ്രയോഗങ്ങളെ അനുവദിയ്ക്കുന്നതിനായി ഈ ഐച്ഛികം ഓണ്‍ ചെയ്യുക. ഉദാഹരണത്തിനു് ഫയര്‍ഫോക്സ് ഒഎസ്">
+<!-- LOCALIZATION NOTE (options.enableWorkers.label): This is the label for the
+  -  checkbox that toggles worker debugging, i.e. devtools.debugger.workers
+  -  boolean preference in about:config, in the options panel. -->
+
 <!-- LOCALIZATION NOTE (options.disableJavaScript.label,
   -  options.disableJavaScript.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles JavaScript on or off. -->
@@ -89,6 +101,10 @@
 
 <!ENTITY options.disableCache.label2     "ക്യാഷെ പ്രവര്‍ത്തന രഹിതമാക്കുക (ടൂള്‍ബോക്സ് തുറക്കുമ്പോള്‍)">
 <!ENTITY options.disableCache.tooltip2   "ഈ ഓപ്ഷൻ ഓണാക്കുന്നത്, ടൂൾബോക്സ് തുറന്നിട്ടുള്ള എല്ലാ ടാബുകളുടേയും കാഷെ പ്രവർത്തനരഹിതമാക്കും">
+<!-- LOCALIZATION NOTE (options.enableServiceWorkersHTTP.label,
+  -  options.enableServiceWorkersHTTP.tooltip): This is the options panel label and
+  -  tooltip for the checkbox that toggles the service workers testing features on or off. This option enables service workers over HTTP. -->
+
 <!-- LOCALIZATION NOTE (options.selectDefaultTools.label): This is the label for
   -  the heading of group of checkboxes corresponding to the default developer
   -  tools. -->
@@ -110,13 +126,14 @@
   -  for the target of the toolbox. -->
 
 <!ENTITY options.toolNotSupported.label  "* നിലവിലുള്ള ഉപകരണപ്പട്ടികയുടെ ലക്ഷ്യം പിന്തുണയ്ക്കുന്നില്ല">
-<!-- LOCALIZATION NOTE (options.selectDevToolsTheme.label): This is the label for
+<!-- LOCALIZATION NOTE (options.selectDevToolsTheme.label2): This is the label for
   -  the heading of the radiobox corresponding to the theme of the developer
   -  tools. -->
 
-<!ENTITY options.selectDevToolsTheme.label   "DevTools പ്രമേയം തെരഞ്ഞെടുക്കുക:">
-<!ENTITY options.darkTheme.label             "ഇരുണ്ട പ്രമേയം">
-<!ENTITY options.lightTheme.label            "ഇളം പ്രമേയം">
+<!ENTITY options.selectDevToolsTheme.label2   "പ്രമേയങ്ങള്‍">
+<!-- LOCALIZATION NOTE (options.usedeveditiontheme.*) Options under the
+  -  toolbox for enabling and disabling the Developer Edition browser theme. -->
+
 <!-- LOCALIZATION NOTE (options.webconsole.label): This is the label for the
   -  heading of the group of Web Console preferences in the options panel. -->
 
@@ -141,12 +158,7 @@
 
 <!ENTITY options.stylesheetAutocompletion.label      "CSS തനിയേ പൂർത്തിയാക്കുക">
 <!ENTITY options.stylesheetAutocompletion.tooltip    "CSS പ്രത്യേകതകളും, മൂല്യങ്ങളും, സെലക്ടറുകളും സ്റ്റൈൽ എഡിറ്ററിൽ നിങ്ങൾ ടൈപ്പ് ചെയ്യുന്ന മുറക്ക് തനിയേ പൂർത്തിയാക്കുക">
-<!-- LOCALIZATION NOTE (options.profiler.label): This is the label for the
-  -  heading of the group of JavaScript Profiler preferences in the options
-  -  panel. -->
-
-<!ENTITY options.profiler.label            "ജാവാസ്ക്രിപ്റ്റ് പ്രൊഫൈലര്‍">
-<!-- LOCALICATION NOTE (options.commonprefs): This is the label for the heading
+<!-- LOCALIZATION NOTE (options.commonprefs): This is the label for the heading
       of all preferences that affect both the Web Console and the Network
       Monitor -->
 
@@ -175,9 +187,10 @@
 <!ENTITY options.sourceeditor.autoclosebrackets.label   "ബ്രാക്കറ്റുകൾ തനിയേ അടയ്ക്കുക">
 <!ENTITY options.sourceeditor.autoclosebrackets.tooltip "അടയ്ക്കാനുള്ള ബ്രാക്കറ്റുകൾ തനിയേ ചേർക്കുക">
 <!ENTITY options.sourceeditor.expandtab.label           "സ്പേസുകൾ ഉപയോഗിച്ച് ഇൻഡന്റ് ചെയ്യുക">
-<!ENTITY options.sourceeditor.expandtab.tooltip         "ടാബിനു് പകരം സ്പേസുകൾ ഉപയോഗിക്കുക">
+
 <!ENTITY options.sourceeditor.tabsize.label             "ടാബ് വലിപ്പം (T)">
 <!ENTITY options.sourceeditor.tabsize.accesskey         "T">
 <!ENTITY options.sourceeditor.keybinding.label          "കീ ബന്ധങ്ങൾ (K)">
 <!ENTITY options.sourceeditor.keybinding.accesskey      "K">
 <!ENTITY options.sourceeditor.keybinding.default.label  "തനിമട്ട്">
+

@@ -10,6 +10,7 @@
 <!ENTITY  onboard_start_subtext3 "Mobil web\u0027de gezinti deneyiminiz tamamen size ait olsun.">
 <!ENTITY  onboard_start_button_account "&brandShortName; oturumu aç">
 <!ENTITY  onboard_start_button_browser "Gezinmeye başla">
+<!ENTITY  onboard_start_restricted1 "&brandShortName;\u0027un bu basitleştirilmiş sürümüyle güvende kalın ve kontrolü elinizde tutun.">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -68,6 +69,8 @@
 <!ENTITY edit_mode_cancel "İptal">
 
 <!ENTITY close_tab "Sekmeyi kapat">
+<!ENTITY tab_audio_playing "Bu sekme ses çalıyor">
+<!ENTITY tab_audio_muted "Bu sekmenin sesi kapatıldı">
 <!ENTITY one_tab "1 sekme">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -155,6 +158,9 @@
 <!ENTITY pref_search_hint "İPUCU: Herhangi bir web sitesinin arama alanına uzun dokunduktan sonra &formatI; simgesine dokunarak onu arama sağlayıcı listenize ekleyebilirsiniz.">
 <!ENTITY pref_category_devtools "Geliştirici araçları">
 <!ENTITY pref_developer_remotedebugging "Uzaktan hata ayıklama">
+<!ENTITY pref_developer_remotedebugging_usb "USB ile uzaktan hata ayıklama">
+<!ENTITY pref_developer_remotedebugging_wifi "Wi-Fi ile uzaktan hata ayıklama">
+<!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Wi-Fi hata ayıklama için cihazınızda bir QR kod okuma uygulaması yüklü olmalı.">
 <!ENTITY pref_category_logins "Hesaplar">
 <!ENTITY pref_remember_signons2 "Giriş bilgilerini hatırla">
 <!ENTITY pref_open_external_urls_privately_title "Bağlantıları gizle taramada aç">
@@ -192,15 +198,20 @@
 <!ENTITY pref_cookies_disabled "Devre dışı">
 
 <!ENTITY pref_tracking_protection_title "İzlenme koruması">
-<!ENTITY pref_tracking_protection_summary "&brandShortName; sizi sitelerin izlemesinden koruyacak">
+<!ENTITY pref_tracking_protection_summary3 "Gizli taramada etkin">
 <!ENTITY pref_donottrack_title "Beni izleme">
 <!ENTITY pref_donottrack_summary "&brandShortName;sitelere izlenmek istemediğinizi söyleyecek">
+
+<!ENTITY tracking_protection_prompt_title "Şimdi İzlenme Koruması ile">
+<!ENTITY tracking_protection_prompt_text "Endişeye yer kalmasın diye, size izleyen öğeleri aktif bir şekilde engelliyoruz.">
+<!ENTITY tracking_protection_prompt_tip_text "Daha fazla bilgi için Gizlilik ayarlarını ziyaret edin">
+<!ENTITY tracking_protection_prompt_action_button "Anladım!">
 
 <!ENTITY tab_queue_toast_message3 "Sekme &brandShortName; üzerinde kaydedildi">
 <!ENTITY tab_queue_toast_action "Şimdi aç">
 <!ENTITY tab_queue_prompt_title "Çoklu bağlantı mı açıyorsunuz?">
-<!ENTITY tab_queue_prompt_text3 "Bir sonraki &brandShortName; açılışına kadar kaydet">
-<!ENTITY tab_queue_prompt_tip_text "bunu daha sonra Ayarlar\u0027dan değiştirebilisiniz">
+<!ENTITY tab_queue_prompt_text4 "Bir sonraki &brandShortName; açılışına kadar kaydet.">
+<!ENTITY tab_queue_prompt_tip_text2 "Bunu daha sonra Ayarlar\u0027dan değiştirebilisiniz">
 <!ENTITY tab_queue_prompt_positive_action_button "Etkinleştir">
 <!ENTITY tab_queue_prompt_negative_action_button "Şimdi değil">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
@@ -330,7 +341,6 @@ size. -->
 <!ENTITY addons "Eklentiler">
 <!ENTITY logins "Hesaplar">
 <!ENTITY downloads "İndirilenler">
-<!ENTITY apps "Uygulamalar">
 <!ENTITY char_encoding "Karakter kodlaması">
 
 <!ENTITY share "Paylaş">
@@ -400,6 +410,11 @@ size. -->
 <!ENTITY pref_titlebar_mode "Başlık çubuğu">
 <!ENTITY pref_titlebar_mode_title "Sayfa başlığını göster">
 <!ENTITY pref_titlebar_mode_url "Sayfa adresini göster">
+<!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
+     whether or not the magnifying glass is disabled. -->
+
+<!ENTITY pref_prevent_magnifying_glass "Büyüteci devre dışı bırak ">
+<!ENTITY pref_prevent_magnifying_glass_summary "Belirsiz ekran dokunuşlarını çözmek için büyüteci devre dışı bırak">
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
 
@@ -425,10 +440,10 @@ size. -->
 <!ENTITY site_settings_cancel       "İptal">
 <!ENTITY site_settings_clear        "Temizle">
 <!ENTITY site_settings_no_settings  "Temizlenecek ayar yok.">
-<!-- Localization note (reading_list_added2) : Used in a toast, please keep as short
+<!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
      as possible. -->
 
-<!ENTITY reading_list_added2 "Listeye eklendi">
+<!ENTITY reading_list_added3 "Okuma Listesi\u0027ne eklendi">
 <!ENTITY reading_list_removed "Sayfa, okuma listenizden silindi">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
@@ -545,21 +560,25 @@ The layout of the identity dialog prevents combining this into a single string w
 substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
-<!ENTITY identity_run_by "İşleten:">
-<!ENTITY identity_no_info "Bu web sitesi kimlik bilgisi sağlamıyor.">
-<!ENTITY identity_not_encrypted "Bu siteyle aranızdaki bağlantı şifrelenmemiş.">
-<!ENTITY identity_encrypted "Şifrelenmiş">
+<!ENTITY identity_connection_secure "Güvenli bağlantı">
+<!ENTITY identity_connection_insecure "Güvenilmez bağlantı">
 <!-- Mixed content notifications in site identity popup -->
+
+<!ENTITY mixed_content_blocked_all "&brandShortName; bu sayfadaki güvenli olmayan öğeler engelledi.">
+<!ENTITY mixed_content_blocked_some "&brandShortName; bu sayfadaki güvensiz öğeleri engelledi.">
+<!ENTITY mixed_content_display_loaded "Bu sayfada bazı güvensiz öğeler var.">
+<!ENTITY mixed_content_protection_disabled "Güvensiz öğelerden korunması devre dışı bıraktınız.">
 
 <!ENTITY loaded_mixed_content_message "Bu sayfada güvenli olmayan içerik görüntüleniyor.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; güvenli olmayan içeriği engelledi.">
 <!ENTITY blocked_mixed_content_message_bottom "Bu içerik engellense bile çoğu web sitesi düzgün çalışmaya devam edecektir.">
 <!-- Tracking content notifications in site identity popup -->
 
-<!ENTITY loaded_tracking_content_message_top "İzleme koruması devre dışı.">
-<!ENTITY loaded_tracking_content_message_bottom "Bu sayfanın bazı kısımları çevrimiçi etkinliklerinizi izleyebilir.">
-<!ENTITY blocked_tracking_content_message_top2 "İzleme koruması etkin.">
-<!ENTITY blocked_tracking_content_message_bottom2 "Sayfanın çevrimiçi etkinliğinizi izleyen kısımları engellendi.">
+<!ENTITY doorhanger_tracking_title "İzlenme koruması">
+<!ENTITY doorhanger_tracking_state_enabled "Etkin">
+<!ENTITY doorhanger_tracking_state_disabled "Devre dışı">
+<!ENTITY doorhanger_tracking_message_enabled1 "Çevrimiçi davranışlarınızı izleme girişimleri engellendi.">
+<!ENTITY doorhanger_tracking_message_disabled2 "Bu sayfa, gezintinizi izleyebilecek öğeler içeriyor.">
 <!-- Common mixed and tracking content strings in site identity popup -->
 
 <!ENTITY learn_more "Daha fazla bilgi">
@@ -645,10 +664,6 @@ alınıyor">
 <!-- Voice search in the awesome bar -->
 
 <!ENTITY voicesearch_prompt "Şimdi konuşun">
-<!ENTITY voicesearch_failed_title "&brandShortName; Sesle Arama">
-<!ENTITY voicesearch_failed_message "Şu anda sesle aramada bir sorun var. Lütfen daha sonra deneyin.">
-<!ENTITY voicesearch_failed_message_recoverable "Özür dileriz! Sözlerinizi tanıyamadık. Lütfen yeniden deneyin.">
-<!ENTITY voicesearch_failed_retry "Yeniden dene">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -666,3 +681,26 @@ alınıyor">
 <!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "Bağlantı açılamıyor">
+<!-- DevTools Authentication -->
+<!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
+     above a QR reader that is actively scanning for QR codes.  The expected QR
+     code has already been displayed by the client trying to connect (such as
+     desktop Firefox via WebIDE), so you just need to aim this device at the QR
+     code. -->
+
+<!ENTITY devtools_auth_scan_header "Diğer cihazınızda görüntülenen QR kodu aranıyor">
+<!-- Restrictions -->
+<!-- Localization note: These are restrictions the device owner (e.g. parent) can enable for
+     a restricted profile (e.g. child). Used inside the Android settings UI. -->
+
+<!ENTITY restriction_disallow_import_settings_title2 "Android\u0027den almayı etkisizleştir">
+<!ENTITY restriction_disallow_addons_title2 "Eklenti kurulumunu etkisizleştir">
+<!ENTITY restriction_disallow_devtools_title2 "Geliştirici araçlarını etkisizleştir">
+<!ENTITY restriction_disallow_customize_home_title2 "Ana ekran özelleştirmesini etkisizleştir">
+<!ENTITY restriction_disallow_private_browsing_title2 "Gizli gezintiyi etkisizleştir">
+<!ENTITY restriction_disallow_location_services_title2 "Konum servislerini etkisizleştir">
+<!ENTITY restriction_disallow_display_settings_title2 "Görüntü ayarlarını etkisizleştir">
+<!ENTITY restriction_disallow_clear_history_title2 "Tarama geçmişini temizlemeyi etkisizleştir">
+<!ENTITY restriction_disallow_master_password_title2 "Ana parolayı etkisizleştir">
+<!ENTITY restriction_disallow_guest_browsing_title2 "Konuk oturumunu etkisizleştir">
+

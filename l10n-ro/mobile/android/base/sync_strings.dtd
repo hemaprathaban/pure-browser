@@ -33,7 +33,7 @@
 <!ENTITY sync.input.password.label "Parolă">
 <!ENTITY sync.input.key.label "Cheie de recuperare">
 <!ENTITY sync.checkbox.server.label "Folosește un server personalizat">
-<!ENTITY sync.input.server.label "Adresa serverului">
+<!ENTITY sync.input.server.label "URL-ul serverului">
 <!-- Setup Fail -->
 
 <!ENTITY sync.title.fail.label "Nu se poate seta &syncBrand.shortName.label;">
@@ -42,7 +42,7 @@
 <!ENTITY sync.button.manual.label "Setare manuală">
 <!ENTITY sync.subtitle.nointernet.label "Fără conexiune disponibilă la internet.">
 <!ENTITY sync.subtitle.failaccount.label "Crearea contului pe dispozitiv a eșuat.">
-<!ENTITY sync.subtitle.failmultiple.label "Ai mai mult decât un Firefox instalat? În prezent &syncBrand.fullName.label; suportă doar o instalare de Firefox odată. Dezinstalează celelalte instanțe pentru a folosi &syncBrand.shortName.label;.">
+<!ENTITY sync.subtitle.failmultiple.label "Ai mai mult decât un Firefox instalat? În prezent &syncBrand.fullName.label; suportă doar o instalare de Firefox odată. Te rugăm să dezinstalezi celelalte instanțe pentru a folosi &syncBrand.shortName.label;.">
 <!-- Setup Success -->
 
 <!ENTITY sync.title.success.label "Configurare finalizată">
@@ -62,7 +62,7 @@
 <!ENTITY sync.configure.engines.title.label "Ce se sincronizează">
 <!ENTITY sync.configure.engines.sync.my.title.label "Sincronizează…">
 <!ENTITY sync.configure.engines.title.bookmarks "Semne de carte">
-
+<!ENTITY sync.configure.engines.title.passwords2 "Autentificări">
 <!ENTITY sync.configure.engines.title.history "Istoric">
 <!ENTITY sync.configure.engines.title.tabs "File">
 <!-- Common text -->
@@ -88,7 +88,7 @@
 <!ENTITY bookmarks.folder.toolbar.label "Bara pentru semne de carte">
 <!ENTITY bookmarks.folder.unfiled.label "Semne de carte nesortate">
 <!ENTITY bookmarks.folder.desktop.label "Semne de carte de pe desktop">
-<!ENTITY bookmarks.folder.mobile.label "Semne de carte de pe mobil">
+<!ENTITY bookmarks.folder.mobile.label "Semne de carte mobile">
 <!ENTITY bookmarks.folder.readinglist.label "Listă de citit">
 <!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
 <!ENTITY bookmarks.folder.pinned.label "Fixat">
@@ -99,7 +99,7 @@
 <!-- Incorrect settings and changing credentials. -->
 
 <!ENTITY sync.invalidcreds.label "Nume de cont sau parolă incorectă.">
-<!ENTITY sync.invalidserver.label "Te rugăm să introduci o adresă validă de server">
+<!ENTITY sync.invalidserver.label "Te rugăm să introduci un URL valid al serverului">
 <!ENTITY sync.verifying.label "Se verifică…">
 <!ENTITY sync.new.recoverykey.status.incorrect "Cheia de recuperare e incorectă. Te rugăm să încerci din nou.">
 <!-- Send tab to device. -->
@@ -141,7 +141,7 @@
 <!ENTITY fxaccount_policy_linkprivacy "Politica de confidențialitate">
 
 <!ENTITY fxaccount_getting_started_welcome_to_sync "Bun venit la &syncBrand.shortName.label;">
-
+<!ENTITY fxaccount_getting_started_description2 "Autentifică-te pentru a sincroniza filele, semnele de carte, parolele și altele.">
 <!ENTITY fxaccount_getting_started_get_started "Începe">
 <!ENTITY fxaccount_getting_started_old_firefox "Folosești o versiune mai veche de &syncBrand.shortName.label;?">
 <!-- Localization note: the Firefox below should not change with the
@@ -154,8 +154,8 @@
 <!ENTITY fxaccount_create_account_month_of_birth "Lună">
 <!ENTITY fxaccount_create_account_year_of_birth "Anul nașterii">
 <!-- Localization note: &formatS1; is fxaccount_policy_linktos, &formatS2; is fxaccount_policy_linkprivacy, both hyperlinked. -->
-<!ENTITY fxaccount_create_account_policy_text2 "Continunând, sunt de acord cu &formatS1; și &formatS2; a serviciilor cloud Firefox.">
-<!ENTITY fxaccount_create_account_button "Următor">
+<!ENTITY fxaccount_create_account_policy_text2 "Continuând, sunt de acord cu &formatS1; și &formatS2; a serviciilor cloud Firefox.">
+<!ENTITY fxaccount_create_account_button "Înainte">
 <!ENTITY fxaccount_create_account_choose_what_to_sync "Alege ce sincronizezi">
 <!ENTITY fxaccount_create_account_sign_in_instead "Ai un cont deja? Autentifică-te">
 <!ENTITY fxaccount_create_account_1990_or_earlier "1990 sau anterior">
@@ -167,7 +167,7 @@
 
 <!ENTITY fxaccount_confirm_account_header "Confirmă contul">
 <!-- Localization note: &formatS; is the Firefox Account's email address. -->
-<!ENTITY fxaccount_confirm_account_verification_link "O legătură de verificare a fost trimisă către &formatS;">
+<!ENTITY fxaccount_confirm_account_verification_link "Un link de verificare a fost trimis către &formatS;">
 <!ENTITY fxaccount_confirm_account_resend_email "Retrimite e-mailul">
 <!ENTITY fxaccount_confirm_account_change_email "Uită această adresă de e-mail?">
 <!ENTITY fxaccount_confirm_account_verification_link_sent2 "E-mail de verificare trimis">
@@ -204,15 +204,15 @@
 <!ENTITY fxaccount_status_sync_server "Serverul de sincronizare">
 <!ENTITY fxaccount_status_sync "&syncBrand.shortName.label;">
 <!ENTITY fxaccount_status_sync_enabled "&syncBrand.shortName.label;: activată">
-<!ENTITY fxaccount_status_needs_verification2 "Contul trebuie să fie verificat. Apasă pentru a retrimite e-mailul de verificare.">
-<!ENTITY fxaccount_status_needs_credentials "Nu se poate conecta. Apasă pentru a te autentifica.">
+<!ENTITY fxaccount_status_needs_verification2 "Contul trebuie să fie verificat. Atinge pentru a retrimite e-mailul de verificare.">
+<!ENTITY fxaccount_status_needs_credentials "Nu se poate conecta. Atinge pentru a te autentifica.">
 <!ENTITY fxaccount_status_needs_upgrade "Trebuie să actualizezi &brandShortName; pentru a te autentifica.">
 <!ENTITY fxaccount_status_needs_master_sync_automatically_enabled "&syncBrand.shortName.label; este configurat, însă sincronizarea automată e dezactivată. Comută „Sincronizați automat datele” în setările Android &gt; Utilizare date.">
 <!ENTITY fxaccount_status_needs_master_sync_automatically_enabled_v21 "&syncBrand.shortName.label; este configurat, însă sincronizarea automată e dezactivată. Comută „Sincronizați automat datele” în setările Android &gt; Conturi.">
-<!ENTITY fxaccount_status_needs_finish_migrating "Apasă pentru a te autentifica în noul cont Firefox.">
+<!ENTITY fxaccount_status_needs_finish_migrating "Atinge pentru a te autentifica în contul nou Firefox.">
 <!ENTITY fxaccount_status_bookmarks "Semne de carte">
 <!ENTITY fxaccount_status_history "Istoric">
-
+<!ENTITY fxaccount_status_passwords2 "Autentificări">
 <!ENTITY fxaccount_status_tabs "File deschise">
 <!ENTITY fxaccount_status_legal "Mențiuni legale" >
 <!-- Localization note: when tapped, the following two strings link to
@@ -224,12 +224,13 @@
 <!ENTITY fxaccount_status_more "Mai multe&ellipsis;">
 
 <!ENTITY fxaccount_remove_account_dialog_title "Elimini contul Firefox?">
-<!ENTITY fxaccount_remove_account_dialog_message "&brandShortName; va opri sincronizarea cu contul tău, dar nu va șterge niciuna din datele tale de navigare pe acest dispozitiv.">
+<!ENTITY fxaccount_remove_account_dialog_message "&brandShortName; va opri sincronizarea cu contul, dar nu va șterge niciuna din datele de navigare de pe acest dispozitiv.">
 <!-- Localization note: format string below will be replaced
      with the Firefox Account's email address. -->
 <!ENTITY fxaccount_remove_account_toast "Contul Firefox &formatS; eliminat.">
 
 <!ENTITY fxaccount_remove_account_menu_item "Elimină contul">
+<!ENTITY fxaccount_enable_debug_mode "Intră în modul depanare">
 <!-- Localization note: this is the name shown by the Android system
      itself for a Firefox Account. Don't localize this. -->
 
@@ -262,9 +263,9 @@
 <!ENTITY fxaccount_sync_sign_in_error_notification_title2 "&syncBrand.shortName.label; nu este conectat">
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
-<!ENTITY fxaccount_sync_sign_in_error_notification_text2 "Apasă pentru a te autentifica ca &formatS;">
+<!ENTITY fxaccount_sync_sign_in_error_notification_text2 "Atinge pentru a te autentifica ca &formatS;">
 
 <!ENTITY fxaccount_sync_finish_migrating_notification_title "Ai termiant actualizarea &syncBrand.shortName.label;?">
 <!-- Localization note: the format string below will be replaced
      with the Firefox Account's email address. -->
-<!ENTITY fxaccount_sync_finish_migrating_notification_text "Apasă pentru a te autentifica ca &formatS;">
+<!ENTITY fxaccount_sync_finish_migrating_notification_text "Atinge pentru a te autentifica ca &formatS;">

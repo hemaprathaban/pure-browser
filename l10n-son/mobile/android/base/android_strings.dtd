@@ -6,9 +6,11 @@
 <!ENTITY  no_space_to_start_error "Doo barantaa ši wasa &brandShortName; tunandiroo še.">
 <!ENTITY  error_loading_file "Firka foo bangay waati kaŋ a ceeci ka tukey zumandi kaŋ ka waažibi &brandShortName; dirandiroo še">
 
+<!ENTITY  onboard_start_message3 "Ceeci nda &brandShortName;">
 
 <!ENTITY  onboard_start_button_account "Huru &brandShortName; ra">
 <!ENTITY  onboard_start_button_browser "Ceecikaw tunandi">
+
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -43,6 +45,9 @@
 <!ENTITY bookmark "Doo-šilbay">
 <!ENTITY bookmark_remove "Doo-šilbaa kaa">
 <!ENTITY bookmark_added "Doo-šilbay tontonante">
+<!-- Localization note (bookmark_already_added) : This string is
+     used as a label in a toast. It is the verb "to bookmark", not
+     the noun "a bookmark". -->
 <!ENTITY bookmark_removed "Doo-šilbay tuusante">
 <!ENTITY bookmark_updated "Doo-šilbay taagante">
 <!ENTITY bookmark_options "Suubarey">
@@ -63,6 +68,8 @@
 <!ENTITY edit_mode_cancel "Naŋ">
 
 <!ENTITY close_tab "Nor lokoo daabu">
+
+
 <!ENTITY one_tab "nor loku 1">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -76,6 +83,7 @@
 
 <!ENTITY settings "Kayandiyaney">
 <!ENTITY settings_title "Kayandiyaney">
+
 <!ENTITY pref_category_advanced "Jinekoyante">
 <!ENTITY pref_category_customize "Hanse boŋše">
 <!ENTITY pref_category_customize_summary "Šintin moo, ceeciyan, nor lokey, zaayan">
@@ -103,7 +111,7 @@
 
 <!ENTITY overlay_share_bookmark_btn_label "Doo-šilbay">
 <!ENTITY overlay_share_reading_list_btn_label "Tonton caw maašeedaa ga">
-<!ENTITY overlay_share_bookmark_btn_label_already "Doo-šilbandi ka ben">
+
 <!ENTITY overlay_share_reading_list_btn_label_already "Goo caw maašeede ga ka ben">
 <!ENTITY overlay_share_send_other "Sanba jinay taney do">
 <!-- Localization note (overlay_share_send_tab_btn_label) : Used on the
@@ -131,7 +139,7 @@
 <!ENTITY pref_category_display "Cebe">
 <!ENTITY pref_category_display_summary "Hantum, maa žeeri, dijikul naaruyan">
 <!ENTITY pref_category_privacy_short "Sutura">
-<!ENTITY pref_category_privacy_summary "Dabari šennikufaley, aleewawey, hangayan, bayhayey">
+
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_vendor_summary "&brandShortName; ga, hankul hãayaney, bayhaya suubarey ">
 <!ENTITY pref_category_datareporting "Bayhaya suubarey">
@@ -149,8 +157,13 @@
 <!ENTITY pref_search_hint "Yaamar: Ceeciyan faari naagu kayna nda &formatI; biyoo karkar ka interneti nungu foo tonton war ceeciyan nookey maašeedaa ga.">
 <!ENTITY pref_category_devtools "Cinakey goyjinawey">
 <!ENTITY pref_developer_remotedebugging "Mooray hasaraw kaakayan">
+
+
+
 <!ENTITY pref_category_logins "Huruyan tammaasawey">
-<!ENTITY pref_remember_signons "Honga šennikufaley">
+
+
+
 <!ENTITY pref_manage_logins "Huruyan tammaasawey juwal">
 
 <!ENTITY pref_category_home "Šintin">
@@ -184,9 +197,13 @@
 <!ENTITY pref_cookies_disabled "Kayante">
 
 <!ENTITY pref_tracking_protection_title "Ganayan jejebuyan">
-<!ENTITY pref_tracking_protection_summary "&brandShortName; ga ganji interneti nungey ma war gana">
+
 <!ENTITY pref_donottrack_title "May ši ay gana">
 <!ENTITY pref_donottrack_summary "&brandShortName; ga har nungey se kaŋ war ši baa boro ma war gana">
+
+
+
+
 
 <!ENTITY tab_queue_toast_action "Feeri sohõ">
 
@@ -241,9 +258,13 @@ size. -->
 <!ENTITY pref_zoom_force_enabled "Azzaati barmayyan tunandi waati kul">
 <!ENTITY pref_zoom_force_enabled_summary "Gaabi ka hantum a boŋ hala war ma hin ka moo kul azzaatoo barmay">
 
+
+
+
+
 <!ENTITY pref_use_master_password "Takaddaɲaa šennikufal beeroo">
 <!ENTITY pref_sync "Sync">
-<!ENTITY pref_sync_summary "War nor lokey. doo-šilbawey, šennikufaley, taarikoo hangandi cere">
+
 <!ENTITY pref_search_suggestions "Ceeci honnandiyaney cebe">
 <!ENTITY pref_import_android "Zaa Android ra">
 <!ENTITY pref_import_android_summary "Doo-šilbawey nda taariki zaa aššil ceecikaa ga">
@@ -251,11 +272,12 @@ size. -->
 
 
 <!ENTITY pref_private_data_cookies2 "Aleewawey nda ciyari hunantey">
-<!ENTITY pref_private_data_passwords "Šennikufal gaabuntey">
+
 <!ENTITY pref_private_data_cache "Tugudoo">
 <!ENTITY pref_private_data_offlineApps "Bila-nda-ciyari Interneti nungu bayhayey">
 <!ENTITY pref_private_data_siteSettings2 "Nungu kayandiyaney">
 <!ENTITY pref_private_data_downloadFiles2 "Zumandey">
+
 
 
 <!ENTITY pref_about_firefox "&brandShortName; ga">
@@ -314,7 +336,6 @@ size. -->
 <!ENTITY addons "Tontoney">
 <!ENTITY logins "Huruyan tammaasawey">
 <!ENTITY downloads "Zumandiyaney">
-<!ENTITY apps "Porogaramizey">
 <!ENTITY char_encoding "Harfu hawyan">
 
 <!ENTITY share "Žemna">
@@ -376,9 +397,17 @@ size. -->
 <!ENTITY doorhanger_login_edit_toggle "Šennikufaley cebe">
 
 
+
+
+
+
+
 <!ENTITY pref_titlebar_mode "Maa zuu">
 <!ENTITY pref_titlebar_mode_title "Maa zuu cebe">
 <!ENTITY pref_titlebar_mode_url "Moo aderesu cebe">
+<!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
+     whether or not the magnifying glass is disabled. -->
+
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
 
@@ -403,8 +432,8 @@ size. -->
 <!ENTITY site_settings_cancel       "Naŋ">
 <!ENTITY site_settings_clear        "Tuusu">
 <!ENTITY site_settings_no_settings  "Kayandiyan kul ši kaŋ ma tuusandi.">
-
-<!ENTITY reading_list_added "Moo tontonandi war caw maašeedaa ga">
+<!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
+     as possible. -->
 <!ENTITY reading_list_removed "Moo tuusandi war caw maašeedaa ra">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
@@ -433,7 +462,7 @@ size. -->
 <!ENTITY button_clear_data "Bayhayey kaa">
 <!ENTITY button_set "Kayandi">
 <!ENTITY button_clear "Tuusu">
-<!ENTITY button_remember "Hongu">
+<!ENTITY button_copy "Berandi">
 
 
 <!ENTITY home_top_sites_title "Nungu kaasey">
@@ -496,10 +525,6 @@ size. -->
      the text of a button; we expect more than one device. -->
 <!ENTITY home_remote_tabs_unhide_selected_devices "Jinay tugantey cebe koyne">
 
-<!ENTITY private_browsing_title "Sutura naarumi">
-<!ENTITY private_tabs_panel_empty_desc "War sutura nor lokey ga bangay ne. Baa kaŋ ir ši taariki gaabu war ceeciyan wala aleewawey ga, doo-šilbawey nda tukey kaŋ war n\u0027i zumandi ga cindi war boŋ jinaa ga.">
-<!ENTITY private_tabs_panel_learn_more "Bay ka tonton wala?">
-
 <!ENTITY remote_tabs_panel_moved_title "Man n\u0027ay nor lokey koy?">
 <!ENTITY remote_tabs_panel_moved_desc "Ir na war nor lokey ganandi ka hun jinay tanayaŋ ga fasaldogoo ra war šintin moɲoo ga kaŋ ga hin ka cahã ka duwandi waati kul kaŋ war na nor loku feeri.">
 <!ENTITY remote_tabs_panel_moved_link "Ay kanbe ay fasaldoo taagaa ra.">
@@ -524,20 +549,20 @@ The layout of the identity dialog prevents combining this into a single string w
 substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
-<!ENTITY identity_run_by "kaŋ tunandikaa ti">
-<!ENTITY identity_no_info "Interneti nungoo woo ši boŋtammaasa alhabar noo.">
-<!ENTITY identity_not_encrypted "War ciyaroo Interneti nungoo woo do ši tugandi.">
+
 <!-- Mixed content notifications in site identity popup -->
+
+
+
 
 <!ENTITY loaded_mixed_content_message "Moɲoo woo ka gundekuna cebe kaŋ ši saajaw.">
 <!ENTITY blocked_mixed_content_message_top "&brandShortName; na gundekuna gagay kaŋ ši saajaw.">
 <!ENTITY blocked_mixed_content_message_bottom "Interneti nungi boobey ga goy boryo ba gundekunaa woo n\u0027 ka gagayandi.">
 <!-- Tracking content notifications in site identity popup -->
 
-<!ENTITY loaded_tracking_content_message_top "Jejebu ganayan n\u0027 ka kay.">
-<!ENTITY loaded_tracking_content_message_bottom "Moɲoo woo jereyaŋ ga hin ka war interneti gana goyey gana.">
-<!ENTITY blocked_tracking_content_message_top2 "Ganayan jejebu n\u0027 ka tunandi.">
-<!ENTITY blocked_tracking_content_message_bottom2 "Moɲoo woo jereyaŋ kaŋ ga war interneti goyey gana n\u0027 ka kayandi.">
+
+
+
 <!-- Common mixed and tracking content strings in site identity popup -->
 
 <!ENTITY learn_more "Bay ka tonton">
@@ -593,7 +618,7 @@ Android ra">
 <!ENTITY guest_session_dialog_continue "Koy jine">
 <!ENTITY guest_session_dialog_cancel "Naŋ">
 <!ENTITY new_guest_session_title "&brandShortName; ga tunandi taaga">
-<!ENTITY new_guest_session_text "Boraa kaŋ ga goy nd\u0027a ši hin ka dii war hunday ceeciyan bayhayey (sanda šennikufal gaabuntey, taariki wala doo-šilbawey).\n\nWaati kaŋ war yawoo ben, ngey ceeciyan bayhayey ga tuusandi nda war goywaatoo ga yeeti dogoo ra.">
+
 <!ENTITY guest_browsing_notification_title "Yaw naaru n\u0027 ka tunandi">
 <!ENTITY guest_browsing_notification_text "Karkar to fatta">
 
@@ -621,10 +646,6 @@ Android ra">
 <!-- Voice search in the awesome bar -->
 
 <!ENTITY voicesearch_prompt "Šelaŋ sohõ">
-<!ENTITY voicesearch_failed_title "&brandShortName; jinde ceeciyan">
-<!ENTITY voicesearch_failed_message "Šenday foo goo jinde ceeciyan ra sohõda. Ceeci hiino taare.">
-<!ENTITY voicesearch_failed_message_recoverable "Alhaa naŋ! Ir mana hin ka faham ni kalimawey se. Ceeci koyne taare.">
-
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -640,3 +661,23 @@ Android ra">
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
 
 <!ENTITY find_matchcase "Aa">
+
+<!-- DevTools Authentication -->
+<!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
+     above a QR reader that is actively scanning for QR codes.  The expected QR
+     code has already been displayed by the client trying to connect (such as
+     desktop Firefox via WebIDE), so you just need to aim this device at the QR
+     code. -->
+<!-- Restrictions -->
+<!-- Localization note: These are restrictions the device owner (e.g. parent) can enable for
+     a restricted profile (e.g. child). Used inside the Android settings UI. -->
+
+
+
+
+
+
+
+
+
+
