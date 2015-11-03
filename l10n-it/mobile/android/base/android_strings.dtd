@@ -8,6 +8,7 @@
 <!ENTITY onboard_start_subtext3 "Un’esperienza di navigazione che si adatta alle tue esigenze.">
 <!ENTITY onboard_start_button_account "Accedi a &brandShortName;">
 <!ENTITY onboard_start_button_browser "Inizia a navigare">
+<!ENTITY onboard_start_restricted1 "Sicurezza e controllo garantiti grazie a questa versione semplificata di &brandShortName;.">
 <!ENTITY bookmarks_title "Segnalibri">
 <!ENTITY home_title "&brandShortName; Home">
 <!ENTITY history_title "Cronologia">
@@ -52,6 +53,8 @@
 <!ENTITY site_security "Sicurezza del sito">
 <!ENTITY edit_mode_cancel "Annulla">
 <!ENTITY close_tab "Chiudi scheda">
+<!ENTITY tab_audio_playing "Questa scheda sta riproducendo audio">
+<!ENTITY tab_audio_muted "La riproduzione audio è disattivata per questa scheda">
 <!ENTITY one_tab "1 scheda">
 <!ENTITY num_tabs2 "&formatD; schede">
 <!ENTITY new_tab_opened "Aperta nuova scheda">
@@ -97,6 +100,9 @@
 <!ENTITY pref_search_hint "Suggerimento: è possibile aggiungere qualunque sito tenendo premuto a lungo sul campo di ricerca e poi toccando l’icona &formatI;.">
 <!ENTITY pref_category_devtools "Strumenti di sviluppo">
 <!ENTITY pref_developer_remotedebugging "Debug remoto">
+<!ENTITY pref_developer_remotedebugging_usb "Debug remoto tramite USB">
+<!ENTITY pref_developer_remotedebugging_wifi "Debug remoto tramite Wi-Fi">
+<!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Il debug tramite Wi-Fi richiede la presenza sul dispositivo di un’app per la scansione di codici QR.">
 <!ENTITY pref_category_logins "Accessi">
 <!ENTITY pref_remember_signons2 "Ricorda accessi">
 <!ENTITY pref_open_external_urls_privately_title "Apri link in nav. anonima">
@@ -126,14 +132,18 @@
 <!ENTITY pref_cookies_not_accept_foreign "Attivi, esclusi di terze parti">
 <!ENTITY pref_cookies_disabled "Disattivati">
 <!ENTITY pref_tracking_protection_title "Protezione antitracciamento">
-<!ENTITY pref_tracking_protection_summary "Impedisci ai siti di tracciare gli utenti">
+<!ENTITY pref_tracking_protection_summary3 "Attivata in modalità Navigazione anonima">
 <!ENTITY pref_donottrack_title "Antitracciamento">
 <!ENTITY pref_donottrack_summary "Richiedi ai siti di non effettuare alcun tracciamento">
+<!ENTITY tracking_protection_prompt_title "Ora con protezione antitracciamento">
+<!ENTITY tracking_protection_prompt_text "Blocca in modo attivo gli elementi traccianti, rimuovendo ogni preoccupazione per l’utente.">
+<!ENTITY tracking_protection_prompt_tip_text "Per ulteriori informazioni visita la sezione Privacy delle impostazioni">
+<!ENTITY tracking_protection_prompt_action_button "Ricevuto!">
 <!ENTITY tab_queue_toast_message3 "Schede salvate in &brandShortName;">
 <!ENTITY tab_queue_toast_action "Apri adesso">
 <!ENTITY tab_queue_prompt_title "Apertura di più link">
-<!ENTITY tab_queue_prompt_text3 "Salvali fino alla successiva apertura di &brandShortName;.">
-<!ENTITY tab_queue_prompt_tip_text "È possibile modificare questa scelta in Impostazioni">
+<!ENTITY tab_queue_prompt_text4 "Salvali fino alla successiva apertura di &brandShortName;.">
+<!ENTITY tab_queue_prompt_tip_text2 "È possibile modificare questa scelta in Impostazioni">
 <!ENTITY tab_queue_prompt_positive_action_button "Attiva">
 <!ENTITY tab_queue_prompt_negative_action_button "Non adesso">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
@@ -170,7 +180,7 @@
 <!ENTITY pref_font_size_preview_text "La volpe arancio oltrepassa ogni ostacolo con sempre maggiore velocità, flessibilità e sicurezza. In quanto organizzazione non profit siamo in grado di creare innovazione per il bene degli utenti senza cedere a pressioni o compromessi. Questo significa una migliore esperienza per tutti e un futuro migliore per il Web.">
 <!ENTITY pref_voice_input "Input vocale">
 <!ENTITY pref_voice_input_summary "Attiva input vocale nella barra degli indirizzi">
-<!ENTITY pref_qrcode_enabled "Lettura codici QR">
+<!ENTITY pref_qrcode_enabled "Scansione codici QR">
 <!ENTITY pref_qrcode_enabled_summary "Consenti la scansione di codici QR nella barra degli indirizzi">
 <!ENTITY pref_use_master_password "Usa password principale">
 <!ENTITY pref_sync "Sync">
@@ -224,7 +234,6 @@
 <!ENTITY addons "Componenti aggiuntivi">
 <!ENTITY logins "Accessi">
 <!ENTITY downloads "Download">
-<!ENTITY apps "App">
 <!ENTITY char_encoding "Codifica caratteri">
 <!ENTITY share "Condividi">
 <!ENTITY share_title "Condividi con">
@@ -281,6 +290,8 @@
 <!ENTITY pref_titlebar_mode "Barra del titolo">
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
+<!ENTITY pref_prevent_magnifying_glass "Disattiva lente di ingrandimento">
+<!ENTITY pref_prevent_magnifying_glass_summary "Impedisci l’utilizzo della lente di ingrandimento per risolvere tocchi dello schermo potenzialmente ambigui.">
 <!ENTITY pref_scroll_title_bar2 "Navigazione a schermo intero">
 <!ENTITY pref_scroll_title_bar_summary "Nascondi la barra del titolo di &brandShortName; quando si scorre una pagina verso il basso">
 <!ENTITY pref_tab_queue_title2 "Apertura di più link">
@@ -294,7 +305,7 @@
 <!ENTITY site_settings_cancel "Annulla">
 <!ENTITY site_settings_clear "Elimina">
 <!ENTITY site_settings_no_settings "Non ci sono impostazioni da eliminare.">
-<!ENTITY reading_list_added2 "Aggiunta all’elenco">
+<!ENTITY reading_list_added3 "Aggiunta a Elenco lettura">
 <!ENTITY reading_list_removed "Pagina rimossa da Elenco lettura">
 <!ENTITY reading_list_remove "Rimuovi da Elenco lettura">
 <!ENTITY reading_list_duplicate "Pagina già presente in Elenco lettura">
@@ -351,17 +362,20 @@
 <!ENTITY filepicker_image_title "Seleziona o scatta una fotografia">
 <!ENTITY filepicker_video_title "Seleziona o registra un video">
 <!ENTITY identity_connected_to "Si è connessi con">
-<!ENTITY identity_run_by "Questo sito è gestito da">
-<!ENTITY identity_no_info "Questo sito web non fornisce informazioni relative all’identità.">
-<!ENTITY identity_not_encrypted "La connessione con questo sito web non è cifrata.">
-<!ENTITY identity_encrypted "Cifrata">
+<!ENTITY identity_connection_secure "Connessione sicura">
+<!ENTITY identity_connection_insecure "Connessione non sicura">
+<!ENTITY mixed_content_blocked_all "Gli elementi non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
+<!ENTITY mixed_content_blocked_some "Alcuni elementi non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
+<!ENTITY mixed_content_display_loaded "Questa pagina presenta elementi non sicuri.">
+<!ENTITY mixed_content_protection_disabled "La protezione da elementi non sicuri è stata bloccata.">
 <!ENTITY loaded_mixed_content_message "Questa pagina presenta contenuti non sicuri.">
 <!ENTITY blocked_mixed_content_message_top "Alcuni contenuti non sicuri sono stati bloccati da &brandShortName;.">
 <!ENTITY blocked_mixed_content_message_bottom "La maggior parte dei siti web funzionerà correttamente anche se questo contenuto viene bloccato.">
-<!ENTITY loaded_tracking_content_message_top "Protezione antitracciamento disattivata.">
-<!ENTITY loaded_tracking_content_message_bottom "Elementi di questa pagina possono tracciare l’attività online dei visitatori.">
-<!ENTITY blocked_tracking_content_message_top2 "Protezione antitracciamento attivata.">
-<!ENTITY blocked_tracking_content_message_bottom2 "Sono stati bloccati elementi di questa pagina in grado di tracciare l’attività online dei visitatori.">
+<!ENTITY doorhanger_tracking_title "Protezione antitracciamento">
+<!ENTITY doorhanger_tracking_state_enabled "Attiva">
+<!ENTITY doorhanger_tracking_state_disabled "Disattivata">
+<!ENTITY doorhanger_tracking_message_enabled1 "I tentativi di tracciamento dell’attività online vengono bloccati.">
+<!ENTITY doorhanger_tracking_message_disabled2 "Questa pagina include elementi in grado di tracciare l’attività online dei visitatori.">
 <!ENTITY learn_more "Ulteriori informazioni">
 <!ENTITY enable_protection "Attiva protezione">
 <!ENTITY disable_protection "Disattiva protezione">
@@ -402,11 +416,18 @@
 <!ENTITY actionbar_menu "Menu">
 <!ENTITY actionbar_done "Fatto">
 <!ENTITY voicesearch_prompt "Parla ora">
-<!ENTITY voicesearch_failed_title "Ricerca vocale di &brandShortName;">
-<!ENTITY voicesearch_failed_message "Si è verificato un problema con la ricerca vocale. Riprovare.">
-<!ENTITY voicesearch_failed_message_recoverable "Siamo spiacenti, non è stato possibile riconoscere le parole. Riprovare.">
-<!ENTITY voicesearch_failed_retry "Riprova">
 <!ENTITY remote_tabs_last_synced "Ultima sinc.: &formatS;">
 <!ENTITY remote_tabs_never_synced "Ultima sinc.: mai">
 <!ENTITY find_matchcase "Aa">
 <!ENTITY intent_uri_cannot_open "Impossibile aprire il link">
+<!ENTITY devtools_auth_scan_header "Scansione del codice QR visualizzato sull’altro dispositivo">
+<!ENTITY restriction_disallow_import_settings_title2 "Disattiva “Importa da Android”">
+<!ENTITY restriction_disallow_addons_title2 "Disattiva installazione comp. aggiuntivi">
+<!ENTITY restriction_disallow_devtools_title2 "Disattiva strumenti di sviluppo">
+<!ENTITY restriction_disallow_customize_home_title2 "Disattiva personaliz. schermata principale">
+<!ENTITY restriction_disallow_private_browsing_title2 "Disattiva Navigazione anonima">
+<!ENTITY restriction_disallow_location_services_title2 "Disattiva servizi di georilevazione">
+<!ENTITY restriction_disallow_display_settings_title2 "Disattiva impostazioni schermo">
+<!ENTITY restriction_disallow_clear_history_title2 "Disattiva “Elimina cronologia”">
+<!ENTITY restriction_disallow_master_password_title2 "Disattiva password principale">
+<!ENTITY restriction_disallow_guest_browsing_title2 "Disattiva navigazione ospite">

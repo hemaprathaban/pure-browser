@@ -9,6 +9,7 @@
 <!ENTITY onboard_start_subtext3 "Spraw, aby przeglądanie mobilne stało się prawdziwie Twoim.">
 <!ENTITY  onboard_start_button_account "Zaloguj się do przeglądarki &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Zacznij przeglądać Internet">
+<!ENTITY  onboard_start_restricted1 "Bądź bezpieczny dzięki uproszczonej wersji przeglądarki &brandShortName;.">
 
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
@@ -64,6 +65,8 @@
 <!ENTITY edit_mode_cancel "Anuluj">
 
 <!ENTITY close_tab "Zamknij kartę">
+<!ENTITY tab_audio_playing "Karta odtwarza dźwięk">
+<!ENTITY tab_audio_muted "Wyciszona karta">
 <!ENTITY new_tab "Nowa karta">
 <!ENTITY one_tab "Kart: 1">
 <!ENTITY new_tab_opened "Otwarto nową kartę">
@@ -76,7 +79,7 @@ is upper-case, to match Google and Android's convention. -->
 
 <!ENTITY settings "Ustawienia">
 <!ENTITY settings_title "Ustawienia">
-
+<!ENTITY pref_category_input_options "Opcje wprowadzania">
 <!ENTITY pref_category_advanced "Zaawansowane">
 <!ENTITY pref_category_customize "Dostosuj">
 <!ENTITY pref_category_customize_summary "Strona domowa, wyszukiwanie, karty, importowanie">
@@ -112,7 +115,7 @@ The locale includes both language and region concepts. -->
 <!ENTITY pref_category_display "Wyświetlanie">
 <!ENTITY pref_category_display_summary "Tekst, pasek tytułowy, przeglądanie pełnoekranowe">
 <!ENTITY pref_category_privacy_short "Prywatność">
-<!ENTITY pref_category_privacy_summary "Kontrola nad hasłami, ciasteczkami, śledzeniem i innymi danymi">
+<!ENTITY pref_category_privacy_summary2 "Kontrola nad danymi logowania, ciasteczkami, śledzeniem i innymi danymi">
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_vendor_summary "O programie &brandShortName;, najczęściej zadawane pytania, zarządzanie danymi">
 <!ENTITY pref_category_datareporting "Udostępnianie danych">
@@ -130,8 +133,11 @@ The locale includes both language and region concepts. -->
 <!ENTITY pref_search_hint "RADA: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania, a następnie stukając ikonę &formatI;.">
 <!ENTITY pref_category_devtools "Narzędzia dla programistów">
 <!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
+<!ENTITY pref_developer_remotedebugging_usb "Zdalne debugowanie przez USB">
+<!ENTITY pref_developer_remotedebugging_wifi "Zdalne debugowanie przez Wi-Fi">
+<!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Debugowanie przez Wi-Fi wymaga zainstalowania czytnika kodów QR na urządzeniu.">
 <!ENTITY pref_category_logins "Dane logowania">
-<!ENTITY pref_remember_signons "Pamiętaj hasła">
+<!ENTITY pref_remember_signons2 "Pamiętaj dane logowania">
 <!ENTITY pref_open_external_urls_privately_title "Otwieraj odnośniki w trybie prywatnym">
 <!ENTITY pref_open_external_urls_privately_summary "Dla wszystkich zewnętrznych odnośników otwieranych w programie &brandShortName;">
 <!ENTITY pref_manage_logins "Zarządzanie danymi logowania">
@@ -168,15 +174,20 @@ selected to be added to the home page. -->
 <!ENTITY pref_cookies_disabled "Nie akceptuj">
 
 <!ENTITY pref_tracking_protection_title "Ochrona przed śledzeniem">
-<!ENTITY pref_tracking_protection_summary "Blokowanie przez program &brandShortName; prób śledzenia aktywności użytkownika przez strony">
+<!ENTITY pref_tracking_protection_summary3 "Włączona w trybie prywatnym">
 <!ENTITY pref_donottrack_title "Ograniczanie śledzenia">
 <!ENTITY pref_donottrack_summary "Informuj witryny, że użytkownik nie chce być śledzony">
 
-<!ENTITY tab_queue_toast_message2 "Karta skolejkowana w programie &brandShortName;">
+<!ENTITY tracking_protection_prompt_title "Nowa ochrona przed śledzeniem">
+<!ENTITY tracking_protection_prompt_text "Aktywne blokowanie elementów śledzących aktywność użytkownika.">
+<!ENTITY tracking_protection_prompt_tip_text "Więcej informacji w ustawieniach prywatności">
+<!ENTITY tracking_protection_prompt_action_button "Zamknij">
+
+<!ENTITY tab_queue_toast_message3 "Karta zachowana w programie &brandShortName;">
 <!ENTITY tab_queue_toast_action "Otwórz teraz">
 <!ENTITY tab_queue_prompt_title "Otwieranie wielu odnośników">
-<!ENTITY tab_queue_prompt_text2 "Otwieranie odnośników w tle, bez przełączania się do programu &brandShortName; za każdym razem.">
-<!ENTITY tab_queue_prompt_tip_text "Można to zmienić później w ustawieniach">
+<!ENTITY tab_queue_prompt_text4 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
+<!ENTITY tab_queue_prompt_tip_text2 "Można to zmienić później w ustawieniach">
 <!ENTITY tab_queue_prompt_positive_action_button "Włącz">
 <!ENTITY tab_queue_prompt_negative_action_button "Nie teraz">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
@@ -219,10 +230,14 @@ size. -->
 <!ENTITY pref_media_autoplay_enabled_summary "Kontroluje, czy strony mogą automatycznie odtwarzać filmy i inne treści">
 <!ENTITY pref_zoom_force_enabled "Wymuszanie możliwości powiększania">
 <!ENTITY pref_zoom_force_enabled_summary "Kontroluje możliwość wymuszenia możliwości powiększania dowolnej strony">
+<!ENTITY pref_voice_input "Sterowanie głosowe">
+<!ENTITY pref_voice_input_summary "Umożliwia sterowanie głosowe w pasku tytułu">
+<!ENTITY pref_qrcode_enabled "Czytnik kodów QR">
+<!ENTITY pref_qrcode_enabled_summary "Umożliwia używanie skanera kodów QR w pasku tytułu">
 
 <!ENTITY pref_use_master_password "Używaj hasła głównego">
 <!ENTITY pref_sync "Sync">
-<!ENTITY pref_sync_summary "Synchronizuj karty, zakładki, hasła, historię">
+<!ENTITY pref_sync_summary2 "Synchronizuj karty, zakładki, dane logowania, historię">
 <!ENTITY pref_search_suggestions "Podpowiedzi wyszukiwania">
 <!ENTITY pref_import_android "Importuj z Androida">
 <!ENTITY pref_import_android_summary "Importuj zakładki i historię z domyślnej przeglądarki systemu Android">
@@ -230,7 +245,7 @@ size. -->
 <!ENTITY pref_private_data_searchHistory "Historia wyszukiwania">
 <!ENTITY pref_private_data_formdata2 "Historia formularzy">
 <!ENTITY pref_private_data_cookies2 "Ciasteczka i aktywne zalogowania">
-<!ENTITY pref_private_data_passwords "Zachowane hasła">
+<!ENTITY pref_private_data_passwords2 "Zachowane dane logowania">
 <!ENTITY pref_private_data_cache "Pamięć podręczna">
 <!ENTITY pref_private_data_offlineApps "Dane witryny w trybie offline">
 <!ENTITY pref_private_data_siteSettings2 "Ustawienia witryny">
@@ -281,7 +296,6 @@ size. -->
 <!ENTITY addons "Dodatki">
 <!ENTITY logins "Dane logowania">
 <!ENTITY downloads "Pobrane pliki">
-<!ENTITY apps "Aplikacje">
 <!ENTITY char_encoding "Kodowanie znaków">
 
 <!ENTITY share "Udostępnij">
@@ -341,11 +355,14 @@ size. -->
 <!ENTITY pref_titlebar_mode_title "Pokazywanie tytułu strony">
 <!ENTITY pref_titlebar_mode_url "Pokazywanie adresu strony">
 
+<!ENTITY pref_prevent_magnifying_glass "Wyłącz lupę ">
+<!ENTITY pref_prevent_magnifying_glass_summary "Wyłącz użycie lupy do rozstrzygania niejednoznacznych dotknięć ekranu">
+
 <!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
 <!ENTITY pref_scroll_title_bar_summary "Ukryj pasek tytułu przeglądarki &brandShortName; przy przewijaniu stron">
 
 <!ENTITY pref_tab_queue_title2 "Otwieranie wielu odnośników">
-<!ENTITY pref_tab_queue_summary2 "Kolejkowanie odnośników zamiast przełączania do programu &brandShortName; za każdym razem.">
+<!ENTITY pref_tab_queue_summary3 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
 
 <!ENTITY page_removed "Stronę usunięto">
 
@@ -359,7 +376,7 @@ size. -->
 <!ENTITY site_settings_clear        "Wyczyść">
 <!ENTITY site_settings_no_settings  "Brak ustawień">
 
-<!ENTITY reading_list_added "Strona dodana do czytelni">
+<!ENTITY reading_list_added3 "Dodano do czytelni">
 <!ENTITY reading_list_removed "Strona usunięta z czytelni">
 <!ENTITY reading_list_remove "Usuń z czytelni">
 <!ENTITY reading_list_duplicate "Strona została już dodana do czytelni">
@@ -382,7 +399,6 @@ size. -->
 <!ENTITY button_clear_data "Usuń dane">
 <!ENTITY button_set "Ustaw">
 <!ENTITY button_clear "Usuń">
-<!ENTITY button_remember "Zachowaj">
 <!ENTITY button_copy "Kopiuj">
 
 <!ENTITY firstrun_panel_title_welcome "Witamy">
@@ -433,10 +449,6 @@ it is applicable. -->
 <!ENTITY home_remote_tabs_trouble_verifying "Masz problem z weryfikacją konta?">
 <!ENTITY home_remote_tabs_need_to_verify "Przed synchronizacją musisz zweryfikować konto Firefoksa.">
 
-<!ENTITY private_browsing_title "Tryb prywatny">
-<!ENTITY private_tabs_panel_empty_desc "Tu wyświetlą się twoje prywatne karty. Nie zachowamy historii przeglądania ani ciasteczek z tej sesji, ale zachowane zakładki i pobrane pliki zostaną na twoim urządzeniu.">
-<!ENTITY private_tabs_panel_learn_more "Chcesz dowiedzieć się więcej?">
-
 <!ENTITY remote_tabs_panel_moved_title "Gdzie zniknęły moje karty?">
 <!ENTITY remote_tabs_panel_moved_desc "Przenieśliśmy twoje karty z innych urządzeń do panelu na stronie domowej, gdzie możesz je łatwo znaleźć przy otwieraniu nowej karty.">
 <!ENTITY remote_tabs_panel_moved_link "Pokaż mi ten nowy panel.">
@@ -463,17 +475,24 @@ it is applicable. -->
 <!ENTITY num_tabs2 "Karty (&formatD;)">
 
 <!ENTITY identity_connected_to "Połączono z">
-<!ENTITY identity_run_by "Witrynę prowadzi:">
-<!ENTITY identity_no_info "Ta witryna nie dostarcza informacji o swej tożsamości">
-<!ENTITY identity_not_encrypted "Połączenie z tą witryną nie jest szyfrowane.">
+<!ENTITY identity_connection_secure "Zabezpieczone połączenie">
+<!ENTITY identity_connection_insecure "Niezabezpieczone połączenie">
+
+<!ENTITY mixed_content_blocked_all "Program &brandShortName; zablokował niezabezpieczone elementy na tej stronie.">
+<!ENTITY mixed_content_blocked_some "Program &brandShortName; zablokował niektóre niezabezpieczone elementy na tej stronie.">
+<!ENTITY mixed_content_display_loaded "Niektóre elementy na tej stronie są niezabezpieczone.">
+<!ENTITY mixed_content_protection_disabled "Ochrona przed niezabezpieczonymi elementami jest wyłączona.">
 
 <!ENTITY loaded_mixed_content_message "Na tej stronie znajdują się niebezpieczne treści">
 <!ENTITY blocked_mixed_content_message_top "Przeglądarka &brandShortName; zablokowała niebezpieczne treści.">
 <!ENTITY blocked_mixed_content_message_bottom "Większość witryn działa poprawnie nawet po zablokowaniu tych treści.">
-<!ENTITY loaded_tracking_content_message_top "Ochrona przed śledzeniem jest wyłączona">
-<!ENTITY loaded_tracking_content_message_bottom "Części tej strony mogą śledzić aktywność użytkownika.">
-<!ENTITY blocked_tracking_content_message_top2 "Ochrona przed śledzeniem jest włączona">
-<!ENTITY blocked_tracking_content_message_bottom2 "Części tej strony mogące śledzić aktywność użytkownika zostały zablokowane.">
+
+<!ENTITY doorhanger_tracking_title "Ochrona przed śledzeniem">
+<!ENTITY doorhanger_tracking_state_enabled "Włączone">
+<!ENTITY doorhanger_tracking_state_disabled "Wyłączone">
+<!ENTITY doorhanger_tracking_message_enabled1 "Zablokowano próby śledzenia aktywności użytkownika.">
+<!ENTITY doorhanger_tracking_message_disabled2 "Ta strona zawiera elementy mogące śledzić aktywność użytkownika.">
+
 <!ENTITY learn_more "Dowiedz się więcej">
 <!ENTITY enable_protection "Włącz ochronę">
 <!ENTITY disable_protection "Wyłącz ochronę">
@@ -518,7 +537,7 @@ it is applicable. -->
 <!ENTITY guest_session_dialog_continue "Kontynuuj">
 <!ENTITY guest_session_dialog_cancel "Anuluj">
 <!ENTITY new_guest_session_title "Program &brandShortName; zostanie uruchomiony ponownie">
-<!ENTITY new_guest_session_text "Osoba korzystająca z przeglądarki nie będzie widziała Twoich prywatnych informacji (takich, jak zachowane hasła, historia przeglądania czy zakładki). Kiedy gość skończy korzystać z przeglądarki, dane o sesji zostaną usunięte, a Twoja sesja zostanie przywrócona.">
+<!ENTITY new_guest_session_text2 "Osoba korzystająca z przeglądarki nie będzie widziała Twoich prywatnych informacji (takich, jak zachowane dane logowania, historia przeglądania czy zakładki). Kiedy gość skończy korzystać z przeglądarki, dane o sesji zostaną usunięte, a Twoja sesja zostanie przywrócona.">
 <!ENTITY guest_browsing_notification_title "Włączono tryb gościnny">
 <!ENTITY guest_browsing_notification_text "Stuknij, żeby wyjść">
 
@@ -535,12 +554,24 @@ it is applicable. -->
 <!ENTITY actionbar_done "Gotowe">
 
 <!ENTITY voicesearch_prompt "Mów teraz">
-<!ENTITY voicesearch_failed_title "Wyszukiwanie głosowe programu &brandShortName;">
-<!ENTITY voicesearch_failed_message "Obecnie występują problemy z wyszukiwaniem głosowym. Proszę spróbować później.">
-<!ENTITY voicesearch_failed_message_recoverable "Niestety nie udało się rozpoznać słów. Proszę spróbować ponownie.">
-<!ENTITY voicesearch_failed_retry "Spróbuj ponownie">
 
 <!ENTITY remote_tabs_last_synced "Ostatnia synchronizacja: &formatS;">
 <!ENTITY remote_tabs_never_synced "Ostatnia synchronizacja: nigdy">
 
 <!ENTITY find_matchcase "Aa">
+
+<!ENTITY intent_uri_cannot_open "Nie można otworzyć odnośnika">
+
+<!ENTITY devtools_auth_scan_header "Skanowanie kodu QR wyświetlonego na drugim urządzeniu">
+
+<!ENTITY restriction_disallow_import_settings_title2 "Wyłącz „Importuj z Androida”">
+<!ENTITY restriction_disallow_addons_title2 "Wyłącz instalację dodatków">
+<!ENTITY restriction_disallow_devtools_title2 "Wyłącz narzędzia dla programistów">
+<!ENTITY restriction_disallow_customize_home_title2 "Wyłącz dostosowywanie strony domowej">
+<!ENTITY restriction_disallow_private_browsing_title2 "Wyłącz tryb prywatny">
+<!ENTITY restriction_disallow_location_services_title2 "Wyłącz usługi lokalizacji">
+<!ENTITY restriction_disallow_display_settings_title2 "Wyłącz ustawienia wyświetlania">
+<!ENTITY restriction_disallow_clear_history_title2 "Wyłącz „Wyczyść historię przeglądania”">
+<!ENTITY restriction_disallow_master_password_title2 "Wyłącz hasło główne">
+<!ENTITY restriction_disallow_guest_browsing_title2 "Wyłącz tryb gościnny">
+

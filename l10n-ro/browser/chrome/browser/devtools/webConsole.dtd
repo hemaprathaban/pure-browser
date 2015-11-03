@@ -9,7 +9,7 @@
 
 
 <!ENTITY window.title "Consolă web">
-<!ENTITY browserConsole.title "Consolă navigator">
+<!ENTITY browserConsole.title "Consolă pentru browser">
 
 <!ENTITY networkPanel.requestURLColon             "URL solicitat:">
 <!ENTITY networkPanel.requestMethodColon          "Metoda cererii:">
@@ -17,7 +17,7 @@
 
 <!ENTITY networkPanel.requestHeaders              "Antetele cererii">
 <!ENTITY networkPanel.requestCookie               "Cookie trimis">
-<!ENTITY networkPanel.requestBody                 "Conținutul cererii">
+<!ENTITY networkPanel.requestBody                 "Corpul cererii">
 <!ENTITY networkPanel.requestFormData             "Date trimise de formular">
 
 <!ENTITY networkPanel.responseHeaders             "Antetele răspunsului">
@@ -36,8 +36,8 @@
 <!-- LOCALIZATION NOTE (openURL.label): You can see this string in the Web
    - Console context menu. -->
 
-<!ENTITY openURL.label     "Deschide URL în filă nouă">
-<!ENTITY openURL.accesskey "D">
+<!ENTITY openURL.label     "Deschide URL-ul în filă nouă">
+<!ENTITY openURL.accesskey "R">
 <!-- LOCALIZATION NOTE (btnPageNet.label): This string is used for the menu
   -  button that allows users to toggle the network logging output.
   -  This string and the following strings toggle various kinds of output
@@ -77,10 +77,14 @@
 <!ENTITY btnConsoleReflows      "Reflows">
 <!-- LOCALIZATION NODE (btnConsoleSharedWorkers) the term "Shared Workers"
   -  should not be translated. -->
+
+<!ENTITY btnConsoleSharedWorkers "Workeri partajați">
 <!-- LOCALIZATION NODE (btnConsoleServiceWorkers) the term "Service Workers"
   -  should not be translated. -->
+<!ENTITY btnConsoleServiceWorkers "Service workeri">
 <!-- LOCALIZATION NODE (btnConsoleWindowlessWorkers) the term "Workers"
   -  should not be translated. -->
+<!ENTITY btnConsoleWindowlessWorkers "Workeri de suplimente sau Chrome">
 
 <!ENTITY filterOutput.placeholder "Ieșire filtru">
 <!ENTITY btnClear.label        "Curăță">
@@ -98,11 +102,11 @@
 <!ENTITY fullZoomResetCmd.commandkey    "0">
 <!ENTITY fullZoomResetCmd.commandkey2   "">
 
-<!ENTITY copyURLCmd.label     "Copiază adresa legăturii">
+<!ENTITY copyURLCmd.label     "Copiază adresa linkului">
 <!ENTITY copyURLCmd.accesskey "C">
 
 <!ENTITY closeCmd.key         "W">
 <!ENTITY findCmd.key          "F">
 <!ENTITY clearOutputCtrl.key  "L">
-
-
+<!ENTITY openInVarViewCmd.label "Deschide în vizualizarea variabilelor">
+<!ENTITY openInVarViewCmd.accesskey "v">

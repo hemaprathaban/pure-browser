@@ -46,10 +46,10 @@ index 120a63c..90d8528 100644
      dnl When cross compile, we have no variable telling us what the host compiler is. Figure it out.
      cat > conftest.C <<EOF
 diff --git a/mfbt/moz.build b/mfbt/moz.build
-index 4cb0797..304fb7f 100644
+index 8e6b2df..0c7aa33 100644
 --- a/mfbt/moz.build
 +++ b/mfbt/moz.build
-@@ -114,3 +114,6 @@ DISABLE_STL_WRAPPING = True
+@@ -116,3 +116,6 @@ DISABLE_STL_WRAPPING = True
  if CONFIG['GNU_CXX']:
      # TODO: Remove this LZ4 warning suppression after bug 993267 is fixed.
      SOURCES['/mfbt/Compression.cpp'].flags += ['-Wno-unused-function']

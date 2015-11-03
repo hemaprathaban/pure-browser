@@ -10,6 +10,7 @@
 <!ENTITY  onboard_start_subtext3 "Faça a sua experiência na web móvel verdadeiramente sua.">
 <!ENTITY  onboard_start_button_account "Entrar no &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Iniciar a navegação">
+<!ENTITY  onboard_start_restricted1 "Fique seguro e no controle com esta versão simplificada do &brandShortName;.">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -68,6 +69,8 @@
 <!ENTITY edit_mode_cancel "Cancelar">
 
 <!ENTITY close_tab "Fechar aba">
+<!ENTITY tab_audio_playing "Esta aba está reproduzindo áudio">
+<!ENTITY tab_audio_muted "Foi retirado o som desta aba">
 <!ENTITY one_tab "1 aba">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -107,7 +110,7 @@
      used in the share overlay menu to select an action. It is the verb
      "to bookmark", not the noun "a bookmark". -->
 
-<!ENTITY overlay_share_bookmark_btn_label "Favoritar">
+<!ENTITY overlay_share_bookmark_btn_label "Favorito">
 <!ENTITY overlay_share_reading_list_btn_label "Adicionar à lista de leitura">
 <!ENTITY overlay_share_bookmark_btn_label_already "Já existe nos favoritos">
 <!ENTITY overlay_share_reading_list_btn_label_already "Já existe na lista de leitura">
@@ -155,6 +158,9 @@
 <!ENTITY pref_search_hint "Dica: adicione qualquer site à sua lista de mecanismos de pesquisa dando um toque longo em seu campo de pesquisa e um toque no ícone &formatI;.">
 <!ENTITY pref_category_devtools "Ferramentas do desenvolvedor">
 <!ENTITY pref_developer_remotedebugging "Depuração remota">
+<!ENTITY pref_developer_remotedebugging_usb "Depuração remota via USB">
+<!ENTITY pref_developer_remotedebugging_wifi "Depuração remota via Wi-Fi">
+<!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "A depuração por Wi-Fi requer que o seu dispositivo tenha um aplicativo de leitura de códigos QR instalado.">
 <!ENTITY pref_category_logins "Logins">
 <!ENTITY pref_remember_signons2 "Memorizar logins">
 <!ENTITY pref_open_external_urls_privately_title "Abrir links na navegação privativa">
@@ -192,15 +198,20 @@
 <!ENTITY pref_cookies_disabled "Desativado">
 
 <!ENTITY pref_tracking_protection_title "Proteção contra rastreamento">
-<!ENTITY pref_tracking_protection_summary "O &brandShortName; vai impedir que sites o rastreiem">
+<!ENTITY pref_tracking_protection_summary3 "Ativo na navegação privativa">
 <!ENTITY pref_donottrack_title "Não rastrear">
 <!ENTITY pref_donottrack_summary "O &brandShortName; informará aos sites que você não quer ser rastreado">
+
+<!ENTITY tracking_protection_prompt_title "Agora com proteção contra rastreamento">
+<!ENTITY tracking_protection_prompt_text "Bloqueia elementos de rastreamento para que você não precise se preocupar.">
+<!ENTITY tracking_protection_prompt_tip_text "Visite as configurações de privacidade para saber mais">
+<!ENTITY tracking_protection_prompt_action_button "Entendi!">
 
 <!ENTITY tab_queue_toast_message3 "Aba salva no &brandShortName;">
 <!ENTITY tab_queue_toast_action "Abrir agora">
 <!ENTITY tab_queue_prompt_title "Abrindo múltiplos links?">
-<!ENTITY tab_queue_prompt_text3 "Salvar para usar na próxima vez que iniciar o &brandShortName;">
-<!ENTITY tab_queue_prompt_tip_text "você pode alterar isso mais tarde nas configurações">
+<!ENTITY tab_queue_prompt_text4 "Salvar para a próxima vez que iniciar o &brandShortName;.">
+<!ENTITY tab_queue_prompt_tip_text2 "Você pode alterar isso mais tarde nas configurações">
 <!ENTITY tab_queue_prompt_positive_action_button "Ativar">
 <!ENTITY tab_queue_prompt_negative_action_button "Agora não">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
@@ -330,7 +341,6 @@ size. -->
 <!ENTITY addons "Complementos">
 <!ENTITY logins "Logins">
 <!ENTITY downloads "Downloads">
-<!ENTITY apps "Aplicativos">
 <!ENTITY char_encoding "Codificação">
 
 <!ENTITY share "Compartilhar">
@@ -400,6 +410,11 @@ size. -->
 <!ENTITY pref_titlebar_mode "Barra de título">
 <!ENTITY pref_titlebar_mode_title "Exibir título da página">
 <!ENTITY pref_titlebar_mode_url "Exibir endereço da página">
+<!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
+     whether or not the magnifying glass is disabled. -->
+
+<!ENTITY pref_prevent_magnifying_glass "Desativar a lupa ">
+<!ENTITY pref_prevent_magnifying_glass_summary "Impedir o uso da lupa para resolver toques ambíguos na tela">
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
 
@@ -407,7 +422,7 @@ size. -->
 <!ENTITY pref_scroll_title_bar_summary "Ocultar a barra de título do &brandShortName; ao rolar a tela para baixo">
 
 <!ENTITY pref_tab_queue_title2 "Abir múltiplos links">
-<!ENTITY pref_tab_queue_summary3 "Salvar para usar na próxima vez que iniciar o &brandShortName;">
+<!ENTITY pref_tab_queue_summary3 "Salvar para a próxima vez que iniciar o &brandShortName;">
 <!-- Localization note (page_removed): This string appears in a toast message when
      any page is removed frome about:home. This includes pages that are in history,
      bookmarks, or reading list. -->
@@ -425,10 +440,10 @@ size. -->
 <!ENTITY site_settings_cancel       "Cancelar">
 <!ENTITY site_settings_clear        "Limpar">
 <!ENTITY site_settings_no_settings  "Não há configurações para limpar.">
-<!-- Localization note (reading_list_added2) : Used in a toast, please keep as short
+<!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
      as possible. -->
 
-<!ENTITY reading_list_added2 "Adicionado à lista">
+<!ENTITY reading_list_added3 "Adicionado à lista de leitura">
 <!ENTITY reading_list_removed "Página removida da sua lista de leitura">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
@@ -545,21 +560,25 @@ The layout of the identity dialog prevents combining this into a single string w
 substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
-<!ENTITY identity_run_by "que é administrado por">
-<!ENTITY identity_no_info "Este site não fornece informações de identidade.">
-<!ENTITY identity_not_encrypted "A conexão com este site não é criptografada.">
-<!ENTITY identity_encrypted "Criptografado">
+<!ENTITY identity_connection_secure "Conexão segura">
+<!ENTITY identity_connection_insecure "Conexão insegura">
 <!-- Mixed content notifications in site identity popup -->
+
+<!ENTITY mixed_content_blocked_all "O &brandShortName; bloqueou elementos inseguros nesta página.">
+<!ENTITY mixed_content_blocked_some "O &brandShortName; bloqueou alguns elementos inseguros nesta página.">
+<!ENTITY mixed_content_display_loaded "Esta página tem alguns elementos inseguros.">
+<!ENTITY mixed_content_protection_disabled "Você desativou a proteção para elementos inseguros.">
 
 <!ENTITY loaded_mixed_content_message "Esta página está exibindo conteúdo não seguro.">
 <!ENTITY blocked_mixed_content_message_top "O &brandShortName; bloqueou conteúdo não seguro.">
 <!ENTITY blocked_mixed_content_message_bottom "A maioria dos sites ainda funcionará corretamente mesmo com este conteúdo bloqueado.">
 <!-- Tracking content notifications in site identity popup -->
 
-<!ENTITY loaded_tracking_content_message_top "Proteção contra rastreamento desativada.">
-<!ENTITY loaded_tracking_content_message_bottom "Partes deste página podem rastrear suas atividades online.">
-<!ENTITY blocked_tracking_content_message_top2 "Proteção contra rastreamento ativada.">
-<!ENTITY blocked_tracking_content_message_bottom2 "Partes da página que rastreiam sua atividade online foram bloqueadas.">
+<!ENTITY doorhanger_tracking_title "Proteção contra rastreamento">
+<!ENTITY doorhanger_tracking_state_enabled "Ativado">
+<!ENTITY doorhanger_tracking_state_disabled "Desativado">
+<!ENTITY doorhanger_tracking_message_enabled1 "As tentativas de rastrear seu comportamento online foram bloqueadas.">
+<!ENTITY doorhanger_tracking_message_disabled2 "Esta página contem elementos que podem rastrear sua navegação.">
 <!-- Common mixed and tracking content strings in site identity popup -->
 
 <!ENTITY learn_more "Saiba mais">
@@ -568,7 +587,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY keep_blocking "Continuar bloqueando">
 
 <!ENTITY private_data_success "Dados de navegação limpos">
-<!ENTITY private_data_fail "Alguns dados de navegação podem não ter sido limpos">
+<!ENTITY private_data_fail "Alguns dados privativos não puderam ser limpos">
 
 <!ENTITY bookmarkhistory_button_import "Importar">
 <!ENTITY bookmarkhistory_import_both "Importando favoritos e histórico 
@@ -615,7 +634,7 @@ do Android">
 <!ENTITY guest_session_dialog_continue "Continuar">
 <!ENTITY guest_session_dialog_cancel "Cancelar">
 <!ENTITY new_guest_session_title "O &brandShortName; irá reiniciar agora">
-<!ENTITY new_guest_session_text2 "A pessoa que o estiver usando não poderá ver os seus dados de navegação (como senhas salvas, histórico ou Favoritos).\n\nQuando o seu convidado terminar, os dados de navegação serão eliminados e a sua sessão será restaurada.">
+<!ENTITY new_guest_session_text2 "A pessoa que o estiver usando não poderá ver os seus dados de navegação (como senhas salvas, histórico ou Favoritos).\n\nQuando o seu convidado terminar, os dados de navegação serão excluídos e a sua sessão será restaurada.">
 <!ENTITY guest_browsing_notification_title "Navegação do convidado está ativa">
 <!ENTITY guest_browsing_notification_text "Toque para sair">
 
@@ -645,10 +664,6 @@ do Android">
 <!-- Voice search in the awesome bar -->
 
 <!ENTITY voicesearch_prompt "Fale agora">
-<!ENTITY voicesearch_failed_title "Pesquisa de voz do &brandShortName;">
-<!ENTITY voicesearch_failed_message "Há um problema com a pesquisa de voz agora. Por favor, tente mais tarde.">
-<!ENTITY voicesearch_failed_message_recoverable "Desculpa! Não conseguimos reconhecer suas palavras. Tente novamente.">
-<!ENTITY voicesearch_failed_retry "Tentar novamente">
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
      time the tabs were last synced relative to the current time; examples
@@ -666,3 +681,26 @@ do Android">
 <!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "Não foi possível abrir o link">
+<!-- DevTools Authentication -->
+<!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
+     above a QR reader that is actively scanning for QR codes.  The expected QR
+     code has already been displayed by the client trying to connect (such as
+     desktop Firefox via WebIDE), so you just need to aim this device at the QR
+     code. -->
+
+<!ENTITY devtools_auth_scan_header "Digitalização do código QR apresentado no seu outro dispositivo">
+<!-- Restrictions -->
+<!-- Localization note: These are restrictions the device owner (e.g. parent) can enable for
+     a restricted profile (e.g. child). Used inside the Android settings UI. -->
+
+<!ENTITY restriction_disallow_import_settings_title2 "Desativar \u0027Importar do Android\u0027">
+<!ENTITY restriction_disallow_addons_title2 "Desativar a instalação de complementos">
+<!ENTITY restriction_disallow_devtools_title2 "Desativas as ferramentas do desenvolvedor">
+<!ENTITY restriction_disallow_customize_home_title2 "Desativar a personalização da home">
+<!ENTITY restriction_disallow_private_browsing_title2 "Desativar a navegação privativa">
+<!ENTITY restriction_disallow_location_services_title2 "Desativar os serviços de localização">
+<!ENTITY restriction_disallow_display_settings_title2 "Desativar as configurações de exibição">
+<!ENTITY restriction_disallow_clear_history_title2 "Desativar \u0027Limpar histórico de navegação\u0027">
+<!ENTITY restriction_disallow_master_password_title2 "Desativar senha mestra">
+<!ENTITY restriction_disallow_guest_browsing_title2 "Desativar navegação para convidado">
+
