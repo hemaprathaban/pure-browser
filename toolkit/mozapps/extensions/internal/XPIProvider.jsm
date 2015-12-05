@@ -226,8 +226,10 @@ const SIGNED_TYPES = new Set([
 ]);
 
 // Whether add-on signing is required.
-function mustSign(aType) {
-  if (!SIGNED_TYPES.has(aType))
+function mustSign(aAddon) {
+  if (aAddon._installLocation.scope == AddonManager.SCOPE_SYSTEM)
+    return false;
+  if (!SIGNED_TYPES.has(aAddon.type))
     return false;
   return REQUIRE_SIGNING || Preferences.get(PREF_XPI_SIGNATURES_REQUIRED, false);
 }
@@ -613,7 +615,7 @@ function isUsableAddon(aAddon) {
   if (aAddon.type == "theme" && aAddon.internalName == XPIProvider.defaultSkin)
     return true;
 
-  if (mustSign(aAddon.type)) {
+  if (mustSign(aAddon)) {
     if (aAddon.signedState <= AddonManager.SIGNEDSTATE_MISSING)
       return false;
     if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)
@@ -2985,7 +2987,7 @@ this.XPIProvider = {
           continue;
         }
 
-        if (mustSign(addon.type) &&
+        if (mustSign(addon) &&
             (addon.signedState <= AddonManager.SIGNEDSTATE_MISSING ||
             (foreignInstall && addon.signedState < AddonManager.SIGNEDSTATE_SIGNED))) {
           logger.warn("Refusing to install staged add-on " + id + " with signed state " + addon.signedState);
@@ -5018,7 +5020,7 @@ AddonInstall.prototype = {
       return Promise.reject([AddonManager.ERROR_CORRUPT_FILE, e]);
     }
 
-    if (mustSign(this.addon.type)) {
+    if (mustSign(this.addon)) {
       if (this.addon.signedState <= AddonManager.SIGNEDSTATE_MISSING) {
         // This add-on isn't properly signed by a signature that chains to the
         // trusted root.
