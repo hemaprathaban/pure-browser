@@ -53,6 +53,8 @@ endif
 
 include $(BRANDING)/configure.sh
 
+GTK3 ?= $(shell grep -q _PLATFORM_DEFAULT_TOOLKIT=cairo-gtk3 configure.in && echo 1)
+
 BRANDING_CONFIGURE_FLAG = $(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING))
 
 GSTREAMER_VERSION = $(shell ( pkg-config gstreamer-1.0 && echo 1.0 ) || ( pkg-config gstreamer-0.10 && echo 0.10 ))
