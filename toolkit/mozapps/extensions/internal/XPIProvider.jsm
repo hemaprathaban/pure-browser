@@ -1532,6 +1532,11 @@ function shouldVerifySignedState(aAddon) {
     return true;
   }
 
+  if (aAddon._installLocation.name == KEY_APP_SYSTEM_LOCAL ||
+      aAddon._installLocation.name == KEY_APP_SYSTEM_SHARE) {
+    return false;
+  }
+
   // Hotfixes should always have their signature checked
   let hotfixID = Preferences.get(PREF_EM_HOTFIX_ID, undefined);
   if (hotfixID && aAddon.id == hotfixID)
