@@ -4,11 +4,19 @@
 
 <!ENTITY no_space_to_start_error "Недостаточно свободного места для запуска &brandShortName;.">
 <!ENTITY error_loading_file "При попытке загрузки файлов, требуемых для запуска &brandShortName;, произошла ошибка.">
+<!ENTITY firstrun_panel_title_welcome "Добро пожаловать">
 <!ENTITY onboard_start_message3 "Браузер &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Делает ваш мобильный веб-сёрфинг по-настоящему уникальным.">
 <!ENTITY onboard_start_button_account "Войти в &brandShortName;">
 <!ENTITY onboard_start_button_browser "Начать веб-сёрфинг">
+<!ENTITY firstrun_button_next "Далее">
 <!ENTITY onboard_start_restricted1 "Будьте в безопасности и установите свой контроль с этой упрощённой версией &brandShortName;.">
+<!ENTITY firstrun_import_title "Импорт">
+<!ENTITY firstrun_import_message "Добро пожаловать в &brandShortName;">
+<!ENTITY firstrun_import_subtext "Импорт закладок и истории из другого браузера.">
+<!ENTITY firstrun_import_action "Передать в &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "Передать">
+<!ENTITY firstrun_import_progress_title "Передача">
 <!ENTITY bookmarks_title "Закладки">
 <!ENTITY history_title "История">
 <!ENTITY reading_list_title "Список для чтения">
@@ -40,8 +48,9 @@
 <!ENTITY bookmark_options "Настройки">
 <!ENTITY history_today_section "Сегодня">
 <!ENTITY history_yesterday_section "Вчера">
-<!ENTITY history_week_section2 "Прошлая неделя">
-<!ENTITY history_older_section2 "Прошлый месяц">
+<!ENTITY history_week_section3 "Последние 7 дней">
+<!ENTITY history_this_month_section "Этот месяц">
+<!ENTITY history_older_section3 "Старше 6 месяцев">
 <!ENTITY go "Перейти">
 <!ENTITY search "Поиск">
 <!ENTITY reload "Обновить">
@@ -52,13 +61,12 @@
 <!ENTITY site_security "Защита сайта">
 <!ENTITY edit_mode_cancel "Отмена">
 <!ENTITY close_tab "Закрыть вкладку">
-<!ENTITY tab_audio_playing "В этой вкладке играет аудио">
-<!ENTITY tab_audio_muted "В этой вкладке убран звук">
 <!ENTITY one_tab "1 вкладка">
 <!ENTITY num_tabs2 "&formatD; вкладок">
 <!ENTITY new_tab_opened "Открыта новая вкладка">
 <!ENTITY new_private_tab_opened "Открыта новая приватная вкладка">
 <!ENTITY switch_button_message "ПЕРЕЙТИ">
+<!ENTITY tab_title_prefix_is_playing_audio "Воспроизведение аудио – &formatS;">
 <!ENTITY settings "Параметры">
 <!ENTITY settings_title "Параметры">
 <!ENTITY pref_category_input_options "Настройки ввода">
@@ -119,6 +127,9 @@
 <!ENTITY pref_home_updates_wifi "Только через Wi-Fi">
 <!ENTITY pref_home_suggested_sites "Показывать предложения сайтов">
 <!ENTITY pref_home_suggested_sites_summary "Отображать ярлыки на сайты на вашей домашней странице, которые, как мы думаем, вы можете найти интересными">
+<!ENTITY pref_category_home_homepage "Домашняя страница">
+<!ENTITY home_homepage_title "Установка домашней страницы">
+<!ENTITY home_homepage_use_current_tab "Использовать текущую вкладку">
 <!ENTITY pref_header_customize "Настройка">
 <!ENTITY pref_header_display "Отображение">
 <!ENTITY pref_header_privacy_short "Приватность">
@@ -161,7 +172,6 @@
 <!ENTITY pref_plugins_tap_to_play "По нажатию">
 <!ENTITY pref_plugins_disabled "Отключены">
 <!ENTITY pref_text_size "Размер текста">
-<!ENTITY pref_reflow_on_zoom4 "Перерисовка текста">
 <!ENTITY pref_restore "Вкладки">
 <!ENTITY pref_restore_always "Всегда восстанавливать">
 <!ENTITY pref_restore_quit "Не восстанавливать после выхода из &brandShortName;">
@@ -238,6 +248,7 @@
 <!ENTITY share_title "Поделиться через">
 <!ENTITY share_image_failed "Не удалось поделиться этим изображением">
 <!ENTITY save_as_pdf "Сохранить как PDF">
+<!ENTITY print "Печать">
 <!ENTITY find_in_page "Найти на странице">
 <!ENTITY desktop_mode "Полная версия сайта">
 <!ENTITY page "Страница">
@@ -275,6 +286,8 @@
 <!ENTITY contextmenu_top_sites_pin "Закрепить сайт">
 <!ENTITY contextmenu_top_sites_unpin "Открепить сайт">
 <!ENTITY contextmenu_add_search_engine "Добавить поисковую систему">
+<!ENTITY contextmenu_mark_read "Отметить как прочитанное">
+<!ENTITY contextmenu_mark_unread "Отметить как непрочитанное">
 <!ENTITY doorhanger_login_no_username "[Нет имени пользователя]">
 <!ENTITY doorhanger_login_edit_title "Изменить логин">
 <!ENTITY doorhanger_login_edit_username_hint "Имя пользователя">
@@ -289,8 +302,8 @@
 <!ENTITY pref_titlebar_mode "Панель заголовка">
 <!ENTITY pref_titlebar_mode_title "Отображать заголовок страницы">
 <!ENTITY pref_titlebar_mode_url "Отображать адрес страницы">
-<!ENTITY pref_prevent_magnifying_glass "Отключить увеличительное стекло">
-<!ENTITY pref_prevent_magnifying_glass_summary "Не давать использовать увеличительное стекло для разрешения неоднозначных касаний экрана">
+<!ENTITY pref_magnifying_glass_enabled "Увеличивать небольшие области">
+<!ENTITY pref_magnifying_glass_enabled_summary "Увеличивать ссылки и поля форм при касании рядом с ними">
 <!ENTITY pref_scroll_title_bar2 "Полноэкранный веб-серфинг">
 <!ENTITY pref_scroll_title_bar_summary "Скрывать панель заголовка &brandShortName; при прокрутке страницы вниз">
 <!ENTITY pref_tab_queue_title2 "Открытие множества ссылок">
@@ -323,7 +336,6 @@
 <!ENTITY button_set "Установить">
 <!ENTITY button_clear "Очистить">
 <!ENTITY button_copy "Копировать">
-<!ENTITY firstrun_panel_title_welcome "Добро пожаловать">
 <!ENTITY home_top_sites_title "Топ сайтов">
 <!ENTITY home_top_sites_add "Добавить сайт">
 <!ENTITY home_title "Дом &brandShortName;">
@@ -364,13 +376,10 @@
 <!ENTITY identity_connected_to "Вы соединены с">
 <!ENTITY identity_connection_secure "Защищённое соединение">
 <!ENTITY identity_connection_insecure "Незащищённое соединение">
-<!ENTITY mixed_content_blocked_all "&brandShortName; заблокировал небезопасные элементы на этой странице.">
-<!ENTITY mixed_content_blocked_some "&brandShortName; заблокировал некоторые небезопасные элементы на этой странице.">
-<!ENTITY mixed_content_display_loaded "На этой странице есть некоторые небезопасные элементы.">
-<!ENTITY mixed_content_protection_disabled "Вы отключили защиту от небезопасных элементов.">
-<!ENTITY loaded_mixed_content_message "Эта страница отображает содержимое, не являющееся безопасным.">
-<!ENTITY blocked_mixed_content_message_top "&brandShortName; заблокировал содержимое, не являющееся безопасным.">
-<!ENTITY blocked_mixed_content_message_bottom "Большинство веб-сайтов будут продолжать нормально работать, даже когда это содержимое заблокировано.">
+<!ENTITY mixed_content_blocked_all1 "&brandShortName; заблокировал небезопасное содержимое на этой странице.">
+<!ENTITY mixed_content_blocked_some1 "&brandShortName; заблокировал некоторое небезопасное содержимое на этой странице.">
+<!ENTITY mixed_content_display_loaded1 "Части этой страницы (такие как изображения) не защищены.">
+<!ENTITY mixed_content_protection_disabled1 "Вы отключили защиту от небезопасного содержимого.">
 <!ENTITY doorhanger_tracking_title "Защита от отслеживания">
 <!ENTITY doorhanger_tracking_state_enabled "Включена">
 <!ENTITY doorhanger_tracking_state_disabled "Отключена">
@@ -431,3 +440,9 @@
 <!ENTITY restriction_disallow_clear_history_title2 "Отключить \'Удаление истории веб-сёрфинга\'">
 <!ENTITY restriction_disallow_master_password_title2 "Отключить мастер-пароль">
 <!ENTITY restriction_disallow_guest_browsing_title2 "Отключить Гостевой веб-серфинг">
+<!ENTITY bookmarks_about_browser "Firefox: О вашем браузере">
+<!ENTITY bookmarks_addons "Firefox: Настройка с помощью дополнений">
+<!ENTITY bookmarks_support "Firefox: Поддержка">
+<!ENTITY bookmarks_marketplace "Firefox Marketplace">
+<!ENTITY bookmarks_restricted_support2 "Справка и поддержка Firefox для ограниченных профилей на планшетах Android">
+<!ENTITY bookmarks_restricted_webmaker "Научитесь создавать Интернет: Mozilla Вебмейкер">

@@ -14,12 +14,22 @@
 <!ENTITY toolboxOptionsButton.key      "O">
 <!ENTITY toolboxNextTool.key           "]">
 <!ENTITY toolboxPreviousTool.key       "[">
+<!-- LOCALIZATION NOTE :
+fullZoomEnlargeCmd.commandkey, fullZoomEnlargeCmd.commandkey2,
+fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey,
+fullZoomReduceCmd.commandkey2, fullZoomResetCmd.commandkey,
+and fullZoomResetCmd.commandkey2 should all match the corresponding
+values from browser.dtd.  -->
 
-<!ENTITY toolboxZoomIn.key             "+">
-<!-- + is above this key on many keyboards -->
-<!ENTITY toolboxZoomIn.key2            "="> 
-<!ENTITY toolboxZoomOut.key            "-">
-<!ENTITY toolboxZoomReset.key          "0">
+<!ENTITY fullZoomEnlargeCmd.commandkey  "+">
+<!ENTITY fullZoomEnlargeCmd.commandkey2 "=">
+<!ENTITY fullZoomEnlargeCmd.commandkey3 "">
+
+<!ENTITY fullZoomReduceCmd.commandkey   "-">
+<!ENTITY fullZoomReduceCmd.commandkey2  "">
+
+<!ENTITY fullZoomResetCmd.commandkey    "0">
+<!ENTITY fullZoomResetCmd.commandkey2   "">
 
 <!ENTITY toolboxReload.key             "r">
 <!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
@@ -109,7 +119,7 @@
   -  tooltip for the checkbox that toggles the cache on or off. -->
 
 <!ENTITY options.disableCache.label2     "Juk kano (kace gintic tye ayaba)">
-<!ENTITY options.disableCache.tooltip2   "Keto gin ayera man bijuko kano pi dirica matino weng matye ki bok gitic ayaba.">
+<!ENTITY options.disableCache.tooltip2   "Dwoyo gin ayera man bijuko kano pi dirica matino weng matye ki gintic ayaba.">
 <!-- LOCALIZATION NOTE (options.enableServiceWorkersHTTP.label,
   -  options.enableServiceWorkersHTTP.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles the service workers testing features on or off. This option enables service workers over HTTP. -->
@@ -189,8 +199,8 @@
   -  in about:config, in the options panel. -->
 
 <!ENTITY options.showPlatformData.label    "Nyut tuti me tic pa Gecko">
-<!ENTITY options.showPlatformData.tooltip  "Ka ce i ye gin ayera man ripot pa la co propwail me JavaScript obi bedo ki 
-lanyut me tuti me Gecko">
+<!ENTITY options.showPlatformData.tooltip  "Ka ce i ye gin ayera man ripot pa La co profile me JavaScript obi bedo ki 
+lanen me tuti me Gecko">
 <!-- LOCALIZATION NOTE (options.sourceeditor.*): Options under the editor
   -  section. -->
 

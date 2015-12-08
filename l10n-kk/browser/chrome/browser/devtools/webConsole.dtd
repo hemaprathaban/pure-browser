@@ -10,24 +10,6 @@
 
 <!ENTITY window.title "Веб консолі">
 <!ENTITY browserConsole.title "Браузер консолі">
-
-<!ENTITY networkPanel.requestURLColon             "Сұраным URL-ы:">
-<!ENTITY networkPanel.requestMethodColon          "Сұраным тәсілі:">
-<!ENTITY networkPanel.statusCodeColon             "Қалып-күй коды:">
-
-<!ENTITY networkPanel.requestHeaders              "Сұраным тақырыптамалары">
-<!ENTITY networkPanel.requestCookie               "Жіберілген Cookie">
-<!ENTITY networkPanel.requestBody                 "Сұраным денесі">
-<!ENTITY networkPanel.requestFormData             "Жіберілген форма деректері">
-
-<!ENTITY networkPanel.responseHeaders             "Жауап тақырыптамалары">
-<!ENTITY networkPanel.responseCookie              "Алынған Cookie">
-<!ENTITY networkPanel.responseBody                "Жауап денесі">
-<!ENTITY networkPanel.responseBodyCached          "Кэштелген ақпарат">
-<!ENTITY networkPanel.responseBodyUnknownType     "Құраманың белгісіз түрі">
-<!ENTITY networkPanel.responseNoBody              "Жауап денесі жоқ">
-<!ENTITY networkPanel.responseImage               "Алынған сурет">
-<!ENTITY networkPanel.responseImageCached         "Кэштелген сурет">
 <!-- LOCALIZATION NOTE (saveBodies.label): You can see this string in the Web
    - Console context menu. -->
 
@@ -75,12 +57,27 @@
 <!ENTITY btnConsoleLog          "Лог">
 <!ENTITY btnConsoleXhr          "XHR">
 <!ENTITY btnConsoleReflows      "Қайма аймалаулар">
+<!-- LOCALIZATION NOTE (btnServerLogging): This is used as the text of the
+  -  the toolbar. It shows or hides messages that the web developer inserted on
+  -  the page for debugging purposes, using calls on the HTTP server. -->
+
+<!ENTITY btnServerLogging.label       "Сервер">
+<!ENTITY btnServerLogging.tooltip     "Веб серверінен алынған лог хабарламалары">
+<!ENTITY btnServerLogging.accesskey   "С">
+<!ENTITY btnServerErrors              "Қателер">
+<!ENTITY btnServerInfo                "Ақпарат">
+<!ENTITY btnServerWarnings            "Ескертулер">
+<!ENTITY btnServerLog                 "Лог">
 <!-- LOCALIZATION NODE (btnConsoleSharedWorkers) the term "Shared Workers"
   -  should not be translated. -->
+
+<!ENTITY btnConsoleSharedWorkers "Ортақ жұмыс үрдістері">
 <!-- LOCALIZATION NODE (btnConsoleServiceWorkers) the term "Service Workers"
   -  should not be translated. -->
+<!ENTITY btnConsoleServiceWorkers "Қызметтік жұмыс үрдістері">
 <!-- LOCALIZATION NODE (btnConsoleWindowlessWorkers) the term "Workers"
   -  should not be translated. -->
+<!ENTITY btnConsoleWindowlessWorkers "Қосымша немесе Chrome жұмыс үрдістері">
 
 <!ENTITY filterOutput.placeholder "Сүзгі нәтижесі">
 <!ENTITY btnClear.label        "Тазарту">
