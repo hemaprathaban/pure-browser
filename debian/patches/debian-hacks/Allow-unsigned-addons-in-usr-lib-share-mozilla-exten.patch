@@ -1,0 +1,24 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sat, 5 Dec 2015 18:23:58 +0900
+Subject: Allow unsigned addons in /usr/{lib,share}/mozilla/extensions
+
+---
+ toolkit/mozapps/extensions/internal/XPIProvider.jsm | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/toolkit/mozapps/extensions/internal/XPIProvider.jsm b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
+index 9045be1..6ee1202 100644
+--- a/toolkit/mozapps/extensions/internal/XPIProvider.jsm
++++ b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
+@@ -1532,6 +1532,11 @@ function shouldVerifySignedState(aAddon) {
+     return true;
+   }
+ 
++  if (aAddon._installLocation.name == KEY_APP_SYSTEM_LOCAL ||
++      aAddon._installLocation.name == KEY_APP_SYSTEM_SHARE) {
++    return false;
++  }
++
+   // Hotfixes should always have their signature checked
+   let hotfixID = Preferences.get(PREF_EM_HOTFIX_ID, undefined);
+   if (hotfixID && aAddon.id == hotfixID)
