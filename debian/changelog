@@ -1,8 +1,14 @@
-iceweasel (38.5.0esr-1) UNRELEASED; urgency=medium
+iceweasel (38.5.0esr-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{134,138-139,145-147,149}, also known as:
+    CVE-2015-7201, CVE-2015-7210, CVE-2015-7212, CVE-2015-7205,
+    CVE-2015-7213, CVE-2015-7222, CVE-2015-7214.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 10:08:34 +0900
+  * debian/rules: Follow upstream default for Gtk+2 vs. Gtk+3 automatically.
+  * debian/watch: Update file to use https://archive.mozilla.org/.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 10:19:44 +0900
 
 iceweasel (38.4.0esr-1) unstable; urgency=medium
 
