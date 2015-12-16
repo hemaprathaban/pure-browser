@@ -1,8 +1,24 @@
-iceweasel (43.0-1) UNRELEASED; urgency=medium
+iceweasel (43.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2015-{134-149}, also known as:
+    CVE-2015-7201, CVE-2015-7202, CVE-2015-7204, CVE-2015-7207,
+    CVE-2015-7208, CVE-2015-7210, CVE-2015-7212, CVE-2015-7215,
+    CVE-2015-7211, CVE-2015-7218, CVE-2015-7219, CVE-2015-7216,
+    CVE-2015-7217, CVE-2015-7203, CVE-2015-7220, CVE-2015-7221,
+    CVE-2015-7205, CVE-2015-7213, CVE-2015-7222, CVE-2015-7223,
+    CVE-2015-7214.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 10:44:47 +0900
+  * debian/control*: Bump nss build dependency.
+  * debian/rules:
+    - Follow upstream default for Gtk+2 vs. Gtk+3 automatically.
+    - Only extract defaults/{preferences,profile} from browser/omni.ja.
+  * debian/browser.install.in: Don't install libdbusservice.so, it's gone.
+
+  * toolkit/mozapps/extensions/internal/XPIProvider.jsm: Allow unsigned
+    addons in /usr/{lib,share}/mozilla/extensions. Closes: #800150.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 10:56:36 +0900
 
 iceweasel (42.0-1) experimental; urgency=medium
 
