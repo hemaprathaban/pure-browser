@@ -7,7 +7,7 @@ Subject: Fixup for bug 1178266 - Link libxul against libatomic when necessary
  1 file changed, 2 insertions(+)
 
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index 62e03f4..0994545 100644
+index 642b587..03d81c4 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
 @@ -55,6 +55,8 @@ def Libxul(name):

@@ -14,12 +14,22 @@
 <!ENTITY toolboxOptionsButton.key      "h">
 <!ENTITY toolboxNextTool.key           "]">
 <!ENTITY toolboxPreviousTool.key       "[">
+<!-- LOCALIZATION NOTE :
+fullZoomEnlargeCmd.commandkey, fullZoomEnlargeCmd.commandkey2,
+fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey,
+fullZoomReduceCmd.commandkey2, fullZoomResetCmd.commandkey,
+and fullZoomResetCmd.commandkey2 should all match the corresponding
+values from browser.dtd.  -->
 
-<!ENTITY toolboxZoomIn.key             "+">
-<!-- + is above this key on many keyboards -->
-<!ENTITY toolboxZoomIn.key2            "="> 
-<!ENTITY toolboxZoomOut.key            "-">
-<!ENTITY toolboxZoomReset.key          "0">
+<!ENTITY fullZoomEnlargeCmd.commandkey  "+">
+<!ENTITY fullZoomEnlargeCmd.commandkey2 "=">
+<!ENTITY fullZoomEnlargeCmd.commandkey3 "">
+
+<!ENTITY fullZoomReduceCmd.commandkey   "-">
+<!ENTITY fullZoomReduceCmd.commandkey2  "">
+
+<!ENTITY fullZoomResetCmd.commandkey    "0">
+<!ENTITY fullZoomResetCmd.commandkey2   "">
 
 <!ENTITY toolboxReload.key             "r">
 <!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
@@ -91,13 +101,13 @@
   -  boolean preference in about:config, in the options panel. -->
 
 <!ENTITY options.enableRemote.label3    "Ativar depuração remota">
-<!ENTITY options.enableRemote.tooltip   "Se ativar esta opção pode utilizar as ferramentas de programação para depurar remotamente as instâncias Firefox">
+<!ENTITY options.enableRemote.tooltip   "Se ativar esta opção pode utilizar as ferramentas de programação para depurar remotamente as instâncias do Firefox, como o Firefox OS">
 <!-- LOCALIZATION NOTE (options.enableWorkers.label): This is the label for the
   -  checkbox that toggles worker debugging, i.e. devtools.debugger.workers
   -  boolean preference in about:config, in the options panel. -->
 
 <!ENTITY options.enableWorkers.label    "Ativar depuração de workers (em desenvolvimento)">
-<!ENTITY options.enableWorkers.tooltip  "Ativar esta opção irá permitir que as ferramentas de desenvolvimento depurem workers.">
+<!ENTITY options.enableWorkers.tooltip  "Ativar esta opção irá permitir que as ferramentas de desenvolvimento depurem workers">
 <!-- LOCALIZATION NOTE (options.disableJavaScript.label,
   -  options.disableJavaScript.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles JavaScript on or off. -->

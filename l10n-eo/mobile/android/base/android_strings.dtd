@@ -6,11 +6,21 @@
 <!ENTITY  no_space_to_start_error "Ne estas sufiĉe da loko disponebla por la startigo de &brandShortName;.">
 <!ENTITY  error_loading_file "Eraro okazis dum la klopodo ŝargi dosierojn bezonatajn por ruli &brandShortName;">
 
+<!ENTITY firstrun_panel_title_welcome "Bonvenon">
 <!ENTITY  onboard_start_message3 "Retumi per &brandShortName;">
 <!ENTITY  onboard_start_subtext3 "Igi vian poŝaparatan retumsperton vere via.">
 <!ENTITY  onboard_start_button_account "Komenci seancon en &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Komenci retumi">
+<!ENTITY firstrun_button_next "Antaŭen">
+
 <!ENTITY  onboard_start_restricted1 "Estu sekura kaj regu vian retumadon per tiu ĉi simpligita versio de &brandShortName;.">
+
+<!ENTITY firstrun_import_title "Importi">
+<!ENTITY firstrun_import_message "Welcome to &brandShortName;">
+<!ENTITY firstrun_import_subtext "Importi viajn legosignojn kaj historion el alia retumilo.">
+<!ENTITY firstrun_import_action "Transmeti al &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "Transmeto">
+<!ENTITY firstrun_import_progress_title "Transmeto…">
 
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
@@ -55,8 +65,9 @@
 
 <!ENTITY history_today_section "Hodiaŭ">
 <!ENTITY history_yesterday_section "Hieraŭ">
-<!ENTITY history_week_section2 "Lasta semajno">
-<!ENTITY history_older_section2 "Lasta monato">
+<!ENTITY history_week_section3 "Lastaj 7 tagoj">
+<!ENTITY history_this_month_section "Ĉi monate">
+<!ENTITY history_older_section3 "Antaŭ pli ol 6 monatoj">
 
 <!ENTITY go "Iri">
 <!ENTITY search "Serĉi">
@@ -69,8 +80,6 @@
 <!ENTITY edit_mode_cancel "Nuligi">
 
 <!ENTITY close_tab "Fermi langeton">
-<!ENTITY tab_audio_playing "Tiu ĉi langeto ludas sonon">
-<!ENTITY tab_audio_muted "Tiu ĉi langeto estis silentigita">
 <!ENTITY one_tab "1 langeto">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -81,6 +90,14 @@
      as possible because it's shown as a label in a toast.  Ideally, this string
      is upper-case, to match Google and Android's convention. -->
 <!ENTITY switch_button_message "ŜANĜI">
+<!-- Localization note (tab_title_prefix_is_playing_audio): This string is not
+     visible in the UI, but rather used as a text-to-speech content description
+     for sight-impaired a11y users. The content description is set on a tab
+     title in a list of open tabs when content in that tab is playing audio.
+     &formatS; will be replaced with the title of the tab, as received from the
+     web page. When audio is not playing in a tab, &formatS; will be used as
+     the content description. -->
+<!ENTITY tab_title_prefix_is_playing_audio "Sono ludata – &formatS;">
 
 <!ENTITY settings "Agordoj">
 <!ENTITY settings_title "Agordoj">
@@ -182,6 +199,9 @@
 <!ENTITY pref_home_updates_wifi "Nur per sendrataj retoj">
 <!ENTITY pref_home_suggested_sites "Montri retejajn sugestojn">
 <!ENTITY pref_home_suggested_sites_summary "Montri en via hejmekrano ŝparvojojn al retejoj, kiujn ni opinias eble interesaj por vi">
+<!ENTITY pref_category_home_homepage "Hejmpaĝo">
+<!ENTITY home_homepage_title "Difini hejmpaĝon">
+<!ENTITY home_homepage_use_current_tab "Uzi nuna langeton">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Persone agordi">
@@ -237,7 +257,6 @@
 <!ENTITY pref_plugins_tap_to_play "Tuŝetu por ludi">
 <!ENTITY pref_plugins_disabled "Malaktiva">
 <!ENTITY pref_text_size "Grando de teksto">
-<!ENTITY pref_reflow_on_zoom4 "Adapto de teksto">
 <!ENTITY pref_restore "Langetoj">
 <!ENTITY pref_restore_always "Ĉiam restarigi">
 <!ENTITY pref_restore_quit "Ne restarigi post fino de &brandShortName;">
@@ -347,6 +366,7 @@ size. -->
 <!ENTITY share_title "Dividi per">
 <!ENTITY share_image_failed "Ne eblas dividi tiun ĉi bildon">
 <!ENTITY save_as_pdf "Konservi kiel PDF">
+<!ENTITY print "Presi">
 <!ENTITY find_in_page "Serĉi en paĝo">
 <!ENTITY desktop_mode "Peti skribotablan retejon">
 <!ENTITY page "Paĝo">
@@ -391,6 +411,8 @@ size. -->
 <!ENTITY contextmenu_top_sites_pin "Alpingli retejon">
 <!ENTITY contextmenu_top_sites_unpin "Depingli retejon">
 <!ENTITY contextmenu_add_search_engine "Aldoni serĉilon">
+<!ENTITY contextmenu_mark_read "Marki kiel legita">
+<!ENTITY contextmenu_mark_unread "Marki kiel nelegita">
 
 <!-- Localization note (doorhanger_login_no_username): This string is used in the save-login doorhanger
      where normally a username would be displayed. In this case, no username was found, and this placeholder
@@ -413,8 +435,8 @@ size. -->
 
 <!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
      whether or not the magnifying glass is disabled. -->
-<!ENTITY pref_prevent_magnifying_glass "Malaktivigi lupeon ">
-<!ENTITY pref_prevent_magnifying_glass_summary "Eviti la uzon de lupeo por decidi neklarajn ekrantuŝojn">
+<!ENTITY pref_magnifying_glass_enabled "Grandigi etajn kampojn">
+<!ENTITY pref_magnifying_glass_enabled_summary "Grandigi ligilojn kaj formularajn kampojn kiam estas tuŝeto proksime de ili">
 
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
@@ -473,8 +495,6 @@ size. -->
 <!ENTITY button_set "Difini">
 <!ENTITY button_clear "Forviŝi">
 <!ENTITY button_copy "Kopii">
-
-<!ENTITY firstrun_panel_title_welcome "Bonvenon">
 
 <!ENTITY home_top_sites_title "Top Sites">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
@@ -564,14 +584,10 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_connection_insecure "Nesekura konekto">
 
 <!-- Mixed content notifications in site identity popup -->
-<!ENTITY mixed_content_blocked_all "&brandShortName; boliks nesekurajn elementojn en tiu ĉi paĝo.">
-<!ENTITY mixed_content_blocked_some "&brandShortName; blokis kelkajn nesekurajn elementojn en tiu ĉi paĝo.">
-<!ENTITY mixed_content_display_loaded "Tiu ĉi paĝo havas kelkajn nesekurajn elementojn.">
-<!ENTITY mixed_content_protection_disabled "Vi malaktivigis la protekton kontraŭ nesekuraj elementoj.">
-
-<!ENTITY loaded_mixed_content_message "Tiu ĉi paĝo montras enhavon, kiu ne estas sekura.">
-<!ENTITY blocked_mixed_content_message_top "&brandShortName; blokis nesekuran enhavon.">
-<!ENTITY blocked_mixed_content_message_bottom "La plimulto de retejoj plufunkcios bone, eĉ kiam tia ĉi enhavo estas blokita.">
+<!ENTITY mixed_content_blocked_all1 "&brandShortName; blokis nesekurajn elementojn en tiu ĉi paĝo.">
+<!ENTITY mixed_content_blocked_some1 "&brandShortName; blokis kelkajn nesekurajn elementojn en tiu ĉi paĝo.">
+<!ENTITY mixed_content_display_loaded1 "Partoj de tiu ĉi paĝo ne estas sekuraj (ekzemple, bildoj).">
+<!ENTITY mixed_content_protection_disabled1 "Vi malaktivigis la protekton kontraŭ nesekura enhavo.">
 
 <!-- Tracking content notifications in site identity popup -->
 <!ENTITY doorhanger_tracking_title "Protekto kontraŭ spurado">
@@ -701,3 +717,16 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY restriction_disallow_master_password_title2 "Malaktivigi ĉefan pasvorton">
 <!ENTITY restriction_disallow_guest_browsing_title2 "Malaktivigi gastan retumadon">
 
+<!-- Default Bookmarks titles-->
+<!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
+<!ENTITY bookmarks_about_browser "Firefox: pri via retumilo">
+<!-- LOCALIZATION NOTE (bookmarks_addons): link title for https://addons.mozilla.org/en-US/mobile -->
+<!ENTITY bookmarks_addons "Firefox: personecigi per aldonaĵoj">
+<!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
+<!ENTITY bookmarks_support "Firefox: Helpo">
+<!--LOCALIZATION NOTE (bookmarks_marketplace):link title for https://marketplace.firefox.com -->
+<!ENTITY bookmarks_marketplace "Firefox Marketplace">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
+<!ENTITY bookmarks_restricted_support2 "Helpo kaj subteno de Firefox por limigitaj profiloj en tabulkomputiloj kun Android">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->
+<!ENTITY bookmarks_restricted_webmaker "Lerni la Teksaĵon: Mozilla Webmaker">

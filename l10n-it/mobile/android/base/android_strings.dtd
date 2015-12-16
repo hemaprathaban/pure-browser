@@ -4,11 +4,19 @@
 
 <!ENTITY no_space_to_start_error "Spazio libero insufficiente per avviare &brandShortName;.">
 <!ENTITY error_loading_file "Si è verificato un errore durante il caricamento di un file necessario per l’esecuzione di &brandShortName;">
+<!ENTITY firstrun_panel_title_welcome "Benvenuto">
 <!ENTITY onboard_start_message3 "Naviga con &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Un’esperienza di navigazione che si adatta alle tue esigenze.">
 <!ENTITY onboard_start_button_account "Accedi a &brandShortName;">
 <!ENTITY onboard_start_button_browser "Inizia a navigare">
+<!ENTITY firstrun_button_next "Successivo">
 <!ENTITY onboard_start_restricted1 "Sicurezza e controllo garantiti grazie a questa versione semplificata di &brandShortName;.">
+<!ENTITY firstrun_import_title "Importa">
+<!ENTITY firstrun_import_message "Benvenuto in &brandShortName;">
+<!ENTITY firstrun_import_subtext "Importa segnalibri e cronologia da un altro browser.">
+<!ENTITY firstrun_import_action "Trasferisci in &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "Avvia">
+<!ENTITY firstrun_import_progress_title "Trasferimento">
 <!ENTITY bookmarks_title "Segnalibri">
 <!ENTITY home_title "&brandShortName; Home">
 <!ENTITY history_title "Cronologia">
@@ -41,8 +49,9 @@
 <!ENTITY bookmark_options "Opzioni">
 <!ENTITY history_today_section "Oggi">
 <!ENTITY history_yesterday_section "Ieri">
-<!ENTITY history_week_section2 "Ultima settimana">
-<!ENTITY history_older_section2 "Ultimo mese">
+<!ENTITY history_week_section3 "Ultimi 7 giorni">
+<!ENTITY history_this_month_section "Questo mese">
+<!ENTITY history_older_section3 "Più vecchi di 6 mesi">
 <!ENTITY go "Vai">
 <!ENTITY search "Cerca">
 <!ENTITY reload "Ricarica">
@@ -53,13 +62,12 @@
 <!ENTITY site_security "Sicurezza del sito">
 <!ENTITY edit_mode_cancel "Annulla">
 <!ENTITY close_tab "Chiudi scheda">
-<!ENTITY tab_audio_playing "Questa scheda sta riproducendo audio">
-<!ENTITY tab_audio_muted "La riproduzione audio è disattivata per questa scheda">
 <!ENTITY one_tab "1 scheda">
 <!ENTITY num_tabs2 "&formatD; schede">
 <!ENTITY new_tab_opened "Aperta nuova scheda">
 <!ENTITY new_private_tab_opened "Aperta nuova scheda anonima">
 <!ENTITY switch_button_message "PASSA A">
+<!ENTITY tab_title_prefix_is_playing_audio "Riproduzione audio – &formatS;">
 <!ENTITY settings "Impostazioni">
 <!ENTITY settings_title "Impostazioni">
 <!ENTITY pref_category_input_options "Opzioni di input">
@@ -120,6 +128,9 @@
 <!ENTITY pref_home_updates_wifi "Solo con Wi-Fi">
 <!ENTITY pref_home_suggested_sites "Visualizza siti consigliati">
 <!ENTITY pref_home_suggested_sites_summary "Visualizza nella pagina iniziale dei link a siti che riteniamo interessanti per gli utenti">
+<!ENTITY pref_category_home_homepage "Pagina iniziale">
+<!ENTITY home_homepage_title "Imposta una pagina iniziale">
+<!ENTITY home_homepage_use_current_tab "Utilizza la scheda corrente">
 <!ENTITY pref_header_customize "Personalizzazione">
 <!ENTITY pref_header_display "Visualizzazione">
 <!ENTITY pref_header_privacy_short "Privacy">
@@ -162,7 +173,6 @@
 <!ENTITY pref_plugins_tap_to_play "Tocca per avviare">
 <!ENTITY pref_plugins_disabled "Disattivati">
 <!ENTITY pref_text_size "Dimensioni testo">
-<!ENTITY pref_reflow_on_zoom4 "Adatta il testo">
 <!ENTITY pref_restore "Schede">
 <!ENTITY pref_restore_always "Ripristina sempre">
 <!ENTITY pref_restore_quit "Non ripristinare dopo aver chiuso &brandShortName;">
@@ -239,6 +249,7 @@
 <!ENTITY share_title "Condividi con">
 <!ENTITY share_image_failed "Impossibile condividere questa immagine">
 <!ENTITY save_as_pdf "Salva come PDF">
+<!ENTITY print "Stampa">
 <!ENTITY find_in_page "Trova nella pagina">
 <!ENTITY desktop_mode "Modalità desktop">
 <!ENTITY page "Pagina">
@@ -276,6 +287,8 @@
 <!ENTITY contextmenu_top_sites_pin "Blocca sito">
 <!ENTITY contextmenu_top_sites_unpin "Sblocca sito">
 <!ENTITY contextmenu_add_search_engine "Aggiungi motore di ricerca">
+<!ENTITY contextmenu_mark_read "Segna come letto">
+<!ENTITY contextmenu_mark_unread "Segna come non letto">
 <!ENTITY doorhanger_login_no_username "[nessun nome utente]">
 <!ENTITY doorhanger_login_edit_title "Modifica accesso">
 <!ENTITY doorhanger_login_edit_username_hint "Nome utente">
@@ -290,8 +303,8 @@
 <!ENTITY pref_titlebar_mode "Barra del titolo">
 <!ENTITY pref_titlebar_mode_title "Visualizza titolo pagina">
 <!ENTITY pref_titlebar_mode_url "Visualizza indirizzo pagina">
-<!ENTITY pref_prevent_magnifying_glass "Disattiva lente di ingrandimento">
-<!ENTITY pref_prevent_magnifying_glass_summary "Impedisci l’utilizzo della lente di ingrandimento per risolvere tocchi dello schermo potenzialmente ambigui.">
+<!ENTITY pref_magnifying_glass_enabled "Ingrandisci aree piccole">
+<!ENTITY pref_magnifying_glass_enabled_summary "Ingrandisci link e campi dei moduli quando si tocca l’area circostante.">
 <!ENTITY pref_scroll_title_bar2 "Navigazione a schermo intero">
 <!ENTITY pref_scroll_title_bar_summary "Nascondi la barra del titolo di &brandShortName; quando si scorre una pagina verso il basso">
 <!ENTITY pref_tab_queue_title2 "Apertura di più link">
@@ -324,7 +337,6 @@
 <!ENTITY button_set "Imposta">
 <!ENTITY button_clear "Cancella">
 <!ENTITY button_copy "Copia">
-<!ENTITY firstrun_panel_title_welcome "Benvenuto">
 <!ENTITY home_top_sites_title "Siti principali">
 <!ENTITY home_top_sites_add "Aggiungi un sito">
 <!ENTITY home_history_title "Cronologia">
@@ -364,13 +376,10 @@
 <!ENTITY identity_connected_to "Si è connessi con">
 <!ENTITY identity_connection_secure "Connessione sicura">
 <!ENTITY identity_connection_insecure "Connessione non sicura">
-<!ENTITY mixed_content_blocked_all "Gli elementi non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
-<!ENTITY mixed_content_blocked_some "Alcuni elementi non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
-<!ENTITY mixed_content_display_loaded "Questa pagina presenta elementi non sicuri.">
-<!ENTITY mixed_content_protection_disabled "La protezione da elementi non sicuri è stata bloccata.">
-<!ENTITY loaded_mixed_content_message "Questa pagina presenta contenuti non sicuri.">
-<!ENTITY blocked_mixed_content_message_top "Alcuni contenuti non sicuri sono stati bloccati da &brandShortName;.">
-<!ENTITY blocked_mixed_content_message_bottom "La maggior parte dei siti web funzionerà correttamente anche se questo contenuto viene bloccato.">
+<!ENTITY mixed_content_blocked_all1 "I contenuti non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
+<!ENTITY mixed_content_blocked_some1 "Alcuni contenuti non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
+<!ENTITY mixed_content_display_loaded1 "Questa pagina presenta elementi non sicuri.">
+<!ENTITY mixed_content_protection_disabled1 "La protezione da contenuti non sicuri è stata bloccata.">
 <!ENTITY doorhanger_tracking_title "Protezione antitracciamento">
 <!ENTITY doorhanger_tracking_state_enabled "Attiva">
 <!ENTITY doorhanger_tracking_state_disabled "Disattivata">
@@ -431,3 +440,9 @@
 <!ENTITY restriction_disallow_clear_history_title2 "Disattiva “Elimina cronologia”">
 <!ENTITY restriction_disallow_master_password_title2 "Disattiva password principale">
 <!ENTITY restriction_disallow_guest_browsing_title2 "Disattiva navigazione ospite">
+<!ENTITY bookmarks_about_browser "Firefox: informazioni sul browser">
+<!ENTITY bookmarks_addons "Firefox: personalizza con i componenti aggiuntivi">
+<!ENTITY bookmarks_support "Firefox: supporto">
+<!ENTITY bookmarks_marketplace "Firefox Marketplace">
+<!ENTITY bookmarks_restricted_support2 "Supporto per l’uso di profili limitati in Firefox su tablet Android">
+<!ENTITY bookmarks_restricted_webmaker "Impara il Web: Mozilla Webmaker">

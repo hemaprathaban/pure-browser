@@ -6,12 +6,21 @@
 <!ENTITY  no_space_to_start_error "Il n\u0027y a pas assez d\u0027espace disponible pour permettre à &brandShortName; de démarrer.">
 <!ENTITY  error_loading_file "Une erreur est survenue en essayant de charger des fichiers nécessaires pour lancer &brandShortName;">
 
+<!ENTITY firstrun_panel_title_welcome "Bienvenue">
 <!ENTITY  onboard_start_message3 "Naviguez avec &brandShortName;">
 <!ENTITY  onboard_start_subtext3 "Personnalisez facilement votre navigation web mobile.">
 <!ENTITY  onboard_start_button_account "Se connecter à &brandShortName;">
 <!ENTITY  onboard_start_button_browser "Commencer la navigation">
+<!ENTITY firstrun_button_next "Suivant">
+
 <!ENTITY  onboard_start_restricted1 "Restez en sécurité et aux commandes avec cette version simplifiée de &brandShortName;.">
 
+<!ENTITY firstrun_import_title "Importer">
+<!ENTITY firstrun_import_message "Bienvenue dans &brandShortName;">
+<!ENTITY firstrun_import_subtext "Importez vos marque-pages et votre historique depuis un autre navigateur.">
+<!ENTITY firstrun_import_action "Transférer sur &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "Transférer">
+<!ENTITY firstrun_import_progress_title "Transfert en cours">
 
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
@@ -56,8 +65,9 @@
 
 <!ENTITY history_today_section "Aujourd\u0027hui">
 <!ENTITY history_yesterday_section "Hier">
-<!ENTITY history_week_section2 "La semaine dernière">
-<!ENTITY history_older_section2 "Le mois dernier">
+<!ENTITY history_week_section3 "Les 7 derniers jours">
+<!ENTITY history_this_month_section "Ce mois-ci">
+<!ENTITY history_older_section3 "Il y a plus de 6 mois">
 
 <!ENTITY go "Aller">
 <!ENTITY search "Rechercher">
@@ -70,8 +80,6 @@
 <!ENTITY edit_mode_cancel "Annuler">
 
 <!ENTITY close_tab "Fermer l\u0027onglet">
-<!ENTITY tab_audio_playing "Cet onglet émet du son">
-<!ENTITY tab_audio_muted "Cet onglet a été rendu muet">
 <!ENTITY one_tab "1 onglet">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -82,6 +90,15 @@
      as possible because it's shown as a label in a toast.  Ideally, this string
      is upper-case, to match Google and Android's convention. -->
 <!ENTITY switch_button_message "S\u0027Y RENDRE">
+<!-- Localization note (tab_title_prefix_is_playing_audio): This string is not
+     visible in the UI, but rather used as a text-to-speech content description
+     for sight-impaired a11y users. The content description is set on a tab
+     title in a list of open tabs when content in that tab is playing audio.
+     &formatS; will be replaced with the title of the tab, as received from the
+     web page. When audio is not playing in a tab, &formatS; will be used as
+     the content description. -->
+<!ENTITY tab_title_prefix_is_playing_audio "Émet du son – &formatS;">
+
 
 <!ENTITY settings "Paramètres">
 <!ENTITY settings_title "Paramètres">
@@ -184,6 +201,9 @@
 <!ENTITY pref_home_updates_wifi "Seulement par Wi-Fi">
 <!ENTITY pref_home_suggested_sites "Suggestions de sites">
 <!ENTITY pref_home_suggested_sites_summary "Afficher sur votre écran d\u0027accueil des raccourcis vers des sites que nous pensons que vous trouverez intéressants">
+<!ENTITY pref_category_home_homepage "Page d\u0027accueil">
+<!ENTITY home_homepage_title "Définir une page d\u0027accueil">
+<!ENTITY home_homepage_use_current_tab "Utiliser l\u0027onglet actuel">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 <!ENTITY pref_header_customize "Personnalisation">
@@ -240,7 +260,6 @@
 <!ENTITY pref_plugins_tap_to_play "Appuyer pour lancer la lecture">
 <!ENTITY pref_plugins_disabled "Désactivés">
 <!ENTITY pref_text_size "Taille du texte">
-<!ENTITY pref_reflow_on_zoom4 "Adaptation du texte">
 <!ENTITY pref_restore "Onglets">
 <!ENTITY pref_restore_always "Toujours restaurer">
 <!ENTITY pref_restore_quit "Ne pas restaurer après avoir quitté &brandShortName;">
@@ -351,6 +370,7 @@ size. -->
 <!ENTITY share_title "Partager à l\u0027aide de">
 <!ENTITY share_image_failed "Impossible de partager cette image">
 <!ENTITY save_as_pdf "Enregistrer en PDF">
+<!ENTITY print "Imprimer">
 <!ENTITY find_in_page "Rechercher dans la page">
 <!ENTITY desktop_mode "Voir version ordinateur">
 <!ENTITY page "Page">
@@ -395,6 +415,8 @@ size. -->
 <!ENTITY contextmenu_top_sites_pin "Épingler ce site">
 <!ENTITY contextmenu_top_sites_unpin "Relâcher ce site">
 <!ENTITY contextmenu_add_search_engine "Ajouter moteur recherche">
+<!ENTITY contextmenu_mark_read "Marquer comme lu">
+<!ENTITY contextmenu_mark_unread "Marquer comme non lu">
 
 <!-- Localization note (doorhanger_login_no_username): This string is used in the save-login doorhanger
      where normally a username would be displayed. In this case, no username was found, and this placeholder
@@ -415,10 +437,10 @@ size. -->
 <!ENTITY pref_titlebar_mode_title "Afficher le titre de la page">
 <!ENTITY pref_titlebar_mode_url "Afficher l\u0027adresse de la page">
 
-<!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
+<!-- Localization note (pref_magnifying_glass_enabled): Label for setting that controls
      whether or not the magnifying glass is disabled. -->
-<!ENTITY pref_prevent_magnifying_glass "Désactiver la loupe">
-<!ENTITY pref_prevent_magnifying_glass_summary "Empêcher l\u0027utilisation de la loupe pour résoudre les appuis ambigus sur l\u0027écran">
+<!ENTITY pref_magnifying_glass_enabled "Agrandir les petites zones">
+<!ENTITY pref_magnifying_glass_enabled_summary "Effectuer un zoom sur les liens et champs de formulaires en appuyant à proximité">
 
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
@@ -568,14 +590,10 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_connection_insecure "Connexion non sécurisée">
 
 <!-- Mixed content notifications in site identity popup -->
-<!ENTITY mixed_content_blocked_all "&brandShortName; a bloqué des éléments non sécurisés sur cette page.">
-<!ENTITY mixed_content_blocked_some "&brandShortName; a bloqué certains éléments non sécurisés sur cette page.">
-<!ENTITY mixed_content_display_loaded "Cette page possède certains éléments non sécurisés.">
-<!ENTITY mixed_content_protection_disabled "Vous avez désactivé la protection contre les éléments non sécurisés.">
-
-<!ENTITY loaded_mixed_content_message "Cette page affiche du contenu non sécurisé.">
-<!ENTITY blocked_mixed_content_message_top "&brandShortName; a bloqué du contenu non sécurisé.">
-<!ENTITY blocked_mixed_content_message_bottom "La plupart des sites web continueront de fonctionner correctement même si ce contenu est bloqué.">
+<!ENTITY mixed_content_blocked_all1 "&brandShortName; a bloqué du contenu non sécurisé sur cette page.">
+<!ENTITY mixed_content_blocked_some1 "&brandShortName; a bloqué une partie du contenu non sécurisé sur cette page.">
+<!ENTITY mixed_content_display_loaded1 "Certains éléments de la page ne sont pas sécurisés (tels que des images).">
+<!ENTITY mixed_content_protection_disabled1 "Vous avez désactivé la protection contre le contenu non sécurisé.">
 
 <!-- Tracking content notifications in site identity popup -->
 <!ENTITY doorhanger_tracking_title "Protection contre le pistage">
@@ -704,3 +722,19 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY restriction_disallow_clear_history_title2 "Désactiver « Effacer l\u0027historique de navigation »">
 <!ENTITY restriction_disallow_master_password_title2 "Désactiver le mot de passe principal">
 <!ENTITY restriction_disallow_guest_browsing_title2 "Désactiver la navigation invité">
+
+<!-- Default Bookmarks titles-->
+<!-- LOCALIZATION NOTE (bookmarks_title): title for the folder that will contains the default bookmarks -->
+<!ENTITY bookmarks_title "Mobile">
+<!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
+<!ENTITY bookmarks_about_browser "Firefox : à propos de votre navigateur">
+<!-- LOCALIZATION NOTE (bookmarks_addons): link title for https://addons.mozilla.org/en-US/mobile -->
+<!ENTITY bookmarks_addons "Firefox : personnalisation avec des modules">
+<!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
+<!ENTITY bookmarks_support "Firefox : assistance">
+<!-- LOCALIZATION NOTE (bookmarks_marketplace): link title for https://marketplace.firefox.com -->
+<!ENTITY bookmarks_marketplace "Firefox Marketplace">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
+<!ENTITY bookmarks_restricted_support2 "Aide et assistance de Firefox pour les profils restreints sur les tablettes Android">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker): link title for https://webmaker.org -->
+<!ENTITY bookmarks_restricted_webmaker "Apprenez le Web : Mozilla Webmaker">
