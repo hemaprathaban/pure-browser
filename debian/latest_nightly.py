@@ -15,7 +15,6 @@ def main():
     res = conn.getresponse()
     assert res.status == 302
     location = res.getheader('Location')
-    print location
 
     if '-' in product:
         product, variant = product.split('-', 1)
