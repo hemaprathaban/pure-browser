@@ -120,8 +120,9 @@ else
 ifeq ($(SOURCE_TYPE),nightly)
 SOURCE_TARBALL_EXT = bz2
 $(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(OFFICIAL_NAME)-$(DOWNLOAD_SOURCE)))
-SOURCE_BUILD_DATE = $(firstword $(LATEST_NIGHTLY))
-SOURCE_URL = $(subst /rev/,/archive/,$(word 2, $(LATEST_NIGHTLY))).tar.bz2
+$(call lazy,SOURCE_BUILD_VERSION,$$(shell echo $$(firstword $$(LATEST_NIGHTLY)) | $$(VERSION_FILTER)))
+SOURCE_BUILD_DATE = $(word 2, $(LATEST_NIGHTLY))
+SOURCE_URL = $(subst /rev/,/archive/,$(word 3, $(LATEST_NIGHTLY))).tar.bz2
 SOURCE_REV = $(patsubst %.tar.bz2,%,$(notdir $(SOURCE_URL)))
 L10N_REV = tip
 SOURCE_REPO = $(patsubst %/,%,$(dir $(patsubst %/,%,$(dir $(SOURCE_URL)))))
@@ -145,6 +146,7 @@ import: $(ALL_TARBALLS)
 	debian/import-tar.py $(addprefix -H ,$(BRANCH)) $< | git fast-import
 
 $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL): debian/source.filter
+	$(if $(filter-out $(VERSION),$(SOURCE_BUILD_VERSION)),$(error Downloaded version ($(SOURCE_BUILD_VERSION)) does not match requested version ($(VERSION))))
 	debian/repack.py -o $@ $(SOURCE_URL)
 
 $(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-l10n-%.tar.bz2): debian/l10n.filter
