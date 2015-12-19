@@ -1,3 +1,20 @@
+iceweasel (43.0.1-1) experimental; urgency=medium
+
+  * New upstream release.
+
+  * toolkit/mozapps/extensions/content/extensions.js,
+    toolkit/mozapps/extensions/internal/XPIProvider.jsm: Allow unsigned
+    addons in /usr/{lib,share}/mozilla/extensions when upgrading as well,
+    and avoid message about them not being verified in about:addons.
+    Closes: #808228.
+  * security/nss/lib/ckfw/builtins/certdata.txt: Remove the SPI Inc. and
+    CAcert.org CA certificates for backports. The former was removed in
+    NSS 3.21-1 and the latter in 3.16-1, and remained here largely
+    overlooked.
+  * media/webrtc/trunk/build/build_config.h: Add aarch64 macros. bz#1219566.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 19 Dec 2015 12:15:56 +0900
+
 iceweasel (43.0-1) experimental; urgency=medium
 
   * New upstream release.
