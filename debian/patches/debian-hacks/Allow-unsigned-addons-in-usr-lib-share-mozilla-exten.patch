@@ -3,22 +3,64 @@ Date: Sat, 5 Dec 2015 18:23:58 +0900
 Subject: Allow unsigned addons in /usr/{lib,share}/mozilla/extensions
 
 ---
- toolkit/mozapps/extensions/internal/XPIProvider.jsm | 5 +++++
- 1 file changed, 5 insertions(+)
+ toolkit/mozapps/extensions/content/extensions.js    |  2 ++
+ toolkit/mozapps/extensions/internal/XPIProvider.jsm | 12 +++++++-----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
 
+diff --git a/toolkit/mozapps/extensions/content/extensions.js b/toolkit/mozapps/extensions/content/extensions.js
+index 49ce10e..c06a5dd 100644
+--- a/toolkit/mozapps/extensions/content/extensions.js
++++ b/toolkit/mozapps/extensions/content/extensions.js
+@@ -200,6 +200,8 @@ function loadView(aViewId) {
+ }
+ 
+ function isCorrectlySigned(aAddon) {
++  if (aAddon.scope == AddonManager.SCOPE_SYSTEM)
++    return true;
+   if (aAddon.signedState <= AddonManager.SIGNEDSTATE_MISSING)
+     return false;
+   if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)
 diff --git a/toolkit/mozapps/extensions/internal/XPIProvider.jsm b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-index 9045be1..6ee1202 100644
+index 9045be1..7cbe86f 100644
 --- a/toolkit/mozapps/extensions/internal/XPIProvider.jsm
 +++ b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-@@ -1532,6 +1532,11 @@ function shouldVerifySignedState(aAddon) {
-     return true;
-   }
+@@ -226,8 +226,10 @@ const SIGNED_TYPES = new Set([
+ ]);
  
-+  if (aAddon._installLocation.name == KEY_APP_SYSTEM_LOCAL ||
-+      aAddon._installLocation.name == KEY_APP_SYSTEM_SHARE) {
+ // Whether add-on signing is required.
+-function mustSign(aType) {
+-  if (!SIGNED_TYPES.has(aType))
++function mustSign(aAddon) {
++  if (aAddon._installLocation.scope == AddonManager.SCOPE_SYSTEM)
 +    return false;
-+  }
-+
-   // Hotfixes should always have their signature checked
-   let hotfixID = Preferences.get(PREF_EM_HOTFIX_ID, undefined);
-   if (hotfixID && aAddon.id == hotfixID)
++  if (!SIGNED_TYPES.has(aAddon.type))
+     return false;
+   return REQUIRE_SIGNING || Preferences.get(PREF_XPI_SIGNATURES_REQUIRED, false);
+ }
+@@ -613,7 +615,7 @@ function isUsableAddon(aAddon) {
+   if (aAddon.type == "theme" && aAddon.internalName == XPIProvider.defaultSkin)
+     return true;
+ 
+-  if (mustSign(aAddon.type)) {
++  if (mustSign(aAddon)) {
+     if (aAddon.signedState <= AddonManager.SIGNEDSTATE_MISSING)
+       return false;
+     if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)
+@@ -2985,7 +2987,7 @@ this.XPIProvider = {
+           continue;
+         }
+ 
+-        if (mustSign(addon.type) &&
++        if (mustSign(addon) &&
+             (addon.signedState <= AddonManager.SIGNEDSTATE_MISSING ||
+             (foreignInstall && addon.signedState < AddonManager.SIGNEDSTATE_SIGNED))) {
+           logger.warn("Refusing to install staged add-on " + id + " with signed state " + addon.signedState);
+@@ -5018,7 +5020,7 @@ AddonInstall.prototype = {
+       return Promise.reject([AddonManager.ERROR_CORRUPT_FILE, e]);
+     }
+ 
+-    if (mustSign(this.addon.type)) {
++    if (mustSign(this.addon)) {
+       if (this.addon.signedState <= AddonManager.SIGNEDSTATE_MISSING) {
+         // This add-on isn't properly signed by a signature that chains to the
+         // trusted root.
