@@ -1,3 +1,22 @@
+iceweasel (43.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+  * debian/latest_nightly.py, debian/upstream.mk: Ensure aurora/nightly
+    versions match the requested one for `debian/rules download`.
+
+  * toolkit/mozapps/extensions/internal/XPIProvider.jsm: Simplify change
+    allowing unsigned addons in /usr/{lib,share}/mozilla/extensions.
+  * browser/components/migration/MigrationUtils.jsm,
+    browser/components/nsBrowserGlue.js, browser/installer/package-manifest.in,
+    browser/locales/Makefile.in: Move bookmarks.html to a chrome localized
+    location. bz#1235107.
+  * js/src/jit/mips-shared/Lowering-mips-shared.*,
+    js/src/jit/mips32/Lowering-mips32.h: Move LIRGeneratorMIPS::visitRandom to
+    architecture-specific: bz#1206591.
+
+ -- Mike Hommey <glandium@debian.org>  Mon, 28 Dec 2015 16:45:41 +0900
+
 iceweasel (43.0.1-1) experimental; urgency=medium
 
   * New upstream release.
