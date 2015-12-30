@@ -162,7 +162,7 @@ debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
 
-MAINTSCRIPTS := $(addprefix debian/,$(addsuffix .maintscript,$(shell awk -F/ '$$1 != "searchplugins" { next } $$2 == "locale" && $$3 != "en-US" { p="$($(PRODUCT))-l10n-" $$3 } $$2 == "common" || ($$2 "/" $$3 == "locale/en-US") { p="$($(PRODUCT))" } !done[p] { print p; done[p] = 1 }' debian/removed_conffiles)))
+MAINTSCRIPTS := $(addprefix debian/,$(addsuffix .maintscript,$(shell awk -F/ '$$1 != "searchplugins" { next } $$2 == "locale" && $$3 != "en-US" { p="$($(PRODUCT))-l10n-" $$3 } $$2 == "common" || ($$2 "/" $$3 == "locale/en-US") { p="$($(PRODUCT))" } !done[p] { print p; done[p] = 1 }' debian/removed_conffiles.in)))
 
 GENERATED_FILES += $(MAINTSCRIPTS)
 
