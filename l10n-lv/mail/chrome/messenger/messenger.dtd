@@ -1,7 +1,7 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-
+<!ENTITY titleSeparator.label " - ">
 <!-- File Menu -->
 
 
@@ -11,6 +11,7 @@
 
 
 
+<!ENTITY undoCloseTabCmd.commandkey "T">
 <!-- LOCALIZATION NOTE (moveToNewWindow.label):
      Menu option to cause the current tab to be migrated to a new Thunderbird
      window.
@@ -32,11 +33,11 @@
 
 
 
-
-
+<!ENTITY saveAsMenu.label "Saglabāt kā">
+<!ENTITY saveAsMenu.accesskey "S">
 <!ENTITY saveAsFileCmd.label "Fails">
 <!ENTITY saveAsFileCmd.accesskey "F">
-
+<!ENTITY saveAsFileCmd.key "s">
 
 
 
@@ -81,6 +82,8 @@
 <!ENTITY printSetupCmd.accesskey "u">
 <!-- Edit Menu -->
 
+<!ENTITY deleteMsgCmd.label "Dzēst ziņojumu">
+<!ENTITY deleteMsgCmd.accesskey "D">
 
 
 
@@ -95,15 +98,15 @@
 
 
 
+<!ENTITY selectThreadCmd.label "Pavediens">
+<!ENTITY selectThreadCmd.accesskey "P">
 
 
 
 
 
-
-
-
-
+<!ENTITY folderPropsCmd2.label "Īpašības">
+<!ENTITY folderPropsFolderCmd2.label "Mapes īpašības">
 
 
 
@@ -194,6 +197,8 @@
 
 
 
+<!ENTITY msgsMenu.label "Ziņojumi">
+<!ENTITY msgsMenu.accesskey "m">
 
 
 
@@ -216,10 +221,8 @@
 
 
 
-
-
-
-
+<!ENTITY headersNormalCmd.label "Normāls">
+<!ENTITY headersNormalCmd.accesskey "N">
 
 
 
@@ -263,6 +266,10 @@
 
 <!-- Go Menu -->
 
+<!ENTITY nextMenu.label "Nākošais">
+<!ENTITY nextMenu.accesskey "N">
+<!ENTITY nextMsgCmd.label "Ziņojums">
+<!ENTITY nextMsgCmd.accesskey "m">
 
 
 
@@ -272,14 +279,10 @@
 
 
 
-
-
-
-
-
-
-
-
+<!ENTITY prevMenu.label "Iepriekšējais">
+<!ENTITY prevMenu.accesskey "p">
+<!ENTITY prevMsgCmd.label "Ziņojums">
+<!ENTITY prevMsgCmd.accesskey "m">
 
 
 
@@ -303,9 +306,17 @@
 
 <!-- Message Menu -->
 
+<!ENTITY msgMenu.label "Ziņojums">
+<!ENTITY msgMenu.accesskey "m">
+<!ENTITY newMsgCmd.label "Jauns ziņojums">
+<!ENTITY newMsgCmd.accesskey "n">
+<!ENTITY newNewMsgCmd.label "Ziņojums">
+<!ENTITY newNewMsgCmd.accesskey "m">
 
 
 
+<!ENTITY cancelNewsMsgCmd.label "Atcelt ziņojumu">
+<!ENTITY cancelNewsMsgCmd.accesskey "c">
 
 
 
@@ -352,58 +363,52 @@
 
 
 
+<!ENTITY watchThreadMenu.key "w">
 
 
+<!ENTITY tagCmd0.key "0">
+<!ENTITY tagCmd1.key "1">
+<!ENTITY tagCmd2.key "2">
+<!ENTITY tagCmd3.key "3">
+<!ENTITY tagCmd4.key "4">
+<!ENTITY tagCmd5.key "5">
+<!ENTITY tagCmd6.key "6">
+<!ENTITY tagCmd7.key "7">
+<!ENTITY tagCmd8.key "8">
+<!ENTITY tagCmd9.key "9">
 
 
+<!ENTITY toggleReadCmd.key "m">
 
 
 
 
 
 
+<!ENTITY markThreadAsReadCmd.key "r">
 
 
+<!ENTITY markReadByDateCmd.key "c">
 
 
+<!ENTITY markAllReadCmd.key "c">
 
 
+<!ENTITY markStarredCmd.key "S">
 
 
+<!ENTITY markAsJunkCmd.key "j">
 
 
+<!ENTITY markAsNotJunkCmd.key "j">
 
 
 
 
+<!ENTITY openMessageWindowCmd.key "o">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!ENTITY openConversationCmd.key "o">
 
 
 
@@ -421,7 +426,7 @@
 
 
 
-
+<!ENTITY addressBookCmd.key "B">
 
 
 
@@ -429,7 +434,7 @@
 
 
 <!ENTITY imStatus.available          "Pieejams">
-
+<!ENTITY imStatus.unavailable        "Nepieejams">
 <!ENTITY imStatus.offline            "Nesaistē">
 
 
@@ -449,8 +454,8 @@
 
 
 
-
-
+<!ENTITY importCmd.label "Importēt...">
+<!ENTITY importCmd.accesskey "m">
 
 
 
@@ -464,6 +469,11 @@
 
 <!-- Mail Toolbar -->
 
+<!ENTITY replyButton.label "Atbildēt">
+
+
+
+<!ENTITY fileButton.label "Datne">
 
 
 
@@ -473,13 +483,8 @@
 
 
 
-
-
-
-
-
-
-
+<!ENTITY deleteItem.title "Dzēst">
+<!ENTITY deleteButton.label "Dzēst">
 
 
 
@@ -544,7 +549,7 @@
 
 <!-- AppMenu Popup -->
 
-
+<!ENTITY appmenuEditMenu.label "Rediģēt">
 
 
 
@@ -553,7 +558,7 @@
 
 
 <!-- Folder Pane -->
-
+<!ENTITY folderUnreadColumn.label "Nelasīti">
 
 
 <!-- Folder Pane Context Menu -->
@@ -614,14 +619,14 @@
 
 
 
+<!ENTITY unreadColumn.label "Nelasīti">
 
 
 
 
 
 
-
-
+<!ENTITY attachmentColumn.label "Pielikumi">
 <!-- Thread Pane Tooltips -->
 
 
@@ -686,8 +691,8 @@
 
 
 
-
-
+<!ENTITY contextSaveAs.label "Saglabāt kā…">
+<!ENTITY contextSaveAs.accesskey "S">
 
 
 
@@ -813,8 +818,10 @@
 
 <!-- Mac OS X Application Menu (Cocoa widgets) -->
 
+<!ENTITY preferencesCmdMac2.label       "Iestatījumi">
 
 
+<!ENTITY servicesMenuMac.label          "Pakalpojumi">
 
 
 

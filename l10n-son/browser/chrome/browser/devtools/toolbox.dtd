@@ -14,12 +14,18 @@
 <!ENTITY toolboxOptionsButton.key      "O">
 <!ENTITY toolboxNextTool.key           "]">
 <!ENTITY toolboxPreviousTool.key       "[">
+<!-- LOCALIZATION NOTE :
+fullZoomEnlargeCmd.commandkey, fullZoomEnlargeCmd.commandkey2,
+fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey,
+fullZoomReduceCmd.commandkey2, fullZoomResetCmd.commandkey,
+and fullZoomResetCmd.commandkey2 should all match the corresponding
+values from browser.dtd.  -->
 
-<!ENTITY toolboxZoomIn.key             "+">
-<!-- + is above this key on many keyboards -->
-<!ENTITY toolboxZoomIn.key2            "="> 
-<!ENTITY toolboxZoomOut.key            "-">
-<!ENTITY toolboxZoomReset.key          "0">
+<!ENTITY fullZoomEnlargeCmd.commandkey3 "">
+
+<!ENTITY fullZoomReduceCmd.commandkey2  "">
+
+<!ENTITY fullZoomResetCmd.commandkey2   "">
 
 <!ENTITY toolboxReload.key             "r">
 <!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
@@ -58,6 +64,8 @@
   -  inspector. This is visible in the options panel. -->
 
 <!ENTITY options.defaultColorUnit.accesskey "u">
+<!-- LOCALIZATION NOTE (options.defaultColorUnit.authored): This is used in the
+  -  'Default color unit' dropdown list and is visible in the options panel. -->
 <!-- LOCALIZATION NOTE (options.defaultColorUnit.hex): This is used in the
   -  'Default color unit' dropdown list and is visible in the options panel. -->
 
@@ -97,7 +105,7 @@
   -  boolean preference in about:config, in the options panel. -->
 
 <!ENTITY options.enableWorkers.label    "Goykaw hanseyan tunandi (cinari dumi no)">
-<!ENTITY options.enableWorkers.tooltip  "Suubarooo woo tunandiyanoo ka too cinakaw goyjinawey ma hasaraw kaa">
+
 <!-- LOCALIZATION NOTE (options.disableJavaScript.label,
   -  options.disableJavaScript.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles JavaScript on or off. -->
@@ -114,8 +122,6 @@
   -  options.enableServiceWorkersHTTP.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles the service workers testing features on or off. This option enables service workers over HTTP. -->
 
-<!ENTITY options.enableServiceWorkersHTTP.label     "Service Workers tunand HTTP boŋ (nda bataa ga feeri)">
-<!ENTITY options.enableServiceWorkersHTTP.tooltip   "Suubaroo woo tunandiroo ga Service Workers tunandi HTTP ga kanjey kul se kaŋyaŋ se goyjinay bataa ga feeri.">
 <!-- LOCALIZATION NOTE (options.selectDefaultTools.label): This is the label for
   -  the heading of group of checkboxes corresponding to the default developer
   -  tools. -->

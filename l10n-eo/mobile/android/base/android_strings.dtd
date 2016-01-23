@@ -144,13 +144,12 @@
      to send a tab to a synced device is pressed and no other synced devices
      are found. -->
 <!ENTITY overlay_no_synced_devices "Neniu aparato konekita de konto estis trovita">
-<!-- Localization note (overlay_share_tab_not_sent) : Used when the menu option
-     to send a tab to a synced device is pressed and there is an error
-     connecting to the server so the tab could not be sent. The text should be
-     divided into two lines (use the newline escape character, "\n", between
-     them): the first notifying the user about the failure and the second
-     telling the user what to do about it. -->
-<!ENTITY overlay_share_tab_not_sent "Via langeto ne povis esti sendita.\nBonvolu klopodi denove poste.">
+
+<!-- Localization note (menu_no_synced_devices): Used in a toast when the user
+     clicks on the button to send a tab to another device and there are no
+     other devices present. This label should briefly inform the user that they
+     need another connected device in order to use the feature. -->
+<!ENTITY menu_no_synced_devices "Sendi tiun ĉi langeton al alia konektita aparato">
 
 <!ENTITY pref_category_search3 "Serĉi">
 <!ENTITY pref_category_search_summary "Personecigi viajn serĉilojn">
@@ -217,10 +216,17 @@
 <!ENTITY pref_cookies_not_accept_foreign "Aktivaj, krom la nerektaj">
 <!ENTITY pref_cookies_disabled "Malaktiva">
 
+<!ENTITY pref_tap_to_load_images_title "Tuŝetu por ŝargi bildojn">
+<!ENTITY pref_tap_to_load_images_summary2 "Ŝargi bildojn nur kiam vi longe premas ilin">
+
 <!ENTITY pref_tracking_protection_title "Protekto kontraŭ spurado">
 <!ENTITY pref_tracking_protection_summary3 "Aktiva en privata retumado">
 <!ENTITY pref_donottrack_title "Ne spuri">
 <!ENTITY pref_donottrack_summary "&brandShortName; informos al la retejoj ke vi ne volas esti spurita">
+
+<!ENTITY pref_tracking_protection_enabled "Aktiva">
+<!ENTITY pref_tracking_protection_enabled_pb "Aktiva en privata retumo">
+<!ENTITY pref_tracking_protection_disabled "Malaktiva">
 
 <!ENTITY tracking_protection_prompt_title "Nun kun protekto kontraŭ spurado">
 <!ENTITY tracking_protection_prompt_text "Aktive bloki spurajn elementojn, tiel ke vi de bezonos zorgi.">
@@ -290,6 +296,7 @@ size. -->
 <!ENTITY pref_sync "Spegulado">
 <!ENTITY pref_sync_summary2 "Speguli viajn langetojn, legosignojn, akreditilojn, historion">
 <!ENTITY pref_search_suggestions "Montri serĉajn sugestojn">
+<!ENTITY pref_history_search_suggestions "Montri serĉan historion">
 <!ENTITY pref_import_android "Importi el Android">
 <!ENTITY pref_import_android_summary "Importi legosignojn kaj historion el la nativa retumilo">
 <!ENTITY pref_private_data_history2 "Historio de retumado">
@@ -582,6 +589,7 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_connection_secure "Sekura konekto">
 <!ENTITY identity_connection_insecure "Nesekura konekto">
+<!ENTITY identity_login_insecure "Tiu ĉi paĝo ne estas sekura kaj viaj akreditiloj povus esti en danĝero.">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY mixed_content_blocked_all1 "&brandShortName; blokis nesekurajn elementojn en tiu ĉi paĝo.">
@@ -694,6 +702,19 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "Ne eblis malfermi ligilon">
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_prompt): This string will
+     appear in an alert when a user, who is currently in private browsing,
+     clicks a link that will open an external Android application. "&formatS;"
+     will be replaced with the name of the application that will be opened. -->
+<!ENTITY intent_uri_private_browsing_prompt "Tiu ĉi ligilo estos malfermita en &formatS;. Ĉu vi certe volas eliri el la privata retumo?">
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_multiple_match_title): This
+     string will appear as the title of an alert when a user, who is currently
+     in private browsing, clicks a link that will open an external Android
+     application and more than one application is available to open that link.
+     We don't have control over the style of this dialog and it looks
+     unpolished when this string is longer than one line so ideally keep it
+     short! -->
+<!ENTITY intent_uri_private_browsing_multiple_match_title "Ĉu eliri el privata retumo?">
 
 <!-- DevTools Authentication -->
 <!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
@@ -724,8 +745,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY bookmarks_addons "Firefox: personecigi per aldonaĵoj">
 <!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
 <!ENTITY bookmarks_support "Firefox: Helpo">
-<!--LOCALIZATION NOTE (bookmarks_marketplace):link title for https://marketplace.firefox.com -->
-<!ENTITY bookmarks_marketplace "Firefox Marketplace">
 <!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
 <!ENTITY bookmarks_restricted_support2 "Helpo kaj subteno de Firefox por limigitaj profiloj en tabulkomputiloj kun Android">
 <!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->
