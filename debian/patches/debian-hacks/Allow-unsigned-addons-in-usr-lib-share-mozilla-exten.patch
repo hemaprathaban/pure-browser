@@ -8,10 +8,10 @@ Subject: Allow unsigned addons in /usr/{lib,share}/mozilla/extensions
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/toolkit/mozapps/extensions/content/extensions.js b/toolkit/mozapps/extensions/content/extensions.js
-index 49ce10e..c06a5dd 100644
+index 532dca6..83d4407 100644
 --- a/toolkit/mozapps/extensions/content/extensions.js
 +++ b/toolkit/mozapps/extensions/content/extensions.js
-@@ -200,6 +200,8 @@ function loadView(aViewId) {
+@@ -202,6 +202,8 @@ function loadView(aViewId) {
  }
  
  function isCorrectlySigned(aAddon) {
@@ -21,16 +21,16 @@ index 49ce10e..c06a5dd 100644
      return false;
    if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)
 diff --git a/toolkit/mozapps/extensions/internal/XPIProvider.jsm b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-index 9045be1..ce5ddbc 100644
+index ac14ea3..2b4b5d5 100644
 --- a/toolkit/mozapps/extensions/internal/XPIProvider.jsm
 +++ b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-@@ -613,7 +613,8 @@ function isUsableAddon(aAddon) {
-   if (aAddon.type == "theme" && aAddon.internalName == XPIProvider.defaultSkin)
-     return true;
+@@ -666,7 +666,8 @@ function isUsableAddon(aAddon) {
+     return false;
+   }
  
--  if (mustSign(aAddon.type)) {
+-  if (aAddon._installLocation.name != KEY_APP_SYSTEM_DEFAULTS && mustSign(aAddon.type)) {
 +  if (aAddon._installLocation.scope != AddonManager.SCOPE_SYSTEM &&
-+      mustSign(aAddon.type)) {
++      aAddon._installLocation.name != KEY_APP_SYSTEM_DEFAULTS && mustSign(aAddon.type)) {
      if (aAddon.signedState <= AddonManager.SIGNEDSTATE_MISSING)
        return false;
      if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)

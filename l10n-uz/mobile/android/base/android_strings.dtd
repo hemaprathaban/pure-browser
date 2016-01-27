@@ -6,11 +6,21 @@
 <!ENTITY  no_space_to_start_error "&brandShortName;’ni ishga tushirish uchun bo‘sh joy yetarli emas.">
 <!ENTITY  error_loading_file "&brandShortName;ni ishga tushirish uchun kerakli fayllar yuklanayotganda xato yuz berdi.">
 
+<!ENTITY firstrun_panel_title_welcome "Marhamat">
 <!ENTITY  onboard_start_message3 "&brandShortName; bilan ko‘rish">
 <!ENTITY  onboard_start_subtext3 "Mobil telefon brauzeri orqali tajriba orttiring.">
 <!ENTITY  onboard_start_button_account "&brandShortName;ga kirish">
 <!ENTITY  onboard_start_button_browser "Ko‘rishni boshlash">
+<!ENTITY firstrun_button_next "Keyingi">
+
 <!ENTITY  onboard_start_restricted1 "&brandShortName;ning soddalashtirilgan versiyasi bilan osongina boshqaring va xavfsiz qoling.">
+
+<!ENTITY firstrun_import_title "Import">
+<!ENTITY firstrun_import_message "&brandShortName;ga xush kelibsiz!">
+<!ENTITY firstrun_import_subtext "Boshqa brauzerdan xatcho‘plar va tarixni import qiling.">
+<!ENTITY firstrun_import_action "&brandShortName;ga o‘tkazish">
+<!ENTITY firstrun_import_dialog_button "O‘tkazish">
+<!ENTITY firstrun_import_progress_title "O‘tkazilmoqda">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -55,8 +65,9 @@
 
 <!ENTITY history_today_section "Bugun">
 <!ENTITY history_yesterday_section "Kecha">
-<!ENTITY history_week_section2 "O‘tgan hafta">
-<!ENTITY history_older_section2 "O‘tgan oy">
+<!ENTITY history_week_section3 "So‘nggi 7 kun">
+<!ENTITY history_this_month_section "Bu oy">
+<!ENTITY history_older_section3 "6 oydan eskiroq">
 
 <!ENTITY go "O‘tish">
 <!ENTITY search "Izlash">
@@ -69,8 +80,6 @@
 <!ENTITY edit_mode_cancel "Bekor qilish">
 
 <!ENTITY close_tab "Ichki oynani yopish">
-<!ENTITY tab_audio_playing "Bu ichki oynada audio qo‘yilmoqda">
-<!ENTITY tab_audio_muted "Bu ichki oynada ovoz o‘chirib qo‘yilgan">
 <!ENTITY one_tab "1 ta ichki oyna">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -81,6 +90,14 @@
      as possible because it's shown as a label in a toast.  Ideally, this string
      is upper-case, to match Google and Android's convention. -->
 <!ENTITY switch_button_message "ALMASHTIRISH">
+<!-- Localization note (tab_title_prefix_is_playing_audio): This string is not
+     visible in the UI, but rather used as a text-to-speech content description
+     for sight-impaired a11y users. The content description is set on a tab
+     title in a list of open tabs when content in that tab is playing audio.
+     &formatS; will be replaced with the title of the tab, as received from the
+     web page. When audio is not playing in a tab, &formatS; will be used as
+     the content description. -->
+<!ENTITY tab_title_prefix_is_playing_audio "&formatS; – audio ijro etilmoqda">
 
 <!ENTITY settings "Sozlamalar">
 <!ENTITY settings_title "Sozlamalar">
@@ -127,13 +144,12 @@
      to send a tab to a synced device is pressed and no other synced devices
      are found. -->
 <!ENTITY overlay_no_synced_devices "Firefox hisobi ulangan qurilmalar topilmadi">
-<!-- Localization note (overlay_share_tab_not_sent) : Used when the menu option
-     to send a tab to a synced device is pressed and there is an error
-     connecting to the server so the tab could not be sent. The text should be
-     divided into two lines (use the newline escape character, "\n", between
-     them): the first notifying the user about the failure and the second
-     telling the user what to do about it. -->
-<!ENTITY overlay_share_tab_not_sent "Ichki oynangiz jo‘natilmadi.\nKeyinroq urinib ko‘ring.">
+<!-- Localization note (menu_no_synced_devices): Used in a toast when the user
+     clicks on the button to send a tab to another device and there are no
+     other devices present. This label should briefly inform the user that they
+     need another connected device in order to use the feature. -->
+
+<!ENTITY menu_no_synced_devices "Ushbu ichki oynani boshqa ulangan qurilmaga jo‘natish">
 
 <!ENTITY pref_category_search3 "Izlash">
 <!ENTITY pref_category_search_summary "Izlash tizimlarini moslash">
@@ -182,6 +198,9 @@
 <!ENTITY pref_home_updates_wifi "Faqat Wi-Fi orqali">
 <!ENTITY pref_home_suggested_sites "Izlash bo‘yicha tavsiyalarni ko‘rsatish">
 <!ENTITY pref_home_suggested_sites_summary "Biz sizni qiziqtiradi deb o‘ylagan saytlarga linklarni uy sahifangizda ko‘rsatish">
+<!ENTITY pref_category_home_homepage "Uy sahifasi">
+<!ENTITY home_homepage_title "Bosh sahifa sifatida o‘rnatish">
+<!ENTITY home_homepage_use_current_tab "Joriy ichki oynadan foydalanish">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "Moslash">
@@ -197,10 +216,17 @@
 <!ENTITY pref_cookies_not_accept_foreign "Begona saytlardan boshqalari yoqib qo‘yildi">
 <!ENTITY pref_cookies_disabled "O‘chirib qo‘yilgan">
 
+<!ENTITY pref_tap_to_load_images_title "Rasmlarni yuklab olish uchun bosing">
+<!ENTITY pref_tap_to_load_images_summary2 "Rasmlar ustiga uzoq bosib tursangiz, ular yuklanadi">
+
 <!ENTITY pref_tracking_protection_title "Kuzatishdan himoyalanish">
-<!ENTITY pref_tracking_protection_summary3 "Maxfiy ko‘rish usulida yoqib qo‘yildi">
+<!ENTITY pref_tracking_protection_summary3 "Maxfiy ko‘rish rejimi yoqib qo‘yildi">
 <!ENTITY pref_donottrack_title "Kuzatmang">
 <!ENTITY pref_donottrack_summary "&brandShortName; saytlarga sizni kuzatishlarini xohlamsaligingiz aytiladi.">
+
+<!ENTITY pref_tracking_protection_enabled "Yoqib qoʻyildi">
+<!ENTITY pref_tracking_protection_enabled_pb "Maxfiy ko‘rish rejimi yoqib qo‘yildi">
+<!ENTITY pref_tracking_protection_disabled "O‘chirib qo‘yildi">
 
 <!ENTITY tracking_protection_prompt_title "Hozir kuzatishdan himoyalanish bilan">
 <!ENTITY tracking_protection_prompt_text "Kuzatish elementlari faol ravishda bloklanmoqda, shuning uchun xavotir olmang.">
@@ -237,7 +263,6 @@
 <!ENTITY pref_plugins_tap_to_play "Ijro etish uchun bosing">
 <!ENTITY pref_plugins_disabled "O‘chirib qo‘yilgan">
 <!ENTITY pref_text_size "Matn hajmi">
-<!ENTITY pref_reflow_on_zoom4 "Matn formatini o‘zgartirish uchun qising">
 <!ENTITY pref_restore "Ichki oynalar">
 <!ENTITY pref_restore_always "Doimo tiklash">
 <!ENTITY pref_restore_quit "&brandShortName;dan chiqqandan so‘ng tiklanmasin">
@@ -271,6 +296,7 @@ size. -->
 <!ENTITY pref_sync "Sinxronlash">
 <!ENTITY pref_sync_summary2 "Ichki oynalar, xatcho‘plar, loginlar va tarixni sinxronlash">
 <!ENTITY pref_search_suggestions "Izlash bo‘yicha tavsiyalarni ko‘rsatish">
+<!ENTITY pref_history_search_suggestions "Izlash tarixini ko‘rsatish">
 <!ENTITY pref_import_android "Androiddan emport qilish">
 <!ENTITY pref_import_android_summary "Asosiy brauzerdan xatcho‘plar va tarixni import qilish">
 <!ENTITY pref_private_data_history2 "Ko‘rish tarixi">
@@ -347,6 +373,7 @@ size. -->
 <!ENTITY share_title "Bo‘lishish">
 <!ENTITY share_image_failed "Rasm bo‘lishiilmadi">
 <!ENTITY save_as_pdf "PDF sifatida saqlash">
+<!ENTITY print "Chop qilish">
 <!ENTITY find_in_page "Sahifadan topish">
 <!ENTITY desktop_mode "Saytning to‘liq versiyasi">
 <!ENTITY page "Sahifa">
@@ -391,6 +418,8 @@ size. -->
 <!ENTITY contextmenu_top_sites_pin "Saytni qistirish">
 <!ENTITY contextmenu_top_sites_unpin "Saytni ajratish">
 <!ENTITY contextmenu_add_search_engine "Izlash tizimini qo‘shish">
+<!ENTITY contextmenu_mark_read "O‘qilgan deb belgilash">
+<!ENTITY contextmenu_mark_unread "O‘qilmagan deb belgilash">
 <!-- Localization note (doorhanger_login_no_username): This string is used in the save-login doorhanger
      where normally a username would be displayed. In this case, no username was found, and this placeholder
      contains brackets to indicate this is not actually a username, but rather a placeholder -->
@@ -413,8 +442,8 @@ size. -->
 <!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
      whether or not the magnifying glass is disabled. -->
 
-<!ENTITY pref_prevent_magnifying_glass "Lupani o‘chirib qo‘yish ">
-<!ENTITY pref_prevent_magnifying_glass_summary "Ko‘p martalab ekranga teginishni tiklashda foydalanish uchun kattalashtiruvchi oynani taqiqlash">
+<!ENTITY pref_magnifying_glass_enabled "Kichik hududlarni kattalashtirish">
+<!ENTITY pref_magnifying_glass_enabled_summary "Havola va to‘ldirish shakllari atrofiga bosganda maydonchalari kengaytirilsin">
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
 
@@ -473,8 +502,6 @@ size. -->
 <!ENTITY button_set "O‘rnatish">
 <!ENTITY button_clear "Tozalash">
 <!ENTITY button_copy "Nusxa olish">
-
-<!ENTITY firstrun_panel_title_welcome "Marhamat">
 
 <!ENTITY home_top_sites_title "Yuqori reytingli saytlar">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
@@ -562,16 +589,13 @@ with that structure, consider a translation which ignores the preceding domain a
 just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_connection_secure "Xavfsiz ulanish">
 <!ENTITY identity_connection_insecure "Xavfli ulanish">
+<!ENTITY identity_login_insecure "Bu sahifa xavfsiz emas, shuning uchun kirish zararli.">
 <!-- Mixed content notifications in site identity popup -->
 
-<!ENTITY mixed_content_blocked_all "Sahifadagi xavfli elementlarni &brandShortName; blokladi.">
-<!ENTITY mixed_content_blocked_some "Sahifadagi bir nechta xavfli elementlarni &brandShortName; blokladi.">
-<!ENTITY mixed_content_display_loaded "Sahifada bir nechta xavfli elementlar bor.">
-<!ENTITY mixed_content_protection_disabled "Xavfli elementlardan himoyalanishni o‘chirib qo‘ygansiz.">
-
-<!ENTITY loaded_mixed_content_message "Ushbu sahifa xavfsiz bo‘lmagan tarkibni ko‘rsatmoqda.">
-<!ENTITY blocked_mixed_content_message_top "&brandShortName; saytni xavfsiz bo‘lmagani uchun to‘sib qo‘ydi">
-<!ENTITY blocked_mixed_content_message_bottom "Ko‘pgina saytlar bloklangandan so‘ng ham yaxshi ishlayveradi.">
+<!ENTITY mixed_content_blocked_all1 "Ushbu sahifadagi xavfli elementlarni &brandShortName; blokladi.">
+<!ENTITY mixed_content_blocked_some1 "Sahifadagi bir nechta xavfli elementlarni &brandShortName; blokladi.">
+<!ENTITY mixed_content_display_loaded1 "Ushbu sahifa qismlari xavfsiz emas (masalan: rasmlar).">
+<!ENTITY mixed_content_protection_disabled1 "Xavfli tarkiblardan himoyalanishni o‘chirib qo‘ygansiz.">
 <!-- Tracking content notifications in site identity popup -->
 
 <!ENTITY doorhanger_tracking_title "Kuzatishdan himoyalanish">
@@ -681,6 +705,17 @@ import qilinmoqda">
 <!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "Havola ochilmadi">
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_prompt): This string will
+     appear in an alert when a user, who is currently in private browsing,
+     clicks a link that will open an external Android application. "&formatS;"
+     will be replaced with the name of the application that will be opened. -->
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_multiple_match_title): This
+     string will appear as the title of an alert when a user, who is currently
+     in private browsing, clicks a link that will open an external Android
+     application and more than one application is available to open that link.
+     We don't have control over the style of this dialog and it looks
+     unpolished when this string is longer than one line so ideally keep it
+     short! -->
 <!-- DevTools Authentication -->
 <!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
      above a QR reader that is actively scanning for QR codes.  The expected QR
@@ -703,4 +738,15 @@ import qilinmoqda">
 <!ENTITY restriction_disallow_clear_history_title2 "\&quot;Ko‘rish tarixini tozalash\&quot;ni o‘chirish">
 <!ENTITY restriction_disallow_master_password_title2 "Parol ustasini o‘chirib qo‘yish">
 <!ENTITY restriction_disallow_guest_browsing_title2 "Mehmon rejimida ko‘rishni o‘chirish">
+<!-- Default Bookmarks titles-->
+<!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
 
+<!ENTITY bookmarks_about_browser "Firefox: brauzeringiz haqida">
+<!-- LOCALIZATION NOTE (bookmarks_addons): link title for https://addons.mozilla.org/en-US/mobile -->
+<!ENTITY bookmarks_addons "Firefox: qo‘shimcha dasturlar bilan moslang">
+<!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
+<!ENTITY bookmarks_support "Firefox: qo‘llab-quvvatlash">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
+<!ENTITY bookmarks_restricted_support2 "Android planshetlardagi nogironlar profillari uchun Firefox yordami va qo‘llab-quvvatlash">
+<!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->
+<!ENTITY bookmarks_restricted_webmaker "Vebni o‘rganing: Mozilla Webmaker">

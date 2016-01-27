@@ -71,14 +71,31 @@
      shown in the inspector contextual-menu for the item that lets users scroll
      the current node into view -->
 
-<!ENTITY inspectorScrollNodeIntoView.label       "Ko‘rish uchun burang">
-<!ENTITY inspectorScrollNodeIntoView.accesskey   "b">
 <!-- LOCALIZATION NOTE (inspectorHTMLDelete.label): This is the label shown in
      the inspector contextual-menu for the item that lets users delete the
      current node -->
 
 <!ENTITY inspectorHTMLDelete.label          "Ulamni o‘chirish">
 <!ENTITY inspectorHTMLDelete.accesskey      "c">
+<!-- LOCALIZATION NOTE (inspectorAttributeSubmenu.label): This is the label
+     shown in the inspector contextual-menu for the sub-menu of the other
+     attribute items, which allow to:
+     - add new attribute
+     - edit attribute
+     - remove attribute -->
+
+<!-- LOCALIZATION NOTE (inspectorAddAttribute.label): This is the label shown in
+     the inspector contextual-menu for the item that lets users add attribute
+     to current node -->
+
+<!-- LOCALIZATION NOTE (inspectorEditAttribute.label): This is the label shown in
+     the inspector contextual-menu for the item that lets users edit attribute
+     for current node -->
+
+<!-- LOCALIZATION NOTE (inspectorRemoveAttribute.label): This is the label shown in
+     the inspector contextual-menu for the item that lets users delete attribute
+     from current node -->
+
 
 <!ENTITY inspector.selectButton.tooltip     "Elementni sichqoncha bilan tanlash">
 <!-- LOCALIZATION NOTE (inspectorSearchHTML.label2): This is the label shown as
@@ -104,11 +121,13 @@
      opens the split Console and displays the properties in its side panel. -->
 
 <!ENTITY inspectorShowDOMProperties.label       "DOM xossalarini ko‘rsatish">
+<!-- LOCALIZATION NOTE (inspectorUseInConsole.label): This is the label
+     shown in the inspector contextual-menu for the item that outputs a
+     variable for the current node to the console. When triggered,
+     this item opens the split Console. -->
 <!-- LOCALIZATION NOTE (inspectorExpandNode.label): This is the label
      shown in the inspector contextual-menu for recursively expanding
      mark-up elements -->
-
-<!ENTITY inspectorExpandNode.label       "Barchasini yoyish">
 <!-- LOCALIZATION NOTE (inspectorCollapseNode.label): This is the label
      shown in the inspector contextual-menu for recursively collapsing
      mark-up elements -->
@@ -117,5 +136,6 @@
 <!-- LOCALIZATION NOTE (inspectorScreenshotNode.label): This is the label
      shown in the inspector contextual-menu for the item that lets users take
      a screenshot of the currently selected node. -->
-
-<!ENTITY inspectorScreenshotNode.label       "Uzellarni rasmga olish">
+<!-- LOCALIZATION NOTE (inspectorDuplicateNode.label): This is the label
+     shown in the inspector contextual-menu for the item that lets users
+     duplicate the currently selected node. -->

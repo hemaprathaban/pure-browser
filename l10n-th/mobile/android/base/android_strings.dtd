@@ -6,11 +6,20 @@
 <!ENTITY  no_space_to_start_error "เนื้อที่ว่างไม่พอสำหรับให้ &brandShortName; เริ่มทำงาน">
 <!ENTITY  error_loading_file "เกิดข้อผิดพลาดระหว่างการโหลดแฟ้มที่จำเป็นในการทำงานของ &brandShortName;">
 
+<!ENTITY firstrun_panel_title_welcome "ยินดีต้อนรับ">
 <!ENTITY  onboard_start_message3 "ท่องเว็บด้วย &brandShortName;">
 <!ENTITY  onboard_start_subtext3 "สัมผัสประสบการณ์การท่องเว็บที่คุณเป็นเจ้าของอย่างแท้จริง">
 <!ENTITY  onboard_start_button_account "ลงชื่อเข้าใช้เพื่อใช้งาน &brandShortName;">
 <!ENTITY  onboard_start_button_browser "เริ่มต้นเข้าเว็บกันเลย">
+<!ENTITY firstrun_button_next "ถัดไป">
 
+
+<!ENTITY firstrun_import_title "นำเข้า">
+<!ENTITY firstrun_import_message "ยินดีต้อนรับสู่ &brandShortName;">
+<!ENTITY firstrun_import_subtext "นำเข้าที่คั่นหน้าและประวัติของคุณจากเบราว์เซอร์อื่น">
+<!ENTITY firstrun_import_action "ถ่ายโอนไปยัง &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "ถ่ายโอน">
+<!ENTITY firstrun_import_progress_title "กำลังถ่ายโอน">
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
 
@@ -54,8 +63,9 @@
 
 <!ENTITY history_today_section "วันนี้">
 <!ENTITY history_yesterday_section "เมื่อวาน">
-<!ENTITY history_week_section2 "สัปดาห์ที่แล้ว">
-<!ENTITY history_older_section2 "เดือนที่แล้ว">
+
+
+
 
 <!ENTITY go "ไป">
 <!ENTITY search "ค้นหา">
@@ -68,8 +78,6 @@
 <!ENTITY edit_mode_cancel "ยกเลิก">
 
 <!ENTITY close_tab "ปิดแท็ป">
-
-
 <!ENTITY one_tab "1 แท็บ">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
@@ -80,6 +88,13 @@
      as possible because it's shown as a label in a toast.  Ideally, this string
      is upper-case, to match Google and Android's convention. -->
 <!ENTITY switch_button_message "สลับ">
+<!-- Localization note (tab_title_prefix_is_playing_audio): This string is not
+     visible in the UI, but rather used as a text-to-speech content description
+     for sight-impaired a11y users. The content description is set on a tab
+     title in a list of open tabs when content in that tab is playing audio.
+     &formatS; will be replaced with the title of the tab, as received from the
+     web page. When audio is not playing in a tab, &formatS; will be used as
+     the content description. -->
 
 <!ENTITY settings "การตั้งค่า">
 <!ENTITY settings_title "การตั้งค่า">
@@ -126,13 +141,10 @@
      to send a tab to a synced device is pressed and no other synced devices
      are found. -->
 <!ENTITY overlay_no_synced_devices "ไม่พบอุปกรณ์ที่เชื่อมต่อกับบัญชี Firefox">
-<!-- Localization note (overlay_share_tab_not_sent) : Used when the menu option
-     to send a tab to a synced device is pressed and there is an error
-     connecting to the server so the tab could not be sent. The text should be
-     divided into two lines (use the newline escape character, "\n", between
-     them): the first notifying the user about the failure and the second
-     telling the user what to do about it. -->
-<!ENTITY overlay_share_tab_not_sent "ไม่สามารถส่งแท็บได้\nโปรดลองใหม่ทีหลัง">
+<!-- Localization note (menu_no_synced_devices): Used in a toast when the user
+     clicks on the button to send a tab to another device and there are no
+     other devices present. This label should briefly inform the user that they
+     need another connected device in order to use the feature. -->
 
 <!ENTITY pref_category_search3 "ค้นหา">
 <!ENTITY pref_category_search_summary "ปรับแต่งผู้จัดการค้นหาของคุณ">
@@ -143,7 +155,7 @@
 <!ENTITY pref_category_vendor "&vendorShortName;">
 <!ENTITY pref_category_vendor_summary "เกี่ยวกับ &brandShortName; FAQs ตัวเลือกข้อมูล">
 <!ENTITY pref_category_datareporting "ตัวเลือกข้อมูล">
-<!ENTITY pref_learn_more "เรียนรู้เพิ่ม">
+<!ENTITY pref_learn_more "เรียนรู้เพิ่มเติม">
 <!ENTITY pref_category_installed_search_engines "เครื่องมือค้นหาที่ติดตั้งไว้">
 <!ENTITY pref_category_add_search_providers "เพิ่มเครื่องมือค้นหา">
 <!ENTITY pref_category_search_restore_defaults "เรียกคืนเครื่องมือค้นหา">
@@ -181,6 +193,9 @@
 <!ENTITY pref_home_updates_wifi "เฉพาะบน Wi-Fi">
 <!ENTITY pref_home_suggested_sites "แสดงคำแนะนำเว็บไซต์">
 <!ENTITY pref_home_suggested_sites_summary "แสดงทางลัดไปยังไซต์บนโฮมเพจของคุณที่เราคาดว่าคุณน่าจะพบสิ่งที่น่าสนใจ">
+
+
+<!ENTITY home_homepage_use_current_tab "ใช้แท็บปัจจุบัน">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
 <!ENTITY pref_header_customize "ปรับแต่ง">
@@ -196,6 +211,9 @@
 <!ENTITY pref_cookies_not_accept_foreign "เปิดใช้งาน ยกเว้นจากเว็บที่ไม่ได้กำลังเปิด">
 <!ENTITY pref_cookies_disabled "ปิดใช้งาน">
 
+<!ENTITY pref_tap_to_load_images_title "แตะเพื่อโหลดภาพ">
+
+
 
 <!ENTITY pref_donottrack_title "ไม่ต้องติดตามการเชื่อมต่อ">
 <!ENTITY pref_donottrack_summary "&brandShortName; จะบอกไซต์ที่คุณไม่ต้องการถูกติดตาม">
@@ -203,6 +221,9 @@
 
 
 
+
+
+<!ENTITY tracking_protection_prompt_action_button "เข้าใจแล้ว!">
 
 <!ENTITY tab_queue_toast_action "เปิดทันที">
 <!ENTITY tab_queue_prompt_title "เปิดหลายลิงก์?">
@@ -233,7 +254,6 @@
 <!ENTITY pref_plugins_tap_to_play "แตะเพื่อเล่น">
 <!ENTITY pref_plugins_disabled "ถูกปิดใช้งาน">
 <!ENTITY pref_text_size "ขนาดตัวอักษร">
-<!ENTITY pref_reflow_on_zoom4 "การไหลของข้อความ">
 <!ENTITY pref_restore "แท็บ">
 <!ENTITY pref_restore_always "เรียกคืนเสมอ">
 <!ENTITY pref_restore_quit "ไม่เรียกคืนหลังออกจาก &brandShortName;">
@@ -267,9 +287,10 @@ size. -->
 <!ENTITY pref_sync "Sync">
 
 <!ENTITY pref_search_suggestions "แสดงคำค้นหาแนะนำ">
+<!ENTITY pref_history_search_suggestions "แสดงประวัติการค้นหา">
 <!ENTITY pref_import_android "นำเข้าจากแอนดรอยด์">
 <!ENTITY pref_import_android_summary "นำเข้าที่คั่นหน้าและประวัติจากเว็บเบราว์เซอร์ในเครื่อง">
-<!ENTITY pref_private_data_history2 "ประวัติการท่องเน็ต">
+<!ENTITY pref_private_data_history2 "ประวัติการท่องเว็บ">
 <!ENTITY pref_private_data_searchHistory "ประวัติการค้นหา">
 <!ENTITY pref_private_data_formdata2 "ประวัติการกรอกฟอร์ม">
 <!ENTITY pref_private_data_cookies2 "คุกกี้และล็อกอินที่เข้าใช้อยู่">
@@ -343,6 +364,7 @@ size. -->
 <!ENTITY share_title "แบ่งปันโดย">
 <!ENTITY share_image_failed "ไม่สามารถแบ่งปันรูปภาพนี้ได้">
 <!ENTITY save_as_pdf "บันทึกเป็น PDF">
+<!ENTITY print "พิมพ์">
 <!ENTITY find_in_page "ค้นหาในหน้านี้">
 <!ENTITY desktop_mode "เรียกเว็บสำหรับเดสก์ท็อป">
 <!ENTITY page "หน้า">
@@ -387,6 +409,8 @@ size. -->
 <!ENTITY contextmenu_top_sites_pin "ตรึงเว็บ">
 <!ENTITY contextmenu_top_sites_unpin "เลิกตรึงเว็บ">
 <!ENTITY contextmenu_add_search_engine "เพิ่มเครื่องมือค้นหา">
+<!ENTITY contextmenu_mark_read "ทำเครื่องหมายเป็นอ่านแล้ว">
+<!ENTITY contextmenu_mark_unread "ทำเครื่องหมายเป็นยังไม่ได้อ่าน">
 <!-- Localization note (doorhanger_login_no_username): This string is used in the save-login doorhanger
      where normally a username would be displayed. In this case, no username was found, and this placeholder
      contains brackets to indicate this is not actually a username, but rather a placeholder -->
@@ -397,11 +421,11 @@ size. -->
 <!ENTITY doorhanger_login_edit_password_hint "รหัสผ่าน">
 <!ENTITY doorhanger_login_edit_toggle "แสดงรหัสผ่าน">
 <!ENTITY doorhanger_login_edit_toast_error "บันทึกการเข้าระบบไม่ได้">
+<!ENTITY doorhanger_login_select_message "คัดลอกรหัสผ่านจาก &formatS;?">
 
 
 
-
-
+<!ENTITY doorhanger_login_select_title "คัดลอกรหัสผ่านจาก">
 
 <!ENTITY pref_titlebar_mode "แถบหัวเรื่อง">
 <!ENTITY pref_titlebar_mode_title "แสดงหัวเรื่องเว็บ">
@@ -436,6 +460,8 @@ size. -->
 <!ENTITY site_settings_no_settings  "ไม่มีการตั้งค่าให้ล้าง">
 <!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
      as possible. -->
+
+<!ENTITY reading_list_added3 "เพิ่มไปยังรายการอ่านแล้ว">
 <!ENTITY reading_list_removed "ลบหน้าเว็บออกจากรายการอ่านของคุณแล้ว">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
@@ -466,8 +492,6 @@ size. -->
 <!ENTITY button_clear "ล้าง">
 <!ENTITY button_copy "คัดลอก">
 
-<!ENTITY firstrun_panel_title_welcome "ยินดีต้อนรับ">
-
 <!ENTITY home_top_sites_title "เว็บเด่น">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
@@ -477,7 +501,7 @@ size. -->
 
 <!ENTITY home_title "หน้าหลัก &brandShortName;">
 <!ENTITY home_history_title "ประวัติ">
-<!ENTITY home_clear_history_button "ล้างประวัติการเข้าเว็บ">
+<!ENTITY home_clear_history_button "ล้างประวัติการท่องเว็บ">
 <!ENTITY home_clear_history_confirm "คุณแน่ใจหรือไม่ว่าคุณต้องการล้างประวัติการเข้าชม?">
 <!ENTITY home_bookmarks_empty "ที่คั่นหน้าที่บันทึกไว้จะแสดงที่นี่">
 <!ENTITY home_closed_tabs_title "แท็บที่เพิ่งปิด">
@@ -553,14 +577,11 @@ substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
 
+
 <!-- Mixed content notifications in site identity popup -->
 
 
 
-
-<!ENTITY loaded_mixed_content_message "หน้าเว็บนี้กำลังแสดงเนื้อหาที่ไม่ปลอดภัย">
-<!ENTITY blocked_mixed_content_message_top "&brandShortName; ได้ปิดกั้นเนื้อหาที่ไม่ปลอดภัย">
-<!ENTITY blocked_mixed_content_message_bottom "เว็บไซต์ส่วนใหญ่ยังสามารถทำงานได้ถูกต้องแม้เนื้อหานี้จะถูกปิดกั้น">
 <!-- Tracking content notifications in site identity popup -->
 
 
@@ -568,7 +589,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!-- Common mixed and tracking content strings in site identity popup -->
 
-<!ENTITY learn_more "เรียนรู้เพิ่ม">
+<!ENTITY learn_more "เรียนรู้เพิ่มเติม">
 <!ENTITY enable_protection "เปิดการปกป้อง">
 <!ENTITY disable_protection "ปิดการป้องกัน">
 <!ENTITY keep_blocking "ปิดกั้นต่อไป">
@@ -668,6 +689,17 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "ไม่สามารถเปิดลิงก์">
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_prompt): This string will
+     appear in an alert when a user, who is currently in private browsing,
+     clicks a link that will open an external Android application. "&formatS;"
+     will be replaced with the name of the application that will be opened. -->
+<!-- LOCALIZATION NOTE (intent_uri_private_browsing_multiple_match_title): This
+     string will appear as the title of an alert when a user, who is currently
+     in private browsing, clicks a link that will open an external Android
+     application and more than one application is available to open that link.
+     We don't have control over the style of this dialog and it looks
+     unpolished when this string is longer than one line so ideally keep it
+     short! -->
 <!-- DevTools Authentication -->
 <!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
      above a QR reader that is actively scanning for QR codes.  The expected QR
@@ -686,4 +718,9 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 
 
-
+<!-- Default Bookmarks titles-->
+<!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
+<!-- LOCALIZATION NOTE (bookmarks_addons): link title for https://addons.mozilla.org/en-US/mobile -->
+<!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
+<!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
+<!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->

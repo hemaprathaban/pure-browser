@@ -10,24 +10,6 @@
 
 <!ENTITY window.title "ওয়েব কনসোল">
 <!ENTITY browserConsole.title "ব্রাউজার কনসোল">
-
-<!ENTITY networkPanel.requestURLColon             "অনুরোধকৃত URL:">
-<!ENTITY networkPanel.requestMethodColon          "অনুরোধের পদ্ধতি:">
-<!ENTITY networkPanel.statusCodeColon             "স্ট্যাটাস কোড:">
-
-<!ENTITY networkPanel.requestHeaders              "অনুরোধ শীর্ষচরণ">
-<!ENTITY networkPanel.requestCookie               "পাঠানো কুকি">
-<!ENTITY networkPanel.requestBody                 "অনুরোধকৃত মূল অংশ">
-<!ENTITY networkPanel.requestFormData             "ডাটা হতে পাঠানো">
-
-<!ENTITY networkPanel.responseHeaders             "প্রতুত্তর শীর্ষচরণ">
-<!ENTITY networkPanel.responseCookie              "প্রাপ্ত কুকি">
-<!ENTITY networkPanel.responseBody                "প্রতুত্তর মূলঅংশ">
-<!ENTITY networkPanel.responseBodyCached          "ক্যাশকৃত ডাটা">
-<!ENTITY networkPanel.responseBodyUnknownType     "অজানা বিষয়বস্তুর ধরণ">
-<!ENTITY networkPanel.responseNoBody              "কোনো প্রতুত্তর অংশ নেই">
-<!ENTITY networkPanel.responseImage               "গ্রহনকৃত ছবি">
-<!ENTITY networkPanel.responseImageCached         "ক্যাশকৃত ছবি">
 <!-- LOCALIZATION NOTE (saveBodies.label): You can see this string in the Web
    - Console context menu. -->
 
@@ -75,6 +57,17 @@
 <!ENTITY btnConsoleLog          "লগ">
 <!ENTITY btnConsoleXhr          "XHR">
 <!ENTITY btnConsoleReflows      "পুনঃপ্রবাহ">
+<!-- LOCALIZATION NOTE (btnServerLogging): This is used as the text of the
+  -  the toolbar. It shows or hides messages that the web developer inserted on
+  -  the page for debugging purposes, using calls on the HTTP server. -->
+
+<!ENTITY btnServerLogging.label       "সার্ভার S">
+<!ENTITY btnServerLogging.tooltip     "একটি ওয়েব সার্ভার থেকে লগ বার্তা গৃহীত">
+<!ENTITY btnServerLogging.accesskey   "S">
+<!ENTITY btnServerErrors              "ত্রুটি">
+<!ENTITY btnServerInfo                "তথ্য">
+<!ENTITY btnServerWarnings            "সতর্কবার্তা">
+<!ENTITY btnServerLog                 "লগ">
 <!-- LOCALIZATION NODE (btnConsoleSharedWorkers) the term "Shared Workers"
   -  should not be translated. -->
 
@@ -94,7 +87,7 @@
 <!ENTITY fullZoomEnlargeCmd.commandkey  "+">
 <!-- + is above this key on many keyboards -->
 <!ENTITY fullZoomEnlargeCmd.commandkey2 "="> 
-<!ENTITY fullZoomEnlargeCmd.commandkey3 "">
+<!ENTITY fullZoomEnlargeCmd.commandkey3 "‍">
 
 <!ENTITY fullZoomReduceCmd.commandkey   "-">
 <!ENTITY fullZoomReduceCmd.commandkey2  "বড়-ছোট">
@@ -110,3 +103,5 @@
 <!ENTITY clearOutputCtrl.key  "L">
 <!ENTITY openInVarViewCmd.label "Variables প্রদর্শনীতে খুলুন">
 <!ENTITY openInVarViewCmd.accesskey "V">
+<!ENTITY storeAsGlobalVar.label "গ্লোবাল ভেরিয়েবল হিসেবে সংরক্ষণ S">
+<!ENTITY storeAsGlobalVar.accesskey "S">

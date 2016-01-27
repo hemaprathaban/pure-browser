@@ -14,7 +14,7 @@
 <!ENTITY projectMenu_importHostedApp_accesskey "H">
 <!ENTITY projectMenu_selectApp_label "अॅप उघडा…">
 <!ENTITY projectMenu_selectApp_accesskey "O">
-<!ENTITY projectMenu_play_label "स्थापित करा व चालवा">
+<!ENTITY projectMenu_play_label "स्थापित करा आणि चालवा">
 <!ENTITY projectMenu_play_accesskey "I">
 <!ENTITY projectMenu_stop_label "ॲप थांबवा">
 <!ENTITY projectMenu_stop_accesskey "S">
@@ -26,6 +26,7 @@
 <!ENTITY projectMenu_showPrefs_accesskey "e">
 <!ENTITY projectMenu_manageComponents_label "अतिरिक्त घटक व्यवस्थापित करा">
 <!ENTITY projectMenu_manageComponents_accesskey "M">
+<!ENTITY projectMenu_refreshTabs_label "टॅब्स पुन्हा दाखल करा">
 
 <!ENTITY runtimeMenu_label "चालू कालावधी">
 <!ENTITY runtimeMenu_accesskey "R">
@@ -41,8 +42,8 @@
 <!ENTITY runtimeMenu_showMonitor_accesskey "M">
 <!ENTITY runtimeMenu_showDevicePrefs_label "साधन प्राधान्ये">
 <!ENTITY runtimeMenu_showDevicePrefs_accesskey "D">
-<!ENTITY runtimeMenu_showSettings_label "साधन सेटिंग्ज">
-<!ENTITY runtimeMenu_showSettings_accesskey "s">
+<!ENTITY runtimeMenu_showSettings_label "साधन सेटिंग्स">
+<!ENTITY runtimeMenu_showSettings_accesskey "S">
 
 <!ENTITY viewMenu_label "दृश्य">
 <!ENTITY viewMenu_accesskey "V">
@@ -109,13 +110,13 @@
 <!-- Addons -->
 
 <!ENTITY addons_title "अतिरिक्त घटक">
-<!ENTITY addons_aboutaddons "ॲडऑन्स् व्यवस्थापक उघडा">
+<!ENTITY addons_aboutaddons "ॲड-ऑन्स् व्यवस्थापक उघडा">
 <!-- Prefs -->
 
 <!ENTITY prefs_title "प्राधान्यक्रम">
 <!ENTITY prefs_editor_title "एडिटर">
 <!ENTITY prefs_general_title "सर्वसाधारण">
-<!ENTITY prefs_restore "डिफॉल्ट पूर्ववत करा">
+<!ENTITY prefs_restore "पूर्वनिर्धारित पुनःस्थापीत करा">
 <!ENTITY prefs_manage_components "अतिरिक्त घटक व्यवस्थापित करा">
 <!ENTITY prefs_options_autoconnectruntime "मागील चालू कालावधीला पुन्हा जोडा">
 <!ENTITY prefs_options_autoconnectruntime_tooltip "WebIDE सुरु झाल्यानंतर मागील चालू कालावधीला पुन्हा जोडा">
@@ -127,15 +128,17 @@
 <!ENTITY prefs_options_showeditor_tooltip "अंतर्गत संपादक दर्शवा">
 <!ENTITY prefs_options_tabsize "टॅब आकार">
 <!ENTITY prefs_options_expandtab "स्फॉफ्ट टॅब्स">
-<!ENTITY prefs_options_expandtab_tooltip "टॅब अक्षराऐवजी मोकळ्या जागेचा वापर करा">
+<!ENTITY prefs_options_expandtab_tooltip "टॅब की ऐवजी स्पेसेस की चा वापर करा">
 <!ENTITY prefs_options_detectindentation "स्वयंचलीत इंडेन्ट">
 <!ENTITY prefs_options_detectindentation_tooltip "स्रोत अंतर्भुत माहितीवर आधारित इंडेंटेशन ओळखा">
-<!ENTITY prefs_options_autocomplete "स्वयंचलित पूर्ण करणे ">
+<!ENTITY prefs_options_autocomplete "स्वयंचलित पूर्ण करणे">
 <!ENTITY prefs_options_autocomplete_tooltip "कोड स्वयंचलित रीत्या पूर्ण करणे सक्षम करा">
 <!ENTITY prefs_options_autoclosebrackets "कंस स्व बंद करा">
 <!ENTITY prefs_options_autoclosebrackets_tooltip "बंद कंस स्वतः अंतर्भुत करा">
 <!ENTITY prefs_options_keybindings "किबाइंडिंग्ज">
-<!ENTITY prefs_options_keybindings_default "डिफॉल्ट">
+<!ENTITY prefs_options_keybindings_default "पूर्वनिर्धारीत">
+<!ENTITY prefs_options_autosavefiles "स्वयं पद्धतीने फाईल्स साठवा">
+<!ENTITY prefs_options_autosavefiles_tooltip "प्रकल्प चालवण्यापुर्वी संपादीत केलेल्या फाईल्स स्वयंपद्धतीने साठवा">
 <!-- Permissions Table -->
 
 <!ENTITY permissionstable_title "परवानगी कोष्टक">
@@ -143,7 +146,7 @@
 <!-- Runtime Details -->
 
 <!ENTITY runtimedetails_title "चालू कालावधीबद्दल माहिती">
-<!ENTITY runtimedetails_adbIsRoot "ADB मूळ आहे:">
+<!ENTITY runtimedetails_adbIsRoot "ADB मूळ आहे: ">
 <!ENTITY runtimedetails_summonADBRoot "साधनाला root करा">
 <!ENTITY runtimedetails_ADBRootWarning "(अनलॉक केलेला बूटलोडर आवश्यक)">
 <!ENTITY runtimedetails_unrestrictedPrivileges "अमर्यादित DevTools अधिकार:">
@@ -151,21 +154,21 @@
 <!ENTITY runtimedetails_privilegesWarning "(साधन रीबूट केले जाईल. root ॲक्सेस आवश्यक)">
 <!-- Device Preferences and Settings -->
 
-<!ENTITY device_typeboolean "बूलियन">
+<!ENTITY device_typeboolean "बुलियन">
 <!ENTITY device_typenumber "पूर्णांक">
 <!ENTITY device_typestring "स्ट्रिंग">
 <!ENTITY device_typeobject "वस्तु">
-<!ENTITY device_typenone "फाइल पसंत करा">
+<!ENTITY device_typenone "प्रकार नीवडा">
 <!-- Device Preferences -->
 
 <!ENTITY devicepreference_title "साधन प्राधान्ये">
 <!ENTITY devicepreference_search "शोध प्राधान्ये">
 <!ENTITY devicepreference_newname "नवीन प्राधान्य नाव">
-<!ENTITY devicepreference_newtext "प्राधान्याता मूल्य">
+<!ENTITY devicepreference_newtext "प्राधान्यता नाव">
 <!ENTITY devicepreference_addnew "नवीन प्राधान्य जोडा">
 <!-- Device Settings -->
 
-<!ENTITY devicesetting_title "साधन सेटिंग्ज">
+<!ENTITY devicesetting_title "साधन सेटिंग्स">
 <!ENTITY devicesetting_search "शोध सेटिंग्स">
 <!ENTITY devicesetting_newname "नवीन सेटिंग नाव">
 <!ENTITY devicesetting_newtext "सेटिंगचे मुल्य">
@@ -203,8 +206,8 @@
 <!ENTITY simulator_name "नाव">
 <!ENTITY simulator_software "सॉफ्टवेअर">
 <!ENTITY simulator_version "आवृत्ती">
-<!ENTITY simulator_profile "प्रोफाइल">
+<!ENTITY simulator_profile "प्रोफाइलर">
 <!ENTITY simulator_hardware "हार्डवेअर">
 <!ENTITY simulator_device "साधन">
-<!ENTITY simulator_screenSize "स्क्रीन">
+<!ENTITY simulator_screenSize "पडदा">
 <!ENTITY simulator_pixelRatio "पिक्सेल प्रमाण">
