@@ -1,4 +1,12 @@
-iceweasel (38.5.0esr-1) unstable; urgency=medium
+iceweasel (38.5.0esr-1~deb8u2) stable-security; urgency=medium
+
+  * security/nss/lib/ckfw/builtins/certdata.txt: Remove the SPI Inc. and
+    CAcert.org CA certificates. The former was removed in NSS 3.21-1 and
+    the latter in 3.16-1, and remained here largely overlooked.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 17:08:06 +0900
+
+iceweasel (38.5.0esr-1~deb8u1) stable-security; urgency=medium
 
   * New upstream release.
   * Fixes for mfsa2015-{134,138-139,145-147,149}, also known as:
@@ -10,24 +18,25 @@ iceweasel (38.5.0esr-1) unstable; urgency=medium
 
  -- Mike Hommey <glandium@debian.org>  Wed, 16 Dec 2015 10:19:44 +0900
 
-iceweasel (38.4.0esr-1) unstable; urgency=medium
+iceweasel (38.4.0esr-1~deb8u1) stable-security; urgency=medium
 
   * New upstream release.
-  * Fixes for mfsa2015-{116,122-123,127-128,130-132}, also known as:
+  * Fixes for mfsa2015-{116,122-123,127-128,130-133}, also known as:
     CVE-2015-4513, CVE-2015-7188, CVE-2015-7189, CVE-2015-7193,
     CVE-2015-7194, CVE-2015-7196, CVE-2015-7198, CVE-2015-7199,
-    CVE-2015-7200, CVE-2015-7197.
+    CVE-2015-7200, CVE-2015-7197, CVE-2015-7181, CVE-2015-7182,
+    CVE-2015-7183.
 
   * debian/control*: Bump nspr and nss build dependencies.
 
  -- Mike Hommey <glandium@debian.org>  Wed, 04 Nov 2015 08:52:59 +0900
 
-iceweasel (38.3.0esr-1) unstable; urgency=medium
+iceweasel (38.3.0esr-1~deb8u1) stable-security; urgency=medium
 
   * New upstream release.
-  * Fixes for mfsa2015-{96,105-106,110-112}, also known as:
-    CVE-2015-4500, CVE-2015-4511, CVE-2015-4509, CVE-2015-4519,
-    CVE-2015-4520, CVE-2015-7174.
+  * Fixes for mfsa2015-{96,101,105-106,110-112}, also known as:
+    CVE-2015-4500, CVE-2015-4506, CVE-2015-4511, CVE-2015-4509,
+    CVE-2015-4519, CVE-2015-4520, CVE-2015-7174.
 
   * debian/rules, debian/removed_conffiles, debian/browser.postinst.in,
     debian/browser.postrm.in, debian/browser.preinst.in: Remove past conffiles.
@@ -38,7 +47,7 @@ iceweasel (38.3.0esr-1) unstable; urgency=medium
 
  -- Mike Hommey <glandium@debian.org>  Wed, 23 Sep 2015 07:53:47 +0900
 
-iceweasel (38.2.1esr-1) unstable; urgency=high
+iceweasel (38.2.1esr-1~deb8u1) stable-security; urgency=high
 
   * New upstream release.
   * Fixes for mfsa2015-{94-95}, also known as:
@@ -50,7 +59,7 @@ iceweasel (38.2.1esr-1) unstable; urgency=high
 
  -- Mike Hommey <glandium@debian.org>  Fri, 28 Aug 2015 18:04:03 +0900
 
-iceweasel (38.2.0esr-2) UNRELEASED; urgency=medium
+iceweasel (38.2.0esr-2~deb8u1) stable-security; urgency=medium
 
   * debian/rules, debian/upstream.mk: Don't set LESS_SYSTEM_LIBS when
     building a backport for stretch. Closes: #795331.
@@ -62,13 +71,14 @@ iceweasel (38.2.0esr-2) UNRELEASED; urgency=medium
 
  -- Mike Hommey <glandium@debian.org>  Sat, 22 Aug 2015 08:20:35 +0900
 
-iceweasel (38.2.0esr-1) unstable; urgency=high
+iceweasel (38.2.0esr-1~deb8u1) stable-security; urgency=high
 
   * New upstream release.
-  * Fixes for mfsa2015-{79-80,82-83,87-88,90,92}, also known as:
+  * Fixes for mfsa2015-{79-80,82-83,87-90,92}, also known as:
     CVE-2015-4473, CVE-2015-4475, CVE-2015-4478, CVE-2015-4479,
     CVE-2015-4480, CVE-2015-4493, CVE-2015-4484, CVE-2015-4491,
-    CVE-2015-4487, CVE-2015-4488, CVE-2015-4489, CVE-2015-4492.
+    CVE-2015-4485, CVE-2015-4486, CVE-2015-4487, CVE-2015-4488,
+    CVE-2015-4489, CVE-2015-4492.
 
   * debian/latest_nightly.py, debian/upstream.mk: Modify latest_nightly.py to
     work without ftp now that it's gone.
