@@ -1,8 +1,20 @@
-iceweasel (44.0-1) UNRELEASED; urgency=medium
+iceweasel (44.0-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2016-{01-04,06,09-11}, also known as:
+    CVE-2016-1930, CVE-2016-1931, CVE-2016-1933, CVE-2016-1935,
+    CVE-2016-1939, CVE-2016-1937, CVE-2016-1942, CVE-2016-1943,
+    CVE-2016-1944, CVE-2016-1945, CVE-2016-1946, CVE-2016-1947.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 27 Jan 2016 11:06:36 +0900
+  * js/src/jit/mips-shared/Architecture-mips-shared.h,
+    js/src/jit/mips-shared/Assembler-mips-shared.*,
+    js/src/jit/mips32/Architecture-mips32.*,
+    js/src/jit/mips32/Assembler-mips32.*,
+    js/src/jit/mips64/Architecture-mips64.*,
+    js/src/jit/mips64/Assembler-mips64.*: Fix build failure on mipsel.
+    bz#1213146.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 27 Jan 2016 11:12:44 +0900
 
 iceweasel (43.0.4-1) unstable; urgency=medium
 
