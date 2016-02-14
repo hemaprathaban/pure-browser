@@ -1,8 +1,22 @@
-iceweasel (44.0.2-1) UNRELEASED; urgency=medium
+iceweasel (44.0.2-1) unstable; urgency=medium
 
   * New upstream release
+  * Fixes for mfsa2016-13, also known as CVE-2016-1949.
 
- -- Mike Hommey <glandium@debian.org>  Sun, 14 Feb 2016 16:55:14 +0900
+  * debian/control*:
+    - Bump sqlite3 build dependency.
+    - Bump Standards-Version. No changes required.
+  * debian/copyright:
+    - Rename all BSD-n licenses to BSD-n-clause.
+    - Remove commas separating lines in Files and Copyright.
+    - Fixup some lintian warnings.
+  * debian/source/lintian-overrides: Add lintian overrides for various
+    "errors" in the source package. See associated comments.
+  * debian/rules: Avoid tar creating hard links with -h for symlinks pointing
+    to the same file.
+  * debian/browser.menu.in: Remove menu file.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 14 Feb 2016 18:25:51 +0900
 
 iceweasel (44.0-1) unstable; urgency=medium
 
