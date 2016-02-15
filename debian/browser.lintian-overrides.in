@@ -5,3 +5,5 @@
 @browser@: embedded-library usr/lib/@browser@/libxul.so: libpng
 # Upstream code is not ready to use system library
 @browser@: embedded-library usr/lib/@browser@/libxul.so: srtp
+# This is a stripped down libavutil
+@browser@: embedded-library usr/lib/@browser@/libmozavutil.so: libavutil

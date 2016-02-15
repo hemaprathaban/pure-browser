@@ -34,6 +34,10 @@ usr/lib/@browser@/libmozgtk.so
 usr/lib/@browser@/gtk2/libmozgtk.so
 %endif
 usr/lib/@browser@/liblgpllibs.so
+%if MOZ_FFVPX
+usr/lib/@browser@/libmozavcodec.so
+usr/lib/@browser@/libmozavutil.so
+%endif
 
 usr/lib/@browser@/defaults/pref/channel-prefs.js
 
