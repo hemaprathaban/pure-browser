@@ -99,15 +99,9 @@ Conflicts: j2re1.4,
 Breaks: xul-ext-torbutton
 Provides: www-browser,
           gnome-www-browser
-%if browser == OFFICIAL_NAME
 %define DESCRIPTION Mozilla Firefox web browser
 %define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
 %define LONGDESC2 web application technologies.
-%else
-%define DESCRIPTION Web browser based on Firefox
-%define LONGDESC1 @Browser@ is Firefox, rebranded. It is a powerful, extensible web browser
-%define LONGDESC2 with support for modern web application technologies.
-%endif
 Description: @DESCRIPTION@
  @LONGDESC1@
  @LONGDESC2@
@@ -140,7 +134,7 @@ Depends: ${shlibs:Depends},
 %endif
          @browser@ (= ${binary:Version})
 Conflicts: xulrunner-dev,
-%if browser != OFFICIAL_NAME
+%if browser != firefox
            firefox-dev
 %endif
 Description: Development files for the Gecko engine library

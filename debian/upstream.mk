@@ -1,7 +1,6 @@
 # Generic rules to help download sources from archive.mozilla.org.
 # Define the following variables before including this file:
 # PRODUCT - product codename (e.g. browser)
-# OFFICIAL_NAME - name of the product (e.g. firefox)
 
 # The VERSION_FILTER transforms upstream version patterns to versions
 # used in debian/changelog. Versions are to be transformed as follows:
@@ -51,6 +50,8 @@ ifneq (,$(filter 9%,$(DEBIAN_TARGET)))
 BACKPORT = stretch
 endif
 endif
+
+PRODUCT_NAME := $(DEBIAN_SOURCE)
 
 # Check if the version in debian/changelog matches actual upstream version
 # as VERSION_FILTER transforms it.
@@ -107,19 +108,19 @@ ifndef SHORT_L10N_CHANNEL
 SHORT_L10N_CHANNEL := $(SHORT_SOURCE_CHANNEL)
 endif
 
-BASE_URL = https://archive.mozilla.org/pub/mozilla.org/$(OFFICIAL_NAME)/$(SOURCE_TYPE)
+BASE_URL = https://archive.mozilla.org/pub/mozilla.org/$(PRODUCT_NAME)/$(SOURCE_TYPE)
 
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
 ifeq ($(SOURCE_TYPE),releases)
-SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(OFFICIAL_NAME)-$(SOURCE_VERSION).source.tar.$(SOURCE_TARBALL_EXT)
-SOURCE_REV = $(call uc,$(OFFICIAL_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
+SOURCE_URL = $(BASE_URL)/$(SOURCE_VERSION)/source/$(PRODUCT_NAME)-$(SOURCE_VERSION).source.tar.$(SOURCE_TARBALL_EXT)
+SOURCE_REV = $(call uc,$(PRODUCT_NAME))_$(subst .,_,$(SOURCE_VERSION))_RELEASE
 L10N_REV = $(SOURCE_REV)
 SOURCE_REPO = https://hg.mozilla.org/releases/$(SOURCE_CHANNEL)
 else
 ifeq ($(SOURCE_TYPE),nightly)
 SOURCE_TARBALL_EXT = bz2
-$(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(OFFICIAL_NAME)-$(DOWNLOAD_SOURCE)))
+$(call lazy,LATEST_NIGHTLY,$$(shell $$(PYTHON) debian/latest_nightly.py $(PRODUCT_NAME)-$(DOWNLOAD_SOURCE)))
 $(call lazy,SOURCE_BUILD_VERSION,$$(shell echo $$(firstword $$(LATEST_NIGHTLY)) | $$(VERSION_FILTER)))
 SOURCE_BUILD_DATE = $(word 2, $(LATEST_NIGHTLY))
 SOURCE_URL = $(subst /rev/,/archive/,$(word 3, $(LATEST_NIGHTLY))).tar.bz2

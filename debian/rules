@@ -16,8 +16,6 @@ $(call lazy,DEB_BUILD_ARCH,$$(shell dpkg-architecture -qDEB_BUILD_ARCH))
 PYTHON := python -B
 
 PRODUCT := browser
-PRODUCT_NAME ?= $(DEBIAN_SOURCE)
-OFFICIAL_NAME := firefox
 include debian/upstream.mk
 
 ifneq (,$(filter wheezy jessie,$(BACKPORT)))
@@ -30,25 +28,20 @@ CXX := g++-4.7
 endif
 
 OFFICIAL_BRANDING := browser/branding/official
-ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 MOZILLA_OFFICIAL := 1
 # ESR, Beta and Releases use the official branding
 ifneq (,$(filter release beta esr%,$(SHORT_SOURCE_CHANNEL)))
-BRANDING := $(OFFICIAL_BRANDING)
+BRANDING ?= $(OFFICIAL_BRANDING)
 else
 ifneq (,$(filter aurora,$(SHORT_SOURCE_CHANNEL)))
-BRANDING := browser/branding/aurora
+BRANDING ?= browser/branding/aurora
 else
 ifneq (,$(filter central,$(SHORT_SOURCE_CHANNEL)))
-BRANDING := browser/branding/nightly
+BRANDING ?= browser/branding/nightly
 else
-$(error $(OFFICIAL_NAME) branding for $(SOURCE_CHANNEL) is unsupported)
+$(error $(PRODUCT_NAME) branding for $(SOURCE_CHANNEL) is unsupported)
 endif
 endif
-endif
-
-else
-BRANDING := debian/branding
 endif
 
 include $(BRANDING)/configure.sh
@@ -132,7 +125,7 @@ EXPORTS := CC CXX CFLAGS CXXFLAGS CPPFLAGS LDFLAGS MOZILLA_OFFICIAL
 $(call lazy,CONFIGURE_ENV,$$(foreach export,$(EXPORTS),$$(export)="$$($$(export))"))
 
 IN_FILES := $(wildcard debian/*.in)
-ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
+ifeq ($(PRODUCT_NAME),firefox)
 IN_FILES := $(filter-out debian/$($(PRODUCT)).in,$(IN_FILES))
 endif
 preprocessed_filename = $(subst $(PRODUCT),$($(PRODUCT)),$(subst GRE_VERSION,$(GRE_VERSION),$(1:.in=)))
@@ -153,7 +146,7 @@ debian/l10n/$(PRODUCT)-l10n.control: %: %.in
 
 DICT_DIR := /usr/share/hunspell
 
-$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL OFFICIAL_NAME GTK3 BACKPORT
+$(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL GTK3 BACKPORT
 debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
@@ -217,19 +210,6 @@ stamps/configure-$(PRODUCT):: stamps/prepare-configure debian/$($(PRODUCT)).mozc
 stamps/build-$(PRODUCT):: stamps/configure-check-$(PRODUCT)
 	dh_auto_build --parallel --builddirectory=build-$(PRODUCT) -- \
 		_LEAKTEST_FILES=leaktest.py
-
-ifeq (1,)
-ifneq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
-build-$(PRODUCT)/%/filelist: stamps/build-$(PRODUCT) build-$(PRODUCT)/%/Makefile
-	rm -rf build-$(PRODUCT)/$*/dist
-	$(MAKE) -C build-$(PRODUCT)/$* MOZ_CHROME_FILE_FORMAT=flat DIST=$(CURDIR)/build-$(PRODUCT)/$*/dist BRANDING_TEST=1
-	cd build-$(PRODUCT)/$*/dist/bin && find -type f | sort > $(CURDIR)/$@
-
-stamps/build-check-branding:: build-$(PRODUCT)/$(OFFICIAL_BRANDING)/filelist build-$(PRODUCT)/$(BRANDING)/filelist
-# Ensure the iceweasel branding contains everything it's supposed to
-	diff $^
-endif
-endif
 
 L10N_BUILD_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/build-l10n-$(lang))
 stamps/build-l10n:: $(L10N_BUILD_STAMPS)
