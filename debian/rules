@@ -131,10 +131,6 @@ CXXFLAGS = $(CFLAGS)
 EXPORTS := CC CXX CFLAGS CXXFLAGS CPPFLAGS LDFLAGS MOZILLA_OFFICIAL
 $(call lazy,CONFIGURE_ENV,$$(foreach export,$(EXPORTS),$$(export)="$$($$(export))"))
 
-debian/$($(PRODUCT)).xpm: stamps/build-$(PRODUCT)
-	convert build-$(PRODUCT)/dist/bin/browser/chrome/icons/default/default32.png $@
-GENERATED_FILES += debian/$($(PRODUCT)).xpm
-
 IN_FILES := $(wildcard debian/*.in)
 ifeq ($(OFFICIAL_NAME),$(PRODUCT_NAME))
 IN_FILES := $(filter-out debian/$($(PRODUCT)).in,$(IN_FILES))
