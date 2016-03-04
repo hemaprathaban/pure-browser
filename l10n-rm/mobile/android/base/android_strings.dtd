@@ -3,30 +3,93 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 
+<!ENTITY  no_space_to_start_error "Betg avunda memoria per aviar &brandShortName;.">
+<!ENTITY  error_loading_file "Ina errur è cumparida durant l\&apos;emprova da chargiar las datotecas necessarias per exequir &brandShortName;">
 
+<!ENTITY firstrun_panel_title_welcome "Bainvegni">
+<!ENTITY  onboard_start_message3 "Navigar cun &brandShortName;">
+<!ENTITY  onboard_start_subtext3 "Adattescha il navigar mobil a tes giavischs.">
+<!ENTITY  onboard_start_button_account "S\&apos;annunziar tar &brandShortName;">
+<!ENTITY  onboard_start_button_browser "Cumenzar a navigar">
+<!ENTITY firstrun_button_next "Enavant">
 
+<!ENTITY  onboard_start_restricted1 "Resta segir e mantegna la controlla cun questa versiun simplifitgada da &brandShortName;.">
 
+<!ENTITY firstrun_import_title "Importar">
+<!ENTITY firstrun_import_message "Bainvegni a &brandShortName;">
+<!ENTITY firstrun_import_subtext "Importescha tes segnapaginas e la cronologia d\&apos;in auter navigatur.">
+<!ENTITY firstrun_import_action "Transferir en &brandShortName;">
+<!ENTITY firstrun_import_dialog_button "Transfer">
+<!ENTITY firstrun_import_progress_title "Transferir">
 
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
+<!ENTITY  bookmarks_title "Segnapaginas">
+<!ENTITY  history_title "Cronologia">
+<!ENTITY  reading_list_title "Glista da lectura">
+<!ENTITY  recent_tabs_title "Ultims tabs">
 
+<!ENTITY  switch_to_tab "Midar al tab">
 
+<!ENTITY  crash_reporter_title "Rapportader da collaps da &brandShortName;">
+<!ENTITY  crash_message2 "&brandShortName; ha gì in problem ed è collabà. Tes tabs duessan vegnir mussads sin la pagina da partenza da &brandShortName; sche ti reavieschas.">
+<!ENTITY  crash_send_report_message3 "Infurmar &vendorShortName; davart quest problem per ch\&apos;el possia vegnir curregì">
+<!ENTITY  crash_include_url2 "Agiuntar l\&apos;adressa da la pagina che jau hai gist visità">
+<!ENTITY  crash_sorry "Perstgisa">
+<!ENTITY  crash_comment "Agiuntar in commentari (attenziun: ils commentaris vegnan publitgads)">
+<!ENTITY  crash_allow_contact2 "Permetter a &vendorShortName; da ma contactar en connex cun quest rapport">
+<!ENTITY  crash_email "Tia adressa dad e-mail">
+<!ENTITY  crash_closing_alert "Sortir senza trametter il rapport da collaps?">
+<!ENTITY  sending_crash_report "Trametter il rapport da collaps\u2026">
+<!ENTITY  crash_close_label "Serrar">
+<!ENTITY  crash_restart_label "Reaviar &brandShortName;">
+<!ENTITY  exit_label "Terminar">
 
+<!ENTITY  launcher_shortcuts_title "Applicaziuns web da &brandShortName;">
+<!ENTITY  launcher_shortcuts_empty "Chattà naginas applicaziuns web">
 
+<!ENTITY choose_file "Tscherner ina datoteca">
 
+<!ENTITY url_bar_default_text2 "Tschertgar u tippar l\&apos;adressa">
 
+<!ENTITY bookmark "Segnapagina">
+<!ENTITY bookmark_remove "Allontanar il segnapagina">
+<!ENTITY bookmark_added "Agiuntà il segnapagina">
 <!-- Localization note (bookmark_already_added) : This string is
      used as a label in a toast. It is the verb "to bookmark", not
      the noun "a bookmark". -->
+<!ENTITY bookmark_already_added "Gia marcà sco segnapagina">
+<!ENTITY bookmark_removed "Allontanà il segnapagina">
+<!ENTITY bookmark_updated "Actualisà il segnapagina">
 <!ENTITY bookmark_options "Opziuns">
 
+<!ENTITY history_today_section "Oz">
+<!ENTITY history_yesterday_section "Ier">
+<!ENTITY history_week_section3 "Ultims 7 dis">
+<!ENTITY history_this_month_section "Quest mais">
+<!ENTITY history_older_section3 "Pli vegl che 6 mais">
 
+<!ENTITY go "Siglir a">
+<!ENTITY search "Tschertgar">
+<!ENTITY reload "Rechargiar">
+<!ENTITY forward "Renviar">
+<!ENTITY menu "Menu">
+<!ENTITY back "Enavos">
+<!ENTITY stop "Fermar">
+<!ENTITY site_security "Segirezza da la pagina">
+<!ENTITY edit_mode_cancel "Interrumper">
 
+<!ENTITY close_tab "Serrar il tab">
+<!ENTITY one_tab "1 tab">
 <!-- Localization note (num_tabs2) : Number of tabs is always more than one.
      We can't use android plural forms, sadly. See bug #753859. -->
+<!ENTITY num_tabs2 "&formatD; tabs">
+<!ENTITY new_tab_opened "Avert in nov tab">
+<!ENTITY new_private_tab_opened "Avert in nov tab privat">
 <!-- Localization note (switch_button_message): This string should be as short
      as possible because it's shown as a label in a toast.  Ideally, this string
      is upper-case, to match Google and Android's convention. -->
+<!ENTITY switch_button_message "MIDAR">
 <!-- Localization note (tab_title_prefix_is_playing_audio): This string is not
      visible in the UI, but rather used as a text-to-speech content description
      for sight-impaired a11y users. The content description is set on a tab
@@ -34,78 +97,251 @@
      &formatS; will be replaced with the title of the tab, as received from the
      web page. When audio is not playing in a tab, &formatS; will be used as
      the content description. -->
+<!ENTITY tab_title_prefix_is_playing_audio "Fa ir tun – &formatS;">
 
+<!ENTITY settings "Preferenzas">
+<!ENTITY settings_title "Preferenzas">
+<!ENTITY pref_category_general "General">
+<!ENTITY pref_category_general_summary2 "Partenza, lingua, trav d\&apos;adressas">
 
 <!-- Localization note (pref_category_language) : This is the preferences
      section in which the user picks the locale in which to display Firefox
      UI. The locale includes both language and region concepts. -->
+<!ENTITY pref_category_language "Lingua">
+<!ENTITY pref_category_language_summary "Midar la lingua da tes navigatur">
+<!ENTITY pref_browser_locale "Lingua dal navigatur">
 
 <!-- Localization note (locale_system_default) : This string indicates that
      Firefox will use the locale currently selected in Android's settings
      to display browser chrome. -->
+<!ENTITY locale_system_default "Standard dal sistem">
 
 <!-- Localization note (overlay_share_label) : This is the label that appears
      in Android's intent chooser when sending a link to Firefox to bookmark,
      send to another device, or add to Reading List. -->
+<!ENTITY overlay_share_label "Agiuntar a &brandShortName;">
 
 <!-- Localization note (overlay_share_bookmark_btn_label) : This string is
      used in the share overlay menu to select an action. It is the verb
      "to bookmark", not the noun "a bookmark". -->
+<!ENTITY overlay_share_bookmark_btn_label "Segnapagina">
+<!ENTITY overlay_share_reading_list_btn_label "Agiuntar a la glista da lectura">
+<!ENTITY overlay_share_bookmark_btn_label_already "Gia marcà sco segnapagina">
+<!ENTITY overlay_share_reading_list_btn_label_already "Gia en la glista da lectura">
+<!ENTITY overlay_share_send_other "Trametter ad auters apparats">
 
 <!-- Localization note (overlay_share_send_tab_btn_label) : Used on the
      share overlay menu to represent the "Send Tab" action when the user
      either has not set up Sync, or has no other devices to send a tab
      to. -->
+<!ENTITY overlay_share_send_tab_btn_label "Trametter ad in auter apparat">
+<!ENTITY overlay_share_no_url "Chattà nagina colliaziun per cundivider">
+<!ENTITY overlay_share_select_device "Tscherner l\&apos;apparat">
 <!-- Localization note (overlay_no_synced_devices) : Used when the menu option
      to send a tab to a synced device is pressed and no other synced devices
      are found. -->
+<!ENTITY overlay_no_synced_devices "Chattà nagin apparat collià cun il conto da Firefox">
 
-<!-- Localization note (menu_no_synced_devices): Used in a toast when the user
-     clicks on the button to send a tab to another device and there are no
-     other devices present. This label should briefly inform the user that they
-     need another connected device in order to use the feature. -->
-
+<!ENTITY pref_category_search3 "Tschertgar">
+<!ENTITY pref_category_search_summary "Persunalisar tes servetschs da tschertga">
+<!ENTITY pref_category_accessibility "Agids d\&apos;access">
+<!ENTITY pref_category_accessibility_summary2 "Grondezza dal text, zoom, endataziun vocala">
+<!ENTITY pref_category_privacy_short "Sfera privata">
+<!ENTITY pref_category_privacy_summary3 "Fastizar, cookies, decisiuns areguard datas">
+<!ENTITY pref_category_vendor2 "&vendorShortName; &brandShortName;">
+<!ENTITY pref_category_vendor_summary2 "Davart &brandShortName;, dumondas frequentas, resun">
+<!ENTITY pref_category_datareporting "Decisiuns areguard datas">
 <!ENTITY pref_learn_more "Ulteriuras infurmaziuns">
+<!ENTITY pref_category_installed_search_engines "Maschinas da tschertgar installadas">
+<!ENTITY pref_category_add_search_providers "Agiuntar dapli servetschs da tschertga">
+<!ENTITY pref_category_search_restore_defaults "Restaurar las maschinas da tschertgar">
+<!ENTITY pref_search_restore_defaults "Restaurar il standard">
+<!ENTITY pref_search_restore_defaults_summary "Restaurar il standard">
 <!-- Localization note (pref_search_hint) : "TIP" as in "hint", "clue" etc. Displayed as an
      advisory message on the customise search providers settings page explaining how to add new
      search providers.
      The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
      it is applicable. -->
+<!ENTITY pref_search_hint "TIP: Ti pos agiuntar mintga pagina d\&apos;internet a la glista dals servetschs da tschertga cun smatgar ditg sin il champ da tschertgar e lura tutgar l\&apos;icona &formatI;.">
+<!ENTITY pref_category_advanced "Avanzà">
+<!ENTITY pref_category_advanced_summary2 "Restaurar tabs, plug-ins, utensils per sviluppaders">
+<!ENTITY pref_developer_remotedebugging "Debugging a distanza">
+<!ENTITY pref_developer_remotedebugging_usb "Debugging a distanza via USB">
+<!ENTITY pref_developer_remotedebugging_wifi "Debugging a distanza via WLAN">
+<!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Per utilisar il debugging a distanza via WLAN sto tes apparat disponer dad ina applicaziun per leger codes QR.">
+<!ENTITY pref_remember_signons2 "Memorisar infurmaziuns d\&apos;annunzia">
+<!ENTITY pref_open_external_urls_privately_title "Avrir colliaziuns en il modus privat">
+<!ENTITY pref_open_external_urls_privately_summary "Per tut las colliaziuns externas avertas en &brandShortName;">
+<!ENTITY pref_manage_logins "Administrar las infurmaziuns d\&apos;annunzia">
 
+<!ENTITY pref_category_home "Pagina da partenza">
+<!ENTITY pref_category_home_summary "Persunalisescha tia pagina da partenza">
+<!ENTITY pref_category_home_panels "Panelas">
+<!ENTITY home_add_panel_title "Agiuntar ina nova panela">
+<!ENTITY home_add_panel_empty "Perstgisa, nus n\&apos;avain chattà nagina panela per agiuntar per tai.">
 <!-- Localization note (home_add_panel_installed):
      The &formatS; will be replaced with the name of the new panel the user just
      selected to be added to the home page. -->
+<!ENTITY home_add_panel_installed "Agiuntà \&apos;&formatS;\&apos; a la pagina da partenza">
+<!ENTITY pref_category_home_content_settings "Preferenzas dal cuntegn">
+<!ENTITY pref_home_updates "Actualisaziuns automaticas">
+<!ENTITY pref_home_updates_enabled "Activà">
+<!ENTITY pref_home_updates_wifi "Mo via WLAN">
+<!ENTITY pref_home_suggested_sites "Mussar propostas da paginas">
+<!ENTITY pref_home_suggested_sites_summary "Mussar scursanidas a paginas sin tia pagina da partenza che nus considerain sco interessantas">
+<!ENTITY pref_category_home_homepage "Pagina da partenza">
+<!ENTITY home_homepage_title "Definir ina pagina da partenza">
+<!-- Localization note (home_homepage_radio_user_address): The user will see a series of radio
+     buttons to choose the homepage they'd like to start on. When they click the radio
+     button for this string, they will use the built-in default Firefox homepage (about:home). -->
+<!ENTITY home_homepage_radio_default "Partenza da &brandShortName;">
+<!-- Localization note (home_homepage_radio_user_address): The user will see a series of radio
+     buttons to choose the homepage they'd like to start on. When they click the radio
+     button for this string, a text field will appear below the radio button and allow the
+     user to insert an address of their choice. -->
+<!ENTITY home_homepage_radio_user_address "Persunalisà">
+<!-- Localization note (home_homepage_hint_user_address): The user will see a series of
+     radio buttons to choose the homepage they'd like to start on. When they click a
+     particular radio button, a text field will appear below the radio button and allow the
+     user to insert an address of their choice. This string is the hint text to that
+     text field. -->
+<!ENTITY home_homepage_hint_user_address "Endatescha ina adressa u in term da tschertgar">
 
 <!-- Localization note: These are shown in the left sidebar on tablets -->
+<!ENTITY pref_header_general "General">
+<!ENTITY pref_header_search "Tschertgar">
+<!ENTITY pref_header_privacy_short "Sfera privata">
+<!ENTITY pref_header_accessibility "Agids d\&apos;access">
+<!ENTITY pref_header_advanced "Avanzà">
+<!ENTITY pref_header_help "Agid">
+<!ENTITY pref_header_vendor "&vendorShortName;">
 
+<!ENTITY pref_cookies_menu "Cookies">
+<!ENTITY pref_cookies_accept_all "Activà">
+<!ENTITY pref_cookies_not_accept_foreign "Activà, senza tals da terzs">
+<!ENTITY pref_cookies_disabled "Deactivà">
 
+<!ENTITY pref_tap_to_load_images_title2 "Mussar maletgs">
+<!ENTITY pref_tap_to_load_images_enabled "Adina">
+<!ENTITY pref_tap_to_load_images_data "Mo via WLAN">
+<!ENTITY pref_tap_to_load_images_disabled2 "Bloccà">
 
+<!ENTITY pref_tracking_protection_title "Protecziun cunter il fastizar">
+<!ENTITY pref_tracking_protection_summary3 "Activà en il modus privat">
+<!ENTITY pref_donottrack_title "Betg suandar mes fastizs">
+<!ENTITY pref_donottrack_summary "&brandShortName; infurmescha paginas che ti na veglias betg vegnir fastizà">
 
+<!ENTITY pref_tracking_protection_enabled "Activà">
+<!ENTITY pref_tracking_protection_enabled_pb "Activà en il modus privat">
+<!ENTITY pref_tracking_protection_disabled "Deactivà">
 
+<!ENTITY tracking_protection_prompt_title "Ussa cun protecziun cunter il fastizar">
+<!ENTITY tracking_protection_prompt_text "Bloccar activamain elements che fastizeschan per che ti na stos betg t\&apos;occupar dad els.">
+<!ENTITY tracking_protection_prompt_tip_text "Visita las preferenzas per la sfera privata per ulteriuras infurmaziuns">
+<!ENTITY tracking_protection_prompt_action_button "Chapì!">
 
+<!ENTITY tab_queue_toast_message3 "Memorisà il tab en &brandShortName;">
+<!ENTITY tab_queue_toast_action "Avrir ussa">
+<!ENTITY tab_queue_prompt_title "Avrir pliras colliaziuns?">
+<!ENTITY tab_queue_prompt_text4 "Las memorisescha enfin che ti avras la proxima giada &brandShortName;.">
+<!ENTITY tab_queue_prompt_tip_text2 "Ti pos midar questa decisiun en las preferenzas">
+<!ENTITY tab_queue_prompt_positive_action_button "Activar">
+<!ENTITY tab_queue_prompt_negative_action_button "Betg ussa">
+<!ENTITY tab_queue_notification_title "&brandShortName;">
 <!-- Localization note (tab_queue_notification_text_plural2) : The
      formatD is replaced with the number of tabs queued.  The
      number of tabs queued is always more than one.  We can't use
      Android plural forms, sadly. See Bug #753859. -->
+<!ENTITY tab_queue_notification_text_plural2 "&formatD; spetgan">
 <!-- Localization note (tab_queue_notification_text_singular2) : This is the
      text of a notification; we expect only one tab queued. -->
+<!ENTITY tab_queue_notification_text_singular2 "1 tab spetga">
 
+<!ENTITY pref_char_encoding "Codaziun da caracters">
+<!ENTITY pref_char_encoding_on "Mussar il menu">
+<!ENTITY pref_char_encoding_off "Betg mussar il menu">
+<!ENTITY pref_clear_private_data "Stizzar las datas privatas">
+<!-- Localization note (pref_clear_private_data_now_tablet): This action to clear private data is only shown on tablets.
+     The action is shown below a header saying "Clear private data"; See pref_clear_private_data -->
+<!ENTITY pref_clear_private_data_now_tablet "Stizzar ussa">
+<!ENTITY pref_clear_on_exit_title3 "Stizzar las datas privatas cun serrar">
+<!ENTITY pref_clear_on_exit_summary2 "&brandShortName; vegn adina a stizzar automaticamain tias datas sche ti tschernas \u0022Serrar\u0022 en il menu principal">
+<!ENTITY pref_clear_on_exit_dialog_title "Tscherna las datas che duain vegnir stizzadas">
+<!ENTITY pref_plugins "Plug-ins">
+<!ENTITY pref_plugins_enabled "Activà">
+<!ENTITY pref_plugins_tap_to_play "Tutgar per far ir">
+<!ENTITY pref_plugins_disabled "Deactivà">
+<!ENTITY pref_text_size "Grondezza da la scrittira">
+<!ENTITY pref_restore_tabs "Restaurar ils tabs">
+<!ENTITY pref_restore_always "Adina restaurar">
+<!ENTITY pref_restore_quit "Betg restaurar suenter serrar &brandShortName;">
+<!ENTITY pref_font_size_tiny "Pitschnin">
+<!ENTITY pref_font_size_small "Pitschen">
+<!ENTITY pref_font_size_medium "Mesaun">
+<!ENTITY pref_font_size_large "Grond">
+<!ENTITY pref_font_size_xlarge "Fitg grond">
+<!ENTITY pref_font_size_set "Definir">
 <!-- Localization note (pref_font_size_adjust_char): A button with a small version of this character
 (or combination of characters) is used to decrease the preview font size; a larger version of the
 same character/combination is used to increase the preview font size. It should be a concise
 representation of the language it is used in that will help show the text in the preview will change
 size. -->
+<!ENTITY pref_font_size_adjust_char "A">
 
 <!-- Localization note (pref_font_size_preview_text): This paragraph is used as an example to
     demonstrate the font size setting.  It is meant to be whimsical and fun. -->
+<!ENTITY pref_font_size_preview_text "La furbra vulp oranscha era puspè ina giada fomentada. Qua ha ella vis sin in pign in corv blau (oriund dad Oberägeri) che tegneva x-in toc chaschiel dal Kiosk en ses pichel. Tuttenina è la vulp stada fieu e flomma. Quai ma gustass zunt, ha ella pensà, ed ha clamà per puter al corv: «Jöö, che bel cha tü est! Scha tieu chaunt es uschè bel scu tia apparentscha, alura meritast ün artichel illa Wykipedia u Vichipedia u scu cha saja.»">
+
+<!ENTITY pref_media_autoplay_enabled "Adina far ir automaticamain">
+<!ENTITY pref_media_autoplay_enabled_summary "Definescha sche paginas pon far ir automaticamain videos ed auter cuntegn multimedial">
+<!ENTITY pref_zoom_force_enabled "Adina activar il zoom">
+<!ENTITY pref_zoom_force_enabled_summary "Surscriver las valurs da la pagina per pudair engrondir mintga pagina">
+<!ENTITY pref_voice_input "Endataziun vocala">
+<!ENTITY pref_voice_input_summary2 "Permetter da dictar en la trav d\&apos;adressas">
+<!ENTITY pref_qrcode_enabled "Lectur da codes QR">
+<!ENTITY pref_qrcode_enabled_summary2 "Permetter da scannar codes QR en la trav d\&apos;adressas">
+
+<!ENTITY pref_use_master_password "Utilisar in pled-clav universal">
+<!ENTITY pref_sync2 "S\&apos;annunziar">
+<!ENTITY pref_sync_summary2 "Sincronisar tes tabs, segnapaginas, infurmaziuns d\&apos;annunzia, cronologia">
+<!ENTITY pref_search_suggestions "Mussar propostas da tschertga">
+<!ENTITY pref_history_search_suggestions "Mussar la cronologia da tschertgar">
+<!ENTITY pref_import_options "Opziuns d\&apos;import">
+<!ENTITY pref_import_android_summary "Importar segnapaginas e la cronologia dal navigatur da standard">
+<!ENTITY pref_private_data_history2 "Cronologia da la navigaziun">
+<!ENTITY pref_private_data_searchHistory "Cronologia da tschertgas">
+<!ENTITY pref_private_data_formdata2 "Cronologia da formulars">
+<!ENTITY pref_private_data_cookies2 "Cookies &amp; annunzias activas">
+<!ENTITY pref_private_data_passwords2 "Infurmaziuns d\&apos;annunzia memorisadas">
+<!ENTITY pref_private_data_cache "Cache">
+<!ENTITY pref_private_data_offlineApps "Datas da websites offline">
+<!ENTITY pref_private_data_siteSettings2 "Configuraziun per la website">
+<!ENTITY pref_private_data_downloadFiles2 "Telechargiadas">
+<!ENTITY pref_private_data_syncedTabs "Tabs sincronisads">
 
 
+<!ENTITY pref_about_firefox "Davart &brandShortName;">
+<!ENTITY pref_vendor_faqs "Dumondas frequentas">
+<!ENTITY pref_vendor_feedback "Dar in resun">
 
+<!ENTITY pref_dialog_set_default "Definir sco standard">
+<!ENTITY pref_dialog_default "Standard">
+<!ENTITY pref_dialog_remove "Allontanar">
 
+<!ENTITY pref_search_last_toast "Ti na pos betg allontanar u deactivar l\&apos;ultima maschina da tschertgar.">
 
+<!ENTITY pref_panels_show "Mussar">
+<!ENTITY pref_panels_hide "Zuppentar">
+<!ENTITY pref_panels_reorder "Midar la successiun">
+<!ENTITY pref_panels_move_up "Spustar ensi">
+<!ENTITY pref_panels_move_down "Spustar engiu">
 
-
-
+<!ENTITY datareporting_notification_title "Statistica &amp; datas da &brandShortName;">
+<!ENTITY datareporting_notification_action_long "Tscherna las infurmaziuns che ti vuls cundivider">
+<!ENTITY datareporting_notification_action "Tscherner tge che vegn cundividì">
+<!ENTITY datareporting_notification_summary "Per meglierar il product trametta &brandShortName; automaticamain tschertas infurmaziuns a &vendorShortName;.">
+<!ENTITY datareporting_notification_summary_short "Per meglierar il product trametta &brandShortName;…">
+<!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;: &datareporting_notification_action_long;">
 
 <!-- Localization note (datareporting_fhr_title, datareporting_fhr_summary2,
      reporting_telemetry_title, datareporting_telemetry_summary,
@@ -113,93 +349,237 @@ size. -->
      en-US/chrome/browser/preferences/advanced.dtd (healthReportSection.label,
      healthReportDesc.label, telemetrySection.label, telemetryDesc.label,
      crashReporterDesc.label). -->
+<!ENTITY datareporting_fhr_title "Analisa da la sanadad da &brandShortName;">
+<!ENTITY datareporting_fhr_summary2 "Cundivida datas davart la «sanadad» da tes navigatur cun &vendorShortName; e gida da chapir la prestaziun dal navigatur">
+<!ENTITY datareporting_abouthr_title "Mussar l\&apos;analisa da sanadad">
+<!ENTITY datareporting_telemetry_title "Telemetria">
+<!ENTITY datareporting_telemetry_summary "Cundivida datas davart la prestaziun, utilisaziun, hardware e persunalisaziun da tes navigatur cun &vendorShortName; per gidar a meglierar &brandShortName;">
+<!ENTITY datareporting_crashreporter_summary "&brandShortName; trametta rapports davart collaps per gidar &vendorShortName; da meglierar la stabilitad e la segirezza dal navigatur">
 <!-- Localization note (datareporting_crashreporter_title_short) : This string matches
      (crashReporterSection.label) in en-US/chrome/browser/preferences/advanced.dtd.-->
+<!ENTITY datareporting_crashreporter_title_short "Rapportader da collaps">
+<!ENTITY datareporting_wifi_title2 "Servetsch da posiziun da &vendorShortName;">
+<!ENTITY datareporting_wifi_geolocation_summary4 "Gida a &vendorShortName; da cartografar il mund! Cundivida la posiziun da WLAN e da cellas da telefonia mobila da tes apparat per meglierar il servetsch da posiziun.">
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
+<!ENTITY pref_update_autodownload3 "Actualisaziuns automaticas">
+<!ENTITY pref_update_autodownload_wifi "Mo via WLAN">
+<!ENTITY pref_update_autodownload_never "Mai">
+<!ENTITY pref_update_autodownload_always "Adina">
 
 <!-- Localization note (help_menu) : This string is used in the main menu-->
+<!ENTITY help_menu "Agid">
 
+<!ENTITY quit "Serrar">
 
+<!ENTITY addons "Supplements">
+<!ENTITY logins "Infurmaziuns d\&apos;annunzia">
+<!ENTITY downloads "Telechargiadas">
+<!ENTITY char_encoding "Codaziun da caracters">
 
+<!ENTITY share "Cundivider">
+<!ENTITY share_title "Cundivider via">
+<!ENTITY share_image_failed "Impussibel da cundivider questa grafica">
+<!ENTITY save_as_pdf "Memorisar sco PDF">
+<!ENTITY print "Stampar">
+<!ENTITY find_in_page "Tschertgar en la pagina">
+<!ENTITY desktop_mode "Pagina per visurs gronds">
+<!ENTITY page "Pagina">
+<!ENTITY tools "Utensils">
+<!ENTITY new_tab "Nov tab">
+<!ENTITY new_private_tab "Nov tab privat">
+<!ENTITY close_all_tabs "Serrar tut ils tabs">
+<!ENTITY close_private_tabs "Serrar ils tabs privats">
+<!ENTITY tabs_normal "Tabs">
+<!ENTITY tabs_private "Privat">
+<!ENTITY tabs_synced "Sincronisà">
+<!ENTITY set_image_fail "Impussibel da definir il maletg">
+<!ENTITY set_image_path_fail "Impussibel da memorisar il maletg">
+<!ENTITY set_image_chooser_title "Definir il maletg sco">
 
 <!-- Localization note (find_text, find_prev, find_next, find_close) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY find_text "Tschertgar en la pagina">
+<!ENTITY find_prev "Precedent">
+<!ENTITY find_next "Proxim">
+<!ENTITY find_close "Serrar">
 
 <!-- Localization note (media_sending_to, media_play, media_pause, media_stop) : These strings are used
      as alternate text for accessibility. They are not visible in the UI. -->
+<!ENTITY media_sending_to "Trametter a l\&apos;apparat">
+<!ENTITY media_play "Far ir">
+<!ENTITY media_pause "Pausa">
+<!ENTITY media_stop "Fermar">
 
+<!ENTITY contextmenu_open_new_tab "Avrir en in nov tab">
+<!ENTITY contextmenu_open_private_tab "Avrir en in tab privat">
+<!ENTITY contextmenu_remove "Allontanar">
+<!ENTITY contextmenu_add_to_launcher "Agiuntar al visur da partenza">
+<!ENTITY contextmenu_share "Cundivider">
+<!ENTITY contextmenu_pasteandgo "Encollar &amp; chargiar">
+<!ENTITY contextmenu_paste "Encollar">
+<!ENTITY contextmenu_copyurl "Copiar l\&apos;adressa">
+<!ENTITY contextmenu_edit_bookmark "Modifitgar">
+<!ENTITY contextmenu_subscribe "Abunar la pagina">
+<!ENTITY contextmenu_site_settings "Modifitgar la configuraziun per la website">
+<!ENTITY contextmenu_top_sites_edit "Modifitgar">
+<!ENTITY contextmenu_top_sites_pin "Fixar la pagina">
+<!ENTITY contextmenu_top_sites_unpin "Betg pli fixar la pagina">
+<!ENTITY contextmenu_add_search_engine "Agiuntar maschina da tschertga">
+<!ENTITY contextmenu_mark_read "Marcar sco legì">
+<!ENTITY contextmenu_mark_unread "Marcar sco nunlegì">
 
 <!-- Localization note (doorhanger_login_no_username): This string is used in the save-login doorhanger
      where normally a username would be displayed. In this case, no username was found, and this placeholder
      contains brackets to indicate this is not actually a username, but rather a placeholder -->
-
+<!ENTITY doorhanger_login_no_username "[Nagin num d\&apos;utilisader]">
+<!ENTITY doorhanger_login_edit_title "Modifitgar las datas d\&apos;annunzia">
+<!ENTITY doorhanger_login_edit_username_hint "Num d\&apos;utilisader">
+<!ENTITY doorhanger_login_edit_password_hint "Pled-clav">
+<!ENTITY doorhanger_login_edit_toggle "Mussar il pled-clav">
+<!ENTITY doorhanger_login_edit_toast_error "Betg reussì da memorisar las datas d\&apos;annunzia">
+<!ENTITY doorhanger_login_select_message "Copiar il pled-clav da &formatS;?">
+<!ENTITY doorhanger_login_select_toast_copy "Copià il pled-clav en l\&apos;archiv provisoric">
+<!ENTITY doorhanger_login_select_toast_copy_error "Impussibel da copiar il pled-clav">
+<!ENTITY doorhanger_login_select_action_text "Tscherner autras infurmaziuns d\&apos;annunzia">
+<!ENTITY doorhanger_login_select_title "Copiar il pled-clav da">
 
 <!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
      whether or not the magnifying glass is disabled. -->
+<!ENTITY pref_magnifying_glass_enabled "Engrondir zonas pitschnas">
+<!ENTITY pref_magnifying_glass_enabled_summary "Engrondir colliaziuns e champs da formulars cun tippar dasperas">
 
 <!-- Localization note (pref_scroll_title_bar2): Label for setting that controls
      whether or not the dynamic toolbar is enabled. -->
+<!ENTITY pref_scroll_title_bar2 "Navigar cun maletg entir">
+<!ENTITY pref_scroll_title_bar_summary2 "Zuppentar la trav d\&apos;utensils cun scrollar engiu sin ina pagina">
 
+<!ENTITY pref_tab_queue_title2 "Avrir pliras colliaziuns">
+<!ENTITY pref_tab_queue_summary3 "Las memorisescha enfin che ti avras la proxima giada &brandShortName;">
 
 <!-- Localization note (page_removed): This string appears in a toast message when
      any page is removed frome about:home. This includes pages that are in history,
      bookmarks, or reading list. -->
+<!ENTITY page_removed "Allontanà la pagina">
 
+<!ENTITY bookmark_edit_title "Modifitgar il segnapagina">
+<!ENTITY bookmark_edit_name "Num">
+<!ENTITY bookmark_edit_location "Adressa">
+<!ENTITY bookmark_edit_keyword "Pled magic">
 
 <!-- Localization note (site_settings_*) : These strings are used in the "Site Settings"
      dialog that appears after selecting the "Edit Site Settings" context menu item. -->
+<!ENTITY site_settings_title3       "Configuraziun per la website">
+<!ENTITY site_settings_cancel       "Interrumper">
+<!ENTITY site_settings_clear        "Stizzar">
 
 <!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
      as possible. -->
+<!ENTITY reading_list_added3 "Agiuntà a la glista da lectura">
+<!ENTITY reading_list_removed "Allontanà la pagina da la glista da lectura">
 <!-- Localization note (reading_list_remove) : Used to remove the currently open page from
      the user's reading list. The opposite of overlay_share_reading_list_btn_label. -->
+<!ENTITY reading_list_remove "Allontanar da la glista da lectura">
+<!ENTITY reading_list_duplicate "La pagina è gia sin la glista da lectura">
 
 <!-- Localization note (reading_list_time_minutes2) : This string is used in the "Reading List"
      panel on the home page to give the user an estimate of how many minutes it will take to
      read an article. The word "minute" should be abbreviated if possible. -->
+<!ENTITY reading_list_time_minutes2 "&formatD; min">
+<!ENTITY reading_list_time_over_an_hour "Dapli ch\&apos;ina ura">
 
 <!-- Localization note : These strings are used as alternate text for accessibility.
      They are not visible in the UI. -->
+<!ENTITY page_action_dropmarker_description "Acziuns supplementaras">
 
+<!ENTITY masterpassword_create_title "Crear in pled-clav universal">
+<!ENTITY masterpassword_remove_title "Allontanar il pled-clav universal">
+<!ENTITY masterpassword_password "Pled-clav">
+<!ENTITY masterpassword_confirm "Confermar il pled-clav">
 
+<!ENTITY button_ok "OK">
+<!ENTITY button_cancel "Interrumper">
+<!ENTITY button_yes "Gea">
+<!ENTITY button_no "Na">
+<!ENTITY button_clear_data "Stizzar las datas">
+<!ENTITY button_set "Definì">
+<!ENTITY button_clear "Stizzar">
+<!ENTITY button_copy "Copiar">
 
+<!ENTITY home_top_sites_title "Paginas preferidas">
 <!-- Localization note (home_top_sites_add): This string is used as placeholder
      text underneath empty thumbnails in the Top Sites page on about:home. -->
+<!ENTITY home_top_sites_add "Agiuntar ina pagina">
 
 <!-- Localization note (home_title): This string should be kept in sync
      with the page title defined in aboutHome.dtd -->
+<!ENTITY home_title "Partenza da &brandShortName;">
+<!ENTITY home_history_title "Cronologia">
+<!ENTITY home_clear_history_button "Stizzar la cronologia">
+<!ENTITY home_clear_history_confirm "Vuls ti propi stizzar la cronologia?">
+<!ENTITY home_bookmarks_empty "Segnapaginas che ti memoriseschas cumparan qua.">
+<!ENTITY home_closed_tabs_title "Tabs serrads dacurt">
+<!ENTITY home_last_tabs_title "Tabs da l\&apos;ultima giada">
+<!ENTITY home_last_tabs_empty "Tabs averts dacurt cumparan qua.">
+<!ENTITY home_open_all "Avrir tuts">
+<!ENTITY home_most_recent_empty "Paginas visitadas dacurt cumparan qua.">
 <!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
      The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
-<!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
+<!ENTITY home_most_recent_emptyhint2 "Psst: paginas avertas en in &formatS1;Nov tab privat&formatS2; na vegnan betg memorisadas en la cronologia.">
+<!ENTITY home_reading_list_empty "Artitgels che ti memoriseschas per pli tard cumparan qua.">
+<!-- Localization note (home_reading_list_hint3): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
      The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
      it is applicable. -->
-<!-- Localization note (home_reading_list_hint_accessible): This string is used
+<!ENTITY home_reading_list_hint3 "TIP: Memorisescha artitgels en la glista da lectura cun tegnair smatgà l\&apos;icona &formatI; sch\&apos;ella cumpara en la trav d\&apos;adressas.">
+<!-- Localization note (home_reading_list_hint_accessible2): This string is used
      as alternate text for accessibility. It is not visible in the UI. -->
+<!ENTITY home_reading_list_hint_accessible2 "TIP: Memorisescha artitgels en la glista da lectura cun smatgar ditg il buttun dal modus da lectura sch\&apos;el cumpara en la trav d\&apos;adressas.">
 
 <!-- Localization note (home_default_empty): This string is used as the default text when there
      is no data to show in an about:home panel that was created by an add-on. -->
+<!ENTITY home_default_empty "Chattà nagin cuntegn per questa panela.">
 
 <!-- Localization note (home_move_up_to_filter): The variable is replaced by the name of the
      previous location in the navigation, such as the previous folder -->
+<!ENTITY home_move_up_to_filter "Ensi a &formatS;">
 
+<!ENTITY home_remote_tabs_title "Tabs sincronisads">
+<!ENTITY home_remote_tabs_empty "Tes tabs dad auters apparats cumparan qua.">
+<!ENTITY home_remote_tabs_unable_to_connect "Impussibel da connectar">
+<!ENTITY home_remote_tabs_need_to_sign_in "T\&apos;annunzia p.pl. per connectar danovamain cun tes conto da Firefox e cuntinuar da sincronisar.">
+<!ENTITY home_remote_tabs_need_to_finish_migrating "Tes nov conto da Firefox è pront!">
 
+<!ENTITY home_remote_tabs_trouble_verifying "Has ti difficultads cun verifitgar tes conto?">
+<!ENTITY home_remote_tabs_need_to_verify "Verifitgescha p.pl. tes conto da Firefox per cumenzar da sincronisar.">
 
+<!ENTITY home_remote_tabs_one_hidden_device "Zuppentà 1 apparat">
 <!-- Localization note (home_remote_tabs_many_hidden_devices) : The
      formatD is replaced with the number of hidden devices.  The
      number of hidden devices is always more than one.  We can't use
      Android plural forms, sadly. See Bug #753859. -->
+<!ENTITY home_remote_tabs_many_hidden_devices "Zuppentà &formatD; apparats">
 <!-- Localization note (home_remote_tabs_hidden_devices_title) : This is the
      title of a dialog; we expect more than one device. -->
+<!ENTITY home_remote_tabs_hidden_devices_title "Apparats zuppentads">
 <!-- Localization note (home_remote_tabs_unhide_selected_devices) : This is
      the text of a button; we expect more than one device. -->
+<!ENTITY home_remote_tabs_unhide_selected_devices "Betg pli zuppentar ils apparats tschernids">
 
+<!ENTITY remote_tabs_panel_moved_title "Nua èn mes tabs?">
+<!ENTITY remote_tabs_panel_moved_desc "Nus avain spustà tes tabs dad auters apparats en ina panela sin la pagina da partenza. Uschia als pos ti adina acceder cura che ti avras in nov tab.">
+<!ENTITY remote_tabs_panel_moved_link "Mussar la nova panela.">
 
+<!ENTITY pin_site_dialog_hint "Endatar in chavazzin da tschertgar">
 
+<!ENTITY filepicker_title "Tscherner ina datoteca">
+<!ENTITY filepicker_audio_title "Tscherner u registrar in tun">
+<!ENTITY filepicker_image_title "Tscherner u far in maletg">
+<!ENTITY filepicker_video_title "Tscherner u registrar in video">
 
 <!-- Site identity popup -->
+<!ENTITY identity_connected_to "Ti es collià cun">
 <!-- Localization note (identity_run_by) : This string appears between a
 domain name (above) and an organization name (below). E.g.
 
@@ -211,40 +591,91 @@ The layout of the identity dialog prevents combining this into a single string w
 substitution variables.  If it is difficult to translate the sense of the string
 with that structure, consider a translation which ignores the preceding domain and
 just addresses the organization to follow, e.g. "This site is run by " -->
+<!ENTITY identity_connection_secure "Connexiun segirada">
+<!ENTITY identity_connection_insecure "Connexiun betg segirada">
+<!ENTITY identity_login_insecure "Questa pagina n\&apos;è betg segira e tias datas d\&apos;annunzia pudessan esser periclitadas.">
 
 <!-- Mixed content notifications in site identity popup -->
+<!ENTITY mixed_content_blocked_all1 "&brandShortName; ha bloccà cuntegn malsegir sin questa pagina.">
+<!ENTITY mixed_content_blocked_some1 "&brandShortName; ha bloccà ina part dal cuntegn malsegir sin questa pagina.">
+<!ENTITY mixed_content_display_loaded1 "Parts da questa pagina (p.ex. maletgs) n\&apos;èn betg segiradas.">
+<!ENTITY mixed_content_protection_disabled1 "Ti has deactivà la protecziun cunter cuntegn malsegir.">
 
 <!-- Tracking content notifications in site identity popup -->
+<!ENTITY doorhanger_tracking_title "Protecziun cunter il fastizar">
+<!ENTITY doorhanger_tracking_state_enabled "Activà">
+<!ENTITY doorhanger_tracking_state_disabled "Deactivà">
+<!ENTITY doorhanger_tracking_message_enabled1 "Emprovas da ta fastizar durant navigar èn vegnidas bloccadas.">
+<!ENTITY doorhanger_tracking_message_disabled2 "Questa pagina cuntegna elements che ta pon eventualmain fastizar durant navigar.">
 
 <!-- Common mixed and tracking content strings in site identity popup -->
+<!ENTITY learn_more "Ulteriuras infurmaziuns">
+<!ENTITY enable_protection "Activar la protecziun">
+<!ENTITY disable_protection "Deactivar la protecziun">
+<!ENTITY keep_blocking "Cuntinuar da bloccar">
 
+<!ENTITY private_data_success "Stizzà las datas privatas">
+<!ENTITY private_data_fail "I n\&apos;è betg reussì da stizzar tschertas datas privatas">
 
+<!ENTITY bookmarkhistory_button_import "Importar">
+<!ENTITY bookmarkhistory_import_both "Importar ils segnapaginas e la cronologia
+                                      dad Android">
+<!ENTITY bookmarkhistory_import_bookmarks "Importar ils segnapaginas
+                                           dad Android">
+<!ENTITY bookmarkhistory_import_history "Importar la cronologia
+                                         dad Android">
+<!ENTITY bookmarkhistory_import_wait "Spetgar per plaschair...">
 
+<!ENTITY suggestions_prompt3 "Vuls ti activar propostas da tschertga?">
 <!--  Localization note (search_bar_item_desc): When the user clicks the url bar
       and starts typing, a list of icons of search engines appears at the bottom
       of the screen. When a user clicks an icon, the entered text will be searched
       via the search engine that uses the icon they clicked. This text is used
       for screen reader users when they hover each icon - &formatS; will be
       replaced with the name of the currently highlighted icon. -->
+<!ENTITY search_bar_item_desc "Tschertgar cun &formatS;">
 
 <!-- Localization note (suggestion_for_engine): The placeholder &formatS1; will be
      replaced with the name of the search engine. The placeholder &formatS2; will be
      replaced with the search query. -->
+<!ENTITY suggestion_for_engine "Tschertgar cun &formatS1;: &formatS2;">
 
+<!ENTITY webapp_generic_name "App">
 
+<!ENTITY searchable_description "Segnapaginas e cronologia">
 
  <!-- Updater notifications -->
+<!ENTITY updater_start_title2 "&brandShortName;: Actualisaziun disponibla">
+<!ENTITY updater_start_select2 "Tutgar per telechargiar">
 
+<!ENTITY updater_downloading_title2 "Telechargiar &brandShortName;">
+<!ENTITY updater_downloading_title_failed2 "Betg reussì da telechargiar">
+<!ENTITY updater_downloading_select2 "Tutgar per applitgar l\&apos;actualisaziun cura ch\&apos;ella è telechargiada">
+<!ENTITY updater_downloading_retry2 "Tutgar per reempruvar">
 
+<!ENTITY updater_apply_title2 "&brandShortName;: Actualisaziun disponibla">
+<!ENTITY updater_apply_select2 "Tutgar per actualisar">
 
 <!-- Guest mode -->
+<!ENTITY new_guest_session "Nova sessiun da giast">
+<!ENTITY exit_guest_session "Terminar la sessiun da giast">
+<!ENTITY guest_session_dialog_continue "Cuntinuar">
+<!ENTITY guest_session_dialog_cancel "Interrumper">
+<!ENTITY new_guest_session_title "&brandShortName; vegn ussa a reaviar">
+<!ENTITY new_guest_session_text2 "La persuna che utilisescha quai na vegn betg ad esser abla da vesair tias datas da navigaziun privatas (infurmaziuns d\&apos;annunzia memorisadas, la cronologia u segnapaginas).\n\nCura che tes giast è a fin vegnan sias datas da navigaziun stizzadas e tia sessiun vegn restaurada.">
+<!ENTITY guest_browsing_notification_title "La navigaziun per giasts è activada">
+<!ENTITY guest_browsing_notification_text "Smatgar per serrar">
 
+<!ENTITY exit_guest_session_title "&brandShortName; vegn ussa a reaviar">
+<!ENTITY exit_guest_session_text "Las datas da navigaziun da questa sessiun vegnan stizzadas.">
 
 <!-- Miscellaneous -->
 <!-- LOCALIZATION NOTE (ellipsis): This text is appended to a piece of text that does not fit in the
      designated space. Use the unicode ellipsis char, \u2026, or use "..." if \u2026 doesn't suit
      traditions in your locale. -->
+<!ENTITY ellipsis "…">
 
+<!ENTITY colon ":">
 
 <!-- LOCALIZATION NOTE (percent): The percent sign is appended after a number to
      display a percentage value. formatS is the number, #37 is the code to display a percent sign.
@@ -252,11 +683,15 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      is a reserved caracter. In order to display one percent sign in the result of getString,
      double percent signs must be inserted in the format string.
      This entity is used in the zoomed view to display the zoom factor-->
+<!ENTITY percent "&formatS;&#37;&#37;">
 
 <!-- These are only used for accessibility for the done and overflow-menu buttons in the actionbar.
      They are never shown to users -->
+<!ENTITY actionbar_menu "Menu">
+<!ENTITY actionbar_done "Finì">
 
 <!-- Voice search in the awesome bar -->
+<!ENTITY voicesearch_prompt "Discurra ussa">
 
 <!-- Localization note (remote_tabs_last_synced): the variable is replaced by a
      "relative time span string" produced by Android.  This string describes the
@@ -264,16 +699,21 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      include "42 minutes ago", "4 days ago", "last week", etc. The subject of
      "Last synced" is one of the user's other Sync clients, typically Firefox on
      their desktop or laptop.-->
+<!ENTITY remote_tabs_last_synced "L\&apos;ultima sincronisaziun: &formatS;">
 <!-- Localization note: Used when the sync has not happend yet, showed in place of a date -->
+<!ENTITY remote_tabs_never_synced "L\&apos;ultima sincronisaziun: anc mai">
 
 <!-- Find-In-Page strings -->
 <!-- LOCALIZATION NOTE (find_matchcase): This is meant to appear as an icon that changes color
      if match-case is activated. i.e. No more than two letters, one uppercase, one lowercase. -->
+<!ENTITY find_matchcase "Aa">
 
+<!ENTITY intent_uri_cannot_open "Impussibel dad avrir la colliaziun">
 <!-- LOCALIZATION NOTE (intent_uri_private_browsing_prompt): This string will
      appear in an alert when a user, who is currently in private browsing,
      clicks a link that will open an external Android application. "&formatS;"
      will be replaced with the name of the application that will be opened. -->
+<!ENTITY intent_uri_private_browsing_prompt "Questa colliaziun vegn averta cun &formatS;. Vuls ti propi bandunar il modus privat?">
 <!-- LOCALIZATION NOTE (intent_uri_private_browsing_multiple_match_title): This
      string will appear as the title of an alert when a user, who is currently
      in private browsing, clicks a link that will open an external Android
@@ -281,6 +721,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      We don't have control over the style of this dialog and it looks
      unpolished when this string is longer than one line so ideally keep it
      short! -->
+<!ENTITY intent_uri_private_browsing_multiple_match_title "Bandunar il modus privat?">
 
 <!-- DevTools Authentication -->
 <!-- LOCALIZATION NOTE (devtools_auth_scan_header): This header text appears
@@ -288,14 +729,40 @@ just addresses the organization to follow, e.g. "This site is run by " -->
      code has already been displayed by the client trying to connect (such as
      desktop Firefox via WebIDE), so you just need to aim this device at the QR
      code. -->
+<!ENTITY devtools_auth_scan_header "Scannar il code QR mussà sin l\&apos;auter apparat">
 
-<!-- Restrictions -->
-<!-- Localization note: These are restrictions the device owner (e.g. parent) can enable for
+<!-- Restrictable features -->
+<!-- Localization note: These are features the device owner (e.g. parent) can enable or disable for
      a restricted profile (e.g. child). Used inside the Android settings UI. -->
+<!ENTITY restrictable_feature_addons_installation "Supplements">
+<!ENTITY restrictable_feature_addons_installation_description "Cumplettescha Firefox cun funcziuns supplementaras. Avis: Supplements pon deactivar tschertas restricziuns.">
+<!ENTITY restrictable_feature_private_browsing "Modus privat">
+<!ENTITY restrictable_feature_private_browsing_description "Permetta a commembers da la famiglia da navigar senza memorisar infurmaziuns davart las paginas ch\&apos;els han visità.">
+<!ENTITY restrictable_feature_clear_history "Stizzar la cronologia">
+<!ENTITY restrictable_feature_clear_history_description "Permetta a commembers da la famiglia da stizzar infurmaziuns davart las paginas ch\&apos;els han visità.">
+<!ENTITY restrictable_feature_advanced_settings "Configuraziun avanzada">
+<!ENTITY restrictable_feature_advanced_settings_description "Quai includa l\&apos;import da segnapaginas, la restauraziun da tabs ed actualisaziuns automaticas. Deactivar per mo mussar ina configuraziun simpla e chapibla per tut ils commember da la famiglia.">
+<!ENTITY restrictable_feature_camera_microphone "Camera &amp; microfon">
+<!ENTITY restrictable_feature_camera_microphone_description "Permetta a commembers da la famiglia da communitgar live sin paginas d\&apos;internet.">
+<!ENTITY restrictable_feature_data_choices "Decisiuns areguard datas">
+<!ENTITY restrictable_feature_data_choices_description "Definescha schebain datas d\&apos;utilisaziun vegnan tramessas a Mozilla per meglierar Firefox.">
 
 <!-- Default Bookmarks titles-->
 <!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
+<!ENTITY bookmarks_about_browser "Firefox: Davart tes navigatur">
 <!-- LOCALIZATION NOTE (bookmarks_addons): link title for https://addons.mozilla.org/en-US/mobile -->
+<!ENTITY bookmarks_addons "Firefox: Persunalisar cun supplements">
 <!-- LOCALIZATION NOTE (bookmarks_support): link title for https://support.mozilla.org/ -->
+<!ENTITY bookmarks_support "Firefox: Agid">
 <!-- LOCALIZATION NOTE (bookmarks_restricted_support): link title for https://support.mozilla.org/kb/controlledaccess -->
+<!ENTITY bookmarks_restricted_support2 "Agid da Firefox per profils restrenschids sin tablets d\&apos;Android">
 <!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->
+<!ENTITY bookmarks_restricted_webmaker "Emprenda il web: Mozilla Webmaker">
+
+<!-- LOCALIZATION NOTE (unsupported_sdk_version): The user installed a build of this app that does not support
+     the Android version of this device. the formatS1 is replaced by the CPU ABI (e.g., ARMv7); the formatS2 is
+     replaced by the Android OS version (e.g., 14)-->
+<!ENTITY unsupported_sdk_version "Perstgisa! Quest &brandShortName; na funcziuna betg sin quest apparat (&formatS1;, &formatS2;). Telechargia p.pl. la versiun correcta. ">
+
+<!ENTITY eol_notification_title "&brandShortName; na sustegna betg pli Android 3">
+<!ENTITY eol_notification_summary "Tutgar per ulteriuras infurmaziuns">

@@ -33,7 +33,9 @@
    - they still fit in. -->
 
 <!ENTITY event.attendees.notify.label               "Obavijesti sudionike">
+<!ENTITY event.attendees.notify.accesskey           "O">
 <!ENTITY event.attendees.notifyundisclosed.label    "Odvoji pozivnice po sudionicima">
+<!ENTITY event.attendees.notifyundisclosed.accesskey  "b">
 <!ENTITY event.attendees.notifyundisclosed.tooltip  "Ova mogućnost šalje jednu poruku e-pošte po sudioniku. Svaka pozivnica sadrži samo jednog sudionika tako da identitet drugih sudionika nije otkriven.">
 <!-- Keyboard Shortcuts -->
 
@@ -138,6 +140,10 @@
 <!ENTITY event.email.attendees.accesskey                  "a">
 <!ENTITY event.email.tentative.attendees.label            "Napiši poruku e-pošte neodlučnim sudionicima…">
 <!ENTITY event.email.tentative.attendees.accesskey        "N">
+<!ENTITY event.remove.attendees.label2                    "Ukloni sve sudionike">
+<!ENTITY event.remove.attendees.accesskey                 "k">
+<!ENTITY event.remove.attendee.label                      "Ukloni sudionika">
+<!ENTITY event.remove.attendee.accesskey                  "l">
 <!-- Toolbar -->
 
 <!ENTITY  event.toolbar.save.label                        "Spremi i zatvori">
@@ -165,7 +171,7 @@
 <!ENTITY event.calendar.label                             "Kalendar:" >
 <!ENTITY event.calendar.accesskey                         "K">
 <!ENTITY event.attendees.label                            "Sudionici:" >
-<!ENTITY event.attendees.accesskey                        "c" >
+<!ENTITY event.attendees.accesskey                        "n">
 <!ENTITY event.alldayevent.label                          "Cjelodnevni događaj" >
 <!ENTITY event.alldayevent.accesskey                      "d">
 <!ENTITY event.from.label                                 "Počinje:" >
@@ -173,7 +179,7 @@
 <!ENTITY task.from.label                                  "Počinje:" >
 <!ENTITY task.from.accesskey                              "P">
 <!ENTITY event.to.label                                   "Završava:" >
-<!ENTITY event.to.accesskey                               "v">
+<!ENTITY event.to.accesskey                               "Z">
 <!ENTITY task.to.label                                    "Dospjeva:" >
 <!ENTITY task.to.accesskey                                "s">
 <!ENTITY task.status.label                                "Status:" >
@@ -181,7 +187,7 @@
 <!ENTITY event.repeat.label                               "Ponavljanje:" >
 <!ENTITY event.repeat.accesskey                           "j">
 <!ENTITY event.until.label                                "Do:">
-<!ENTITY event.until.accesskey                            "o">
+<!ENTITY event.until.accesskey                            "D">
 <!ENTITY event.reminder.label                             "Podsjetnik:" >
 <!ENTITY event.reminder.accesskey                         "e">
 <!ENTITY event.description.label                          "Opis:" >
@@ -348,6 +354,7 @@
 <!ENTITY event.attendee.usertype.group          "Grupni">
 <!ENTITY event.attendee.usertype.resource       "Resurs">
 <!ENTITY event.attendee.usertype.room           "Soba">
+<!ENTITY event.attendee.usertype.unknown        "Nepoznat">
 <!-- Timezone dialog -->
 
 <!ENTITY timezone.title.label            "Odaberite vremensku zonu">
