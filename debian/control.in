@@ -96,15 +96,29 @@ Recommends: gstreamer0.10-ffmpeg,
 %endif
 Conflicts: j2re1.4,
            pango-graphite (<< 0.9.3)
-Breaks: xul-ext-torbutton
+Breaks: xul-ext-torbutton,
+%if TRANSITION
+        iceweasel (<< 45)
+Replaces: iceweasel (<< 45)
+%endif
 Provides: www-browser,
-          gnome-www-browser
+          gnome-www-browser,
+%if TRANSITION
+          iceweasel
+%endif
 %define DESCRIPTION Mozilla Firefox web browser
 %define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
 %define LONGDESC2 web application technologies.
 Description: @DESCRIPTION@
  @LONGDESC1@
  @LONGDESC2@
+%if TRANSITION
+
+Package: iceweasel
+Architecture: all
+Depends: @browser@
+Description: Web browser based on Firefox - Transitional package
+%endif
 
 Package: @browser@-dbg
 Architecture: any
@@ -116,11 +130,24 @@ Depends: @browser@ (= ${binary:Version}),
          libnspr4-dbg | libnspr4-0d-dbg,
 %endif
          ${misc:Depends}
+%if TRANSITION
+Breaks: iceweasel-dbg (<< 45)
+Replaces: iceweasel-dbg (<< 45)
+Provides: iceweasel-dbg
+%endif
 Description: Debugging symbols for @Browser@
  @LONGDESC1@
  @LONGDESC2@
  .
  This package contains the debugging symbols for @browser@.
+%if TRANSITION
+
+Package: iceweasel-dbg
+Architecture: all
+Section: debug
+Depends: @browser@-dbg
+Description: Debugging symbols for Iceweasel - Transitional package
+%endif
 
 Package: @browser@-dev
 Section: libdevel
@@ -137,6 +164,11 @@ Conflicts: xulrunner-dev,
 %if browser != firefox
            firefox-dev
 %endif
+%if TRANSITION
+Breaks: iceweasel-dev (<< 45)
+Replaces: iceweasel-dev (<< 45)
+Provides: iceweasel-dev
+%endif
 Description: Development files for the Gecko engine library
  This library provides an  API for XUL applications and Gecko embedders.
  The Gecko engine is the core of the mozilla.org applications such as
@@ -152,14 +184,35 @@ Description: Development files for the Gecko engine library
  This package also provides the Xulrunner Software Development Kit in the
  same form as the one you may find on mozilla.org in /usr/lib/xulrunner/sdk.
 Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
+%if TRANSITION
+
+Package: iceweasel-dev
+Architecture: all
+Section: debug
+Depends: @browser@-dev
+Description: Development files for the Gecko engine library - Transitional package
+%endif
 
 Package: @browser@-l10n-all
 Architecture: all
 Section: localization
 Depends: ${misc:Depends}, @L10N_PACKAGES_DEPS@
+%if TRANSITION
+Breaks: iceweasel-l10n-all (<< 45)
+Replaces: iceweasel-l10n-all (<< 45)
+Provides: iceweasel-l10n-all
+%endif
 Description: All language packages for @Browser@ (meta)
  @LONGDESC1@
  @LONGDESC2@
  .
  This is a metapackage depending on all available localizations of @Browser@.
+%if TRANSITION
+
+Package: iceweasel-l10n-all
+Architecture: all
+Section: localization
+Depends: @browser@-l10n-all
+Description: All language packages for Iceweasel - Transitional package
+%endif
 %include l10n/browser-l10n.control

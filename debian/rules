@@ -48,6 +48,10 @@ include $(BRANDING)/configure.sh
 
 GTK3 ?= $(shell grep -q _PLATFORM_DEFAULT_TOOLKIT=cairo-gtk3 configure.in && echo 1)
 
+ifeq (firefox-esr,$(DEBIAN_SOURCE))
+TRANSITION = 1
+endif
+
 BRANDING_CONFIGURE_FLAG = $(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enable-official-branding,--with-branding=$(BRANDING))
 
 GSTREAMER_VERSION = $(shell ( pkg-config gstreamer-1.0 && echo 1.0 ) || ( pkg-config gstreamer-0.10 && echo 0.10 ))
@@ -147,7 +151,7 @@ debian/l10n/$(PRODUCT)-l10n.control: %: %.in
 DICT_DIR := /usr/share/hunspell
 
 $(PREPROCESSED_FILES): VARS = GRE_VERSION DICT_DIR $(PRODUCT) $(call uc,$(PRODUCT)) $(Product) LESS_SYSTEM_LIBS GSTREAMER_VERSION SHORT_SOURCE_CHANNEL GTK3 BACKPORT
-debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT
+debian/control: VARS += L10N_PACKAGES_DEPS PRODUCT TRANSITION
 $(PREPROCESSED_FILES):
 	$(PYTHON) python/mozbuild/mozbuild/preprocessor.py --marker % -Fsubstitution $(foreach var,$(VARS),-D$(var)="$($(var))" )$< > $@
 
