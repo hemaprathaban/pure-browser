@@ -4,50 +4,6 @@
 Please read the file /usr/share/bug/@browser@/presubj for information
 you may want to know if you will report a bug.
 
-%if browser == iceweasel
-Why is it not called Firefox?
------------------------------
-
-The Firefox logo used to be distributed under a non-free copyright
-license. The Mozilla Corporation insisted that we not use the trademarked
-name Firefox with the "unofficial" logo (a globe without the firefox).
-Most of the details are documented in #354622
-<http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=354622>.
-
-In the meanwhile, the Firefox logo was released under a free copyright
-license, but a trademark policy is in place to limit the use of the
-Firefox branding. Until trademark licensing terms are sorted out,
-the Iceweasel name stays.
-
-Even though it is not called Firefox, it still comes from exactly the
-same upstream, and is by and large exactly the same (the differences
-include some distribution specific customizations, rebranding and the
-occasional bug fix).
-
-%endif
-Sound
------
-
-@Browser@ used to provide a facility to setup a dsp wrapper for sound
-support. The main contender that required this is the proprietary Flash
-plugin, which has supported ALSA for a while now.
-
-However, if for some reason Flash gets it wrong and uses OSS instead, you
-can set the FLASH_ALSA_DEVICE variable to tell it what ALSA device it can
-use.
-
-using Java. (You should use plugin which compiled with gcc-3.2 or newer)
-----------
- 
-You can install one of the following packages: 
- - gcjwebplugin,
- - java-gcj-compat-plugin,
- - sun-java5-plugin.
-
-Alternatively, you can grab a binary Java distribution from
-http://java.sun.com/, install the java-package package and do a make-jpkg
-on the file.
-
 Buttons
 -------
 
@@ -87,4 +43,19 @@ information on how this works and what is being sent and downloaded are
 available on the following page:
 http://www.mozilla.com/en-US/firefox/phishing-protection/
 
- -- Mike Hommey <glandium@debian.org>, Tue, 13 Apr 2010 14:37:37 +0200
+NTLM
+----
+
+Since version 30.0, NTLMv1 authentication has been disabled because
+it's known as insecure. Companies and organizations still deploying
+the older protocol should upgrade to NTLMv2, unfortunately, it's not
+supported by iceweasel.
+It is however still possible to toggle the preference to continue using
+NTLMv1, though the NTLM auth support is considered deprecated, by
+switching the network.negotiate-auth.allow-insecure-ntlm-v1 preference
+in about:config.
+
+See https://developer.mozilla.org/en-US/Firefox/Releases/30/Site_Compatibility#Security
+for more details.
+
+ -- Mike Hommey <glandium@debian.org>, Mon, 7 Mar 2016 07:42:57 +0200
