@@ -47,6 +47,7 @@ httpServer.start(-1);
 function run_test() {
 
   do_get_profile();
+  setPrefs();
 
   disableServiceWorkerEvents(
     'https://example.com/page'
@@ -83,7 +84,6 @@ add_task(function* test1() {
 
   PushService.init({
     serverURI: serverURL + "/subscribe",
-    service: PushServiceHttp2,
     db
   });
 

@@ -101,11 +101,8 @@
 
 <!ENTITY settings "Iestatījumi">
 <!ENTITY settings_title "Iestatījumi">
-<!ENTITY pref_category_input_options "Ievades iestatījumi">
-<!ENTITY pref_category_advanced "Papildus">
-<!ENTITY pref_category_customize "Pielāgošana">
-<!ENTITY pref_category_customize_summary "Sākums, meklēšana, cilnes, importēšana">
-<!ENTITY pref_category_customize_alt_summary "Home, search, tabs, open later, import">
+<!ENTITY pref_category_general "Vispārīgi">
+<!ENTITY pref_category_general_summary2 "Sākumlapa, valoda, adreses josla">
 <!-- Localization note (pref_category_language) : This is the preferences
      section in which the user picks the locale in which to display Firefox
      UI. The locale includes both language and region concepts. -->
@@ -144,21 +141,15 @@
      to send a tab to a synced device is pressed and no other synced devices
      are found. -->
 <!ENTITY overlay_no_synced_devices "Nav atrasta neviena ierīce, kam būtu pieslēgts Firefox konts">
-<!-- Localization note (menu_no_synced_devices): Used in a toast when the user
-     clicks on the button to send a tab to another device and there are no
-     other devices present. This label should briefly inform the user that they
-     need another connected device in order to use the feature. -->
-
-<!ENTITY menu_no_synced_devices "Nosūtīt šo cilni uz citu ierīci">
 
 <!ENTITY pref_category_search3 "Meklēt">
 <!ENTITY pref_category_search_summary "Pielāgot meklētājus">
-<!ENTITY pref_category_display "Attēlošana">
-<!ENTITY pref_category_display_summary "Teksts, virsraksta josla, pilnekrāna pārlūkošana">
+<!ENTITY pref_category_accessibility "Pieejamība">
+<!ENTITY pref_category_accessibility_summary2 "Teksta izmērs, pietuvinājums, balss ievade">
 <!ENTITY pref_category_privacy_short "Privātums">
-<!ENTITY pref_category_privacy_summary2 "Kontrolējiet paroles, sīkdatnes, sekošanu, datus">
-<!ENTITY pref_category_vendor "&vendorShortName;">
-<!ENTITY pref_category_vendor_summary "Par &brandShortName;, BUJ, datu izvēles">
+<!ENTITY pref_category_privacy_summary3 "Sīkdatnes, sekošana, datu izvēlnes">
+<!ENTITY pref_category_vendor2 "&vendorShortName; &brandShortName;">
+<!ENTITY pref_category_vendor_summary2 "Par &brandShortName;, BUJ, atsauksmes">
 <!ENTITY pref_category_datareporting "Datu izvēles">
 <!ENTITY pref_learn_more "Uzzināt vairāk">
 <!ENTITY pref_category_installed_search_engines "Instalētie meklētāji">
@@ -172,12 +163,12 @@
      The &formatI; in the string will be replaced by a small image of the icon described, and can be moved to wherever
      it is applicable. -->
 <!ENTITY pref_search_hint "Padoms: Pievienojiet jebkuru lapu meklētājiem, ilgāku laiku paturot pirkstu uz tās meklēšanas lauka un tad piespiežot &formatI; iconu.">
-<!ENTITY pref_category_devtools "Izstrādātāju rīki">
+<!ENTITY pref_category_advanced "Papildus">
+<!ENTITY pref_category_advanced_summary2 "Atjaunošanas cilnes, papildinājumi, izstrādātāju rīki">
 <!ENTITY pref_developer_remotedebugging "Attālinātā atkļūdošana">
 <!ENTITY pref_developer_remotedebugging_usb "Attālinātā atkļūdošana izmantojot USB">
 <!ENTITY pref_developer_remotedebugging_wifi "Attālinātā atkļūdošana izmantojot Wi-Fi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Lai izmantotu Wi-Fi atkļūdošanu, jūsu ierīcē jābūt instalētai QR koda lasīšanas lietotnei.">
-<!ENTITY pref_category_logins "Lietotājvārdi">
 <!ENTITY pref_remember_signons2 "Atcerēties paroles">
 <!ENTITY pref_open_external_urls_privately_title "Atvērt saites privātajā režīmā">
 <!ENTITY pref_open_external_urls_privately_summary "Visām ārējām saitēm, kas atvērtas &brandShortName;">
@@ -200,24 +191,40 @@
 <!ENTITY pref_home_suggested_sites_summary "Rādīt sākumlapā saites uz lapām, kas, mūsuprāt, varētu Jums interesēt">
 <!ENTITY pref_category_home_homepage "Mājas lapa">
 <!ENTITY home_homepage_title "Iestatīt mājas lapu">
-<!ENTITY home_homepage_use_current_tab "Izmantot pašreizējo cilni">
+<!-- Localization note (home_homepage_radio_user_address): The user will see a series of radio
+     buttons to choose the homepage they'd like to start on. When they click the radio
+     button for this string, they will use the built-in default Firefox homepage (about:home). -->
+<!ENTITY home_homepage_radio_default "&brandShortName; sākumlapa">
+<!-- Localization note (home_homepage_radio_user_address): The user will see a series of radio
+     buttons to choose the homepage they'd like to start on. When they click the radio
+     button for this string, a text field will appear below the radio button and allow the
+     user to insert an address of their choice. -->
+<!ENTITY home_homepage_radio_user_address "Pielāgots">
+<!-- Localization note (home_homepage_hint_user_address): The user will see a series of
+     radio buttons to choose the homepage they'd like to start on. When they click a
+     particular radio button, a text field will appear below the radio button and allow the
+     user to insert an address of their choice. This string is the hint text to that
+     text field. -->
+<!ENTITY home_homepage_hint_user_address "Ievadiet adresi vai meklējamo frāzi">
 <!-- Localization note: These are shown in the left sidebar on tablets -->
 
-<!ENTITY pref_header_customize "Pielāgošana">
-<!ENTITY pref_header_display "Attēlošana">
+<!ENTITY pref_header_general "Vispārīgi">
+<!ENTITY pref_header_search "Meklēt">
 <!ENTITY pref_header_privacy_short "Privātums">
+<!ENTITY pref_header_accessibility "Pieejamība">
+<!ENTITY pref_header_advanced "Papildus">
 <!ENTITY pref_header_help "Palīdzība">
-<!ENTITY pref_header_language "Valoda">
 <!ENTITY pref_header_vendor "&vendorShortName;">
-<!ENTITY pref_header_devtools "Izstrādātāju rīki">
 
 <!ENTITY pref_cookies_menu "Sīkdatnes">
 <!ENTITY pref_cookies_accept_all "Aktivizēts">
 <!ENTITY pref_cookies_not_accept_foreign "Aktivētas, izņemot 3. pušu">
 <!ENTITY pref_cookies_disabled "Deaktivētas">
 
-<!ENTITY pref_tap_to_load_images_title "Pieskarieties-lai-ielādētu attēli">
-<!ENTITY pref_tap_to_load_images_summary2 "Ielādēt attēlus tikai, ja uz tiem ir uzspiests ilgāku laiku">
+<!ENTITY pref_tap_to_load_images_title2 "Rādīt attēlus">
+<!ENTITY pref_tap_to_load_images_enabled "Vienmēr">
+<!ENTITY pref_tap_to_load_images_data "Tikai pa Wi-Fi">
+<!ENTITY pref_tap_to_load_images_disabled2 "Bloķēts">
 
 <!ENTITY pref_tracking_protection_title "Izsekošanas aizsardzība">
 <!ENTITY pref_tracking_protection_summary3 "Aktivēta privātajā pārlūkošanā">
@@ -253,9 +260,11 @@
 <!ENTITY pref_char_encoding "Rakstzīmju kodējums">
 <!ENTITY pref_char_encoding_on "Rādīt izvēlni">
 <!ENTITY pref_char_encoding_off "Nerādīt izvēlni">
-<!ENTITY pref_clear_private_data2 "Notīrīt tagad">
-<!ENTITY pref_clear_private_data_category "Notīrīt privātos datus">
-<!ENTITY pref_clear_on_exit_title2 "Notīrīt aizverot">
+<!ENTITY pref_clear_private_data "Notīrīt privātos datus">
+<!-- Localization note (pref_clear_private_data_now_tablet): This action to clear private data is only shown on tablets.
+     The action is shown below a header saying "Clear private data"; See pref_clear_private_data -->
+<!ENTITY pref_clear_private_data_now_tablet "Notīrīt tagad">
+<!ENTITY pref_clear_on_exit_title3 "Aizverot notīrīt privātos datus">
 <!ENTITY pref_clear_on_exit_summary2 "&brandShortName; automātiski notīrīs jūsu datus, katru reizi, kad izvēlēsieties \u0022Iziet\u0022 no galvenās izvēlnes">
 <!ENTITY pref_clear_on_exit_dialog_title "Izvēlieties, kādus datus notīrīt">
 <!ENTITY pref_plugins "Spraudņi">
@@ -263,7 +272,7 @@
 <!ENTITY pref_plugins_tap_to_play "Pieskarties, lai atskaņotu">
 <!ENTITY pref_plugins_disabled "Deaktivētas">
 <!ENTITY pref_text_size "Teksta izmērs">
-<!ENTITY pref_restore "Cilnes">
+<!ENTITY pref_restore_tabs "Cilņu atjaunošana">
 <!ENTITY pref_restore_always "Vienmēr atjaunot">
 <!ENTITY pref_restore_quit "Neatjaunot pēc &brandShortName; aizvēršanas">
 <!ENTITY pref_font_size_tiny "Sīks">
@@ -288,16 +297,16 @@ size. -->
 <!ENTITY pref_zoom_force_enabled "Vienmēr aktivēt palielinājumu">
 <!ENTITY pref_zoom_force_enabled_summary "Piespiedu režīms, lai varētu palielināt jebkuru lapu">
 <!ENTITY pref_voice_input "Balss ievade">
-<!ENTITY pref_voice_input_summary "Atļaut balss nolasīšanu virsraksta joslā">
+<!ENTITY pref_voice_input_summary2 "Atļaut balss nolasīšanu adreses joslā">
 <!ENTITY pref_qrcode_enabled "QR koda lasītājs">
-<!ENTITY pref_qrcode_enabled_summary "Atļaut QR lasītāju virsraksta joslā">
+<!ENTITY pref_qrcode_enabled_summary2 "Atļaut QR lasītāju adreses joslā">
 
 <!ENTITY pref_use_master_password "Izmantot galveno paroli">
-<!ENTITY pref_sync "Sinhronizēšana">
+<!ENTITY pref_sync2 "Ierakstieties">
 <!ENTITY pref_sync_summary2 "Sinhronizējiet cilnes, grāmatzīmes, paroles, vēsturi">
 <!ENTITY pref_search_suggestions "Rādīt meklēšanas ieteikumus">
 <!ENTITY pref_history_search_suggestions "Rādīt meklēšanas vēsturi">
-<!ENTITY pref_import_android "Importēt no Android">
+<!ENTITY pref_import_options "Importēšanas iestatījumi">
 <!ENTITY pref_import_android_summary "Importējiet grāmatzīmes un vēsturi no iebūvētā pārlūka">
 <!ENTITY pref_private_data_history2 "Pārlūkošanas vēsturi">
 <!ENTITY pref_private_data_searchHistory "Meklēšanas vēsture">
@@ -354,7 +363,7 @@ size. -->
 <!-- Localization note (pref_update_autodownload2) : This should mention downloading
      specifically, since the pref only prevents automatic downloads and not the
      actual notification that an update is available. -->
-<!ENTITY pref_update_autodownload2 "Automātiska atjauninājumu ielāde">
+<!ENTITY pref_update_autodownload3 "Automātiskie atjauninājumi">
 <!ENTITY pref_update_autodownload_wifi "Tikai pa Wi-Fi">
 <!ENTITY pref_update_autodownload_never "Nekad">
 <!ENTITY pref_update_autodownload_always "Vienmēr">
@@ -435,10 +444,6 @@ size. -->
 <!ENTITY doorhanger_login_select_toast_copy_error "Nevarēja nokopēt paroli">
 <!ENTITY doorhanger_login_select_action_text "Izvēlieties citu lietotājvārdu">
 <!ENTITY doorhanger_login_select_title "Kopēt paroli no">
-
-<!ENTITY pref_titlebar_mode "Virsraksta josla">
-<!ENTITY pref_titlebar_mode_title "Rādīt lapas virsrakstu">
-<!ENTITY pref_titlebar_mode_url "Rādīt lapas adresi">
 <!-- Localization note (pref_prevent_magnifying_glass): Label for setting that controls
      whether or not the magnifying glass is disabled. -->
 
@@ -448,7 +453,7 @@ size. -->
      whether or not the dynamic toolbar is enabled. -->
 
 <!ENTITY pref_scroll_title_bar2 "Pārlūkot pilnekrānā">
-<!ENTITY pref_scroll_title_bar_summary "Paslēpt &brandShortName; virsraksta joslu ritinot lapas">
+<!ENTITY pref_scroll_title_bar_summary2 "Paslēpt &brandShortName; rīkjoslu ritinot lapas">
 
 <!ENTITY pref_tab_queue_title2 "Atvērt vairākas saites">
 <!ENTITY pref_tab_queue_summary3 "Saglabāt tās nākamai reizei, kad atvērsiet &brandShortName;">
@@ -468,7 +473,6 @@ size. -->
 <!ENTITY site_settings_title3       "Lapas iestatījumi">
 <!ENTITY site_settings_cancel       "Atcelt">
 <!ENTITY site_settings_clear        "Notīrīt">
-<!ENTITY site_settings_no_settings  "Nav iestatījumu, ko notīrīt.">
 <!-- Localization note (reading_list_added3) : Used in a toast, please keep as short
      as possible. -->
 
@@ -524,14 +528,14 @@ size. -->
      The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
 <!ENTITY home_most_recent_emptyhint2 "Khmm: izmantojot &formatS1;Jauna privātā cilve&formatS2; netiks saglabāta pārlūkošanas vēsture.">
 <!ENTITY home_reading_list_empty "Vēlākai lasīšanai saglabātie raksti parādās te.">
-<!-- Localization note (home_reading_list_hint): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
+<!-- Localization note (home_reading_list_hint3): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
      as an advisory message on how to add content to the reading list when the reading list empty.
      The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
      it is applicable. -->
-<!ENTITY home_reading_list_hint2 "Padoms: Saglabājiet rakstus vēlākai lasīšanai, ilgāk piespiežot &formatI; pogu, kad tā parādās virsraksta joslā.">
-<!-- Localization note (home_reading_list_hint_accessible): This string is used
+<!ENTITY home_reading_list_hint3 "Padoms: Saglabājiet rakstus vēlākai lasīšanai, ilgāk piespiežot &formatI; pogu, kad tā parādās virsraksta joslā.">
+<!-- Localization note (home_reading_list_hint_accessible2): This string is used
      as alternate text for accessibility. It is not visible in the UI. -->
-<!ENTITY home_reading_list_hint_accessible "Padoms: Saglabājiet rakstus vēlākai lasīšanai, ilgāk piespiežot lasītāja ikonu, kad tā parādās virsraksta joslā.">
+<!ENTITY home_reading_list_hint_accessible2 "Padoms: Saglabājiet rakstus vēlākai lasīšanai, ilgāk piespiežot lasītāja ikonu, kad tā parādās adreses joslā.">
 <!-- Localization note (home_default_empty): This string is used as the default text when there
      is no data to show in an about:home panel that was created by an add-on. -->
 
@@ -726,20 +730,22 @@ no Android">
      code. -->
 
 <!ENTITY devtools_auth_scan_header "Skanējamais QR kods tiek rādīs jūsu ierīcē">
-<!-- Restrictions -->
-<!-- Localization note: These are restrictions the device owner (e.g. parent) can enable for
+<!-- Restrictable features -->
+<!-- Localization note: These are features the device owner (e.g. parent) can enable or disable for
      a restricted profile (e.g. child). Used inside the Android settings UI. -->
 
-<!ENTITY restriction_disallow_import_settings_title2 "Deaktivēt \u0027Importēt no Android\u0027">
-<!ENTITY restriction_disallow_addons_title2 "Deaktivēt papildinājumus">
-<!ENTITY restriction_disallow_devtools_title2 "Deaktivēt izstrādātāju rīkus">
-<!ENTITY restriction_disallow_customize_home_title2 "Deaktivēt sākumlapas pielāgojumus">
-<!ENTITY restriction_disallow_private_browsing_title2 "Deaktivēt privāto pārlūkošanu">
-<!ENTITY restriction_disallow_location_services_title2 "Deaktivēt atrašanās vietu pakalpojumu">
-<!ENTITY restriction_disallow_display_settings_title2 "Deaktivēt ekrāna iestatījumus">
-<!ENTITY restriction_disallow_clear_history_title2 "Deaktivēt \u0027Attīrīt pārlūkošanas vēsturi\u0027">
-<!ENTITY restriction_disallow_master_password_title2 "Deaktivēt galveno paroli">
-<!ENTITY restriction_disallow_guest_browsing_title2 "Deaktivēt viesa pārlūošanu">
+<!ENTITY restrictable_feature_addons_installation "Papildinājumi">
+<!ENTITY restrictable_feature_addons_installation_description "Pievienojiet papildu iespējas Firefox. Piezīme: Papildinājumi var deaktivēt noteiktus ierobežojumus.">
+<!ENTITY restrictable_feature_private_browsing "Privātā pārlūkošana">
+<!ENTITY restrictable_feature_private_browsing_description "Ļauj ģimenes locekļiem pārlūkot nesaglabājot informāciju par apmeklētajām lapām.">
+<!ENTITY restrictable_feature_clear_history "Notīrīt vēsturi">
+<!ENTITY restrictable_feature_clear_history_description "Ļauj ģimenes locekļiem dzēst informāciju par apmeklētajām lapām.">
+<!ENTITY restrictable_feature_advanced_settings "Papildu iestatījumi">
+<!ENTITY restrictable_feature_advanced_settings_description "Šis ietver grāmatzīmju importēšanu, ciļņu atjaunošanu un automātiskos atjauninājumus. Izslēdziet, lai iegūtu vienkāršākus iestatījumus, kas piemēroti katram ģimenes loceklim.">
+<!ENTITY restrictable_feature_camera_microphone "Kamera un mikrofons">
+<!ENTITY restrictable_feature_camera_microphone_description "Ļauj ģimenes locekļiem iesaistīties reālā laika sarunās apmeklētajās lapās.">
+<!ENTITY restrictable_feature_data_choices "Datu izvēles">
+<!ENTITY restrictable_feature_data_choices_description "Izvēlieties sūtīt vai nesūtīt programmas lietošanas statistiku Mozilla, lai palīdzētu uzlabot Firefox. ">
 <!-- Default Bookmarks titles-->
 <!-- LOCALIZATION NOTE (bookmarks_about_browser): link title for about:fennec -->
 
@@ -752,3 +758,11 @@ no Android">
 <!ENTITY bookmarks_restricted_support2 "Firefox atbalsts un palīdzība Android planšetdatoru aizsargātajiem profiliem">
 <!-- LOCALIZATION NOTE (bookmarks_restricted_webmaker):link title for https://webmaker.org -->
 <!ENTITY bookmarks_restricted_webmaker "Apgūstiet tīmekli: Mozilla Webmaker">
+<!-- LOCALIZATION NOTE (unsupported_sdk_version): The user installed a build of this app that does not support
+     the Android version of this device. the formatS1 is replaced by the CPU ABI (e.g., ARMv7); the formatS2 is
+     replaced by the Android OS version (e.g., 14)-->
+
+<!ENTITY unsupported_sdk_version "Atvainojiet! Šī &brandShortName; nestrādās šajā ierīcē (&formatS1;, &formatS2;). Lūdzu lejupielādējiet pareizo versiju.">
+
+<!ENTITY eol_notification_title "&brandShortName; vairs neatbalsta Android 3">
+<!ENTITY eol_notification_summary "Gribat zināt vairāk">
