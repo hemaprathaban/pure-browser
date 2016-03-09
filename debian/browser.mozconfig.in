@@ -1,6 +1,7 @@
 # Please don't use this mozconfig unless you are planning to build
 # packages for Debian or a derivative.
 . $topsrcdir/browser/config/mozconfig
+ac_add_options --with-app-name=@browser@
 ac_add_options --enable-release
 ac_add_options --prefix=/usr
 %if GTK3
