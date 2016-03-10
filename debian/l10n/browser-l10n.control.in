@@ -21,6 +21,6 @@ Description: @L10N_LANGUAGE@ language package for @Browser@
 Package: iceweasel-l10n-@L10N_LANG@
 Architecture: all
 Section: localization
-Depends: @browser@-l10n-@L10N_LANG@
+Depends: @browser@-l10n-@L10N_LANG@, ${misc:Depends}
 Description: @L10N_LANGUAGE@ language package for Iceweasel - Transitional package
 %endif

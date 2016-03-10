@@ -116,7 +116,7 @@ Description: @DESCRIPTION@
 
 Package: iceweasel
 Architecture: all
-Depends: @browser@
+Depends: @browser@, ${misc:Depends}
 Description: Web browser based on Firefox - Transitional package
 %endif
 
@@ -145,7 +145,7 @@ Description: Debugging symbols for @Browser@
 Package: iceweasel-dbg
 Architecture: all
 Section: debug
-Depends: @browser@-dbg
+Depends: @browser@-dbg, ${misc:Depends}
 Description: Debugging symbols for Iceweasel - Transitional package
 %endif
 
@@ -189,7 +189,7 @@ Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 Package: iceweasel-dev
 Architecture: all
 Section: debug
-Depends: @browser@-dev
+Depends: @browser@-dev, ${misc:Depends}
 Description: Development files for the Gecko engine library - Transitional package
 %endif
 
@@ -212,7 +212,7 @@ Description: All language packages for @Browser@ (meta)
 Package: iceweasel-l10n-all
 Architecture: all
 Section: localization
-Depends: @browser@-l10n-all
+Depends: @browser@-l10n-all, ${misc:Depends}
 Description: All language packages for Iceweasel - Transitional package
 %endif
 %include l10n/browser-l10n.control

@@ -89,7 +89,7 @@ Description: Mozilla Firefox web browser
 
 Package: iceweasel
 Architecture: all
-Depends: firefox-esr
+Depends: firefox-esr, ${misc:Depends}
 Description: Web browser based on Firefox - Transitional package
 
 Package: firefox-esr-dbg
@@ -112,7 +112,7 @@ Description: Debugging symbols for Firefox
 Package: iceweasel-dbg
 Architecture: all
 Section: debug
-Depends: firefox-esr-dbg
+Depends: firefox-esr-dbg, ${misc:Depends}
 Description: Debugging symbols for Iceweasel - Transitional package
 
 Package: firefox-esr-dev
@@ -148,7 +148,7 @@ Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 Package: iceweasel-dev
 Architecture: all
 Section: debug
-Depends: firefox-esr-dev
+Depends: firefox-esr-dev, ${misc:Depends}
 Description: Development files for the Gecko engine library - Transitional package
 
 Package: firefox-esr-l10n-all
@@ -167,7 +167,7 @@ Description: All language packages for Firefox (meta)
 Package: iceweasel-l10n-all
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-all
+Depends: firefox-esr-l10n-all, ${misc:Depends}
 Description: All language packages for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ach
@@ -187,7 +187,7 @@ Description: Acoli language package for Firefox
 Package: iceweasel-l10n-ach
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ach
+Depends: firefox-esr-l10n-ach, ${misc:Depends}
 Description: Acoli language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-af
@@ -207,7 +207,7 @@ Description: Afrikaans language package for Firefox
 Package: iceweasel-l10n-af
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-af
+Depends: firefox-esr-l10n-af, ${misc:Depends}
 Description: Afrikaans language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-an
@@ -227,7 +227,7 @@ Description: Aragonese language package for Firefox
 Package: iceweasel-l10n-an
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-an
+Depends: firefox-esr-l10n-an, ${misc:Depends}
 Description: Aragonese language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ar
@@ -247,7 +247,7 @@ Description: Arabic language package for Firefox
 Package: iceweasel-l10n-ar
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ar
+Depends: firefox-esr-l10n-ar, ${misc:Depends}
 Description: Arabic language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-as
@@ -267,7 +267,7 @@ Description: Assamese language package for Firefox
 Package: iceweasel-l10n-as
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-as
+Depends: firefox-esr-l10n-as, ${misc:Depends}
 Description: Assamese language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ast
@@ -287,7 +287,7 @@ Description: Asturian language package for Firefox
 Package: iceweasel-l10n-ast
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ast
+Depends: firefox-esr-l10n-ast, ${misc:Depends}
 Description: Asturian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-az
@@ -307,7 +307,7 @@ Description: Azerbaijani language package for Firefox
 Package: iceweasel-l10n-az
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-az
+Depends: firefox-esr-l10n-az, ${misc:Depends}
 Description: Azerbaijani language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-be
@@ -327,7 +327,7 @@ Description: Belarusian language package for Firefox
 Package: iceweasel-l10n-be
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-be
+Depends: firefox-esr-l10n-be, ${misc:Depends}
 Description: Belarusian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-bg
@@ -348,7 +348,7 @@ Description: Bulgarian language package for Firefox
 Package: iceweasel-l10n-bg
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-bg
+Depends: firefox-esr-l10n-bg, ${misc:Depends}
 Description: Bulgarian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-bn-bd
@@ -368,7 +368,7 @@ Description: Bengali (Bangladesh) language package for Firefox
 Package: iceweasel-l10n-bn-bd
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-bn-bd
+Depends: firefox-esr-l10n-bn-bd, ${misc:Depends}
 Description: Bengali (Bangladesh) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-bn-in
@@ -388,7 +388,7 @@ Description: Bengali (India) language package for Firefox
 Package: iceweasel-l10n-bn-in
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-bn-in
+Depends: firefox-esr-l10n-bn-in, ${misc:Depends}
 Description: Bengali (India) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-br
@@ -408,7 +408,7 @@ Description: Breton language package for Firefox
 Package: iceweasel-l10n-br
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-br
+Depends: firefox-esr-l10n-br, ${misc:Depends}
 Description: Breton language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-bs
@@ -428,7 +428,7 @@ Description: Bosnian language package for Firefox
 Package: iceweasel-l10n-bs
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-bs
+Depends: firefox-esr-l10n-bs, ${misc:Depends}
 Description: Bosnian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ca
@@ -449,7 +449,7 @@ Description: Catalan language package for Firefox
 Package: iceweasel-l10n-ca
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ca
+Depends: firefox-esr-l10n-ca, ${misc:Depends}
 Description: Catalan language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-cs
@@ -470,7 +470,7 @@ Description: Czech language package for Firefox
 Package: iceweasel-l10n-cs
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-cs
+Depends: firefox-esr-l10n-cs, ${misc:Depends}
 Description: Czech language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-cy
@@ -490,7 +490,7 @@ Description: Welsh language package for Firefox
 Package: iceweasel-l10n-cy
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-cy
+Depends: firefox-esr-l10n-cy, ${misc:Depends}
 Description: Welsh language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-da
@@ -511,7 +511,7 @@ Description: Danish language package for Firefox
 Package: iceweasel-l10n-da
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-da
+Depends: firefox-esr-l10n-da, ${misc:Depends}
 Description: Danish language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-de
@@ -532,7 +532,7 @@ Description: German language package for Firefox
 Package: iceweasel-l10n-de
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-de
+Depends: firefox-esr-l10n-de, ${misc:Depends}
 Description: German language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-dsb
@@ -552,7 +552,7 @@ Description: Lower Sorbian language package for Firefox
 Package: iceweasel-l10n-dsb
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-dsb
+Depends: firefox-esr-l10n-dsb, ${misc:Depends}
 Description: Lower Sorbian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-el
@@ -573,7 +573,7 @@ Description: Modern Greek language package for Firefox
 Package: iceweasel-l10n-el
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-el
+Depends: firefox-esr-l10n-el, ${misc:Depends}
 Description: Modern Greek language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-en-gb
@@ -594,7 +594,7 @@ Description: English (United Kingdom) language package for Firefox
 Package: iceweasel-l10n-en-gb
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-en-gb
+Depends: firefox-esr-l10n-en-gb, ${misc:Depends}
 Description: English (United Kingdom) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-en-za
@@ -615,7 +615,7 @@ Description: English (South Africa) language package for Firefox
 Package: iceweasel-l10n-en-za
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-en-za
+Depends: firefox-esr-l10n-en-za, ${misc:Depends}
 Description: English (South Africa) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-eo
@@ -636,7 +636,7 @@ Description: Esperanto language package for Firefox
 Package: iceweasel-l10n-eo
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-eo
+Depends: firefox-esr-l10n-eo, ${misc:Depends}
 Description: Esperanto language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-es-ar
@@ -657,7 +657,7 @@ Description: Spanish (Argentina) language package for Firefox
 Package: iceweasel-l10n-es-ar
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-es-ar
+Depends: firefox-esr-l10n-es-ar, ${misc:Depends}
 Description: Spanish (Argentina) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-es-cl
@@ -677,7 +677,7 @@ Description: Spanish (Chile) language package for Firefox
 Package: iceweasel-l10n-es-cl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-es-cl
+Depends: firefox-esr-l10n-es-cl, ${misc:Depends}
 Description: Spanish (Chile) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-es-es
@@ -698,7 +698,7 @@ Description: Spanish (Spain) language package for Firefox
 Package: iceweasel-l10n-es-es
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-es-es
+Depends: firefox-esr-l10n-es-es, ${misc:Depends}
 Description: Spanish (Spain) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-es-mx
@@ -718,7 +718,7 @@ Description: Spanish (Mexico) language package for Firefox
 Package: iceweasel-l10n-es-mx
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-es-mx
+Depends: firefox-esr-l10n-es-mx, ${misc:Depends}
 Description: Spanish (Mexico) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-et
@@ -739,7 +739,7 @@ Description: Estonian language package for Firefox
 Package: iceweasel-l10n-et
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-et
+Depends: firefox-esr-l10n-et, ${misc:Depends}
 Description: Estonian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-eu
@@ -759,7 +759,7 @@ Description: Basque language package for Firefox
 Package: iceweasel-l10n-eu
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-eu
+Depends: firefox-esr-l10n-eu, ${misc:Depends}
 Description: Basque language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-fa
@@ -779,7 +779,7 @@ Description: Persian language package for Firefox
 Package: iceweasel-l10n-fa
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-fa
+Depends: firefox-esr-l10n-fa, ${misc:Depends}
 Description: Persian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ff
@@ -799,7 +799,7 @@ Description: Fulah language package for Firefox
 Package: iceweasel-l10n-ff
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ff
+Depends: firefox-esr-l10n-ff, ${misc:Depends}
 Description: Fulah language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-fi
@@ -820,7 +820,7 @@ Description: Finnish language package for Firefox
 Package: iceweasel-l10n-fi
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-fi
+Depends: firefox-esr-l10n-fi, ${misc:Depends}
 Description: Finnish language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-fr
@@ -841,7 +841,7 @@ Description: French language package for Firefox
 Package: iceweasel-l10n-fr
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-fr
+Depends: firefox-esr-l10n-fr, ${misc:Depends}
 Description: French language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-fy-nl
@@ -861,7 +861,7 @@ Description: Western Frisian (Netherlands) language package for Firefox
 Package: iceweasel-l10n-fy-nl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-fy-nl
+Depends: firefox-esr-l10n-fy-nl, ${misc:Depends}
 Description: Western Frisian (Netherlands) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ga-ie
@@ -881,7 +881,7 @@ Description: Irish (Ireland) language package for Firefox
 Package: iceweasel-l10n-ga-ie
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ga-ie
+Depends: firefox-esr-l10n-ga-ie, ${misc:Depends}
 Description: Irish (Ireland) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-gd
@@ -901,7 +901,7 @@ Description: Scottish Gaelic language package for Firefox
 Package: iceweasel-l10n-gd
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-gd
+Depends: firefox-esr-l10n-gd, ${misc:Depends}
 Description: Scottish Gaelic language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-gl
@@ -921,7 +921,7 @@ Description: Galician language package for Firefox
 Package: iceweasel-l10n-gl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-gl
+Depends: firefox-esr-l10n-gl, ${misc:Depends}
 Description: Galician language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-gn
@@ -941,7 +941,7 @@ Description: Guarani language package for Firefox
 Package: iceweasel-l10n-gn
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-gn
+Depends: firefox-esr-l10n-gn, ${misc:Depends}
 Description: Guarani language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-gu-in
@@ -961,7 +961,7 @@ Description: Gujarati (India) language package for Firefox
 Package: iceweasel-l10n-gu-in
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-gu-in
+Depends: firefox-esr-l10n-gu-in, ${misc:Depends}
 Description: Gujarati (India) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-he
@@ -982,7 +982,7 @@ Description: Hebrew language package for Firefox
 Package: iceweasel-l10n-he
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-he
+Depends: firefox-esr-l10n-he, ${misc:Depends}
 Description: Hebrew language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-hi-in
@@ -1002,7 +1002,7 @@ Description: Hindi (India) language package for Firefox
 Package: iceweasel-l10n-hi-in
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-hi-in
+Depends: firefox-esr-l10n-hi-in, ${misc:Depends}
 Description: Hindi (India) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-hr
@@ -1022,7 +1022,7 @@ Description: Croatian language package for Firefox
 Package: iceweasel-l10n-hr
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-hr
+Depends: firefox-esr-l10n-hr, ${misc:Depends}
 Description: Croatian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-hsb
@@ -1042,7 +1042,7 @@ Description: Upper Sorbian language package for Firefox
 Package: iceweasel-l10n-hsb
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-hsb
+Depends: firefox-esr-l10n-hsb, ${misc:Depends}
 Description: Upper Sorbian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-hu
@@ -1063,7 +1063,7 @@ Description: Hungarian language package for Firefox
 Package: iceweasel-l10n-hu
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-hu
+Depends: firefox-esr-l10n-hu, ${misc:Depends}
 Description: Hungarian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-hy-am
@@ -1083,7 +1083,7 @@ Description: Armenian (Armenia) language package for Firefox
 Package: iceweasel-l10n-hy-am
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-hy-am
+Depends: firefox-esr-l10n-hy-am, ${misc:Depends}
 Description: Armenian (Armenia) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-id
@@ -1103,7 +1103,7 @@ Description: Indonesian language package for Firefox
 Package: iceweasel-l10n-id
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-id
+Depends: firefox-esr-l10n-id, ${misc:Depends}
 Description: Indonesian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-is
@@ -1123,7 +1123,7 @@ Description: Icelandic language package for Firefox
 Package: iceweasel-l10n-is
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-is
+Depends: firefox-esr-l10n-is, ${misc:Depends}
 Description: Icelandic language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-it
@@ -1144,7 +1144,7 @@ Description: Italian language package for Firefox
 Package: iceweasel-l10n-it
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-it
+Depends: firefox-esr-l10n-it, ${misc:Depends}
 Description: Italian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ja
@@ -1164,7 +1164,7 @@ Description: Japanese language package for Firefox
 Package: iceweasel-l10n-ja
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ja
+Depends: firefox-esr-l10n-ja, ${misc:Depends}
 Description: Japanese language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-kk
@@ -1184,7 +1184,7 @@ Description: Kazakh language package for Firefox
 Package: iceweasel-l10n-kk
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-kk
+Depends: firefox-esr-l10n-kk, ${misc:Depends}
 Description: Kazakh language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-km
@@ -1204,7 +1204,7 @@ Description: Central Khmer language package for Firefox
 Package: iceweasel-l10n-km
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-km
+Depends: firefox-esr-l10n-km, ${misc:Depends}
 Description: Central Khmer language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-kn
@@ -1224,7 +1224,7 @@ Description: Kannada language package for Firefox
 Package: iceweasel-l10n-kn
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-kn
+Depends: firefox-esr-l10n-kn, ${misc:Depends}
 Description: Kannada language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ko
@@ -1244,7 +1244,7 @@ Description: Korean language package for Firefox
 Package: iceweasel-l10n-ko
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ko
+Depends: firefox-esr-l10n-ko, ${misc:Depends}
 Description: Korean language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-lij
@@ -1264,7 +1264,7 @@ Description: Ligurian language package for Firefox
 Package: iceweasel-l10n-lij
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-lij
+Depends: firefox-esr-l10n-lij, ${misc:Depends}
 Description: Ligurian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-lt
@@ -1285,7 +1285,7 @@ Description: Lithuanian language package for Firefox
 Package: iceweasel-l10n-lt
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-lt
+Depends: firefox-esr-l10n-lt, ${misc:Depends}
 Description: Lithuanian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-lv
@@ -1306,7 +1306,7 @@ Description: Latvian language package for Firefox
 Package: iceweasel-l10n-lv
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-lv
+Depends: firefox-esr-l10n-lv, ${misc:Depends}
 Description: Latvian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-mai
@@ -1326,7 +1326,7 @@ Description: Maithili language package for Firefox
 Package: iceweasel-l10n-mai
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-mai
+Depends: firefox-esr-l10n-mai, ${misc:Depends}
 Description: Maithili language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-mk
@@ -1346,7 +1346,7 @@ Description: Macedonian language package for Firefox
 Package: iceweasel-l10n-mk
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-mk
+Depends: firefox-esr-l10n-mk, ${misc:Depends}
 Description: Macedonian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ml
@@ -1366,7 +1366,7 @@ Description: Malayalam language package for Firefox
 Package: iceweasel-l10n-ml
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ml
+Depends: firefox-esr-l10n-ml, ${misc:Depends}
 Description: Malayalam language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-mr
@@ -1386,7 +1386,7 @@ Description: Marathi language package for Firefox
 Package: iceweasel-l10n-mr
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-mr
+Depends: firefox-esr-l10n-mr, ${misc:Depends}
 Description: Marathi language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ms
@@ -1406,7 +1406,7 @@ Description: Malay language package for Firefox
 Package: iceweasel-l10n-ms
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ms
+Depends: firefox-esr-l10n-ms, ${misc:Depends}
 Description: Malay language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-nb-no
@@ -1427,7 +1427,7 @@ Description: Norwegian Bokmål (Norway) language package for Firefox
 Package: iceweasel-l10n-nb-no
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-nb-no
+Depends: firefox-esr-l10n-nb-no, ${misc:Depends}
 Description: Norwegian Bokmål (Norway) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-nl
@@ -1448,7 +1448,7 @@ Description: Dutch language package for Firefox
 Package: iceweasel-l10n-nl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-nl
+Depends: firefox-esr-l10n-nl, ${misc:Depends}
 Description: Dutch language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-nn-no
@@ -1469,7 +1469,7 @@ Description: Norwegian Nynorsk (Norway) language package for Firefox
 Package: iceweasel-l10n-nn-no
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-nn-no
+Depends: firefox-esr-l10n-nn-no, ${misc:Depends}
 Description: Norwegian Nynorsk (Norway) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-or
@@ -1489,7 +1489,7 @@ Description: Oriya language package for Firefox
 Package: iceweasel-l10n-or
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-or
+Depends: firefox-esr-l10n-or, ${misc:Depends}
 Description: Oriya language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-pa-in
@@ -1509,7 +1509,7 @@ Description: Panjabi (India) language package for Firefox
 Package: iceweasel-l10n-pa-in
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-pa-in
+Depends: firefox-esr-l10n-pa-in, ${misc:Depends}
 Description: Panjabi (India) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-pl
@@ -1530,7 +1530,7 @@ Description: Polish language package for Firefox
 Package: iceweasel-l10n-pl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-pl
+Depends: firefox-esr-l10n-pl, ${misc:Depends}
 Description: Polish language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-pt-br
@@ -1551,7 +1551,7 @@ Description: Portuguese (Brazil) language package for Firefox
 Package: iceweasel-l10n-pt-br
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-pt-br
+Depends: firefox-esr-l10n-pt-br, ${misc:Depends}
 Description: Portuguese (Brazil) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-pt-pt
@@ -1572,7 +1572,7 @@ Description: Portuguese (Portugal) language package for Firefox
 Package: iceweasel-l10n-pt-pt
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-pt-pt
+Depends: firefox-esr-l10n-pt-pt, ${misc:Depends}
 Description: Portuguese (Portugal) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-rm
@@ -1592,7 +1592,7 @@ Description: Romansh language package for Firefox
 Package: iceweasel-l10n-rm
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-rm
+Depends: firefox-esr-l10n-rm, ${misc:Depends}
 Description: Romansh language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ro
@@ -1612,7 +1612,7 @@ Description: Romanian language package for Firefox
 Package: iceweasel-l10n-ro
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ro
+Depends: firefox-esr-l10n-ro, ${misc:Depends}
 Description: Romanian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ru
@@ -1633,7 +1633,7 @@ Description: Russian language package for Firefox
 Package: iceweasel-l10n-ru
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ru
+Depends: firefox-esr-l10n-ru, ${misc:Depends}
 Description: Russian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-si
@@ -1653,7 +1653,7 @@ Description: Sinhala language package for Firefox
 Package: iceweasel-l10n-si
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-si
+Depends: firefox-esr-l10n-si, ${misc:Depends}
 Description: Sinhala language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-sk
@@ -1674,7 +1674,7 @@ Description: Slovak language package for Firefox
 Package: iceweasel-l10n-sk
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-sk
+Depends: firefox-esr-l10n-sk, ${misc:Depends}
 Description: Slovak language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-sl
@@ -1695,7 +1695,7 @@ Description: Slovenian language package for Firefox
 Package: iceweasel-l10n-sl
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-sl
+Depends: firefox-esr-l10n-sl, ${misc:Depends}
 Description: Slovenian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-son
@@ -1715,7 +1715,7 @@ Description: Songhai languages language package for Firefox
 Package: iceweasel-l10n-son
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-son
+Depends: firefox-esr-l10n-son, ${misc:Depends}
 Description: Songhai languages language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-sq
@@ -1735,7 +1735,7 @@ Description: Albanian language package for Firefox
 Package: iceweasel-l10n-sq
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-sq
+Depends: firefox-esr-l10n-sq, ${misc:Depends}
 Description: Albanian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-sr
@@ -1755,7 +1755,7 @@ Description: Serbian language package for Firefox
 Package: iceweasel-l10n-sr
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-sr
+Depends: firefox-esr-l10n-sr, ${misc:Depends}
 Description: Serbian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-sv-se
@@ -1776,7 +1776,7 @@ Description: Swedish (Sweden) language package for Firefox
 Package: iceweasel-l10n-sv-se
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-sv-se
+Depends: firefox-esr-l10n-sv-se, ${misc:Depends}
 Description: Swedish (Sweden) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-ta
@@ -1796,7 +1796,7 @@ Description: Tamil language package for Firefox
 Package: iceweasel-l10n-ta
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-ta
+Depends: firefox-esr-l10n-ta, ${misc:Depends}
 Description: Tamil language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-te
@@ -1816,7 +1816,7 @@ Description: Telugu language package for Firefox
 Package: iceweasel-l10n-te
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-te
+Depends: firefox-esr-l10n-te, ${misc:Depends}
 Description: Telugu language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-th
@@ -1836,7 +1836,7 @@ Description: Thai language package for Firefox
 Package: iceweasel-l10n-th
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-th
+Depends: firefox-esr-l10n-th, ${misc:Depends}
 Description: Thai language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-tr
@@ -1856,7 +1856,7 @@ Description: Turkish language package for Firefox
 Package: iceweasel-l10n-tr
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-tr
+Depends: firefox-esr-l10n-tr, ${misc:Depends}
 Description: Turkish language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-uk
@@ -1877,7 +1877,7 @@ Description: Ukrainian language package for Firefox
 Package: iceweasel-l10n-uk
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-uk
+Depends: firefox-esr-l10n-uk, ${misc:Depends}
 Description: Ukrainian language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-uz
@@ -1897,7 +1897,7 @@ Description: Uzbek language package for Firefox
 Package: iceweasel-l10n-uz
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-uz
+Depends: firefox-esr-l10n-uz, ${misc:Depends}
 Description: Uzbek language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-vi
@@ -1917,7 +1917,7 @@ Description: Vietnamese language package for Firefox
 Package: iceweasel-l10n-vi
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-vi
+Depends: firefox-esr-l10n-vi, ${misc:Depends}
 Description: Vietnamese language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-xh
@@ -1937,7 +1937,7 @@ Description: Xhosa language package for Firefox
 Package: iceweasel-l10n-xh
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-xh
+Depends: firefox-esr-l10n-xh, ${misc:Depends}
 Description: Xhosa language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-zh-cn
@@ -1957,7 +1957,7 @@ Description: Chinese (China) language package for Firefox
 Package: iceweasel-l10n-zh-cn
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-zh-cn
+Depends: firefox-esr-l10n-zh-cn, ${misc:Depends}
 Description: Chinese (China) language package for Iceweasel - Transitional package
 
 Package: firefox-esr-l10n-zh-tw
@@ -1977,5 +1977,5 @@ Description: Chinese (Taiwan) language package for Firefox
 Package: iceweasel-l10n-zh-tw
 Architecture: all
 Section: localization
-Depends: firefox-esr-l10n-zh-tw
+Depends: firefox-esr-l10n-zh-tw, ${misc:Depends}
 Description: Chinese (Taiwan) language package for Iceweasel - Transitional package
