@@ -21,6 +21,13 @@
 # Real source files with really long lines
  source: source-is-missing browser/app/profile/firefox.js *
  source: source-is-missing modules/libpref/init/all.js *
+ source: source-is-missing devtools/client/sourceeditor/tern/ecma5.js *
+ source: source-is-missing devtools/shared/acorn/acorn.js *
+ source: source-is-missing devtools/server/actors/utils/automation-timeline.js *
+ source: source-is-missing browser/extensions/loop/chrome/content/preferences/prefs.js *
+ source: source-is-missing browser/extensions/loop/chrome/content/shared/js/linkifiedTextView.js *
+ source: source-is-missing browser/extensions/loop/chrome/content/shared/js/textChatView.js *
+ source: source-is-missing browser/extensions/loop/chrome/content/shared/js/views.js *
 
 # The source for these is in browser/components/translation/cld2 with
 # an accompanying Makefile. It requires emscripten to build, which is
