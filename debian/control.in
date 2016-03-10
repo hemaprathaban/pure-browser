@@ -118,6 +118,7 @@ Package: iceweasel
 Architecture: all
 Depends: @browser@, ${misc:Depends}
 Description: Web browser based on Firefox - Transitional package
+ This is a transitional package, it can be safely removed.
 %endif
 
 Package: @browser@-dbg
@@ -148,6 +149,7 @@ Priority: extra
 Section: debug
 Depends: @browser@-dbg, ${misc:Depends}
 Description: Debugging symbols for Iceweasel - Transitional package
+ This is a transitional package, it can be safely removed.
 %endif
 
 Package: @browser@-dev
@@ -192,6 +194,7 @@ Architecture: all
 Section: debug
 Depends: @browser@-dev, ${misc:Depends}
 Description: Development files for the Gecko engine library - Transitional package
+ This is a transitional package, it can be safely removed.
 %endif
 
 Package: @browser@-l10n-all
@@ -215,5 +218,6 @@ Architecture: all
 Section: localization
 Depends: @browser@-l10n-all, ${misc:Depends}
 Description: All language packages for Iceweasel - Transitional package
+ This is a transitional package, it can be safely removed.
 %endif
 %include l10n/browser-l10n.control
