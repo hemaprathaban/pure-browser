@@ -155,12 +155,11 @@ ImageClientSingle::UpdateImage(ImageContainer* aContainer, uint32_t aContentFlag
   for (auto& img : images) {
     Image* image = img.mImage;
     RefPtr<TextureClient> texture = image->GetTextureClient(this);
-    const bool hasTextureClient = !!texture;
 
     for (int32_t i = mBuffers.Length() - 1; i >= 0; --i) {
       if (mBuffers[i].mImageSerial == image->GetSerial()) {
-        if (hasTextureClient) {
-          MOZ_ASSERT(image->GetTextureClient(this) == mBuffers[i].mTextureClient);
+        if (texture) {
+          MOZ_ASSERT(texture == mBuffers[i].mTextureClient);
         } else {
           texture = mBuffers[i].mTextureClient;
         }

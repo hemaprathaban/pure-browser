@@ -5,7 +5,6 @@ config = {
         'checkout-sources',
         'setup-mock',
         'package-source',
-        'generate-source-signing-manifest',
     ],
     'stage_platform': 'source',  # Not used, but required by the script
     'purge_minsize': 3,
@@ -17,5 +16,8 @@ config = {
         'TINDERBOX_OUTPUT': '1',
         'LC_ALL': 'C',
     },
-    'src_mozconfig': 'browser/config/mozconfigs/linux64/source',
+    'tooltool_script': ["/builds/tooltool.py"],
+    'tooltool_bootstrap': "setup.sh",
+    'tooltool_manifest_src': "browser/config/tooltool-manifests/linux64/releng.manifest",
+    'src_mozconfig': 'browser/config/mozconfigs/linux64/nightly',
 }

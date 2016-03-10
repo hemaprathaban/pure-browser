@@ -49,9 +49,6 @@ except ImportError:
 SUCCESS = 0
 FAILURE = 1
 
-SUCCESS_STR = "Success"
-FAILURE_STR = "Failed"
-
 # when running get_output_form_command, pymake has some extra output
 # that needs to be filtered out
 PyMakeIgnoreList = [
@@ -497,7 +494,7 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
 
     def _add_failure(self, locale, message, **kwargs):
         """marks current step as failed"""
-        self.locales_property[locale] = FAILURE_STR
+        self.locales_property[locale] = "Failed"
         prop_key = "%s_failure" % locale
         prop_value = self.query_buildbot_property(prop_key)
         if prop_value:
@@ -507,17 +504,13 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
         self.set_buildbot_property(prop_key, prop_value, write_to_file=True)
         BaseScript.add_failure(self, locale, message=message, **kwargs)
 
-    def query_failed_locales(self):
-        return [l for l, res in self.locales_property.items() if
-                res == FAILURE_STR]
-
     def summary(self):
         """generates a summary"""
         BaseScript.summary(self)
         # TODO we probably want to make this configurable on/off
         locales = self.query_locales()
         for locale in locales:
-            self.locales_property.setdefault(locale, SUCCESS_STR)
+            self.locales_property.setdefault(locale, "Success")
         self.set_buildbot_property("locales",
                                    json.dumps(self.locales_property),
                                    write_to_file=True)
@@ -660,15 +653,14 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
                                 halt_on_failure=halt_on_failure,
                                 output_parser=output_parser)
 
-    def _get_output_from_make(self, target, cwd, env, halt_on_failure=True, ignore_errors=False):
+    def _get_output_from_make(self, target, cwd, env, halt_on_failure=True):
         """runs make and returns the output of the command"""
         make = self._get_make_executable()
         return self.get_output_from_command(make + target,
                                             cwd=cwd,
                                             env=env,
                                             silent=True,
-                                            halt_on_failure=halt_on_failure,
-                                            ignore_errors=ignore_errors)
+                                            halt_on_failure=halt_on_failure)
 
     def make_unpack_en_US(self):
         """wrapper for make unpack"""
@@ -714,23 +706,19 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
             ret = FAILURE
         return ret
 
-    def set_upload_files(self, locale):
+    def get_upload_files(self, locale):
         # The tree doesn't have a good way of exporting the list of files
         # created during locale generation, but we can grab them by echoing the
         # UPLOAD_FILES variable for each locale.
         env = self.query_l10n_env()
-        target = ['echo-variable-UPLOAD_FILES', 'echo-variable-CHECKSUM_FILES',
-                  'AB_CD=%s' % locale]
+        target = ['echo-variable-UPLOAD_FILES', 'AB_CD=%s' % (locale)]
         dirs = self.query_abs_dirs()
         cwd = dirs['abs_locales_dir']
-        # Bug 1242771 - echo-variable-UPLOAD_FILES via mozharness fails when stderr is found
-        #    we should ignore stderr as unfortunately it's expected when parsing for values
-        output = self._get_output_from_make(target=target, cwd=cwd, env=env,
-                                            ignore_errors=True)
-        self.info('UPLOAD_FILES is "%s"' % output)
+        output = self._get_output_from_make(target=target, cwd=cwd, env=env)
+        self.info('UPLOAD_FILES is "%s"' % (output))
         files = shlex.split(output)
         if not files:
-            self.error('failed to get upload file list for locale %s' % locale)
+            self.error('failed to get upload file list for locale %s' % (locale))
             return FAILURE
 
         self.upload_files[locale] = [
@@ -762,17 +750,13 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
             self.error("make installers-%s failed" % (locale))
             return FAILURE
 
+        if self.get_upload_files(locale):
+            self.error("failed to get list of files to upload for locale %s" % (locale))
+            return FAILURE
         # now try to upload the artifacts
         if self.make_upload(locale):
             self.error("make upload for locale %s failed!" % (locale))
             return FAILURE
-
-        # set_upload_files() should be called after make upload, to make sure
-        # we have all files in place (cheksums, etc)
-        if self.set_upload_files(locale):
-            self.error("failed to get list of files to upload for locale %s" % locale)
-            return FAILURE
-
         return SUCCESS
 
     def repack(self):
@@ -1027,15 +1011,6 @@ class DesktopSingleLocale(LocalesMixin, ReleaseMixin, MockMixin, BuildbotMixin,
                 # locations.
                 tc.create_artifact(task, upload_file)
             tc.report_completed(task)
-
-        if artifacts_task:
-            if not self.query_failed_locales():
-                artifacts_tc.report_completed(artifacts_task)
-            else:
-                # If some locales fail, we want to mark the artifacts
-                # task failed, so a retry can reuse the same task ID
-                artifacts_tc.report_failed(artifacts_task)
-
 
 # main {{{
 if __name__ == '__main__':

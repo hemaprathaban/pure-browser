@@ -23,7 +23,6 @@ function waitForWorkersUpdate(document) {
 add_task(function *() {
   yield new Promise(done => {
     let options = {"set": [
-                    ["dom.serviceWorkers.enabled", true],
                     ["dom.serviceWorkers.testing.enabled", true],
                   ]};
     SpecialPowers.pushPrefEnv(options, done);

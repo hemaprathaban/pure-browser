@@ -379,9 +379,7 @@ function workerScript() {
   };
 
   self.executeSoon = function(_fun_) {
-    var channel = new MessageChannel();
-    channel.port1.postMessage("");
-    channel.port2.onmessage = function(event) { _fun_(); };
+    setTimeout(_fun_, 0);
   };
 
   self.finishTest = function() {

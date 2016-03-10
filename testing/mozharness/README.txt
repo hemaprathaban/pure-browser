@@ -19,4 +19,5 @@ pip install tox
 tox  # from within the $gecko_repo/testing/mozharness directory
 ```
 
-Happy contributing! :)
+Happy contributing! =)
+

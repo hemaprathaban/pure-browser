@@ -37,7 +37,6 @@ class FxDesktopBuild(BuildScript, object):
                 'sendchange',
                 'check-test',
                 'package-source',
-                'generate-source-signing-manifest',
                 'multi-l10n',
                 'generate-build-stats',
                 'update',
