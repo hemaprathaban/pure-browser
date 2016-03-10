@@ -13,9 +13,9 @@
  source: source-is-missing js/src/jit-test/*
  source: source-is-missing js/src/octane/*
  source: source-is-missing testing/*
- source: source-is-missing dom/html/reftests/toblob-todataurl/sample.js
+ source: source-is-missing dom/html/reftests/toblob-todataurl/sample.js *
  source: source-is-missing layout/generic/crashtests/simple_blank.swf
- source: source-is-missing layout/reftests/svg/nesting-invalid-01.js
+ source: source-is-missing layout/reftests/svg/nesting-invalid-01.js *
  source: source-is-missing addon-sdk/source/examples/actor-repl/data/codemirror-compressed.js
 
 # Real source files with really long lines
@@ -26,7 +26,7 @@
 # an accompanying Makefile. It requires emscripten to build, which is
 # not available on all architectures, so this would require packaging
 # circumvolutions.
- source: source-is-missing browser/components/translation/cld2/cld-worker.js
+ source: source-is-missing browser/components/translation/cld2/cld-worker.js *
 
 # The source for these is in python/psutil/psutil. They are not shipped,
 # and, in fact, are even actually unused during the build (they depend
