@@ -95,17 +95,12 @@ Recommends: gstreamer0.10-ffmpeg,
             gstreamer0.10-plugins-good
 %endif
 Conflicts: j2re1.4,
-           pango-graphite (<< 0.9.3)
-Breaks: xul-ext-torbutton,
+           pango-graphite (<< 0.9.3),
 %if TRANSITION
-        iceweasel (<< 45)
-Replaces: iceweasel (<< 45)
-%endif
+           iceweasel (<< 45)
+Breaks: xul-ext-torbutton
 Provides: www-browser,
-          gnome-www-browser,
-%if TRANSITION
-          iceweasel
-%endif
+          gnome-www-browser
 %define DESCRIPTION Mozilla Firefox web browser
 %define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
 %define LONGDESC2 web application technologies.
