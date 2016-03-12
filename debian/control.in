@@ -116,6 +116,8 @@ Description: @DESCRIPTION@
 
 Package: iceweasel
 Architecture: all
+Priority: extra
+Section: oldlibs
 Depends: @browser@, ${misc:Depends}
 Description: Web browser based on Firefox - Transitional package
  This is a transitional package, it can be safely removed.
@@ -146,7 +148,7 @@ Description: Debugging symbols for @Browser@
 Package: iceweasel-dbg
 Architecture: all
 Priority: extra
-Section: debug
+Section: oldlibs
 Depends: @browser@-dbg, ${misc:Depends}
 Description: Debugging symbols for Iceweasel - Transitional package
  This is a transitional package, it can be safely removed.
@@ -191,7 +193,8 @@ Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
 
 Package: iceweasel-dev
 Architecture: all
-Section: debug
+Priority: extra
+Section: oldlibs
 Depends: @browser@-dev, ${misc:Depends}
 Description: Development files for the Gecko engine library - Transitional package
  This is a transitional package, it can be safely removed.
@@ -215,7 +218,8 @@ Description: All language packages for @Browser@ (meta)
 
 Package: iceweasel-l10n-all
 Architecture: all
-Section: localization
+Priority: extra
+Section: oldlibs
 Depends: @browser@-l10n-all, ${misc:Depends}
 Description: All language packages for Iceweasel - Transitional package
  This is a transitional package, it can be safely removed.
