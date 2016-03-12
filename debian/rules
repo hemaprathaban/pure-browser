@@ -44,7 +44,7 @@ endif
 endif
 endif
 
-#GTK3 ?= $(shell grep -q _PLATFORM_DEFAULT_TOOLKIT=cairo-gtk3 configure.in && echo 1)
+#GTK3 ?= $(shell grep -q _PLATFORM_DEFAULT_TOOLKIT=cairo-gtk3 old-configure.in && echo 1)
 
 ifeq (firefox-esr,$(DEBIAN_SOURCE))
 TRANSITION = 1
