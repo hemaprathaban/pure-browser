@@ -1,3 +1,31 @@
+firefox-esr (45.0esr-2) unstable; urgency=medium
+
+  * debian/control*, debian/l10n/browser-l10n.control.in: Move transitional
+    packages to oldlibs/extra. Closes: #818038.
+  * debian/control*: Don't make firefox-esr break/replace iceweasel. Instead,
+    add a conflict with older versions of iceweasel. Hopefully, this means
+    iceweasel would be unpacked first, removing its /usr/bin/firefox file
+    before firefox-esr removes the diversion. Closes: #817977.
+  * debian/rules: Add version information to rm_conffile calls. Along with the
+    conflict instead of replace/break, it looks like it closes: #817908.
+  * debian/iceweasel.links: Add an iceweasel symbolic link for a smoother
+    transition. Closes: #817952.
+  * debian/rules, debian/control*, debian/browser.desktop.in: Make firefox-esr
+    more differentiable from firefox when both are installed.
+  * debian/iceweasel.install, debian/iceweasel.desktop: Add a desktop file for
+    iceweasel. Closes: #817904.
+
+  * ipc/chromium/moz.build, ipc/chromium/src/build/build_config.h,
+    ipc/chromium/src/base/atomicops.h,
+    ipc/chromium/src/base/atomicops_internals_arm64_gcc.h: Add aarch64 support
+    for atomic operations. bz#1250403.
+  * media/webrtc/moz.build, media/webrtc/signaling/test/standalone/*,
+    toolkit/toolkit.mozbuild: Remove signaling standalone tests. bz#1239866.
+    This should fix the FTBFS on ppc by not linking some unit tests we don't
+    run anyways (and were removed upstream in version 46).
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 13 Mar 2016 11:50:12 +0900
+
 firefox-esr (45.0esr-1) unstable; urgency=medium
 
   * Farewell, Iceweasel.
