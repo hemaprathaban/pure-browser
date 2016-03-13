@@ -161,10 +161,10 @@ MAINTSCRIPTS := $(addprefix debian/,$(addsuffix .maintscript,$(shell awk -F/ '$$
 GENERATED_FILES += $(MAINTSCRIPTS)
 
 debian/iceweasel.maintscript: debian/removed_conffiles
-	(grep -v searchplugins/locale $<; grep searchplugins/locale/en-US $<) | sed 's,^,rm_conffile /etc/iceweasel/,' > $@
+	(grep -v searchplugins/locale $<; grep searchplugins/locale/en-US $<) | awk '{print "rm_conffile /etc/iceweasel/" $$0, "45.0esr-2~", "iceweasel"}' > $@
 
 debian/iceweasel-l10n-%.maintscript: debian/removed_conffiles
-	grep -i searchplugins/locale/$* $< | sed 's,^,rm_conffile /etc/iceweasel/,' > $@
+	grep -i searchplugins/locale/$* $< | awk '{print "rm_conffile /etc/iceweasel/" $$0, "45.0esr-2~", "iceweasel-l10n-$*"}' > $@
 endif
 
 %/package-manifest:
