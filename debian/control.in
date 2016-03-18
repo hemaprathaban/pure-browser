@@ -70,8 +70,8 @@ Build-Conflicts: graphicsmagick-imagemagick-compat,
                  libhildonmime-dev,
                  libosso-dev
 Standards-Version: 3.9.7.0
-Vcs-Git: https://anonscm.debian.org/git/pkg-mozilla/iceweasel.git
-Vcs-Browser: https://anonscm.debian.org/cgit/pkg-mozilla/iceweasel.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-mozilla/iceweasel.git -b @SHORT_SOURCE_CHANNEL@/master
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-mozilla/iceweasel.git?h=@SHORT_SOURCE_CHANNEL@/master
 
 Package: @browser@
 Architecture: any
