@@ -1,3 +1,32 @@
+firefox-esr (45.0.1esr-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Disables Graphite font shaping library.
+
+  * debian/iceweasel.desktop:
+    - Use Firefox ESR icon for this transitional desktop file. Closes: #818098.
+    - Remove StartupWMClass and StartupNotify. I think it's the least worse
+      option for the transition. Closes: #818101.
+  * debian/firefox.in: Literally check for "firefox" in the firefox wrapper
+    instead of $0. Closes: #818159.
+  * debian/browser.js.in: Don't mention the pref subdirectory in
+    /etc/firefox*/firefox*.js. Also reword the comment there, and remove some
+    parts of it. Closes: #818322.
+  * debian/iceweasel.lintian-overrides: Add a lintian override for
+    iceweasel.desktop launching firefox-esr.
+  * debian/control*:
+    - Bump libvpx build dependency to 1.4.0. Closes: #818454.
+    - Switch Vcs-* fields to https urls.
+    - Point Vcs-* urls to the right branch.
+  * debian/rules: Add --exclude=.mkdir.done to TAR_CREATE_FLAGS.
+
+  * ipc/chromium/atomics/moz.build, ipc/chromium/moz.build,
+    media/webrtc/signaling/test/common.build: Link chromium mutex-based
+    atomics implementation to webrtc signaling tests. bz#1257888. This should
+    fix the powerpc FTBFSes.
+
+ -- Mike Hommey <glandium@debian.org>  Sat, 19 Mar 2016 02:26:35 +0900
+
 firefox-esr (45.0esr-2) unstable; urgency=medium
 
   * debian/control*, debian/l10n/browser-l10n.control.in: Move transitional
