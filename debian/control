@@ -77,3 +77,1068 @@ Recommends: gstreamer1.0-libav,
             gstreamer1.0-plugins-good
 Conflicts: j2re1.4,
            pango-graphite (<< 0.9.3),
+Breaks: xul-ext-torbutton
+Provides: www-browser,
+          gnome-www-browser
+Description: Mozilla Firefox web browser
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+
+Package: firefox-dbg
+Architecture: any
+Priority: extra
+Section: debug
+Depends: firefox (= ${binary:Version}),
+         libnss3-dbg | libnss3-1d-dbg,
+         libnspr4-dbg | libnspr4-0d-dbg,
+         ${misc:Depends}
+Description: Debugging symbols for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the debugging symbols for firefox.
+
+Package: firefox-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         python-ply,
+         libnss3-dev,
+         libnspr4-dev,
+         firefox (= ${binary:Version})
+Conflicts: xulrunner-dev,
+Description: Development files for the Gecko engine library
+ This library provides an  API for XUL applications and Gecko embedders.
+ The Gecko engine is the core of the mozilla.org applications such as
+ Firefox, Thunderbird or SeaMonkey.
+ .
+ Gecko features include XPCOM, networking, DOM editing and transaction
+ support, XBL, XUL, SVG, XSLT, XML Extras (XMLHttpRequest and DOMParser),
+ Web Services (SOAP), accessibility support, IPC services, gtkmozembed, etc.
+ .
+ Install this package if you wish to embed the Gecko engine in your
+ program or want to develop XPCOM components.
+ .
+ This package also provides the Xulrunner Software Development Kit in the
+ same form as the one you may find on mozilla.org in /usr/lib/xulrunner/sdk.
+Homepage: http://wiki.mozilla.org/XUL:Lib_XUL
+
+Package: firefox-l10n-all
+Architecture: all
+Section: localization
+Depends: ${misc:Depends}, firefox-l10n-ach, firefox-l10n-af, firefox-l10n-an, firefox-l10n-ar, firefox-l10n-as, firefox-l10n-ast, firefox-l10n-az, firefox-l10n-be, firefox-l10n-bg, firefox-l10n-bn-bd, firefox-l10n-bn-in, firefox-l10n-br, firefox-l10n-bs, firefox-l10n-ca, firefox-l10n-cs, firefox-l10n-cy, firefox-l10n-da, firefox-l10n-de, firefox-l10n-dsb, firefox-l10n-el, firefox-l10n-en-gb, firefox-l10n-en-za, firefox-l10n-eo, firefox-l10n-es-ar, firefox-l10n-es-cl, firefox-l10n-es-es, firefox-l10n-es-mx, firefox-l10n-et, firefox-l10n-eu, firefox-l10n-fa, firefox-l10n-ff, firefox-l10n-fi, firefox-l10n-fr, firefox-l10n-fy-nl, firefox-l10n-ga-ie, firefox-l10n-gd, firefox-l10n-gl, firefox-l10n-gn, firefox-l10n-gu-in, firefox-l10n-he, firefox-l10n-hi-in, firefox-l10n-hr, firefox-l10n-hsb, firefox-l10n-hu, firefox-l10n-hy-am, firefox-l10n-id, firefox-l10n-is, firefox-l10n-it, firefox-l10n-ja, firefox-l10n-kk, firefox-l10n-km, firefox-l10n-kn, firefox-l10n-ko, firefox-l10n-lij, firefox-l10n-lt, firefox-l10n-lv, firefox-l10n-mai, firefox-l10n-mk, firefox-l10n-ml, firefox-l10n-mr, firefox-l10n-ms, firefox-l10n-nb-no, firefox-l10n-nl, firefox-l10n-nn-no, firefox-l10n-or, firefox-l10n-pa-in, firefox-l10n-pl, firefox-l10n-pt-br, firefox-l10n-pt-pt, firefox-l10n-rm, firefox-l10n-ro, firefox-l10n-ru, firefox-l10n-si, firefox-l10n-sk, firefox-l10n-sl, firefox-l10n-son, firefox-l10n-sq, firefox-l10n-sr, firefox-l10n-sv-se, firefox-l10n-ta, firefox-l10n-te, firefox-l10n-th, firefox-l10n-tr, firefox-l10n-uk, firefox-l10n-uz, firefox-l10n-vi, firefox-l10n-xh, firefox-l10n-zh-cn, firefox-l10n-zh-tw
+Description: All language packages for Firefox (meta)
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This is a metapackage depending on all available localizations of Firefox.
+
+Package: firefox-l10n-ach
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Acoli language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Acoli.
+
+Package: firefox-l10n-af
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Afrikaans language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Afrikaans.
+
+Package: firefox-l10n-an
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Aragonese language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Aragonese.
+
+Package: firefox-l10n-ar
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Arabic language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Arabic.
+
+Package: firefox-l10n-as
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Assamese language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Assamese.
+
+Package: firefox-l10n-ast
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Asturian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Asturian.
+
+Package: firefox-l10n-az
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Azerbaijani language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Azerbaijani.
+
+Package: firefox-l10n-be
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Belarusian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Belarusian.
+
+Package: firefox-l10n-bg
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-bg
+Description: Bulgarian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Bulgarian.
+
+Package: firefox-l10n-bn-bd
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Bengali (Bangladesh) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Bengali (Bangladesh).
+
+Package: firefox-l10n-bn-in
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Bengali (India) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Bengali (India).
+
+Package: firefox-l10n-br
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Breton language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Breton.
+
+Package: firefox-l10n-bs
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Bosnian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Bosnian.
+
+Package: firefox-l10n-ca
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-ca
+Description: Catalan language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Catalan.
+
+Package: firefox-l10n-cs
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-cs-cz
+Description: Czech language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Czech.
+
+Package: firefox-l10n-cy
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Welsh language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Welsh.
+
+Package: firefox-l10n-da
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-da
+Description: Danish language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Danish.
+
+Package: firefox-l10n-de
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-de-de | myspell-de-at | myspell-de-ch
+Description: German language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in German.
+
+Package: firefox-l10n-dsb
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Lower Sorbian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Lower Sorbian.
+
+Package: firefox-l10n-el
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-el-gr
+Description: Modern Greek language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Modern Greek.
+
+Package: firefox-l10n-en-gb
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-en-gb | myspell-en-us
+Description: English (United Kingdom) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in English (United Kingdom).
+
+Package: firefox-l10n-en-za
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-en-gb | myspell-en-us
+Description: English (South Africa) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in English (South Africa).
+
+Package: firefox-l10n-eo
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-eo
+Description: Esperanto language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Esperanto.
+
+Package: firefox-l10n-es-ar
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-es
+Description: Spanish (Argentina) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Spanish (Argentina).
+
+Package: firefox-l10n-es-cl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Spanish (Chile) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Spanish (Chile).
+
+Package: firefox-l10n-es-es
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-es
+Description: Spanish (Spain) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Spanish (Spain).
+
+Package: firefox-l10n-es-mx
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Spanish (Mexico) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Spanish (Mexico).
+
+Package: firefox-l10n-et
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-et
+Description: Estonian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Estonian.
+
+Package: firefox-l10n-eu
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Basque language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Basque.
+
+Package: firefox-l10n-fa
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Persian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Persian.
+
+Package: firefox-l10n-ff
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Fulah language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Fulah.
+
+Package: firefox-l10n-fi
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: xul-ext-mozvoikko
+Description: Finnish language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Finnish.
+
+Package: firefox-l10n-fr
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-fr | myspell-fr-gut
+Description: French language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in French.
+
+Package: firefox-l10n-fy-nl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Western Frisian (Netherlands) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Western Frisian (Netherlands).
+
+Package: firefox-l10n-ga-ie
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Irish (Ireland) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Irish (Ireland).
+
+Package: firefox-l10n-gd
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Scottish Gaelic language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Scottish Gaelic.
+
+Package: firefox-l10n-gl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Galician language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Galician.
+
+Package: firefox-l10n-gn
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Guarani language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Guarani.
+
+Package: firefox-l10n-gu-in
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Gujarati (India) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Gujarati (India).
+
+Package: firefox-l10n-he
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-he
+Description: Hebrew language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Hebrew.
+
+Package: firefox-l10n-hi-in
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Hindi (India) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Hindi (India).
+
+Package: firefox-l10n-hr
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Croatian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Croatian.
+
+Package: firefox-l10n-hsb
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Upper Sorbian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Upper Sorbian.
+
+Package: firefox-l10n-hu
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-hu
+Description: Hungarian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Hungarian.
+
+Package: firefox-l10n-hy-am
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Armenian (Armenia) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Armenian (Armenia).
+
+Package: firefox-l10n-id
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Indonesian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Indonesian.
+
+Package: firefox-l10n-is
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Icelandic language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Icelandic.
+
+Package: firefox-l10n-it
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-it
+Description: Italian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Italian.
+
+Package: firefox-l10n-ja
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Japanese language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Japanese.
+
+Package: firefox-l10n-kk
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Kazakh language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Kazakh.
+
+Package: firefox-l10n-km
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Central Khmer language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Central Khmer.
+
+Package: firefox-l10n-kn
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Kannada language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Kannada.
+
+Package: firefox-l10n-ko
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Korean language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Korean.
+
+Package: firefox-l10n-lij
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Ligurian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Ligurian.
+
+Package: firefox-l10n-lt
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-lt
+Description: Lithuanian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Lithuanian.
+
+Package: firefox-l10n-lv
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-lv
+Description: Latvian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Latvian.
+
+Package: firefox-l10n-mai
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Maithili language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Maithili.
+
+Package: firefox-l10n-mk
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Macedonian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Macedonian.
+
+Package: firefox-l10n-ml
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Malayalam language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Malayalam.
+
+Package: firefox-l10n-mr
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Marathi language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Marathi.
+
+Package: firefox-l10n-ms
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Malay language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Malay.
+
+Package: firefox-l10n-nb-no
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-nb
+Description: Norwegian Bokmål (Norway) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Norwegian Bokmål (Norway).
+
+Package: firefox-l10n-nl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-nl
+Description: Dutch language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Dutch.
+
+Package: firefox-l10n-nn-no
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-nn
+Description: Norwegian Nynorsk (Norway) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Norwegian Nynorsk (Norway).
+
+Package: firefox-l10n-or
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Oriya language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Oriya.
+
+Package: firefox-l10n-pa-in
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Panjabi (India) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Panjabi (India).
+
+Package: firefox-l10n-pl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-pl
+Description: Polish language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Polish.
+
+Package: firefox-l10n-pt-br
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-pt-br | myspell-pt
+Description: Portuguese (Brazil) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Portuguese (Brazil).
+
+Package: firefox-l10n-pt-pt
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-pt-pt | myspell-pt
+Description: Portuguese (Portugal) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Portuguese (Portugal).
+
+Package: firefox-l10n-rm
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Romansh language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Romansh.
+
+Package: firefox-l10n-ro
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Romanian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Romanian.
+
+Package: firefox-l10n-ru
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-ru
+Description: Russian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Russian.
+
+Package: firefox-l10n-si
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Sinhala language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Sinhala.
+
+Package: firefox-l10n-sk
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-sk
+Description: Slovak language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Slovak.
+
+Package: firefox-l10n-sl
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-sl
+Description: Slovenian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Slovenian.
+
+Package: firefox-l10n-son
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Songhai languages language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Songhai languages.
+
+Package: firefox-l10n-sq
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Albanian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Albanian.
+
+Package: firefox-l10n-sr
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Serbian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Serbian.
+
+Package: firefox-l10n-sv-se
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-sv-se
+Description: Swedish (Sweden) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Swedish (Sweden).
+
+Package: firefox-l10n-ta
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Tamil language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Tamil.
+
+Package: firefox-l10n-te
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Telugu language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Telugu.
+
+Package: firefox-l10n-th
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Thai language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Thai.
+
+Package: firefox-l10n-tr
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Turkish language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Turkish.
+
+Package: firefox-l10n-uk
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Recommends: myspell-uk
+Description: Ukrainian language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Ukrainian.
+
+Package: firefox-l10n-uz
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Uzbek language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Uzbek.
+
+Package: firefox-l10n-vi
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Vietnamese language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Vietnamese.
+
+Package: firefox-l10n-xh
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Xhosa language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Xhosa.
+
+Package: firefox-l10n-zh-cn
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Chinese (China) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Chinese (China).
+
+Package: firefox-l10n-zh-tw
+Architecture: all
+Section: localization
+Depends: ${misc:Depends},
+         firefox (>= ${source:Version}), firefox (<< ${source:Version}.1~)
+Description: Chinese (Taiwan) language package for Firefox
+ Firefox is a powerful, extensible web browser with support for modern
+ web application technologies.
+ .
+ This package contains the localization of Firefox in Chinese (Taiwan).
