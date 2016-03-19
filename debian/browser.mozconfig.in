@@ -36,7 +36,6 @@ ac_add_options --enable-url-classifier
 ac_add_options --enable-startup-notification
 ac_add_options --enable-system-ffi # MOZ_NATIVE_FFI=1
 ac_add_options --with-system-libevent # MOZ_NATIVE_LIBEVENT=1
-ac_add_options --enable-gstreamer=@GSTREAMER_VERSION@ # GST_API_VERSION=@GSTREAMER_VERSION@
 %if !LESS_SYSTEM_LIBS
 ac_add_options --with-system-nspr # MOZ_NATIVE_NSPR=1
 ac_add_options --with-system-nss # MOZ_NATIVE_NSS=1
