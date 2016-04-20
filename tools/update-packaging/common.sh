@@ -76,7 +76,8 @@ make_add_instruction() {
 check_for_add_if_not_update() {
   add_if_not_file_chk="$1"
 
-  if [ `basename $add_if_not_file_chk` = "channel-prefs.js" ]; then
+  if [ `basename $add_if_not_file_chk` = "channel-prefs.js" -o \
+       `basename $add_if_not_file_chk` = "update-settings.ini" ]; then
     ## "true" *giggle*
     return 0;
   fi
@@ -85,6 +86,12 @@ check_for_add_if_not_update() {
 }
 
 check_for_add_to_manifestv2() {
+  add_if_not_file_chk="$1"
+
+  if [ `basename $add_if_not_file_chk` = "update-settings.ini" ]; then
+    ## "true" *giggle*
+    return 0;
+  fi
   ## 'false'... because this is bash. Oh yay!
   return 1;
 }

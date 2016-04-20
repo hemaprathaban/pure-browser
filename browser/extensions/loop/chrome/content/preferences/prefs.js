@@ -1,4 +1,5 @@
 pref("loop.enabled", false);
+pref("loop.textChat.enabled", true);
 pref("loop.server", "https://loop.services.mozilla.com/v0");
 pref("loop.linkClicker.url", "https://hello.firefox.com/");
 pref("loop.gettingStarted.latestFTUVersion", 1);
