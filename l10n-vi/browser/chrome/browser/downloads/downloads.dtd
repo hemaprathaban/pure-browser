@@ -41,18 +41,18 @@
 <!ENTITY downloadsSummary.minWidth2       "21ch">
 
 <!ENTITY cmd.pause.label                  "Tạm dừng">
-<!ENTITY cmd.pause.accesskey              "m">
+<!ENTITY cmd.pause.accesskey              "P">
 <!ENTITY cmd.resume.label                 "Tiếp tục">
-<!ENTITY cmd.resume.accesskey             "T">
+<!ENTITY cmd.resume.accesskey             "R">
 <!ENTITY cmd.cancel.label                 "Hủy bỏ">
-<!ENTITY cmd.cancel.accesskey             "H">
+<!ENTITY cmd.cancel.accesskey             "C">
 <!-- LOCALIZATION NOTE (cmd.show.label, cmd.show.accesskey, cmd.showMac.label,
      cmd.showMac.accesskey):
      The show and showMac commands are never shown together, thus they can share
      the same access key (though the two access keys can also be different).
      -->
 <!ENTITY cmd.show.label                   "Mở thư mục chứa">
-<!ENTITY cmd.show.accesskey               "m">
+<!ENTITY cmd.show.accesskey               "F">
 <!ENTITY cmd.showMac.label                "Hiển thị trong Finder">
 <!ENTITY cmd.showMac.accesskey            "F">
 <!ENTITY cmd.retry.label                  "Thử lại">
@@ -60,45 +60,20 @@
 <!ENTITY cmd.goToDownloadPage.accesskey   "g">
 <!ENTITY cmd.copyDownloadLink.label       "Sao chép liên kết tải về">
 <!ENTITY cmd.copyDownloadLink.accesskey   "l">
-<!ENTITY cmd.removeFromHistory.label      "Xóa khỏi nhật ký">
-<!ENTITY cmd.removeFromHistory.accesskey  "X">
+<!ENTITY cmd.removeFromHistory.label      "Xóa khỏi lịch sử (e)">
+<!ENTITY cmd.removeFromHistory.accesskey  "e">
 <!ENTITY cmd.clearList.label              "Xóa trắng danh sách">
 <!ENTITY cmd.clearList.accesskey          "a">
-<!ENTITY cmd.clearDownloads.label         "Xóa các tải về">
-<!ENTITY cmd.clearDownloads.accesskey     "v">
-<!-- LOCALIZATION NOTE (cmd.unblock.label):
-     This command may be shown in the context menu, as a menu button item, or as
-     a text link when malware or potentially unwanted downloads are blocked.
-     -->
-<!ENTITY cmd.unblock.label                "Bỏ chặn">
-<!ENTITY cmd.unblock.accesskey            "B">
-<!-- LOCALIZATION NOTE (cmd.removeFile.label):
-     This command may be shown in the context menu or as a menu button label
-     when malware or potentially unwanted downloads are blocked.
-     -->
-<!ENTITY cmd.removeFile.label             "Xóa tập tin">
-<!ENTITY cmd.removeFile.accesskey         "X">
-<!-- LOCALIZATION NOTE (blocked.label):
-     Shown as a tag before the file name for some types of blocked downloads.
-     Note: This string doesn't exist in the UI yet.  See bug 1053890.
-     -->
-
-<!ENTITY blocked.label                    "ĐÃ CHẶN">
-<!-- LOCALIZATION NOTE (learnMore.label):
-     Shown as a text link for some types of blocked downloads, for example
-     malware, when there is an associated explanation page on the Mozilla site.
-     Note: This string doesn't exist in the UI yet.  See bug 1053890.
-     -->
-
-<!ENTITY learnMore.label                  "Tìm hiểu thêm">
+<!ENTITY cmd.clearDownloads.label         "Xóa các tải về (D)">
+<!ENTITY cmd.clearDownloads.accesskey     "D">
 <!-- LOCALIZATION NOTE (downloadsHistory.label, downloadsHistory.accesskey):
      This string is shown at the bottom of the Downloads Panel when all the
      downloads fit in the available space, or when there are no downloads in
      the panel at all.
      -->
 
-<!ENTITY downloadsHistory.label           "Xem tất cả tải về">
-<!ENTITY downloadsHistory.accesskey       "c">
+<!ENTITY downloadsHistory.label           "Xem tất cả Tải về">
+<!ENTITY downloadsHistory.accesskey       "S">
 
 <!ENTITY clearDownloadsButton.label       "Xóa các tải về">
 <!ENTITY clearDownloadsButton.tooltip     "Xóa các tải về thành công, bị hủy và thất bại">
@@ -111,8 +86,6 @@
 <!-- LOCALIZATION NOTE (downloadsPanelEmpty.label):
      This string is shown when there are no items in the Downloads Panel.
      -->
-
-<!ENTITY downloadsPanelEmpty.label        "Không có tập tin tải về cho phiên làm việc này.">
 <!-- LOCALIZATION NOTE (downloadsListNoMatch.label):
      This string is shown when some search terms are specified, but there are no
      results in the Downloads view.

@@ -1,1 +1,1 @@
-#define MOZ_LANG_TITLE Ligure (Zeneize)
+#define MOZ_LANG_TITLE Ligure (Zenéize)

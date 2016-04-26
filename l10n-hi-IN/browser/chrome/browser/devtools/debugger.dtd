@@ -49,6 +49,10 @@
   -  button that toggles all breakpoints for all sources. -->
 
 <!ENTITY debuggerUI.sources.toggleBreakpoints "सभी ब्रेकपॉइंट सक्रिय/निष्क्रिय करें">
+<!-- LOCALIZATION NOTE (debuggerUI.sources.togglePromiseDebugger): This is the
+  -  tooltip for the button that toggles the promise debugger. -->
+
+<!ENTITY debuggerUI.sources.togglePromiseDebugger "टॉगल प्रॉमिस डीबगर">
 <!-- LOCALIZATION NOTE (debuggerUI.startTracing): This is the text displayed in
   - the button to start execution tracing. -->
 
@@ -70,7 +74,7 @@
   -  checkbox that toggles ignoring caught exceptions. -->
 
 <!ENTITY debuggerUI.ignoreCaughtExceptions           "पकड़ा अपवाद नज़रअंदाज़ करें">
-<!ENTITY debuggerUI.ignoreCaughtExceptions.accesskey "C">
+<!ENTITY debuggerUI.ignoreCaughtExceptions.accesskey "सी">
 <!-- LOCALIZATION NOTE (debuggerUI.showPanesOnInit): This is the label for the
   -  checkbox that toggles visibility of panes when opening the debugger. -->
 
@@ -165,6 +169,7 @@
 <!-- LOCALIZATION NOTE (debuggerUI.tabs.*): This is the text that
   -  appears in the debugger's side pane tabs. -->
 
+<!ENTITY debuggerUI.tabs.workers        "वर्कर्स">
 <!ENTITY debuggerUI.tabs.sources        "स्रोत">
 <!ENTITY debuggerUI.tabs.traces         "ट्रेसेस">
 <!ENTITY debuggerUI.tabs.callstack      "कॉल स्टैक">
@@ -198,3 +203,17 @@
 <!ENTITY debuggerUI.stepping.stepIn2    "VK_SEMICOLON">
 <!ENTITY debuggerUI.stepping.stepOut1   "VK_F11">
 <!ENTITY debuggerUI.stepping.stepOut2   "VK_SEMICOLON">
+<!-- LOCALIZATION NOTE (debuggerUI.context.newTab):  This is the label
+  -  for the Open in New Tab menu item displayed in the context menu of the
+  -  debugger sources side menu. This should be the same as
+  -  netmonitorUI.context.newTab  -->
+
+<!ENTITY debuggerUI.context.newTab           "नए टैब में खोलें">
+<!ENTITY debuggerUI.context.newTab.accesskey "ओ">
+<!-- LOCALIZATION NOTE (debuggerUI.context.copyUrl): This is the label displayed
+  -  on the context menu that copies the selected request's url. This should be
+  -  the same as netmonitorUI.context.copyUrl -->
+
+<!ENTITY debuggerUI.context.copyUrl           "यूआरएल की प्रतिलिपि बनाएँ">
+<!ENTITY debuggerUI.context.copyUrl.accesskey "सी">
+<!ENTITY debuggerUI.context.copyUrl.key "सी">

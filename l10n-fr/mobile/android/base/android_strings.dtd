@@ -9,18 +9,24 @@
 <!ENTITY firstrun_panel_title_welcome "Bienvenue">
 <!ENTITY  onboard_start_message3 "Naviguez avec &brandShortName;">
 <!ENTITY  onboard_start_subtext3 "Personnalisez facilement votre navigation web mobile.">
-<!ENTITY  onboard_start_button_account "Se connecter à &brandShortName;">
+
+<!ENTITY firstrun_urlbar_message "Bienvenue sur &brandShortName;">
+<!ENTITY firstrun_urlbar_subtext "Trouvez plus rapidement ce que vous recherchez grâce aux suggestions de recherche.">
+<!ENTITY firstrun_bookmarks_title "Historique">
+<!ENTITY firstrun_bookmarks_message "Vos sites préférés, directement">
+<!ENTITY firstrun_bookmarks_subtext "Obtenez des résultats parmi vos marque-pages et votre historique lorsque vous effectuez des recherches.">
+<!ENTITY firstrun_data_title "Données">
+<!ENTITY firstrun_data_message "Moins de données, plus d\u0027économies">
+<!ENTITY firstrun_data_subtext "Bloquez les images afin de consommer moins de données sur les sites que vous visitez.">
+<!ENTITY firstrun_sync_title "Synchronisation">
+<!ENTITY firstrun_sync_message "&brandShortName;, toujours à vos côtés">
+<!ENTITY firstrun_sync_subtext "Synchronisez vos onglets, mots de passe et d\u0027autres données partout où vous l\u0027utilisez.">
+<!ENTITY firstrun_signin_message "Connectez-vous, lancez-vous">
+<!ENTITY firstrun_signin_button "Se connecter à Sync">
 <!ENTITY  onboard_start_button_browser "Commencer la navigation">
 <!ENTITY firstrun_button_next "Suivant">
 
 <!ENTITY  onboard_start_restricted1 "Restez en sécurité et aux commandes avec cette version simplifiée de &brandShortName;.">
-
-<!ENTITY firstrun_import_title "Importer">
-<!ENTITY firstrun_import_message "Bienvenue dans &brandShortName;">
-<!ENTITY firstrun_import_subtext "Importez vos marque-pages et votre historique depuis un autre navigateur.">
-<!ENTITY firstrun_import_action "Transférer sur &brandShortName;">
-<!ENTITY firstrun_import_dialog_button "Transférer">
-<!ENTITY firstrun_import_progress_title "Transfert en cours">
 
 <!-- Localization note: These are used as the titles of different pages on the home screen.
      They are automatically converted to all caps by the Android platform. -->
@@ -171,8 +177,6 @@
 <!ENTITY pref_developer_remotedebugging_wifi "Débogage distant par Wi-Fi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Le débogage par Wi-Fi nécessite que votre appareil dispose d\u0027une application permettant de lire les QR codes.">
 <!ENTITY pref_remember_signons2 "Enreg. les identifiants">
-<!ENTITY pref_open_external_urls_privately_title "Ouvrir les liens en nav. privée">
-<!ENTITY pref_open_external_urls_privately_summary "Utiliser la navigation privée pour tous les liens externes ouverts avec &brandShortName;">
 <!ENTITY pref_manage_logins "Gérer les identifiants">
 
 <!ENTITY pref_category_home "Écran d\u0027accueil">
@@ -241,13 +245,19 @@
 <!ENTITY tracking_protection_prompt_tip_text "Consultez les paramètres de vie privée pour en savoir plus">
 <!ENTITY tracking_protection_prompt_action_button "Fermer">
 
-<!ENTITY tab_queue_toast_message3 "Onglet enregistré dans &brandShortName;">
+<!ENTITY tab_queue_toast_message3 "Onglet ajouté à &brandShortName;">
 <!ENTITY tab_queue_toast_action "Ouvrir">
 <!ENTITY tab_queue_prompt_title "Ouvrir plusieurs liens ?">
 <!ENTITY tab_queue_prompt_text4 "Enregistrer les liens jusqu\u0027à la prochaine ouverture de &brandShortName;.">
 <!ENTITY tab_queue_prompt_tip_text2 "Vous pouvez modifier ce choix depuis les paramètres">
+<!-- Localization note (tab_queue_prompt_permit_drawing_over_apps): This additional text is shown if the
+     user needs to enable an Android setting in order to enable tab queues. -->
+<!ENTITY tab_queue_prompt_permit_drawing_over_apps "Activer « Se superposer aux autres applis »">
 <!ENTITY tab_queue_prompt_positive_action_button "Activer">
 <!ENTITY tab_queue_prompt_negative_action_button "Plus tard">
+<!-- Localization note (tab_queue_prompt_settings_button): This button is shown if the user needs to
+     enable a permission in Android's setting in order to enable tab queues. -->
+<!ENTITY tab_queue_prompt_settings_button "Se rendre dans les paramètres">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
 <!-- Localization note (tab_queue_notification_text_plural2) : The
      formatD is replaced with the number of tabs queued.  The
@@ -257,6 +267,11 @@
 <!-- Localization note (tab_queue_notification_text_singular2) : This is the
      text of a notification; we expect only one tab queued. -->
 <!ENTITY tab_queue_notification_text_singular2 "1 onglet en attente">
+
+<!-- Localization note (tab_queue_notification_settings): This notification text is shown if a tab
+     has been queued but we are missing the system permission to show an overlay. -->
+<!ENTITY tab_queue_notification_settings "Pour pouvoir « Ouvrir plusieurs liens », vous devez activer la permission « Se superposer aux autres applis » pour &brandShortName;">
+
 
 <!ENTITY pref_char_encoding "Encodage du texte">
 <!ENTITY pref_char_encoding_on "Afficher le menu">
@@ -528,18 +543,11 @@ size. -->
 <!ENTITY home_last_tabs_empty "Les onglets de la session précédente s\u0027affichent ici.">
 <!ENTITY home_open_all "Tout ouvrir">
 <!ENTITY home_most_recent_empty "Les sites récemment visités s\u0027affichent ici.">
+<!ENTITY home_selected_empty "Les sites visités durant la période définie s\u0027affichent ici.">
 <!-- Localization note (home_most_recent_emptyhint2): "Psst" is a sound that might be used to attract someone's attention unobtrusively, and intended to hint at Private Browsing to the user.
      The placeholders &formatS1; and &formatS2; are used to mark the location of text underlining. -->
 <!ENTITY home_most_recent_emptyhint2 "Psst, utiliser un &formatS1;nouvel onglet de navigation privée&formatS2; ne conservera pas votre historique.">
 <!ENTITY home_reading_list_empty "Les articles enregistrés pour plus tard s\u0027affichent ici.">
-<!-- Localization note (home_reading_list_hint3): The "TIP" string is synonymous to "hint", "clue", etc. This string is displayed
-     as an advisory message on how to add content to the reading list when the reading list empty.
-     The placeholder &formatI; will be replaced by a small image of the icon described, and can be moved to wherever
-     it is applicable. -->
-<!ENTITY home_reading_list_hint3 "ASTUCE : Enregistrez des articles dans votre liste de lecture en effectuant un appui long sur l\u0027icône &formatI; lorsque celle-ci apparaît dans la barre d\u0027adresse.">
-<!-- Localization note (home_reading_list_hint_accessible2): This string is used
-     as alternate text for accessibility. It is not visible in the UI. -->
-<!ENTITY home_reading_list_hint_accessible2 "ASTUCE : Enregistrez des articles dans votre liste de lecture en effectuant un appui long sur le bouton du mode lecture lorsque celui-ci apparaît dans la barre d\u0027adresse.">
 
 <!-- Localization note (home_default_empty): This string is used as the default text when there
      is no data to show in an about:home panel that was created by an add-on. -->
@@ -598,6 +606,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY identity_connection_secure "Connexion sécurisée">
 <!ENTITY identity_connection_insecure "Connexion non sécurisée">
 <!ENTITY identity_login_insecure "Cette page n\u0027est pas sécurisée et votre identifiant pourrait être vulnérable.">
+<!ENTITY identity_connection_chromeui "Ceci est une page sécurisée de &brandShortName;">
 
 <!-- Mixed content notifications in site identity popup -->
 <!ENTITY mixed_content_blocked_all1 "&brandShortName; a bloqué du contenu non sécurisé sur cette page.">
@@ -656,6 +665,13 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 
 <!ENTITY updater_apply_title2 "Mise à jour de &brandShortName; disponible">
 <!ENTITY updater_apply_select2 "Appuyez pour mettre à jour">
+
+<!-- Localization note (updater_permission_text): This text is shown in a notification and as a snackbar
+     if the app requires a runtime permission to download updates. Currently, the updater only sees
+     remotely advertised updates in the Nightly and Aurora channels. -->
+<!ENTITY updater_permission_text "Afin de télécharger des fichiers ou des mises à jour, vous devez autoriser &brandShortName; à accéder à l\u0027espace de stockage.">
+<!-- LOCALIZATION NOTE (updater_permission_allow): This action is shown in a snackbar along with updater_permission_text. -->
+<!ENTITY updater_permission_allow "Autoriser">
 
 <!-- Guest mode -->
 <!ENTITY new_guest_session "Nouvelle session invité">
@@ -746,8 +762,8 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY restrictable_feature_advanced_settings_description "Incluent l\u0027importation de marque-pages, la restauration d\u0027onglets et les mises à jour automatiques. Désactivez-les pour bénéficier de paramètres plus simples pour tous les membres de la famille.">
 <!ENTITY restrictable_feature_camera_microphone "Caméra et microphone">
 <!ENTITY restrictable_feature_camera_microphone_description "Permet aux membres de la famille d\u0027engager des communications en temps réel sur des sites web.">
-<!ENTITY restrictable_feature_data_choices "Données collectées">
-<!ENTITY restrictable_feature_data_choices_description "Décidez si vous souhaitez envoyer ou non des informations à Mozilla pour aider à améliorer Firefox.">
+<!ENTITY restrictable_feature_block_list "Liste de blocage">
+<!ENTITY restrictable_feature_block_list_description "Bloquer les sites web comportant du contenu sensible.">
 
 <!-- Default Bookmarks titles-->
 <!-- LOCALIZATION NOTE (bookmarks_title): title for the folder that will contains the default bookmarks -->

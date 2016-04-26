@@ -2,6 +2,13 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
+<!ENTITY windowTitle "I-Firefox WebIDE">
+
+<!ENTITY projectMenu_accesskey "P">
+
+
+<!ENTITY projectMenu_importPackagedApp_label "Vula I-app Ekwipakeji…">
+<!ENTITY projectMenu_importPackagedApp_accesskey "P">
 
 
 
@@ -11,34 +18,30 @@
 
 
 
+<!ENTITY projectMenu_debug_accesskey "D">
+
+
+
+<!ENTITY projectMenu_showPrefs_accesskey "e">
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+<!ENTITY runtimeMenu_label "Ixesha lokuhambisa">
+<!ENTITY runtimeMenu_accesskey "R">
 <!ENTITY runtimeMenu_disconnect_label "Khupha kunxibelelo">
 
 
 
 <!ENTITY runtimeMenu_takeScreenshot_label "Iskrinshot">
+<!ENTITY runtimeMenu_takeScreenshot_accesskey "S">
+<!ENTITY runtimeMenu_showDetails_label "Inkcazelo YeRuntime">
+<!ENTITY runtimeMenu_showDetails_accesskey "E">
 
+<!ENTITY runtimeMenu_showMonitor_accesskey "M">
 
-
-
-
-
-
-
+<!ENTITY runtimeMenu_showDevicePrefs_accesskey "D">
+<!ENTITY runtimeMenu_showSettings_label "Iisetingi Zesixhobo">
 
 
 <!ENTITY viewMenu_label "Jonga">
@@ -48,21 +51,22 @@
 <!ENTITY viewMenu_zoomin_label "Sondeza Kufuphi">
 
 <!ENTITY viewMenu_zoomout_label "Bhekelisela Kudana">
+<!ENTITY viewMenu_zoomout_accesskey "O">
 
-
-
+<!ENTITY viewMenu_resetzoom_accesskey "R">
 
 
 <!-- We try to repicate Firefox' bindings: -->
 <!-- quit app -->
 <!-- open menu -->
+<!ENTITY key_showProjectPanel "O">
 <!-- reload app -->
 <!-- show toolbox -->
 <!ENTITY key_toggleToolbox "VK_F12">
 <!-- toggle sidebar -->
 <!-- zoom -->
-
-
+<!ENTITY key_zoomin2 "=">
+<!ENTITY key_zoomout "-">
 
 <!-- reload WebIDE and devtools from local checkout -->
 <!-- this binding is with accel+alt, whereas all others are just accel -->
@@ -75,14 +79,14 @@
 
 <!ENTITY runtimePanel_installsimulator "Fakela isixhobo esakhelwe ukulinganisa">
 
-
+<!ENTITY runtimePanel_nousbdevice "Akusiboni isixhobo sakho?">
 
 <!-- Lense -->
 <!ENTITY details_warning_header "Izilumkiso">
 
 
 <!ENTITY details_location "Indawo">
-
+<!ENTITY details_manifestURL "I-ID ye-App">
 
 
 <!-- New App -->
@@ -98,6 +102,8 @@
 <!ENTITY addons_aboutaddons "Vula umlawuli wezongezelelo">
 <!-- Prefs -->
 
+<!ENTITY prefs_title "Iiprefrensi">
+
 <!ENTITY prefs_general_title "Jikelele">
 
 
@@ -106,44 +112,50 @@
 
 
 
+<!ENTITY prefs_options_templatesurl_tooltip "I-indeksi yeetemplethi ezikhoyo">
+
+
+
+<!ENTITY prefs_options_expandtab "Ithebhu ezithambileyo">
 
 
 
 
+<!ENTITY prefs_options_autocomplete_tooltip "Vumela ukugqitywa ngokuzenzekelayo kwekhowudi">
 
-
-
-
-
-
-
-
+<!ENTITY prefs_options_autoclosebrackets_tooltip "Ngokuzenzekelayo faka izibiyeli ezivalayo">
 
 
 
 
 <!-- Permissions Table -->
 
+<!ENTITY permissionstable_title "Itheyibhuli Yemvume">
+
 <!-- Runtime Details -->
 
+<!ENTITY runtimedetails_title "Inkcazelo YeRuntime">
+<!ENTITY runtimedetails_adbIsRoot "U-ADB yiruthi: ">
+<!ENTITY runtimedetails_summonADBRoot "isixhobo seruti">
 
 
-
-
-
+<!ENTITY runtimedetails_requestPrivileges "cela amalungelo angaphezulu">
+<!ENTITY runtimedetails_privilegesWarning "(Iza kubhutha isixhobo kwakhona. Ifuna ufikelelo lweruthi.)">
 <!-- Device Preferences and Settings -->
 
-
+<!ENTITY device_typestring "Umtya">
 <!ENTITY device_typeobject "Into">
 
 <!-- Device Preferences -->
 
+<!ENTITY devicepreference_title "Iipriferensi Zesixhobo">
 
 
+<!ENTITY devicepreference_newtext "Ixabiso lesikhethwa">
 
 <!-- Device Settings -->
-
-
+<!ENTITY devicesetting_search "Khangela iisetingi">
+<!ENTITY devicesetting_newname "Igama lesetingi entsha">
 
 
 <!-- Monitor -->
@@ -163,12 +175,15 @@
 <!-- Logs panel -->
 <!-- Simulator Options -->
 
+<!ENTITY simulator_reset "Buyisela Iidifolthi">
 
-
-
+<!ENTITY simulator_software "Isoftwe">
 <!ENTITY simulator_version "Uguqulelo">
 
-
+<!ENTITY simulator_hardware "Ihadwe">
 <!ENTITY simulator_device "Isixhobo">
+<!ENTITY simulator_screenSize "Isikrini">
+
+
 
 

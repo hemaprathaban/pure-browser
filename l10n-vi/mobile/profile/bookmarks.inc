@@ -57,7 +57,7 @@
 
 
 
-# link title for https://support.mozilla.org/
+# link title for https://support.mozilla.org/mobile
 
 
 

@@ -1,1 +1,1 @@
-#define MOZ_LANG_TITLE فارسی (ایران)
+#define MOZ_LANG_TITLE انگلیسی (ایالات متحده)

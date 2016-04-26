@@ -7,16 +7,22 @@
 <!ENTITY firstrun_panel_title_welcome "Bienvenido">
 <!ENTITY onboard_start_message3 "Navegar con &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Haga realmente suya su experiencia de navegación web móvil.">
-<!ENTITY onboard_start_button_account "Iniciar sesión en &brandShortName;">
+<!ENTITY firstrun_urlbar_message "Bienvenido a &brandShortName;">
+<!ENTITY firstrun_urlbar_subtext "Encuentre todo más rápido con las útiles sugerencias de búsqueda.">
+<!ENTITY firstrun_bookmarks_title "Historial">
+<!ENTITY firstrun_bookmarks_message "Sus sitios preferidos, a la vista">
+<!ENTITY firstrun_bookmarks_subtext "Obtenga resultados de sus marcadores e historial cuando busque.">
+<!ENTITY firstrun_data_title "Datos">
+<!ENTITY firstrun_data_message "Menos datos, más ahorro">
+<!ENTITY firstrun_data_subtext "Bloquee imágenes para consumir menos datos en cada sitio que visita.">
+<!ENTITY firstrun_sync_title "Sync">
+<!ENTITY firstrun_sync_message "&brandShortName;, siempre a su lado">
+<!ENTITY firstrun_sync_subtext "Sincronice sus pestañas, contraseñas y más donde quiera usarlo.">
+<!ENTITY firstrun_signin_message "Conéctese y en marcha">
+<!ENTITY firstrun_signin_button "Inicie sesión en Sync">
 <!ENTITY onboard_start_button_browser "Comenzar a navegar">
 <!ENTITY firstrun_button_next "Siguiente">
 <!ENTITY onboard_start_restricted1 "Permanezca seguro y mantenga el control con esta versión simplificada de &brandShortName;.">
-<!ENTITY firstrun_import_title "Importar">
-<!ENTITY firstrun_import_message "Bienvenido a &brandShortName;">
-<!ENTITY firstrun_import_subtext "Importar sus marcadores e historial desde otro navegador.">
-<!ENTITY firstrun_import_action "Transferir a &brandShortName;">
-<!ENTITY firstrun_import_dialog_button "Transferir">
-<!ENTITY firstrun_import_progress_title "Transfiriendo">
 <!ENTITY bookmarks_title "Marcadores">
 <!ENTITY history_title "Historial">
 <!ENTITY reading_list_title "Lista de lectura">
@@ -108,8 +114,6 @@
 <!ENTITY pref_developer_remotedebugging_wifi "Depuración remota mediante wifi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "La depuración wifi requiere que su dispositivo tenga una aplicación lectora de códigos QR instalada.">
 <!ENTITY pref_remember_signons2 "Recordar credenciales">
-<!ENTITY pref_open_external_urls_privately_title "Abrir enlaces en navegación privada">
-<!ENTITY pref_open_external_urls_privately_summary "Para todos los enlaces externos abiertos en &brandShortName;">
 <!ENTITY pref_manage_logins "Administrar inicios de sesión">
 <!ENTITY pref_category_home "Inicio">
 <!ENTITY pref_category_home_summary "Personalizar su página de inicio">
@@ -159,11 +163,14 @@
 <!ENTITY tab_queue_prompt_title "¿Abrir múltiples enlaces?">
 <!ENTITY tab_queue_prompt_text4 "Guardarlos hasta que vuelva a abrir &brandShortName;.">
 <!ENTITY tab_queue_prompt_tip_text2 "Puede cambiar esto más adelante en Ajustes">
+<!ENTITY tab_queue_prompt_permit_drawing_over_apps "Activar Permitir dibujar sobre otras aplicaciones">
 <!ENTITY tab_queue_prompt_positive_action_button "Activar">
 <!ENTITY tab_queue_prompt_negative_action_button "Ahora no">
+<!ENTITY tab_queue_prompt_settings_button "Ir a Ajustes">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
 <!ENTITY tab_queue_notification_text_plural2 "&formatD; pestañas en espera">
 <!ENTITY tab_queue_notification_text_singular2 "1 pestaña en espera">
+<!ENTITY tab_queue_notification_settings "Para \&quot;Abrir múltiples enlaces\&quot;, active el permiso \'Dibujar sobre otras aplicaciones\' para &brandShortName;">
 <!ENTITY pref_char_encoding "Mostrar cod. de caract.">
 <!ENTITY pref_char_encoding_on "Mostrar el menú">
 <!ENTITY pref_char_encoding_off "No mostrar el menú">
@@ -350,10 +357,9 @@
 <!ENTITY home_last_tabs_empty "Sus pestañas recientes se mostrarán aquí.">
 <!ENTITY home_open_all "Abrir todo">
 <!ENTITY home_most_recent_empty "Los sitios web que ha visitado recientemente se mostrarán aquí.">
+<!ENTITY home_selected_empty "Los sitios web que visitó en el periodo seleccionado se muestran aquí.">
 <!ENTITY home_most_recent_emptyhint2 "Psst: usar una &formatS1;pestaña privada nueva&formatS2; no guardará su historial.">
 <!ENTITY home_reading_list_empty "Los artículos que guarde para verlos más tarde aparecerán aquí.">
-<!ENTITY home_reading_list_hint3 "TRUCO: guarde artículos en su lista de lectura con una pulsación larga en el icono &formatI; cuando aparezca en la barra URL.">
-<!ENTITY home_reading_list_hint_accessible2 "TRUCO: guarde artículos en su lista de lectura con una pulsación larga en el botón del modo de lectura cuando aparezca en la barra URL.">
 <!ENTITY home_default_empty "No se ha podido encontrar contenido para este panel.">
 <!ENTITY home_move_up_to_filter "Volver a &formatS;">
 <!ENTITY home_remote_tabs_title "Pestañas sincronizadas">
@@ -379,6 +385,7 @@
 <!ENTITY identity_connection_secure "Conexión segura">
 <!ENTITY identity_connection_insecure "Conexión insegura">
 <!ENTITY identity_login_insecure "Esta página no es segura y sus credenciales pueden ser vulnerables.">
+<!ENTITY identity_connection_chromeui "Esta es una página segura de &brandShortName;">
 <!ENTITY mixed_content_blocked_all1 "&brandShortName; ha bloqueado contenido inseguro en esta página.">
 <!ENTITY mixed_content_blocked_some1 "&brandShortName; ha bloqueado parte del contenido inseguro en esta página.">
 <!ENTITY mixed_content_display_loaded1 "Partes de esta página no son seguras (como imágenes).">
@@ -415,6 +422,8 @@
 <!ENTITY updater_downloading_retry2 "Pulse para reintentar">
 <!ENTITY updater_apply_title2 "Actualización disponible para &brandShortName;">
 <!ENTITY updater_apply_select2 "Pulse para actualizar">
+<!ENTITY updater_permission_text "Para descargar archivos y actualizaciones, permita a &brandShortName; acceder al almacenamiento.">
+<!ENTITY updater_permission_allow "Permitir">
 <!ENTITY new_guest_session "Abrir sesión invitado">
 <!ENTITY exit_guest_session "Cerrar sesión invitado">
 <!ENTITY guest_session_dialog_continue "Continuar">
@@ -448,8 +457,8 @@
 <!ENTITY restrictable_feature_advanced_settings_description "Esto incluye importar marcadores, restaurar pestañas y actualizaciones automáticas. Desactívelo para ajustes simplificados aptos para cualquier miembro de la familia.">
 <!ENTITY restrictable_feature_camera_microphone "Cámara y micrófono">
 <!ENTITY restrictable_feature_camera_microphone_description "Permitir a los miembros de la familia iniciar comunicación en tiempo real en los sitios web.">
-<!ENTITY restrictable_feature_data_choices "Elección de datos">
-<!ENTITY restrictable_feature_data_choices_description "Elegir si enviar o no información de uso a Mozilla para ayudar a mejorar Firefox.">
+<!ENTITY restrictable_feature_block_list "Lista de bloqueo">
+<!ENTITY restrictable_feature_block_list_description "Bloquea sitios web que incluyen contenido confidencial.">
 <!ENTITY bookmarks_about_browser "Firefox: acerca de su navegador">
 <!ENTITY bookmarks_addons "Firefox: personalizar con complementos">
 <!ENTITY bookmarks_support "Ayuda de Firefox">

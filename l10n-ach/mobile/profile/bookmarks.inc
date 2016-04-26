@@ -73,8 +73,5 @@
 
 
 
-#define bookmarks_marketplace Cuk me Firefox
-
-
 
 #unfilter emptyLines
