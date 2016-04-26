@@ -7,10 +7,10 @@ Subject: Bug 1178266 - Link against libatomic when necessary
  1 file changed, 1 insertion(+)
 
 diff --git a/mfbt/moz.build b/mfbt/moz.build
-index 67c276d..3527065 100644
+index a071040..45087fa 100644
 --- a/mfbt/moz.build
 +++ b/mfbt/moz.build
-@@ -121,6 +121,7 @@ DISABLE_STL_WRAPPING = True
+@@ -122,6 +122,7 @@ DISABLE_STL_WRAPPING = True
  if CONFIG['GNU_CXX']:
      SOURCES['/mfbt/Compression.cpp'].flags += ['-Wno-unused-function']
  

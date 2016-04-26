@@ -688,8 +688,6 @@ function isUsableAddon(aAddon) {
        mustSign(aAddon.type)) {
     if (aAddon.signedState <= AddonManager.SIGNEDSTATE_MISSING)
       return false;
-    if (aAddon.foreignInstall && aAddon.signedState < AddonManager.SIGNEDSTATE_SIGNED)
-      return false;
   }
 
   if (aAddon.blocklistState == Blocklist.STATE_BLOCKED)
@@ -3288,8 +3286,7 @@ this.XPIProvider = {
         }
 
         if (mustSign(addon.type) &&
-            (addon.signedState <= AddonManager.SIGNEDSTATE_MISSING ||
-            (foreignInstall && addon.signedState < AddonManager.SIGNEDSTATE_SIGNED))) {
+            addon.signedState <= AddonManager.SIGNEDSTATE_MISSING) {
           logger.warn("Refusing to install staged add-on " + id + " with signed state " + addon.signedState);
           seenFiles.push(stageDirEntry.leafName);
           seenFiles.push(jsonfile.leafName);
