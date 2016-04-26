@@ -101,10 +101,10 @@ index 99c6ce6..9d619f1 100644
  ifeq (,$(filter-out $(TARGET_OSES),$(OS_TARGET)))
  include $(CORE_DEPTH)/coreconf/$(OS_TARGET).mk
 diff --git a/security/nss/lib/freebl/unix_rand.c b/security/nss/lib/freebl/unix_rand.c
-index b4fef7a..20bfaa9 100644
+index 5ecd9fb..67a07db 100644
 --- a/security/nss/lib/freebl/unix_rand.c
 +++ b/security/nss/lib/freebl/unix_rand.c
-@@ -156,7 +156,8 @@ static SECStatus RNG_kstat(PRUint32* fed)
+@@ -157,7 +157,8 @@ static SECStatus RNG_kstat(PRUint32* fed)
  
  #if defined(SCO) || defined(UNIXWARE) || defined(BSDI) || defined(FREEBSD) \
      || defined(NETBSD) || defined(DARWIN) || defined(OPENBSD) \
@@ -115,7 +115,7 @@ index b4fef7a..20bfaa9 100644
  
  #define getdtablesize() sysconf(_SC_OPEN_MAX)
 diff --git a/security/nss/lib/softoken/softoken.h b/security/nss/lib/softoken/softoken.h
-index fbd00b6..bb35af8 100644
+index 5935ea2..19f5cef 100644
 --- a/security/nss/lib/softoken/softoken.h
 +++ b/security/nss/lib/softoken/softoken.h
 @@ -184,7 +184,7 @@ extern PRBool sftk_fatalError;

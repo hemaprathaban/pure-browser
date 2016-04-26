@@ -8,8 +8,8 @@
 <!ENTITY toggleToolboxF12.keytext          "F12">
 
 
-
-
+<!ENTITY toolboxNextTool.key           "]">
+<!ENTITY toolboxPreviousTool.key       "[">
 <!-- LOCALIZATION NOTE :
 fullZoomEnlargeCmd.commandkey, fullZoomEnlargeCmd.commandkey2,
 fullZoomEnlargeCmd.commandkey3, fullZoomReduceCmd.commandkey,
@@ -23,8 +23,10 @@ values from browser.dtd.  -->
 
 <!ENTITY fullZoomResetCmd.commandkey2   "">
 
+<!ENTITY toolboxReload.key             "r">
 <!-- This key is used with the accel+shift modifiers to minimize the toolbox -->
 
+<!ENTITY toolboxToggle.key             "d">
 <!-- LOCALIZATION NOTE (toolboxFramesButton): This is the label for
   -  the iframes menu list that appears only when the document has some.
   -  It allows you to switch the context of the whole toolbox. -->
@@ -37,6 +39,8 @@ values from browser.dtd.  -->
 <!-- LOCALIZATION NOTE (options.showUserAgentStyles.label): This is the label
   -  for the checkbox option to show user agent styles in the Inspector
   -  panel. -->
+
+<!ENTITY options.showUserAgentStyles.label "Bonisa Izimbo ZeBhrawuza">
 
 <!-- LOCALIZATION NOTE (options.defaultColorUnit.label): This is the label for a
   -  dropdown list that controls the default color unit used in the inspector.
@@ -66,31 +70,39 @@ values from browser.dtd.  -->
   -  checkbox that toggles remote debugging, i.e. devtools.debugger.remote-enabled
   -  boolean preference in about:config, in the options panel. -->
 
+<!ENTITY options.enableRemote.label3    "Vumela ukususa ibhagi kwerimoti">
+
 <!-- LOCALIZATION NOTE (options.enableWorkers.label): This is the label for the
   -  checkbox that toggles worker debugging, i.e. devtools.debugger.workers
   -  boolean preference in about:config, in the options panel. -->
-
+<!ENTITY options.enableWorkers.tooltip  "Ukulayita olu khetho kuya kuvumela izixhobo zomphuhlisi ukukhupha ibhagi yabasebenzi">
 <!-- LOCALIZATION NOTE (options.disableJavaScript.label,
   -  options.disableJavaScript.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles JavaScript on or off. -->
 
 <!ENTITY options.disableJavaScript.label     "Yenza ingasebenzi i-JavaScript*">
-
+<!ENTITY options.disableJavaScript.tooltip   "Ukulayita olu khetho kuya kucima iJavaScript yale thebhu ikhoyo. Ukuba ithebhu okanye ithulbhoksi ivaliwe ngoko le setingi iya kulityalwa.">
 <!-- LOCALIZATION NOTE (options.disableCache.label2,
   -  options.disableCache.tooltip2): This is the options panel label and
   -  tooltip for the checkbox that toggles the cache on or off. -->
 
+<!ENTITY options.disableCache.label2     "Yekisa iKhetshi (xa ithulbhoksi ivuliwe)">
+
 <!-- LOCALIZATION NOTE (options.enableServiceWorkersHTTP.label,
   -  options.enableServiceWorkersHTTP.tooltip): This is the options panel label and
   -  tooltip for the checkbox that toggles the service workers testing features on or off. This option enables service workers over HTTP. -->
-
+<!ENTITY options.enableServiceWorkersHTTP.tooltip   "Ukujija olu khetho  kuya kuvulela abasebenzi benkonzo ngaphezu kwe-HTTP yazo zonke iithebhu ezinethulbhoksi evuliweyo">
 <!-- LOCALIZATION NOTE (options.selectDefaultTools.label): This is the label for
   -  the heading of group of checkboxes corresponding to the default developer
   -  tools. -->
+
+<!ENTITY options.selectDefaultTools.label     "Izixhobo ZeFirefox Zophuhliso Zedifolti">
 <!-- LOCALIZATION NOTE (options.selectAdditionalTools.label): This is the label for
   -  the heading of group of checkboxes corresponding to the developer tools
   -  added by add-ons. This heading is hidden when there is no developer tool
   -  installed by add-ons. -->
+
+<!ENTITY options.selectAdditionalTools.label  "Izixhobo Zomphuhlisi zifakwe ngezongezelelo">
 <!-- LOCALIZATION NOTE (options.selectEnabledToolboxButtons.label): This is the label for
   -  the heading of group of checkboxes corresponding to the default developer
   -  tool buttons. -->
@@ -105,8 +117,12 @@ values from browser.dtd.  -->
 <!-- LOCALIZATION NOTE (options.usedeveditiontheme.*) Options under the
   -  toolbox for enabling and disabling the Developer Edition browser theme. -->
 
+<!ENTITY options.usedeveditiontheme.label   "Sebenzisa umxholo webhrawza woHlelo Lomphuhlisi">
+
 <!-- LOCALIZATION NOTE (options.webconsole.label): This is the label for the
   -  heading of the group of Web Console preferences in the options panel. -->
+
+<!ENTITY options.webconsole.label            "Ikhonsoli Yewebhu">
 <!-- LOCALIZATION NOTE (options.timestampMessages.label): This is the
    - label for the checkbox that toggles timestamps in the Web Console -->
 
@@ -132,12 +148,14 @@ values from browser.dtd.  -->
   -  Profiler i.e. devtools.profiler.ui.show-platform-data a boolean preference
   -  in about:config, in the options panel. -->
 
+<!ENTITY options.showPlatformData.label    "Bonisa idatha yeGecko platfom">
+
 <!-- LOCALIZATION NOTE (options.sourceeditor.*): Options under the editor
   -  section. -->
 
+<!ENTITY options.sourceeditor.detectindentation.tooltip "I-indenti eqikelelwayo esekelwe kwisiqulatho esingumthombo">
 
-
-
+<!ENTITY options.sourceeditor.autoclosebrackets.tooltip "Ngokuzenzekelayo faka izibiyeli ezivalayo">
 
 
 

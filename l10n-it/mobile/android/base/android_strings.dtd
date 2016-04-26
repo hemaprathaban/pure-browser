@@ -7,16 +7,23 @@
 <!ENTITY firstrun_panel_title_welcome "Benvenuto">
 <!ENTITY onboard_start_message3 "Naviga con &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Un’esperienza di navigazione che si adatta alle tue esigenze.">
-<!ENTITY onboard_start_button_account "Accedi a &brandShortName;">
+<!ENTITY firstrun_urlbar_message "Benvenuto in &brandShortName;">
+<!ENTITY firstrun_urlbar_subtext "Trova tutto ciò che ti serve più velocemente con suggerimenti e scorciatoie di ricerca.">
+<!ENTITY firstrun_bookmarks_title "Cronologia">
+<!ENTITY firstrun_bookmarks_message "I tuoi preferiti in primo piano">
+<!ENTITY firstrun_bookmarks_subtext "Mostra risultati da segnalibri e cronologia durante le ricerche.">
+<!ENTITY firstrun_data_title "Dati">
+<!ENTITY firstrun_data_message "Risparmia sulla connessione">
+<!ENTITY firstrun_data_subtext "Blocca le immagini per consumare meno dati ogni volta che visiti un sito.">
+<!ENTITY firstrun_sync_title "Sync">
+<!ENTITY firstrun_sync_message "&brandShortName;, sempre al tuo fianco">
+<!ENTITY firstrun_sync_subtext "Sincronizza schede, password e molto altro ancora ovunque lo utilizzi.">
+<!ENTITY firstrun_signin_message "Connettiti e inizia">
+<!ENTITY firstrun_signin_button "Accedi a Sync">
+
 <!ENTITY onboard_start_button_browser "Inizia a navigare">
 <!ENTITY firstrun_button_next "Successivo">
 <!ENTITY onboard_start_restricted1 "Sicurezza e controllo garantiti grazie a questa versione semplificata di &brandShortName;.">
-<!ENTITY firstrun_import_title "Importa">
-<!ENTITY firstrun_import_message "Benvenuto in &brandShortName;">
-<!ENTITY firstrun_import_subtext "Importa segnalibri e cronologia da un altro browser.">
-<!ENTITY firstrun_import_action "Trasferisci in &brandShortName;">
-<!ENTITY firstrun_import_dialog_button "Avvia">
-<!ENTITY firstrun_import_progress_title "Trasferimento">
 <!ENTITY bookmarks_title "Segnalibri">
 <!ENTITY home_title "&brandShortName; Home">
 <!ENTITY history_title "Cronologia">
@@ -110,8 +117,6 @@
 <!ENTITY pref_developer_remotedebugging_wifi "Debug remoto tramite Wi-Fi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Il debug tramite Wi-Fi richiede la presenza sul dispositivo di un’app per la scansione di codici QR.">
 <!ENTITY pref_remember_signons2 "Ricorda accessi">
-<!ENTITY pref_open_external_urls_privately_title "Apri link in nav. anonima">
-<!ENTITY pref_open_external_urls_privately_summary "Per tutti i link esterni aperti in &brandShortName;">
 <!ENTITY pref_manage_logins "Gestione accessi">
 <!ENTITY pref_category_home "Home">
 <!ENTITY pref_category_home_summary "Personalizza la pagina iniziale">
@@ -160,11 +165,14 @@
 <!ENTITY tab_queue_prompt_title "Apertura di più link">
 <!ENTITY tab_queue_prompt_text4 "Salvali fino alla successiva apertura di &brandShortName;.">
 <!ENTITY tab_queue_prompt_tip_text2 "È possibile modificare questa scelta in Impostazioni">
+<!ENTITY tab_queue_prompt_permit_drawing_over_apps "Attiva “Consenti spostamento su altre app”">
 <!ENTITY tab_queue_prompt_positive_action_button "Attiva">
 <!ENTITY tab_queue_prompt_negative_action_button "Non adesso">
+<!ENTITY tab_queue_prompt_settings_button "Vai a Impostazioni">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
 <!ENTITY tab_queue_notification_text_plural2 "&formatD; schede in attesa">
 <!ENTITY tab_queue_notification_text_singular2 "1 scheda in attesa">
+<!ENTITY tab_queue_notification_settings "Per attivare la funzione “Apertura di più link” garantire a &brandShortName; il permesso “Consenti spostamento su altre app”">
 <!ENTITY pref_char_encoding "Codifica caratteri">
 <!ENTITY pref_char_encoding_on "Visualizza menu">
 <!ENTITY pref_char_encoding_off "Non visualizzare menu">
@@ -350,10 +358,10 @@
 <!ENTITY home_last_tabs_empty "In questa sezione verranno visualizzate le schede recenti.">
 <!ENTITY home_open_all "Apri tutte">
 <!ENTITY home_most_recent_empty "In questa sezione verranno visualizzati i siti web più recenti.">
+<!ENTITY home_selected_empty "In questa sezione verranno visualizzati i siti web visitati nell’intervallo di tempo selezionato.">
+
 <!ENTITY home_most_recent_emptyhint2 "Psst: utilizzando una &formatS1;Nuova scheda anonima&formatS2; non verrà salvata alcuna cronologia.">
 <!ENTITY home_reading_list_empty "In questa sezione verranno visualizzati gli articoli da leggere.">
-<!ENTITY home_reading_list_hint3 "Suggerimento: è possibile salvare articoli in questo elenco premendo a lungo l’icona &formatI; che appare nella barra degli indirizzi.">
-<!ENTITY home_reading_list_hint_accessible2 "Suggerimento: è possibile salvare articoli in questo elenco premendo a lungo l’icona Modalità lettura che appare nella barra degli indirizzi.">
 <!ENTITY home_default_empty "Nessun contenuto disponibile per questo pannello.">
 <!ENTITY home_move_up_to_filter "Vai a &formatS;">
 <!ENTITY home_remote_tabs_title "Schede sincronizzate">
@@ -379,6 +387,7 @@
 <!ENTITY identity_connection_secure "Connessione sicura">
 <!ENTITY identity_connection_insecure "Connessione non sicura">
 <!ENTITY identity_login_insecure "Questa pagina non è sicura e l’accesso potrebbe essere vulnerabile.">
+<!ENTITY identity_connection_chromeui "Questa è una pagina sicura di &brandShortName;.">
 <!ENTITY mixed_content_blocked_all1 "I contenuti non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
 <!ENTITY mixed_content_blocked_some1 "Alcuni contenuti non sicuri in questa pagina sono stati bloccati da &brandShortName;.">
 <!ENTITY mixed_content_display_loaded1 "Questa pagina presenta elementi non sicuri.">
@@ -406,6 +415,8 @@
 <!ENTITY searchable_description "Segnalibri e cronologia">
 <!ENTITY updater_start_title2 "Aggiornamento disponibile per &brandShortName;">
 <!ENTITY updater_start_select2 "Tocca per scaricare">
+<!ENTITY updater_permission_text "Per scaricare file e aggiornamenti &brandShortName; ha bisogno dell’autorizzazione per accedere allo spazio di archiviazione.">
+<!ENTITY updater_permission_allow "Autorizza">
 <!ENTITY updater_downloading_title2 "Download di &brandShortName; in corso">
 <!ENTITY updater_downloading_title_failed2 "Download non riuscito">
 <!ENTITY updater_downloading_select2 "Tocca per installare a download completato.">
@@ -445,8 +456,8 @@
 <!ENTITY restrictable_feature_advanced_settings_description "Include importazione di segnalibri, ripristino delle schede e aggiornamenti automatici. Disattivarlo per ottenere delle impostazioni più semplici e adatte a tutta la famiglia.">
 <!ENTITY restrictable_feature_camera_microphone "Fotocamera e microfono">
 <!ENTITY restrictable_feature_camera_microphone_description "Permetti ai membri della famiglia di utilizzare strumenti di comunicazione in tempo reale sui siti web.">
-<!ENTITY restrictable_feature_data_choices "Condivisione dati">
-<!ENTITY restrictable_feature_data_choices_description "Scegli se inviare informazioni a Mozilla per contribuire al miglioramento di Firefox.">
+<!ENTITY restrictable_feature_block_list "Blocco contenuti">
+<!ENTITY restrictable_feature_block_list_description "Blocca siti web che includono contenuti sensibili.">
 <!ENTITY bookmarks_about_browser "Firefox: informazioni sul browser">
 <!ENTITY bookmarks_addons "Firefox: personalizza con i componenti aggiuntivi">
 <!ENTITY bookmarks_support "Firefox: supporto">

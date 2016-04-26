@@ -7,16 +7,22 @@
 <!ENTITY firstrun_panel_title_welcome "Добро пожаловать">
 <!ENTITY onboard_start_message3 "Браузер &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Делает ваш мобильный веб-сёрфинг по-настоящему уникальным.">
-<!ENTITY onboard_start_button_account "Войти в &brandShortName;">
+<!ENTITY firstrun_urlbar_message "Добро пожаловать в &brandShortName;">
+<!ENTITY firstrun_urlbar_subtext "Ускорьте свой поиск с помощью полезных ярлыков поисковых предложений.">
+<!ENTITY firstrun_bookmarks_title "История">
+<!ENTITY firstrun_bookmarks_message "Ваше любимое, на виду и в центре">
+<!ENTITY firstrun_bookmarks_subtext "При поиске получайте результаты из ваших закладок и истории.">
+<!ENTITY firstrun_data_title "Трафик">
+<!ENTITY firstrun_data_message "Меньше трафика, больше экономии">
+<!ENTITY firstrun_data_subtext "Блокируйте изображения, чтобы уменьшить расход трафика на каждом посещаемом сайте.">
+<!ENTITY firstrun_sync_title "Синхронизация">
+<!ENTITY firstrun_sync_message "&brandShortName; всегда рядом с вами">
+<!ENTITY firstrun_sync_subtext "Синхронизируйте свои вкладки, пароли и многое другое, везде, где вы его используете.">
+<!ENTITY firstrun_signin_message "Соединитесь и вперёд">
+<!ENTITY firstrun_signin_button "Войти в Синхронизацию">
 <!ENTITY onboard_start_button_browser "Начать веб-сёрфинг">
 <!ENTITY firstrun_button_next "Далее">
 <!ENTITY onboard_start_restricted1 "Будьте в безопасности и установите свой контроль с этой упрощённой версией &brandShortName;.">
-<!ENTITY firstrun_import_title "Импорт">
-<!ENTITY firstrun_import_message "Добро пожаловать в &brandShortName;">
-<!ENTITY firstrun_import_subtext "Импорт закладок и истории из другого браузера.">
-<!ENTITY firstrun_import_action "Передать в &brandShortName;">
-<!ENTITY firstrun_import_dialog_button "Передать">
-<!ENTITY firstrun_import_progress_title "Передача">
 <!ENTITY bookmarks_title "Закладки">
 <!ENTITY history_title "История">
 <!ENTITY reading_list_title "Список для чтения">
@@ -108,8 +114,6 @@
 <!ENTITY pref_developer_remotedebugging_wifi "Удалённая отладка через Wi-Fi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Для удалённой отладки через Wi-Fi необходимо, чтобы на вашем устройстве было установлено приложение для чтения QR-кодов.">
 <!ENTITY pref_remember_signons2 "Запоминать логины">
-<!ENTITY pref_open_external_urls_privately_title "Открывать ссылки в приватном просмотре">
-<!ENTITY pref_open_external_urls_privately_summary "Для всех внешних ссылок, открытых в &brandShortName;">
 <!ENTITY pref_manage_logins "Управление логинами">
 <!ENTITY pref_category_home "Дом">
 <!ENTITY pref_category_home_summary "Настройка домашней страницы">
@@ -159,11 +163,14 @@
 <!ENTITY tab_queue_prompt_title "Открываете много ссылок?">
 <!ENTITY tab_queue_prompt_text4 "Сохраните их до следующего открытия &brandShortName;.">
 <!ENTITY tab_queue_prompt_tip_text2 "Вы можете изменить это позже в Параметрах">
+<!ENTITY tab_queue_prompt_permit_drawing_over_apps "Предоставить разрешение на показ окон поверх других приложений">
 <!ENTITY tab_queue_prompt_positive_action_button "Включить">
 <!ENTITY tab_queue_prompt_negative_action_button "Не сейчас">
+<!ENTITY tab_queue_prompt_settings_button "Перейти в Параметры">
 <!ENTITY tab_queue_notification_title "&brandShortName;">
 <!ENTITY tab_queue_notification_text_plural2 "В очереди &formatD; вкладки(ок)">
 <!ENTITY tab_queue_notification_text_singular2 "В очереди 1 вкладка">
+<!ENTITY tab_queue_notification_settings "Для \&quot;Открытия множества ссылок\&quot;, пожалуйста, предоставьте &brandShortName; разрешение \'Показ окон поверх других приложений\'">
 <!ENTITY pref_char_encoding "Кодировка">
 <!ENTITY pref_char_encoding_on "Показывать меню">
 <!ENTITY pref_char_encoding_off "Скрывать меню">
@@ -350,10 +357,9 @@
 <!ENTITY home_last_tabs_empty "Ваши недавние вкладки появятся здесь.">
 <!ENTITY home_open_all "Открыть все">
 <!ENTITY home_most_recent_empty "Недавно посещённые вами веб-сайты появятся здесь.">
+<!ENTITY home_selected_empty "Веб-сайты, посещённые вами в выбранный период времени, отобразятся здесь.">
 <!ENTITY home_most_recent_emptyhint2 "Псс: при использовании &formatS1;Новой приватной вкладки&formatS2; ваша история сохраняться не будет.">
 <!ENTITY home_reading_list_empty "Статьи, сохранённые вами для последующего чтения, появятся здесь.">
-<!ENTITY home_reading_list_hint3 "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на значок &formatI;, когда он появится в панели адреса.">
-<!ENTITY home_reading_list_hint_accessible2 "СОВЕТ: Сохраните статьи в ваш список для чтения, произведя долгое нажатие на кнопку режима чтения, когда она появится в панели адреса.">
 <!ENTITY home_default_empty "Для этой панели не удалось найти содержимого.">
 <!ENTITY home_move_up_to_filter "Назад в &formatS;">
 <!ENTITY home_remote_tabs_title "Облачные вкладки">
@@ -379,6 +385,7 @@
 <!ENTITY identity_connection_secure "Защищённое соединение">
 <!ENTITY identity_connection_insecure "Незащищённое соединение">
 <!ENTITY identity_login_insecure "Эта страница не защищена и ваш логин может быть скомпрометирован.">
+<!ENTITY identity_connection_chromeui "Это защищённая страница &brandShortName;">
 <!ENTITY mixed_content_blocked_all1 "&brandShortName; заблокировал небезопасное содержимое на этой странице.">
 <!ENTITY mixed_content_blocked_some1 "&brandShortName; заблокировал некоторое небезопасное содержимое на этой странице.">
 <!ENTITY mixed_content_display_loaded1 "Части этой страницы (такие как изображения) не защищены.">
@@ -412,6 +419,8 @@
 <!ENTITY updater_downloading_retry2 "Нажмите для повтора">
 <!ENTITY updater_apply_title2 "Доступно обновление &brandShortName;">
 <!ENTITY updater_apply_select2 "Нажмите для обновления">
+<!ENTITY updater_permission_text "Чтобы загружать файлы и обновления, предоставьте &brandShortName; разрешение на доступ к хранилищу.">
+<!ENTITY updater_permission_allow "Предоставить">
 <!ENTITY new_guest_session "Новая гостевая сессия">
 <!ENTITY exit_guest_session "Выйти из гостевой сессии">
 <!ENTITY guest_session_dialog_continue "Продолжить">
@@ -445,8 +454,8 @@
 <!ENTITY restrictable_feature_advanced_settings_description "Это включает в себя импорт закладок, восстановление вкладок и автоматическое обновление. Отключите для перехода к упрощённым настройкам, подходящим для любого члена семьи.">
 <!ENTITY restrictable_feature_camera_microphone "Камера и микрофон">
 <!ENTITY restrictable_feature_camera_microphone_description "Позволяет членам семьи участвовать в общении на веб-сайтах в реальном времени.">
-<!ENTITY restrictable_feature_data_choices "Выбор данных">
-<!ENTITY restrictable_feature_data_choices_description "Выбирать, следует ли отправлять информацию об использовании в Mozilla, чтобы помочь сделать Firefox лучше.">
+<!ENTITY restrictable_feature_block_list "Список блокировки">
+<!ENTITY restrictable_feature_block_list_description "Блокировка веб-сайтов, содержащих деликатную информацию.">
 <!ENTITY bookmarks_about_browser "Firefox: О вашем браузере">
 <!ENTITY bookmarks_addons "Firefox: Настройка с помощью дополнений">
 <!ENTITY bookmarks_support "Firefox: Поддержка">

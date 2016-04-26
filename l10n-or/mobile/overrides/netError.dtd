@@ -11,14 +11,18 @@
 
 
 <!ENTITY connectionFailure.title "ସଂଯୋଗ କରିବାରେ ଅସମର୍ଥ">
-<!ENTITY connectionFailure.longDesc2 "&sharedLongDesc3;">
+<!ENTITY connectionFailure.longDesc "&sharedLongDesc2;">
 
 <!ENTITY deniedPortAccess.title "ଏହି ଠିକଣାଟି ପ୍ରତିବନ୍ଧିତ">
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "ସର୍ଭର ମିଳୁନାହିଁ">
-<!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
-     or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
+<!ENTITY dnsNotFound.longDesc2 "<ul> 
+<li>ନିମ୍ନଲିଖିତ ପରି ବନାନ ଭୁଲଗୁଡ଼ିକ ପାଇଁ ଠିକଣାକୁ ଯାଞ୍ଚ କରନ୍ତୁ
+<strong>ww</strong>.example.com  
+<strong>www</strong>.example.com ପରିବର୍ତ୍ତେ</li> 
+<li>ଯଦି ଆପଣକୌଣସି ପୃଷ୍ଠାକୁ ଧାରଣ କରିବାରେ ଅସମର୍ଥ ହୁଅନ୍ତି, ତେବେ ଆପଣଙ୍କର ଉପକରଣଗୁଡ଼ିକର ତଥ୍ୟ କିମ୍ବା Wi-Fi ସଂଯୋଗକୁ ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
+</ul>">
 
 <!ENTITY fileNotFound.title "ଫାଇଲ ମିଳୁନାହିଁ">
 <!ENTITY fileNotFound.longDesc "<ul> 
@@ -31,18 +35,23 @@
 <!ENTITY generic.longDesc "<p>&brandShortName; କୌଣସି କାରଣବଶତଃ ଏହି ପୃଷ୍ଠାକୁ ଧାରଣ କରିପାରିବ ନାହିଁ।</p>">
 
 <!ENTITY malformedURI.title "ଏହି ଠିକଣାଟି ବୈଧ ନୁହେଁ">
-<!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
-     or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY malformedURI.longDesc "<ul> 
+<li>ୱେବ ଠିକଣାଗୁଡ଼ିକ ସାଧାରଣତଃ ଏହି ପ୍ରକାରେ ଲେଖାଯାଇଥାଏ 
+<strong>http://www.example.com/</strong></li> 
+<li>ନିଶ୍ଚିତ କରନ୍ତୁ ଯେ ଆପଣ  ତୀର୍ଯକ ରେଖା ବ୍ୟବହାର କରୁଛନ୍ତି (i.e. 
+<strong>/</strong>).</li> 
+</ul>">
 
 <!ENTITY netInterrupt.title "ସଂଯୋଗଟି ବାଧାପ୍ରାପ୍ତ ହୋଇଥିଲା">
-<!ENTITY netInterrupt.longDesc2 "&sharedLongDesc3;">
+<!ENTITY netInterrupt.longDesc "&sharedLongDesc2;">
 
 <!ENTITY notCached.title "ଦଲିଲର ସମୟ ସମାପ୍ତ ହୋଇଛି">
 <!ENTITY notCached.longDesc "<p>ଅନୁରୋଧ କରାଯାଇଥିବା ଦଲିଲଟି &brandShortName; ର କ୍ୟାଶେରେ ଉପଲବ୍ଧ ନାହିଁ।</p><ul><li>ସୁରକ୍ଷା ଦୃଷ୍ଟିକୋଣରୁ, &brandShortName; ଜରୁଜୀ ଦଲିଲଗୁଡ଼ିକୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ପୁନଃ-ଅନୁରୋଧ କରିନଥାଏ।</li><li>ୱେବସାଇଟରୁ ଦଲିଲକୁ ପୁନଃ-ଅନୁରୋଧ କରିବା ପାଇଁ ପୁଣଥରେ ଚେଷ୍ଟାକରନ୍ତୁ କୁ କ୍ଲିକ କରନ୍ତୁ।</li></ul>">
 
 <!ENTITY netOffline.title "ଅଫଲାଇନ ଅବସ୍ଥା">
-<!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
-     The text inside the tags should be localized. Do not touch the ids. -->
+<!ENTITY netOffline.longDesc2 "<ul> 
+<li>ପୁଣିଥରେ ଚେଷ୍ଟା କରନ୍ତୁ। &brandShortName; ଗୋଟିଏ ସଂଯୋଗ ଖୋଲିବା ପାଇଁ ଚେଷ୍ଟା କରିବ ଏବଂ ପୃଷ୍ଠାକୁ ପୁନର୍ଧାରଣ କରିବ।</li> 
+</ul>">
 
 <!ENTITY contentEncodingError.title "ବିଷୟବସ୍ତୁ ସାଙ୍କେତିକରଣ ତ୍ରୁଟି">
 <!ENTITY contentEncodingError.longDesc "<ul> 
@@ -55,10 +64,10 @@
 </ul>">
 
 <!ENTITY netReset.title "ସଂଯୋଗ ପୁନର୍ବିନ୍ୟାସ ହୋଇଥିଲା">
-<!ENTITY netReset.longDesc2 "&sharedLongDesc3;">
+<!ENTITY netReset.longDesc "&sharedLongDesc2;">
 
 <!ENTITY netTimeout.title "ସଂଯୋଗ ସମୟ ସମାପ୍ତ ହୋଇଯାଇଛି">
-<!ENTITY netTimeout.longDesc2 "&sharedLongDesc3;">
+<!ENTITY netTimeout.longDesc "&sharedLongDesc2;">
 
 <!ENTITY unknownProtocolFound.title "ଠିକଣାଟି ବୁଝାପଡ଼ିନଥିଲା">
 <!ENTITY unknownProtocolFound.longDesc "<ul> 
@@ -66,34 +75,27 @@
 </ul>">
 
 <!ENTITY proxyConnectFailure.title "ପ୍ରକ୍ସି ସର୍ଭର ସଂଯୋଗଗୁଡ଼ଡିକୁ ବାରଣ କରୁଛି">
-<!ENTITY proxyConnectFailure.longDesc "<ul> 
+<!ENTITY proxyConnectFailure.longDesc "<ul> 
 <li>ସେଗୁଡ଼ିକ ଠିକ ଅଛି କି ନାହିଁ ନିଶ୍ଚିତ ହେବା ପାଇଁ ପ୍ରକ୍ସି ସଂରଚନାକୁ ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
-<li>ଆପଣଙ୍କ ପ୍ରକ୍ସି ସର୍ଭର ସଠିକ ଭାବରେ କାର୍ଯ୍ୟକରୁଛି ନାହିଁ ନିଶ୍ଚିତ କରିବା ପାଇଁ  
-ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
+<li>ଆପଣଙ୍କ ପ୍ରକ୍ସି ସର୍ଭର ସଠିକ ଭାବରେ କାର୍ଯ୍ୟକରୁଛି ନାହିଁ ନିଶ୍ଚିତ କରିବା ପାଇଁ ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
 </ul>">
 
 <!ENTITY proxyResolveFailure.title "ପ୍ରକ୍ସି ସର୍ଭରକୁ ଖୋଜିବାରେ ଅସମର୍ଥ">
-<!-- LOCALIZATION NOTE (proxyResolveFailure.longDesc3) This string contains markup including widgets for enabling wifi connections.
-     The text inside the tags should be localized. Do not touch the ids. -->
-<!ENTITY proxyResolveFailure.longDesc3 "<ul>  
+<!ENTITY proxyResolveFailure.longDesc2 "<ul> 
 <li>ପ୍ରକ୍ସି ସଂରଚନାକୁ ତାହା ସଠିକ ଅଛି କି ନାହିଁ ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
-<li>ଯାଞ୍ଚ କରନ୍ତୁ ଯେ ଆପଣଙ୍କର ଉପକରଣରେ କାର୍ଯ୍ୟରତ ତଥ୍ୟ ଅଥବା Wi-Fi ସଂଯୋଗ ଅଛି। 
-<button id='wifi'>Wi-Fi କୁ ସକ୍ରିୟ କରନ୍ତୁ</button> 
-</li> 
+<li>ଯାଞ୍ଚ କରନ୍ତୁ ଯେ ଆପଣଙ୍କର ଉପକରଣରେ କାର୍ଯ୍ୟରତ ତଥ୍ୟ ଏବଂ Wi-Fi ସଂଯୋଗ ଅଛି।</li> 
 </ul>">
 
 <!ENTITY redirectLoop.title "ଏହି ପୃଷ୍ଠାଟି ସଠିକ ଭାବରେ ପୁନଃପ୍ରେରଣ କରିପାରୁନାହିଁ">
 <!ENTITY redirectLoop.longDesc "<ul> 
-<li>ଏହି ସମସ୍ୟା ବେଳେବେଳେ କୁକିଗୁଡ଼ିକୁ ଗ୍ରହଣ କରିବାରୁ ନିଷ୍କ୍ରିୟକରିବା କିମ୍ବା ବାରଣ କରିବା ହେତୁ  
-ଘଟିଥାଏ।</li> 
+<li>ଏହି ସମସ୍ୟା ବେଳେବେଳେ କୁକିଗୁଡ଼ିକୁ ଗ୍ରହଣ କରିବାରୁ ନିଷ୍କ୍ରିୟକରିବା କିମ୍ବା ବାରଣ କରିବା ହେତୁ ଘଟିଥାଏ।</li> 
 </ul>">
 
 <!ENTITY unknownSocketType.title "ସର୍ଭରରୁ ଅପ୍ରତ୍ୟାଶିତ ଉତ୍ତର">
 <!ENTITY unknownSocketType.longDesc "<ul> 
-<li>ନିଶ୍ଚିତ କରିବା ପାଇଁ ଯାଞ୍ଚକରନ୍ତୁ ଯେ ଆପଣଙ୍କର ତନ୍ତ୍ରରେ ବ୍ୟକ୍ତିଗତ ସୁରକ୍ଷା  
-ପରିଚାଳକ ସ୍ଥାପିତ ଅଛି।</li> 
-</li>ଏହା ହୁଏତଃ ସର୍ଭରରେ କୌଣସି ମାନ୍ୟତାପ୍ରାପ୍ତ ହୋଇନଥିବା ସଂରଚନା ହେତୁ ହୋଇଥାଏ।</li>  
-</ul>">
+<li>ନିଶ୍ଚିତ କରିବା ପାଇଁ ଯାଞ୍ଚକରନ୍ତୁ ଯେ ଆପଣଙ୍କର ତନ୍ତ୍ରରେ ବ୍ୟକ୍ତିଗତ ସୁରକ୍ଷା ପରିଚାଳକ 
+ସ୍ଥାପିତ ଅଛି।</li> 
+<li>ଏହା ହୁଏତଃ ସର୍ଭରରେ କୌଣସି ମାନ୍ୟତାପ୍ରାପ୍ତ ହୋଇନଥିବା ସଂରଚନା ହେତୁ ହୋଇଥାଏ।</li> </ul>">
 
 <!ENTITY nssFailure2.title "ସୁରକ୍ଷିତ ସଂଯୋଗ ବିଫଳ ହେଲା">
 <!ENTITY nssFailure2.longDesc2 "<ul> 
@@ -103,19 +105,13 @@
 
 <!ENTITY nssBadCert.title "ସୁରକ୍ଷିତ ସଂଯୋଗ ବିଫଳ ହେଲା">
 <!ENTITY nssBadCert.longDesc2 "<ul> 
-<li>ଏହା ସର୍ଭର ସଂରଚନାରେ ହୋଇଥିବା କୌଣସି ସମସ୍ୟା ହୋଇପାରେ, କିମ୍ବା କୌଣସି ବ୍ୟକ୍ତି ସର୍ଭରରେ ଅନାଧିକାର ପ୍ରବେଶ କରିବା ପାଇଁ  
-ଚେଷ୍ଟାକରୁଥାଇପାରେ।</li> 
-<li>ଯଦି ଆପଣ ଏହି ସର୍ଭରରେ ଅତିତରେ ସଫଳତାର ସହିତ ସଂଯୁକ୍ତ ହୋଇଥାନ୍ତି, ତେବେ ତ୍ରୁଟି ହୁଏତଃ ଅସ୍ଥାୟୀ ହୋଇଥାଇପାରେ, ଏବଂ ଆପଣ ପରେ ପୁଣିଥରେ 
- ଚେଷ୍ଟାକରିପାରିବେ।</li> 
+<li>ଏହା ସର୍ଭର ସଂରଚନାରେ ହୋଇଥିବା କୌଣସି ସମସ୍ୟା ହୋଇପାରେ, କିମ୍ବା କୌଣସି ବ୍ୟକ୍ତି ସର୍ଭରରେ ଅନାଧିକାର ପ୍ରବେଶ କରିବା ପାଇଁ ଚେଷ୍ଟାକରୁଥାଇପାରେ।</li> 
+<li>ଯଦି ଆପଣ ଏହି ସର୍ଭରରେ ଅତିତରେ ସଫଳତାର ସହିତ ସଂଯୁକ୍ତ ହୋଇଥାନ୍ତି, ତେବେ ତ୍ରୁଟି ହୁଏତଃ ଅସ୍ଥାୟୀ ହୋଇଥାଇପାରେ, ଏବଂ ଆପଣ ପରେ ପୁଣିଥରେ ଚେଷ୍ଟାକରିପାରିବେ।</li> 
 </ul>">
-<!-- LOCALIZATION NOTE (sharedLongDesc3) This string contains markup including widgets for enabling wifi connections.
-     The text inside the tags should be localized. Do not touch the ids. -->
 
-<!ENTITY sharedLongDesc3 "<ul> 
+<!ENTITY sharedLongDesc2 "<ul> 
 <li>ଏହି ସାଇଟଟି ଅସ୍ଥାୟୀ ଭାବରେ ଉପଲବ୍ଧ ନାହିଁ ଅଥବା ବ୍ୟସ୍ତ ଅଛି। କିଛି ମିନଟ ପରେ ପୁଣିଥରେ ଚେଷ୍ଟା କରନ୍ତୁ।</li> 
-<li>ଯଦି ଆପଣ କୌଣସି ପୃଷ୍ଠାକୁ ଧାରଣ କରିବାରେ ଅସମର୍ଥ ହେଉଛନ୍ତି, ତେବେ ଆପଣଙ୍କର ମୋବାଇଲ ଉପକରଣର ତଥ୍ୟ କିମ୍ବାWi-Fi ସଂଯୋଗକୁ ଯାଞ୍ଚ କରନ୍ତୁ। 
-<button id='wifi'>Wi-Fi କୁ ସକ୍ରିୟ କରନ୍ତୁ</button> 
-</li> 
+<li>ଯଦି ଆପଣ କୌଣସି ପୃଷ୍ଠାକୁ ଧାରଣ କରିବାରେ ଅସମର୍ଥ ହେଉଛନ୍ତି, ତେବେ ଆପଣଙ୍କର ମୋବାଇଲ ଉପକରଣର ତଥ୍ୟ କିମ୍ବାWi-Fi ସଂଯୋଗକୁ ଯାଞ୍ଚ କରନ୍ତୁ।</li> 
 </ul>">
 
 <!ENTITY cspFrameAncestorBlocked.title "ବିଷୟବସ୍ତୁ ସୁରକ୍ଷା ନିତୀ ଦ୍ୱାରା ଅଟକ ରଖାଯାଇଛି">
