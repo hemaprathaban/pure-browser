@@ -1,8 +1,19 @@
-firefox (46.0-1) UNRELEASED; urgency=medium
+firefox (46.0-1) unstable; urgency=medium
 
   * New upstream release.
+  * Fixes for mfsa2016-{39,42,44-48}, also known as:
+    CVE-2016-2807, CVE-2016-2806, CVE-2016-2804, CVE-2016-2811,
+    CVE-2016-2812, CVE-2016-2814, CVE-2016-2816, CVE-2016-2817,
+    CVE-2016-2808, CVE-2016-2820.
 
- -- Mike Hommey <glandium@debian.org>  Wed, 27 Apr 2016 08:50:39 +0900
+  * debian/browser.install.in: Add ffmpeg vp9 libraries.
+  * debian/browser.lintian-overrides.in: Add a lintian override for
+    libmozavutil.so, which is not exactly libavutil.
+  * debian/control*: Bump nss and sqlite3 build dependencies.
+  * debian/browser.mozconfig.in, debian/control*, debian/rules: Remove
+    gstreamer dependencies and such, gstreamer support was removed upstream.
+
+ -- Mike Hommey <glandium@debian.org>  Wed, 27 Apr 2016 09:04:38 +0900
 
 firefox (45.0.2-1) unstable; urgency=medium
 
