@@ -10,6 +10,41 @@ firefox-esr (45.0.2esr-1) unstable; urgency=medium
 
   * New upstream release.
 
+  * debian/control.in: Add missing %endif.
+  * debian/control*: Remove build dependencies that were only required for the
+    iceweasel branding.
+  * debian/control*, debian/browser.mozconfig.in: Remove configure flags and
+    build dependencies related to gnomevfs. They have been ignored for close
+    to a year.
+  * debian/browser.mozconfig.in:
+    - Remove configure flags explicitly enabling gio, it has been enabled by
+      default for more than 3 years.
+    - Remove --enable-svg, the option has been ignored for more than 5 years.
+    - Remove --enable-mathml, the option has been ignored for more than 4
+      years.
+    - Remove --enable-pango, the option has been ignored for 2 years.
+    - Remove --disable-pedantic, the option has been ignored for 3 years.
+    - Remove --disable-long-long-warning, the option has been ignored for
+      almost 5 years.
+    - Remove --disable-gnomeui, it is the default.
+    - Remove --disable-mochitest, the option has been ignored for more than 7
+      years.
+    - Remove --disable-debug, it is the default.
+    - Remove --enable-canvas, the option has been ignored for more than 6
+      years.
+    - Remove --disable-installer, the option has been ignored for close to 4
+      years.
+    - Remove --disable-javaxpcom, the option has been ignored for close to 5
+      years.
+    - Remove --disable-elf-dynstr-gc, the option has been ignored for more
+      than 2 years.
+    - Remove --enable-url-classifier, it is the default.
+    - Remove --with-user-appdir=.mozilla, it is the default.
+    - Remove --enable-single-profile, the option has been ignored for more
+      than 7 years.
+    - Remove --disable-profilesharing, the option has been ignored for more
+      than 7 years.
+
  -- Mike Hommey <glandium@debian.org>  Wed, 13 Apr 2016 10:04:57 +0900
 
 firefox-esr (45.0.1esr-1) unstable; urgency=medium
