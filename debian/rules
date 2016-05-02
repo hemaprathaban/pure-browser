@@ -210,7 +210,7 @@ stamps/configure-$(PRODUCT):: stamps/prepare-configure debian/$($(PRODUCT)).mozc
 	MOZCONFIG=$(CURDIR)/debian/$($(PRODUCT)).mozconfig \
 	ASFLAGS="-g" \
 	$(CONFIGURE_ENV) \
-	../configure --target=$(DEB_HOST_GNU_TYPE) --host=$(DEB_BUILD_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
+	../configure --target=$(DEB_HOST_GNU_TYPE) --host=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-default-mozilla-five-home=$(LIB_DIR) \
 		$(BRANDING_CONFIGURE_FLAG)
 
@@ -227,7 +227,7 @@ stamps/configure-l10n:: stamps/prepare-configure
 	cd build-l10n && \
 	MOZCONFIG=$(CURDIR)/debian/$($(PRODUCT)).mozconfig \
 	$(CONFIGURE_ENV) \
-	../configure --target=$(DEB_HOST_GNU_TYPE) --host=$(DEB_BUILD_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
+	../configure --target=$(DEB_HOST_GNU_TYPE) --host=$(DEB_BUILD_GNU_TYPE) --prefix=/usr $(CONFIGURE_FLAGS) \
 		--with-l10n-base=$(CURDIR)/l10n \
 		$(BRANDING_CONFIGURE_FLAG)
 	$(MAKE) -C build-l10n config/host CURRENT_TIER=compile
