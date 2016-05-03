@@ -2,27 +2,46 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY tracking.label                 "التعقب">
+<!ENTITY  trackingProtectionHeader.label       "استخدم الحماية من التعقّب">
+<!ENTITY  trackingProtectionAlways.label       "دائمًا">
+<!ENTITY  trackingProtectionAlways.accesskey   "د">
+<!ENTITY  trackingProtectionPrivate.label      "في النوافذ الخاصة فقط">
+<!ENTITY  trackingProtectionPrivate.accesskey  "ق">
+<!ENTITY  trackingProtectionNever.label        "أبدًا">
+<!ENTITY  trackingProtectionNever.accesskey    "ب">
+<!ENTITY  trackingProtectionLearnMore.label    "اطّلع على المزيد">
+<!ENTITY  trackingProtectionExceptions.label   "الاستثناءات…">
+<!ENTITY  trackingProtectionExceptions.accesskey "س">
 
-<!ENTITY dntTrackingNopref.label        "لا تخبر المواقع بأي شيء عن خياراتي الخاصة بالتعقُّب.">
-<!ENTITY dntTrackingNopref.accesskey    "ت">
-<!ENTITY dntTrackingNotOkay.label       "أخبر المواقع أنني لا أريدها أن تتعقبني.">
-<!ENTITY dntTrackingNotOkay.accesskey   "ه">
-<!ENTITY dntTrackingOkay.label          "أخبر المواقع أنني لا أريدها أن تتعقبني.">
-<!ENTITY dntTrackingOkay.accesskey      "خ">
-<!ENTITY doNotTrackInfo.label           "اطّلع على المزيد">
+<!ENTITY tracking.label                 "التعقب">
+<!ENTITY trackingProtectionPBM5.label         "استخدم الحماية من التعقّب في النوافذ الخاصة">
+<!ENTITY trackingProtectionPBM5.accesskey     "ص">
+<!ENTITY trackingProtectionPBMLearnMore.label "اطّلع على المزيد">
+<!ENTITY changeBlockList.label          "غيّر قائمة الحظر">
+<!ENTITY changeBlockList.accesskey      "غ">
+<!-- LOCALIZATION NOTE (doNotTrack.pre.label): include a trailing space as needed -->
+<!-- LOCALIZATION NOTE (doNotTrack.post.label): include a starting space as needed -->
+
+<!ENTITY  doNotTrack.pre.label          "يمكنك أيضًا ">
+<!ENTITY  doNotTrack.settings.label     "إدارة تفضيلات خاصية عدم التعقب">
+<!ENTITY  doNotTrack.post.label         ".">
 
 <!ENTITY  history.label                 "التأريخ">
 
 <!ENTITY  locationBar.label             "شريط العناوين">
 
-<!ENTITY  locbar.pre.label              "عند استخدام شريط العناوين، اقترح:">
-<!ENTITY  locbar.pre.accessKey          "ح">
-<!ENTITY  locbar.post.label             "">
-<!ENTITY  locbar.both.label             "التأريخ والعلامات">
+<!ENTITY  locbar.suggest.label          "عند استخدام شريط العناوين، اقترح:">
 <!ENTITY  locbar.history.label          "التأريخ">
+<!ENTITY  locbar.history.accesskey      "ت">
 <!ENTITY  locbar.bookmarks.label        "العلامات">
-<!ENTITY  locbar.nothing.label          "لا شيء">
+<!ENTITY  locbar.bookmarks.accesskey    "ع">
+<!ENTITY  locbar.openpage.label         "الألسنة المفتوحة">
+<!ENTITY  locbar.openpage.accesskey     "ف">
+<!ENTITY  locbar.searches.label         "البحوث المشابهة من محرك البحث المبدئي">
+<!ENTITY  locbar.searches.accesskey     "م">
+
+<!ENTITY  suggestionSettings.label      "غيّر تفضيلات اقتراحات محرّك البحث…">
+<!ENTITY  suggestionSettings.accesskey  "غ">
 
 <!ENTITY  acceptCookies.label           "اقبل الكعكات من المواقع">
 <!ENTITY  acceptCookies.accesskey       "ق">
@@ -38,7 +57,6 @@
 
 <!ENTITY  expire.label                  "تنتهي صلاحيتها">
 <!ENTITY  close.label                   "أغلق &brandShortName;">
-<!ENTITY  askEachTime.label             "اسألني كلّ مرّة">
 
 <!ENTITY  cookieExceptions.label        "الاستثناءات…">
 <!ENTITY  cookieExceptions.accesskey    "س">
@@ -46,11 +64,11 @@
 <!ENTITY  showCookies.label             "اعرض الكعكات…">
 <!ENTITY  showCookies.accesskey         "ع">
 
-<!ENTITY  historyHeader.pre.label          "&brandShortName;:">
-<!ENTITY  historyHeader.pre.accesskey      "w">
-<!ENTITY  historyHeader.remember.label     "سيتذكر التأريخ">
+<!ENTITY  historyHeader.pre.label          "&brandShortName; سوف:">
+<!ENTITY  historyHeader.pre.accesskey      "س">
+<!ENTITY  historyHeader.remember.label     "يتذكر التأريخ">
 <!ENTITY  historyHeader.dontremember.label "لن يتذكر التأريخ أبدًا">
-<!ENTITY  historyHeader.custom.label       "سيستخدم إعدادات مخصصة للتأريخ">
+<!ENTITY  historyHeader.custom.label       "يستخدم إعدادات مخصصة للتأريخ">
 <!ENTITY  historyHeader.post.label         "">
 
 <!ENTITY  rememberDescription.label      "سيتذكر &brandShortName; تصفحك وتنزيلاتك والنماذج التي ملأتها وتأريخ البحث، كما سيحتفظ بكعكات مواقع الوب التي زرتها.">
@@ -73,7 +91,7 @@
 <!ENTITY  dontrememberActions.post.label         ".">
 
 <!ENTITY  privateBrowsingPermanent2.label "استخدم نمط التصفح الخاص دائمًا">
-<!ENTITY  privateBrowsingPermanent2.accesskey "ئ">
+<!ENTITY  privateBrowsingPermanent2.accesskey "د">
 
 <!ENTITY  rememberHistory2.label      "تذكر تأريخ تصفحي وتنزيلاتي">
 <!ENTITY  rememberHistory2.accesskey  "ص">

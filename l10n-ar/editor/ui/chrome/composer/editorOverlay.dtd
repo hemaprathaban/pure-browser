@@ -11,23 +11,24 @@
 <!ENTITY pasteNoFormatting.label "ألصق بلا تنسيق">
 <!ENTITY pasteNoFormatting.accesskey "ب">
 <!ENTITY pasteNoFormatting.key "V">
-<!ENTITY pasteAs.label "ألصق على صيغة…">
-<!ENTITY pasteAs.accesskey "ص">
+<!ENTITY pasteAs.label "ألصق ك‍">
+<!ENTITY pasteAs.accesskey "ل">
 <!ENTITY pasteAsQuotationCmd.label "ألصق كاقتباس">
 <!ENTITY pasteAsQuotationCmd.accesskey "ت">
 <!ENTITY pasteAsQuotationCmd.key "o">
-<!ENTITY findCmd.label "ابحث واستبدل…">
+<!ENTITY findBarCmd.label "ابحث…">
+<!ENTITY findReplaceCmd.label "ابحث واستبدل…">
 <!ENTITY enableInlineSpellChecker.label "دقق الإملاء بينما تكتب">
 <!ENTITY enableInlineSpellChecker.accesskey "د">
-<!ENTITY checkSpellingCmd2.label "دقِّق الإملاء">
+<!ENTITY checkSpellingCmd2.label "دقِّق الإملاء…">
 <!ENTITY checkSpellingCmd2.accesskey "ء">
 <!ENTITY checkSpellingCmd2.key "p">
 <!-- Insert menu items -->
 
 <!ENTITY insertMenu.label "أدرج">
 <!ENTITY insertMenu.accesskey "د">
-<!ENTITY insertLinkCmd.label "وصلة…">
-<!ENTITY insertLinkCmd.accesskey "ص">
+<!ENTITY insertLinkCmd.label "رابط…">
+<!ENTITY insertLinkCmd.accesskey "ر">
 <!ENTITY insertLinkCmd.key "l">
 <!ENTITY insertAnchorCmd.label "مربط مسمّى…">
 <!ENTITY insertAnchorCmd.accesskey "ر">
@@ -39,15 +40,17 @@
 <!ENTITY insertTableCmd.accesskey "ج">
 <!ENTITY insertHTMLCmd.label "HTML…">
 <!ENTITY insertHTMLCmd.accesskey "H">
+<!ENTITY insertMathCmd.label "رياضيات…">
+<!ENTITY insertMathCmd.accesskey "ر">
 <!ENTITY insertCharsCmd.label "محارف ورموز…">
 <!ENTITY insertCharsCmd.accesskey "ح">
 <!ENTITY insertBreakAllCmd.label "فاصل تحت الصور">
 <!ENTITY insertBreakAllCmd.accesskey "ف">
 <!-- Used just in context popup. -->
 
-<!ENTITY createLinkCmd.label "أنشئ وصلة…">
+<!ENTITY createLinkCmd.label "أنشئ رابطًا…">
 <!ENTITY createLinkCmd.accesskey "ش">
-<!ENTITY editLinkCmd.label "حرّر الوصلة في محرر جديد">
+<!ENTITY editLinkCmd.label "حرّر الرابط في محرر جديد">
 <!ENTITY editLinkCmd.accesskey "ف">
 <!-- Font Face SubMenu -->
 
@@ -81,20 +84,18 @@
 
 <!ENTITY fontSizeMenu.label "الحجم">
 <!ENTITY fontSizeMenu.accesskey "ج">
-<!ENTITY size-xx-smallCmd.label "صغير جدا جدا">
-<!ENTITY size-xx-smallCmd.accesskey "د">
-<!ENTITY size-x-smallCmd.label "صغير جدا">
-<!ENTITY size-x-smallCmd.accesskey "ج">
+<!ENTITY size-tinyCmd.label "ضئيل">
+<!ENTITY size-tinyCmd.accesskey "ض">
 <!ENTITY size-smallCmd.label "صغير">
 <!ENTITY size-smallCmd.accesskey "ص">
 <!ENTITY size-mediumCmd.label "متوسط">
-<!ENTITY size-mediumCmd.accesskey "ط">
+<!ENTITY size-mediumCmd.accesskey "م">
 <!ENTITY size-largeCmd.label "كبير">
 <!ENTITY size-largeCmd.accesskey "ك">
-<!ENTITY size-x-largeCmd.label "كبير جدا">
-<!ENTITY size-x-largeCmd.accesskey "ب">
-<!ENTITY size-xx-largeCmd.label "كبير جدا جدا">
-<!ENTITY size-xx-largeCmd.accesskey "ي">
+<!ENTITY size-extraLargeCmd.label "كبير جدا">
+<!ENTITY size-extraLargeCmd.accesskey "د">
+<!ENTITY size-hugeCmd.label "ضخم">
+<!ENTITY size-hugeCmd.accesskey "ض">
 <!-- Font Style SubMenu -->
 
 <!ENTITY fontStyleMenu.label "طراز النص">
@@ -301,8 +302,8 @@
 <!ENTITY hruleToolbarCmd.tooltip "أدرج خطا أفقيا أو حرر خصائص الخط المختار">
 <!ENTITY tableToolbarCmd.label "جدول">
 <!ENTITY tableToolbarCmd.tooltip "أدرج جدولا جديدا أو حرر خصائص الجدول المختار">
-<!ENTITY linkToolbarCmd.label "وصلة">
-<!ENTITY linkToolbarCmd.tooltip "أدرج وصلة جديدة أو حرر خصائص الوصلة المختارة">
+<!ENTITY linkToolbarCmd.label "رابط">
+<!ENTITY linkToolbarCmd.tooltip "أدرج رابطًا جديدًا أو حرر خصائص الرابط المختار">
 <!ENTITY anchorToolbarCmd.label "مربط">
 <!ENTITY anchorToolbarCmd.tooltip "أدرج مربطا مسمًى جديدا أو حرر خصائص المربط المختار">
 <!ENTITY TextColorButton.tooltip "اختر لون النص">
@@ -311,6 +312,7 @@
 <!ENTITY HighlightColorButton.tooltip "اختر لون إبراز النص">
 <!-- Editor toolbar -->
 
+<!ENTITY absoluteFontSizeToolbarCmd.tooltip "حدد حجم الخط">
 <!ENTITY decreaseFontSizeToolbarCmd.tooltip "خط أصغر">
 <!ENTITY increaseFontSizeToolbarCmd.tooltip "خط أكبر">
 <!ENTITY boldToolbarCmd.tooltip "عريض">
@@ -321,7 +323,7 @@
 <!ENTITY outdentToolbarCmd.tooltip "قلل الإزاحة (انقل يسارا)">
 <!ENTITY indentToolbarCmd.tooltip "زِد الإزاحة (انقل يمينا)">
 <!ENTITY AlignPopupButton.tooltip "اختر محاذاة النص">
-<!ENTITY InsertPopupButton.tooltip "أدرج وصلة، أو مربطا، أو صورة، أو خطا أفقيا، أو جدولا">
+<!ENTITY InsertPopupButton.tooltip "أدرج رابطًا، أو مربطا، أو صورة، أو خطا أفقيا، أو جدولا">
 <!ENTITY alignLeftButton.tooltip "حاذِ النص قبالة الهامش الأيسر">
 <!ENTITY alignCenterButton.tooltip "حاذِ النص مُوسّطا">
 <!ENTITY alignRightButton.tooltip "حاذِ النص قبالة الهامش الأيمن">

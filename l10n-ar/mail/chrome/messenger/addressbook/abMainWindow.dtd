@@ -3,8 +3,9 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!ENTITY addressbookWindow.title                        "دفتر العناوين">
+<!ENTITY blankResultsPaneMessage.label                  "لا يعرض دفتر العناوين هذا المتراسلين إلا بعد البحث">
+<!ENTITY localResultsOnlyMessage.label                  "المتراسلين من دفاتر العناوين البعيدة لا تظهر إلا بعد البحث">
 <!-- File Menu -->
-
 <!ENTITY fileMenu.label                                 "ملف">
 <!ENTITY fileMenu.accesskey                             "م">
 <!ENTITY newMenu.label                                  "جديد">
@@ -27,7 +28,7 @@
 <!ENTITY closeCmd.label                                 "أغلق">
 <!ENTITY closeCmd.key                                   "W">
 <!ENTITY closeCmd.accesskey                             "غ">
-<!ENTITY printSetupCmd.label                            "إعداد الصفحة …">
+<!ENTITY printSetupCmd.label                            "إعداد الصفحة…">
 <!ENTITY printSetupCmd.accesskey                        "ع">
 <!ENTITY printPreviewContactCmd.label                   "عاين طباعة المراسل">
 <!ENTITY printPreviewContactCmd.accesskey               "ط">
@@ -74,15 +75,15 @@
 <!-- LOCALIZATION NOTE (hideSwapFnLnUI) : DONT_TRANSLATE -->
 <!-- Swap FN/LN UI  Set to "false" to show swap fn/ln UI -->
 <!ENTITY hideSwapFnLnUI "true">
-<!ENTITY propertiesCmd.label                            "الخصائص…">
-<!ENTITY propertiesCmd.accesskey                        "خ">
+<!ENTITY propertiesCmd2.label                           "الخصائص">
+<!ENTITY propertiesCmd2.accesskey                       "خ">
 <!ENTITY propertiesCmd.key                              "i">
 <!-- View Menu -->
 
 <!ENTITY viewMenu.label                                 "اعرض">
 <!ENTITY viewMenu.accesskey                             "ع">
 <!ENTITY viewToolbarsMenu.label                         "أشرطة الأدوات">
-<!ENTITY viewToolbarsMenu.accesskey                     "ش"> 
+<!ENTITY viewToolbarsMenu.accesskey                     "ش">
 <!ENTITY menubarCmd.label                               "شريط القائمة">
 <!ENTITY menubarCmd.accesskey                           "ئ">
 <!ENTITY showAbToolbarCmd.label                         "شريط أدوات دفتر العناوين">
@@ -98,11 +99,11 @@
 <!ENTITY showContactPane2.label                         "لوحة المراسلين">
 <!ENTITY showContactPane2.accesskey                     "س">
 <!ENTITY menu_ShowNameAs.label                          "اعرض الاسم ك‍">
-<!ENTITY menu_ShowNameAs.accesskey                      "ك"> 
+<!ENTITY menu_ShowNameAs.accesskey                      "ك">
 <!-- LOCALIZATION NOTE (firstLastCmd2.label): We're not including a comma here
 because displayed names don't have the comma in between. -->
 <!ENTITY firstLastCmd2.label                            "الاسم الكنية">
-<!ENTITY firstLastCmd2.accesskey                        "م"> 
+<!ENTITY firstLastCmd2.accesskey                        "م">
 <!ENTITY lastFirstCmd.label                             "الأخير، الأول">
 <!ENTITY lastFirstCmd.accesskey                         "و">
 <!ENTITY displayNameCmd.label                           "اسم العرض">
@@ -113,7 +114,7 @@ because displayed names don't have the comma in between. -->
 
 <!ENTITY tasksMenu.label                                "أدوات">
 <!ENTITY tasksMenu.accesskey                            "د">
-<!ENTITY messengerCmd.label                             "البريد و مجموعات الأخبار">
+<!ENTITY messengerCmd.label                             "البريد و مجموعات الأخبار">
 <!ENTITY messengerCmd.accesskey                         "ب">
 <!ENTITY messengerCmd.commandkey                        "1">
 <!ENTITY searchAddressesCmd.label                       "ابحث في العناوين…">
@@ -122,11 +123,11 @@ because displayed names don't have the comma in between. -->
 <!ENTITY importCmd.accesskey                            "س">
 <!ENTITY exportCmd.label                                "صدِّر…">
 <!ENTITY exportCmd.accesskey                            "ص">
-<!ENTITY preferencesCmd.label                           "الخيارات…">
-<!ENTITY preferencesCmd.accesskey                       "خ">
+<!ENTITY preferencesCmd2.label                          "الخيارات">
+<!ENTITY preferencesCmd2.accesskey                      "خ">
 <!ENTITY preferencesCmdUnix.label                       "التفضيلات">
 <!ENTITY preferencesCmdUnix.accesskey                   "ف">
-<!-- Address Book Toolbar and Context Menus -->  
+<!-- Address Book Toolbar and Context Menus -->
 
 <!ENTITY newContactButton.label                         "متراسل جديد">
 <!ENTITY newContactButton.accesskey                     "ج">
@@ -138,6 +139,8 @@ because displayed names don't have the comma in between. -->
 <!ENTITY newmsgButton.accesskey                         "ك">
 <!ENTITY newIM.label                                    "رسالة فورية">
 <!ENTITY newIM.accesskey                                "ف">
+<!ENTITY printButton.label                              "اطبع…">
+<!ENTITY printButton.accesskey                          "ط">
 <!ENTITY deleteButton2.label                            "احذف">
 <!ENTITY deleteButton2.accesskey                        "ح">
 <!-- Address Book Toolbar Tooltips -->
@@ -147,7 +150,7 @@ because displayed names don't have the comma in between. -->
 <!ENTITY editButton2.tooltip                            "حرّر العنصر المُختار">
 <!ENTITY newmsgButton.tooltip                           "أرسِل رسالة بريد">
 <!ENTITY newIM.tooltip                                  "أرسِل رسالة فورية أو دردشة">
-<!ENTITY deleteButton2.tooltip                           "احذف العنصر المُختار">
+<!ENTITY deleteButton2.tooltip                          "احذف العنصر المُختار">
 <!-- Dir Tree header -->
 
 <!ENTITY dirTreeHeader.label                            "دفاتر العناوين">
@@ -160,6 +163,8 @@ because displayed names don't have the comma in between. -->
 <!ENTITY searchItem.title "بحث سريع">
 <!-- Results Pane -->
 
+<!ENTITY Addrbook.label                                 "دفتر العناوين">
+<!ENTITY Addrbook.accesskey                             "د">
 <!ENTITY GeneratedName.label                            "الاسم">
 <!ENTITY GeneratedName.accesskey                        "س">
 <!ENTITY PrimaryEmail.label                             "البريد">
@@ -209,11 +214,11 @@ because displayed names don't have the comma in between. -->
 <!ENTITY mapIt.tooltip                                  "اعرض خريطة لهذا العنوان من الوب">
 <!-- Status Bar -->
 
-<!ENTITY statusText.label "">
+<!ENTITY statusText.label                               "">
 <!--  Mac OS X Window Menu -->
 
-<!ENTITY windowMenu.label "نافذة">
-<!ENTITY minimizeWindow.label "صغّر">
-<!ENTITY minimizeWindow.key "m">
-<!ENTITY bringAllToFront.label "اجلب الكل للمقدمة">
-<!ENTITY zoomWindow.label "قرّب">
+<!ENTITY windowMenu.label                               "نافذة">
+<!ENTITY minimizeWindow.label                           "صغّر">
+<!ENTITY minimizeWindow.key                             "m">
+<!ENTITY bringAllToFront.label                          "اجلب الكل للمقدمة">
+<!ENTITY zoomWindow.label                               "قرّب">
