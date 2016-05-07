@@ -84,9 +84,15 @@ Conflicts: j2re1.4,
 Breaks: xul-ext-torbutton
 Provides: www-browser,
           gnome-www-browser
-%define DESCRIPTION Mozilla Firefox web browser
+%define RAW_DESCRIPTION Mozilla Firefox web browser
 %define LONGDESC1 @Browser@ is a powerful, extensible web browser with support for modern
 %define LONGDESC2 web application technologies.
+%define firefox_esr firefox-esr
+%if browser == firefox_esr
+%define DESCRIPTION @RAW_DESCRIPTION@ - Extended Support Release (ESR)
+%else
+%define DESCRIPTION @RAW_DESCRIPTION@
+%endif
 Description: @DESCRIPTION@
  @LONGDESC1@
  @LONGDESC2@

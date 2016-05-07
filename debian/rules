@@ -44,8 +44,6 @@ endif
 endif
 endif
 
-include $(BRANDING)/configure.sh
-
 GTK3 ?= $(shell grep -q _PLATFORM_DEFAULT_TOOLKIT=cairo-gtk3 configure.in && echo 1)
 
 ifeq (firefox-esr,$(DEBIAN_SOURCE))
@@ -57,9 +55,11 @@ BRANDING_CONFIGURE_FLAG = $(if $(filter $(BRANDING),$(OFFICIAL_BRANDING)),--enab
 # Define PRODUCT, product and Product variables (replacing product with the
 # actual value of $(PRODUCT))
 $(PRODUCT) := $(call lc,$(PRODUCT_NAME))
-$(call uc,$(PRODUCT)) := $(call uc,$(subst ",,$(MOZ_APP_DISPLAYNAME)))
-Product := $(strip $(eval __tmp := $(PRODUCT))$(foreach l,$(letters),$(eval __tmp := $(subst $(l),$(l) ,$(__tmp))))$(call uc,$(firstword $(__tmp)))$(PRODUCT:$(firstword $(__tmp))%=%))
-$(Product) := $(subst ",,$(MOZ_APP_DISPLAYNAME))
+uc_first = $(strip $(eval __tmp := $(1))$(foreach l,$(letters),$(eval __tmp := $(subst $(l),$(l) ,$(__tmp))))$(call uc,$(firstword $(__tmp)))$(1:$(firstword $(__tmp))%=%))
+DISPLAY_NAME := $(call uc_first,$(PRODUCT_DOWNLOAD_NAME))$(if $(filter %-esr,$(PRODUCT_NAME)), ESR)
+$(call uc,$(PRODUCT)) := $(call uc,$(DISPLAY_NAME))
+Product := $(call uc_first,$(PRODUCT))
+$(Product) := $(DISPLAY_NAME)
 
 LIB_DIR := /usr/lib/$($(PRODUCT))
 SHARE_DIR := /usr/share/$($(PRODUCT))
