@@ -110,7 +110,7 @@ endif
 
 PRODUCT_DOWNLOAD_NAME := $(firstword $(subst -, ,$(PRODUCT_NAME)))
 
-BASE_URL = https://archive.mozilla.org/pub/mozilla.org/$(PRODUCT_DOWNLOAD_NAME)/$(SOURCE_TYPE)
+BASE_URL = https://archive.mozilla.org/pub/$(PRODUCT_DOWNLOAD_NAME)/$(SOURCE_TYPE)
 
 L10N_FILTER = awk '(NF == 1 || /linux/) && $$1 != "en-US" { print $$1 }'
 $(call lazy,L10N_LANGS,$$(shell $$(L10N_FILTER) $(PRODUCT)/locales/shipped-locales))
