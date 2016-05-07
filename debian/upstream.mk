@@ -141,7 +141,7 @@ $(call lazy,SOURCE_TARBALL_EXT,$$(shell curl -s $(SOURCE_REPO)/raw-file/$(SOURCE
 endif
 L10N_TARBALLS = $(foreach lang,$(L10N_LANGS),$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-l10n-$(lang).tar.bz2))
 
-ALL_TARBALLS = $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS) $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-compare-locales.tar.bz2)
+ALL_TARBALLS = $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL) $(L10N_TARBALLS)
 
 download: $(ALL_TARBALLS)
 
@@ -154,9 +154,5 @@ $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL): debian/source.filter
 
 $(L10N_TARBALLS): $(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-l10n-%.tar.bz2): debian/l10n.filter
 	debian/repack.py -o $@ -t $* -f debian/l10n.filter $(L10N_REPO)/$*/archive/$(L10N_REV).tar.bz2
-
-$(SOURCE_TARBALL_LOCATION)/$(SOURCE_TARBALL:%.orig.tar.$(SOURCE_TARBALL_EXT)=%.orig-compare-locales.tar.bz2): debian/l10n.filter
-	debian/repack.py -o $@ -t compare-locales -f debian/l10n.filter https://hg.mozilla.org/build/compare-locales/archive/$(L10N_REV).tar.bz2 > $@
-
 endif
 .PHONY: download
