@@ -19,6 +19,12 @@
      -->
 
 <!ENTITY quickFilterBar.toggleBarVisibility.menu.accesskey "ش">
+<!-- LOCALIZATION NOTE (quickFilterBar.toggleBarVisibility.appmenu.label):
+     The label to display for the "App Menu... Preferences..." menu item that
+     controls whether the quick filter bar is visible.
+     -->
+
+<!ENTITY quickFilterBar.toggleBarVisibility.appmenu.label "شريط الترشيح السريع">
 <!-- LOCALIZATION NOTE (quickFilterBar.toggleBarVisibility.button.tooltip):
      The tooltip to display when hovering over the button on the tab bar that
      toggles the visibility of the quick filter bar.
@@ -34,12 +40,6 @@
      -->
 
 <!ENTITY quickFilterBar.sticky.tooltip "يبقي الترشيحات مطبقة عند تبديل المجلدات">
-<!-- LOCALIZATION NOTE (quickFilterBar.barLabel.label):
-     The text to display on the quick filter bar, labeling it.  This should
-     ideally be as short as possible.
-     -->
-
-<!ENTITY quickFilterBar.barLabel.label "ترشيح سريع:">
 <!-- LOCALIZATION NOTE (quickFilterBar.unread.label):
      The label for the filter button that causes us to filter results to only
      include unread messages.
@@ -130,7 +130,7 @@
      -->
 
 <!ENTITY quickFilterBar.resultsLabel.minWidth "100">
-<!-- LOCALIZATION NOTE (quickFilterBar.textbox.emptyText.base):
+<!-- LOCALIZATION NOTE (quickFilterBar.textbox.emptyText.base1):
      This is the base of the empty text for the text search box.  We replace
      #1 with the contents of the appropriate
      quickFilterBar.textbox.emptyText.keyLabel.* value for the platform.
@@ -138,8 +138,6 @@
      the messages and that there is a hotkey they can press to get to the
      box faster.
      -->
-
-<!ENTITY quickFilterBar.textbox.emptyText.base "رشّح هذه الرسائل... #1">
 <!-- LOCALIZATION NOTE (quickFilterBar.show.key2):
      This is the key used to show the quick filter bar. -->
 
@@ -157,6 +155,31 @@
      -->
 
 <!ENTITY quickFilterBar.textbox.emptyText.keyLabel2.mac "&lt;&#x21E7;&#x2318;K&gt;">
+<!-- LOCALIZATION NOTE (quickFilterBar.booleanMode.tooltip):
+     Tooltip of the Any of / All of tagging mode selector.
+     -->
+
+<!ENTITY quickFilterBar.booleanMode.tooltip "وضع ترشيح الوسوم">
+<!-- LOCALIZATION NOTE (quickFilterBar.booleanModeAny.label):
+     Tooltip of the Any of / All of tagging mode selector.
+     -->
+
+<!ENTITY quickFilterBar.booleanModeAny.label "أيًا من">
+<!-- LOCALIZATION NOTE (quickFilterBar.booleanModeAny.tooltip):
+     Tooltip of the Any of / All of tagging mode selector.
+     -->
+
+<!ENTITY quickFilterBar.booleanModeAny.tooltip "يجب أن يطابق على الأقل واحد من معايير الوسوم المحددة">
+<!-- LOCALIZATION NOTE (quickFilterBar.booleanModeAll.label):
+     Tooltip of the Any of / All of tagging mode selector.
+     -->
+
+<!ENTITY quickFilterBar.booleanModeAll.label "كلًا من">
+<!-- LOCALIZATION NOTE (quickFilterBar.booleanModeAll.tooltip):
+     Tooltip of the Any of / All of tagging mode selector.
+     -->
+
+<!ENTITY quickFilterBar.booleanModeAll.tooltip "يجب أن يطابق كل معايير الوسوم المحددة">
 <!-- LOCALIZATION NOTE (quickFilterBar.textbox.idealWidth):
      The number of pixels for the ideal width of the quick filter box textbox.
      Choose this value so that the emptyText fits nicely with a little bit of

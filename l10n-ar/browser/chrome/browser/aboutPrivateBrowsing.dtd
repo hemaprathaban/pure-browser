@@ -2,20 +2,54 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY privatebrowsingpage.title                 "التصفح الخاص">
-<!ENTITY privatebrowsingpage.title.normal          "أتريد أن تبدأ التصفح الخاص؟">
-
-<!ENTITY privatebrowsingpage.perwindow.issueDesc        "لن يحفظ &brandShortName; أيّ تأريخ لهذه النافذة.">
-<!ENTITY privatebrowsingpage.perwindow.issueDesc.normal "لستَ حاليا في نافذة خاصة.">
-
-<!ENTITY privatebrowsingpage.perwindow.description     "لن يسجّل &brandShortName; الأحداث التي ستجري في نافذة التصفح الخاص هذه، ذلك يتضمّن تأريخ التصفح، وتأريخ البحث، وتأريخ التنزيلات، وتأريخ نماذج الوب، والكعكات، وملفات الإنترنت المؤقتة.  ولكنه سيحتفظ بالملفات التي تحمّلها وبالعلامات التي تضيفها.">
-
+<!ENTITY aboutPrivateBrowsing.notPrivate       "لستَ حاليا في نافذة خاصة.">
 <!ENTITY privatebrowsingpage.openPrivateWindow.label "افتح نافذة خاصة">
 <!ENTITY privatebrowsingpage.openPrivateWindow.accesskey "خ">
-<!-- LOCALIZATION NOTE (privatebrowsingpage.howToStart3): please leave &basePBMenu.label; intact in the translation -->
 
-<!ENTITY privatebrowsingpage.howToStart3               "لبدء التصفح الخاص، اختر &basePBMenu.label; ← &newPrivateWindow.label;.">
-<!ENTITY privatebrowsingpage.howToStop3                "لإيقاف التصفح الخاص، أغلق هذه النافذة.">
+<!ENTITY privateBrowsing.title                 "التصفح الخاص">
+<!-- LOCALIZATION NOTE (aboutPrivateBrowsing.width1):
+     Width of the Private Browsing section. This should depend primarily on the
+     length of the headers and text, but should be roughly 1.5 times the width
+     of the Tracking Protection section, and in general not much larger than
+     30em to prevent the sections from wrapping on smaller window sizes.
+     -->
 
-<!ENTITY privatebrowsingpage.moreInfo                  "مع أن هذا الحاسوب لن يحتوي على سجل لتصفحك، إلا أنّ باستطاعة مزود خدمة الإنترنت تتبع الصفحات التي زرتها.">
-<!ENTITY privatebrowsingpage.learnMore                 "اطّلع على المزيد">
+<!ENTITY aboutPrivateBrowsing.width1           "30em">
+<!ENTITY aboutPrivateBrowsing.title            "تتصفح بخصوصية">
+
+<!ENTITY aboutPrivateBrowsing.info.notsaved    "غير محفوظ">
+<!ENTITY aboutPrivateBrowsing.info.history     "التأريخ">
+<!ENTITY aboutPrivateBrowsing.info.searches    "البحوث">
+<!ENTITY aboutPrivateBrowsing.info.cookies     "الكعكات">
+<!ENTITY aboutPrivateBrowsing.info.temporaryFiles "الملفات المؤقتة">
+
+<!ENTITY aboutPrivateBrowsing.info.saved       "محفوظ">
+<!ENTITY aboutPrivateBrowsing.info.downloads   "التنزيلات">
+<!ENTITY aboutPrivateBrowsing.info.bookmarks   "العلامات">
+
+<!ENTITY aboutPrivateBrowsing.note1            "لاحظ أنّ باستطاعة رب عملك أو مزود خدمة الإنترنت تعقب الصفحات التي زرتها.">
+<!ENTITY aboutPrivateBrowsing.learnMore        "اطّلع على المزيد.">
+<!-- LOCALIZATION NOTE (trackingProtection.width1):
+     Width of the Tracking Protection section. It is fine for the enabled or
+     disabled indicator or the words in the title to wrap to the next line, but
+     you can expand or reduce this section to fit better, as long as the width
+     of the Private Browsing section is roughly 1.5 times the width of this one.
+     Note that the required space may vary between platforms because fonts are
+     different, so testing on Windows, Mac, and Linux is encouraged.
+     -->
+
+<!ENTITY trackingProtection.width1             "22em">
+<!ENTITY trackingProtection.title              "الحماية من التعقّب">
+<!-- LOCALIZATION NOTE (trackingProtection.state.width):
+     Width of the element representing the enabled or disabled indicator.
+     -->
+
+<!ENTITY trackingProtection.state.width        "6ch">
+<!ENTITY trackingProtection.state.enabled      "مُشغل">
+<!ENTITY trackingProtection.state.disabled     "مُعطل">
+
+<!ENTITY trackingProtection.description1       "النوافذ الخاصة صارت تمنع أجزاء الصفحة التي قد تتعقّب نشاط التصفح.">
+
+<!ENTITY trackingProtection.disable            "أوقف الحماية من التعقّب">
+<!ENTITY trackingProtection.enable             "شغّل الحماية من التعقّب">
+<!ENTITY trackingProtection.startTour1         "اطلع على طريقة عملها">

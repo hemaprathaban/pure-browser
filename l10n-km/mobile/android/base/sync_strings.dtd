@@ -62,7 +62,7 @@
 <!ENTITY sync.configure.engines.title.label "អ្វី​ដែល​ត្រូវ​ធ្វើ​សមកាល​កម្ម">
 <!ENTITY sync.configure.engines.sync.my.title.label "ធ្វើ​សមកាលកម្ម​របស់​អ្នក...">
 <!ENTITY sync.configure.engines.title.bookmarks "ចំណាំ">
-<!ENTITY sync.configure.engines.title.passwords "ពាក្យ​សម្ងាត់">
+<!ENTITY sync.configure.engines.title.passwords2 "ការ​ចូល">
 <!ENTITY sync.configure.engines.title.history "ប្រវត្តិ">
 <!ENTITY sync.configure.engines.title.tabs "ផ្ទាំង">
 <!-- Common text -->
@@ -141,7 +141,7 @@
 <!ENTITY fxaccount_policy_linkprivacy "សម្គាល់​ឯកជន">
 
 <!ENTITY fxaccount_getting_started_welcome_to_sync "ស្វាគមន៍​មកកាន់ &syncBrand.shortName.label;">
-<!ENTITY fxaccount_getting_started_description "ចូល​ដើម្បី​ធ្វើ​សមកាលកម្ម​ផ្ទាំង​របស់​អ្នក, ចំណាំ, ពាក្យសម្ងាត់ &amp; ច្រើន​ទៀត។">
+<!ENTITY fxaccount_getting_started_description2 "ចូល​ដើម្បី​ធ្វើ​សមកាលកម្ម​ផ្ទាំង, ចំណាំ, ការ​ចូល​របស់​អ្នក &amp; ច្រើន​ទៀត។">
 <!ENTITY fxaccount_getting_started_get_started "បាន​ចាប់ផ្ដើម">
 <!ENTITY fxaccount_getting_started_old_firefox "ប្រើ​កំណែ​ចាស់​នៃ &syncBrand.shortName.label;?">
 <!-- Localization note: the Firefox below should not change with the
@@ -197,6 +197,7 @@
 
 <!ENTITY fxaccount_status_header2 "គណនី Firefox">
 <!ENTITY fxaccount_status_signed_in_as "បាន​ចូល​ជា">
+<!ENTITY fxaccount_status_manage_account "គ្រប់គ្រង​គណនី">
 <!ENTITY fxaccount_status_auth_server "ម៉ាស៊ីន​មេ​គណនី">
 <!ENTITY fxaccount_status_sync_now "ធ្វើ​សមកាលកម្ម​ឥឡូវ">
 <!ENTITY fxaccount_status_syncing2 "កំពុង​ធ្វើ​សមាកលកម្ម...">
@@ -212,7 +213,7 @@
 <!ENTITY fxaccount_status_needs_finish_migrating "ប៉ះ​ដើម្បី​ចូល​គណនី Firefox ថ្មី​របស់​អ្នក។">
 <!ENTITY fxaccount_status_bookmarks "ចំណាំ">
 <!ENTITY fxaccount_status_history "ប្រវត្តិ">
-<!ENTITY fxaccount_status_passwords "ពាក្យ​សម្ងាត់">
+<!ENTITY fxaccount_status_passwords2 "ចូល">
 <!ENTITY fxaccount_status_tabs "បើក​ផ្ទាំង">
 <!ENTITY fxaccount_status_legal "ស្រប​ច្បាប់" >
 <!-- Localization note: when tapped, the following two strings link to
@@ -223,13 +224,14 @@
 <!ENTITY fxaccount_status_linkprivacy "សម្គាល់​ឯកជន">
 <!ENTITY fxaccount_status_more "ច្រើន​ទៀត&ellipsis;">
 
-<!ENTITY fxaccount_remove_account_dialog_title "ច្រើន​ទៀត&ellipsis;">
+<!ENTITY fxaccount_remove_account_dialog_title "លុប​គណនី Firefox ចេញ​មែន​ទេ?">
 <!ENTITY fxaccount_remove_account_dialog_message "&brandShortName; នឹង​បញ្ឈប់​ការ​ធ្វើសមកាលកម្ម​ជា​មួយ​គណនី​របស់​អ្នក ប៉ុន្តែ​នឹង​មិន​លុប​ទិន្នន័យ​រុករក​របស់​អ្នក​​ណា​មួយ​ទេ​នៅ​លើ​ឧបករណ៍​នេះ។">
 <!-- Localization note: format string below will be replaced
      with the Firefox Account's email address. -->
 <!ENTITY fxaccount_remove_account_toast "បាន​លុប​ &formatS; គណនី Firefox ។">
 
-<!ENTITY fxaccount_remove_account_menu_item "បាន​លុប &formatS; គណនី Firefox ។">
+<!ENTITY fxaccount_remove_account_menu_item "លុប​គណនី​ចេញ">
+<!ENTITY fxaccount_enable_debug_mode "អនុញ្ញាត​​របៀប​កែ​កំហុស">
 <!-- Localization note: this is the name shown by the Android system
      itself for a Firefox Account. Don't localize this. -->
 
@@ -240,7 +242,7 @@
      status activity, which lets them manage their Firefox
      Account. -->
 
-<!ENTITY fxaccount_options_title "ជម្រើស syncBrand.shortName.label;">
+<!ENTITY fxaccount_options_title "ជម្រើស &syncBrand.shortName.label;">
 <!ENTITY fxaccount_options_configure_title "កំណត់​រចនា​សម្ព័ន្ធ &syncBrand.shortName.label;">
 <!-- Localization note: these error messages are shown after a request
      has been made to the remote server, and an error of some type has

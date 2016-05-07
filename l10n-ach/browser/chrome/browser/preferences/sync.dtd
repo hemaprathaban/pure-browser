@@ -16,7 +16,6 @@
 
 <!ENTITY manageAccount.label          "Lo Akaunti">
 <!ENTITY manageAccount.accesskey      "A">
-<!ENTITY viewQuota.label              "Nen Ngap">
 <!ENTITY changePassword2.label        "Lok mung me donyo…">
 <!ENTITY myRecoveryKey.label          "Lagony mamega me Nong">
 <!ENTITY resetSync2.label             "Nwo tero tim marom…">
@@ -26,8 +25,6 @@
 <!ENTITY syncMy.label               "Tim marom">
 <!ENTITY engine.bookmarks.label     "Alama me buk">
 <!ENTITY engine.bookmarks.accesskey "l">
-
-
 <!ENTITY engine.tabs.label          "Dirica matino">
 <!ENTITY engine.tabs.accesskey      "D">
 <!ENTITY engine.history.label       "Gin mukato">
@@ -42,6 +39,10 @@
 
 <!ENTITY syncDeviceName.label       "Nying Nyonyo:">
 <!ENTITY syncDeviceName.accesskey   "y">
+<!ENTITY fxaSyncDeviceName.label       "Nying Nyonyo">
+<!ENTITY changeSyncDeviceName.label "Lok nying nyonyo…">
+<!ENTITY cancelChangeSyncDeviceName.label "Juk">
+<!ENTITY saveChangeSyncDeviceName.label "Gwok">
 <!ENTITY unlinkDevice.label           "Ngol kube ki nyonyo man">
 <!-- Footer stuff -->
 
@@ -70,13 +71,38 @@ both, to better adapt this sentence to their language.
 
 <!ENTITY notSignedIn.label           "Pe i donyo iye.">
 <!ENTITY signIn.label                "Dony iyie">
-<!ENTITY manage.label                "Lo">
+<!ENTITY profilePicture.tooltip      "Lok cal me propwail">
+<!ENTITY verifiedManage.label        "Lo Akaunt">
 <!ENTITY disconnect.label            "Wek kube…">
 <!ENTITY verify.label                "Mok ada pa email">
 <!ENTITY forget.label                "Wek wiyi owil ikom email man">
 
 <!ENTITY welcome.description "Nong dirica matino, alama me buk, mung me donyo ki mukene mamegi ka itiyo ki &brandShortName;.">
-<!ENTITY welcome.signIn.label "Dony iyie">
-<!ENTITY welcome.createAccount.label "Cwe akaunti">
+<!ENTITY welcome.signIn.label "Dony iye">
+<!ENTITY welcome.createAccount.label "Cwe akaunt">
 
 <!ENTITY welcome.useOldSync.label "Itye katic ki kit Tim marom macon?">
+
+<!ENTITY signedOut.caption            "Ter Kakube ni kwedi">
+<!ENTITY signedOut.description        "Tim alamabuk, gin mukato, dirica matino, mung me donyo, med-ikome ki jami ayera i nyonyo ni weng marom.">
+<!ENTITY signedOut.accountBox.title   "Kube ki &syncBrand.fxAccount.label;">
+<!ENTITY signedOut.accountBox.create  "Cwe akaunt">
+<!ENTITY signedOut.accountBox.signin  "Dony iye">
+
+<!ENTITY signedIn.engines.label       "Tii marom i nyonyo weng">
+<!-- LOCALIZATION NOTE (mobilePromo2.*): the following strings will be used to
+     create a single sentence with active links.
+     The resulting sentence in English is: "Sync to your mobile device.
+     Download Firefox for Android or Firefox for iOS." -->
+
+
+<!ENTITY mobilePromo2.start            "Tim marom i nyonyo me cing mamegi. Gam ">
+<!-- LOCALIZATION NOTE (mobilePromo2.androidLink): This is a link title that links to https://www.mozilla.org/firefox/android/ -->
+<!ENTITY mobilePromo2.androidLink      "Firefox pi Android">
+<!-- LOCALIZATION NOTE (mobilePromo2.iOSBefore): This is text displayed between mobilePromo2.androidLink and mobilePromo2.iosLink -->
+
+<!ENTITY mobilePromo2.iOSBefore         " onyo ">
+<!-- LOCALIZATION NOTE (mobilePromo2.iOSLink): This is a link title that links to https://www.mozilla.org/firefox/ios/ -->
+<!ENTITY mobilePromo2.iOSLink          "Firefox pi iOS">
+
+<!ENTITY mobilePromo2.end              ".">

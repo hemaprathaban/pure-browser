@@ -13,10 +13,10 @@
 <!ENTITY mainWindow.titlemodifiermenuseparator " - ">
 <!-- LOCALIZATION NOTE (mainWindow.titlePrivateBrowsingSuffix): This will be appended to the window's title
                                                                 inside the private browsing mode -->
-<!ENTITY mainWindow.titlePrivateBrowsingSuffix "(مرور خصوصی)‏">
+<!ENTITY mainWindow.titlePrivateBrowsingSuffix "(مرور ناشناس)‏">
 
 <!ENTITY appmenu.tooltip                     "باز کردن منو">
-<!ENTITY navbarOverflow.label                "ابزارهای بیشتر...">
+<!ENTITY navbarOverflow.label                "ابزارهای بیشتر…">
 <!-- Tab context menu -->
 
 <!ENTITY  reloadTab.label                    "بازآوری زبانه">
@@ -36,16 +36,13 @@ left edge of the tabstrip. Really we just want the string to express the idea
 that this is a lightweight and reversible action that keeps your tab where you
 can reach it easily. -->
 
-<!ENTITY  pinTab.label                       "چسباندن زبانه">
-<!ENTITY  pinTab.accesskey                   "P">
+<!ENTITY  pinTab.label                       "سنجاق کردن زبانه">
+<!ENTITY  pinTab.accesskey                   "س">
 <!ENTITY  unpinTab.label                     "کندن زبانه">
 <!ENTITY  unpinTab.accesskey                 "b">
-<!ENTITY  moveToGroup.label                  "انتقال به گروه">
-<!ENTITY  moveToGroup.accesskey              "ق">
-<!ENTITY  moveToNewGroup.label               "گروه جدید">
 <!ENTITY  moveToNewWindow.label              "انتقال به پنجرهٔ جدید">
 <!ENTITY  moveToNewWindow.accesskey          "پ">
-<!ENTITY  bookmarkAllTabs.label              "نشانک‌گذاری همه ی زبانه‌ها…">
+<!ENTITY  bookmarkAllTabs.label              "نشانک‌گذاری همه زبانه‌ها…">
 <!ENTITY  bookmarkAllTabs.accesskey          "ز">
 <!ENTITY  undoCloseTab.label                 "برگردان بستن زبانه">
 <!ENTITY  undoCloseTab.accesskey             "ب">
@@ -60,7 +57,7 @@ can reach it easily. -->
 <!-- LOCALIZATION NOTE (openLocationCmd.label): "Open Location" is only
 displayed on OS X, and only on windows that aren't main browser windows, or
 when there are no windows but Firefox is still running. -->
-<!ENTITY openLocationCmd.label "باز کردن مکان">
+<!ENTITY openLocationCmd.label "بازکردن مکان…">
 <!ENTITY openFileCmd.label "بازکردن پرونده…">
 <!ENTITY openFileCmd.accesskey "ب">
 <!ENTITY openFileCmd.commandkey "o">
@@ -84,7 +81,7 @@ when there are no windows but Firefox is still running. -->
 
 <!ENTITY toolbarContextMenu.reloadAllTabs.label "بازآوری همهٔ زبانه‌ها">
 <!ENTITY toolbarContextMenu.reloadAllTabs.accesskey "ه">
-<!ENTITY toolbarContextMenu.bookmarkAllTabs.label "نشانک‌گذاری همه ی زبانه‌ها…">
+<!ENTITY toolbarContextMenu.bookmarkAllTabs.label "نشانک‌گذاری همه زبانه‌ها…">
 <!ENTITY toolbarContextMenu.bookmarkAllTabs.accesskey "ز">
 <!ENTITY toolbarContextMenu.undoCloseTab.label "برگردان زبانه بسته شده">
 <!ENTITY toolbarContextMenu.undoCloseTab.accesskey "ب">
@@ -110,13 +107,11 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY showAllTabsCmd.accesskey "ز">
 
 <!ENTITY fxaSignIn.label "ورود به &syncBrand.shortName.label;">
+<!ENTITY fxaSignedIn.tooltip "باز کردن ترجیحات &syncBrand.shortName.label;">
 <!ENTITY fxaSignInError.label "بازگشت به &syncBrand.shortName.label;…">
+<!ENTITY fxaUnverified.label "حساب خود را تایید کنید">
 <!ENTITY syncStartPanel2.heading "&syncBrand.shortName.label; فعال شد">
 <!ENTITY syncStartPanel2.subTitle "&brandShortName; به زودی هم‌گام‌سازی را شروع میکند">
-<!ENTITY syncErrorPanel.heading "قادر به اتصال به &syncBrand.shortName.label; نیست.">
-<!ENTITY syncErrorPanel.subTitle "لطفا جهت ادامه همگام سازی به سیستم وارد شوید.">
-<!ENTITY syncErrorPanel.signInButton.label "ورود">
-<!ENTITY syncErrorPanel.signInButton.accesskey "و">
 
 
 <!ENTITY fullScreenMinimize.tooltip "کمینه کردن">
@@ -126,10 +121,20 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY fullScreenAutohide.accesskey "پ">
 <!ENTITY fullScreenExit.label "خروج از حالت مرور تمام‌صفحه">
 <!ENTITY fullScreenExit.accesskey "خ">
-<!ENTITY fullscreenAllowButton.label "اجازه دادن">
-<!ENTITY fullscreenExitButton.label "رد کردن">
+<!-- LOCALIZATION NOTE (fullscreenWarning.beforeDomain.label,
+     fullscreenWarning.afterDomain.label): these two strings are used
+     respectively before and after the domain requiring fullscreen.
+     Localizers can use one of them, or both, to better adapt this
+     sentence to their language. -->
 
-<!ENTITY fullscreenExitHint2.value "در هر زمانی برای خروج دکمه ESC را فشار دهید.">
+<!ENTITY fullscreenWarning.beforeDomain.label "">
+<!ENTITY fullscreenWarning.afterDomain.label "حالا در حالت تمام‌صفحه است">
+<!ENTITY fullscreenWarning.generic.label "این سند حالا در حالت تمام‌صفحه است">
+<!-- LOCALIZATION NOTE (exitDOMFullscreen.button,
+     exitDOMFullscreenMac.button): the "escape" button on PC keyboards
+     is uppercase, while on Mac keyboards it is lowercase -->
+<!ENTITY exitDOMFullscreen.button "خروج از حالت تمام‌صفحه (Esc)">
+<!ENTITY exitDOMFullscreenMac.button "خروج از حالت تمام‌صفحه (Esc)">
 <!ENTITY leaveDOMFullScreen.label "خروج از حالت تمام‌صفحه">
 <!ENTITY leaveDOMFullScreen.accesskey "u">
 
@@ -159,8 +164,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY shareVideo.label "به‌اشتراک‌گذاری این ویدئو">
 <!ENTITY shareVideo.accesskey "ب">
 <!ENTITY feedsMenu.label "مشترک شدن">
-<!ENTITY subscribeToPageMenupopup.label "آبونه شدن این صفحه">
-<!ENTITY subscribeToPageMenuitem.label "آبونه شدن این صفحه…">
+<!ENTITY subscribeToPageMenupopup.label "آبونه شدن در این صفحه">
+<!ENTITY subscribeToPageMenuitem.label "آبونه شدن در این صفحه…">
 <!ENTITY addCurPagesCmd.label "نشانک‌گذاری تمامی زبانه‌ها…">
 <!ENTITY showAllBookmarks2.label "نمایش همهٔ نشانک‌ها">
 <!ENTITY unsortedBookmarksCmd.label "نشانک‌های مرتب نشده">
@@ -181,13 +186,39 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY printButton.label            "چاپ">
 <!ENTITY printButton.tooltip          "چاپ کردن این صفحه">
 
-<!ENTITY locationItem.title           "مکان">
+<!ENTITY urlbar.viewSiteInfo.label                      "نمایش اطلاعات سایت">
+<!-- LOCALIZATION NOTE: all of the following urlbar NotificationAnchor.label strings are
+     used to provide accessible labels to users of assistive technology like screenreaders.
+     It is not possible to see them visually in the UI. -->
+<!ENTITY urlbar.defaultNotificationAnchor.label         "نمایش یک اعلان">
+<!ENTITY urlbar.geolocationNotificationAnchor.label     "نمایش درخواست موقعیت">
+<!ENTITY urlbar.addonsNotificationAnchor.label          "نمایش پیامِ نصبِ افزودنی">
+<!ENTITY urlbar.indexedDBNotificationAnchor.label       "نمایش پیامِ فضای ذخیره‌سازی برون‌خط برنامه">
+<!ENTITY urlbar.loginFillNotificationAnchor.label       "مدیریت اطلاعات ورود به سایت‌ها">
+<!ENTITY urlbar.passwordNotificationAnchor.label        "بررسی کنید که آیا می‌خواهید گذرواژه خود را ذخیره کنید">
+<!ENTITY urlbar.webappsNotificationAnchor.label         "نمایش پیامِ نصبِ برنامه">
+<!ENTITY urlbar.pluginsNotificationAnchor.label         "مدیریت پلاگین‌های استفاده شده در این صفحه">
+<!ENTITY urlbar.webNotsNotificationAnchor3.label        "اینکه آیا می‌توانید از این سایت اعلان دریافت کنید یا خیر را تغییر دهید">
+
+<!ENTITY urlbar.webRTCShareDevicesNotificationAnchor.label      "مدیریت اینکه آیا دوربین و/یا میکروفون خود را با این سایت به اشتراک می‌گذارید یا خیر">
+<!ENTITY urlbar.webRTCSharingDevicesNotificationAnchor.label    "شما دوربین یا میکروفن خود را با این سایت به اشتراک گذاشته‌اید">
+<!ENTITY urlbar.webRTCShareMicrophoneNotificationAnchor.label   "مدیریت به‌اشتراک‌گذاری میکروفن با این پایگاه">
+<!ENTITY urlbar.webRTCSharingMicrophoneNotificationAnchor.label "شما میکروفن خود را با این سایت به اشتراک گذاشته‌اید">
+<!ENTITY urlbar.webRTCShareScreenNotificationAnchor.label       "مدیریت به اشتراک‌گذاری پنجره یا صفحه خود با پایگاه">
+<!ENTITY urlbar.webRTCSharingScreenNotificationAnchor.label     "شما پنجره صفحه خود را با این سایت به اشتراک گذاشتید">
+
+<!ENTITY urlbar.pointerLockNotificationAnchor.label     "تغییر اینکه آیا سایت می‌تواند نشانگر را مخفی کند یا خیر">
+<!ENTITY urlbar.servicesNotificationAnchor.label        "مشاهده پیام‌های سرویس های نصب شده">
+<!ENTITY urlbar.translateNotificationAnchor.label       "ترجمه این صفحه">
+<!ENTITY urlbar.translatedNotificationAnchor.label      "مدیریت صفحه ترجمه">
+<!ENTITY urlbar.emeNotificationAnchor.label             "مدیریت استفاده از نرم‌افزار‌های DRM">
+
+<!ENTITY urlbar.openHistoryPopup.tooltip                "نمایش تاریخچه">
+
 <!ENTITY searchItem.title             "جست‌وجو">
 <!-- Toolbar items --> 
 
 <!ENTITY homeButton.label             "خانه">
-
-<!ENTITY tabGroupsButton.label        "گروه‌بندی زبانه‌ها">
 
 <!ENTITY bookmarksButton.label          "نشانک‌ها">
 <!ENTITY bookmarksCmd.commandkey "b">
@@ -219,8 +250,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY addons.label                 "افزودنی‌ها">
 <!ENTITY addons.accesskey             "ا">
 <!ENTITY addons.commandkey            "A">
-<!ENTITY webapps.label                "برنامه‌ها">
-<!ENTITY webapps.accesskey            "ب">
 
 <!ENTITY webDeveloperMenu.label       "توسعه‌دهندۀ وب">
 <!ENTITY webDeveloperMenu.accesskey   "W">
@@ -228,7 +257,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY devToolsCmd.keycode          "VK_F12">
 <!ENTITY devToolsCmd.keytext          "F12">
 
-<!ENTITY devtoolsConnect.label        "وصل شدن...">
+<!ENTITY devtoolsConnect.label        "اتصال…">
 <!ENTITY devtoolsConnect.accesskey    "e">
 
 <!ENTITY errorConsoleCmd.label        "پیشانهٔ خطاها">
@@ -275,12 +304,11 @@ These should match what Safari and other Apple applications use on OS X Lion. --
   -  This toolbox allows to debug the chrome of the content process in multiprocess builds.  -->
 
 <!ENTITY browserContentToolboxMenu.label     "جعبه‌ابزار محتوایی مرورگر">
+<!ENTITY browserContentToolboxMenu.accesskey "ا">
 
 <!ENTITY devToolbarCloseButton.tooltiptext "بستن نوار توسعه دهنده">
 <!ENTITY devToolbarMenu.label              "نوار توسعه دهنده">
 <!ENTITY devToolbarMenu.accesskey          "v">
-<!ENTITY devAppMgrMenu.label               "مدیر برنامه">
-<!ENTITY devAppMgrMenu.accesskey           "م">
 <!ENTITY webide.label                      "WebIDE">
 <!ENTITY webide.accesskey                  "W">
 <!ENTITY webide.keycode                    "VK_F4">
@@ -299,11 +327,22 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY fileMenu.label         "فایل"> 
 <!ENTITY fileMenu.accesskey       "ف">
-<!ENTITY newNavigatorCmd.label        "پنجره‌ی جدید‌">
+<!ENTITY newUserContext.label             "ایجاد زبانه حامل جدید">
+<!ENTITY newUserContext.accesskey         "ح">
+<!ENTITY userContextPersonal.label        "شخصی">
+<!ENTITY userContextPersonal.accesskey    "ش">
+<!ENTITY userContextWork.label            "کار">
+<!ENTITY userContextWork.accesskey        "ک">
+<!ENTITY userContextBanking.label         "کارهای بانکی">
+<!ENTITY userContextBanking.accesskey     "ک">
+<!ENTITY userContextShopping.label        "خرید">
+<!ENTITY userContextShopping.accesskey    "خ">
+<!ENTITY newNavigatorCmd.label        "پنجره جدید‌">
 <!ENTITY newNavigatorCmd.key        "N">
 <!ENTITY newNavigatorCmd.accesskey      "پ">
-<!ENTITY newPrivateWindow.label     "پنجره‌ی ناشناس جدید">
+<!ENTITY newPrivateWindow.label     "پنجره ناشناس جدید">
 <!ENTITY newPrivateWindow.accesskey "پ">
+<!ENTITY newNonRemoteWindow.label   "پنجره جدید Non-e10s">
 
 <!ENTITY editMenu.label         "ویرایش"> 
 <!ENTITY editMenu.accesskey       "و"> 
@@ -316,12 +355,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY cutCmd.label           "بریدن">  
 <!ENTITY cutCmd.key             "X">  
 <!ENTITY cutCmd.accesskey         "ر"> 
-<!ENTITY copyCmd.label            "کپی">  
+<!ENTITY copyCmd.label            "رونوشت">  
 <!ENTITY copyCmd.key            "C">  
-<!ENTITY copyCmd.accesskey          "ک"> 
-<!ENTITY pasteCmd.label           "چسباندن">  
+<!ENTITY copyCmd.accesskey          "ر"> 
+<!ENTITY pasteCmd.label           "جایگذاری">  
 <!ENTITY pasteCmd.key           "V">  
-<!ENTITY pasteCmd.accesskey         "چ"> 
+<!ENTITY pasteCmd.accesskey         "ج"> 
 <!ENTITY deleteCmd.label          "حذف">  
 <!ENTITY deleteCmd.key            "D">  
 <!ENTITY deleteCmd.accesskey        "ح"> 
@@ -333,14 +372,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY preferencesCmdUnix.label       "ترجیحات">
 <!ENTITY preferencesCmdUnix.accesskey     "ح"> 
 
-<!ENTITY clearRecentHistory.label               "پاک کردن تاریخچه اخیر">
+<!ENTITY clearRecentHistory.label               "پاک کردن تاریخچه صفحه‌های اخیراً بازدید شده…">
 
 <!ENTITY privateBrowsingCmd.commandkey          "P">
 
 <!ENTITY viewMenu.label         "نما"> 
 <!ENTITY viewMenu.accesskey       "ن"> 
-<!ENTITY viewTabGroups.label            "گروه‌بندی زبانه‌ها">
-<!ENTITY viewTabGroups.accesskey        "گ">
 <!ENTITY viewToolbarsMenu.label       "نوار ابزار"> 
 <!ENTITY viewToolbarsMenu.accesskey     "ن"> 
 <!ENTITY viewSidebarMenu.label "نوار کناری">
@@ -355,7 +392,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY historyUndoWindowMenu.label "پنجره‌های تازه بسته شده">
 <!ENTITY historyRestoreLastSession.label "بازآوری نشست قبلی">
 
-<!ENTITY showAllHistoryCmd2.label "نمایش تمام تاریخچه ">
+<!ENTITY showAllHistoryCmd2.label "نمایش تمام تاریخچه">
 <!ENTITY showAllHistoryCmd.commandkey "H">
 
 <!ENTITY appMenuCustomize.label "سفارشی‌سازی">
@@ -368,6 +405,22 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHistory.restoreSession.label "بازآوری نشست قبلی">
 <!ENTITY appMenuHistory.viewSidebar.label "نمایش ستون تاریخچه">
 <!ENTITY appMenuHelp.tooltip "باز کردن منوراهنما">
+
+<!ENTITY appMenuRemoteTabs.label "زبانه‌های همگام‌سازی شده">
+<!ENTITY appMenuRemoteTabs.fetching.label "در حال دریافت زبانه‌های همگام‌سازی شده…">
+<!-- LOCALIZATION NOTE (appMenuRemoteTabs.notabs.label): This is shown beneath
+     the name of a device when that device has no open tabs -->
+<!ENTITY appMenuRemoteTabs.notabs.label "بدون زبانه باز">
+<!-- LOCALIZATION NOTE (appMenuRemoteTabs.tabsnotsyncing.label): This is shown
+     when Sync is configured but syncing tabs is disabled. -->
+<!ENTITY appMenuRemoteTabs.tabsnotsyncing.label "روشن کردن همگام‌سازی زبانه‌ها برای نمایش فهرستی از زبانه‌های باز در دستگاه‌های دیگر">
+<!-- LOCALIZATION NOTE (appMenuRemoteTabs.noclients.label): This is shown
+     when Sync is configured but this appears to be the only device attached to
+     the account. We also show links to download Firefox for android/ios. -->
+<!ENTITY appMenuRemoteTabs.noclients.label "در دستگاه‌های دیگر خود، وارد حساب فایرفاکس شوید تا زبانه‌های باز آنها را اینجا ببینید.">
+<!ENTITY appMenuRemoteTabs.openprefs.label "ترجیحات همگام‌سازی">
+<!ENTITY appMenuRemoteTabs.notsignedin.label "برای نمایش فهرست زبانه‌ها از دستگاه‌های دیگر وارد شوید.">
+<!ENTITY appMenuRemoteTabs.signin.label "برای همگام‌سازی وارد شوید">
 
 <!ENTITY customizeMenu.addToToolbar.label "افزودن به نوار ابزار">
 <!ENTITY customizeMenu.addToToolbar.accesskey "ا">
@@ -386,13 +439,21 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY customizeMenu.removeFromToolbar.accesskey "ح">
 <!ENTITY customizeMenu.removeFromMenu.label "حذف از منو">
 <!ENTITY customizeMenu.removeFromMenu.accesskey "ح">
-<!ENTITY customizeMenu.addMoreItems.label "افزودن موارد بیشتر">
+<!ENTITY customizeMenu.addMoreItems.label "افزودن موارد بیشتر…">
 <!ENTITY customizeMenu.addMoreItems.accesskey "ا">
 
 <!ENTITY openCmd.commandkey           "l">
-<!ENTITY urlbar.placeholder2          "جست‌و‌جو کنید یا آدرس را وارد کنید">
+<!ENTITY urlbar.placeholder2          "متنی برای جست‌وجو یا یک آدرس وارد کنید">
 <!ENTITY urlbar.accesskey             "d">
 <!ENTITY urlbar.switchToTab.label     "پرش به زبانه:">
+
+<!ENTITY urlbar.searchSuggestionsNotification.question "آیا مایلید که تجربه‌ی جست‌وجو خود را با پیشنهادات بهبود دهید؟">
+<!ENTITY urlbar.searchSuggestionsNotification.learnMore "اطلاعات بیشتر…">
+<!ENTITY urlbar.searchSuggestionsNotification.learnMore.accesskey "l">
+<!ENTITY urlbar.searchSuggestionsNotification.disable "خیر">
+<!ENTITY urlbar.searchSuggestionsNotification.disable.accesskey "n">
+<!ENTITY urlbar.searchSuggestionsNotification.enable "بله">
+<!ENTITY urlbar.searchSuggestionsNotification.enable.accesskey "y">
 <!-- 
   Comment duplicated from browser-sets.inc:
 
@@ -417,23 +478,42 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY searchFocus.commandkey       "k">
 <!ENTITY searchFocus.commandkey2      "e">
 <!ENTITY searchFocusUnix.commandkey   "j">
+<!-- LOCALIZATION NOTE (contentSearchInput.label, contentSearchSubmit.label):
+     These are set as the aria-label attribute for the search input box and
+     submit button in the in-content search UI, to be used by screen readers. -->
+
+<!ENTITY contentSearchInput.label     "عبارت جست‌وجو">
+<!ENTITY contentSearchSubmit.label    "ثبت جست‌وجو">
 <!-- LOCALIZATION NOTE (searchFor.label, searchWith.label):
      These two strings are used to build the header above the list of one-click
      search providers:  "Search for <used typed keywords> with:" -->
 
 <!ENTITY searchFor.label              "جستجو برای ">
 <!ENTITY searchWith.label             " با:">
+<!-- LOCALIZATION NOTE (search.label, searchAfter.label):
+     This string is used to build the header above the list of one-click search
+     providers when a one off engine has been selected.  The searchAfter text is
+     intentionally left empty for en-US and can be used by other localizations to
+     display a string after the search engine name.  This string will be displayed
+     as:  "Search <selected engine name><searchAfter.label text>" -->
+
+<!ENTITY search.label                 "جست‌وجو ">
+<!ENTITY searchAfter.label            "">
 <!-- LOCALIZATION NOTE (searchWithHeader.label):
      The wording of this string should be as close as possible to
      searchFor.label and searchWith.label. This string will be used instead of
      them when the user has not typed any keyword. -->
+
 <!ENTITY searchWithHeader.label       "جست‌وجو در:">
 <!-- LOCALIZATION NOTE (changeSearchSettings.button):
      This string won't wrap, so if the translated string is longer,
      consider translating it as if it said only "Search Settings". -->
 <!ENTITY changeSearchSettings.button  "تغییر تنظیمات جستجو">
 
-<!ENTITY tabView.commandkey           "e">
+<!ENTITY searchInNewTab.label         "جست‌وجو در زبانه جدید">
+<!ENTITY searchInNewTab.accesskey     "ز">
+<!ENTITY searchSetAsDefault.label     "تنظیم به عنوان موتور جست‌وجو پیش‌فرض">
+<!ENTITY searchSetAsDefault.accesskey "پ">
 
 <!ENTITY openLinkCmdInTab.label       "باز کردن پیوند در زبانهٔ جدید">
 <!ENTITY openLinkCmdInTab.accesskey   "ز">
@@ -452,12 +532,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY reloadCmd.commandkey         "r">
 <!ENTITY reloadFrameCmd.label         "بازآوردن چارچوب">
 <!ENTITY reloadFrameCmd.accesskey     "ب">
-<!ENTITY viewPartialSourceForSelectionCmd.label "نمایش مبداء بخش انتخاب شده">
-<!ENTITY viewPartialSourceForMathMLCmd.label    "نمایش مبداء MathML">
+<!ENTITY viewPartialSourceForSelectionCmd.label "نمایش کدمنبع قسمت انتخابی">
+<!ENTITY viewPartialSourceForMathMLCmd.label    "نمایش کدمنبع MathML">
 <!-- LOCALIZATION NOTE (viewPartialSourceCmd.accesskey): This accesskey is used for both 
          viewPartialSourceForSelectionCmd.label and viewPartialSourceForMathMLCmd.label -->
 <!ENTITY viewPartialSourceCmd.accesskey "e">
-<!ENTITY viewPageSourceCmd.label      "نمایش مبداء صفحه">
+<!ENTITY viewPageSourceCmd.label      "نمایش کدمنبع صفحه">
 <!ENTITY viewPageSourceCmd.accesskey  "ن">
 <!ENTITY viewFrameSourceCmd.label     "نمایش مبداء چارچوب">
 <!ENTITY viewFrameSourceCmd.accesskey "ن">
@@ -622,6 +702,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY closeCmd.key                   "W">  
 <!ENTITY closeCmd.accesskey             "س">
 
+<!ENTITY toggleMuteCmd.key              "M">
+
 <!ENTITY pageStyleMenu.label "سبک صفحه">
 <!ENTITY pageStyleMenu.accesskey "ک">
 <!ENTITY pageStyleNoStyle.label "بدون سبک">
@@ -662,41 +744,53 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY editBookmark.cancel.label                   "انصراف">
 <!ENTITY editBookmark.removeBookmark.accessKey       "R">
 
-<!ENTITY identity.unverifiedsite2 "این وب‌گاه از هویت خود اطلاعاتی فراهم نمی‌کند.">
-<!ENTITY identity.connectedTo "پایگاهی که به آن متصل هستید:">
-<!-- Localization note (identity.runBy) : This string appears between a
-domain name (above) and an organization name (below). E.g.
+<!ENTITY identity.connectionSecure "اتصال امن">
+<!ENTITY identity.connectionNotSecure "اتصال امن نیست">
+<!ENTITY identity.connectionFile "این صفحه بر روی رایانه شما ذخیره شده است.">
+<!ENTITY identity.connectionVerified1 "شما بطور امن به این سایت متصل شده‌اید، اداره شده توسط:">
+<!ENTITY identity.connectionInternal "این یک صفحۀ امن &brandShortName; است.">
+<!ENTITY identity.insecureLoginForms2 "اطلاعات ورود شما که در این صفحه وارد می‌کنید قابل دستیابی نیستند.">
+<!-- Strings for connection state warnings. -->
 
-example.com
-which is run by
-Example Enterprises, Inc.
+<!ENTITY identity.activeBlocked "&brandShortName; قسمت‌هایی از این صفحه را که ایمن نیستند، مسدود کرده است.">
+<!ENTITY identity.passiveLoaded "قسمت‌هایی از این صفحه امن نیست (مانند تصاویر).">
+<!ENTITY identity.activeLoaded "شما محافظت را در این صفحه غیرفعال کرده‌اید.">
+<!ENTITY identity.weakEncryption "این صفحه از کدگذاری ضعیفی استفاده می‌کند.">
+<!-- Strings for connection state warnings in the subview. -->
 
-The layout of the identity dialog prevents combining this into a single string with
-substitution variables.  If it is difficult to translate the sense of the string
-with that structure, consider a translation which ignores the preceding domain and
-just addresses the organization to follow, e.g. "This site is run by " -->
-<!ENTITY identity.runBy "اداره کننده:">
+<!ENTITY identity.description.insecure "اتصال شما با این سایت خصوصی نیست. اطلاعاتی که شما ثبت می‌کنید ممکن است توسط دیگران دیده شود (مانند گذرواژه‌ها، پیام‌ها، کارت‌های بانکی و غیره).">
+<!ENTITY identity.description.insecureLoginForms "اطلاعات ورود شما که در این صفحه وارد می‌کنید امن نیستند و ممکن است در معرض خطر باشند.">
+<!ENTITY identity.description.weakCipher "اتصال شما با این سایت از کدگذاری ضعیفی استفاده می‌کند و خصوصی نیست.">
+<!ENTITY identity.description.weakCipher2 "افراد دیگر می‌توانند اطلاعات شما را ببینید یا رفتار سایت را تغییر دهند.">
+<!ENTITY identity.description.activeBlocked "&brandShortName; قسمت‌هایی از این صفحه را که ایمن نیستند، مسدود کرده است.">
+<!ENTITY identity.description.passiveLoaded "اتصال شما خصوصی نیست و اطلاعاتی که با سایت اشتراک می‌گذارید می‌تواند توسط دیگران دیده شود.">
+<!ENTITY identity.description.passiveLoaded2 "این سایت حاوی محتوایی است که ایمن نیستند (مانند تصاویر).">
+<!ENTITY identity.description.passiveLoaded3 "با اینکه &brandShortName; بعضی از محتوا را مسدود کرده است، هنوز محتوای در این سایت هستند که ایمن نیستند (مانند تصاویر).">
+<!ENTITY identity.description.activeLoaded "این سایت شامل محتوایی است که ایمن نیستند (مانند کدنوشته‌ها) و اتصال شما به آن خصوصی نیست.">
+<!ENTITY identity.description.activeLoaded2 "اطلاعاتی که با این سایت به‌اشتراک می‌گذارید ممکن است توسط دیگران دیده شوند (مانند گذرواژه‌ها، پیام‌ها، کارت‌های اعتباری و غیره).">
 
-<!ENTITY identity.moreInfoLinkText "اطلاعات بیشتر…">
+<!ENTITY identity.enableMixedContentBlocking.label "فعال‌سازی محافظت">
+<!ENTITY identity.enableMixedContentBlocking.accesskey "ف">
+<!ENTITY identity.disableMixedContentBlocking.label "فعلا محافظت غیرفعال شود.">
+<!ENTITY identity.disableMixedContentBlocking.accesskey "غ">
+<!ENTITY identity.learnMore "بیشتر بدانید">
+
+<!ENTITY identity.moreInfoLinkText2 "اطلاعات بیشتر">
 
 <!ENTITY identity.permissions "مجوزها">
-<!-- LOCALIZATION NOTE (identity.help.tooltip) : This string should be the
-     localized title of this SUMO article
-     https://support.mozilla.org/kb/how-do-i-tell-if-my-connection-is-secure -->
-
-<!ENTITY identity.help.tooltip "چطور می‌تونم بگم که اتصالم به یک پایگاه‌وب امن است؟">
+<!ENTITY identity.permissionsEmpty "شما به این سایت هیچ دسترسی خاصی نداده‌اید.">
 <!-- Name for the tabs toolbar as spoken by screen readers.
      The word "toolbar" is appended automatically and should not be contained below! -->
 
 <!ENTITY tabsToolbar.label "زبانه‌های مرورگر">
-<!-- LOCALIZATION NOTE (syncTabsMenu2.label): This appears in the history menu -->
+<!-- LOCALIZATION NOTE (syncTabsMenu3.label): This appears in the history menu and history panel -->
 
-<!ENTITY syncTabsMenu2.label     "زبانه‌هایی از دستگاه‌های دیگر">
+<!ENTITY syncTabsMenu3.label     "زبانه‌های همگام‌سازی شده">
 
 <!ENTITY syncBrand.shortName.label    "هم‌گام‌سازی">
 
-<!ENTITY syncSetup.label              "تنظیم &syncBrand.shortName.label;…">
-<!ENTITY syncSetup.accesskey          "Y">
+<!ENTITY syncSignIn.label             "ورود به &syncBrand.shortName.label;…">
+<!ENTITY syncSignIn.accesskey         "Y">
 <!ENTITY syncSyncNowItem.label        "انجام هم‌گام‌سازی">
 <!ENTITY syncSyncNowItem.accesskey    "ه">
 <!ENTITY syncReAuthItem.label         "بازگشت به &syncBrand.shortName.label;…">
@@ -716,7 +810,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY social.toggleNotifications.label "نمایش میزکار و اطلاعیه‌ها">
 <!ENTITY social.toggleNotifications.accesskey "n">
 
-<!ENTITY social.activated.description "مدیریت سرویس‌ها…">
+<!ENTITY social.activated.description "سرویس‌ها از <label/> فعال شده‌اند. شما می‌توانید تنظیمات سرویس‌ها را از <label class='text-link'> مدیریت افزودنی‌ها تغییر دهید</label>.">
 <!ENTITY social.activated.undo.label "اوه، این را برگردان!">
 <!ENTITY social.activated.undo.accesskey "ب">
 <!ENTITY social.learnMore.label "اطلاعات بیشتر…">
@@ -726,7 +820,7 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY social.directory.label "دایرکتوری فعالیتها">
 <!ENTITY social.directory.text "شما می توانید سرویس به اشتراک گذاری را از این دایرکتوری فعال کنید.">
 <!ENTITY social.directory.button "مرا به آنجا ببر!">
-<!ENTITY social.directory.introText "برای اضافه شدن یک سرویس به&brandShortName;روی آن کلیک کنید.">
+<!ENTITY social.directory.introText "برای اضافه شدن یک سرویس به &brandShortName; روی آن کلیک کنید.">
 <!ENTITY social.directory.viewmore.text "مشاهده بیشتر ">
 
 <!ENTITY customizeMode.tabTitle "شخصی‌سازی &brandShortName;">
@@ -743,7 +837,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY customizeMode.lwthemes.menuManage.accessKey "M">
 <!ENTITY customizeMode.lwthemes.menuGetMore "دریافت زمینه های بیشتر">
 <!ENTITY customizeMode.lwthemes.menuGetMore.accessKey "G">
-<!ENTITY customizeMode.deveditionTheme.label2 "استفاده از تم و زمینه توسعه‌دهندگان">
 
 <!ENTITY social.chatBar.commandkey "c">
 <!ENTITY social.chatBar.label "تمرکز بر روی گپ‌ها">
@@ -758,27 +851,32 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY getUserMedia.selectCamera.accesskey "د">
 <!ENTITY getUserMedia.selectMicrophone.label "میکروفون جهت به‌اشتراک‌گذاری:">
 <!ENTITY getUserMedia.selectMicrophone.accesskey "م">
+<!ENTITY getUserMedia.audioCapture.label "صدای مربوط به این زبانه به‌اشتراک گذاشته می‌شود.">
 <!ENTITY getUserMedia.allWindowsShared.message "همه‌ی پنجره‌هایی که مشاهده می‌کنید به اشتراک گذاشته می‌شود.">
-<!-- Bad Content Blocker Doorhanger Notification -->
 
-<!ENTITY badContentBlocked.moreinfo "بیشتر سایت‌ها حتی با مسدود شدن این محتوا هم به درستی کار می‌کنند.">
-
-<!ENTITY mixedContentBlocked2.message "محتوای ناامن">
-<!ENTITY mixedContentBlocked2.moreinfo "بعضی از عناصر رمزگذاری‌نشده‌ی این وبسایت مسدود شده‌اند.">
-<!ENTITY mixedContentBlocked2.learnMore "بیشتر بدانید">
-<!ENTITY mixedContentBlocked2.options "گزینه‌ها">
-<!ENTITY mixedContentBlocked2.unblock.label "فعلا محافظت غیرفعال شود.">
-<!ENTITY mixedContentBlocked2.unblock.accesskey "غ">
-<!ENTITY mixedContentBlocked2.block.label "فعال کردن محافظ">
-<!ENTITY mixedContentBlocked2.block.accesskey "ف">
-<!ENTITY mixedContentBlocked2.disabled.message "محافظت غیرفعال است.">
+<!ENTITY trackingProtection.title "محافظت در برابر ردگیری">
+<!ENTITY trackingProtection.detectedBlocked3 "&brandShortName; قسمت‌هایی از سایت را که مرور شما را ردگیری می‌کنند مسدود می‌کند.">
+<!ENTITY trackingProtection.detectedNotBlocked3 "این سایت حاوی اجزایی‌ست که مرور شما را ردگیری می‌کند. شما امکان محافظت را غیرفعال کرده‌اید.">
+<!ENTITY trackingProtection.notDetected3 "هیچ عنصر ردگیری‌ای در این صفحه پیدا نشد.">
+<!-- LOCALIZATION NOTE (trackingProtection.unblock.label, trackingProtection.unblock.accesskey):
+     The associated button with this label and accesskey is only shown when opening the control
+     center while looking at a site with trackers in NON-private browsing mode. -->
+<!ENTITY trackingProtection.unblock.label "غیرفعال‌سازی حفاظت برای این وب سایت">
+<!ENTITY trackingProtection.unblock.accesskey "غ">
+<!-- LOCALIZATION NOTE (trackingProtection.unblockPrivate.label, trackingProtection.unblockPrivate.accesskey):
+     The associated button with this label and accesskey is only shown when opening the control
+     center while looking at a site with trackers in PRIVATE browsing mode. -->
+<!ENTITY trackingProtection.unblockPrivate.label "غیرفعال‌سازی حفاظت برای این نشست">
+<!ENTITY trackingProtection.unblockPrivate.accesskey "غ">
+<!ENTITY trackingProtection.block2.label "فعال‌سازی محافظت">
+<!ENTITY trackingProtection.block2.accesskey "ف">
 
 <!ENTITY trackingContentBlocked.message "ردگیری">
 <!ENTITY trackingContentBlocked.moreinfo "بخش‌هایی از این صفحه که فعالیت آنلاین شما را ردگیری می‌کنند مسدوده شده‌اند.">
 <!ENTITY trackingContentBlocked.learnMore "بیشتر بدانید">
 <!ENTITY trackingContentBlocked.options "گزینه‌ها">
-<!ENTITY trackingContentBlocked.unblock2.label "غیرفعال سازی حفاظت برای این وب سایت">
-<!ENTITY trackingContentBlocked.unblock2.accesskey "D">
+<!ENTITY trackingContentBlocked.unblock2.label "غیرفعال سازی حفاظت برای این پایگاه">
+<!ENTITY trackingContentBlocked.unblock2.accesskey "غ">
 <!ENTITY trackingContentBlocked.block.label "فعال کردن محافظ">
 <!ENTITY trackingContentBlocked.block.accesskey "ف">
 <!ENTITY trackingContentBlocked.disabled.message "محافظت در برابر ردگیری غیرفعال است‌‌">
@@ -803,8 +901,6 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY uiTour.infoPanel.close "بستن">
 
 <!ENTITY appMenuSidebars.label         "نوارهای جانبی">
-
-<!ENTITY switchToMetroCmd2.label       "راه‌اندازی مجدد در &brandShortName; برای ویندوز ۸ لمسی">
 <!-- LOCALIZATION NOTE: (panicButton.view.mainTimeframeDesc, panicButton.view.5min, panicButton.view.2hr, panicButton.view.day):
      The .mainTimeframeDesc string combined with any of the 3 others is meant to form a complete sentence, e.g. "Forget the last: Five minutes".
      Please ensure that this remains the case in the translation. -->
@@ -831,30 +927,9 @@ just addresses the organization to follow, e.g. "This site is run by " -->
 <!ENTITY panicButton.thankyou.msg2                "مرور امن!">
 <!ENTITY panicButton.thankyou.buttonlabel         "متشکریم!">
 
-<!ENTITY processHang.terminateScript.label        "توقف کدنوشته">
-<!ENTITY processHang.terminateScript.accessKey    "ت">
-<!ENTITY processHang.debugScript.label            "اشکال‌زدایی کدنوشته">
-<!ENTITY processHang.debugScript.accessKey        "ا">
-<!ENTITY processHang.terminatePlugin.label        "از‌کار‌انداختن پلاگین">
-<!ENTITY processHang.terminatePlugin.accessKey    "پ">
-<!ENTITY processHang.terminateProcess.label       "از‌کار‌انداختن پردازش وب">
-<!ENTITY processHang.terminateProcess.accessKey   "ا">
-
 <!ENTITY emeLearnMoreContextMenu.label            "درباره‌ی DRM بیشتر بدانید...">
 <!ENTITY emeLearnMoreContextMenu.accesskey        "D">
 <!ENTITY emeNotificationsNotNow.label             "اکنون نه">
 <!ENTITY emeNotificationsNotNow.accesskey         "N">
 <!ENTITY emeNotificationsDontAskAgain.label       "دیگر پرسیده نشود">
 <!ENTITY emeNotificationsDontAskAgain.accesskey   "د">
-
-<!ENTITY readingList.label                        "فهرست خواندن">
-<!ENTITY readingList.sidebar.commandKey           "R">
-<!ENTITY readingList.showSidebar.label            "نمایش نوار کناری لیست مطالعه">
-<!-- Pre-landed string for bug 1124153 -->
-<!ENTITY readingList.sidebar.showMore.label       "نمایش بیشتر…">
-<!-- Pre-landed string for bug 1133662 -->
-<!ENTITY readingList.sidebar.emptyText            "مقاله‌ها را به فهرست مطالعه خود اضافه کنید تا آنها را برای بعد ذخیره کنید و به سادگی در زمانی که احتیاج داشتید پیدا کنید.">
-<!ENTITY readingList.sidebar.delete.tooltip       "این مورد را از فهرست مطالعه خود حذف کنید">
-<!-- Pre-landed strings for bug 1123519 -->
-<!ENTITY readingList.sidebar.add.label            "اضافه کردن به فهرست مطالعه">
-<!ENTITY readingList.sidebar.add.tooltip          "این صفحه را به فهرست مطالعه خود اضافه کنید">
