@@ -1,3 +1,18 @@
+firefox-esr (45.1.1esr-1) unstable; urgency=medium
+
+  * New upstream release.
+
+  * debian/changelog: Add missing changelog entries for 45.0.2esr-1.
+  * debian/rules: Use the mach compare-locales command for l10n.
+  * debian/upstream.mk, debian/watch: Remove "mozilla.org" from path in
+    archive.mozilla.org urls.
+  * debian/upstream.mk: Don't use get a separate source tarball for
+    compare-locales. There is a copy in-tree that we now use.
+  * debian/browser.desktop.in, debian/control*, debian/rules: Allow to
+    distinguish between firefox and firefox-esr. Closes: #821952.
+
+ -- Mike Hommey <glandium@debian.org>  Sun, 08 May 2016 08:19:35 +0900
+
 firefox-esr (45.1.0esr-1) unstable; urgency=medium
 
   * New upstream release.
