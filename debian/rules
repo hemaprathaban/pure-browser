@@ -234,7 +234,7 @@ stamps/configure-l10n:: stamps/prepare-configure
 
 $(L10N_BUILD_STAMPS):: stamps/build-l10n-%: stamps/configure-l10n
 	$(if $(wildcard l10n/$*),,ln -sf ../l10n-$* l10n/$*)
-	$(CURDIR)/mach compare-locales --merge-dir $(CURDIR)/build-l10n/l10n-$* $*
+	cd $(CURDIR)/build-l10n && $(CURDIR)/mach compare-locales --merge-dir $(CURDIR)/build-l10n/l10n-$* $*
 	$(MAKE) -C build-l10n/$(PRODUCT)/locales langpack-$* MOZ_CHROME_FILE_FORMAT=flat MOZ_LANGPACK_EID=langpack-$*@$($(PRODUCT)).mozilla.org PKG_LANGPACK_BASENAME='$$(MOZ_LANGPACK_EID)' PKG_LANGPACK_PATH=xpi/ LOCALE_MERGEDIR=$(CURDIR)/build-l10n/l10n-$*
 
 override_dh_auto_build override_dh_auto_build-arch: stamps/build-$(PRODUCT)
