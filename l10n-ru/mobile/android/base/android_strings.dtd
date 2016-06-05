@@ -14,7 +14,7 @@
 <!ENTITY firstrun_bookmarks_subtext "При поиске получайте результаты из ваших закладок и истории.">
 <!ENTITY firstrun_data_title "Трафик">
 <!ENTITY firstrun_data_message "Меньше трафика, больше экономии">
-<!ENTITY firstrun_data_subtext "Блокируйте изображения, чтобы уменьшить расход трафика на каждом посещаемом сайте.">
+<!ENTITY firstrun_data_subtext2 "Отключайте изображения, чтобы уменьшить расход трафика на каждом посещаемом сайте.">
 <!ENTITY firstrun_sync_title "Синхронизация">
 <!ENTITY firstrun_sync_message "&brandShortName; всегда рядом с вами">
 <!ENTITY firstrun_sync_subtext "Синхронизируйте свои вкладки, пароли и многое другое, везде, где вы его используете.">
@@ -108,7 +108,7 @@
 <!ENTITY pref_search_restore_defaults_summary "Восстановить по умолчанию">
 <!ENTITY pref_search_hint "СОВЕТ: Добавьте любой веб-сайт в ваш список поисковых систем, произведя долгое нажатие на его поле поиска и затем нажав на значок &formatI;.">
 <!ENTITY pref_category_advanced "Дополнительно">
-<!ENTITY pref_category_advanced_summary2 "Восстановление вкладок, плагины, инструменты разработки">
+<!ENTITY pref_category_advanced_summary2 "Восстановление вкладок, плагины, инструменты разработчика">
 <!ENTITY pref_developer_remotedebugging "Удалённая отладка">
 <!ENTITY pref_developer_remotedebugging_usb "Удалённая отладка через USB">
 <!ENTITY pref_developer_remotedebugging_wifi "Удалённая отладка через Wi-Fi">
@@ -146,7 +146,8 @@
 <!ENTITY pref_tap_to_load_images_title2 "Показывать изображения">
 <!ENTITY pref_tap_to_load_images_enabled "Всегда">
 <!ENTITY pref_tap_to_load_images_data "Только через Wi-Fi">
-<!ENTITY pref_tap_to_load_images_disabled2 "Заблокирован">
+<!ENTITY pref_tap_to_load_images_disabled2 "Блокировать">
+<!ENTITY pref_show_web_fonts "Использовать веб-шрифты">
 <!ENTITY pref_tracking_protection_title "Защита от отслеживания">
 <!ENTITY pref_tracking_protection_summary3 "Включена в Приватном просмотре">
 <!ENTITY pref_donottrack_title "Не отслеживать">
@@ -316,8 +317,8 @@
 <!ENTITY pref_magnifying_glass_enabled_summary "Увеличивать ссылки и поля форм при касании рядом с ними">
 <!ENTITY pref_scroll_title_bar2 "Полноэкранный веб-серфинг">
 <!ENTITY pref_scroll_title_bar_summary2 "Скрывать панель &brandShortName; при прокрутке страницы вниз">
-<!ENTITY pref_tab_queue_title2 "Открытие множества ссылок">
-<!ENTITY pref_tab_queue_summary3 "Сохранять их до следующего открытия &brandShortName;">
+<!ENTITY pref_tab_queue_title3 "Очередь вкладок">
+<!ENTITY pref_tab_queue_summary4 "Сохраните ссылки до следующего открытия &brandShortName;.">
 <!ENTITY page_removed "Страница удалена">
 <!ENTITY bookmark_edit_title "Изменение закладки">
 <!ENTITY bookmark_edit_name "Имя">
@@ -361,7 +362,7 @@
 <!ENTITY home_most_recent_emptyhint2 "Псс: при использовании &formatS1;Новой приватной вкладки&formatS2; ваша история сохраняться не будет.">
 <!ENTITY home_reading_list_empty "Статьи, сохранённые вами для последующего чтения, появятся здесь.">
 <!ENTITY home_default_empty "Для этой панели не удалось найти содержимого.">
-<!ENTITY home_move_up_to_filter "Назад в &formatS;">
+<!ENTITY home_move_back_to_filter "Вернуться в &formatS;">
 <!ENTITY home_remote_tabs_title "Облачные вкладки">
 <!ENTITY home_remote_tabs_empty "Ваши вкладки с других устройств появятся здесь.">
 <!ENTITY home_remote_tabs_unable_to_connect "Попытка соединения не удалась">
@@ -409,7 +410,6 @@
 <!ENTITY suggestions_prompt3 "Вы хотите включить поисковые предложения?">
 <!ENTITY search_bar_item_desc "Поиск через &formatS;">
 <!ENTITY suggestion_for_engine "Искать &formatS2; в &formatS1;">
-<!ENTITY webapp_generic_name "Приложение">
 <!ENTITY searchable_description "Закладки и история">
 <!ENTITY updater_start_title2 "Доступно обновление &brandShortName;">
 <!ENTITY updater_start_select2 "Нажмите для загрузки">
@@ -439,7 +439,6 @@
 <!ENTITY voicesearch_prompt "Говорите">
 <!ENTITY remote_tabs_last_synced "Последняя синхронизация: &formatS;">
 <!ENTITY remote_tabs_never_synced "Последняя синхронизация: никогда">
-<!ENTITY find_matchcase "Аа">
 <!ENTITY intent_uri_cannot_open "Не могу открыть ссылку">
 <!ENTITY intent_uri_private_browsing_prompt "Эта ссылка будет открыта в &formatS;. Вы уверены, что хотите выйти из Приватного просмотра?">
 <!ENTITY intent_uri_private_browsing_multiple_match_title "Выйти из Приватного просмотра?">
@@ -462,5 +461,7 @@
 <!ENTITY bookmarks_restricted_support2 "Справка и поддержка Firefox для ограниченных профилей на планшетах Android">
 <!ENTITY bookmarks_restricted_webmaker "Научитесь создавать Интернет: Mozilla Вебмейкер">
 <!ENTITY unsupported_sdk_version "Извините! Эта сборка &brandShortName; не может работать на этом устройстве (&formatS1;, &formatS2;). Пожалуйста, загрузите корректную версию.">
-<!ENTITY eol_notification_title "&brandShortName; больше не поддерживает Android 3">
+<!ENTITY eol_notification_title2 "&brandShortName; больше не будет обновляться">
 <!ENTITY eol_notification_summary "Нажмите, чтобы узнать больше">
+<!ENTITY whatsnew_notification_title "Установлена последняя версия &brandShortName;">
+<!ENTITY whatsnew_notification_summary "Узнать, что нового в этой версии">
