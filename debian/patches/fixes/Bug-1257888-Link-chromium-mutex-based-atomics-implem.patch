@@ -34,10 +34,10 @@ index 0000000..6e0a9e4
 +        '../src/base/lock_impl_posix.cc',
 +    ]
 diff --git a/ipc/chromium/moz.build b/ipc/chromium/moz.build
-index 88aaafe..52b6282 100644
+index 44dadcb..2e67901 100644
 --- a/ipc/chromium/moz.build
 +++ b/ipc/chromium/moz.build
-@@ -172,3 +172,7 @@ CXXFLAGS += CONFIG['TK_CFLAGS']
+@@ -173,3 +173,7 @@ CXXFLAGS += CONFIG['TK_CFLAGS']
  include('/ipc/chromium/chromium-config.mozbuild')
  
  FINAL_LIBRARY = 'xul'

@@ -55,7 +55,7 @@ typedef struct PrefParseState {
     char       *lbend;      /* line buffer end               */
     char       *vb;         /* value buffer (ptr into lb)    */
     PrefType    vtype;      /* PREF_STRING,INT,BOOL          */
-    bool        fdefault;   /* true if (default) pref     */
+    bool        fdefault;   /* true if (default) pref        */
     bool        fstickydefault; /* true if (sticky) pref     */
     bool        flock;      /* true if pref to be locked     */
 } PrefParseState;

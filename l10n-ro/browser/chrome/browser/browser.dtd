@@ -162,7 +162,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY shareSelect.accesskey "r">
 <!ENTITY shareVideo.label "Împărtășește acest videoclip">
 <!ENTITY shareVideo.accesskey "r">
-<!ENTITY feedsMenu.label "Abonare">
+<!ENTITY feedsMenu2.label "Abonează-te la această pagină">
 <!ENTITY subscribeToPageMenupopup.label "Abonează-te la această pagină">
 <!ENTITY subscribeToPageMenuitem.label "Abonează-te la această pagină…">
 <!ENTITY addCurPagesCmd.label "Pune semne de carte la toate filele…">
@@ -185,9 +185,15 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY printButton.label            "Tipărește">
 <!ENTITY printButton.tooltip          "Tipărește această pagină">
 
+<!ENTITY urlbar.viewSiteInfo.label                      "Vezi informații despre site">
 <!-- LOCALIZATION NOTE: all of the following urlbar NotificationAnchor.label strings are
      used to provide accessible labels to users of assistive technology like screenreaders.
      It is not possible to see them visually in the UI. -->
+<!ENTITY urlbar.defaultNotificationAnchor.label         "Vezi o notificare">
+<!ENTITY urlbar.geolocationNotificationAnchor.label     "Vezi cererea de locație">
+<!ENTITY urlbar.addonsNotificationAnchor.label          "Vezi mesajul de instalare al suplimentului">
+<!ENTITY urlbar.indexedDBNotificationAnchor.label       "Vezi mesajul de stocare offline al aplicației">
+<!ENTITY urlbar.loginFillNotificationAnchor.label       "Gestionează informațiile de autentificare">
 
 
 
@@ -200,11 +206,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 
 
-
-
-
-
-
+<!ENTITY urlbar.translateNotificationAnchor.label       "Tradu această pagină">
 
 
 
@@ -241,7 +243,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY downloads.label              "Descărcări">
 <!ENTITY downloads.accesskey          "D">
 <!ENTITY downloads.commandkey         "j">
-
+<!ENTITY downloadsUnix.commandkey     "y">
 <!ENTITY addons.label                 "Suplimente">
 <!ENTITY addons.accesskey             "S">
 <!ENTITY addons.commandkey            "A">
@@ -251,6 +253,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY devToolsCmd.keycode          "VK_F12">
 <!ENTITY devToolsCmd.keytext          "F12">
+
+
 
 <!ENTITY devtoolsConnect.label        "Conectare…">
 <!ENTITY devtoolsConnect.accesskey    "C">
@@ -324,10 +328,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY fileMenu.accesskey       "F">
 
 
-
-
-
-
+<!ENTITY userContextPersonal.label        "Personal">
+<!ENTITY userContextPersonal.accesskey    "P">
+<!ENTITY userContextWork.label            "Serviciu">
+<!ENTITY userContextWork.accesskey        "S">
 
 
 
@@ -401,14 +405,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHistory.viewSidebar.label "Vezi bara laterală cu istoricul">
 <!ENTITY appMenuHelp.tooltip "Deschide meniul Ajutor">
 
-
+<!ENTITY appMenuRemoteTabs.label "File sincronizate">
+<!ENTITY appMenuRemoteTabs.fetching.label "Se preiau filele sincronizate…">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.notabs.label): This is shown beneath
      the name of a device when that device has no open tabs -->
+<!ENTITY appMenuRemoteTabs.notabs.label "Nicio filă deschisă">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.tabsnotsyncing.label): This is shown
      when Sync is configured but syncing tabs is disabled. -->
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.noclients.label): This is shown
      when Sync is configured but this appears to be the only device attached to
      the account. We also show links to download Firefox for android/ios. -->
+
 
 
 
@@ -440,11 +447,11 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 
 <!ENTITY urlbar.searchSuggestionsNotification.question "Dorești să îți îmbunătățești experiența de căutare cu sugestii?">
 <!ENTITY urlbar.searchSuggestionsNotification.learnMore "Află mai multe…">
-
+<!ENTITY urlbar.searchSuggestionsNotification.learnMore.accesskey "l">
 <!ENTITY urlbar.searchSuggestionsNotification.disable "Nu">
-
+<!ENTITY urlbar.searchSuggestionsNotification.disable.accesskey "n">
 <!ENTITY urlbar.searchSuggestionsNotification.enable "Da">
-
+<!ENTITY urlbar.searchSuggestionsNotification.enable.accesskey "y">
 <!-- 
   Comment duplicated from browser-sets.inc:
 
@@ -517,6 +524,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openFrameCmdInTab.accesskey  "f">
 <!ENTITY openFrameCmd.label           "Deschide cadrul într-o fereastră nouă">
 <!ENTITY openFrameCmd.accesskey       "D">
+
+
 <!ENTITY showOnlyThisFrameCmd.label     "Afișează doar acest cadru">
 <!ENTITY showOnlyThisFrameCmd.accesskey "A">
 <!ENTITY reloadCmd.commandkey         "r">
@@ -731,14 +740,13 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY spellAddDictionaries.accesskey "A">
 
 <!ENTITY editBookmark.done.label                     "Gata">
-<!ENTITY editBookmark.cancel.label                   "Renunță">
 <!ENTITY editBookmark.removeBookmark.accessKey       "R">
 
 <!ENTITY identity.connectionSecure "Conexiune securizată">
 <!ENTITY identity.connectionNotSecure "Conexiunea nu este securizată">
 <!ENTITY identity.connectionFile "Această pagină este stocată pe calculator.">
 <!ENTITY identity.connectionVerified1 "Ești conectat în mod securizat la acest site aparținând:">
-<!ENTITY identity.connectionInternal "Aceasta este o pagină securizată a &brandShortName;.">
+<!ENTITY identity.connectionInternal "Aceasta este o pagină securizată &brandShortName;.">
 
 <!-- Strings for connection state warnings. -->
 
@@ -765,6 +773,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY identity.disableMixedContentBlocking.accesskey "D">
 <!ENTITY identity.learnMore "Află mai multe">
 
+
+
 <!ENTITY identity.moreInfoLinkText2 "Mai multe informații">
 
 <!ENTITY identity.permissions "Permisiuni">
@@ -773,7 +783,23 @@ you can use these alternative items. Otherwise, their values should be empty.  -
      The word "toolbar" is appended automatically and should not be contained below! -->
 
 <!ENTITY tabsToolbar.label "Filele browserului">
-<!-- LOCALIZATION NOTE (syncTabsMenu3.label): This appears in the history menu and history panel -->
+<!-- LOCALIZATION NOTE (syncTabsMenu3.label): This appears in the history menu -->
+
+<!ENTITY syncTabsMenu3.label     "File sincronizate">
+
+<!ENTITY syncedTabs.sidebar.label              "File sincronizate">
+
+
+
+<!ENTITY syncedTabs.sidebar.notabs.label       "Nicio filă deschisă">
+<!ENTITY syncedTabs.sidebar.openprefs.label    "Deschide preferințele &syncBrand.shortName.label;">
+<!-- LOCALIZATION NOTE (syncedTabs.sidebar.tabsnotsyncing.label): This is shown
+     when Sync is configured but syncing tabs is disabled. -->
+
+
+
+
+
 
 <!ENTITY syncBrand.shortName.label    "Sincronizare">
 
@@ -811,7 +837,6 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY social.directory.introText "Clic pe un serviciu pentru a-l adăuga în &brandShortName;.">
 <!ENTITY social.directory.viewmore.text "Vezi mai multe">
 
-<!ENTITY customizeMode.tabTitle "Personalizează &brandShortName;">
 <!ENTITY customizeMode.menuAndToolbars.header2 "Funcționalități și unelte suplimentare">
 <!ENTITY customizeMode.menuAndToolbars.empty "Doriți mai multe unelte?">
 <!ENTITY customizeMode.menuAndToolbars.emptyLink "Alegeți din mii de suplimente">
@@ -917,7 +942,3 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 
 <!ENTITY emeLearnMoreContextMenu.label            "Aflați mai multe despre DRM…">
 <!ENTITY emeLearnMoreContextMenu.accesskey        "D">
-<!ENTITY emeNotificationsNotNow.label             "Nu acum">
-<!ENTITY emeNotificationsNotNow.accesskey         "N">
-<!ENTITY emeNotificationsDontAskAgain.label       "Nu mă mai întreba din nou">
-<!ENTITY emeNotificationsDontAskAgain.accesskey   "d">

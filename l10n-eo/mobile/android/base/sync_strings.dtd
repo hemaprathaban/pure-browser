@@ -8,71 +8,18 @@
 <!ENTITY syncBrand.shortName.label "Spegulado">
 
 <!-- Main titles. -->
-<!ENTITY sync.app.name.label '&syncBrand.fullName.label;'>
 <!ENTITY sync.title.connect.label 'Konekti al &syncBrand.shortName.label;'>
-<!ENTITY sync.title.adddevice.label 'Aldoni konton de  &syncBrand.fullName.label;'>
-<!ENTITY sync.title.pair.label 'Asocii aparaton'>
 
 <!-- J-PAKE Key Screen -->
 <!ENTITY sync.subtitle.connect.label 'Por aktivigi vian novan aparaton, elektu “Agordi &syncBrand.shortName.label;n“ en la aparato.'>
-<!ENTITY sync.subtitle.header2.label 'Tajpu tiun ĉi kodon en via alia aparato'>
-<!ENTITY sync.subtitle.connectlocation2.label 'Elektu “&sync.title.pair.label;” en la sekcio &syncBrand.shortName.label; de la elektebloj de Firefox en via alia aparato.'>
 <!ENTITY sync.subtitle.pair.label 'Por aktivigi, elektu “Asocii aparaton” en via alia aparato.'>
 <!ENTITY sync.pin.default.label '...\n...\n...\n'>
-<!ENTITY sync.pin.oneline.label '...'>
-<!ENTITY sync.link.show.label 'Montri al mi kiel fari.'>
-<!ENTITY sync.link.advancedsetup.label 'Spertula agordo…'>
 <!ENTITY sync.link.nodevice.label 'Mi ne havas la aparaton kun mi…'>
 
-<!-- J-PAKE Waiting Screen -->
-<!ENTITY sync.jpake.subtitle.waiting.label 'Atendo je alia aparato…'>
-
-<!-- Account Login Screen -->
-<!ENTITY sync.subtitle.account.label 'Tajpu la informon de via konto de &syncBrand.fullName.label;'>
-<!ENTITY sync.input.username.label 'Nomo de konto'>
-<!ENTITY sync.input.password.label 'Pasvorto'>
-<!ENTITY sync.input.key.label 'Reakira ŝlosilo'>
-<!ENTITY sync.checkbox.server.label 'Uzi propran servilon'>
-<!ENTITY sync.input.server.label 'URL de servilo'>
-
-<!-- Setup Fail -->
-<!ENTITY sync.title.fail.label 'Ne eblas agordi &syncBrand.shortName.label;n'>
-<!ENTITY sync.subtitle.fail.label '&syncBrand.fullName.label; ne povis konektiĝi al la servilo. Ĉu vi volas klopodi denove?'>
-<!ENTITY sync.button.tryagain.label 'Klopodi denove'>
-<!ENTITY sync.button.manual.label 'Permana agordo'>
-<!ENTITY sync.subtitle.nointernet.label 'Ne estas retaliro.'>
-<!ENTITY sync.subtitle.failaccount.label 'Malsukcesa kreado de konto en via aparato.'>
-<!ENTITY sync.subtitle.failmultiple.label 'Ĉu vi havas pli ol unu Firefox instalita? Nuntempe &syncBrand.fullName.label; nur subtenas po unu instalita Firefox. Bonvolu malinstali la aliajn por povi uzi &syncBrand.shortName.label;n.'>
-
-<!-- Setup Success -->
-<!ENTITY sync.title.success.label 'Agordo kompletigita'>
-<!ENTITY sync.subtitle.success.label1 'Viaj datumoj estas nun fone elŝutataj. Vi povas iri al “Agordoj“ por administri vian konton aŭ komenci retumi per &brandShortName;.'>
-<!ENTITY sync.settings.label 'Agordoj'>
-<!ENTITY sync.subtitle.manage.label1 'Via konto de &syncBrand.fullName.label; estas jam agordita. Vi povas iri al “Agordoj“ por administri vian konton, aŭ startigi &brandShortName;.'>
-
-<!-- Pair Device -->
-<!ENTITY sync.pair.tryagain.label 'Bonvolu klopodi denove.'>
-<!ENTITY sync.pair.connectlocation.label 'Por aktivigi vian novan aparaton, elektu “Agordi &syncBrand.shortName.label;n” en la aparato, kaj poste elektu “Mi havas konton.”'>
-
-<!-- Firefox SyncAdapter Settings Screen -->
-<!ENTITY sync.settings.options.label 'Elektebloj'>
-<!ENTITY sync.summary.pair.label 'Ligi alian aparaton al via konto de &syncBrand.shortName.label;'>
-
 <!-- Configure Engines -->
-<!ENTITY sync.configure.engines.title.label 'Kion speguli'>
-<!ENTITY sync.configure.engines.sync.my.title.label 'Speguli via(j)n…'>
-<!ENTITY sync.configure.engines.title.bookmarks 'legosignojn'>
 <!ENTITY sync.configure.engines.title.passwords2 'akreditilojn'>
 <!ENTITY sync.configure.engines.title.history 'historion'>
 <!ENTITY sync.configure.engines.title.tabs 'langetojn'>
-
-<!-- Common text -->
-<!ENTITY sync.button.cancel.label 'Nuligi'>
-<!ENTITY sync.button.connect.label 'Konekti'>
-<!ENTITY sync.button.ok.label 'Akcepti'>
-
-<!-- Account strings -->
-<!ENTITY sync.account.label '&syncBrand.fullName.label; (deprecated)'>
 
 <!-- Localization note (sync.default.client.name): Default string of the "Device
      name" menu item upon setting up Firefox Sync.  The placeholder &formatS1
@@ -93,20 +40,7 @@
 <!-- Pinned sites on about:home. This folder should never be shown to the user, but we have to give it a string name -->
 <!ENTITY bookmarks.folder.pinned.label 'Alpinglitaj'>
 
-<!-- Notification strings -->
-<!ENTITY sync.notification.oneaccount.label 'Nur unu konto de &syncBrand.fullName.label; estas subtenata.'>
-<!ENTITY sync.notification.configure.saved 'Viaj elektoj estis konservitaj.'>
-
-<!-- Incorrect settings and changing credentials. -->
-<!ENTITY sync.invalidcreds.label 'Malĝusta nomo de konto aŭ pasvorto.'>
-<!ENTITY sync.invalidserver.label 'Bonvolu tajpi validan URL por la servilo'>
-<!ENTITY sync.verifying.label 'Kontrolo…'>
-<!ENTITY sync.new.recoverykey.status.incorrect 'Malĝusta reakira ŝlosilo. Bonvolu klopodi denove.'>
-
 <!-- Send tab to device. -->
-<!ENTITY sync.title.send.tab.label 'Sendi langeton al aparatoj'>
-<!ENTITY sync.button.send.label 'Sendi'>
-<!ENTITY sync.button.set.up.sync.label 'Agordi &syncBrand.shortName.label;n'>
 <!ENTITY sync.title.redirect.to.set.up.sync.label 'Agordi &syncBrand.shortName.label;n por sendi langetojn'>
 <!ENTITY sync.text.redirect.to.set.up.sync.label 'Agordi &syncBrand.fullName.label;n en via aparato por sendi langetojn al aliaj aparatoj.'>
 <!ENTITY sync.text.tab.sent.label 'Via langeto estis sendita!'>

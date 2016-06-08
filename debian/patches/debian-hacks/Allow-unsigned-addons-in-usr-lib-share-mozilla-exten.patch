@@ -8,10 +8,10 @@ Subject: Allow unsigned addons in /usr/{lib,share}/mozilla/extensions
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/toolkit/mozapps/extensions/content/extensions.js b/toolkit/mozapps/extensions/content/extensions.js
-index 7e2df29..5d4cc2a 100644
+index 7bdda7e..dea7191 100644
 --- a/toolkit/mozapps/extensions/content/extensions.js
 +++ b/toolkit/mozapps/extensions/content/extensions.js
-@@ -200,6 +200,8 @@ function isCorrectlySigned(aAddon) {
+@@ -203,6 +203,8 @@ function isCorrectlySigned(aAddon) {
    // temporary add-ons do not require signing
    if (aAddon.scope == AddonManager.SCOPE_TEMPORARY)
        return true;
@@ -21,10 +21,10 @@ index 7e2df29..5d4cc2a 100644
      return false;
    return true;
 diff --git a/toolkit/mozapps/extensions/internal/XPIProvider.jsm b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-index 084b452..aa47f7d 100644
+index 0272a75..0dc173c 100644
 --- a/toolkit/mozapps/extensions/internal/XPIProvider.jsm
 +++ b/toolkit/mozapps/extensions/internal/XPIProvider.jsm
-@@ -680,7 +680,8 @@ function isUsableAddon(aAddon) {
+@@ -688,7 +688,8 @@ function isUsableAddon(aAddon) {
      return false;
    }
    // temporary and system add-ons do not require signing

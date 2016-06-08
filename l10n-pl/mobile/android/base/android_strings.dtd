@@ -16,7 +16,7 @@
 <!ENTITY firstrun_bookmarks_subtext "Wyświetlaj wyniki z zakładek i historii podczas wyszukiwania.">
 <!ENTITY firstrun_data_title "Dane">
 <!ENTITY firstrun_data_message "Mniej danych, więcej oszczędności">
-<!ENTITY firstrun_data_subtext "Blokuj obrazy, aby zmniejszyć zużycie danych.">
+<!ENTITY firstrun_data_subtext2 "Wyłącz obrazy, aby zmniejszyć zużycie danych.">
 <!ENTITY firstrun_sync_title "Sync">
 <!ENTITY firstrun_sync_message "&brandShortName;, zawsze blisko">
 <!ENTITY firstrun_sync_subtext "Synchronizuj karty, hasła i wiele więcej między wszystkimi urządzeniami.">
@@ -48,8 +48,8 @@
 <!ENTITY sending_crash_report "Przesyłanie zgłoszenia\u2026">
 <!ENTITY exit_label "Zakończ">
 
-<!ENTITY launcher_shortcuts_title "&brandShortName; – Aplikacje sieciowe">
-<!ENTITY launcher_shortcuts_empty "Nie znaleziono aplikacji sieciowych">
+<!ENTITY launcher_shortcuts_title "&brandShortName; – Aplikacje internetowe">
+<!ENTITY launcher_shortcuts_empty "Nie znaleziono aplikacji internetowych">
 
 <!ENTITY choose_file "Wybierz plik">
 
@@ -168,10 +168,12 @@
 <!ENTITY pref_cookies_not_accept_foreign "Akceptowanie, z wyjątkiem ciasteczek zewnętrznych podmiotów">
 <!ENTITY pref_cookies_disabled "Wyłączone">
 
-<!ENTITY pref_tap_to_load_images_title2 "Wyświetlanie obrazków">
+<!ENTITY pref_tap_to_load_images_title2 "Wyświetlanie obrazów">
 <!ENTITY pref_tap_to_load_images_enabled "Zawsze">
 <!ENTITY pref_tap_to_load_images_data "Tylko przez Wi-Fi">
 <!ENTITY pref_tap_to_load_images_disabled2 "Blokowanie">
+
+<!ENTITY pref_show_web_fonts "Wyświetlanie czcionek sieciowych">
 
 <!ENTITY pref_tracking_protection_title "Ochrona przed śledzeniem">
 <!ENTITY pref_tracking_protection_summary3 "Włączona w trybie prywatnym">
@@ -302,7 +304,7 @@
 
 <!ENTITY share "Udostępnij">
 <!ENTITY share_title "Udostępnij przez">
-<!ENTITY share_image_failed "Tego obrazka nie można udostępnić">
+<!ENTITY share_image_failed "Tego obrazu nie można udostępnić">
 <!ENTITY save_as_pdf "Zapisz jako PDF">
 <!ENTITY print "Drukuj">
 <!ENTITY desktop_mode "Tryb stacjonarny">
@@ -359,8 +361,8 @@
 <!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
 <!ENTITY pref_scroll_title_bar_summary2 "Ukrywanie paska przeglądarki &brandShortName; przy przewijaniu stron">
 
-<!ENTITY pref_tab_queue_title2 "Otwieranie wielu odnośników">
-<!ENTITY pref_tab_queue_summary3 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
+<!ENTITY pref_tab_queue_title3 "Kolejka kart">
+<!ENTITY pref_tab_queue_summary4 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
 
 <!ENTITY page_removed "Usunięto stronę">
 
@@ -415,7 +417,7 @@
 
 <!ENTITY home_default_empty "Nie znaleziono treści do wyświetlenia na tym panelu.">
 
-<!ENTITY home_move_up_to_filter "Wróć do &formatS;">
+<!ENTITY home_move_back_to_filter "Wróć do &formatS;">
 
 <!ENTITY home_remote_tabs_one_hidden_device "Liczba ukrytych urządzeń: 1">
 <!ENTITY home_remote_tabs_many_hidden_devices "Liczba ukrytych urządzeń: &formatD;">
@@ -459,9 +461,9 @@
 <!ENTITY identity_login_insecure "Ta strona nie jest zabezpieczona. Dane logowania mogą być narażone na ataki.">
 <!ENTITY identity_connection_chromeui "To jest strona programu &brandShortName;">
 
-<!ENTITY mixed_content_blocked_all1 "Program &brandShortName; zablokował niezabezpieczoną treść na tej stronie.">
-<!ENTITY mixed_content_blocked_some1 "Program &brandShortName; zablokował część niezabezpieczonej treści na tej stronie.">
-<!ENTITY mixed_content_display_loaded1 "Części tej strony (np. obrazki) nie są niezabezpieczone.">
+<!ENTITY mixed_content_blocked_all1 "&brandShortName; zablokował niezabezpieczoną treść na tej stronie.">
+<!ENTITY mixed_content_blocked_some1 "&brandShortName; zablokował część niezabezpieczonej treści na tej stronie.">
+<!ENTITY mixed_content_display_loaded1 "Części tej strony (np. obrazy) są niezabezpieczone.">
 <!ENTITY mixed_content_protection_disabled1 "Ochrona przed niezabezpieczoną treścią jest wyłączona.">
 
 <!ENTITY doorhanger_tracking_title "Ochrona przed śledzeniem">
@@ -489,8 +491,6 @@
 
 <!ENTITY suggestion_for_engine "Szukaj „&formatS2;” za pomocą &formatS1;">
 
-<!ENTITY webapp_generic_name "Aplikacja">
-
 <!ENTITY searchable_description "Zakładki i historia">
 
 <!ENTITY updater_start_title2 "&brandShortName;: dostępne są nowe aktualizacje">
@@ -511,12 +511,12 @@
 <!ENTITY exit_guest_session "Zakończ sesję gościnną">
 <!ENTITY guest_session_dialog_continue "Kontynuuj">
 <!ENTITY guest_session_dialog_cancel "Anuluj">
-<!ENTITY new_guest_session_title "Program &brandShortName; zostanie uruchomiony ponownie">
+<!ENTITY new_guest_session_title "&brandShortName; zostanie uruchomiony ponownie">
 <!ENTITY new_guest_session_text2 "Osoba korzystająca z przeglądarki nie będzie widziała Twoich prywatnych informacji (takich, jak zachowane dane logowania, historia przeglądania czy zakładki). Kiedy gość skończy korzystać z przeglądarki, dane o sesji zostaną usunięte, a Twoja sesja zostanie przywrócona.">
 <!ENTITY guest_browsing_notification_title "Włączono tryb gościnny">
 <!ENTITY guest_browsing_notification_text "Stuknij, aby wyjść">
 
-<!ENTITY exit_guest_session_title "Program &brandShortName; zostanie uruchomiony ponownie">
+<!ENTITY exit_guest_session_title "&brandShortName; zostanie uruchomiony ponownie">
 <!ENTITY exit_guest_session_text "Dane o tej sesji zostaną usunięte.">
 
 <!ENTITY ellipsis "…">
@@ -530,8 +530,6 @@
 
 <!ENTITY remote_tabs_last_synced "Ostatnia synchronizacja: &formatS;">
 <!ENTITY remote_tabs_never_synced "Ostatnia synchronizacja: nigdy">
-
-<!ENTITY find_matchcase "Aa">
 
 <!ENTITY intent_uri_cannot_open "Nie można otworzyć odnośnika">
 <!ENTITY intent_uri_private_browsing_prompt "Ten odnośnik zostanie otwarty w aplikacji &formatS;. Na pewno wyjść z trybu prywatnego?">
@@ -560,5 +558,8 @@
 
 <!ENTITY unsupported_sdk_version "Ta wersja programu &brandShortName; nie może działać na tym urządzeniu (&formatS1;, &formatS2;). Prosimy pobrać właściwą wersję.">
 
-<!ENTITY eol_notification_title "&brandShortName; nie obsługuje już systemu Android 3">
+<!ENTITY eol_notification_title2 "&brandShortName; nie będzie już aktualizowany">
 <!ENTITY eol_notification_summary "Stuknij, aby dowiedzieć się więcej">
+
+<!ENTITY whatsnew_notification_title "&brandShortName; jest aktualny">
+<!ENTITY whatsnew_notification_summary "Nowości w tej wersji">
