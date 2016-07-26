@@ -19,11 +19,13 @@
 <!ENTITY dnsNotFound.title "Cha deach am frithealaiche a lorg">
 <!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
      or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
-<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Dèan cinnteach nach eil mearachdan litreachaidh san t-seòladh mar <strong>ww</strong>.ball-eisimpleir.com an àite <strong>www</strong>.ball-eisimpleir.com</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Lorg</button> </div> <li>Mur urrainn dhut duilleag sam bith a luchdadh, thoir sùil air ceangal dàta no WiFi an uidheim agad. <button id='wifi'>Cuir an comas WiFi</button> </li> </ul>">
+<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Dèan cinnteach nach eil mearachdan litreachaidh san t-seòladh mar <strong>ww</strong>.example.com an àite <strong>www</strong>.example.com</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Lorg</button> </div> <li>Mur urrainn dhut duilleag sam bith a luchdadh, thoir sùil air ceangal dàta no WiFi an uidheim agad. <button id='wifi'>Cuir an comas WiFi</button> </li> </ul>">
 
 <!ENTITY fileNotFound.title "Cha deach am faidhle a lorg">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Dèan cinnteach nach eile litrichean mòra no beaga san àite chearr no mearachdan litreachaidh eile.</li> <li>Saoil an deach am faidhle a ghluasad, a sguabadh às no gun deach ainm ùr a chur air?</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "Chaidh inntrigeadh dhan fhaidhle a dhiùltadh">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Dh’fhaoidte gun deach a thoirt air falbh no a ghluasad no gu bheil bacadh air inntrigeadh an cois ceadan an fhaidhle.</li> </ul>">
 
 <!ENTITY generic.title "Mo chreach!">
 <!ENTITY generic.longDesc "<p>Chan urrainn dha &brandShortName; an duilleag seo a luchdadh air sgàth adhbhar air choireigin.</p>">
@@ -31,7 +33,7 @@
 <!ENTITY malformedURI.title "Chan e seòladh dligheach a tha ann">
 <!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
      or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
-<!ENTITY malformedURI.longDesc2 "<ul> <li>Bidh seòlaidhean-lìn coltas ri seo mar is trice: <strong>http://www.ball-eisimpleir.com/</strong></li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Lorg</button> </div> <li>Dèan cinnteach gun cleachd thu an t-slais cheart (i.e. <strong>/</strong>).</li> </ul>">
+<!ENTITY malformedURI.longDesc2 "<ul> <li>Bidh seòlaidhean-lìn coltas ri seo mar is trice: <strong>http://www.example.com/</strong></li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Lorg</button> </div> <li>Dèan cinnteach gun cleachd thu an t-slais cheart (i.e. <strong>/</strong>).</li> </ul>">
 
 <!ENTITY netInterrupt.title "Bhris rudeigin a-steach air a' cheangal">
 <!ENTITY netInterrupt.longDesc2 "&sharedLongDesc3;">
@@ -112,3 +114,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Mion-fhiosrachadh: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "Chan eil an ceangal agad tèarainte">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p>Tha <span class='hostname'></span> a’ cleachdadh seann-teicneolas tèarainteachd a tha so-leònte. Cha bhiodh e doirbh do chuideigin dàta a leigeil ris a bha tèarainte ’nad bheachd. Bidh aig rianaire na làraich am frithealaiche a chàradh mus urrainn dhut tadhal air an làrach.</p><p>Còd na mearachd: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

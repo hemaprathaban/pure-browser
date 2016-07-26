@@ -14,8 +14,8 @@
 <!ENTITY dnsNotFound.longDesc4 "
 <ul>
    <li>Проверьте, не допущена ли ошибка при наборе адреса, например,
-        <strong>ww</strong>.example.com вместо
-        <strong>www</strong>.example.com</li>
+        <strong>ww</strong>.test.ru вместо
+        <strong>www</strong>.test.ru</li>
         <div id='searchbox'>
           <input id='searchtext' type='search'></input>
           <button id='searchbutton'>Поиск</button>
@@ -31,6 +31,14 @@
   <li>Проверьте, не был ли файл переименован, удален или перемещён.</li>
 </ul>
 ">
+
+<!ENTITY fileAccessDenied.title "В доступе к файлу отказано">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>Возможно, что он был удалён или перемещён, или разрешения на файл не дают получить к нему доступ.</li>
+</ul>
+">
+
 <!ENTITY generic.title "Ой.">
 <!ENTITY generic.longDesc "
 <p>&brandShortName; не может загрузить эту страницу по неопределённой причине.</p>">
@@ -38,7 +46,7 @@
 <!ENTITY malformedURI.longDesc2 "
 <ul>
   <li>Адреса веб-сайтов обычно записываются в формате
-     <strong>http://www.example.com/</strong></li>
+     <strong>http://www.test.ru/</strong></li>
      <div id='searchbox'>
        <input id='searchtext' type='search'></input>
        <button id='searchbutton'>Поиск</button>
@@ -150,3 +158,8 @@
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Дополнительная информация: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "Ваше соединение не защищено">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> использует защитную технологию, которая является устаревшей и уязвимой для атаки. Злоумышленник может легко выявить информацию, которая, как вы думали, находится в безопасности. Для того, чтобы вы смогли посетить веб-сайт, администратор веб-сайта должен сначала исправить его сервер.</p><p>Код ошибки: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

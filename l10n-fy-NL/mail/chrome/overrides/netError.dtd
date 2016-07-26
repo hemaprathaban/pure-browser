@@ -16,7 +16,7 @@
 <!ENTITY deniedPortAccess.title "Dit adres hat in beheinde tagong">
 <!ENTITY deniedPortAccess.longDesc "">
 
-<!ENTITY dnsNotFound.title "Tsjinner net fûn">
+<!ENTITY dnsNotFound.title "Server net fûn">
 <!ENTITY dnsNotFound.longDesc "
 <ul>
   <li>Kontrolearje it adres op typflaters as
@@ -25,7 +25,7 @@
   <li>Kontrolearje jo netwurkferbining as jo gjin inkele side lade
     kinne.</li>
   <li>Gean nei oft &brandShortName; tagong hat ta it web of jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+    kompjûter of netwurk befeilige is troch in brânmuorre of proxyserver.</li>
 </ul>
 ">
 
@@ -33,14 +33,20 @@
 <!ENTITY fileNotFound.longDesc "
 <ul>
   <li>Kontrolearje de bestânsnamme op grutte/lytse letters of oare typflaters.</li>
-  <li>Kontrolearje of it bestân ferpleatst, fuorthelle is of in nije namme krigen hat.</li>
+  <li>Kontrolearje oft it bestân is ferpleatst, omneamd of fuortsmiten.</li>
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "Tagong ta it bestân is wegere">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>It kin fuortsmiten wêze, ferpleatst, of bestânsmachtigingen kinne tagong tsjingean.</li>
+</ul>
+">
 
 <!ENTITY generic.title "Oei.">
 <!ENTITY generic.longDesc "
-<p>&brandShortName; kin om ien of oare reden dizze side net lade.</p>
+<p>&brandShortName; kin om ien oft oare reden dizze side net lade.</p>
 ">
 
 <!ENTITY malformedURI.title "It adres jildt net">
@@ -93,22 +99,22 @@
 </ul>
 ">
 
-<!ENTITY proxyConnectFailure.title "De proxytsjinner wegeret ferbiningen">
+<!ENTITY proxyConnectFailure.title "De proxyserver wegeret ferbiningen">
 <!ENTITY proxyConnectFailure.longDesc "
 <ul>
   <li>Kontrolearje oft jo proxy-ynstellingen goed binne.</li>
-  <li>Nim kontakt op mei jo netwurkbeheerder om te kontrolearjen oft de proxytsjinner
+  <li>Nim kontakt op mei jo netwurkbeheerder om te kontrolearjen oft de proxyserver
     wurket.</li>
 </ul>
 ">
 
-<!ENTITY proxyResolveFailure.title "Kin de proxytsjinner net fine">
+<!ENTITY proxyResolveFailure.title "Kin de proxyserver net fine">
 <!ENTITY proxyResolveFailure.longDesc "
 <ul>
   <li>Kontrolearje oft jo proxy-ynstellingen goed binne.</li>
   <li>Gean nei oft jo kompjûter op in wurkjend netwurk oansletten is.</li>
   <li>Gean nei oft &brandShortName; tagong hat ta it web of jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+    kompjûter of netwurk befeilige is troch in brânmuorre of proxyserver.</li>
 </ul>
 ">
 
@@ -120,12 +126,12 @@
 </ul>
 ">
 
-<!ENTITY unknownSocketType.title "Unferwacht antwurd fan de tsjinner">
+<!ENTITY unknownSocketType.title "Unferwacht antwurd fan de server">
 <!ENTITY unknownSocketType.longDesc "
 <ul>
   <li>Gean nei oft de persoanlike befeiligingsbeheerder ynstallearre is op
     jo systeem.</li>
-  <li>Dit kin it gefolch wêze fan in net-standert konfiguraasje fan de tsjinner.</li>
+  <li>Dit kin it gefolch wêze fan in net-standert konfiguraasje fan de server.</li>
 </ul>
 ">
 
@@ -140,8 +146,8 @@
 <!ENTITY nssBadCert.title "Feilige Ferbining Mislearre">
 <!ENTITY nssBadCert.longDesc2 "
 <ul>
-<li>Dit koe in probleem wêze mei de konfiguraasje fan de tsjinner, of it kin iets wêze wat probeart de tsjinner as in oar foar te dwaan.</li>
-<li>As jo earder al súksesfol ferbining hân hawwe mei dizze tsjinner, kin de flater tydlik wêze en kinne jo it letter nochris probearje.</li>
+<li>Dit koe in probleem wêze mei de konfiguraasje fan de server, of it kin iets wêze wat probeart de server as in oar foar te dwaan.</li>
+<li>As jo earder al súksesfol ferbining hân hawwe mei dizze server, kin de flater tydlik wêze en kinne jo it letter nochris probearje.</li>
 </ul>
 ">
 
@@ -151,29 +157,8 @@
     nochris.</li>
   <li>Kontrolearje jo netwurkferbining as jo gjin inkele side lade kinne.</li>
   <li>Gean nei oft &brandShortName; tagong hat ta it web, of dat jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+    kompjûter of netwurk befeilige is troch in brânmuorre of proxyserver.</li>
 </ul>
-">
-
-<!ENTITY malwareBlocked.title "Fertochte oanfalside!">
-<!ENTITY malwareBlocked.longDesc "<p>
-Oanfalsides probearje om programmatuer te ynstallearjen dy't privee-ynformaasje stêle kinne, jo komjûter brûke om oaren oan te fallen, of jo systeem skansearje.</p>
-<p>Jo soenen better dizze side net besykje!</p>
-">
-
-<!ENTITY unwantedBlocked.title "Fertochte website mei net-winske software!">
-<!ENTITY unwantedBlocked.longDesc "
-<p>Siden mei net-winske software probearje software te ynstallearjen dy't misliedend wêze kinne en jo systeem op ûnferwachte manieren beÿnfloedzje kin.</p>
-">
-
-<!ENTITY phishingBlocked.title "Fertochte webferfalsking!">
-<!ENTITY phishingBlocked.longDesc "
-<p>It ynfieren fan persoanlike ynformaasje op dizze side kin resultearje yn identeitsstellerij of oare fraude.</p>
-<p>Dizze typen fan webferfalsking wurde brûkt yn scams bekend as phishing oanfallen, weryn frauduleuse websides en emails brûkt wurde om boarnes dy't jo fertrouwe te imitearjen.</p>
-">
-
-<!ENTITY forbiddenBlocked.title "Ferbeane website">
-<!ENTITY forbiddenBlocked.longDesc "<p>&brandShortName; hat opkeard dat dizze side laden waard, omdat it konfigurearre is om him te blokkearjen.</p>
 ">
 
 <!ENTITY cspBlocked.title "Blokkearre troch ynhâldsbefeiligingsbelied">
@@ -193,7 +178,7 @@ which uses strings already defined above. The button is included here (instead o
 netError.xhtml) because it exposes functionality specific to firefox. -->
 
 <!ENTITY securityOverride.warningContent "
-<p>Jo kinne better gjin útsûndering tafoegje as jo in ynternetferbining hawwe dy't jo net folslein fertrouwe, of as it net normaal is dat jo in warskôging sjogge foar dizze tsjinner.</p>
+<p>Jo kinne better gjin útsûndering tafoegje as jo in ynternetferbining hawwe dy't jo net folslein fertrouwe, of as it net normaal is dat jo in warskôging sjogge foar dizze server.</p>
 
 <button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button>
 <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>

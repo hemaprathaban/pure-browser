@@ -19,6 +19,9 @@
 <!ENTITY fileNotFound.title "No s'ha trpbau o fichero">
 <!ENTITY fileNotFound.longDesc "<ul><li>Ye posible que l'elemento s'haiga renombrau, eliminau u cambiau de ruta?</li><li>I hai bella error d'ortografía, mayusclas u qualsiquier atra error en escribir l'adreza?</li><li>Tiene pros privilechios d'acceso ta l'elemento solicitau?</li></ul>">
 
+<!ENTITY fileAccessDenied.title "S'ha denegau l'acceso a lo fichero">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Talment s'haiga borrau, moviu u l'acceso ye vedau por los permisos d'o fichero.</li> </ul>">
+
 <!ENTITY generic.title "No s'ha puesto completar a solicitut">
 <!ENTITY generic.longDesc "<p>Actualment no i hai información adicional disponible ta iste problema u error.</p>">
 
@@ -38,9 +41,7 @@
 <!ENTITY contentEncodingError.longDesc "<p>a pachina que ye mirando de veyer no puede amostrar porque usa una forma no valida u no admitida de compresión.</p><ul><li>Por favor, contacte con os propietarios d'o puesto web ta informar-les d'iste problema.</li></ul>">
 
 <!ENTITY unsafeContentType.title "Tipo de fichero inseguro">
-<!ENTITY unsafeContentType.longDesc "<ul> 
-<li>Por favor, contacte con os propietarios d'o puesto web ta informar-les d'iste problema.</li> 
-</ul>">
+<!ENTITY unsafeContentType.longDesc "<ul> <li>Por favor, contacte con os propietarios d'o puesto web ta informar-les d'iste problema.</li> </ul>">
 
 <!ENTITY netReset.title "S'ha interrompiu a connexión">
 <!ENTITY netReset.longDesc "<p>L'enlaz con o ret s'interrumpió mientres se negociaba una connexión. Por favor, torne a intentar-lo.</p>">
@@ -67,28 +68,10 @@
 <!ENTITY nssFailure2.longDesc2 "<p>A pachina que ye mirando de visualizar no se puet amostrar porque no se puet comprebar l'autenticidat d'os datos recibius. </p><ul><li>Meta-se en contacto con os propietarios d'o puesto web ta informar-los d'o problema.</li></ul>">
 
 <!ENTITY nssBadCert.title "A connexión segura ha fallau">
-<!ENTITY nssBadCert.longDesc2 "<ul> 
-<li>Ixo podría estar un problema con a configuración d'o servidor, u podría estar belún mirando de fer-se pasar por o servidor.</li> 
-<li>Si ya ha connectau con iste servidor con exito en o pasau, a error podría estar temporal, y podrá tornar a intentar-lo mas tarde.</li> 
-</ul>">
-
-<!ENTITY malwareBlocked.title "Iste puesto web podría estar atacant!">
-<!ENTITY malwareBlocked.longDesc "<p>Os puestos web atacants Miran d'instalar programas que rapan a información privada, usan o suyo ordinador ta atacar a atros, u danyan o suyo sistema.</p> 
-<p>Os propietarios de puestos web que creigan que o suyo puesto ha estau identificau erroniament como puesto atacant pueden <a href='http://www.stopbadware.org/home/reviewinfo' >solicitar una revisión</a>.</p>">
-
-<!ENTITY unwantedBlocked.title "Puesto sospeitoso de Software no deseyau!">
-<!ENTITY unwantedBlocked.longDesc "<p>As pachinas de software no desesyau mirar d'instalar softare que puede estar enganyosos y afectar a o suyo sistema de trazas no asperadas.</p>">
-
-<!ENTITY phishingBlocked.title "Posible suplantación de web!">
-<!ENTITY phishingBlocked.longDesc "<p>Si escribe información personal en ista pachina podría resultar en una suplantación d'identidat u belatro fraude.</p> 
-<p>Istos tipos de falsificacions de webs s'usan en timos conoixius como ataques de phishing, en os quals s'usan pachinas web y mensaches de correu electronico fraudulentos ta imitar fuents en as quals se confía.</p>">
-
-<!ENTITY forbiddenBlocked.title "Puesto vedau">
-<!ENTITY forbiddenBlocked.longDesc "<p>Lo navegador ha privau que ista pachina se cargue porque ye configurau pa blocar-la.</p>">
+<!ENTITY nssBadCert.longDesc2 "<ul> <li>Ixo podría estar un problema con a configuración d'o servidor, u podría estar belún mirando de fer-se pasar por o servidor.</li> <li>Si ya ha connectau con iste servidor con exito en o pasau, a error podría estar temporal, y podrá tornar a intentar-lo mas tarde.</li> </ul>">
 
 <!ENTITY securityOverride.linkText "U puede anyader-ie una excepción…">
-<!ENTITY securityOverride.warningContent "<p>No habría d'adhibir una excepción si ye usando una connexión d'Internet en a qual no confíe de tot u si no ye feito a veyer garra alvertencia sobre iste servidor.</p> 
-<p>Si encara deseya adhibir una excepción ta iste puesto, puede fer-lo en a suya configuración abanzada de cifrau.</p>">
+<!ENTITY securityOverride.warningContent "<p>No habría d'adhibir una excepción si ye usando una connexión d'Internet en a qual no confíe de tot u si no ye feito a veyer garra alvertencia sobre iste servidor.</p> <p>Si encara deseya adhibir una excepción ta iste puesto, puede fer-lo en a suya configuración abanzada de cifrau.</p>">
 
 <!ENTITY cspBlocked.title "Bloqueyau por a politica de seguranza de conteniu">
 <!ENTITY cspBlocked.longDesc "<p>O navegador ha impediu que ista pachina se cargue d'ista traza porque a pachina tiene una politica de seguranza de conteniu que no lo permite.</p>">
@@ -98,3 +81,8 @@
 
 <!ENTITY remoteXUL.title "XUL remoto">
 <!ENTITY remoteXUL.longDesc "<p><ul><li>Por favor, contacte con os propietarios d'o puesto web ta informar-les d'iste problema.</li></ul></p>">
+
+<!ENTITY inadequateSecurityError.title "La connexion no ye pas segura">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> fa servir technolochía de seguranza que ye obsoleta y vulnerable debant d'un ataque. Un acatant podría revelar información que vusté creyeba segura. L'administrador d'o puesto web habrá de fixar lo servidor antes que vusté pueda vesitar lo puesto.</p><p>Codigo d'error: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

@@ -19,17 +19,19 @@
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "Freastalaí gan aimsiú">
-<!ENTITY dnsNotFound.longDesc "<ul> <li>Scrúdaigh an seoladh le haghaidh botún cosúil le <strong>ww</strong>.sampla.com in áit <strong>www</strong>.sampla.com</li> <li>Mura bhfuil tú in ann leathanach ar bith a luchtú, déan seiceáil ar cheangal líonra do ríomhaire.</li> <li>Má tá do ríomhaire nó do líonra á chosaint ag balla dóiteáin nó seachfhreastalaí, cinntigh go bhfuil cead ag &brandShortName; an Gréasán a rochtain.</li> </ul>">
+<!ENTITY dnsNotFound.longDesc "<ul> <li>Scrúdaigh an seoladh le haghaidh botún cosúil le <strong>ww</strong>.example.com in áit <strong>www</strong>.example.com</li> <li>Mura bhfuil tú in ann leathanach ar bith a luchtú, déan seiceáil ar cheangal líonra do ríomhaire.</li> <li>Má tá do ríomhaire nó do líonra á chosaint ag balla dóiteáin nó seachfhreastalaí, cinntigh go bhfuil cead ag &brandShortName; an Gréasán a rochtain.</li> </ul>">
 
 <!ENTITY fileNotFound.title "Comhad gan aimsiú">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Scrúdaigh an t-ainm comhaid le haghaidh botúin chlóscríofa sna litreacha móra srl.</li> <li>Féach an bhfuil an comhad bogtha, athainmnithe nó scriosta.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "Diúltaíodh rochtain ar an gcomhad">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Seans nach bhfuil an comhad ann a thuilleadh, nó b'fhéidir nach bhfuil cead agat é a rochtain.</li> </ul>">
 
 <!ENTITY generic.title "Úps.">
 <!ENTITY generic.longDesc "<p>Ní féidir le &brandShortName; an leathanach seo a luchtú ar fáth éigin.</p>">
 
 <!ENTITY malformedURI.title "Níl an seoladh bailí">
-<!ENTITY malformedURI.longDesc "<ul> <li>De ghnáth scríobhtar seoltaí Gréasáin mar seo <strong>http://www.sampla.com/</strong></li> <li>Bí cinnte gur tulslaiseanna atá agat (.i. <strong>/</strong>).</li> </ul>">
+<!ENTITY malformedURI.longDesc "<ul> <li>De ghnáth scríobhtar seoltaí Gréasáin mar seo <strong>http://www.example.com/</strong></li> <li>Bí cinnte gur tulslaiseanna atá agat (.i. <strong>/</strong>).</li> </ul>">
 
 <!ENTITY netInterrupt.title "Idirbhriseadh an ceangal">
 <!ENTITY netInterrupt.longDesc "&sharedLongDesc;">
@@ -70,8 +72,11 @@
 <!ENTITY nssFailure2.title "Níorbh Fhéidir Ceangal Slán a Bhunú">
 <!ENTITY nssFailure2.longDesc2 "<ul> <li>Ní féidir an leathanach atá tú ag iarraidh amharc air a thaispeáint toisc nach féidir fírinne na sonraí a fuarthas a fhíordheimhniú.</li> <li>Téigh i dteagmháil le húinéirí an tsuímh Ghréasáin leis an fhadhb seo a chur in iúl dóibh le do thoil.</li> </ul>">
 
-<!ENTITY nssBadCert.title "Níorbh Fhéidir Ceangal Slán a Bhunú">
-<!ENTITY nssBadCert.longDesc2 "<ul> <li>B'fhéidir gur fadhb i gcumraíocht an fhreastalaí atá ann, nó b'fhéidir go bhfuil duine éigin ag déanamh aithris ar an bhfreastalaí.</li> <li>Má d'éirigh leat ceangal leis an bhfreastalaí seo roimhe seo, b'fhéidir gur fadhb shealadach atá ann agus is féidir leat iarracht a dhéanamh níos déanaí.</li> </ul>">
+<!ENTITY certerror.longpagetitle1 "Níl do cheangal slán">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "Níor chumragh úinéir <span class='hostname'/> an suíomh mar is ceart.  Níor cheangail &brandShortName; leis an suíomh seo chun do chuid faisnéise a chosaint.">
 
 <!ENTITY sharedLongDesc "<ul> <li>D'fhéadfadh an suíomh bheith gan fáil nó ró-ghnóthach go sealadach. Bain triail eile as ar ball beag.</li> <li>Mura bhfuil tú in ann leathanach ar bith a luchtú, déan seiceáil ar cheangal líonra do ríomhaire.</li> <li>Má tá do ríomhaire nó do líonra á chosaint ag balla dóiteáin nó seachfhreastalaí, cinntigh go bhfuil cead ag &brandShortName; an Gréasán a rochtain.</li></ul>">
 
@@ -82,16 +87,7 @@
 <!ENTITY corruptedContentError.longDesc "<p>An leathanach atá tú ag iarraidh a amharc, ní féidir é a thaispeáint toisc gur tharla earráid agus na sonraí á seoladh.</p><ul><li>Téigh i dteagmháil le húinéir an tsuímh agus inis dóibh faoin fhadhb seo.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Nó is féidir leat eisceacht a chruthú…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Amach as seo liom!">
 <!ENTITY securityOverride.exceptionButtonLabel "Cruthaigh Eisceacht…">
-<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
-contents of the <button> tags. It uses strings already defined above. The
-button is included here (instead of netError.xhtml) because it exposes
-functionality specific to firefox. -->
-
-
-<!ENTITY securityOverride.warningContent "<p>Ná cruthaigh eisceacht mura bhfuil muinín agat as do cheangal Idirlín nó mura fheiceann tú rabhadh maidir leis an bhfreastalaí seo go rialta.</p>  <button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button> <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>">
 
 <!ENTITY errorReporting.automatic2 "Tuairiscigh earráidí cosúil leis seo chun cuidiú le Mozilla suíomhanna mailíseacha a aithint agus a chosc">
 <!ENTITY errorReporting.learnMore "Tuilleadh eolais…">
@@ -111,3 +107,12 @@ functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Ardroghanna">
 <!ENTITY weakCryptoAdvanced.longDesc "Baineann <span class='hostname'></span> úsáid as teicneolaíocht slándála sheanaimseartha agus tá sé i mbaol a ionsaí. Bheadh bradaí in ann teacht ar d'fhaisnéis phearsanta go héasca. ">
 <!ENTITY weakCryptoAdvanced.override "(Contúirteach) Bain triail as <span class='hostname'></span> a luchtú in ainneoin teicneolaíocht slándála seanaimseartha">
+
+<!ENTITY certerror.pagetitle1  "Ceangal Neamhshlán">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Úsáideann an suíomh seo HTTP Strict Transport Security (HSTS) le cinntiú go gceanglaíonn &brandShortName; leis trí cheangal slán. Dá bharr seo, ní féidir eisceacht a chruthú don teastas seo.">
+<!ENTITY certerror.copyToClipboard.label "Cóipeáil an téacs go dtí an ghearrthaisce">
+
+<!ENTITY inadequateSecurityError.title "Níl do cheangal slán">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p>Úsáideann <span class='hostname'></span> teicneolaíocht slándála atá as dáta agus leochaileach ar ionsaithe. D'fhéadfadh ionsaitheoir eolas a nochtadh áit ar shíl tú go raibh sé slán. Beidh ar riarthóir an tsuímh gréasáin an freastalaí a dheisiú sula mbeidh tú ábalta cuairt a thabhairt ar an suíomh. </p><p> Cód Earráide: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

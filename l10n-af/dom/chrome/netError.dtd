@@ -19,6 +19,8 @@
 <!ENTITY fileNotFound.title "Lêer nie gevind nie">
 <!ENTITY fileNotFound.longDesc "<ul><li>Kan dit wees dat die item hernoem, verwyder of verskuif is?</li><li>Is daar 'n spelfout, kasfout of ander skryffout in die adres?</li><li>Het u voldoende toegangsregte vir die aangevraagde item?</li></ul>">
 
+
+
 <!ENTITY generic.title "Kan nie versoek voltooi nie">
 <!ENTITY generic.longDesc "<p>Bykomende inligting oor hierdie probleem of fout is tans onbeskikbaar.</p>">
 
@@ -38,9 +40,7 @@
 <!ENTITY contentEncodingError.longDesc "<p>Die bladsy wat u probeer bekyk, kan nie gewys word nie omdat dit 'n ongeldige of nieondersteunde inpakformaat gebruik.</p><ul><li>Kontak die webwerf se eienaar om hulle oor die probleem in te lig.</li></ul>">
 
 <!ENTITY unsafeContentType.title "Onveilige lêersoort">
-<!ENTITY unsafeContentType.longDesc "<ul> 
-<li>Kontak die webwerf se eienaar om hulle oor die probleem in te lig.</li> 
-</ul>">
+<!ENTITY unsafeContentType.longDesc "<ul> <li>Kontak die webwerf se eienaar om hulle oor die probleem in te lig.</li> </ul>">
 
 <!ENTITY netReset.title "Verbinding onderbreek">
 <!ENTITY netReset.longDesc "<p>Die netwerkverbinding is onderbreek terwyl 'n verbinding onderhandel is. Probeer weer.</p>">
@@ -67,28 +67,10 @@
 <!ENTITY nssFailure2.longDesc2 "<p>Die bladsy wat u probeer bekyk, kan nie gewys word nie omdat die egtheid van die ontvangde data nie geverifieer kon word nie.</p><ul><li>Kontak die webwerf se eienaars om hulle oor die probleem in te lig.</li></ul>">
 
 <!ENTITY nssBadCert.title "Kon nie beveilig koppel nie">
-<!ENTITY nssBadCert.longDesc2 "<ul> 
-<li>Daar kan dalk fout met die bediener se opstelling wees, of dalk probeer iemand die bediener na-aap.</li> 
-<li>As u in die verlede suksesvol aan hierdie bediener gekoppel het, kan die fout dalk tydelik wees, en dan kan u later weer probeer.</li> 
-</ul>">
-
-<!ENTITY malwareBlocked.title "Vermoedelik 'n aanvalswerf!">
-<!ENTITY malwareBlocked.longDesc "<p>Aanvalswerwe probeer programme installeer wat private inligting steel, u rekenaar gebruik om ander aan te val, of u stelsel beskadig.</p> 
-<p>Webwerf-eienaars wat vermoed dat hul werf foutief as 'n aanvalswerf aangegee is, kan <a href='http://www.stopbadware.org/home/reviewinfo' >versoek dat dit herevalueer word</a>.</p>">
-
-<!ENTITY unwantedBlocked.title "Moontlik 'n werf met ongewensde sagteware!">
-<!ENTITY unwantedBlocked.longDesc "<p>Bladsye met ongewensde sagteware probeer sagteware te installeer wat dalk bedrieglik is en 'n stelsel op onverwagse maniere kan affekteer.</p>">
-
-<!ENTITY phishingBlocked.title "Moontlik 'n webnamaaksel!">
-<!ENTITY phishingBlocked.longDesc "<p>As u enige persoonlike inligting op hierdie bladsy intik, kan dit lei tot identiteitdiefstal of ander bedrog.</p> 
-<p>Hierdie soort kwaadwillige na-apery word gebruik in slap rieme genaamd uitvissing, waarin bedrieglike webwerwe en e-posse gebruik word om bronne na te aap wat u vertrou.</p>">
-
-<!ENTITY forbiddenBlocked.title "Verbode werf">
-<!ENTITY forbiddenBlocked.longDesc "<p>Die blaaier het gekeer dat dié bladsy laai omdat dit opgestel is om dit te blok.</p>">
+<!ENTITY nssBadCert.longDesc2 "<ul> <li>Daar kan dalk fout met die bediener se opstelling wees, of dalk probeer iemand die bediener na-aap.</li> <li>As u in die verlede suksesvol aan hierdie bediener gekoppel het, kan die fout dalk tydelik wees, en dan kan u later weer probeer.</li> </ul>">
 
 <!ENTITY securityOverride.linkText "Of u kan 'n uitsondering byvoeg…">
-<!ENTITY securityOverride.warningContent "<p>U moenie 'n uitsondering byvoeg as u 'n internetverbinding gebruik wat u nie heeltemal vertrou nie of as u nie gewoonlik 'n waarskuwing vir hierdie bediener ontvang nie.</p> 
-<p>As u wel 'n uitsondering vir hierdie werf wil byvoeg, kan u dit doen in u gevorderde enkripsie-instellings.</p>">
+<!ENTITY securityOverride.warningContent "<p>U moenie 'n uitsondering byvoeg as u 'n internetverbinding gebruik wat u nie heeltemal vertrou nie of as u nie gewoonlik 'n waarskuwing vir hierdie bediener ontvang nie.</p> <p>As u wel 'n uitsondering vir hierdie werf wil byvoeg, kan u dit doen in u gevorderde enkripsie-instellings.</p>">
 
 <!ENTITY cspBlocked.title "Geblokkeer deur inhoudbeveiligingsbeleid">
 <!ENTITY cspBlocked.longDesc "<p>Die blaaier het voorkom dat hierdie bladsy op hierdie manier laai want die bladsy het 'n inhoudbeveiligingsbeleid wat dit keer.</p>">
@@ -98,3 +80,6 @@
 
 <!ENTITY remoteXUL.title "Afgeleë XUL">
 <!ENTITY remoteXUL.longDesc "<p><ul><li>Kontak die webwerf se eienaar om hulle oor die probleem in te lig.</li></ul></p>">
+
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->

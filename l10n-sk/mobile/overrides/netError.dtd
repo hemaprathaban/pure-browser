@@ -22,8 +22,8 @@
 <!ENTITY dnsNotFound.longDesc4 "
 <ul>
   <li>Skontrolujte, či ste nezadali napr.
-    <strong>ww</strong>.priklad.com namiesto
-    <strong>www</strong>.priklad.com</li>
+    <strong>ww</strong>.example.com namiesto
+    <strong>www</strong>.example.com</li>
     <div id='searchbox'>
       <input id='searchtext' type='search'></input>
       <button id='searchbutton'>Hľadať</button>
@@ -42,6 +42,12 @@
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "Prístup k súboru bol zamietnutý">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>Mohol byť odstránený, premiestnený alebo vám v prístupe bránia jeho oprávnenia.</li>
+</ul>
+">
 
 <!ENTITY generic.title "Problém.">
 <!ENTITY generic.longDesc "
@@ -54,12 +60,13 @@
 <!ENTITY malformedURI.longDesc2 "
 <ul>
   <li>Webové adresy sú zvyčajne zadávané v tvare
-    <strong>http://www.priklad.com/</strong></li>
+    <strong>http://www.example.com/</strong></li>
     <div id='searchbox'>
       <input id='searchtext' type='search'></input>
       <button id='searchbutton'>Hľadať</button>
     </div>
-  <li>Skontrolujte, či používate správne lomky (t.j. <strong>/</strong>). </li>
+  <li>Skontrolujte, či používate správne lomky (t.j.
+    <strong>/</strong>). </li>
 </ul>
 ">
 
@@ -203,3 +210,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Rozšírené informácie: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "Vaše pripojenie nie je zabezpečené">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> používa technológiu zabezpečenia, ktorá je zastaralá a zraniteľná voči útokom. Útočník by mohol ľahko získať informácie, o ktorých si myslíte, že sú zabezpečené. Administrátor webovej stránky ju musí najprv opraviť a až potom ju budete môcť navštíviť.</p><p>Kód chyby: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

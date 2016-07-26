@@ -19,11 +19,13 @@
 <!ENTITY dnsNotFound.title "Serwer njejo se namakał">
 <!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
      or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
-<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Pśeglědajśo adresu za pisańskimi zmólkami ako <strong>ww</strong>.pśikład.com město <strong>www</strong>.pśikład.com</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Pytaś</button> </div> <li>Jolic njamóžośo boki zacytaś, pśeglědajśo daty swójogo rěda abo WLAN-zwisk. <button id='wifi'>WLAN zmóžniś</button> </li> </ul>">
+<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Pśeglědajśo adresu za pisańskimi zmólkami ako <strong>ww</strong>.pśikład.de město <strong>www</strong>.pśikład.de</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Pytaś</button> </div> <li>Jolic njamóžośo boki zacytaś, pśeglědajśo daty swójogo rěda abo WLAN-zwisk. <button id='wifi'>WLAN zmóžniś</button> </li> </ul>">
 
 <!ENTITY fileNotFound.title "Dataja njejo se namakała">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Pśeglědajśo datajowe mě za wjelikopisańskimi abo hynakšymi pisańskimi zmólkami.</li> <li>Pśeglědajśo, lěc dataja jo se pśesunuła, pśemjeniła abo wótpórała.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "Pśistup na dataju jo se wótpokazał">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Snaź jo se wótpórała, pśesunuła, abo datajowe pšawa zajźuju pśistupoju.</li> </ul>">
 
 <!ENTITY generic.title "Hopla.">
 <!ENTITY generic.longDesc "<p>&brandShortName; njamóžo toś ten bok z někakeje pśicyny cytaś.</p>">
@@ -37,7 +39,7 @@
 <!ENTITY netInterrupt.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY notCached.title "Dokument jo njepłaśiwy">
-<!ENTITY notCached.longDesc "<p>Pominany dokument stoj w pufrowaku &brandShortName; k dispoziciji.</p><ul><li>Ako wěstnotnu napšawu &brandShortName; njewótwołujo awtomatiski delikatne dokumenty znowego.</li><li>Klikniśo na Hyšći raz, aby dokument hyšći raz z websedła wótwołał.</li></ul>">
+<!ENTITY notCached.longDesc "<p>Pominany dokument stoj w pufrowaku &brandShortName; k dispoziciji.</p><ul><li>Ako wěstnotnu napšawu &brandShortName; njewótwołujo awtomatiski sensibelne dokumenty znowego.</li><li>Klikniśo na Hyšći raz, aby dokument hyšći raz z websedła wótwołał.</li></ul>">
 
 <!ENTITY netOffline.title "Offline-modus">
 <!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
@@ -112,3 +114,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Rozšyrjona informacija: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "Waš zwisk njejo wěsty">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> wužywa wěstotnu technologiju, kótaraž jo zestarjona a sensibelna za napady. Napadowaŕ by mógał informacije lažko namakaś, kótarež maśo za wěste. Websedłowy administrator musy problem na serwerje rozwězaś, nježli až móžośo se k sedłoju woglědaś.</p><p>Zmólkowy kod: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

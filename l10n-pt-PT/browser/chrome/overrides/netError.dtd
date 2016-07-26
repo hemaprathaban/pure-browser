@@ -7,7 +7,7 @@
 
 <!ENTITY loadError.label "Ocorreu um problema ao carregar a página">
 <!ENTITY retry.label "Voltar a tentar">
-<!ENTITY returnToPreviousPage.label "Recuar">
+<!ENTITY returnToPreviousPage.label "Retroceder">
 <!ENTITY advanced.label "Avançado">
 <!-- Specific error messages -->
 
@@ -19,26 +19,28 @@
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "Servidor não encontrado">
-<!ENTITY dnsNotFound.longDesc "<ul> <li>Verifique se existem erros de escrita no endereço tais como <strong>ww</strong>.exemplo.com em vez de <strong>www</strong>.exemplo.com</li> <li>Se não conseguir carregar qualquer página, verifique a ligação do seu computador à rede.</li> <li>Se o seu computador ou rede estão protegidos por uma firewall ou um proxy, verifique se o &brandShortName; tem permissão para aceder à Web.</li> </ul>">
+<!ENTITY dnsNotFound.longDesc "<ul> <li>Verifique se existem erros de escrita no endereço tais como <strong>ww</strong>.example.com em vez de <strong>www</strong>.example.com</li> <li>Se não conseguir carregar quaisquer páginas, verifique a ligação do seu computador à rede.</li> <li>Se o seu computador ou rede estão protegidos por uma firewall ou proxy, verifique se o &brandShortName; tem permissão para aceder à Web.</li> </ul>">
 
 <!ENTITY fileNotFound.title "Ficheiro não encontrado">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Verifique se existem erros de escrita no nome do ficheiro.</li> <li>Verifique se o ficheiro foi movido, renomeado ou apagado.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "O acesso ao ficheiro foi negado">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Pode ter sido removido, movido, ou as permissões do ficheiro podem estar a prevenir o acesso.</li> </ul>">
 
 <!ENTITY generic.title "Oops.">
-<!ENTITY generic.longDesc "<p>O &brandShortName; não conseguiu carregar a página por algum motivo.</p>">
+<!ENTITY generic.longDesc "<p>O &brandShortName; não conseguiu carregar a página por alguma razão.</p>">
 
 <!ENTITY malformedURI.title "O endereço não é válido">
-<!ENTITY malformedURI.longDesc "<ul> <li>Os endereços Web são geralmente escritos como <strong>http://www.exemplo.com/</strong></li> <li>Verifique se está a utilizar as barras corretamente (exemplo: <strong>/</strong>).</li> </ul>">
+<!ENTITY malformedURI.longDesc "<ul> <li>Os endereços Web são geralmente escritos como <strong>http://www.example.com/</strong></li> <li>Verifique se está a utilizar as barras corretamente (exemplo: <strong>/</strong>).</li> </ul>">
 
 <!ENTITY netInterrupt.title "A ligação foi interrompida">
 <!ENTITY netInterrupt.longDesc "&sharedLongDesc;">
 
 <!ENTITY notCached.title "Documento expirado">
-<!ENTITY notCached.longDesc "<p>O documento solicitado não está disponível na cache do &brandShortName;.</p><ul><li>Como precaução de segurança, o &brandShortName; não solicita novamente e de forma automática documentos sensíveis.</li><li>Clique em Voltar a tentar para solicitar novamente o documento do website.</li></ul>">
+<!ENTITY notCached.longDesc "<p>O documento solicitado não está disponível na cache do &brandShortName;.</p><ul><li>Como precaução de segurança, o &brandShortName; não solicita novamente e de forma automática documentos sensíveis.</li><li>Clique em Tentar novamente para solicitar novamente o documento do website.</li></ul>">
 
 <!ENTITY netOffline.title "Modo offline">
-<!ENTITY netOffline.longDesc2 "<ul> <li>Prima &quot;Voltar a tentar&quot; para trocar para o modo online e recarregar a página.</li> </ul>">
+<!ENTITY netOffline.longDesc2 "<ul> <li>Prima &quot;Tentar novamente&quot; para trocar para o modo online e recarregar a página.</li> </ul>">
 
 <!ENTITY contentEncodingError.title "Erro de codificação de conteúdo">
 <!ENTITY contentEncodingError.longDesc "<ul> <li>Por favor, comunique o problema aos proprietários do website.</li> </ul>">
@@ -70,10 +72,13 @@
 <!ENTITY nssFailure2.title "A ligação segura falhou">
 <!ENTITY nssFailure2.longDesc2 "<ul> <li>A página que está a tentar ver não pode ser mostrada porque não foi possível verificar a autenticidade dos dados recebidos.</li> <li>Por favor, reporte o problema aos proprietários do website.</li> </ul>">
 
-<!ENTITY nssBadCert.title "A ligação segura falhou">
-<!ENTITY nssBadCert.longDesc2 "<ul> <li>Este pode ser um problema com a configuração do servidor ou pode ser alguém a tentar fazer-se passar pelo servidor.</li> <li>Se se ligou a este servidor no passado, o erro pode ser temporário e pode tentar mais tarde.</li> </ul>">
+<!ENTITY certerror.longpagetitle1 "A sua ligação não é segura">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "O proprietário de <span class='hostname'/> configurou o website incorretamente.  Para impedir que a sua informação fosse furtada, o &brandShortName; não se ligou a este website.">
 
-<!ENTITY sharedLongDesc "<ul> <li>O site pode estar temporariamente indisponível ou ocupado. Volte a tentar dentro de alguns momentos.</li> <li>Se não conseguir carregar qualquer página, certifique-se de que o seu computador está ligado à Internet.</li> <li>Se o seu computador e a sua rede estiverem protegidos por uma firewall ou proxy, certifique-se de que o &brandShortName; tem permissão para aceder à Web.</li> </ul>">
+<!ENTITY sharedLongDesc "<ul> <li>O site pode estar temporariamente indisponível ou demasiado ocupado. Tente novamente dentro de alguns momentos.</li> <li>Se não conseguir carregar quaisquer páginas, verifique a ligação do seu computador à rede.</li> <li>Se o seu computador ou rede estiverem protegidos por uma firewall ou proxy, certifique-se de que o &brandShortName; tem permissão para aceder à Web.</li> </ul>">
 
 <!ENTITY cspBlocked.title "Bloqueada pela Content Security Policy">
 <!ENTITY cspBlocked.longDesc "<p>O &brandShortName; impediu o carregamento desta página desta forma porque a página tem uma política de segurança de conteúdo que não o permite.</p>">
@@ -82,16 +87,7 @@
 <!ENTITY corruptedContentError.longDesc "<p>A página que está a tentar ver não pode ser exibida porque foi detetado um erro na transmissão de dados.</p><ul><li>Por favor reporte o problema aos proprietário do website.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Ou pode adicionar uma exceção…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Sair daqui!">
 <!ENTITY securityOverride.exceptionButtonLabel "Adicionar exceção…">
-<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
-contents of the <button> tags. It uses strings already defined above. The
-button is included here (instead of netError.xhtml) because it exposes
-functionality specific to firefox. -->
-
-
-<!ENTITY securityOverride.warningContent "<p>Não deve adicionar uma exceção se estiver a utilizar uma ligação à Internet em que não confie plenamente ou se não está habituado a ver um aviso deste servidor.</p>  <button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button> <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>">
 
 <!ENTITY errorReporting.automatic2 "Comunique erros como este para ajudar a Mozilla a identificar e bloquear sites maliciosos">
 <!ENTITY errorReporting.learnMore "Saber mais…">
@@ -111,3 +107,12 @@ functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Avançado">
 <!ENTITY weakCryptoAdvanced.longDesc "<span class='hostname'></span> usa tecnologia de segurança que está desatualizada e vulnerável a ataque. Um atacante pode facilmente revelar informação que pensasse ser segura.">
 <!ENTITY weakCryptoAdvanced.override "(Não seguro) Tente carregar <span class='hostname'></span> utilizando segurança desatualizada">
+
+<!ENTITY certerror.pagetitle1  "Ligação não segura">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Este site utiliza HTTP Strict Transport Security (HSTS) para especificar que o &brandShortName; apenas se liga ao mesmo em segurança. Como resultado, não é possível adicionar uma exceção para este certificado.">
+<!ENTITY certerror.copyToClipboard.label "Copiar texto para a área de transferência">
+
+<!ENTITY inadequateSecurityError.title "A sua ligação não é segura">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> utiliza tecnologia de segurança que está desatualizada e vulnerável a ataques. Um atacante pode facilmente revelar informação que pensou estar segura. O administrador do website precisa de corrigir o servidor primeiro antes que possa visitar o site. </p><p>Código de erro: NS_ERROR_NET_INADEQUATE_SECURITY</p>">
