@@ -17,16 +17,19 @@
 <!ENTITY deniedPortAccess.longDesc "">
 
 <!ENTITY dnsNotFound.title "Servidor não encontrado">
-<!ENTITY dnsNotFound.longDesc "<ul> <li>Procure erros de escrita no endereço tais como <strong>ww</strong>.exemplo.com em vez de <strong>www</strong>.exemplo.com</li> <li>Se não conseguir carregar qualquer página, verifique a ligação do seu computador à rede.</li> <li>Se o seu computador ou rede estão protegidos por uma firewall ou proxy, verifique se o &brandShortName; tem permissão para aceder à web.</li> </ul>">
+<!ENTITY dnsNotFound.longDesc "<ul> <li>Procure erros de escrita no endereço tais como <strong>ww</strong>.example.com em vez de <strong>www</strong>.example.com</li> <li>Se não conseguir carregar qualquer página, verifique a ligação do seu computador à rede.</li> <li>Se o seu computador ou rede estão protegidos por uma firewall ou proxy, verifique se o &brandShortName; tem permissão para aceder à web.</li> </ul>">
 
 <!ENTITY fileNotFound.title "Ficheiro não encontrado">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Verifique no nome do ficheiro por letras maiúsculas ou outros erros de escrita.</li> <li>Verifique se o ficheiro foi movido, renomeado ou apagado.</li> </ul>">
+
+<!ENTITY fileAccessDenied.title "O acesso ao ficheiro foi negado">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Pode ter sido removido, movido, ou as permissões do ficheiro podem estar a prevenir o acesso.</li> </ul>">
 
 <!ENTITY generic.title "Bolas">
 <!ENTITY generic.longDesc "<p>O &brandShortName; não conseguiu carregar a página por algum motivo.</p> ">
 
 <!ENTITY malformedURI.title "O endereço não é válido">
-<!ENTITY malformedURI.longDesc "<ul> <li>Normalmente, os endereços web são escritos como <strong>http://www.exemplo.com/</strong></li> <li>Verifique se está a utilizar as barras corretamente (exemplo <strong>/</strong>).</li> </ul>">
+<!ENTITY malformedURI.longDesc "<ul> <li>Normalmente, os endereços web são escritos como <strong>http://www.example.com/</strong></li> <li>Verifique se está a utilizar as barras corretamente (exemplo <strong>/</strong>).</li> </ul>">
 
 <!ENTITY netInterrupt.title "A ligação foi interrompida">
 <!ENTITY netInterrupt.longDesc "&sharedLongDesc;">
@@ -72,20 +75,8 @@
 
 <!ENTITY sharedLongDesc "<ul> <li>O site pode estar temporariamente indisponível ou ocupado. Tente novamente dentro de alguns instantes.</li> <li>Se não conseguir carregar qualquer página, verifique a ligação de rede do seu computador.</li> <li>Se o seu computador ou rede estiverem protegidos por uma firewall ou proxy, verifique se o &brandShortName; tem autorização para aceder à web.</li> </ul>">
 
-<!ENTITY malwareBlocked.title "Suspeita de site de ataque!">
-<!ENTITY malwareBlocked.longDesc "<p>Os sites de ataque tentam instalar programas que roubam a sua informação pessoal, usam o seu computador para atacar outros ou causam danos ao seu sistema.</p> <p>Os proprietários de websites que acreditam que os seus sites foram reportados erroneamente como um site de ataque podem <a href='http://www.stopbadware.org/home/reviewinfo' >pedir uma revisão da situação</a>.</p>">
-
-<!ENTITY unwantedBlocked.title "Suspeita de site de programas indesejados!">
-<!ENTITY unwantedBlocked.longDesc "<p>As páginas de programas indesejados tentam instalar aplicações que podem afetar o bom funcionamento do seu sistema.</p>">
-
-<!ENTITY phishingBlocked.title "Suspeita de fraude!">
-<!ENTITY phishingBlocked.longDesc "<p>A introdução de qualquer informação pessoal nesta página pode resultar em roubo de identidade ou outro tipo de fraude.</p> <p>Este tipo de falsificações web são usadas em esquemas conhecidos como ataques de engodo, em que páginas web fraudulentas e mensagens de correio eletrónico são utilizadas para imitar fontes em que confia.</p>">
-
-<!ENTITY forbiddenBlocked.title "Site proibido">
-<!ENTITY forbiddenBlocked.longDesc "<p>O &brandShortName; impediu o carregamento desta página porque está configurado para a bloquear.</p>">
-
 <!ENTITY cspBlocked.title "Bloqueado pela política de segurança de conteúdo">
-<!ENTITY cspBlocked.longDesc "O <p>&brandShortName; impediu o carregamento da página porque a mesma tem uma política de segurança de conteúdo que a impede.</p>">
+<!ENTITY cspBlocked.longDesc "<p>O &brandShortName; impediu o carregamento desta página deste modo, porque esta contém uma política de segurança de conteúdo que a desativou.</p>">
 
 <!ENTITY corruptedContentError.title "Erro de conteúdo corrompido">
 <!ENTITY corruptedContentError.longDesc "<p>O conteúdo que está a tentar visualizar não pode ser mostrado porque foi detetado um erro na transmissão de dados.</p><ul><li>Por favor contacte os proprietários para os informar sobre este problema.</li></ul>">

@@ -24,6 +24,8 @@
 <!ENTITY fileNotFound.title "Heb ganfod ffeil">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Gwiriwch yr enw ffeil am brif lythrennu neu wallau teipio eraill.</li> <li>Gwiriwch i weld os yw'r ffeil wedi symud, ailenwi neu ei dileu.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "Mae mynediad i'r ffeil wedi ei wrthod">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Gall ei fod wedi ei dynnu, symud neu fod caniatâd ffeiliau yn rhwystro mynediad.</li> </ul>">
 
 <!ENTITY generic.title "Wps.">
 <!ENTITY generic.longDesc "<p>Nid yw &brandShortName; yn gallu llwytho'r dudalen am ryw reswm.</p>">
@@ -70,8 +72,11 @@
 <!ENTITY nssFailure2.title "Methodd y Cysylltiad Diogel">
 <!ENTITY nssFailure2.longDesc2 "<ul> <li>Nid oes modd dangos y dudalen rydych yn ceisio ei darllen gan nad oes modd gwirio dilysrwydd y data derbyniwyd.</li> <li>Cysylltwch â pherchennog y wefan i'w hysbysu o'r anhawster.</li> </ul>">
 
-<!ENTITY nssBadCert.title "Methodd y Cysylltiad Diogel">
-<!ENTITY nssBadCert.longDesc2 "<ul> <li>Gall hwn fod yn anhawster gyda ffurfweddiad y gweinydd neu gall fod yn rhywun sy'n ceisio dynwared y gweinydd.</li> <li>Os ydych wedi cysylltu'n llwyddiannus gyda' gweinydd yn y gorffennol, efallai mai gwall dros dro ydyw ac i geisio eto.</li> </ul>">
+<!ENTITY certerror.longpagetitle1 "Nid yw eich cysylltiad yn ddiogel">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "Mae perchennog <span class='hostname'/> wedi ffurfweddu ei wefan yn anghywir.  I rwystro eich manylion rhag cael eu dwyn, nid yw &brandShortName; wedi cysylltu â'r wefan.">
 
 <!ENTITY sharedLongDesc "<ul> <li>Efallai bod y wefan yn brysur neu nad yw ar gael dros dro. Ceisiwch eto ymhen ychydig.</li> <li>Os nad ydych yn gallu llwytho unrhyw dudalennau, gwiriwch gysylltiad rhwydwaith eich cyfrifiadur.</li> <li>Os yw eich cyfrifiadur neu rwydwaith wedi ei ddiogelu gan fur cadarn neu ddirprwy, gwnewch yn siŵr fod gan &brandShortName; hawl i fynediad i'r we.</li> </ul>">
 
@@ -82,16 +87,7 @@
 <!ENTITY corruptedContentError.longDesc "<p>Nid oes modd dangos y dudalen rydych y ceisio ei gweld oherwydd bu canfuwyd gwall wrth drosglwyddo data.</p><ul><li>Cysylltwch â pherchnogion y wefan i'w hysbysu o'r anhawster.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Neu mae modd ychwanegu eithriad…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Allan o fan hyn!">
 <!ENTITY securityOverride.exceptionButtonLabel "Ychwanegu Eithriad…">
-<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
-contents of the <button> tags. It uses strings already defined above. The
-button is included here (instead of netError.xhtml) because it exposes
-functionality specific to firefox. -->
-
-
-<!ENTITY securityOverride.warningContent "<p>Peidiwch ychwanegu eithriad os ydych yn defnyddio cysylltiad gwe nad ydych yn ymddiried ynddo'n llwyr neu os nad ydych wedi arfer â gweld rhybudd ar y gweinydd hwn.</p>  <button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button> <button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>">
 
 <!ENTITY errorReporting.automatic2 "Mae adroddiadau gwall fel hyn y cynorthwyo Mozilla i adnabod a rhwystro gwefannau maleisus">
 <!ENTITY errorReporting.learnMore "Dysgu rhagor…">
@@ -111,3 +107,12 @@ functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Uwch">
 <!ENTITY weakCryptoAdvanced.longDesc "Mae <span class='hostname'></span> yn defnyddio hen dechnoleg diogelwch sy'n fregus iawn. Gall ymosodwr ddatgelu'n hawdd fanylion roeddech yn meddwl eu bod yn ddiogel.">
 <!ENTITY weakCryptoAdvanced.override "(Ddim yn ddiogel) Ceisiwch llwytho <span class='hostname'></span> gan ddefnyddio hen offer diogelwch">
+
+<!ENTITY certerror.pagetitle1  "Cysylltiad Anniogel">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Mae'r wefan hon yn defnyddio HTTP Strict Transport Security (HSTS) i bennu fod &brandShortName; yn unig yn cysylltu iddo'n ddiogel. O ganlyniad, nid yw'n bosib ychwanegu eithriad ar gyfer y dystysgrif hon.">
+<!ENTITY certerror.copyToClipboard.label "Copïo testun i'r clipfwrdd">
+
+<!ENTITY inadequateSecurityError.title "Nid yw eich cysylltiad yn ddiogel">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "Mae <p><span class='hostname'></span> yn defnyddio technoleg diogelwch sy'n hen ac yn agored i ymosodiad. Gall yr ymosodwr weld manylion am hyn roeddech yn meddwl ei fod yn ddiogel. Mae angen i weinyddwr y wefan drwsio'r gweinydd yn gyntaf cyn bod modd i chi ymweld â' r wefan.</p><p>Cod gwall: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

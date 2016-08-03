@@ -53,8 +53,8 @@
      -->
 <!ENTITY cmd.show.label                   "Tijaq ri yaksamaj  k'o rupam ">
 <!ENTITY cmd.show.accesskey               "T">
-<!ENTITY cmd.showMac.label                "Tik'ut pa Finder">
-<!ENTITY cmd.showMac.accesskey            "F">
+<!ENTITY cmd.showMac.label                "Tik'ut pe pan ilonel">
+<!ENTITY cmd.showMac.accesskey            "i">
 <!ENTITY cmd.retry.label                  "Titojtob'ëx chik">
 <!ENTITY cmd.goToDownloadPage.label       "Tib'e pa ri ruxaq akuchi' niqasäx">
 <!ENTITY cmd.goToDownloadPage.accesskey   "T">
@@ -64,20 +64,29 @@
 <!ENTITY cmd.removeFromHistory.accesskey  "y">
 <!ENTITY cmd.clearList.label              "Tiyuj rucholajem">
 <!ENTITY cmd.clearList.accesskey          "y">
-<!ENTITY cmd.clearDownloads.label         "Kejosq'ïx ri  Qasan">
+<!ENTITY cmd.clearDownloads.label         "Kejosq'ïx taq Qasanïk">
 <!ENTITY cmd.clearDownloads.accesskey     "Q">
-<!-- LOCALIZATION NOTE (cmd.unblock.label):
-     This command may be shown in the context menu, as a menu button item, or as
-     a text link when malware or potentially unwanted downloads are blocked.
+<!-- LOCALIZATION NOTE (cmd.unblock2.label):
+     This command is shown in the context menu when downloads are blocked.
      -->
-<!ENTITY cmd.unblock.label                "Timeq'eleb'ëx">
-<!ENTITY cmd.unblock.accesskey            "T">
+<!ENTITY cmd.unblock2.label               "Tiya' q'ij chi tiqasäx">
+<!ENTITY cmd.unblock2.accesskey           "a">
 <!-- LOCALIZATION NOTE (cmd.removeFile.label):
-     This command may be shown in the context menu or as a menu button label
-     when malware or potentially unwanted downloads are blocked.
+     This is the tooltip of the action button shown when malware is blocked.
      -->
-<!ENTITY cmd.removeFile.label             "Tik'am el ri yakb'äl">
-<!ENTITY cmd.removeFile.accesskey         "k">
+<!ENTITY cmd.removeFile.label             "Telesäx el ri yakb'äl">
+<!-- LOCALIZATION NOTE (cmd.chooseUnblock.tooltip):
+     This is the tooltip of the action button shown when potentially unwanted
+     downloads are blocked. This opens a dialog where the user can choose
+     whether to unblock or remove the download. Removing is the default option.
+     -->
+<!ENTITY cmd.chooseUnblock.label          "Telesäx el ri yakb'äl o Tiya' q'ij chi tiqasäx">
+<!-- LOCALIZATION NOTE (cmd.chooseOpen.tooltip):
+     This is the tooltip of the action button shown when uncommon downloads are
+     blocked.This opens a dialog where the user can choose whether to open the
+     file or remove the download. Opening is the default option.
+     -->
+<!ENTITY cmd.chooseOpen.label             "Tijaq o telesäx el ri yakb'äl">
 <!-- LOCALIZATION NOTE (blocked.label):
      Shown as a tag before the file name for some types of blocked downloads.
      Note: This string doesn't exist in the UI yet.  See bug 1053890.
@@ -90,7 +99,7 @@
      Note: This string doesn't exist in the UI yet.  See bug 1053890.
      -->
 
-<!ENTITY learnMore.label                  "Retamaxik ch'aqa' chik">
+<!ENTITY learnMore.label                  "Tetamäx ch'aqa' chik">
 <!-- LOCALIZATION NOTE (downloadsHistory.label, downloadsHistory.accesskey):
      This string is shown at the bottom of the Downloads Panel when all the
      downloads fit in the available space, or when there are no downloads in
@@ -100,7 +109,7 @@
 <!ENTITY downloadsHistory.label           "Kekut pe ronojel ri qasan">
 <!ENTITY downloadsHistory.accesskey       "K">
 
-<!ENTITY clearDownloadsButton.label       "Keyuj el ri qasan">
+<!ENTITY clearDownloadsButton.label       "Kejosq'ïx taq Qasanïk">
 <!ENTITY clearDownloadsButton.tooltip     "Tijosq'ïx ronojel, q'aton chuqa' man ütz ta taq qasanïk">
 <!-- LOCALIZATION NOTE (downloadsListEmpty.label):
      This string is shown when there are no items in the Downloads view, when it

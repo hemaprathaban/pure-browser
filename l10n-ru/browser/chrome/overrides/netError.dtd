@@ -17,8 +17,8 @@
 <!ENTITY dnsNotFound.longDesc "
 <ul>
   <li>Проверьте, не допущена ли ошибка при наборе адреса, например,
-    <strong>ww</strong>.example.com вместо
-    <strong>www</strong>.example.com</li>
+    <strong>ww</strong>.test.ru вместо
+    <strong>www</strong>.test.ru</li>
   <li>Если ни одна страница не загружается – проверьте настройки соединения
     с Интернетом.</li>
   <li>Если компьютер или сеть защищены межсетевым экраном или прокси-сервером – убедитесь,
@@ -32,6 +32,11 @@
   <li>Проверьте, не был ли файл переименован, удалён или перемещён.</li>
 </ul>
 ">
+<!ENTITY fileAccessDenied.title "В доступе к файлу отказано">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>Возможно, что он был удалён или перемещён, или разрешения на файл не дают получить к нему доступ.</li>
+</ul>">
 <!ENTITY generic.title "Ой.">
 <!ENTITY generic.longDesc "
 <p>&brandShortName; не может загрузить эту страницу по неопределённой причине.</p>
@@ -40,7 +45,7 @@
 <!ENTITY malformedURI.longDesc "
 <ul>
   <li>Адреса веб-сайтов обычно записываются в формате
-    <strong>http://www.example.com/</strong></li>
+    <strong>http://www.test.ru/</strong></li>
   <li>Убедитесь, что вы используете в качестве разделителя прямую косую черту (т.е.
      <strong>/</strong>).</li>
 </ul>
@@ -115,15 +120,8 @@
   <li>Пожалуйста, свяжитесь с владельцами веб-сайта и проинформируйте их об этой проблеме.</li>
 </ul>
 ">
-<!ENTITY nssBadCert.title "Ошибка при установлении защищённого соединения">
-<!ENTITY nssBadCert.longDesc2 "
-<ul>
-  <li>Это может быть проблемой с конфигурацией сервера или же
-кто-то пытается подменить нужный вам сервер другим.</li>
-  <li>Если в прошлом вы успешно соединялись с этим сервером, то, возможно, эта ошибка
-является временной. Попробуйте зайти позже.</li>
-</ul>
-">
+<!ENTITY certerror.longpagetitle1 "Ваше соединение не защищено">
+<!ENTITY certerror.introPara "Владелец <span class='hostname'/> неправильно настроил свой веб-сайт. Чтобы защитить вашу информацию от кражи, &brandShortName; не соединился с этим веб-сайтом.">
 <!ENTITY sharedLongDesc "
 <ul>
   <li>Возможно, сайт временно недоступен или перегружен запросами. Подождите некоторое время и
@@ -138,15 +136,7 @@
 <!ENTITY cspBlocked.longDesc "<p>&brandShortName; заблокировал данный способ загрузки этой страницы, так как страница имеет политику защиты содержимого, которая это запрещает.</p>">
 <!ENTITY corruptedContentError.title "Ошибка искажения содержимого">
 <!ENTITY corruptedContentError.longDesc "<p>Страница, которую вы пытаетесь просмотреть, не может быть показана, так как была обнаружена ошибка при передаче данных.</p><ul><li>Пожалуйста, свяжитесь с владельцами веб-сайта и проинформируйте их об этой проблеме.</li></ul>">
-<!ENTITY securityOverride.linkText "Или же вы можете добавить исключение…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Уходим отсюда!">
 <!ENTITY securityOverride.exceptionButtonLabel "Добавить исключение…">
-<!ENTITY securityOverride.warningContent "
-<p>Вам не следует добавлять исключение, если вы используете соединение с Интернетом, которому не полностью доверяете, или если вы обычно не видите предупреждения при соединении с этим сервером.</p>
-
-<button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button>
-<button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>
-">
 <!ENTITY errorReporting.automatic2 "Отправка сообщений о подобных ошибках поможет Mozilla обнаружить и заблокировать вредоносные сайты">
 <!ENTITY errorReporting.learnMore "Подробнее…">
 <!ENTITY remoteXUL.title "Удалённый XUL">
@@ -158,3 +148,11 @@
 <!ENTITY weakCryptoAdvanced.title "Дополнительно">
 <!ENTITY weakCryptoAdvanced.longDesc "<span class='hostname'></span> использует защитную технологию, которая является устаревшей и уязвимой для атаки. Злоумышленник может легко выявить информацию, которая, как вы думали, находится в безопасности.">
 <!ENTITY weakCryptoAdvanced.override "(Не защищено) Попробуйте загрузить <span class='hostname'></span>, используя устаревшую защиту">
+<!ENTITY certerror.pagetitle1 "Незащищённое соединение">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Этот сайт использует HTTP Strict Transport Security (HSTS), чтобы указать, что &brandShortName; должен подключаться к нему только через защищённое соединение. В результате, добавление исключения для этого сертификата невозможно.">
+<!ENTITY certerror.copyToClipboard.label "Копировать текст в буфер обмена">
+
+<!ENTITY inadequateSecurityError.title "Ваше соединение не защищено">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> использует защитную технологию, которая является устаревшей и уязвимой для атаки. Злоумышленник может легко выявить информацию, которая, как вы думали, находится в безопасности. Для того, чтобы вы смогли посетить веб-сайт, администратор веб-сайта должен сначала исправить его сервер.</p><p>Код ошибки: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

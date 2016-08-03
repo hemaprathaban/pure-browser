@@ -75,9 +75,9 @@ when there are no windows but Firefox is still running. -->
 <!ENTITY menubarCmd.label "Menü çubuğu">
 <!ENTITY menubarCmd.accesskey "M">
 <!ENTITY navbarCmd.label "Gezinti araç çubuğu">
-<!ENTITY personalbarCmd.label "Yer imi araç çubuğu">
+<!ENTITY personalbarCmd.label "Yer imleri araç çubuğu">
 <!ENTITY personalbarCmd.accesskey "Y">
-<!ENTITY bookmarksToolbarItem.label "Yer imi araç çubuğu öğeleri">
+<!ENTITY bookmarksToolbarItem.label "Yer imleri araç çubuğu öğeleri">
 
 <!ENTITY toolbarContextMenu.reloadAllTabs.label "Tüm sekmeleri tazele">
 <!ENTITY toolbarContextMenu.reloadAllTabs.accesskey "T">
@@ -168,7 +168,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY subscribeToPageMenuitem.label "Bu sayfaya abone ol…">
 <!ENTITY addCurPagesCmd.label "Tüm sekmeleri yer imlerine ekle…">
 <!ENTITY showAllBookmarks2.label "Tüm yer imlerini göster">
-<!ENTITY unsortedBookmarksCmd.label "Sıralanmamış yer imleri">
+<!ENTITY recentBookmarks.label "Yer imlerine yeni eklenenler">
+<!ENTITY otherBookmarksCmd.label "Diğer yer imleri">
 <!ENTITY bookmarksToolbarChevron.tooltip "Daha fazla yer imi göster">
 
 <!ENTITY backCmd.label                "Geri">
@@ -196,7 +197,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY urlbar.indexedDBNotificationAnchor.label       "Uygulama çevrimdışı depolama mesajını görüntüle">
 <!ENTITY urlbar.loginFillNotificationAnchor.label       "Hesap bilgilerini yönet">
 <!ENTITY urlbar.passwordNotificationAnchor.label        "Parolanızı kaydetmek isterseniz işaretleyin">
-<!ENTITY urlbar.webappsNotificationAnchor.label         "Uygulama yükleme mesajını görüntüle">
 <!ENTITY urlbar.pluginsNotificationAnchor.label         "Bu sayfadaki yan uygulama kullanımını yönet">
 <!ENTITY urlbar.webNotsNotificationAnchor3.label        "Sitenin bildirim gönderip gönderemeyeceğini ayarlayın">
 
@@ -224,9 +224,9 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Yer imleri">
-<!ENTITY bookmarksMenuButton.unsorted.label "Sıralanmamış yer imleri">
-<!ENTITY viewBookmarksSidebar2.label        "Yer imi kenar çubuğunu göster">
-<!ENTITY viewBookmarksToolbar.label         "Yer imi araç çubuğunu göster">
+<!ENTITY bookmarksMenuButton.other.label "Diğer yer imleri">
+<!ENTITY viewBookmarksSidebar2.label        "Yer İmleri kenar çubuğunu göster">
+<!ENTITY viewBookmarksToolbar.label         "Yer İmleri araç çubuğunu göster">
 <!-- LOCALIZATION NOTE (bookmarksSidebarGtkCmd.commandkey): This command
   -  key should not contain the letters A-F, since these are reserved
   -  shortcut keys on Linux. -->
@@ -254,79 +254,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Web geliştirici">
 <!ENTITY webDeveloperMenu.accesskey   "W">
 
-<!ENTITY devToolsCmd.keycode          "VK_F12">
-<!ENTITY devToolsCmd.keytext          "F12">
-
-<!ENTITY devtoolsServiceWorkers.label      "Service Worker'lar">
-<!ENTITY devtoolsServiceWorkers.accesskey  "k">
-
-<!ENTITY devtoolsConnect.label        "Bağlan…">
-<!ENTITY devtoolsConnect.accesskey    "B">
-
-<!ENTITY errorConsoleCmd.label        "Hata konsolu">
-<!ENTITY errorConsoleCmd.accesskey    "k">
-
-<!ENTITY remoteWebConsoleCmd.label    "Uzak web konsolu">
-
-<!ENTITY browserConsoleCmd.label      "Tarayıcı konsolu">
-<!ENTITY browserConsoleCmd.commandkey "j">
-<!ENTITY browserConsoleCmd.accesskey  "T">
-
 <!ENTITY inspectContextMenu.label     "Öğeyi incele">
 <!ENTITY inspectContextMenu.accesskey "c">
-
-<!ENTITY responsiveDesignTool.label   "Responsive tasarım modu">
-<!ENTITY responsiveDesignTool.accesskey "R">
-<!ENTITY responsiveDesignTool.commandkey "M">
-
-<!ENTITY eyedropper.label   "Damlalık">
-<!ENTITY eyedropper.accesskey "D">
-<!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
-  -  in the Tools menu. See bug 653093.
-  -  The Scratchpad is intended to provide a simple text editor for creating
-  -  and evaluating bits of JavaScript code for the purposes of function
-  -  prototyping, experimentation and convenient scripting.
-  -
-  -  It's quite possible that you won't have a good analogue for the word
-  -  "Scratchpad" in your locale. You should feel free to find a close
-  -  approximation to it or choose a word (or words) that means
-  -  "simple discardable text editor". -->
-
-<!ENTITY scratchpad.label             "Karalama Defteri">
-<!ENTITY scratchpad.accesskey         "K">
-<!ENTITY scratchpad.keycode           "VK_F4">
-<!ENTITY scratchpad.keytext           "F4">
-<!-- LOCALIZATION NOTE (browserToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser toolbox UI in the Tools menu. -->
-
-<!ENTITY browserToolboxMenu.label     "Tarayıcı alet çantası">
-<!ENTITY browserToolboxMenu.accesskey "a">
-<!ENTITY browserToolboxCmd.commandkey "i">
-<!-- LOCALIZATION NOTE (browserContentToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser content toolbox UI in the Tools menu.
-  -  This toolbox allows to debug the chrome of the content process in multiprocess builds.  -->
-
-<!ENTITY browserContentToolboxMenu.label     "Tarayıcı içeriği alet çantası">
-<!ENTITY browserContentToolboxMenu.accesskey "n">
-
-<!ENTITY devToolbarCloseButton.tooltiptext "Geliştirici araç çubuğunu kapat">
-<!ENTITY devToolbarMenu.label              "Geliştirici araç çubuğu">
-<!ENTITY devToolbarMenu.accesskey          "G">
-<!ENTITY webide.label                      "WebIDE">
-<!ENTITY webide.accesskey                  "W">
-<!ENTITY webide.keycode                    "VK_F8">
-<!ENTITY webide.keytext                    "F8">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-<!ENTITY devToolboxMenuItem.label          "Araçları aç/kapat">
-<!ENTITY devToolboxMenuItem.accesskey      "r">
-<!ENTITY devToolboxMenuItem.keytext        "I">
-
-<!ENTITY devToolbarToolsButton.tooltip     "Geliştirici araçlarını açar/kapatır">
-<!ENTITY devToolbarOtherToolsButton.label  "Daha fazla araç">
-
-<!ENTITY getMoreDevtoolsCmd.label        "Daha fazla araca ulaş">
-<!ENTITY getMoreDevtoolsCmd.accesskey    "u">
 
 <!ENTITY fileMenu.label         "Dosya"> 
 <!ENTITY fileMenu.accesskey       "D">
@@ -410,7 +339,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHelp.tooltip "Yardım menüsünü aç">
 
 <!ENTITY appMenuRemoteTabs.label "Eşitlenmiş sekmeler">
-<!ENTITY appMenuRemoteTabs.fetching.label "Eşitlenmiş sekmeler alınıyor…">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.notabs.label): This is shown beneath
      the name of a device when that device has no open tabs -->
 <!ENTITY appMenuRemoteTabs.notabs.label "Açık sekme yok">
@@ -420,11 +348,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.noclients.label): This is shown
      when Sync is configured but this appears to be the only device attached to
      the account. We also show links to download Firefox for android/ios. -->
-<!ENTITY appMenuRemoteTabs.noclients.label "Diğer cihazlarınızdaki sekmeleri görmek için o cihazlardan Firefox’a giriş yapın.">
+<!ENTITY appMenuRemoteTabs.noclients.title "Henüz eşitlenmiş bir sekme yok.">
+<!ENTITY appMenuRemoteTabs.noclients.subtitle "Diğer cihazlarınızdaki sekmeleri burada görmek ister misiniz?">
 <!ENTITY appMenuRemoteTabs.openprefs.label "Eşitleme Tercihleri">
 <!ENTITY appMenuRemoteTabs.notsignedin.label "Diğer cihazlarınızdaki sekmeleri görmek için giriş yapın.">
 <!ENTITY appMenuRemoteTabs.signin.label "Sync’e giriş yapın">
-<!ENTITY appMenuRemoteTabs.sidebar.label "Eşitlenmiş sekmeler kenar çubuğunu göster">
+<!ENTITY appMenuRemoteTabs.sidebar.label "Kenar çubuğunda göster">
 
 <!ENTITY customizeMenu.addToToolbar.label "Araç çubuğuna ekle">
 <!ENTITY customizeMenu.addToToolbar.accesskey "e">
@@ -584,7 +513,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY saveLinkCmd.label            "Bağlantıyı farklı kaydet…">
 <!ENTITY saveLinkCmd.accesskey        "f">
 <!ENTITY saveImageCmd.label           "Resmi farklı kaydet…">
-<!ENTITY saveImageCmd.accesskey       "f">
+<!ENTITY saveImageCmd.accesskey       "d">
 <!ENTITY saveVideoCmd.label           "Videoyu farklı kaydet…">
 <!ENTITY saveVideoCmd.accesskey       "f">
 <!ENTITY saveAudioCmd.label           "Sesi farklı kaydet…">
@@ -648,9 +577,9 @@ fast. -->
 "Hide Controls" are the same because the two context-menu
 items are mutually exclusive. -->
 <!ENTITY mediaShowControls.label     "Düğmeleri göster">
-<!ENTITY mediaShowControls.accesskey "D">
+<!ENTITY mediaShowControls.accesskey "m">
 <!ENTITY mediaHideControls.label     "Düğmeleri gizle">
-<!ENTITY mediaHideControls.accesskey "D">
+<!ENTITY mediaHideControls.accesskey "m">
 <!ENTITY videoFullScreen.label       "Tam ekran">
 <!ENTITY videoFullScreen.accesskey   "T">
 <!ENTITY videoSaveImage.label        "Ekran görüntüsünü kaydet…">
@@ -796,8 +725,9 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY syncTabsMenu3.label     "Eşitlenmiş sekmeler">
 
 <!ENTITY syncedTabs.sidebar.label              "Eşitlenmiş sekmeler">
-<!ENTITY syncedTabs.sidebar.fetching.label     "Eşitlenmiş sekmeler alınıyor…">
-<!ENTITY syncedTabs.sidebar.noclients.label    "Diğer cihazlardaki sekmelerinizi görmek için o cihazlardan Firefox’a giriş yapın.">
+<!ENTITY syncedTabs.sidebar.noclients.label    "Diğer cihazlardaki sekmelerinizi burada görmek için o cihazlardan Firefox’a giriş yapın.">
+<!ENTITY syncedTabs.sidebar.noclients.title    "Henüz eşitlenmiş bir sekme yok.">
+<!ENTITY syncedTabs.sidebar.noclients.subtitle "Diğer cihazlarınızdaki sekmeleri burada görmek ister misiniz?">
 <!ENTITY syncedTabs.sidebar.notsignedin.label  "Diğer cihazlarınızdaki sekmelerin listesini görmek için giriş yapın.">
 <!ENTITY syncedTabs.sidebar.notabs.label       "Açık sekme yok">
 <!ENTITY syncedTabs.sidebar.openprefs.label    "&syncBrand.shortName.label; tercihlerini aç">
@@ -805,10 +735,18 @@ you can use these alternative items. Otherwise, their values should be empty.  -
      when Sync is configured but syncing tabs is disabled. -->
 <!ENTITY syncedTabs.sidebar.tabsnotsyncing.label       "Diğer cihazlarınızdaki sekmelerin listesini görmek için sekme eşitlemeyi açın.">
 
-<!ENTITY syncedTabs.context.openTab.label                   "Bu sekmeyi aç">
-<!ENTITY syncedTabs.context.openTab.accesskey               "B">
-<!ENTITY syncedTabs.context.bookmarkSingleTab.label         "Sekmeyi yer imlerine ekle…">
-<!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey     "S">
+<!ENTITY syncedTabs.context.open.label                       "Aç">
+<!ENTITY syncedTabs.context.open.accesskey                   "A">
+<!ENTITY syncedTabs.context.openInNewTab.label               "Yeni sekmede aç">
+<!ENTITY syncedTabs.context.openInNewTab.accesskey           "e">
+<!ENTITY syncedTabs.context.openInNewWindow.label            "Yeni pencerede aç">
+<!ENTITY syncedTabs.context.openInNewWindow.accesskey        "n">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.label     "Yeni gizli pencerede aç">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.accesskey "z">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.label          "Sekmeyi yer imlerine ekle…">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey      "S">
+<!ENTITY syncedTabs.context.copy.label                       "Kopyala">
+<!ENTITY syncedTabs.context.copy.accesskey                   "K">
 
 
 <!ENTITY syncBrand.shortName.label    "Sync">

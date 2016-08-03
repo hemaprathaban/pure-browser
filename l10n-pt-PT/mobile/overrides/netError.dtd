@@ -19,14 +19,16 @@
 <!ENTITY dnsNotFound.title "Servidor não encontrado">
 <!-- LOCALIZATION NOTE (dnsNotFound.longDesc4) This string contains markup including widgets for searching
      or enabling wifi connections. The text inside tags should be localized.  Do not change the ids. -->
-<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Verifique se o endereço não tem erros como <strong>ww</strong>.exemplo.com em vez de <strong>www</strong>.exemplo.com</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Pesquisar</button> </div> <li>Se não conseguir carregar nenhuma página, verifique a ligação de dados ou Wi-Fi do dispositivo. <button id='wifi'>Ativar Wi-Fi</button> </li> </ul>">
+<!ENTITY dnsNotFound.longDesc4 "<ul> <li>Verifique se o endereço não tem erros como <strong>ww</strong>.example.com em vez de <strong>www</strong>.example.com</li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Pesquisar</button> </div> <li>Se não conseguir carregar nenhuma página, verifique a ligação de dados ou Wi-Fi do dispositivo. <button id='wifi'>Ativar Wi-Fi</button> </li> </ul>">
 
 <!ENTITY fileNotFound.title "Ficheiro não encontrado">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Verifique se existem letras maiúsculas ou outros erros no nome do ficheiro.</li><li>Verifique se o ficheiro foi movido, apagado ou renomeado.</li></ul>">
 
+<!ENTITY fileAccessDenied.title "O acesso ao ficheiro foi negado">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Pode ter sido removido, movido, ou as permissões do ficheiro podem estar a prevenir o acesso.</li> </ul>">
 
 <!ENTITY generic.title "Oops.">
-<!ENTITY generic.longDesc "<p>O &brandShortName; não consegue carregar esta página devido a um problema.</p>">
+<!ENTITY generic.longDesc "<p>O &brandShortName; não conseguiu carregar a página por alguma razão.</p>">
 
 <!ENTITY malformedURI.title "O endereço não é válido">
 <!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
@@ -37,7 +39,7 @@
 <!ENTITY netInterrupt.longDesc2 "&sharedLongDesc3;">
 
 <!ENTITY notCached.title "Documento expirado">
-<!ENTITY notCached.longDesc "<p>O documento solicitado não está disponível na cache do &brandShortName;.</p><ul><li>Como precaução de segurança, o &brandShortName; não solicita novamente e de forma automática documentos sensíveis.</li><li>Clique em Tentar novamente para solicitar uma vez mais o documento do website.</li></ul>">
+<!ENTITY notCached.longDesc "<p>O documento solicitado não está disponível na cache do &brandShortName;.</p><ul><li>Como precaução de segurança, o &brandShortName; não solicita novamente e de forma automática documentos sensíveis.</li><li>Clique em Tentar novamente para solicitar novamente o documento do website.</li></ul>">
 
 <!ENTITY netOffline.title "Modo offline">
 <!-- LOCALIZATION NOTE (netOffline.longDesc3) This string contains markup including widgets enabling wifi connections.
@@ -81,10 +83,10 @@
 <!-- LOCALIZATION NOTE (sharedLongDesc3) This string contains markup including widgets for enabling wifi connections.
      The text inside the tags should be localized. Do not touch the ids. -->
 
-<!ENTITY sharedLongDesc3 "<ul> <li>O site pode estar temporariamente indisponível ou muito ocupado. Volte a tentar dentro de alguns momentos.</li> <li>Se não conseguir carregar nenhuma página, verifique a ligação de dados ou o Wi-Fi do dispositivo. <button id='wifi'>Ativar Wi-Fi</button> </li> </ul>">
+<!ENTITY sharedLongDesc3 "<ul> <li>O site pode estar temporariamente indisponível ou demasiado ocupado. Volte a tentar dentro de alguns momentos.</li> <li>Se não conseguir carregar nenhuma página, verifique a ligação de dados ou o Wi-Fi do dispositivo. <button id='wifi'>Ativar Wi-Fi</button> </li> </ul>">
 
 <!ENTITY cspBlocked.title "Bloqueado pela política de segurança de conteúdos">
-<!ENTITY cspBlocked.longDesc "<p>&brandShortName; impediu o carregamento desta página deste modo, porque esta contém uma política de segurança de conteúdo que a desativou.</p>">
+<!ENTITY cspBlocked.longDesc "<p>O &brandShortName; impediu o carregamento desta página desta forma porque a página tem uma política de segurança de conteúdo que não o permite.</p>">
 
 <!ENTITY corruptedContentError.title "Erro de conteúdo corrompido">
 <!ENTITY corruptedContentError.longDesc "<p>A página que está a tentar visualizar não pode ser mostrada porque foi detetado um erro na transmissão de dados.</p><ul><li>Por favor, contacte os proprietários do website para os informar sobre este problema.</li></ul>">
@@ -112,3 +114,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Informação avançada: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "A sua ligação não é segura">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> utiliza tecnologia de segurança que está desatualizada e vulnerável a ataques. Um atacante pode facilmente revelar informação que pensou estar segura. O administrador do website precisa de corrigir o servidor primeiro antes que possa visitar o site. </p><p>Código de erro: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

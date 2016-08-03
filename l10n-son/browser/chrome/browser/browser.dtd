@@ -163,12 +163,13 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY shareSelect.accesskey "e">
 <!ENTITY shareVideo.label "Widewo woo žemna">
 <!ENTITY shareVideo.accesskey "e">
-<!ENTITY feedsMenu.label "Boŋ-maa hantum">
+<!ENTITY feedsMenu2.label "Boŋ-maa hantum moɲoo woo ga">
 <!ENTITY subscribeToPageMenupopup.label "Boŋ-maa hantum moɲoo woo ga">
 <!ENTITY subscribeToPageMenuitem.label "Boŋ-maa hantum moɲoo woo ga…">
 <!ENTITY addCurPagesCmd.label "Kanjey kul doo-šilbay…">
 <!ENTITY showAllBookmarks2.label "Doo-šilbawey kul cebe">
-<!ENTITY unsortedBookmarksCmd.label "Doo-šilbay kaŋyaŋ mana fayandi">
+<!ENTITY recentBookmarks.label "Kokor doo-šilbantey">
+<!ENTITY otherBookmarksCmd.label "Doo-šilbay taaney">
 <!ENTITY bookmarksToolbarChevron.tooltip "Doo-šilbay tontoney cebe">
 
 <!ENTITY backCmd.label                "Banda">
@@ -196,7 +197,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY urlbar.indexedDBNotificationAnchor.label       "Porogaram ši-ciya alhabaroo guna">
 <!ENTITY urlbar.loginFillNotificationAnchor.label       "War ciyari alhabarey juwal">
 <!ENTITY urlbar.passwordNotificationAnchor.label        "Guna wala war ga boona ka war šennikufaloo gaabu">
-<!ENTITY urlbar.webappsNotificationAnchor.label         "Porogaram sinjiyan alhabaroo guna">
 <!ENTITY urlbar.pluginsNotificationAnchor.label         "Sukari goyyan juwal moɲoo woo ga">
 <!ENTITY urlbar.webNotsNotificationAnchor3.label        "Barmay wala war ga hin ka duu bangandiyaney nungoo ga">
 
@@ -224,7 +224,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Doo-šilbawey">
-<!ENTITY bookmarksMenuButton.unsorted.label "Doo-šilbawey kaŋ mana fayandi">
+<!ENTITY bookmarksMenuButton.other.label "Doo-šilbay taaney">
 <!ENTITY viewBookmarksSidebar2.label        "Doo-šilbawey goyjinay zuu">
 <!ENTITY viewBookmarksToolbar.label         "Doo-šilbawey goyjinay žeeri">
 <!-- LOCALIZATION NOTE (bookmarksSidebarGtkCmd.commandkey): This command
@@ -254,76 +254,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Tataaru cinakaw">
 <!ENTITY webDeveloperMenu.accesskey   "T">
 
-<!ENTITY devToolsCmd.keycode          "VK_F12">
-<!ENTITY devToolsCmd.keytext          "F12">
-
-<!ENTITY devtoolsConnect.label        "Ciya…">
-<!ENTITY devtoolsConnect.accesskey    "a">
-
-<!ENTITY errorConsoleCmd.label        "Firka diji-walha">
-<!ENTITY errorConsoleCmd.accesskey    "d">
-
-<!ENTITY remoteWebConsoleCmd.label    "Interneti diji-walha moora">
-
-<!ENTITY browserConsoleCmd.label      "Ceecikaw diji-walha">
-<!ENTITY browserConsoleCmd.commandkey "j">
-<!ENTITY browserConsoleCmd.accesskey  "C">
-
 <!ENTITY inspectContextMenu.label     "Haya-ize koroši">
 <!ENTITY inspectContextMenu.accesskey "Q">
-
-<!ENTITY responsiveDesignTool.label   "Fasal gunari tuurante">
-<!ENTITY responsiveDesignTool.accesskey "r">
-<!ENTITY responsiveDesignTool.commandkey "M">
-
-<!ENTITY eyedropper.label   "Noonezaakaw">
-<!ENTITY eyedropper.accesskey "z">
-<!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
-  -  in the Tools menu. See bug 653093.
-  -  The Scratchpad is intended to provide a simple text editor for creating
-  -  and evaluating bits of JavaScript code for the purposes of function
-  -  prototyping, experimentation and convenient scripting.
-  -
-  -  It's quite possible that you won't have a good analogue for the word
-  -  "Scratchpad" in your locale. You should feel free to find a close
-  -  approximation to it or choose a word (or words) that means
-  -  "simple discardable text editor". -->
-
-<!ENTITY scratchpad.label             "Gaasadew">
-<!ENTITY scratchpad.accesskey         "s">
-<!ENTITY scratchpad.keycode           "VK_F4">
-<!ENTITY scratchpad.keytext           "F4">
-<!-- LOCALIZATION NOTE (browserToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser toolbox UI in the Tools menu. -->
-
-<!ENTITY browserToolboxMenu.label     "Ceecikaw goyjinay bata">
-<!ENTITY browserToolboxMenu.accesskey "e">
-<!ENTITY browserToolboxCmd.commandkey "i">
-<!-- LOCALIZATION NOTE (browserContentToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser content toolbox UI in the Tools menu.
-  -  This toolbox allows to debug the chrome of the content process in multiprocess builds.  -->
-
-<!ENTITY browserContentToolboxMenu.label     "Ceecikaw gundekuna goyjinay bata">
-<!ENTITY browserContentToolboxMenu.accesskey "b">
-
-<!ENTITY devToolbarCloseButton.tooltiptext "Cinakaw goyjinay žeeri daabu">
-<!ENTITY devToolbarMenu.label              "Cinakaw goyjinay zuu-žeeri">
-<!ENTITY devToolbarMenu.accesskey          "w">
-<!ENTITY webide.label                      "WebIDE">
-<!ENTITY webide.accesskey                  "W">
-<!ENTITY webide.keycode                    "VK_F8">
-<!ENTITY webide.keytext                    "F8">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-<!ENTITY devToolboxMenuItem.label          "Kanjari goyjinawey">
-<!ENTITY devToolboxMenuItem.accesskey      "K">
-<!ENTITY devToolboxMenuItem.keytext        "I">
-
-<!ENTITY devToolbarToolsButton.tooltip     "Kanjari cinakaw goyjinawey">
-<!ENTITY devToolbarOtherToolsButton.label  "Goyjinay ka tonton">
-
-<!ENTITY getMoreDevtoolsCmd.label        "Duu goyjinay tontoniyaŋ">
-<!ENTITY getMoreDevtoolsCmd.accesskey    "n">
 
 <!ENTITY fileMenu.label         "Tuku"> 
 <!ENTITY fileMenu.accesskey       "T">
@@ -407,20 +339,21 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHelp.tooltip "Faaba šilbayboŋ feeri">
 
 <!ENTITY appMenuRemoteTabs.label "Kanji hangantey">
-<!ENTITY appMenuRemoteTabs.fetching.label "Kanji hangantey kurma…">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.notabs.label): This is shown beneath
      the name of a device when that device has no open tabs -->
-<!ENTITY appMenuRemoteTabs.notabs.label "Kanji feerante kul šii">
+<!ENTITY appMenuRemoteTabs.notabs.label "Kanji kul ši feeri">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.tabsnotsyncing.label): This is shown
      when Sync is configured but syncing tabs is disabled. -->
 <!ENTITY appMenuRemoteTabs.tabsnotsyncing.label "Kanji hangandiyan tunandi ka dii kanjey maašeede jinay taney ga.">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.noclients.label): This is shown
      when Sync is configured but this appears to be the only device attached to
      the account. We also show links to download Firefox for android/ios. -->
-<!ENTITY appMenuRemoteTabs.noclients.label "Huru Firefox ra war jinay taney ga ka dii war kanjey ne.">
+<!ENTITY appMenuRemoteTabs.noclients.title "Kanjiyaŋ kul mana hangandi jina!">
+<!ENTITY appMenuRemoteTabs.noclients.subtitle "Ga boona ka dii war jinay taney kanjey ne wala?">
 <!ENTITY appMenuRemoteTabs.openprefs.label "Ibaayey hangandi">
 <!ENTITY appMenuRemoteTabs.notsignedin.label "Huru ka dii kanji maašeede foo war jinay taney ga.">
 <!ENTITY appMenuRemoteTabs.signin.label "Huru Sync ra">
+<!ENTITY appMenuRemoteTabs.sidebar.label "Kanji hangantey ceraw-zuwoo guna">
 
 <!ENTITY customizeMenu.addToToolbar.label "Goyjinay zuu tonton">
 <!ENTITY customizeMenu.addToToolbar.accesskey "o">
@@ -527,6 +460,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY openFrameCmdInTab.accesskey  "k">
 <!ENTITY openFrameCmd.label           "Kunga feeri zanfun taaga ra">
 <!ENTITY openFrameCmd.accesskey       "z">
+<!ENTITY openLinkCmdInContainerTab.label "Dobu feeri sun kanji taaga ra">
+<!ENTITY openLinkCmdInContainerTab.accesskey "s">
 <!ENTITY showOnlyThisFrameCmd.label     "Kungaa woo de cebe">
 <!ENTITY showOnlyThisFrameCmd.accesskey "c">
 <!ENTITY reloadCmd.commandkey         "r">
@@ -741,7 +676,6 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY spellAddDictionaries.accesskey "t">
 
 <!ENTITY editBookmark.done.label                     "Ben">
-<!ENTITY editBookmark.cancel.label                   "Naŋ">
 <!ENTITY editBookmark.removeBookmark.accessKey       "R">
 
 <!ENTITY identity.connectionSecure "Ciyari moora">
@@ -761,7 +695,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY identity.description.insecure "War dobuyanoo moɲoo woo ga ši sutura. Boro taney ga hin ka dii šilbawey kaŋ war n'i sanba (sanda šennikufal, toonandiyan, garaw katta, nda tana).">
 <!ENTITY identity.description.insecureLoginForms "War huruyan šilbaa kaŋ war g'a dam moɲoo woo ga manti saajante nd'a hin ka fukkar.">
 <!ENTITY identity.description.weakCipher "War dobuyanoo moɲoo woo tuguyan dabaroo ga yalaafu nd'a ši sutura.">
-<!ENTITY identity.description.weakCipher2 "Boro taney ga hin ka dii war alhabarey wal'i ma nungoo ladabu barmay.">
+<!ENTITY identity.description.weakCipher2 "Boro taney ga hin ka dii war alhabarey wal'i ma nungoo aladaboo barmay.">
 <!ENTITY identity.description.activeBlocked "&brandShortName; na moɲoo woo doo fooyaŋ kaŋ ši saajaw gagay.">
 <!ENTITY identity.description.passiveLoaded "War dobuyano ši sutura nda boro taney ga hin ka dii alhabarey kaŋ war n'i žemna nda nungoo.">
 <!ENTITY identity.description.passiveLoaded2 "Nungoo goo nda gundekuna kaŋ manti saajante (sanda biiyaŋ).">
@@ -775,6 +709,9 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY identity.disableMixedContentBlocking.accesskey "D">
 <!ENTITY identity.learnMore "Bay ka tonton">
 
+<!ENTITY identity.removeCertException.label "Hasaraw kaa">
+<!ENTITY identity.removeCertException.accesskey "k">
+
 <!ENTITY identity.moreInfoLinkText2 "Alhabar tontoni">
 
 <!ENTITY identity.permissions "Duɲeyaney">
@@ -783,9 +720,34 @@ you can use these alternative items. Otherwise, their values should be empty.  -
      The word "toolbar" is appended automatically and should not be contained below! -->
 
 <!ENTITY tabsToolbar.label "Ceecikaw kanjey">
-<!-- LOCALIZATION NOTE (syncTabsMenu3.label): This appears in the history menu and history panel -->
+<!-- LOCALIZATION NOTE (syncTabsMenu3.label): This appears in the history menu -->
 
 <!ENTITY syncTabsMenu3.label     "Kanji hangantey">
+
+<!ENTITY syncedTabs.sidebar.label              "Kanji hangantey">
+<!ENTITY syncedTabs.sidebar.noclients.label    "Huru Firefox ra war jinay taney ga ka dii war kanjey ne.">
+<!ENTITY syncedTabs.sidebar.noclients.title    "Kanji hangante… kul šii jina!">
+<!ENTITY syncedTabs.sidebar.noclients.subtitle "Mar ga boona ka dii war jinay taney kanjey ne?">
+<!ENTITY syncedTabs.sidebar.notsignedin.label  "Huru ka dii kanji maašeede foo war jinay taney ga.">
+<!ENTITY syncedTabs.sidebar.notabs.label       "Kanji feerante kul šii">
+<!ENTITY syncedTabs.sidebar.openprefs.label    "&syncBrand.shortName.label; ibaayey feeri">
+<!-- LOCALIZATION NOTE (syncedTabs.sidebar.tabsnotsyncing.label): This is shown
+     when Sync is configured but syncing tabs is disabled. -->
+<!ENTITY syncedTabs.sidebar.tabsnotsyncing.label       "Kanji hangandiyan tunandi ka dii kanjey maašeede jinay taney ga.">
+
+<!ENTITY syncedTabs.context.open.label                       "Feeri">
+<!ENTITY syncedTabs.context.open.accesskey                   "F">
+<!ENTITY syncedTabs.context.openInNewTab.label               "Feeri kanji taaga ra">
+<!ENTITY syncedTabs.context.openInNewTab.accesskey           "t">
+<!ENTITY syncedTabs.context.openInNewWindow.label            "Doboo feeri zanfun taaga ra">
+<!ENTITY syncedTabs.context.openInNewWindow.accesskey        "z">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.label     "Doboo feeri zanfun taaga ra">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.accesskey "z">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.label          "Moɲoo woo šilbay">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey      "l">
+<!ENTITY syncedTabs.context.copy.label                       "Berandi">
+<!ENTITY syncedTabs.context.copy.accesskey                   "B">
+
 
 <!ENTITY syncBrand.shortName.label    "Sync">
 
@@ -823,7 +785,6 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY social.directory.introText "Goymee naagu k'a tonton &brandShortName; ga.">
 <!ENTITY social.directory.viewmore.text "Guna ka tonton">
 
-<!ENTITY customizeMode.tabTitle "&brandShortName; hanse war boŋse">
 <!ENTITY customizeMode.menuAndToolbars.header2 "Goyjinay nda alhaaliyaŋ tonton">
 <!ENTITY customizeMode.menuAndToolbars.empty "Ga jinay ka tonton?">
 <!ENTITY customizeMode.menuAndToolbars.emptyLink "Suuba tontoni ženberyaŋ ra">
@@ -929,7 +890,3 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 
 <!ENTITY emeLearnMoreContextMenu.label            "Bay ka tonton DRM ga…">
 <!ENTITY emeLearnMoreContextMenu.accesskey        "D">
-<!ENTITY emeNotificationsNotNow.label             "Manti sohõda">
-<!ENTITY emeNotificationsNotNow.accesskey         "n">
-<!ENTITY emeNotificationsDontAskAgain.label       "Ma ši ay hãa koyne">
-<!ENTITY emeNotificationsDontAskAgain.accesskey   "M">

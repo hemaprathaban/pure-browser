@@ -37,6 +37,13 @@
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "L’accès au fichier a été refusé">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>Il a peut-être été supprimé, déplacé ou les permissions associées au fichier ne permettent pas d’y accéder.</li>
+</ul>
+">
+
 <!ENTITY generic.title "La requête ne peut aboutir">
 <!ENTITY generic.longDesc "
 <p>Pour une raison inconnue, &brandShortName; ne peut pas charger cette page.</p>
@@ -108,9 +115,9 @@
 <!ENTITY proxyResolveFailure.title "Le serveur proxy est introuvable">
 <!ENTITY proxyResolveFailure.longDesc "
 <ul>
-  <li>Assurez-vous que les paramètres pour le proxy sont corrects.</li>
-  <li>Assurez-vous que l’ordinateur a une connexion au réseau qui fonctionne.</li>
-  <li>Si votre ordinateur ou votre réseau est protégé par un pare-feu ou un proxy, assurez-vous que &brandShortName; est autorisé à accéder au Web.</li>
+  <li>Vérifiez que les paramètres du proxy sont corrects&#x00A0;;</li>
+  <li>Vérifiez que la connexion réseau de votre ordinateur fonctionne&#x00A0;;</li>
+  <li>Si votre ordinateur ou votre réseau est protégé par un pare-feu ou un proxy, assurez-vous que &brandShortName; a l’autorisation d’accéder au Web.</li>
 </ul>
 ">
 
@@ -151,7 +158,7 @@ Vous pouvez également utiliser la commande dans le menu d’aide pour signaler 
 <!ENTITY sharedLongDesc "
 <ul>
   <li>Le site est peut-être temporairement indisponible ou surchargé. Réessayez plus
-    tard&#x00A0;;</li>
+    tard ;</li>
   <li>Si vous n’arrivez à naviguer sur aucun site, vérifiez la connexion
     au réseau de votre ordinateur&#x00A0;;</li>
   <li>Si votre ordinateur ou votre réseau est protégé par un pare-feu ou un proxy,
@@ -159,30 +166,8 @@ Vous pouvez également utiliser la commande dans le menu d’aide pour signaler 
 </ul>
 ">
 
-<!ENTITY malwareBlocked.title "Suspicion de site malveillant !">
-<!ENTITY malwareBlocked.longDesc "
-<p>Les sites malveillants tentent d’installer des programmes qui volent les informations personnelles, qui utilisent votre ordinateur pour en attaquer d’autres ou qui endommagent votre système.</p>
-<p>Les propriétaires de sites web qui pensent que leur site a été rapporté à tort comme malveillant peuvent <a href='http://www.stopbadware.org/home/reviewinfo'>demander une révision</a>.</p>
-">
-
-<!ENTITY unwantedBlocked.title "Suspicion de site comportant des logiciels indésirables !">
-<!ENTITY unwantedBlocked.longDesc "
-<p>Les pages comportant des logiciels indésirables tentent d’installer des logiciels qui peuvent être trompeurs et nuire à votre système de manière inattendue.</p>
-">
-
-<!ENTITY phishingBlocked.title "Suspicion de site contrefait !">
-<!ENTITY phishingBlocked.longDesc "
-<p>Saisir des informations personnelles sur cette page peut aboutir à un vol d’identité ou à une autre fraude.</p>
-<p>Ces types de contrefaçon de sites sont utilisés dans des courriels frauduleux conçus pour des attaques par hameçonnage (ou phishing), dans lesquelles les pages web et les courriels frauduleux sont utilisés pour imiter des sources en lesquelles vous avez confiance.</p>
-">
-
-<!ENTITY forbiddenBlocked.title "Site interdit">
-<!ENTITY forbiddenBlocked.longDesc "
-<p>&brandShortName; a empêché le chargement de cette page, car il est configuré pour la bloquer.</p>
-">
-
 <!ENTITY cspBlocked.title "Bloqué par une stratégie de sécurité de contenu">
-<!ENTITY cspBlocked.longDesc "<p>&brandShortName; a empêché le chargement de cette page de cette manière car la page a une stratégie de sécurité de contenu qui ne le permet pas.</p>">
+<!ENTITY cspBlocked.longDesc "<p>&brandShortName; a empêché le chargement de cette page de cette manière car sa stratégie de sécurité de contenu ne le permet pas.</p>">
 
 <!ENTITY corruptedContentError.title "Erreur due à un contenu corrompu">
 <!ENTITY corruptedContentError.longDesc "<p>La page que vous essayez de voir ne peut pas être affichée car une erreur dans la transmission de données a été détectée.</p><ul><li>Veuillez contacter les propriétaires du site web pour les informer de ce problème.</li></ul>">

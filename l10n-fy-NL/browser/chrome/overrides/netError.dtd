@@ -18,7 +18,7 @@
 <!ENTITY deniedPortAccess.title "Dit adres hat in beheinde tagong">
 <!ENTITY deniedPortAccess.longDesc "">
 
-<!ENTITY dnsNotFound.title "Tsjinner net fûn">
+<!ENTITY dnsNotFound.title "Server net fûn">
 <!ENTITY dnsNotFound.longDesc "
 <ul>
   <li>Kontrolearje it adres op typflaters lykas
@@ -27,7 +27,7 @@
   <li>Kontrolearje jo netwurkferbining as jo gjin inkele side lade
     kinne.</li>
   <li>Gean nei oft &brandShortName; tagong hat ta it web of jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+    kompjûter of netwurk befeilige is troch in brânmuorre of proxyserver.</li>
 </ul>
 ">
 
@@ -39,6 +39,12 @@
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "Tagong ta it bestân is wegere">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>It kin fuortsmiten wêze, ferpleatst, of bestânsmachtigingen kinne tagong tsjingean.</li>
+</ul>
+">
 
 <!ENTITY generic.title "Oei.">
 <!ENTITY generic.longDesc "
@@ -95,22 +101,22 @@
 </ul>
 ">
 
-<!ENTITY proxyConnectFailure.title "De proxytsjinner wegeret ferbiningen">
+<!ENTITY proxyConnectFailure.title "De proxyserver wegeret ferbiningen">
 <!ENTITY proxyConnectFailure.longDesc "
 <ul>
   <li>Kontrolearje oft jo proxy-ynstellingen goed binne.</li>
-  <li>Nim kontakt op mei jo netwurkbeheerder om te kontrolearjen oft de proxytsjinner
+  <li>Nim kontakt op mei jo netwurkbeheerder om te kontrolearjen oft de proxyserver
     wurket.</li>
 </ul>
 ">
 
-<!ENTITY proxyResolveFailure.title "Kin de proxytsjinner net fine">
+<!ENTITY proxyResolveFailure.title "Kin de proxyserver net fine">
 <!ENTITY proxyResolveFailure.longDesc "
 <ul>
   <li>Kontrolearje oft jo proxy-ynstellingen goed binne.</li>
   <li>Gean nei oft jo kompjûter op in wurkjend netwurk oansletten is.</li>
   <li>Gean nei oft &brandShortName; tagong hat ta it web of jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+    kompjûter of netwurk befeilige is troch in brânmuorre of proxyserver.</li>
 </ul>
 ">
 
@@ -122,12 +128,12 @@
 </ul>
 ">
 
-<!ENTITY unknownSocketType.title "Unferwacht antwurd fan de tsjinner">
+<!ENTITY unknownSocketType.title "Unferwacht antwurd fan de server">
 <!ENTITY unknownSocketType.longDesc "
 <ul>
   <li>Gean nei oft de persoanlike befeiligingsbehearder ynstallearre is op
     jo systeem.</li>
-  <li>Dit kin it gefolch wêze fan in net-standert konfiguraasje fan de tsjinner.</li>
+  <li>Dit kin it gefolch wêze fan in net-standert konfiguraasje fan de server.</li>
 </ul>
 ">
 
@@ -139,21 +145,20 @@
 </ul>
 ">
 
-<!ENTITY nssBadCert.title "Feilige Ferbining Mislearre">
-<!ENTITY nssBadCert.longDesc2 "
-<ul>
-<li>Dit koe in probleem wêze mei de konfiguraasje fan de tsjinner, of it kin iets wêze wat probeart de tsjinner as in oar foar te dwaan.</li>
-<li>As jo earder al súksesfol ferbining hân hawwe mei dizze tsjinner, kin de flater tydlik wêze en kinne jo it letter nochris probearje.</li>
-</ul>
-">
+<!ENTITY certerror.longpagetitle1 "Jo ferbining is net befeilige">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "De eigner fan <span class='hostname'/> hat syn of har website net krekt konfigurearre. Om jo gegevens tsjin stellerij te beskermjen, hat &brandShortName; gjin ferbining mei dizze website makke.">
 
 <!ENTITY sharedLongDesc "
 <ul>
   <li>Miskien is de website tydlik net beskikber. Probearje it letter 
     nochris.</li>
-  <li>Kontrolearje jo netwurkferbining as jo gjin inkele side lade kinne.</li>
-  <li>Gean nei oft &brandShortName; tagong hat ta it web, of dat jo 
-    kompjûter of netwurk befeilige is troch in brânmuorre of proxytsjinner.</li>
+  <li>As jo gjin inkele side lade kinne, kontrolearje dan de netwurkferbining
+    fan jo kompjûter.</li>
+  <li>As jo kompjûter of netwurk befeilige wurdt troch in firewall of proxy,
+    soargje der dan foar dat &brandShortName; tagong hat ta it web.</li>
 </ul>
 ">
 
@@ -164,34 +169,17 @@
 <!ENTITY corruptedContentError.longDesc "<p>De side dy't jo probearje te besjen kin net toand wurde omdat der in flater yn de gegevensoerdracht ûntdekt waard.</p><ul><li>Nim kontakt op mei de website-eigners om se te ynformearjen oer dit probleem.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Of jo kinne in útsûndering tafoegje…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Helje My Hjir út!">
 <!ENTITY securityOverride.exceptionButtonLabel "Foech Utsûndering ta">
 
-<!-- LOCALIZATION NOTE (securityOverride.warningText) - Do not translate the
-contents of the <xul:button> tags.  The only language content is the label= field,
-which uses strings already defined above. The button is included here (instead of
-netError.xhtml) because it exposes functionality specific to firefox. -->
-
-<!ENTITY securityOverride.warningContent "
-<p>Jo kinne better gjin útsûndering tafoegje as jo in ynternetferbining hawwe dy't jo net folslein fertrouwe, of as it net normaal is dat jo in warskôging sjogge foar dizze tsjinner.</p>
-
-<button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button>
-<button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>
-">
-
-<!ENTITY errorReporting.automatic2 "Rapportearje flaters as dizze om Mozilla te helpen kweawollende websites te werkennen en te blokkearjen">
+<!ENTITY errorReporting.automatic2 "Flaters as dizze rapportearje om Mozilla te helpen kweawollende websites te werkennen en te blokkearjen">
 <!ENTITY errorReporting.learnMore "Mear ynfo…">
 
 <!ENTITY remoteXUL.title "Remote XUL">
 <!ENTITY remoteXUL.longDesc "<p><ul><li>Nim kontakt op mei de website-eigners om se oer dit probleem te ynformearjen.</li></ul></p>">
 
-<!ENTITY remoteXUL.title "Remote XUL">
-<!ENTITY remoteXUL.longDesc "<p><ul><li>Nim kontakt op mei de website-eigners om se oer dit probleem te ynformearjen.</li></ul></p>">
-
 <!ENTITY sslv3Used.title "Kin gjin befeilige ferbining meitsje">
-<!-- LOCALIZATION NOTE (sslv3Used.longDesc2) - Do not translate
-     "SSL_ERROR_UNSUPPORTED_VERSION". -->
+<!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc2) - Do not translate
+     "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY sslv3Used.longDesc2 "Avansearre ynfo: SSL_ERROR_UNSUPPORTED_VERSION">
 
 <!ENTITY weakCryptoUsed.title "Jo ferbining is net befeilige">
@@ -201,3 +189,15 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Avansearre">
 <!ENTITY weakCryptoAdvanced.longDesc "<span class='hostname'></span> brûkt ferâldere befeiligingstechnology dy't kwetsber is foar oanfallen. In oanfaller kin ienfâldichwei gegevens ûntdekke wêrfan jo tochten dat dizze feilich wienen.">
 <!ENTITY weakCryptoAdvanced.override "(Net befeilige) <span class='hostname'></span> probearje te laden fia ferâldere befeiliging">
+
+<!ENTITY certerror.pagetitle1  "Net-befeilige ferbining">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Dizze website makket gebrûk
+fan HTTP Strict Transport Security (HSTS) om oan te jaan dat &brandShortName;
+allinnich in befeilige ferbining meitsje mei. Hjirtroch is it net mooglik om in
+útsûndering foar dit sertifikaat ta te foegjen.">
+<!ENTITY certerror.copyToClipboard.label "Tekst nei klamboerd kopiearje">
+
+<!ENTITY inadequateSecurityError.title "Jo ferbining is net befeilige">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> brûkt ferâldere befeiligingstechnology dy't kwetsber is foar oanfallen. In oanfaller kin ienfâldichwei gegevens ûnthulle wêrfan jo tochten dat dizze feilich wienen. De websitebehearder moat earst de server yn oarder meitsje eardat jo de website besykje kinne.</p><p>Flaterkoade: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

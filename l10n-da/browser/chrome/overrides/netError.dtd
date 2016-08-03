@@ -39,10 +39,16 @@
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "Filen kunne ikke tilgås">
+<!ENTITY fileAccessDenied.longDesc "
+<ul>
+  <li>Den kan være blevet slettet, flyttet, eller fil-tilladelserne kan forhindre adgang.</li>
+</ul>
+">
 
 <!ENTITY generic.title "Hovsa.">
 <!ENTITY generic.longDesc "
-<p>&brandShortName; kan ikke indlæse denne side, af en eller anden grund.</p>
+<p>&brandShortName; kan ikke indlæse denne side af en eller anden grund.</p>
 ">
 
 <!ENTITY malformedURI.title "Adressen er ikke gyldig">
@@ -98,16 +104,16 @@
 <!ENTITY proxyConnectFailure.title "Proxyserveren afviser forbindelser">
 <!ENTITY proxyConnectFailure.longDesc "
 <ul>
-  <li>Undersøg proxy-indstillingerne og vær sikker på at de er korrekte.</li>
-  <li>Kontakt din netværks-administrator for at sikre dig at proxyserveren 
-  fungerer.</li>
+  <li>Undersøg proxy-indstillingerne, og vær sikker på, at de er korrekte.</li>
+  <li>Kontakt din netværks-administrator for at sikre dig, at proxyserveren
+    fungerer.</li>
 </ul>
 ">
 
 <!ENTITY proxyResolveFailure.title "Kunne ikke finde proxyserveren">
 <!ENTITY proxyResolveFailure.longDesc "
 <ul>
-  <li>Undersøg proxy-indstillingerne og vær sikker på at de er korrekte.</li>
+  <li>Undersøg proxy-indstillingerne, og vær sikker på, at de er korrekte.</li>
   <li>Undersøg om din computer har en fungerende netværksforbindelse.</li>
   <li>Hvis din computer eller netværk er beskyttet af en firewall eller proxy, sørg da
   for at &brandShortName; har tilladelse til at tilgå nettet.</li>
@@ -117,17 +123,17 @@
 <!ENTITY redirectLoop.title "Denne side viderefører ikke forespørgslen korrekt">
 <!ENTITY redirectLoop.longDesc "
 <ul>
-  <li>Dette problem kan nogle gange skyldes, at cookies er slået fra, eller modtagelse 
-  af cookies er blevet nægtet.</li>
+  <li>Dette problem kan nogle gange skyldes, at cookies er slået fra, eller modtagelse
+    af cookies er blevet nægtet.</li>
 </ul>
 ">
 
 <!ENTITY unknownSocketType.title "Uventet svar fra server">
 <!ENTITY unknownSocketType.longDesc "
 <ul>
-  <li>Undersøg om dit system har Personal Security Manager 
-  installeret.</li>
-  <li>Dette kan skyldes en ikke-standard opsætning af serveren.</li>
+  <li>Undersøg om dit system har Personal Security Manager
+    installeret.</li>
+  <li>Dette kan skyldes en ikke-standardopsætning af serveren.</li>
 </ul>
 ">
 
@@ -139,15 +145,11 @@
 </ul>
 ">
 
-<!ENTITY nssBadCert.title "Sikker forbindelse mislykkedes">
-<!ENTITY nssBadCert.longDesc2 "
-<ul>
-  <li>Dette kan være et problem med serverens konfiguration, eller det kan betyde,
-at nogen forsøger at give sig ud for at være serveren.</li>
-  <li>Hvis du har kunnet tilgå serveren tidligere kan dette problem være midlertidligt 
-og du anbefales at prøve igen senere.</li>
-</ul>
-">
+<!ENTITY certerror.longpagetitle1 "Din forbindelse er ikke sikker">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "Ejeren af <span class='hostname'/> har ikke konfigureret sit websted korrekt. For at undgå at dine informationer bliver stjålet, har &brandShortName; ikke oprettet forbindelse til webstedet.">
 
 <!ENTITY sharedLongDesc "
 <ul>
@@ -167,21 +169,7 @@ og du anbefales at prøve igen senere.</li>
 <!ENTITY corruptedContentError.longDesc "<p>Siden, du forsøger at se, kan ikke vises, da der er fundet en fejl i overførslen af data.</p><ul><li>Kontakt ejerne af webstedet omkring dette problem.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Eller du kan tilføje en undtagelse…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Få mig væk herfra!">
 <!ENTITY securityOverride.exceptionButtonLabel "Tilføj undtagelse…">
-
-<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
-contents of the <button> tags. It uses strings already defined above. The
-button is included here (instead of netError.xhtml) because it exposes
-functionality specific to firefox. -->
-
-<!ENTITY securityOverride.warningContent "
-<p>Du bør ikke tilføje en undtagelse, hvis du ikke bruger en internetforbindelse du stoler fuldt og fast på, eller hvis du ikke er vant til at se advarsler fra denne server.</p>
-
-<button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button>
-<button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>
-">
 
 <!ENTITY errorReporting.automatic2 "Indberet automatisk fejl som denne for at hjælpe Mozilla med at identificere og blokere ondsindede websteder.">
 <!ENTITY errorReporting.learnMore "Læs mere…">
@@ -201,3 +189,15 @@ functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Avanceret">
 <!ENTITY weakCryptoAdvanced.longDesc "<span class='hostname'></span> bruger forældet sikkerheds-teknologi, der er sårbar overfor angreb. En angriber ville nemt kunne afsløre information, som du troede var sikker.">
 <!ENTITY weakCryptoAdvanced.override "USIKKERT: Forsøg at indlæse <span class='hostname'></span>, selvom den bruger forældet sikkerheds-teknologi">
+
+<!ENTITY certerror.pagetitle1  "Usikker forbindelse">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Webstedet bruger  HTTP
+Strict Transport Security (HSTS) til at angive at &brandShortName; kun
+kan oprette en sikker forbindelse til det. Derfor er det ikke muligt at
+tilføje en undtagelse for dette certifikat.">
+<!ENTITY certerror.copyToClipboard.label "Kopiér tekst til udklipsholder">
+
+<!ENTITY inadequateSecurityError.title "Din forbindelse er ikke sikker">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> bruger forældet sikkerheds-teknologi, der er sårbar overfor angreb. En angriber kan derfor nemt få adgang til information, som du troede var sikker. Webstedets administrator er nødt til at løse problemerne på serveren, før du kan besøge webstedet.</p><p>Fejlkode: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

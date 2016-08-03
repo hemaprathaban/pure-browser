@@ -24,9 +24,11 @@
 <!ENTITY fileNotFound.title "A fájl nem található">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Ellenőrizze a fájlnevet, hogy jól írta-e.</li> <li>Ellenőrizze, hogy a fájlt áthelyezték-e, átnevezték-e vagy eltávolították-e.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "A fájl elérése megtagadva">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Lehet hogy törölve lett, át lett helyezve, vagy a fájljogosultságok megakadályozzák a hozzáférést.</li> </ul>">
 
 <!ENTITY generic.title "Hoppá!">
-<!ENTITY generic.longDesc "<p> A &brandShortName; nem tudja betölteni az oldalt valamilyen okból.</p>">
+<!ENTITY generic.longDesc "<p>A &brandShortName; nem tudja betölteni az oldalt valamilyen okból.</p>">
 
 <!ENTITY malformedURI.title "A cím érvénytelen">
 <!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
@@ -112,3 +114,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Speciális információ: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "A kapcsolat nem biztonságos">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> olyan biztonsági technológiát használ, amely elavult, és sérülékeny a támadásokkal szemben. Egy támadó könnyen felfedhet olyan információkat, amelyeket biztonságosnak gondol. A weboldal rendszergazdájának ki kell javítania a kiszolgálót, mielőtt meglátogathatja az oldalt.</p><p>Hibakód: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

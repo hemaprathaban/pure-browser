@@ -69,6 +69,11 @@
 %define L10N_RECOMMENDS myspell-ca
 %include @PRODUCT@-l10n.control.in
 
+%define L10N_LANG cak
+%define L10N_LANGUAGE Kaqchikel
+%undef L10N_RECOMMENDS
+%include @PRODUCT@-l10n.control.in
+
 %define L10N_LANG cs
 %define L10N_LANGUAGE Czech
 %define L10N_RECOMMENDS myspell-cs-cz

@@ -22,8 +22,8 @@
 <!ENTITY dnsNotFound.longDesc "
 <ul>
   <li>Zkontrolujte, zda je adresa napsána správně a neobsahuje chyby jako
-    <strong>ww</strong>.server.cz místo
-    <strong>www</strong>.server.cz</li>
+    <strong>ww</strong>.example.com místo
+    <strong>www</strong>.example.com</li>
   <li>Pokud se vám nezobrazují ani ostatní stránky, zkontrolujte síťové připojení svého
     počítače.</li>
   <li>Pokud je váš počítač chráněn firewallem nebo proxy serverem, zkontrolujte, zda má
@@ -39,6 +39,10 @@
 </ul>
 ">
 
+<!ENTITY fileAccessDenied.title "Přístup k souboru byl odepřen">
+<!ENTITY fileAccessDenied.longDesc "<ul>
+  <li>Možná byl smazán, přesunut nebo jeho oprávnění zabraňují přístupu.</li>
+</ul>">
 
 <!ENTITY generic.title "Nepodařilo se dokončit požadavek">
 <!ENTITY generic.longDesc "
@@ -49,7 +53,7 @@
 <!ENTITY malformedURI.longDesc "
 <ul>
   <li>Adresa webové stránky má zpravidla tvar
-    <strong>http://www.server.cz/</strong></li>
+    <strong>http://www.example.com/</strong></li>
   <li>Zkontrolujte, zda používáte správná lomítka (tj.
     <strong>/</strong>).</li>
 </ul>
@@ -138,15 +142,11 @@ Personal Security Manager.</li>
 </ul>
 ">
 
-<!ENTITY nssBadCert.title "Chyba zabezpečeného spojení">
-<!ENTITY nssBadCert.longDesc2 "
-<ul>
-<li>Tato chyba může být způsobena chybnou konfigurací serveru nebo někým,
-kdo se snaží vydávat za server.</li>
-<li>Pokud jste se k tomuto serveru  připojili úspěšně již v minulosti, je možná
- chyba jenom dočasná, a můžete to zkusit znovu později.</li>
-</ul>
-">
+<!ENTITY certerror.longpagetitle1 "Vaše připojení není zabezpečené">
+<!-- Localization note (certerror.introPara) - The text content of the span tag
+will be replaced at runtime with the name of the server to which the user
+was trying to connect. -->
+<!ENTITY certerror.introPara "Majitel serveru <span class='hostname'/> nakonfiguroval své webové stránky nesprávně. Abychom chránili vaše informace před odcizením, &brandShortName; se k této webové stránce nepřipojil.">
 
 <!ENTITY sharedLongDesc "
 <ul>
@@ -166,21 +166,7 @@ za chvíli.</li>
 <!ENTITY corruptedContentError.longDesc "<p>Stránka, kterou se snažíte načíst, nemůže být zobrazena, protože přenesená data jsou chybná.</p><ul><li>Kontaktujte prosím vlastníka stránky a informujte ho o tomto problému.</li></ul>">
 
 
-<!ENTITY securityOverride.linkText "Nebo můžete přidat výjimku…">
-<!ENTITY securityOverride.getMeOutOfHereButton "Rychle odsud pryč">
 <!ENTITY securityOverride.exceptionButtonLabel "Přidat výjimku">
-
-<!-- LOCALIZATION NOTE (securityOverride.warningContent) - Do not translate the
-contents of the <button> tags. It uses strings already defined above. The
-button is included here (instead of netError.xhtml) because it exposes
-functionality specific to firefox. -->
-
-<!ENTITY securityOverride.warningContent "
-<p>Není doporučováno přidávat výjimku, pokud nemůžete svému internetovému spojení plně důvěřovat nebo pokud nejste u tohoto serveru zvyklí vídat podobná varování.</p>
-
-<button id='getMeOutOfHereButton'>&securityOverride.getMeOutOfHereButton;</button>
-<button id='exceptionDialogButton'>&securityOverride.exceptionButtonLabel;</button>
-">
 
 <!ENTITY errorReporting.automatic2 "Hlásit chyby jako je tato a pomoci tak organizaci Mozilla identifikovat a blokovat škodlivé stránky">
 <!ENTITY errorReporting.learnMore "Zjistit více…">
@@ -200,3 +186,14 @@ functionality specific to firefox. -->
 <!ENTITY weakCryptoAdvanced.title "Rozšířené">
 <!ENTITY weakCryptoAdvanced.longDesc "<span class='hostname'></span> používá zabezpečení, které je zastaralé a náchylné k útoku. Útočník by mohl snadno odhalit informace, o kterých jste si mysleli, že jsou v bezpečí.">
 <!ENTITY weakCryptoAdvanced.override "(Nezabezpečeno) Zkusí načíst <span class='hostname'></span> pomocí zastaralého zabezpečení">
+
+<!ENTITY certerror.pagetitle1  "Nezabezpečené připojení">
+<!ENTITY certerror.whatShouldIDo.badStsCertExplanation "Tento server používá HTTP
+Strict Transport Security (HSTS), čímž určuje, že se má &brandShortName; připojovat
+pouze zabezpečeně. Z tohoto důvodu není možné přidat pro tento certifikát výjimku.">
+<!ENTITY certerror.copyToClipboard.label "Zkopírovat text do schránky">
+
+<!ENTITY inadequateSecurityError.title "Vaše připojení není zabezpečené">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> používá technologii která je zastaralá a náchylná k útoku. Útočník může snadno získat informace, které si myslíte, že jsou zabezpečené. Administrátor serveru musí server opravit předtím, než budete moci stránku navštívit.</p><p>Kód chyby: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

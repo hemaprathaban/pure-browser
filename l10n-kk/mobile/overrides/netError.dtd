@@ -24,11 +24,13 @@
 <!ENTITY fileNotFound.title "Файл табылмады">
 <!ENTITY fileNotFound.longDesc "<ul> <li>Файлдың енгізілген аты, үлкен-кіші әріптердің дұрыстығы, және басқа да қателер жоқ екеніне көз жеткізіңіз.</li> <li>Файлдың аты ауысқан, ол өшірілген немесе басқа жаққа көшірілген болуы мүмкін.</li> </ul>">
 
+<!ENTITY fileAccessDenied.title "Файлға қатынау құқығы жоқ">
+<!ENTITY fileAccessDenied.longDesc "<ul> <li>Ол өшірілген, жылжытылған немесе файл рұқсаттары қатынауға жол бермеуі мүмкін.</li> </ul>">
 
 <!ENTITY generic.title "Қате.">
 <!ENTITY generic.longDesc "<p>&brandShortName; осы парақты белгісіз себептермен жүктей алмайды.</p>">
 
-<!ENTITY malformedURI.title "Адрес пішімі қате">
+<!ENTITY malformedURI.title "Адрес қате">
 <!-- LOCALIZATION NOTE (malformedURI.longDesc2) This string contains markup including widgets for searching
      or enabling wifi connections. The text inside the tags should be localized. Do not touch the ids. -->
 <!ENTITY malformedURI.longDesc2 "<ul> <li>Веб адрестері әдетте келесідей жазылады: <strong>http://www.example.com/</strong></li> <div id='searchbox'> <input id='searchtext' type='search'></input> <button id='searchbutton'>Іздеу</button> </div> <li>Дұрыс слеш таңбалардың қолдануын тексеріңіз (яғни <strong>/</strong>).</li> </ul>">
@@ -112,3 +114,8 @@ netError.xhtml) because it exposes functionality specific to firefox. -->
 <!-- LOCALIZATION NOTE (weakCryptoUsed.longDesc) - Do not translate
      "SSL_ERROR_NO_CYPHER_OVERLAP". -->
 <!ENTITY weakCryptoUsed.longDesc "Кеңейтілген ақпарат: SSL_ERROR_NO_CYPHER_OVERLAP">
+
+<!ENTITY inadequateSecurityError.title "Сіздің байланысыңыз қауіпсіз емес">
+<!-- LOCALIZATION NOTE (inadequateSecurityError.longDesc) - Do not translate
+     "NS_ERROR_NET_INADEQUATE_SECURITY". -->
+<!ENTITY inadequateSecurityError.longDesc "<p><span class='hostname'></span> ескірген және шабуылдарға әлсіз қауіпсіздік технологиясын қолдануда. Шабуылшы сіз қауіпсіз деп ойлаған ақпаратты оңай анықтай алады. Сіз сайтты шолғанға дейін оның әкімшісі серверді ретке келтіруі тиіс.</p><p>Қате коды: NS_ERROR_NET_INADEQUATE_SECURITY</p>">

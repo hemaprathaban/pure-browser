@@ -145,7 +145,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY addCurPagesCmd.label "Dodaj zakładki do wszystkich kart…">
 <!ENTITY showAllBookmarks2.label "Wyświetl wszystkie zakładki">
 <!ENTITY recentBookmarks.label "Ostatnio dodane">
-<!ENTITY unsortedBookmarksCmd.label "Zakładki nieposortowane">
+<!ENTITY otherBookmarksCmd.label "Pozostałe zakładki">
 <!ENTITY bookmarksToolbarChevron.tooltip "Wyświetl więcej zakładek">
 
 <!ENTITY backCmd.label "Wstecz" >
@@ -170,7 +170,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY urlbar.indexedDBNotificationAnchor.label "Wyświetl zapytanie o przechowywanie danych offline">
 <!ENTITY urlbar.loginFillNotificationAnchor.label "Zarządzaj danym logowania">
 <!ENTITY urlbar.passwordNotificationAnchor.label "Określ, czy zachować hasło">
-<!ENTITY urlbar.webappsNotificationAnchor.label "Wyświetl zapytanie instalacji aplikacji">
 <!ENTITY urlbar.pluginsNotificationAnchor.label "Zarządzaj wtyczkami używanymi na tej stronie">
 <!ENTITY urlbar.webNotsNotificationAnchor3.label "Określ, czy strona ma prawo wyświetlać powiadomienia">
 <!ENTITY urlbar.webRTCShareDevicesNotificationAnchor.label "Zarządzaj udostępnianiem tej stronie kamery i mikrofonu">
@@ -195,7 +194,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksCmd.commandkey        "b">
 
 <!ENTITY bookmarksMenuButton.label          "Zakładki">
-<!ENTITY bookmarksMenuButton.unsorted.label "Zakładki nieprzypisane">
+<!ENTITY bookmarksMenuButton.other.label "Pozostałe zakładki">
 <!ENTITY viewBookmarksSidebar2.label "Wyświetl panel zakładek">
 <!ENTITY viewBookmarksToolbar.label         "Wyświetl pasek zakładek">
 
@@ -225,71 +224,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Dla twórców witryn">
 <!ENTITY webDeveloperMenu.accesskey   "W">
 
-<!ENTITY devToolsCmd.keycode          "VK_F12">
-<!ENTITY devToolsCmd.keytext          "F12">
-
-<!ENTITY devtoolsServiceWorkers.label "Wątki usługowe">
-<!ENTITY devtoolsServiceWorkers.accesskey "u">
-
-<!ENTITY devtoolsConnect.label "Połącz…">
-<!ENTITY devtoolsConnect.accesskey "P">
-
-<!ENTITY errorConsoleCmd.label "Konsola błędów" >
-<!ENTITY errorConsoleCmd.accesskey "K" >
-
-<!ENTITY remoteWebConsoleCmd.label    "Zdalna konsola WWW">
-
-<!ENTITY browserConsoleCmd.label      "Konsola przeglądarki">
-<!ENTITY browserConsoleCmd.commandkey "j">
-<!ENTITY browserConsoleCmd.accesskey  "p">
-
-<!ENTITY inspectContextMenu.label     "Zbadaj element">
+<!ENTITY inspectContextMenu.label "Zbadaj element">
 <!ENTITY inspectContextMenu.accesskey "t">
-
-<!ENTITY responsiveDesignTool.label            "Widok responsywny">
-<!ENTITY responsiveDesignTool.accesskey        "r">
-<!ENTITY responsiveDesignTool.commandkey       "M">
-
-<!ENTITY eyedropper.label "Próbnik koloru">
-<!ENTITY eyedropper.accesskey "P">
-
-<!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
-  -  in the Tools menu. See bug 653093.
-  -  The Scratchpad is intended to provide a simple text editor for creating
-  -  and evaluating bits of JavaScript code for the purposes of function
-  -  prototyping, experimentation and convenient scripting.
-  -
-  -  It's quite possible that you won't have a good analogue for the word
-  -  "Scratchpad" in your locale. You should feel free to find a close
-  -  approximation to it or choose a word (or words) that means
-  -  "simple discardable text editor". -->
-<!ENTITY scratchpad.label             "Brudnopis">
-<!ENTITY scratchpad.accesskey         "s">
-<!ENTITY scratchpad.keycode           "VK_F4">
-<!ENTITY scratchpad.keytext           "F4">
-<!ENTITY browserToolboxMenu.label "Narzędzia przeglądarki">
-<!ENTITY browserToolboxMenu.accesskey "d">
-<!ENTITY browserToolboxCmd.commandkey "i">
-<!ENTITY browserContentToolboxMenu.label "Narzędzia treści przeglądarki">
-<!ENTITY browserContentToolboxMenu.accesskey "t">
-<!ENTITY devToolbarCloseButton.tooltiptext "Zamknij pasek programisty">
-<!ENTITY devToolbarMenu.label              "Pasek programisty">
-<!ENTITY devToolbarMenu.accesskey          "P">
-<!ENTITY webide.label "WebIDE">
-<!ENTITY webide.accesskey "W">
-<!ENTITY webide.keycode "VK_F8">
-<!ENTITY webide.keytext "F8">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-<!ENTITY devToolboxMenuItem.label          "Przełącz narzędzia">
-<!ENTITY devToolboxMenuItem.accesskey      "n">
-<!ENTITY devToolboxMenuItem.keytext        "n">
-
-<!ENTITY devToolbarToolsButton.tooltip     "Przełącz narzędzia dla programistów">
-<!ENTITY devToolbarOtherToolsButton.label  "Więcej narzędzi">
-
-<!ENTITY getMoreDevtoolsCmd.label        "Pobierz więcej narzędzi">
-<!ENTITY getMoreDevtoolsCmd.accesskey    "P">
 
 <!ENTITY fileMenu.label "Plik" >
 <!ENTITY fileMenu.accesskey "P" >
@@ -373,10 +309,10 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHelp.tooltip "Pomoc">
 
 <!ENTITY appMenuRemoteTabs.label "Karty z innych urządzeń">
-<!ENTITY appMenuRemoteTabs.fetching.label "Pobieranie listy kart…">
 <!ENTITY appMenuRemoteTabs.notabs.label "Brak otwartych kart">
 <!ENTITY appMenuRemoteTabs.tabsnotsyncing.label "Włącz synchronizację kart, aby wyświetlić ich listę z innych urządzeń.">
-<!ENTITY appMenuRemoteTabs.noclients.label "Zaloguj się na innych urządzeniach, aby wyświetlić tutaj listę otwartych na nich kart.">
+<!ENTITY appMenuRemoteTabs.noclients.title "Synchronizacja kart wyłączona">
+<!ENTITY appMenuRemoteTabs.noclients.subtitle "Czy wyświetlić tutaj listę kart otwartych na innych urządzeniach?">
 <!ENTITY appMenuRemoteTabs.openprefs.label "Ustawienia synchronizacji">
 <!ENTITY appMenuRemoteTabs.notsignedin.label "Zaloguj się, aby wyświetlić tutaj listę kart z innych urządzeń.">
 <!ENTITY appMenuRemoteTabs.signin.label "Zaloguj się do synchronizacji">
@@ -698,17 +634,26 @@ you can use these alternative items. Otherwise, their values should be empty. --
 <!ENTITY syncTabsMenu3.label "Karty z innych urządzeń">
 
 <!ENTITY syncedTabs.sidebar.label "Karty z innych urządzeń">
-<!ENTITY syncedTabs.sidebar.fetching.label "Pobieranie listy kart z innych urządzeń…">
 <!ENTITY syncedTabs.sidebar.noclients.label "Zaloguj się w Firefoksie na innym urządzeniu, aby wyświetlić tutaj listę otwartych na nim kart.">
+<!ENTITY syncedTabs.sidebar.noclients.title "Synchronizacja kart wyłączona">
+<!ENTITY syncedTabs.sidebar.noclients.subtitle "Czy wyświetlić tutaj listę kart otwartych na innych urządzeniach?">
 <!ENTITY syncedTabs.sidebar.notsignedin.label "Zaloguj się, aby wyświetlić listę kart z innych urządzeń.">
 <!ENTITY syncedTabs.sidebar.notabs.label "Brak otwartych kart">
 <!ENTITY syncedTabs.sidebar.openprefs.label "Otwórz ustawienia synchronizacji">
 <!ENTITY syncedTabs.sidebar.tabsnotsyncing.label "Włącz synchronizację kart, aby wyświetlać listę otwartych na innych urządzeniach.">
 
-<!ENTITY syncedTabs.context.openTab.label "Otwórz kartę">
-<!ENTITY syncedTabs.context.openTab.accesskey "O">
+<!ENTITY syncedTabs.context.open.label "Otwórz">
+<!ENTITY syncedTabs.context.open.accesskey "O">
+<!ENTITY syncedTabs.context.openInNewTab.label "Otwórz w nowej karcie">
+<!ENTITY syncedTabs.context.openInNewTab.accesskey "n">
+<!ENTITY syncedTabs.context.openInNewWindow.label "Otwórz w nowym oknie">
+<!ENTITY syncedTabs.context.openInNewWindow.accesskey "e">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.label "Otwórz w nowym oknie prywatnym">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.accesskey "z">
 <!ENTITY syncedTabs.context.bookmarkSingleTab.label "Dodaj zakładkę do tej karty…">
 <!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey "D">
+<!ENTITY syncedTabs.context.copy.label "Kopiuj">
+<!ENTITY syncedTabs.context.copy.accesskey "K">
 
 <!ENTITY syncBrand.shortName.label "Firefox Sync">
 <!ENTITY syncSignIn.label "Zaloguj się do &syncBrand.shortName.label;…">

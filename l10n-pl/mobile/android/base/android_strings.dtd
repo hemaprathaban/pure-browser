@@ -2,15 +2,12 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!ENTITY no_space_to_start_error "Na dysku jest za mało wolnego miejsca, aby uruchomić program &brandShortName;">
-<!ENTITY error_loading_file "Podczas wczytywania plików wymaganych do uruchomienia programu &brandShortName; wystąpił błąd.">
-
 <!ENTITY firstrun_panel_title_welcome "Witamy">
 <!ENTITY onboard_start_message3 "Przeglądaj z programem &brandShortName;">
 <!ENTITY onboard_start_subtext3 "Spraw, aby przeglądanie mobilne stało się prawdziwie Twoim.">
 
 <!ENTITY firstrun_urlbar_message "Witamy w przeglądarce &brandShortName;">
-<!ENTITY firstrun_urlbar_subtext "Wyszukuj szybciej dzięki pomocnym sugestiom.">
+<!ENTITY firstrun_urlbar_subtext "Wyszukuj szybciej dzięki pomocnym podpowiedziom.">
 <!ENTITY firstrun_bookmarks_title "Historia">
 <!ENTITY firstrun_bookmarks_message "Ulubione strony, zawsze dostępne">
 <!ENTITY firstrun_bookmarks_subtext "Wyświetlaj wyniki z zakładek i historii podczas wyszukiwania.">
@@ -27,6 +24,11 @@
 
 <!ENTITY onboard_start_restricted1 "Bądź bezpieczny dzięki uproszczonej wersji przeglądarki &brandShortName;.">
 
+<!ENTITY reading_list_migration_title "Połączona lista „Do przeczytania”">
+<!ENTITY reading_list_migration_subtext "Artykuły z listy „Do przeczytania” zostaną dodane do zakładek">
+<!ENTITY reading_list_migration_goto_bookmarks "Przejdź do zakładek">
+<!ENTITY reading_list_migration_bookmarks_hidden "Panel zakładek jest ukryty">
+
 <!ENTITY bookmarks_title "Zakładki">
 <!ENTITY history_title "Historia">
 <!ENTITY reading_list_title "Do przeczytania">
@@ -35,7 +37,7 @@
 <!ENTITY switch_to_tab "Przełącz na kartę">
 
 <!ENTITY crash_reporter_title "&brandShortName; – Narzędzie zgłaszania awarii">
-<!ENTITY crash_message2 "Przeglądarka &brandShortName; uległa awarii. Ostatnio otwarte karty powinny być dostępne na stronie startowej po ponownym uruchomieniu.">
+<!ENTITY crash_message2 "&brandShortName; uległ awarii. Ostatnio otwarte karty powinny być dostępne na stronie startowej po ponownym uruchomieniu.">
 <!ENTITY crash_send_report_message3 "Prześlij zgłoszenie problemu do organizacji &vendorShortName;, aby mogła go rozwiązać">
 <!ENTITY crash_include_url2 "Załącz adres strony, na której wystąpił problem">
 <!ENTITY crash_sorry "Przykro nam">
@@ -44,14 +46,8 @@
 <!ENTITY crash_email "Twój adres e-mail">
 <!ENTITY crash_closing_alert "Czy wyjść bez wysłania zgłoszenia?">
 <!ENTITY crash_close_label "Zamknij">
-<!ENTITY crash_restart_label "Uruchom ponownie program &brandShortName;">
+<!ENTITY crash_restart_label "Uruchom ponownie przeglądarkę &brandShortName;">
 <!ENTITY sending_crash_report "Przesyłanie zgłoszenia\u2026">
-<!ENTITY exit_label "Zakończ">
-
-<!ENTITY launcher_shortcuts_title "&brandShortName; – Aplikacje internetowe">
-<!ENTITY launcher_shortcuts_empty "Nie znaleziono aplikacji internetowych">
-
-<!ENTITY choose_file "Wybierz plik">
 
 <!ENTITY url_bar_default_text2 "Wpisz zapytanie lub adres">
 
@@ -62,14 +58,18 @@
 <!ENTITY bookmark_removed "Usunięto zakładkę">
 <!ENTITY bookmark_updated "Zaktualizowano zakładkę">
 <!ENTITY bookmark_options "Opcje">
+<!ENTITY screenshot_added_to_bookmarks "Dodano zakładkę do zrzutu ekranu">
+<!ENTITY screenshot_folder_label_in_bookmarks "Zrzuty ekranu">
+<!ENTITY readinglist_smartfolder_label_in_bookmarks "Do przeczytania">
+
+<!ENTITY reader_saved_offline "Zachowano do korzystania offline">
+<!ENTITY reader_switch_to_bookmarks "Przejdź">
 
 <!ENTITY history_today_section "Dzisiaj">
 <!ENTITY history_yesterday_section "Wczoraj">
 <!ENTITY history_week_section3 "Ostatnie 7 dni">
-<!ENTITY history_this_month_section "Ten miesiąc">
 <!ENTITY history_older_section3 "Starsze niż 6 miesięcy">
 
-<!ENTITY go "Przejdź">
 <!ENTITY search "Szukaj">
 <!ENTITY reload "Odśwież">
 <!ENTITY forward "Do przodu">
@@ -91,7 +91,7 @@
 <!ENTITY settings "Ustawienia">
 <!ENTITY settings_title "Ustawienia">
 <!ENTITY pref_category_general "Ogólne">
-<!ENTITY pref_category_general_summary2 "Strona domowa, język, pasek adresu">
+<!ENTITY pref_category_general_summary3 "Strona domowa, język, kolejka kart">
 
 <!ENTITY pref_category_language "Język">
 <!ENTITY pref_category_language_summary "Zmiana języka przeglądarki">
@@ -100,10 +100,8 @@
 <!ENTITY locale_system_default "Domyślny język systemu">
 
 <!ENTITY overlay_share_bookmark_btn_label "Dodaj zakładkę">
-<!ENTITY overlay_share_reading_list_btn_label "Dodaj do listy „Do przeczytania”">
 <!ENTITY overlay_share_label "Przekaż do przeglądarki &brandShortName;">
 <!ENTITY overlay_share_bookmark_btn_label_already "Zakładka już istnieje">
-<!ENTITY overlay_share_reading_list_btn_label_already "Strona jest już zachowana na później">
 <!ENTITY overlay_share_send_other "Przekaż do innych urządzeń">
 
 <!ENTITY overlay_share_send_tab_btn_label "Przekaż do innego urządzenia">
@@ -112,24 +110,28 @@
 <!ENTITY overlay_no_synced_devices "Brak urządzeń połączonych z kontem Firefoksa">
 
 <!ENTITY pref_category_search3 "Wyszukiwanie">
-<!ENTITY pref_category_search_summary "Dostosowanie wyszukiwarek">
+<!ENTITY pref_category_search_summary2 "Dodawanie wyszukiwarek, ustawianie domyślnej, wyświetlanie podpowiedzi">
 <!ENTITY pref_category_accessibility "Dostępność">
 <!ENTITY pref_category_accessibility_summary2 "Rozmiar tekstu, powiększanie, sterowanie głosowe">
 <!ENTITY pref_category_privacy_short "Prywatność">
-<!ENTITY pref_category_privacy_summary3 "Śledzenie, ciasteczka, zarządzanie danymi">
+<!ENTITY pref_category_privacy_summary4 "Śledzenie, dane logowania, zarządzanie danymi">
 <!ENTITY pref_category_vendor2 "&vendorShortName; &brandShortName;">
 <!ENTITY pref_category_vendor_summary2 "O programie &brandShortName;, najczęściej zadawane pytania, opinie">
 <!ENTITY pref_category_datareporting "Udostępnianie danych">
+<!ENTITY pref_category_logins "Dane logowania">
 <!ENTITY pref_learn_more "Więcej informacji">
 <!ENTITY pref_category_installed_search_engines "Zainstalowane wyszukiwarki">
 <!ENTITY pref_category_add_search_providers "Dodawanie wyszukiwarek">
 <!ENTITY pref_category_search_restore_defaults "Przywróć wyszukiwarki">
 <!ENTITY pref_search_restore_defaults "Przywróć domyślne">
 <!ENTITY pref_search_restore_defaults_summary "Przywróć domyślne">
-<!ENTITY pref_search_hint "Rada: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania, a następnie stukając ikonę &formatI;.">
+<!ENTITY pref_search_hint2 "Rada: Możesz dodać każdą witrynę do swojej listy wyszukiwarek, przytrzymując na niej pole wyszukiwania, a następnie dotykając ikony &formatI;.">
 <!ENTITY pref_category_advanced "Zaawansowane">
-<!ENTITY pref_category_advanced_summary2 "Przywracanie kart, wtyczki, narzędzia dla programistów">
-<!ENTITY pref_developer_remotedebugging "Zdalne debugowanie">
+<!ENTITY pref_category_advanced_summary3 "Przywracanie kart, oszczędzanie danych, narzędzia dla programistów">
+<!ENTITY pref_category_notifications "Powiadomienia">
+<!ENTITY pref_category_notifications_summary "Powiadomienia ze stron i o nowych funkcjach">
+<!ENTITY pref_content_notifications "Powiadomienia ze stron">
+<!ENTITY pref_content_notifications_summary2 "Umożliwia obsługiwanym stronom wyświetlanie powiadomień">
 <!ENTITY pref_developer_remotedebugging_usb "Zdalne debugowanie przez USB">
 <!ENTITY pref_developer_remotedebugging_wifi "Zdalne debugowanie przez Wi-Fi">
 <!ENTITY pref_developer_remotedebugging_wifi_disabled_summary "Debugowanie przez Wi-Fi wymaga zainstalowania czytnika kodów QR na urządzeniu.">
@@ -139,16 +141,11 @@
 <!ENTITY pref_category_home "Strona domowa">
 <!ENTITY pref_category_home_summary "Dostosowanie strony domowej">
 <!ENTITY pref_category_home_panels "Panele">
-<!ENTITY home_add_panel_title "Dodanie nowego panelu">
-<!ENTITY home_add_panel_empty "Nie znaleziono żadnych paneli do dodania.">
-<!ENTITY home_add_panel_installed "Dodano „&formatS;” do strony domowej">
-<!ENTITY pref_category_home_content_settings "Ustawienia treści">
-<!ENTITY pref_home_updates "Automatyczne aktualizacje">
+<!ENTITY pref_category_home_add_ons "Dodatki">
+<!ENTITY pref_home_updates2 "Aktualizacje treści">
 <!ENTITY pref_home_updates_enabled "Włączone">
 <!ENTITY pref_home_updates_wifi "Tylko przez Wi-Fi">
 
-<!ENTITY pref_home_suggested_sites "Sugerowane witryny">
-<!ENTITY pref_home_suggested_sites_summary "Wyświetlanie na stronie domowej skrótów do interesujących witryn">
 <!ENTITY pref_category_home_homepage "Strona domowa">
 <!ENTITY home_homepage_title "Ustaw stronę domową">
 <!ENTITY home_homepage_radio_default "&brandShortName;: Strona domowa">
@@ -159,6 +156,7 @@
 <!ENTITY pref_header_search "Wyszukiwanie">
 <!ENTITY pref_header_privacy_short "Prywatność">
 <!ENTITY pref_header_accessibility "Dostępność">
+<!ENTITY pref_header_notifications "Powiadomienia">
 <!ENTITY pref_header_advanced "Zaawansowane">
 <!ENTITY pref_header_help "Pomoc">
 <!ENTITY pref_header_vendor "&vendorShortName;">
@@ -168,14 +166,19 @@
 <!ENTITY pref_cookies_not_accept_foreign "Akceptowanie, z wyjątkiem ciasteczek zewnętrznych podmiotów">
 <!ENTITY pref_cookies_disabled "Wyłączone">
 
+<!ENTITY pref_category_data_saver "Oszczędzanie danych">
+<!ENTITY pref_category_media "Media">
+<!ENTITY pref_category_developer_tools "Narzędzia dla programistów">
+
 <!ENTITY pref_tap_to_load_images_title2 "Wyświetlanie obrazów">
 <!ENTITY pref_tap_to_load_images_enabled "Zawsze">
 <!ENTITY pref_tap_to_load_images_data "Tylko przez Wi-Fi">
 <!ENTITY pref_tap_to_load_images_disabled2 "Blokowanie">
 
 <!ENTITY pref_show_web_fonts "Wyświetlanie czcionek sieciowych">
+<!ENTITY pref_show_web_fonts_summary2 "Pobieranie zdalnych czcionek podczas wczytywania strony">
 
-<!ENTITY pref_tracking_protection_title "Ochrona przed śledzeniem">
+<!ENTITY pref_tracking_protection_title2 "Ochrona przed śledzeniem">
 <!ENTITY pref_tracking_protection_summary3 "Włączona w trybie prywatnym">
 <!ENTITY pref_donottrack_title "Ograniczanie śledzenia">
 <!ENTITY pref_donottrack_summary "Informowanie witryn, że użytkownik nie chce być śledzony">
@@ -184,15 +187,18 @@
 <!ENTITY pref_tracking_protection_enabled_pb "Włączona w trybie prywatnym">
 <!ENTITY pref_tracking_protection_disabled "Wyłączona">
 
+<!ENTITY pref_whats_new_notification "Nowości w przeglądarce &brandShortName;">
+<!ENTITY pref_whats_new_notification_summary "Powiadamianie o nowych funkcjach po aktualizacji">
+
 <!ENTITY tracking_protection_prompt_title "Nowa ochrona przed śledzeniem">
 <!ENTITY tracking_protection_prompt_text "Aktywne blokowanie elementów śledzących aktywność użytkownika.">
 <!ENTITY tracking_protection_prompt_tip_text "Więcej informacji w ustawieniach prywatności">
 <!ENTITY tracking_protection_prompt_action_button "Zamknij">
 
-<!ENTITY tab_queue_toast_message3 "Karta zachowana w programie &brandShortName;">
+<!ENTITY tab_queue_toast_message3 "Karta zachowana w przeglądarce &brandShortName;">
 <!ENTITY tab_queue_toast_action "Otwórz teraz">
 <!ENTITY tab_queue_prompt_title "Otwieranie wielu odnośników">
-<!ENTITY tab_queue_prompt_text4 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
+<!ENTITY tab_queue_prompt_text4 "Zachowywanie odnośników do następnego otwarcia przeglądarki &brandShortName;">
 <!ENTITY tab_queue_prompt_tip_text2 "Można to zmienić później w ustawieniach">
 <!ENTITY tab_queue_prompt_permit_drawing_over_apps "Włącz „Zezwól na wyświetlanie nad innymi aplikacjami”">
 <!ENTITY tab_queue_prompt_positive_action_button "Włącz">
@@ -204,17 +210,22 @@
 
 <!ENTITY tab_queue_notification_settings "Proszę włączyć uprawnienie „Wyświetlanie nad innymi aplikacjami” dla aplikacji &brandShortName;, aby móc używać funkcji „Otwieranie wielu odnośników”">
 
+<!ENTITY content_notification_summary "&brandShortName;">
+<!ENTITY content_notification_title_plural "Zaktualizowane strony: &formatD;">
+<!ENTITY content_notification_action_settings "Ustawienia powiadomień">
+<!ENTITY content_notification_updated_on "Zaktualizowano: &formatS;">
+
 <!ENTITY pref_char_encoding "Kodowanie znaków">
 <!ENTITY pref_char_encoding_on "Pokazywanie">
 <!ENTITY pref_char_encoding_off "Bez pokazywania">
-<!ENTITY pref_clear_private_data "Wyczyść prywatne dane">
+<!ENTITY pref_clear_private_data2 "Wyczyść prywatne dane">
 <!ENTITY pref_clear_private_data_now_tablet "Wyczyść">
 <!ENTITY pref_clear_on_exit_title3 "Czyszczenie przy wyłączaniu">
-<!ENTITY pref_clear_on_exit_summary2 "Przeglądarka &brandShortName; zawsze będzie czyściła prywatne dane po wybraniu opcji \u201eZakończ\u201d z głównego menu">
+<!ENTITY pref_clear_on_exit_summary2 "&brandShortName; zawsze będzie czyścił prywatne dane po wybraniu opcji \u201eZakończ\u201d z głównego menu">
 <!ENTITY pref_clear_on_exit_dialog_title "Wybierz dane, które chcesz czyścić">
 <!ENTITY pref_plugins "Wtyczki">
 <!ENTITY pref_plugins_enabled "Włączone">
-<!ENTITY pref_plugins_tap_to_play "Stuknięcie, aby odtworzyć">
+<!ENTITY pref_plugins_tap_to_play2 "Dotknięcie, aby odtworzyć">
 <!ENTITY pref_plugins_disabled "Wyłączone">
 <!ENTITY pref_text_size "Rozmiar tekstu">
 <!ENTITY pref_restore_tabs "Przywracanie kart">
@@ -257,6 +268,7 @@
 <!ENTITY pref_private_data_downloadFiles2 "Pobrane pliki">
 <!ENTITY pref_private_data_syncedTabs "Zsynchronizowane karty">
 
+<!ENTITY pref_default_browser "Ustaw jako domyślną przeglądarkę">
 <!ENTITY pref_about_firefox "O programie &brandShortName;">
 <!ENTITY pref_vendor_faqs "FAQ">
 <!ENTITY pref_vendor_feedback "Przekaż informacje zwrotne">
@@ -275,7 +287,6 @@
 <!ENTITY datareporting_notification_action "Wybierz, co chcesz udostępniać">
 <!ENTITY datareporting_notification_action_long "Wybierz informacje, które chcesz udostępniać">
 <!ENTITY datareporting_notification_summary "Aby ulepszyć przeglądarkę &brandShortName;, &vendorShortName; automatycznie pobiera pewne informacje.">
-<!ENTITY datareporting_notification_summary_short "Aby ulepszyć przeglądarkę &brandShortName;…">
 <!ENTITY datareporting_notification_ticker_text "&datareporting_notification_title;. &datareporting_notification_action_long;">
 
 <!ENTITY datareporting_fhr_title "Raport o zdrowiu programu &brandShortName;">
@@ -340,8 +351,6 @@
 <!ENTITY contextmenu_top_sites_pin "Przypnij stronę">
 <!ENTITY contextmenu_top_sites_unpin "Odepnij stronę">
 <!ENTITY contextmenu_add_search_engine "Dodaj wyszukiwarkę">
-<!ENTITY contextmenu_mark_read "Oznacz jako przeczytane">
-<!ENTITY contextmenu_mark_unread "Oznacz jako nieprzeczytane">
 
 <!ENTITY doorhanger_login_no_username "[brak nazwy użytkownika]">
 <!ENTITY doorhanger_login_edit_title "Edycja danych logowania">
@@ -356,13 +365,13 @@
 <!ENTITY doorhanger_login_select_title "Kopiuj hasło dla">
 
 <!ENTITY pref_magnifying_glass_enabled "Powiększanie małych obszarów">
-<!ENTITY pref_magnifying_glass_enabled_summary "Zwiększanie odnośników i pól formularzy po stuknięciu obok nich">
+<!ENTITY pref_magnifying_glass_enabled_summary2 "Zwiększanie odnośników i pól formularzy po dotknięciu obok nich">
 
 <!ENTITY pref_scroll_title_bar2 "Przeglądanie pełnoekranowe">
 <!ENTITY pref_scroll_title_bar_summary2 "Ukrywanie paska przeglądarki &brandShortName; przy przewijaniu stron">
 
 <!ENTITY pref_tab_queue_title3 "Kolejka kart">
-<!ENTITY pref_tab_queue_summary4 "Zachowywanie odnośników do następnego otwarcia programu &brandShortName;">
+<!ENTITY pref_tab_queue_summary4 "Zachowywanie odnośników do następnego otwarcia przeglądarki &brandShortName;">
 
 <!ENTITY page_removed "Usunięto stronę">
 
@@ -374,13 +383,6 @@
 <!ENTITY site_settings_title3 "Ustawienia witryny">
 <!ENTITY site_settings_cancel "Anuluj">
 <!ENTITY site_settings_clear "Wyczyść">
-
-<!ENTITY reading_list_added3 "Dodano do czytelni">
-<!ENTITY reading_list_removed "Usunięto stronę z czytelni">
-<!ENTITY reading_list_remove "Usuń z czytelni">
-<!ENTITY reading_list_duplicate "Strona została już dodana do czytelni">
-<!ENTITY reading_list_time_minutes2 "&formatD; min">
-<!ENTITY reading_list_time_over_an_hour "Ponad godzinę">
 
 <!ENTITY page_action_dropmarker_description "Dodatkowe czynności">
 
@@ -403,6 +405,9 @@
 
 <!ENTITY home_title "&brandShortName;: Strona domowa">
 <!ENTITY home_history_title "Historia">
+<!ENTITY home_synced_devices_smartfolder "Synchronizowane urządzenia">
+<!ENTITY home_synced_devices_number "Urządzenia: &formatD;">
+<!ENTITY home_history_back_to2 "Wróć do całej historii">
 <!ENTITY home_clear_history_button "Wyczyść historię przeglądania">
 <!ENTITY home_clear_history_confirm "Czy na pewno wyczyścić historię przeglądania?">
 <!ENTITY home_bookmarks_empty "Tutaj pojawiają się zachowane zakładki.">
@@ -411,26 +416,15 @@
 <!ENTITY home_last_tabs_empty "Tutaj pojawiają się ostatnio otwarte karty.">
 <!ENTITY home_open_all "Otwórz wszystkie">
 <!ENTITY home_most_recent_empty "Tutaj pojawiają się ostatnio odwiedzone witryny.">
-<!ENTITY home_selected_empty "Tutaj pojawiają się witryny odwiedzone w wybranym przedziale czasowym.">
 <!ENTITY home_most_recent_emptyhint2 "Psst: W &formatS1;nowej karcie prywatnej&formatS2; historia nie jest zapisywana.">
-<!ENTITY home_reading_list_empty "Tutaj pojawiają się artykuły zachowane na później.">
 
 <!ENTITY home_default_empty "Nie znaleziono treści do wyświetlenia na tym panelu.">
 
-<!ENTITY home_move_back_to_filter "Wróć do &formatS;">
+<!ENTITY home_move_back_to_filter "Wróć do „&formatS;”">
 
-<!ENTITY home_remote_tabs_one_hidden_device "Liczba ukrytych urządzeń: 1">
 <!ENTITY home_remote_tabs_many_hidden_devices "Liczba ukrytych urządzeń: &formatD;">
 <!ENTITY home_remote_tabs_hidden_devices_title "Ukryte urządzenia">
 <!ENTITY home_remote_tabs_unhide_selected_devices "Ujawnij wybrane urządzenia">
-
-<!ENTITY home_remote_tabs_title "Zsynchronizowane">
-<!ENTITY home_remote_tabs_empty "Tutaj pojawią się twoje karty zsynchronizowane z innymi urządzeniami.">
-<!ENTITY home_remote_tabs_unable_to_connect "Nie udało się nawiązać połączenia">
-<!ENTITY home_remote_tabs_need_to_sign_in "Zaloguj się na konto Firefoksa, aby kontynuować synchronizację.">
-<!ENTITY home_remote_tabs_need_to_finish_migrating "Twoje nowe konto Firefoksa jest gotowe!">
-<!ENTITY home_remote_tabs_trouble_verifying "Masz problem z weryfikacją konta?">
-<!ENTITY home_remote_tabs_need_to_verify "Przed synchronizacją musisz zweryfikować konto Firefoksa.">
 
 <!ENTITY remote_tabs_panel_moved_title "Gdzie zniknęły moje karty?">
 <!ENTITY remote_tabs_panel_moved_desc "Przenieśliśmy twoje karty z innych urządzeń do panelu na stronie domowej, gdzie możesz je łatwo znaleźć przy otwieraniu nowej karty.">
@@ -445,7 +439,6 @@
 
 <!ENTITY tabs_normal "Karty">
 <!ENTITY tabs_private "Prywatne">
-<!ENTITY tabs_synced "Z Sync">
 <!ENTITY set_image_fail "Nie można ustawić obrazu">
 <!ENTITY set_image_path_fail "Nie można zapisać obrazu">
 <!ENTITY set_image_chooser_title "Ustaw obraz jako">
@@ -466,7 +459,7 @@
 <!ENTITY mixed_content_display_loaded1 "Części tej strony (np. obrazy) są niezabezpieczone.">
 <!ENTITY mixed_content_protection_disabled1 "Ochrona przed niezabezpieczoną treścią jest wyłączona.">
 
-<!ENTITY doorhanger_tracking_title "Ochrona przed śledzeniem">
+<!ENTITY doorhanger_tracking_title2 "Ochrona przed śledzeniem">
 <!ENTITY doorhanger_tracking_state_enabled "Włączone">
 <!ENTITY doorhanger_tracking_state_disabled "Wyłączone">
 <!ENTITY doorhanger_tracking_message_enabled1 "Zablokowano próby śledzenia aktywności użytkownika.">
@@ -475,7 +468,6 @@
 <!ENTITY learn_more "Więcej informacji">
 <!ENTITY enable_protection "Włącz ochronę">
 <!ENTITY disable_protection "Wyłącz ochronę">
-<!ENTITY keep_blocking "Blokuj nadal">
 
 <!ENTITY private_data_success "Usunięto prywatne dane">
 <!ENTITY private_data_fail "Nie udało się usunąć wszystkich prywatnych danych">
@@ -531,7 +523,6 @@
 <!ENTITY remote_tabs_last_synced "Ostatnia synchronizacja: &formatS;">
 <!ENTITY remote_tabs_never_synced "Ostatnia synchronizacja: nigdy">
 
-<!ENTITY intent_uri_cannot_open "Nie można otworzyć odnośnika">
 <!ENTITY intent_uri_private_browsing_prompt "Ten odnośnik zostanie otwarty w aplikacji &formatS;. Na pewno wyjść z trybu prywatnego?">
 <!ENTITY intent_uri_private_browsing_multiple_match_title "Wyjść z trybu prywatnego?">
 
@@ -556,10 +547,16 @@
 <!ENTITY bookmarks_restricted_support2 "Firefox: Pomoc dla ograniczonych profili na tabletach Android">
 <!ENTITY bookmarks_restricted_webmaker "Twórz Internet: Mozilla Webmaker">
 
-<!ENTITY unsupported_sdk_version "Ta wersja programu &brandShortName; nie może działać na tym urządzeniu (&formatS1;, &formatS2;). Prosimy pobrać właściwą wersję.">
+<!ENTITY unsupported_sdk_version "Ta wersja przeglądarki &brandShortName; nie może działać na tym urządzeniu (&formatS1;, &formatS2;). Prosimy pobrać właściwą wersję.">
 
 <!ENTITY eol_notification_title2 "&brandShortName; nie będzie już aktualizowany">
 <!ENTITY eol_notification_summary "Stuknij, aby dowiedzieć się więcej">
 
 <!ENTITY whatsnew_notification_title "&brandShortName; jest aktualny">
 <!ENTITY whatsnew_notification_summary "Nowości w tej wersji">
+
+<!ENTITY promotion_add_to_homescreen "Dodaj do ekranu głównego">
+
+<!ENTITY helper_first_offline_bookmark_title "Przeglądanie w trybie offline">
+<!ENTITY helper_first_offline_bookmark_message "Strony zachowane na później można znaleźć w zakładkach, nawet bez Internetu.">
+<!ENTITY helper_first_offline_bookmark_button "Przejdź do zakładek">

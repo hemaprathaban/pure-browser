@@ -168,11 +168,12 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY subscribeToPageMenuitem.label "Subscrever esta página…">
 <!ENTITY addCurPagesCmd.label "Criar marcadores para todos os separadores…">
 <!ENTITY showAllBookmarks2.label "Mostrar todos os marcadores">
-<!ENTITY unsortedBookmarksCmd.label "Marcadores desorganizados">
+<!ENTITY recentBookmarks.label "Marcadores recentes">
+<!ENTITY otherBookmarksCmd.label "Outros marcadores">
 <!ENTITY bookmarksToolbarChevron.tooltip "Mostrar mais marcadores">
 
 <!ENTITY backCmd.label                "Anterior">
-<!ENTITY backButton.tooltip           "Ir para a página anterior">
+<!ENTITY backButton.tooltip           "Retroceder uma página">
 <!ENTITY forwardCmd.label             "Seguinte">
 <!ENTITY forwardButton.tooltip        "Ir para a página seguinte">
 <!ENTITY backForwardButtonMenu.tooltip "Clique com o botão direito ou desloque para baixo para mostrar o histórico">
@@ -196,7 +197,6 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY urlbar.indexedDBNotificationAnchor.label       "Ver a mensagem de armazenamento offline de aplicações">
 <!ENTITY urlbar.loginFillNotificationAnchor.label       "Gerir as suas credenciais de início de sessão">
 <!ENTITY urlbar.passwordNotificationAnchor.label        "Selecione se pretende guardar a sua palavra-passe">
-<!ENTITY urlbar.webappsNotificationAnchor.label         "Ver a mensagem de instalação da aplicação">
 <!ENTITY urlbar.pluginsNotificationAnchor.label         "Gerir utilização de plugins nesta página">
 <!ENTITY urlbar.webNotsNotificationAnchor3.label        "Alterar se deseja ou não receber notificações do site">
 
@@ -224,7 +224,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarksCmd.commandkey "b">
 
 <!ENTITY bookmarksMenuButton.label          "Marcadores">
-<!ENTITY bookmarksMenuButton.unsorted.label "Marcadores desorganizados">
+<!ENTITY bookmarksMenuButton.other.label "Outros marcadores">
 <!ENTITY viewBookmarksSidebar2.label        "Ver barra lateral dos marcadores">
 <!ENTITY viewBookmarksToolbar.label         "Ver barra de marcadores">
 <!-- LOCALIZATION NOTE (bookmarksSidebarGtkCmd.commandkey): This command
@@ -254,79 +254,8 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY webDeveloperMenu.label       "Programador Web">
 <!ENTITY webDeveloperMenu.accesskey   "W">
 
-<!ENTITY devToolsCmd.keycode          "VK_F12">
-<!ENTITY devToolsCmd.keytext          "F12">
-
-<!ENTITY devtoolsServiceWorkers.label      "Service Workers">
-<!ENTITY devtoolsServiceWorkers.accesskey  "k">
-
-<!ENTITY devtoolsConnect.label        "Ligar…">
-<!ENTITY devtoolsConnect.accesskey    "g">
-
-<!ENTITY errorConsoleCmd.label        "Consola de erros">
-<!ENTITY errorConsoleCmd.accesskey    "C">
-
-<!ENTITY remoteWebConsoleCmd.label    "Consola web remota">
-
-<!ENTITY browserConsoleCmd.label      "Consola do navegador">
-<!ENTITY browserConsoleCmd.commandkey "j">
-<!ENTITY browserConsoleCmd.accesskey  "g">
-
 <!ENTITY inspectContextMenu.label     "Inspecionar elemento">
 <!ENTITY inspectContextMenu.accesskey "t">
-
-<!ENTITY responsiveDesignTool.label   "Vista de design responsivo">
-<!ENTITY responsiveDesignTool.accesskey "V">
-<!ENTITY responsiveDesignTool.commandkey "M">
-
-<!ENTITY eyedropper.label   "Eyedropper">
-<!ENTITY eyedropper.accesskey "y">
-<!-- LOCALIZATION NOTE (scratchpad.label): This menu item label appears
-  -  in the Tools menu. See bug 653093.
-  -  The Scratchpad is intended to provide a simple text editor for creating
-  -  and evaluating bits of JavaScript code for the purposes of function
-  -  prototyping, experimentation and convenient scripting.
-  -
-  -  It's quite possible that you won't have a good analogue for the word
-  -  "Scratchpad" in your locale. You should feel free to find a close
-  -  approximation to it or choose a word (or words) that means
-  -  "simple discardable text editor". -->
-
-<!ENTITY scratchpad.label             "Scratchpad">
-<!ENTITY scratchpad.accesskey         "S">
-<!ENTITY scratchpad.keycode           "VK_F4">
-<!ENTITY scratchpad.keytext           "F4">
-<!-- LOCALIZATION NOTE (browserToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser toolbox UI in the Tools menu. -->
-
-<!ENTITY browserToolboxMenu.label     "Caixa de ferramentas do navegador">
-<!ENTITY browserToolboxMenu.accesskey "e">
-<!ENTITY browserToolboxCmd.commandkey "i">
-<!-- LOCALIZATION NOTE (browserContentToolboxMenu.label): This is the label for the
-  -  application menu item that opens the browser content toolbox UI in the Tools menu.
-  -  This toolbox allows to debug the chrome of the content process in multiprocess builds.  -->
-
-<!ENTITY browserContentToolboxMenu.label     "Caixa de ferramentas de conteúdo do navegador">
-<!ENTITY browserContentToolboxMenu.accesskey "C">
-
-<!ENTITY devToolbarCloseButton.tooltiptext "Fechar ferramentas do programador">
-<!ENTITY devToolbarMenu.label              "Barra de ferramentas do programador">
-<!ENTITY devToolbarMenu.accesskey          "f">
-<!ENTITY webide.label                      "WebIDE">
-<!ENTITY webide.accesskey                  "W">
-<!ENTITY webide.keycode                    "VK_F8">
-<!ENTITY webide.keytext                    "F8">
-<!ENTITY devToolbar.keycode                "VK_F2">
-<!ENTITY devToolbar.keytext                "F2">
-<!ENTITY devToolboxMenuItem.label          "Trocar ferramentas">
-<!ENTITY devToolboxMenuItem.accesskey      "T">
-<!ENTITY devToolboxMenuItem.keytext        "I">
-
-<!ENTITY devToolbarToolsButton.tooltip     "Alternar ferramentas do programador">
-<!ENTITY devToolbarOtherToolsButton.label  "Mais ferramentas">
-
-<!ENTITY getMoreDevtoolsCmd.label        "Obter mais ferramentas">
-<!ENTITY getMoreDevtoolsCmd.accesskey    "m">
 
 <!ENTITY fileMenu.label         "Ficheiro"> 
 <!ENTITY fileMenu.accesskey       "F">
@@ -410,17 +339,17 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY appMenuHelp.tooltip "Abrir menu de ajuda">
 
 <!ENTITY appMenuRemoteTabs.label "Separadores sincronizados">
-<!ENTITY appMenuRemoteTabs.fetching.label "A obter separadores sincronizados…">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.notabs.label): This is shown beneath
      the name of a device when that device has no open tabs -->
 <!ENTITY appMenuRemoteTabs.notabs.label "Nenhum separador aberto">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.tabsnotsyncing.label): This is shown
      when Sync is configured but syncing tabs is disabled. -->
-<!ENTITY appMenuRemoteTabs.tabsnotsyncing.label "Ative a sincronização de separadores para ver uma lista de separadores a partir dos seus outros dispositivos.">
+<!ENTITY appMenuRemoteTabs.tabsnotsyncing.label "Ative a sincronização de separadores para ver uma lista de separadores dos seus outros dispositivos.">
 <!-- LOCALIZATION NOTE (appMenuRemoteTabs.noclients.label): This is shown
      when Sync is configured but this appears to be the only device attached to
      the account. We also show links to download Firefox for android/ios. -->
-<!ENTITY appMenuRemoteTabs.noclients.label "Inicie a sessão no Firefox a partir de outros dispositivos para ver aqui os seus separadores.">
+<!ENTITY appMenuRemoteTabs.noclients.title "Sem separadores sincronizados... ainda!">
+<!ENTITY appMenuRemoteTabs.noclients.subtitle "Pretende ver os seus separadores de outros dispositivos aqui?">
 <!ENTITY appMenuRemoteTabs.openprefs.label "Preferências do Sync">
 <!ENTITY appMenuRemoteTabs.notsignedin.label "Inicie sessão para ver uma lista de separadores a partir dos seus outros dispositivos.">
 <!ENTITY appMenuRemoteTabs.signin.label "Iniciar sessão no Sync">
@@ -570,7 +499,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY bookmarkThisLinkCmd.accesskey  "d">
 <!ENTITY bookmarkThisFrameCmd.label      "Criar marcador para este frame">
 <!ENTITY bookmarkThisFrameCmd.accesskey  "m">
-<!ENTITY emailPageCmd.label           "Enviar ligação por e-mail…">
+<!ENTITY emailPageCmd.label           "Enviar ligação por email…">
 <!ENTITY emailPageCmd.accesskey       "E">
 <!ENTITY savePageCmd.label            "Guardar página como…">
 <!ENTITY savePageCmd.accesskey        "a">
@@ -589,13 +518,13 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY saveVideoCmd.accesskey       "v">
 <!ENTITY saveAudioCmd.label           "Guardar áudio como…">
 <!ENTITY saveAudioCmd.accesskey       "u">
-<!ENTITY emailImageCmd.label          "Enviar imagem…">
+<!ENTITY emailImageCmd.label          "Enviar imagem por email…">
 <!ENTITY emailImageCmd.accesskey      "n">
-<!ENTITY emailVideoCmd.label          "Enviar vídeo…">
+<!ENTITY emailVideoCmd.label          "Enviar vídeo por email…">
 <!ENTITY emailVideoCmd.accesskey      "a">
-<!ENTITY castVideoCmd.label           "Enviar vídeo para o dispositivo">
+<!ENTITY castVideoCmd.label           "Enviar vídeo para dispositivo">
 <!ENTITY castVideoCmd.accesskey       "e">
-<!ENTITY emailAudioCmd.label          "Enviar áudio…">
+<!ENTITY emailAudioCmd.label          "Enviar áudio por email…">
 <!ENTITY emailAudioCmd.accesskey      "a">
 <!ENTITY playPluginCmd.label          "Ativar este plugin">
 <!ENTITY playPluginCmd.accesskey      "t">
@@ -611,7 +540,7 @@ These should match what Safari and other Apple applications use on OS X Lion. --
 <!ENTITY copyVideoURLCmd.accesskey    "o">
 <!ENTITY copyAudioURLCmd.label        "Copiar localização do áudio">
 <!ENTITY copyAudioURLCmd.accesskey    "o">
-<!ENTITY copyEmailCmd.label           "Copiar endereço de e-mail">
+<!ENTITY copyEmailCmd.label           "Copiar endereço de email">
 <!ENTITY copyEmailCmd.accesskey       "e">
 <!ENTITY thisFrameMenu.label              "Este frame">
 <!ENTITY thisFrameMenu.accesskey          "t">
@@ -717,7 +646,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY pageStylePersistentOnly.label "Estilo de página básico">
 <!ENTITY pageStylePersistentOnly.accesskey "b">
 
-<!ENTITY pageReportIcon.tooltip            "Alterar definições de janelas pop-up para este website">
+<!ENTITY pageReportIcon.tooltip            "Alterar definições de janelas pop-up para este site">
 
 <!ENTITY allowPopups.accesskey "p">
 <!-- On Windows we use the term "Options" to describe settings, but
@@ -765,13 +694,13 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 
 <!ENTITY identity.description.insecure "A sua ligação a este site não é privada. As informações que submeter (tais como palavras-passe, mensagens, cartões de crédito, etc.) podem ser vistas por terceiros.">
 <!ENTITY identity.description.insecureLoginForms "As credenciais que introduzir nesta página podem não ser seguras e podem ser comprometidas.">
-<!ENTITY identity.description.weakCipher "A sua ligação a este website utiliza uma encriptação fraca e não é privada.">
-<!ENTITY identity.description.weakCipher2 "Outras pessoas podem ver a sua informação ou alterar o comportamento do website.">
+<!ENTITY identity.description.weakCipher "A sua ligação a este site utiliza uma encriptação fraca e não é privada.">
+<!ENTITY identity.description.weakCipher2 "Outras pessoas podem ver a sua informação ou alterar o comportamento do site.">
 <!ENTITY identity.description.activeBlocked "O &brandShortName; bloqueou partes desta página que não são seguras.">
 <!ENTITY identity.description.passiveLoaded "A sua ligação não é privada e a informação que partilha com o site pode ser vista por outros.">
-<!ENTITY identity.description.passiveLoaded2 "Este website contém conteúdo que não é seguro (tais como imagens).">
+<!ENTITY identity.description.passiveLoaded2 "Este site contém conteúdo que não é seguro (tais como imagens).">
 <!ENTITY identity.description.passiveLoaded3 "O &brandShortName; bloqueou alguns conteúdos, mas ainda existem elementos na página que não são seguros (como imagens).">
-<!ENTITY identity.description.activeLoaded "Este website contém conteúdo que não é seguro (tais como scripts) e a sua ligação com o mesmo não é privada.">
+<!ENTITY identity.description.activeLoaded "Este site contém conteúdo que não é seguro (tais como scripts) e a sua ligação ao mesmo não é privada.">
 <!ENTITY identity.description.activeLoaded2 "As informações que partilhar com este site (tais como palavras-passe, mensagens, cartões de crédito, etc.) podem ser vistas por outros.">
 
 <!ENTITY identity.enableMixedContentBlocking.label "Ativar proteção">
@@ -796,8 +725,9 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY syncTabsMenu3.label     "Separadores sincronizados">
 
 <!ENTITY syncedTabs.sidebar.label              "Separadores sincronizados">
-<!ENTITY syncedTabs.sidebar.fetching.label     "A obter separadores sincronizados…">
-<!ENTITY syncedTabs.sidebar.noclients.label    "Inicie a sessão no Firefox a partir dos seus outros dispositivos para ver aqui os seus separadores.">
+<!ENTITY syncedTabs.sidebar.noclients.label    "Inicie a sessão no Firefox a partir dos seus outros dispositivos para ver os seus separadores aqui.">
+<!ENTITY syncedTabs.sidebar.noclients.title    "Sem separadores sincronizados... ainda!">
+<!ENTITY syncedTabs.sidebar.noclients.subtitle "Pretende ver os seus separadores de outros dispositivos aqui?">
 <!ENTITY syncedTabs.sidebar.notsignedin.label  "Inicie sessão para ver uma lista de separadores a partir dos seus outros dispositivos.">
 <!ENTITY syncedTabs.sidebar.notabs.label       "Nenhum separador aberto">
 <!ENTITY syncedTabs.sidebar.openprefs.label    "Abrir as preferências do &syncBrand.shortName.label;">
@@ -805,10 +735,18 @@ you can use these alternative items. Otherwise, their values should be empty.  -
      when Sync is configured but syncing tabs is disabled. -->
 <!ENTITY syncedTabs.sidebar.tabsnotsyncing.label       "Ative a sincronização de separadores para ver uma lista de separadores a partir dos seus outros dispositivos.">
 
-<!ENTITY syncedTabs.context.openTab.label                   "Abrir este separador">
-<!ENTITY syncedTabs.context.openTab.accesskey               "A">
-<!ENTITY syncedTabs.context.bookmarkSingleTab.label         "Criar marcador para este separador…">
-<!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey     "C">
+<!ENTITY syncedTabs.context.open.label                       "Abrir">
+<!ENTITY syncedTabs.context.open.accesskey                   "A">
+<!ENTITY syncedTabs.context.openInNewTab.label               "Abrir em novo separador">
+<!ENTITY syncedTabs.context.openInNewTab.accesskey           "s">
+<!ENTITY syncedTabs.context.openInNewWindow.label            "Abrir ligação em nova janela">
+<!ENTITY syncedTabs.context.openInNewWindow.accesskey        "j">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.label     "Abrir ligação em nova janela privada">
+<!ENTITY syncedTabs.context.openInNewPrivateWindow.accesskey "p">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.label          "Criar marcador para este separador…">
+<!ENTITY syncedTabs.context.bookmarkSingleTab.accesskey      "C">
+<!ENTITY syncedTabs.context.copy.label                       "Copiar">
+<!ENTITY syncedTabs.context.copy.accesskey                   "C">
 
 
 <!ENTITY syncBrand.shortName.label    "Sync">
@@ -904,7 +842,7 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY trackingContentBlocked.block.accesskey "e">
 <!ENTITY trackingContentBlocked.disabled.message "A proteção contra monitorização está inativa">
 
-<!ENTITY pointerLock.notification.message "Prima ESC para mostrar novamente.">
+<!ENTITY pointerLock.notification.message "Prima ESC para voltar a mostrar.">
 
 <!ENTITY pluginNotification.showAll.label "Mostrar tudo">
 <!ENTITY pluginNotification.showAll.accesskey "s">
