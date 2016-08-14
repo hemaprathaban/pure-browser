@@ -1,0 +1,9 @@
+// Disable Location-Aware Browsing
+// http://www.mozilla.org/en-US/firefox/geolocation/
+lockPref("geo.enabled",             false);
+lockPref("browser.search.geoip.url",            "");
+lockPref("media.peerconnection.enabled",            false);
+
+// https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
+lockPref("dom.battery.enabled",             false);
+
