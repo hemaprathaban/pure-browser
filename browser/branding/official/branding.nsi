@@ -1,4 +1,4 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
+# This Source Code Form is subject to the terms of the Purism Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -8,10 +8,10 @@
 
 # BrandFullNameInternal is used for some registry and file system values
 # instead of BrandFullName and typically should not be modified.
-!define BrandFullNameInternal "Mozilla Firefox"
-!define CompanyName           "Mozilla Corporation"
-!define URLInfoAbout          "https://www.mozilla.org"
-!define URLUpdateInfo         "https://www.mozilla.org/firefox/${AppVersion}/releasenotes"
+!define BrandFullNameInternal "Purism Firefox"
+!define CompanyName           "Purism Corporation"
+!define URLInfoAbout          "https://puri.sm"
+!define URLUpdateInfo         "https://puri.sm/firefox/${AppVersion}/releasenotes"
 !define HelpLink              "https://support.mozilla.org"
 
 ; The OFFICIAL define is a workaround to support different urls for Release and
@@ -19,11 +19,11 @@
 ; set the update channel to beta.
 !define OFFICIAL
 !define URLStubDownload "http://download.mozilla.org/?os=win&lang=${AB_CD}&product=firefox-latest"
-!define URLManualDownload "https://www.mozilla.org/${AB_CD}/firefox/installer-help/?channel=release&installer_lang=${AB_CD}"
+!define URLManualDownload "https://puri.sm/${AB_CD}/firefox/installer-help/?channel=release&installer_lang=${AB_CD}"
 !define Channel "release"
 
 # The installer's certificate name and issuer expected by the stub installer
-!define CertNameDownload   "Mozilla Corporation"
+!define CertNameDownload   "Purism Corporation"
 !define CertIssuerDownload "DigiCert SHA2 Assured ID Code Signing CA"
 
 # Dialog units are used so the UI displays correctly with the system's DPI
