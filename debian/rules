@@ -57,11 +57,14 @@ GSTREAMER_VERSION = $(shell ( pkg-config gstreamer-1.0 && echo 1.0 ) || ( pkg-co
 # Define PRODUCT, product and Product variables (replacing product with the
 # actual value of $(PRODUCT))
 $(PRODUCT) := $(call lc,$(PRODUCT_NAME))
+$(PRODUCT) := purebrowser
 uc_first = $(strip $(eval __tmp := $(1))$(foreach l,$(letters),$(eval __tmp := $(subst $(l),$(l) ,$(__tmp))))$(call uc,$(firstword $(__tmp)))$(1:$(firstword $(__tmp))%=%))
 DISPLAY_NAME := $(call uc_first,$(PRODUCT_DOWNLOAD_NAME))$(if $(filter %-esr,$(PRODUCT_NAME)), ESR)
 $(call uc,$(PRODUCT)) := $(call uc,$(DISPLAY_NAME))
 Product := $(call uc_first,$(PRODUCT))
 $(Product) := $(DISPLAY_NAME)
+$(Product) := purebrowser
+$(DISPLAY_NAME) := purebrowser
 
 LIB_DIR := /usr/lib/$($(PRODUCT))
 SHARE_DIR := /usr/share/$($(PRODUCT))
