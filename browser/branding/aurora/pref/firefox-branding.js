@@ -44,3 +44,7 @@ pref("browser.search.defaultenginename.US",      "data:text/plain,browser.search
 pref("browser.search.order.US.1",                "data:text/plain,browser.search.order.US.1=DuckDuckGo");
 pref("browser.search.order.US.2",                "data:text/plain,browser.search.order.US.2=DuckDuckGo");
 pref("browser.search.order.US.3",                "data:text/plain,browser.search.order.US.3=DuckDuckGo");
+
+pref("datareporting.healthreport.service.firstRun", false);
+pref("datareporting.healthreport.service.enabled", false);
+
