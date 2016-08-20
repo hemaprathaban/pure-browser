@@ -47,3 +47,12 @@ pref("browser.search.order.US.3",                "data:text/plain,browser.search
 
 pref("datareporting.healthreport.service.firstRun", false);
 pref("datareporting.healthreport.service.enabled", false);
+
+pref("browser.search.suggest.enabled", false);
+pref("browser.urlbar.suggest.searches", false);
+pref("browser.urlbar.userMadeSearchSuggestionsChoice", false);
+
+pref("browser.urlbar.suggest.bookmark", false);
+pref("browser.urlbar.suggest.history", false);
+pref("browser.urlbar.suggest.history.onlyTyped", false);
+pref("browser.urlbar.suggest.openpage", false);
