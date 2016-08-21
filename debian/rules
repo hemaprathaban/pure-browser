@@ -174,7 +174,6 @@ endif
 	$(MAKE) -C $*
 
 override_dh_auto_configure:
-
 stamps/prepare-configure:: stamps/dummy
 	for dir in $(AUTOCONF_DIRS); do \
 		for file in config.guess config.sub; do \
@@ -217,7 +216,7 @@ stamps/configure-$(PRODUCT):: stamps/prepare-configure debian/$($(PRODUCT)).mozc
 		$(BRANDING_CONFIGURE_FLAG)
 
 stamps/build-$(PRODUCT):: stamps/configure-check-$(PRODUCT)
-	dh_auto_build --parallel --builddirectory=build-$(PRODUCT) -- \
+	dh_auto_build --parallel  --builddirectory=build-$(PRODUCT) -- \
 		_LEAKTEST_FILES=leaktest.py
 
 L10N_BUILD_STAMPS = $(foreach lang,$(L10N_LANGS),stamps/build-l10n-$(lang))
