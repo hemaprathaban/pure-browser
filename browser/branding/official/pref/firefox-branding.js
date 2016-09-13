@@ -56,7 +56,7 @@ pref("browser.urlbar.suggest.bookmark", false);
 pref("browser.urlbar.suggest.history", false);
 pref("browser.urlbar.suggest.history.onlyTyped", false);
 pref("browser.urlbar.suggest.openpage", false);
-
+pref("xpinstall.signatures.required",false);
 
 pref("datareporting.healthreport.uploadEnabled", false);
 pref("datareporting.healthreport.infoURL", "https://puri.sm");
