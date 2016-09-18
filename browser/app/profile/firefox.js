@@ -42,13 +42,13 @@ pref("xpinstall.customConfirmationUI", true);
 // Preferences for AMO integration
 pref("extensions.getAddons.cache.enabled", true);
 pref("extensions.getAddons.maxResults", 15);
-pref("extensions.getAddons.get.url", "https://services.addons.mozilla.org/%LOCALE%/firefox/api/%API_VERSION%/search/guid:%IDS%?src=firefox&appOS=%OS%&appVersion=%VERSION%");
-pref("extensions.getAddons.getWithPerformance.url", "https://services.addons.mozilla.org/%LOCALE%/firefox/api/%API_VERSION%/search/guid:%IDS%?src=firefox&appOS=%OS%&appVersion=%VERSION%&tMain=%TIME_MAIN%&tFirstPaint=%TIME_FIRST_PAINT%&tSessionRestored=%TIME_SESSION_RESTORED%");
-pref("extensions.getAddons.search.browseURL", "https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%");
-pref("extensions.getAddons.search.url", "https://services.addons.mozilla.org/%LOCALE%/firefox/api/%API_VERSION%/search/%TERMS%/all/%MAX_RESULTS%/%OS%/%VERSION%/%COMPATIBILITY_MODE%?src=firefox");
-pref("extensions.webservice.discoverURL", "https://services.addons.mozilla.org/%LOCALE%/firefox/discovery/pane/%VERSION%/%OS%/%COMPATIBILITY_MODE%");
-pref("extensions.getAddons.recommended.url", "https://services.addons.mozilla.org/%LOCALE%/%APP%/api/%API_VERSION%/list/recommended/all/%MAX_RESULTS%/%OS%/%VERSION%?src=firefox");
-pref("extensions.getAddons.link.url", "https://addons.mozilla.org/%LOCALE%/firefox/");
+pref("extensions.getAddons.get.url", "https://puri.sm");
+pref("extensions.getAddons.getWithPerformance.url", "https://puri.sm");
+pref("extensions.getAddons.search.browseURL", "https://puri.sm");
+pref("extensions.getAddons.search.url", "https://puri.sm");
+pref("extensions.webservice.discoverURL", "https://puri.sm");
+pref("extensions.getAddons.recommended.url", "https://puri.sm");
+pref("extensions.getAddons.link.url", "https://puri.sm");
 
 // Blocklist preferences
 pref("extensions.blocklist.enabled", true);
@@ -959,11 +959,11 @@ pref("browser.safebrowsing.provider.google.updateURL", "https://safebrowsing.goo
 pref("browser.safebrowsing.provider.google.gethashURL", "https://safebrowsing.google.com/safebrowsing/gethash?client=SAFEBROWSING_ID&appver=%VERSION%&pver=2.2");
 pref("browser.safebrowsing.provider.google.reportURL", "https://safebrowsing.google.com/safebrowsing/diagnostic?client=%NAME%&hl=%LOCALE%&site=");
 
-pref("browser.safebrowsing.reportPhishMistakeURL", "https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&url=");
-pref("browser.safebrowsing.reportPhishURL", "https://%LOCALE%.phish-report.mozilla.com/?hl=%LOCALE%&url=");
-pref("browser.safebrowsing.reportMalwareMistakeURL", "https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&url=");
-pref("browser.safebrowsing.appRepURL", "https://sb-ssl.google.com/safebrowsing/clientreport/download?key=%GOOGLE_API_KEY%");
 
+pref("browser.safebrowsing.reportPhishMistakeURL", "https://puri.sm");
+pref("browser.safebrowsing.reportPhishURL", "https://puri.sm");
+pref("browser.safebrowsing.reportMalwareMistakeURL", "https://puri.sm");
+pref("browser.safebrowsing.appRepURL", "https://puri.sm")
 #ifdef MOZILLA_OFFICIAL
 // Normally the "client ID" sent in updates is appinfo.name, but for
 // official Firefox releases from Mozilla we use a special identifier.
@@ -1110,20 +1110,20 @@ pref("browser.zoom.siteSpecific", true);
 pref("browser.zoom.updateBackgroundTabs", true);
 
 // The breakpad report server to link to in about:crashes
-pref("breakpad.reportURL", "https://crash-stats.mozilla.com/report/index/");
+pref("breakpad.reportURL", "https://puri.sm");
 
 // URL for "Learn More" for Crash Reporter
 pref("toolkit.crashreporter.infoURL",
-     "https://www.mozilla.org/legal/privacy/firefox.html#crash-reporter");
+"https://puri.sm");
 
 // base URL for web-based support pages
-pref("app.support.baseURL", "https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/");
+pref("app.support.baseURL", "https://puri.sm");
 
 // base url for web-based feedback pages
 #ifdef MOZ_DEV_EDITION
-pref("app.feedback.baseURL", "https://input.mozilla.org/%LOCALE%/feedback/firefoxdev/%VERSION%/");
+pref("app.feedback.baseURL", "https://puri.sm");
 #else
-pref("app.feedback.baseURL", "https://input.mozilla.org/%LOCALE%/feedback/%APP%/%VERSION%/");
+pref("app.feedback.baseURL", "https://puri.sm");
 #endif
 
 
@@ -1350,10 +1350,9 @@ pref("browser.newtabpage.rows", 3);
 pref("browser.newtabpage.columns", 5);
 
 // directory tiles download URL
-pref("browser.newtabpage.directory.source", "https://tiles.services.mozilla.com/v3/links/fetch/%LOCALE%/%CHANNEL%");
-
+pref("browser.newtabpage.directory.source", "https://puri.sm");
 // endpoint to send newtab click and view pings
-pref("browser.newtabpage.directory.ping", "https://tiles.services.mozilla.com/v3/links/");
+pref("browser.newtabpage.directory.ping", "https://puri.sm");
 
 #ifndef RELEASE_BUILD
 // if true, it activates the remote-hosted newtab page
@@ -1395,8 +1394,7 @@ pref("social.sidebar.unload_timeout_ms", 10000);
 // Activation from inside of share panel is possible if activationPanelEnabled
 // is true. Pref'd off for release while usage testing is done through beta.
 pref("social.share.activationPanelEnabled", true);
-pref("social.shareDirectory", "https://activations.cdn.mozilla.net/sharePanel.html");
-
+pref("social.shareDirectory", "https://puri.sm");
 pref("dom.identity.enabled", false);
 
 // Block insecure active content on https pages
@@ -1430,7 +1428,7 @@ pref("dom.debug.propagate_gesture_events_through_content", false);
 #ifdef RELEASE_BUILD
 pref("geo.wifi.uri", "https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_API_KEY%");
 #else
-pref("geo.wifi.uri", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
+pref("geo.wifi.uri", "https://puri.sm");
 #endif
 
 #ifdef XP_MACOSX
@@ -1483,12 +1481,12 @@ pref("identity.fxaccounts.remote.oauth.uri", "https://oauth.accounts.firefox.com
 pref("identity.fxaccounts.profile_image.enabled", true);
 
 // Token server used by the FxA Sync identity.
-pref("identity.sync.tokenserver.uri", "https://token.services.mozilla.com/1.0/sync/1.5");
+pref("identity.sync.tokenserver.uri", "https://puri.sm");
 
 // URLs for promo links to mobile browsers. Note that consumers are expected to
 // append a value for utm_campaign.
-pref("identity.mobilepromo.android", "https://www.mozilla.org/firefox/android/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_campaign=");
-pref("identity.mobilepromo.ios", "https://www.mozilla.org/firefox/ios/?utm_source=firefox-browser&utm_medium=firefox-browser&utm_campaign=");
+pref("identity.mobilepromo.android", "https://puri.sm");
+pref("identity.mobilepromo.ios", "https://puri.sm");
 
 // Migrate any existing Firefox Account data from the default profile to the
 // Developer Edition profile.
@@ -1548,7 +1546,7 @@ pref("toolkit.telemetry.optoutSample", true);
 // Telemetry experiments settings.
 pref("experiments.enabled", true);
 pref("experiments.manifest.fetchIntervalSeconds", 86400);
-pref("experiments.manifest.uri", "https://telemetry-experiment.cdn.mozilla.net/manifest/v1/firefox/%VERSION%/%CHANNEL%");
+pref("experiments.manifest.uri", "https://puri.sm");
 // Whether experiments are supported by the current application profile.
 pref("experiments.supported", true);
 
@@ -1562,8 +1560,7 @@ pref("browser.polaris.enabled", false);
 pref("privacy.trackingprotection.ui.enabled", false);
 #endif
 pref("privacy.trackingprotection.introCount", 0);
-pref("privacy.trackingprotection.introURL", "https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/tracking-protection/start/");
-
+pref("privacy.trackingprotection.introURL", "https://puri.sm");
 // Enable Contextual Identity Containers
 pref("privacy.userContext.enabled", false);
 
