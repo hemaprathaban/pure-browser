@@ -876,7 +876,7 @@
                         label="&cmd.showPreferencesUnix.label;"
                         tooltiptext="&cmd.showPreferencesUnix.tooltip;"
 #endif
-                        oncommand="document.getBindingParent(this).showPreferences();"/>
+			oncommand="document.getBindingParent(this).showPreferences();"/>
                         <!-- label="&cmd.debugAddon.label;" -->
             <xul:button anonid="debug-btn" class="addon-control debug"
                         label="&cmd.debugAddon.label;"
@@ -1256,13 +1256,6 @@
               this._warningLink.hidden = true;
               this._warningBtn.hidden = true;
             } else if (!isUpgrade && !isCorrectlySigned(this.mAddon)) {
-              this.setAttribute("notification", "warning");
-              this._warning.textContent = gStrings.ext.formatStringFromName(
-                "notification.unsigned", [this.mAddon.name, gStrings.brandShortName], 2
-              );
-              this._warningLink.value = gStrings.ext.GetStringFromName("notification.unsigned.link");
-              this._warningLink.href = Services.urlFormatter.formatURLPref("app.support.baseURL") + "unsigned-addons";
-              this._warningLink.hidden = false;
             } else if (!isUpgrade && this.mAddon.blocklistState == Ci.nsIBlocklistService.STATE_SOFTBLOCKED) {
               this.setAttribute("notification", "warning");
               this._warning.textContent = gStrings.ext.formatStringFromName(

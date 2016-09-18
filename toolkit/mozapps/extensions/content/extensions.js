@@ -593,7 +593,7 @@ var gEventManager = {
       return;
     }
 
-    page.removeAttribute("warning");
+//    page.removeAttribute("warning");
   },
 
   refreshAutoUpdateDefault: function() {
@@ -2660,7 +2660,7 @@ var gListView = {
     }, false);
 
     document.getElementById("signing-learn-more").setAttribute("href",
-      Services.urlFormatter.formatURLPref("app.support.baseURL") + "unsigned-addons");
+    Services.urlFormatter.formatURLPref("app.support.baseURL") + "unsigned-addons");
 
     let findSignedAddonsLink = document.getElementById("find-alternative-addons");
     try {
@@ -2670,12 +2670,12 @@ var gListView = {
       findSignedAddonsLink.classList.remove("text-link");
     }
 
-    try {
-      document.getElementById("signing-dev-manual-link").setAttribute("href",
-        Services.prefs.getCharPref("xpinstall.signatures.devInfoURL"));
-    } catch (e) {
+ //   try {
+ //     document.getElementById("signing-dev-manual-link").setAttribute("href",
+ //       Services.prefs.getCharPref("xpinstall.signatures.devInfoURL"));
+//    } catch (e) {
       document.getElementById("signing-dev-info").hidden = true;
-    }
+//    }
   },
 
   show: function(aType, aRequest) {
@@ -3180,88 +3180,16 @@ var gDetailView = {
       this.node.removeAttribute("pending");
 
       if (this._addon.blocklistState == Ci.nsIBlocklistService.STATE_BLOCKED) {
-        this.node.setAttribute("notification", "error");
-        document.getElementById("detail-error").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.blocked",
-          [this._addon.name], 1
-        );
-        var errorLink = document.getElementById("detail-error-link");
-        errorLink.value = gStrings.ext.GetStringFromName("details.notification.blocked.link");
-        errorLink.href = this._addon.blocklistURL;
-        errorLink.hidden = false;
       } else if (!isCorrectlySigned(this._addon) && SIGNING_REQUIRED) {
-        this.node.setAttribute("notification", "error");
-        document.getElementById("detail-error").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.unsignedAndDisabled", [this._addon.name, gStrings.brandShortName], 2
-        );
-        var errorLink = document.getElementById("detail-error-link");
-        errorLink.value = gStrings.ext.GetStringFromName("details.notification.unsigned.link");
-        errorLink.href = Services.urlFormatter.formatURLPref("app.support.baseURL") + "unsigned-addons";
-        errorLink.hidden = false;
       } else if (!this._addon.isCompatible && (AddonManager.checkCompatibility ||
         (this._addon.blocklistState != Ci.nsIBlocklistService.STATE_SOFTBLOCKED))) {
-        this.node.setAttribute("notification", "warning");
-        document.getElementById("detail-warning").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.incompatible",
-          [this._addon.name, gStrings.brandShortName, gStrings.appVersion], 3
-        );
-        document.getElementById("detail-warning-link").hidden = true;
       } else if (!isCorrectlySigned(this._addon)) {
-        this.node.setAttribute("notification", "warning");
-        document.getElementById("detail-warning").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.unsigned", [this._addon.name, gStrings.brandShortName], 2
-        );
-        var warningLink = document.getElementById("detail-warning-link");
-        warningLink.value = gStrings.ext.GetStringFromName("details.notification.unsigned.link");
-        warningLink.href = Services.urlFormatter.formatURLPref("app.support.baseURL") + "unsigned-addons";
-        warningLink.hidden = false;
       } else if (this._addon.blocklistState == Ci.nsIBlocklistService.STATE_SOFTBLOCKED) {
-        this.node.setAttribute("notification", "warning");
-        document.getElementById("detail-warning").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.softblocked",
-          [this._addon.name], 1
-        );
-        var warningLink = document.getElementById("detail-warning-link");
-        warningLink.value = gStrings.ext.GetStringFromName("details.notification.softblocked.link");
-        warningLink.href = this._addon.blocklistURL;
-        warningLink.hidden = false;
       } else if (this._addon.blocklistState == Ci.nsIBlocklistService.STATE_OUTDATED) {
-        this.node.setAttribute("notification", "warning");
-        document.getElementById("detail-warning").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.outdated",
-          [this._addon.name], 1
-        );
-        var warningLink = document.getElementById("detail-warning-link");
-        warningLink.value = gStrings.ext.GetStringFromName("details.notification.outdated.link");
-        warningLink.href = Services.urlFormatter.formatURLPref("plugins.update.url");
-        warningLink.hidden = false;
       } else if (this._addon.blocklistState == Ci.nsIBlocklistService.STATE_VULNERABLE_UPDATE_AVAILABLE) {
-        this.node.setAttribute("notification", "error");
-        document.getElementById("detail-error").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.vulnerableUpdatable",
-          [this._addon.name], 1
-        );
-        var errorLink = document.getElementById("detail-error-link");
-        errorLink.value = gStrings.ext.GetStringFromName("details.notification.vulnerableUpdatable.link");
-        errorLink.href = this._addon.blocklistURL;
-        errorLink.hidden = false;
       } else if (this._addon.blocklistState == Ci.nsIBlocklistService.STATE_VULNERABLE_NO_UPDATE) {
-        this.node.setAttribute("notification", "error");
-        document.getElementById("detail-error").textContent = gStrings.ext.formatStringFromName(
-          "details.notification.vulnerableNoUpdate",
-          [this._addon.name], 1
-        );
-        var errorLink = document.getElementById("detail-error-link");
-        errorLink.value = gStrings.ext.GetStringFromName("details.notification.vulnerableNoUpdate.link");
-        errorLink.href = this._addon.blocklistURL;
-        errorLink.hidden = false;
       } else if (this._addon.isGMPlugin && !this._addon.isInstalled &&
                  this._addon.isActive) {
-        this.node.setAttribute("notification", "warning");
-        let warning = document.getElementById("detail-warning");
-        warning.textContent =
-          gStrings.ext.formatStringFromName("details.notification.gmpPending",
-                                            [this._addon.name], 1);
       } else {
         this.node.removeAttribute("notification");
       }
