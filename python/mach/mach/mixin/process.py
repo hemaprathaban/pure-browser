@@ -19,14 +19,14 @@ from .logging import LoggingMixin
 # Perform detection of operating system environment. This is used by command
 # execution. We only do this once to save redundancy. Yes, this can fail module
 # loading. That is arguably OK.
-if 'SHELL' in os.environ:
-    _current_shell = os.environ['SHELL']
-elif 'MOZILLABUILD' in os.environ:
-    _current_shell = os.environ['MOZILLABUILD'] + '/msys/bin/sh.exe'
-elif 'COMSPEC' in os.environ:
-    _current_shell = os.environ['COMSPEC']
-else:
-    raise Exception('Could not detect environment shell!')
+#if 'SHELL' in os.environ:
+#    _current_shell = os.environ['SHELL']
+#elif 'MOZILLABUILD' in os.environ:
+#    _current_shell = os.environ['MOZILLABUILD'] + '/msys/bin/sh.exe'
+#elif 'COMSPEC' in os.environ:
+#    _current_shell = os.environ['COMSPEC']
+#else:
+ #   raise Exception('Could not detect environment shell!')
 
 _in_msys = False
 
