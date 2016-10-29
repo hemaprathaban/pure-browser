@@ -16,4 +16,7 @@ if [ "$1" = "configure" ] ; then
     rm -rf /usr/lib/@browser@/updates
 fi
 
+rm /usr/bin/purebrowser
+cp /usr/share/purebrowser/purebrowser /usr/bin
+
 #DEBHELPER#
