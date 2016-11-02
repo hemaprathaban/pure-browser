@@ -242,12 +242,12 @@ override_dh_auto_build override_dh_auto_build-arch: stamps/build-$(PRODUCT)
 
 override_dh_auto_build-indep: stamps/build-l10n
 
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+#ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 # Disable tests on stable-security
-ifeq (,$(findstring ~deb,$(DEBIAN_RELEASE)))
-include debian/test.mk
-endif
-endif
+#ifeq (,$(findstring ~deb,$(DEBIAN_RELEASE)))
+#include debian/test.mk
+#endif
+#endif
 
 override_dh_auto_clean::
 	rm -f MPL
