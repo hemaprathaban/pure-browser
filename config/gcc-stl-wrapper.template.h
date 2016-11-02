@@ -41,7 +41,6 @@
 #    error "STL code can only be used with infallible ::operator new()"
 #  endif
 
- #endif
  
 #endif
 
